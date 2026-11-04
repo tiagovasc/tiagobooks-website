@@ -33,7 +33,7 @@ function details(p:Post){
 <ul class="post-cards h-feed">
   {[...months].map(([month,group]) => (
     <>
-      <li class="blog-month-heading" data-blog-month={month}><span>{monthLabel(group[0].data.date)}</span><span class="leader"/><span class="month-count">{group.length} {group.length===1?'post':'posts'}</span></li>
+      <li class="blog-month-heading" data-blog-month={month}><span>{monthLabel(group[0].data.date)}</span><span class="leader"/></li>
       {group.map((p) => { const d=details(p); return (
         <li class="h-entry post-card" data-blog-entry data-year={Number(month.slice(0,4))} data-month={month} data-tags={JSON.stringify(p.data.tags.map(tagSlug))}>
           <a class:list={['pc-thumb', {'pc-artwork': !!p.data.image}]} href={`/posts/${p.id}`} tabindex="-1" aria-hidden="true" data-tone={[...p.id].reduce((h,c)=>(h*31+c.charCodeAt(0))>>>0,7)%5}>

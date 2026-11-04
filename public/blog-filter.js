@@ -8,7 +8,7 @@ function filterBlog(){const tag=currentTag();let count=0;const years=new Set();
   for(const row of rows){const visible=!tag||JSON.parse(row.dataset.tags).includes(tag);row.hidden=!visible;if(visible){count++;years.add(row.dataset.year)}}
   for(const heading of document.querySelectorAll('[data-blog-year]'))heading.hidden=!years.has(heading.dataset.blogYear);
   const counts=new Map();for(const row of rows)if(!row.hidden)counts.set(row.dataset.month,(counts.get(row.dataset.month)||0)+1);
-  for(const heading of headings){const n=counts.get(heading.dataset.blogMonth)||0;heading.hidden=!n;heading.querySelector('.month-count').textContent=n+' '+(n===1?'post':'posts')}
+  for(const heading of headings){const n=counts.get(heading.dataset.blogMonth)||0;heading.hidden=!n}
   for(const chip of chips){if(chip.dataset.blogTag===tag)chip.setAttribute('aria-current','true');else chip.removeAttribute('aria-current')}
   const selected=chips.find(c=>c.dataset.blogTag===tag);document.getElementById('blog-result-count').textContent=count+' '+(count===1?'post':'posts')+(tag?' · '+(selected?.childNodes[0]?.textContent||tag):'');
   const empty=document.getElementById('blog-empty');if(empty)empty.hidden=count>0;
