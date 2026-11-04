@@ -4,6 +4,10 @@ date: 2026-03-20 05:33:00-05:00
 tags:
 - Book Reviews
 image: /uploads/artwork/andrei-rublev-trinity.webp
+thumbnailCrop:
+  x: 50
+  y: 30
+  zoom: 1
 artwork:
   title: Trinity
   artist: Andrei Rublev

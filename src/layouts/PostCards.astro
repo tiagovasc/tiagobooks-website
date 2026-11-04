@@ -30,7 +30,7 @@ function details(p:Post){
       {group.map((p) => { const d=details(p); return (
         <li class="h-entry post-card" data-blog-entry data-year={Number(month.slice(0,4))} data-month={month} data-tags={JSON.stringify(p.data.tags.map(tagSlug))}>
           <a class:list={['pc-thumb', {'pc-artwork': !!p.data.image}]} href={`/posts/${p.id}`} tabindex="-1" aria-hidden="true" data-tone={[...p.id].reduce((h,c)=>(h*31+c.charCodeAt(0))>>>0,7)%5}>
-            {p.data.image && <img src={p.data.artwork?.thumbnail || p.data.image} alt="" width="480" height="300" loading="lazy" decoding="async" />}
+            {p.data.image && <img src={p.data.artwork?.thumbnail || p.data.image} alt="" width="480" height="300" loading="lazy" decoding="async" style={`--thumbnail-position:${p.data.thumbnailCrop?.x ?? 50}% ${p.data.thumbnailCrop?.y ?? 50}%;--thumbnail-zoom:${p.data.thumbnailCrop?.zoom ?? 1}`} />}
           </a>
           <div class="pc-body">
             <time class="pc-date dt-published" datetime={p.data.date.toISOString()}>{d.date}</time>

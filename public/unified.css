@@ -149,7 +149,7 @@ body:has(.library-tools,.section-tools) .site-shell{border-radius:0;box-shadow:0
 .pc-thumb{position:relative;display:grid;place-items:center;aspect-ratio:16/10;border-radius:8px;overflow:hidden;background:#91AC98;background-image:linear-gradient(135deg,#ffffff2e,#0000001a)}
 .pc-thumb[data-tone="1"]{background-color:#C6B86C}.pc-thumb[data-tone="2"]{background-color:#98ACC9}.pc-thumb[data-tone="3"]{background-color:#A49FC5}.pc-thumb[data-tone="4"]{background-color:#C6A4A7}
 .pc-thumb.pc-artwork{background:var(--surface)}
-.pc-thumb img{display:block;width:100%;height:100%;object-fit:contain;min-height:0;position:absolute;inset:0}
+.pc-thumb img{display:block;width:100%;height:100%;object-fit:cover;object-position:var(--thumbnail-position,50% 50%);transform:scale(var(--thumbnail-zoom,1));transform-origin:var(--thumbnail-position,50% 50%);min-height:0;position:absolute;inset:0}
 .entry-artwork{margin:0 0 2rem}
 .entry-artwork img{display:block;width:auto;height:auto;max-width:100%;max-height:640px;object-fit:contain;border-radius:6px}
 .entry-artwork figcaption{margin-top:10px;color:var(--muted);font:12px/1.5 var(--font);text-align:center}

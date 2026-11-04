@@ -4,6 +4,10 @@ date: 2026-05-23 04:18:00-05:00
 tags:
 - General
 image: /uploads/artwork/caspar-david-friedrich-wanderer-above-the-sea-of-fog.webp
+thumbnailCrop:
+  x: 50
+  y: 35
+  zoom: 1
 artwork:
   title: Wanderer above the Sea of Fog
   artist: Caspar David Friedrich

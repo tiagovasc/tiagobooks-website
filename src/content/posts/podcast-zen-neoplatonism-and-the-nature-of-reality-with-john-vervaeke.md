@@ -4,6 +4,10 @@ date: 2026-08-11 04:32:00-05:00
 tags:
 - Podcast
 image: /uploads/artwork/odilon-redon-buddha.webp
+thumbnailCrop:
+  x: 50
+  y: 35
+  zoom: 1
 artwork:
   title: Buddha
   artist: Odilon Redon

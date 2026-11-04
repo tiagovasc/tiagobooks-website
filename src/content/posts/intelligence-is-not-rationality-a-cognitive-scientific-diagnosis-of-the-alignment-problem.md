@@ -5,6 +5,10 @@ date: 2026-05-07 03:33:00-05:00
 tags:
 - General
 image: /uploads/artwork/william-blake-the-ancient-of-days.webp
+thumbnailCrop:
+  x: 50
+  y: 48
+  zoom: 1.14
 artwork:
   title: The Ancient of Days
   artist: William Blake

@@ -4,6 +4,10 @@ date: 2026-07-28 02:19:00-05:00
 tags:
 - General
 image: /uploads/artwork/william-blake-newton.webp
+thumbnailCrop:
+  x: 50
+  y: 70
+  zoom: 1
 artwork:
   title: Newton
   artist: William Blake

@@ -5,6 +5,10 @@ date: 2026-10-09 08:45:00-05:00
 tags:
 - General
 image: /uploads/artwork/joseph-wright-of-derby-an-experiment-on-a-bird-in-the-air-pump.webp
+thumbnailCrop:
+  x: 50
+  y: 25
+  zoom: 1
 artwork:
   title: An Experiment on a Bird in the Air Pump
   artist: Joseph Wright of Derby

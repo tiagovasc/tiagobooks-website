@@ -19,6 +19,12 @@ const shared = {
   description: z.string().optional(),
   // Optional explicit social preview image (path or URL).
   image: z.string().optional(),
+  // Frontend-only thumbnail framing; original images and article figures stay intact.
+  thumbnailCrop: z.object({
+    x: z.number().min(0).max(100).default(50),
+    y: z.number().min(0).max(100).default(50),
+    zoom: z.number().min(1).max(3).default(1),
+  }).optional(),
   // Public artwork credit; collection IDs, local paths and private notes stay outside Git.
   artwork: z.object({
     title: z.string(),

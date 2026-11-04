@@ -4,6 +4,10 @@ date: 2026-05-18 05:14:00-05:00
 tags:
 - Podcast
 image: /uploads/artwork/raphael-the-school-of-athens.webp
+thumbnailCrop:
+  x: 50
+  y: 75
+  zoom: 1
 artwork:
   title: The School of Athens
   artist: Raphael

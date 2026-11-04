@@ -4,6 +4,10 @@ date: 2026-04-01 11:53:00-05:00
 tags:
 - General
 image: /uploads/artwork/john-william-waterhouse-the-magic-circle.webp
+thumbnailCrop:
+  x: 50
+  y: 60
+  zoom: 1
 artwork:
   title: The Magic Circle
   artist: John William Waterhouse

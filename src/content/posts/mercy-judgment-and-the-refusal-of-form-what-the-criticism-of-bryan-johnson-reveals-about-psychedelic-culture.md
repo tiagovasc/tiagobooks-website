@@ -5,6 +5,10 @@ date: 2026-05-19 03:49:00-05:00
 tags:
 - General
 image: /uploads/artwork/nikolai-ge-what-is-truth-christ-and-pilate.webp
+thumbnailCrop:
+  x: 50
+  y: 22
+  zoom: 1
 artwork:
   title: What Is Truth? Christ and Pilate
   artist: Nikolai Ge
