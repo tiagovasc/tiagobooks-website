@@ -9,7 +9,7 @@
     });
     if (document.documentElement.hasAttribute('data-newtab')) {
       document.querySelectorAll('a[href^="http"]').forEach(a => {
-        if (a.hostname !== location.hostname) { a.target = '_blank'; a.rel = 'noopener noreferrer'; }
+        if (a.hostname.replace(/^www\./,'') !== location.hostname.replace(/^www\./,'')) { a.target = '_blank'; a.rel = 'noopener noreferrer'; }
       });
     }
     document.querySelectorAll('.e-content pre:not([data-copy-ready])').forEach(pre => {

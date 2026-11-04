@@ -5,6 +5,8 @@ tags:
 - Podcast
 image: /uploads/podcasts/episode-Ox-zHe8Ny3I.webp
 thumbnail: /uploads/podcasts/episode-Ox-zHe8Ny3I-480.webp
+spotify: https://open.spotify.com/episode/42AV1dDBifx2EMH8up2QIc
+apple: https://podcasts.apple.com/us/podcast/edith-stein-empathy-the-loss-of-wonder-with-allister-lee/id1512482918?i=1000774730592
 ---
 
 * * *

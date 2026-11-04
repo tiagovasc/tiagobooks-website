@@ -5,6 +5,8 @@ tags:
 - Podcast
 image: /uploads/podcasts/episode-dS367GXsOVo.webp
 thumbnail: /uploads/podcasts/episode-dS367GXsOVo-480.webp
+spotify: https://open.spotify.com/episode/0CzyOJhRY7h9zfIrrW5KIJ
+apple: https://podcasts.apple.com/us/podcast/j-p-marceau-love-metaphysics-miracles/id1512482918?i=1000710678469
 ---
 
 JP Marceau spent four years in dialogue with Jonathan Pageau and John Vervaeke before writing Post-Reductionist Christianity: A Way Out of the Meaning Crisis, a short, dense book aimed at scientifically-minded readers who want the argument without the fluff. In this conversation, he walks through both halves of the book: first, how reductionism was always just a hypothesis from Galileo that has now broken down across cognitive science, neuroscience, and biology; and second, how Christianity offers both the practical infrastructure (churches as places to practice non-materialist perception) and a theoretical framework (the Incarnation as a scientific hypothesis worth granting). Along the way the conversation covers emanation versus emergence, the hard problem of consciousness, panpsychism versus classical metaphysics, the ontological definition of love as the union of multiplicity and unity, the difference between logos and love in the Christian tradition, the nature of miracles and the causal role of prayer, and why the classical theist's God-as-Mind is not the naive picture most critics attack. The host, approaching from a phenomenological and non-fully-committed perspective, pushes back throughout, making this as much a live philosophical negotiation as an exposition.

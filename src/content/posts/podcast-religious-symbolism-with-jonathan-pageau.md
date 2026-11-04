@@ -5,6 +5,8 @@ tags:
 - Podcast
 image: /uploads/podcasts/episode-k1ysFfBs87U.webp
 thumbnail: /uploads/podcasts/episode-k1ysFfBs87U-480.webp
+spotify: https://open.spotify.com/episode/5DygSitJSMyhiuRRD631hE
+apple: https://podcasts.apple.com/us/podcast/jonathan-pageau-religious-symbolism/id1512482918?i=1000491478586
 ---
 
 Jonathan Pageau has spent decades carving his way to the heart of Christian symbolism, literally. In this conversation, he traces his journey from evangelical Protestantism and contemporary art school to Eastern Orthodoxy, explaining how iconography gave him the visual language that modern art could not. He walks through why Plato and Aristotle matter for Christianity (and why neither invented what they noticed), how the Incarnation reconciles the tension between essence and instantiation, and why perennialism is simultaneously true and spiritually dangerous. He critiques modern biblical scholarship as reductively historical, defends the value of commitment to a single path over universalist syncretism, and offers a conception of love drawn from Maximus the Confessor that operates like a fractal, holding unity and multiplicity together at every scale. He closes with measured skepticism about psychedelics and a recommendation to read Dostoevsky.

@@ -5,6 +5,8 @@ tags:
 - Podcast
 image: /uploads/podcasts/episode-sdZjDP7D5hI.webp
 thumbnail: /uploads/podcasts/episode-sdZjDP7D5hI-480.webp
+spotify: https://open.spotify.com/episode/0BriXcdN2FwlVrqKzyHwjf
+apple: https://podcasts.apple.com/us/podcast/selfhood-and-psychedelic-phenomenology-with-jason-k-day/id1512482918?i=1000793841894
 ---
 
 Jason K. Day examines what psychedelic experiences reveal about selfhood and the structure of consciousness. He argues that describing an experience carefully should precede theories about its neural basis or metaphysical significance. Drawing on his analysis of trip reports, he explains the recurring changes that give psychedelic experience its distinctive style and questions the familiar idea that psychedelics simply expand consciousness. His account of attention draws on Aron Gurwitsch’s phenomenology to describe changes in salience, meaning and our engagement with the world. The discussion turns to ego dissolution and Day’s argument that even profound experiences of self-loss can retain a minimal sense of self-awareness. DMT entity encounters raise further questions about interpretation and the limits of what we can claim to know. Day also discusses the relationship between Husserl and Buddhist philosophy, the value of non-clinging, and his case for communal support for drug use, including recreational and sacred practices.

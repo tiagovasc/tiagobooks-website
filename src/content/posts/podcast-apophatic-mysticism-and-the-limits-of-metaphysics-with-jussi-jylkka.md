@@ -5,6 +5,8 @@ tags:
 - Podcast
 image: /uploads/podcasts/episode-xKf8wfbXb3M.webp
 thumbnail: /uploads/podcasts/episode-xKf8wfbXb3M-480.webp
+spotify: https://open.spotify.com/episode/6yDXT1sCgF7tuM7kgLpNZh
+apple: https://podcasts.apple.com/us/podcast/apophatic-mysticism-and-the-limits-of/id1512482918?i=1000788318165
 ---
 
 Finnish philosopher and psychologist Jussi Jylkkä describes a mystical experience he had years before entering psychedelic research and explains the metaphysical agnosticism he developed from it. All metaphysical-isms, he argues, are language games. Worldviews are like eyeglasses that become visible only when we learn to see them as models. Classical mystics overreach when they convert their experiences into claims about the ultimate nature of reality.

@@ -12,6 +12,7 @@ import {randomBytes} from 'node:crypto';
 import {parseFragment,serialize} from 'parse5';
 import { postSubtitle, displayTitle, visibleTags } from './src/lib/post-presentation.mjs';
 import { parseInterviews } from './src/lib/interviews.mjs';
+import { parseTalks, parseBooks } from './src/lib/page-sections.mjs';
 const fixture=await mkdtemp(path.join(os.tmpdir(),'tiago-hardening-test-'));
 test('subtitles use authored opening lines without confusing section headings or provenance',()=>{
   const post=body=>({data:{title:'Example'},body});
@@ -197,8 +198,10 @@ test('the Podcast page lists every episode with post, Spotify, Apple Podcasts an
     assert.doesNotMatch(e,/i\.ytimg\.com|onerror=/,'current episodes need no external thumbnail fallback');
     assert.match(e,/href="https:\/\/www\.youtube\.com\/watch\?v=[\w-]{11}"/,'every episode has its own YouTube link');
     assert.match(e,new RegExp(`class="ep-read" href="${post}"`));assert.match(e,new RegExp(`<h2><a href="${post}">`));
-    assert.match(e,/href="https:\/\/open\.spotify\.com\/[^"]+"[^>]*><img src="\/icons\/spotify\.png"/);
-    assert.match(e,/href="https:\/\/podcasts\.apple\.com\/[^"]+"[^>]*><img src="\/icons\/apple-podcasts\.png"/);
+    assert.match(e,/href="https:\/\/open\.spotify\.com\/episode\/\w{22}"[^>]*><img src="\/icons\/spotify\.png"/);
+    assert.match(e,/href="https:\/\/podcasts\.apple\.com\/[^"\s]+\?i=\d+"[^>]*><img src="\/icons\/apple-podcasts\.png"/);
+    const order=['youtube','spotify','apple-podcasts'].map(i=>e.indexOf('/icons/'+i+'.png'));
+    assert.deepEqual([...order].sort((a,b)=>a-b),order,'YouTube first');
     assert.match(e,/href="https:\/\/www\.youtube\.com\/[^"]+"[^>]*><img src="\/icons\/youtube\.png"/);
     const desc=e.match(/<p class="ep-desc">([\s\S]*?)<\/p>/)[1];assert.doesNotMatch(desc,/&amp;(nbsp|amp|#\d+);/,'raw entity in teaser');const words=desc.trim().split(/\s+/).length;assert.ok(words>=40&&words<=60,words+' words');
   }
@@ -233,11 +236,38 @@ test('Interviews uses the episode layout with complete descriptions and one YouT
   for(let i=0;i<entries.length;i++){
     const item=expected[i],entry=entries[i];
     assert.equal((entry.match(/<a /g)||[]).length,1,'only the Watch action');
-    assert.ok(entry.includes(`href="${item.href}"`));assert.match(entry,/>Watch<span/);
+    assert.ok(entry.includes(`href="${item.href}"`));assert.match(entry,/>Watch<\/a>/);
+    assert.match(entry,new RegExp(`data-video-id="${item.id}"`));
     assert.doesNotMatch(entry,/\/posts\/|Read more|spotify|apple-podcasts|<iframe/);
     const visible=text(parseFragment(entry));
     assert.ok(visible.includes(item.title));for(const p of item.paragraphs)assert.ok(visible.includes(p),'complete description');
     const image=await fetch(base+item.image);assert.equal(image.status,200);assert.match(image.headers.get('content-type'),/image\/webp/);
   }
   assert.throws(()=>parseInterviews('## Missing video\n\nDescription.\n'),/missing a YouTube/);
+});
+
+test('Talks retains its text and transcript links with local click-to-play previews',async()=>{
+  const source=await readFile('src/content/pages/talks.md','utf8');
+  const talks=await parseTalks(source);assert.equal(talks.length,4);
+  const html=await(await fetch(base+'/pages/talks')).text();
+  assert.equal((html.match(/<article class="ep">/g)||[]).length,4);
+  assert.doesNotMatch(html,/<iframe/,'players load only on demand');
+  for(const t of talks){
+    assert.ok(html.includes(`data-video-id="${t.id}"`));
+    assert.ok(html.includes(`href="${t.transcript}"`));assert.ok(html.includes(`href="${t.href}"`));
+    assert.equal((await fetch(base+t.transcript)).status,200);
+    assert.equal((await fetch(base+t.image)).status,200);
+    const strip=s=>serialize(parseFragment(s));assert.ok(strip(html).includes(strip(t.description)));
+  }
+  await assert.rejects(parseTalks('## Missing video\n\nDescription.\n'),/needs a video and transcript/);
+});
+
+test('Books renders the selected cover layout with working original download and reading links',async()=>{
+  const books=await parseBooks(await readFile('src/content/pages/books.md','utf8'));assert.equal(books.length,2);
+  const html=await(await fetch(base+'/pages/books')).text();
+  assert.equal((html.match(/<article class="bk">/g)||[]).length,2);
+  assert.match(html,/Cover coming soon/);assert.doesNotMatch(html,/href="\/pages\/the-altar-and-the-machine"/);
+  for(const book of books)for(const link of book.actions)assert.ok(html.includes(link.href.replaceAll('&','&amp;')));
+  assert.deepEqual(books[1].actions.map(a=>a.label),['Blog','PDF','EPUB','Paperback']);
+  assert.equal((await fetch(base+books[1].image)).status,200);
 });

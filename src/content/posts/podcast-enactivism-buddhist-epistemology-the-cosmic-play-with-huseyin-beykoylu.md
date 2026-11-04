@@ -6,6 +6,8 @@ tags:
 - Podcast
 image: /uploads/podcasts/episode-6_DM-OseSc0.webp
 thumbnail: /uploads/podcasts/episode-6_DM-OseSc0-480.webp
+spotify: https://open.spotify.com/episode/4K13vCb6Oy5thQt42U9h3x
+apple: https://podcasts.apple.com/us/podcast/enactivism-buddhist-epistemology-the-cosmic-play/id1512482918?i=1000771722801
 ---
 
 Hüseyin Beyköylü left medicine for cognitive science after an LSD experience, and five years later he's arguing that mainstream psychology and neuroscience are built on assumptions that systematically miss what matters most about the mind. This is a dense, careful conversation about four ways of knowing (only one of which science actually measures), why randomized controlled trials can't capture human transformation, and why "psychedelics are not transformative, lived experience in a context is."&nbsp;

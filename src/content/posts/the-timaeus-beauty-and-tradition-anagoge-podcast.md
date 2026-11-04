@@ -5,6 +5,8 @@ tags:
 - Podcast
 image: /uploads/podcasts/episode-oIh-a7q4b54.webp
 thumbnail: /uploads/podcasts/episode-oIh-a7q4b54-480.webp
+spotify: https://open.spotify.com/episode/4GzCx1ZXFdrT6DAZBsdCfq
+apple: https://podcasts.apple.com/us/podcast/the-timaeus-beauty-and-tradition-with-piero-boitani/id1512482918?i=1000752480771
 ---
 
 ## Abstract

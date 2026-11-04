@@ -306,3 +306,46 @@ dialog.drawer,dialog.drawer::backdrop{right:calc(100% - 100vw)}
 @media(prefers-reduced-motion:reduce){.ep-thumb img{transition:none}}
 .post-list-subtitle{display:block;margin-top:5px;color:var(--muted);font:14px/1.45 var(--font)}
 .entry-subtitle{margin:-10px 0 28px;color:var(--muted);font:20px/1.5 var(--font)}
+
+/* Bigger thumbnails and players (Tiago, 4 Nov 2026 22:10): wider media column on Podcast, Talks and Interviews. */
+.writing-site:has(.ep-list) main{max-width:1180px}
+.ep{grid-template-columns:minmax(0,520px) minmax(0,1fr);gap:40px}
+/* Talks and Interviews: the thumbnail is a play button that swaps in the YouTube player, so nothing shows black while players load. */
+.ep-video{position:relative;display:block;width:100%;align-self:start;aspect-ratio:16/9;padding:0;border:0;border-radius:14px;overflow:hidden;background:var(--code-bg);cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.08),0 14px 28px -20px rgba(0,0,0,.45)}
+.ep-video img,.ep-video iframe{width:100%;height:100%;object-fit:cover;display:block;border:0}
+.ep-video .ep-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:68px;height:48px;border-radius:14px;background:rgba(0,0,0,.72);display:grid;place-items:center;transition:background .2s}
+.ep-video .ep-play:before{content:"";border-style:solid;border-width:10px 0 10px 17px;border-color:transparent transparent transparent #fff;margin-left:4px}
+.ep-video:hover .ep-play,.ep-video:focus-visible .ep-play{background:#FF0033}
+.ep-video:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+@media(max-width:760px){.ep{grid-template-columns:1fr;gap:16px}}
+
+/* Keep the interactive control separate from the replacement iframe. */
+.ep-video>button{display:block;width:100%;height:100%;padding:0;border:0;background:none;color:inherit;cursor:pointer}
+.ep-video:has(button:focus-visible){outline:2px solid var(--ink);outline-offset:3px}
+.ep-video>button:focus-visible{outline:none}
+.ep-desc p{margin:0 0 14px}
+
+.writing-site:has(.bk-list) main{max-width:1060px}
+.bk-list{margin-top:30px;border-top:1px solid var(--line);font-family:var(--font)}
+.bk{display:grid;grid-template-columns:260px minmax(0,1fr);gap:48px;padding:44px 0;border-bottom:1px solid var(--line)}
+.bk-cover{display:block;align-self:start;aspect-ratio:875/1463;border-radius:6px;overflow:hidden;background:var(--code-bg);box-shadow:0 1px 2px rgba(0,0,0,.1),0 22px 40px -24px rgba(0,0,0,.55)}
+.bk-cover img{width:100%;height:100%;object-fit:cover;display:block}
+.bk-soon{box-shadow:inset 0 0 0 1px rgba(255,255,255,.09),0 1px 2px rgba(0,0,0,.1),0 22px 40px -24px rgba(0,0,0,.55);display:flex;flex-direction:column;padding:34px 24px 26px;background:#1C1C1E;color:#F2F0EA;text-decoration:none}
+.bk-soon-title{font:600 25px/1.18 var(--font);letter-spacing:-.01em}
+.bk-soon-sub{margin-top:10px;font:15px/1.35 var(--font);color:#B9B5AD}
+.bk-soon-author{font:500 12px/1 var(--font);letter-spacing:.14em;text-transform:uppercase;color:#B9B5AD}
+.bk-soon-tag{margin:auto 0;align-self:center;text-align:center;font:italic 500 15px/1.3 var(--font);letter-spacing:.02em;color:#B9B5AD}
+.bk-body{min-width:0}
+.bk-meta{display:flex;align-items:center;gap:10px;margin:0;font:500 13px/1 var(--font);color:var(--muted)}
+.bk-badge{padding:5px 9px;border-radius:999px;background:var(--code-bg);color:var(--ink);font:600 11px/1 var(--font);letter-spacing:.06em;text-transform:uppercase}
+.bk-badge-free{background:var(--sage);color:#1B1D1C}
+.bk-body h2{margin:14px 0 2px;font:650 30px/1.15 var(--font);letter-spacing:-.015em;color:var(--ink)}
+.bk-sub{margin:0 0 18px;font:18px/1.35 var(--font);color:var(--muted)}
+.bk-text p{margin:0 0 14px;font:16px/1.65 var(--font);color:var(--ink);max-width:64ch}
+.bk-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.bk-btn{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);color:var(--ink);font:500 14px/1 var(--font);text-decoration:none}
+.bk-btn-main{background:var(--ink);color:var(--surface);box-shadow:none;font-weight:600}
+.bk-btn-off{color:var(--muted);box-shadow:inset 0 0 0 1px var(--line);border:1px dashed transparent}
+@media(max-width:760px){.bk{grid-template-columns:1fr;gap:22px;padding:30px 0}.bk-cover{width:62%;max-width:240px}.bk-body h2{font-size:25px}}
+.writing-site:has(#blog-result-count) main{padding-top:calc(var(--shell-h) + var(--section-h) + 24px)}
+.blog-month-heading:first-child{margin-top:0}

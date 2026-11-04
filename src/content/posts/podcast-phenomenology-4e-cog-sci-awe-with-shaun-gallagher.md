@@ -5,6 +5,8 @@ tags:
 - Podcast
 image: /uploads/podcasts/episode-h3EfbUS6OFU.webp
 thumbnail: /uploads/podcasts/episode-h3EfbUS6OFU-480.webp
+spotify: https://open.spotify.com/episode/3JFOECrUXndXqq7Ft6over
+apple: https://podcasts.apple.com/us/podcast/phenomenology-4e-cog-sci-awe-shaun-gallagher/id1512482918?i=1000562281767
 ---
 
 Shaun Gallagher is one of the leading figures at the intersection of phenomenology and cognitive science, and this conversation covers nearly every dimension of that project. He begins by tracing his intellectual formation from existentialism through Merleau-Ponty into the cognitive sciences, and explains why the interdisciplinary structure of cognitive science, unlike mainstream psychology, was uniquely hospitable to phenomenological inquiry. The discussion moves through the 4E framework (embodied, embedded, extended, enactive), unpacking what each "E" actually claims and where the disagreements between camps lie. Gallagher then addresses how embodied cognition opens up entirely new therapeutic affordances in psychopathology, from movement therapy to virtual reality environments for schizophrenia, phobias, and anorexia. He describes his neurophenomenological study of awe and wonder during simulated spaceflight, the connection between the overview effect and mystical experience, and why funding remains the binding constraint on that line of research. The conversation closes with his book Action and Interaction, where he defends interaction theory against simulation and theory-of-mind accounts of social cognition, and offers a sharp critique of Heidegger for missing primary intersubjectivity in favour of a purely pragmatic account of other minds.

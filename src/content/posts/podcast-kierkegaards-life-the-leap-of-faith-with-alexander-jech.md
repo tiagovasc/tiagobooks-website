@@ -5,6 +5,8 @@ tags:
 - Podcast
 image: /uploads/podcasts/episode-yy_FEW9L67U.webp
 thumbnail: /uploads/podcasts/episode-yy_FEW9L67U-480.webp
+spotify: https://open.spotify.com/episode/6B61eE2s8Hcy4Ht3VfXWR7
+apple: https://podcasts.apple.com/us/podcast/kierkegaards-life-the-leap-of-faith-alexander-jech/id1512482918?i=1000714910394
 ---
 
 ## Abstract

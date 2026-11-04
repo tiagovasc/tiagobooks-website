@@ -1,0 +1,23 @@
+---
+interface Props { id: string; title: string; image: string }
+const {id,title,image}=Astro.props;
+---
+<div class="ep-video">
+  <button type="button" data-video-id={id} aria-label={`Play video: ${title}`}>
+    <img src={image} alt="" loading="lazy" decoding="async" width="1280" height="720" />
+    <span class="ep-play" aria-hidden="true"></span>
+  </button>
+</div>
+<script>
+  document.addEventListener('click',event=>{
+    const button=event.target instanceof Element?event.target.closest<HTMLButtonElement>('button[data-video-id]'):null;
+    if(!button||!/^[-\w]{11}$/.test(button.dataset.videoId||''))return;
+    const iframe=document.createElement('iframe');
+    iframe.src=`https://www.youtube-nocookie.com/embed/${button.dataset.videoId}?autoplay=1&rel=0`;
+    iframe.title=button.getAttribute('aria-label')||'Video';
+    iframe.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';
+    iframe.allowFullscreen=true;
+    button.replaceWith(iframe);
+    iframe.focus();
+  });
+</script>

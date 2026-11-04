@@ -5,6 +5,8 @@ tags:
 - Podcast
 image: /uploads/podcasts/episode-bQ2eI-oQlXg.webp
 thumbnail: /uploads/podcasts/episode-bQ2eI-oQlXg-480.webp
+spotify: https://open.spotify.com/episode/6yM8dAm3XKf7SV4Gmjk6lD
+apple: https://podcasts.apple.com/us/podcast/zen-neoplatonism-and-the-nature-of/id1512482918?i=1000782678023
 ---
 
 Raised in a fundamentalist Christian family he later left in therapy, cognitive scientist John Vervaeke could have become one of religion's most effective debunkers. Instead, he became its unlikely defender. In this conversation, he traces the path from religious trauma through Socrates, Plotinus and Zen practice to his current identity as a Zen Neoplatonist. Religion, on his account, is less a belief system than a comprehensive way of orienting ourselves towards reality, one that science itself quietly presupposes.

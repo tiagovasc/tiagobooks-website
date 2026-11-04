@@ -1,0 +1,22 @@
+---
+import {parseTalks} from '../lib/page-sections.mjs';
+import VideoPreview from './VideoPreview.astro';
+interface Props { body: string }
+const talks=await parseTalks(Astro.props.body);
+---
+<section class="ep-list talk-list" aria-label="Talks">
+  {talks.map(item=><article class="ep">
+    <VideoPreview id={item.id} title={item.title} image={item.image}/>
+    <div class="ep-body">
+      <time datetime={item.year}>{item.year}</time>
+      <h2><a href={item.transcript}>{item.title}</a></h2>
+      {item.subtitle&&<p class="ep-guest">{item.subtitle}</p>}
+      <div class="ep-desc" set:html={item.description}/>
+      <div class="ep-actions">
+        <a class="ep-read" href={item.transcript}>Read more<span aria-hidden="true">→</span></a>
+        <span class="ep-sep" aria-hidden="true"></span>
+        <a class="ep-icon" href={item.href} target="_blank" rel="noopener" aria-label={`Watch on YouTube: ${item.title}`} title="YouTube"><img src="/icons/youtube.png" alt="" width="30" height="30"/></a>
+      </div>
+    </div>
+  </article>)}
+</section>

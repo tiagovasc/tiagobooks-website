@@ -1,6 +1,6 @@
 ---
 // Podcast page episode list (4 Nov 2026). Thumbnail and Read more open the episode's blog post;
-// the three icons open the episode on Spotify, Apple Podcasts and YouTube.
+// the three icons open the episode on YouTube, Spotify and Apple Podcasts.
 import { getEpisodes } from '../lib/episodes';
 const episodes = await getEpisodes();
 ---
@@ -20,9 +20,9 @@ const episodes = await getEpisodes();
         <div class="ep-actions">
           <a class="ep-read" href={e.href}>Read more<span aria-hidden="true">→</span></a>
           <span class="ep-sep" aria-hidden="true"></span>
+          <a class="ep-icon" href={e.youtube} target="_blank" rel="noopener" aria-label={`Watch on YouTube: ${e.topic}`} title="YouTube"><img src="/icons/youtube.png" alt="" width="30" height="30" /></a>
           <a class="ep-icon" href={e.spotify} target="_blank" rel="noopener" aria-label={`Listen on Spotify: ${e.topic}`} title="Spotify"><img src="/icons/spotify.png" alt="" width="30" height="30" /></a>
           <a class="ep-icon" href={e.apple} target="_blank" rel="noopener" aria-label={`Listen on Apple Podcasts: ${e.topic}`} title="Apple Podcasts"><img src="/icons/apple-podcasts.png" alt="" width="30" height="30" /></a>
-          <a class="ep-icon" href={e.youtube} target="_blank" rel="noopener" aria-label={`Watch on YouTube: ${e.topic}`} title="YouTube"><img src="/icons/youtube.png" alt="" width="30" height="30" /></a>
         </div>
       </div>
     </article>

@@ -5,6 +5,8 @@ tags:
 - Podcast
 image: /uploads/podcasts/episode-cCaGrBaiGZo.webp
 thumbnail: /uploads/podcasts/episode-cCaGrBaiGZo-480.webp
+spotify: https://open.spotify.com/episode/5FTKCgHGJGXEMwhnGwCz1x
+apple: https://podcasts.apple.com/us/podcast/john-vervaeke-dialogos-wisdom-and-science/id1512482918?i=1000510085400
 ---
 
 John Vervaeke is a cognitive scientist, philosopher, and creator of the acclaimed series Awakening from the Meaning Crisis. In this conversation, he traces the origin of the Anagoge Podcast's name back to Plato's concept of spiritual ascent, then unpacks what genuine dialogos is and why it is so rarely achieved. He explains how a distributed flow state between people can access collective intelligence and afford self-transcendence, and why the same capacity is lost in online formats. Vervaeke recounts his own intellectual journey from fundamentalist Christianity through militant atheism to non-theism, and how encounters with Socrates, Buddhist practice, and cognitive science converged into the work on meaning and wisdom. He offers a compact strategy for bridging the religious and atheist worldviews through the lens of self-deception rather than doctrine. He defends a nuanced position on mystical experience: that its propositional content deserves serious attention while its epistemic weight is constrained by the state that generates it. He addresses the dangers of self-selection in spiritual practice and how both bottom-up design features and the collective rationality of dialogos serve as checks. And he closes with a rigorous account of how to build deep interdisciplinary knowledge, reading in quartets, interacting with texts, and choosing a path through cognitive science that does not require heavy mathematics.

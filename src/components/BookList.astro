@@ -1,0 +1,20 @@
+---
+import {parseBooks} from '../lib/page-sections.mjs';
+interface Props { body: string }
+const books=await parseBooks(Astro.props.body);
+---
+<div class="bk-list">
+  {books.map(book=><article class="bk">
+    {book.image?<a class="bk-cover" href={book.href}><img src={book.image} alt={`Cover of ${book.title}: ${book.subtitle}`} width="875" height="1463" loading="lazy"/></a>:
+      <div class="bk-cover bk-soon" role="img" aria-label={`${book.title}: cover coming soon`}>
+        <span class="bk-soon-title">{book.title}</span><span class="bk-soon-sub">{book.subtitle}</span>
+        <span class="bk-soon-tag">Cover coming soon</span><span class="bk-soon-author">Tiago Faleiro</span>
+      </div>}
+    <div class="bk-body">
+      <p class="bk-meta"><span class:list={['bk-badge',{'bk-badge-free':!book.forthcoming}]}>{book.forthcoming?'Forthcoming':'Free to read'}</span>{book.year}{book.publisher&&` · ${book.publisher}`}</p>
+      <h2>{book.title}</h2><p class="bk-sub">{book.subtitle}</p>
+      <div class="bk-text" set:html={book.description}/>
+      {book.actions.length>0&&<div class="bk-actions">{book.actions.map(action=><a class:list={['bk-btn',{'bk-btn-main':action.label==='Blog'}]} href={action.href}>{action.label==='Blog'?'Read on the blog':action.label}{action.label==='Blog'&&<span aria-hidden="true">→</span>}</a>)}</div>}
+    </div>
+  </article>)}
+</div>

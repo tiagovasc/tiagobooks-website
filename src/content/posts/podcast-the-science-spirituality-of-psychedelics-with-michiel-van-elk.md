@@ -5,6 +5,8 @@ tags:
 - Podcast
 image: /uploads/podcasts/episode-WJJTqbOutRM.webp
 thumbnail: /uploads/podcasts/episode-WJJTqbOutRM-480.webp
+spotify: https://open.spotify.com/episode/26XQONxxdwrGKlmRJ2n1YY
+apple: https://podcasts.apple.com/us/podcast/the-science-spirituality-of-psychedelics-with/id1512482918?i=1000746696409
 ---
 
 Psychedelic science is riding a wave of hype, and neuroscientist Michiel van Elk thinks that is precisely the problem. In this conversation, van Elk challenges two of the field's most entrenched assumptions: that psychedelics are proven treatments for depression and anxiety, and that they work by "resetting" the brain through new neural connections. Neither claim, he argues, is adequately backed by the current evidence. The conversation then moves into deeper territory, the limits of the biomedical model, the poverty of cognitive science of religion, and what the concept of "more real than real" actually means in psychedelic experience. Van Elk draws on his Pentecostal upbringing, Tanya Luhrmann's anthropology of real-making, and his own prism lab research to argue that psychedelics open a door, but that the integration, ritual context, and sustained spiritual practice required to walk through it are almost entirely absent from contemporary research paradigms.

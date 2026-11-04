@@ -6,6 +6,8 @@ tags:
 image: /uploads/podcasts/episode-DMXK9tZzGec.webp
 thumbnail: /uploads/podcasts/episode-DMXK9tZzGec-480.webp
 youtube: https://www.youtube.com/watch?v=DMXK9tZzGec
+spotify: https://open.spotify.com/episode/4JMBGqMaNZwhzRYabc3Wgj
+apple: https://podcasts.apple.com/us/podcast/the-orthodox-vision-of-beauty-with-timothy-patitasas/id1512482918?i=1000757477575
 ---
 
 ## Abstract

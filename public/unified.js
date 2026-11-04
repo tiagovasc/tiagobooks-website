@@ -21,3 +21,6 @@ function sideRow(row){
   reveal();fade();
 }
 for(const row of document.querySelectorAll('.unified-nav,.tag-chips,#statusSeg'))sideRow(row);
+
+// Links that leave the site open in a new tab so the site stays open (Tiago, 4 Nov 2026). Covers links rendered later too.
+(()=>{const own=h=>h.replace(/^www\./,'')===location.hostname.replace(/^www\./,'');const ext=a=>/^https?:$/.test(a.protocol)&&!own(a.hostname);const mark=a=>{if(ext(a)&&!a.target){a.target='_blank';const r=new Set((a.rel||'').split(/\s+/).filter(Boolean));r.add('noopener');a.rel=[...r].join(' ')}};document.querySelectorAll('a[href]').forEach(mark);document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a[href]');if(a)mark(a)},true)})();

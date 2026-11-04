@@ -5,6 +5,8 @@ tags:
 - Podcast
 image: /uploads/podcasts/episode-5Rr0S8YsYyc.webp
 thumbnail: /uploads/podcasts/episode-5Rr0S8YsYyc-480.webp
+spotify: https://open.spotify.com/episode/2Kn6MqWyT5fCstFpIz6mMF
+apple: https://podcasts.apple.com/us/podcast/michael-strevans-foundations-and-absurdities-of-science/id1512482918?i=1000543722537
 ---
 
 What actually makes modern science different from every other attempt to understand the world? Philosopher of science Michael Strevens argues the answer is not the scientific method as commonly understood, but a single behavioral rule: settle every dispute through empirical evidence alone, and leave everything else at the door. In this conversation, Strevens traces the origins of this "iron rule of explanation," shows why Popper and Kuhn were both right and wrong, explains how ordinary, self-interested scientists working within imperfect institutions nevertheless produce the most powerful knowledge-generating machine in history, and explores why science took so long to emerge if the rule is so simple. The conversation closes on the ontological status of scientific truth and the most pressing challenge science faces today: communicating uncertain knowledge to a public that demands yes-or-no answers.

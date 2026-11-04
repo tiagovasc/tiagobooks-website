@@ -5,6 +5,8 @@ tags:
 - Podcast
 image: /uploads/podcasts/episode-xcb6KsGunCY.webp
 thumbnail: /uploads/podcasts/episode-xcb6KsGunCY-480.webp
+spotify: https://open.spotify.com/episode/28lhXfSvVJIASYWQStVBOG
+apple: https://podcasts.apple.com/us/podcast/the-neuroscience-of-emotions-joseph-ledoux/id1512482918?i=1000622971714
 ---
 
 Joseph LeDoux is one of the world's leading neuroscientists, known for three decades of work on the neural basis of fear, anxiety, and emotional memory. In this conversation, he reframes everything most people think they know about how emotions work. Starting from his early split-brain research in the 1970s, LeDoux argues that what we call a "fear circuit" in the brain produces only behavioral and physiological responses, not the conscious feeling of fear itself. That feeling, he argues, is a cognitive narrative: an interpretation we construct after the fact, shaped by language, culture, and personal history. He walks through the evidence, subliminal stimuli that activate the amygdala without any felt fear, drugs that change behavior without touching subjective experience, patients who panic without an amygdala at all, to show that behavior and experience are far more dissociated than basic emotion theory admits. The conversation closes on animal consciousness, AI, and why four billion years of biological evolution cannot be shortcut into a machine.

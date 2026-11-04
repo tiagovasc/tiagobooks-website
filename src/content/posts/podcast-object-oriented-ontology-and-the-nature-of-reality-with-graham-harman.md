@@ -5,6 +5,8 @@ tags:
 - Podcast
 image: /uploads/podcasts/episode-xe-kQxriQZ4.webp
 thumbnail: /uploads/podcasts/episode-xe-kQxriQZ4-480.webp
+spotify: https://open.spotify.com/episode/7kCUNbopui5NlBE5Kx35jz
+apple: https://podcasts.apple.com/us/podcast/object-oriented-ontology-the-nature-of-reality/id1512482918?i=1000742981095
 ---
 
 Graham Harman argues that philosophy has been too long trapped between two impoverished moves: reducing things downward to their parts, or upward to their effects. Object-Oriented Ontology (OOO) breaks this by insisting that objects, from hammers to corporations to fire burning cotton, always withdraw from full contact with everything else, including other objects. In this conversation, Harman traces that idea through Husserl, Heidegger, and Aristotle, explains why aesthetics and metaphor do philosophical work that literal knowledge cannot, and makes the case that matter is a fiction, there are only forms, and every translation loses something. The discussion moves into ethics, essence, the limits of flat ontology, and why architecture became the testing ground for whether art can remain art while being used.

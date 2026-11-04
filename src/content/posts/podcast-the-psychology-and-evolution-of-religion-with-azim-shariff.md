@@ -5,6 +5,8 @@ tags:
 - Podcast
 image: /uploads/podcasts/episode-UJkPWObh7b0.webp
 thumbnail: /uploads/podcasts/episode-UJkPWObh7b0-480.webp
+spotify: https://open.spotify.com/episode/07q0i7CfmFrCkQ9tXmxyMe
+apple: https://podcasts.apple.com/us/podcast/azim-shariff-the-psychology-and-evolution-of-religion/id1512482918?i=1000487534265
 ---
 
 Why does religion keep surviving? Azim Shariff, a social and moral psychologist at the University of British Columbia, offers one of the most rigorous and compelling answers available in contemporary science. In this wide-ranging conversation, he traces the origins of moralistic monotheism to the problem of large-scale cooperation with strangers, explains why cultural evolution selects for certain religious ideas over others, and explores whether religion still offers adaptive value in a secular age. The conversation also covers what makes religious belief difficult to study scientifically, how cultural environments shape which aspects of a religion take hold, and the story behind a retracted paper on religiosity, crime, and IQ that generated significant controversy. Equal parts rigorous and honest, this is a masterclass in applied moral psychology.

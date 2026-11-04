@@ -5,6 +5,8 @@ tags:
 - Podcast
 image: /uploads/podcasts/episode-NDcgzJxbU84.webp
 thumbnail: /uploads/podcasts/episode-NDcgzJxbU84-480.webp
+spotify: https://open.spotify.com/episode/5vGRbJGI0FmIh16RnmGNS9
+apple: https://podcasts.apple.com/us/podcast/psychedelic-realism-platonism-the-ground-of-being/id1512482918?i=1000768377028
 ---
 
 Danny Forde is a philosopher and lecturer at University College Cork whose 2024 book _Phenomenology of Psychedelic Experiences_ argues that psychedelics give direct contact with mind-independent features of reality. He grounds the claim in realist phenomenology, the Munich-Göttingen tradition that rejected Husserl's idealist turn after 1905, and defends what Joseph Seifert called sober Platonism: essences are real, but not floating in a separate realm of forms. The conversation runs through anti-reductionism via Husserl's anti-psychologism, the failure of representationalism, the tripartite structure of the self with for-me-ness as the irreducible minimal core, and the claim that psychedelics reveal essences once the ego stops cognitively penetrating perception. Tiago pushes back at length on essentialism, perennialism, and the place of existential orientation against perception, with Danny defending essentialism and a Sawyer-style perennialism that takes traditions seriously without collapsing them.&nbsp;

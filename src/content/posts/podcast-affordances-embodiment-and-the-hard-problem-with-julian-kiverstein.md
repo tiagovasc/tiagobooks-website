@@ -5,6 +5,8 @@ tags:
 - Podcast
 image: /uploads/podcasts/episode-sD93E4c7IOs.webp
 thumbnail: /uploads/podcasts/episode-sD93E4c7IOs-480.webp
+spotify: https://open.spotify.com/episode/1Yxjlq6BD1GbpvRQaBM6z2
+apple: https://podcasts.apple.com/us/podcast/affordances-embodiment-the-hard-problem-with/id1512482918?i=1000778878641
 ---
 
 What does it take to bring scientific explanation and first-person experience back together? Philosopher Julian Kiverstein has spent his career on exactly that gap, with a foot in continental philosophy, cognitive neuroscience, and a psychiatry department in Amsterdam.&nbsp;

@@ -5,6 +5,8 @@ tags:
 - Podcast
 image: /uploads/podcasts/episode-WAdJ8HM43To.webp
 thumbnail: /uploads/podcasts/episode-WAdJ8HM43To-480.webp
+spotify: https://open.spotify.com/episode/5dGFtddvPN4WGmtWtskjuu
+apple: https://podcasts.apple.com/us/podcast/j-p-marceau-ontology-mind-and-stories/id1512482918?i=1000479835781
 ---
 
 JP Marceau began his intellectual life convinced that mathematics could answer the questions philosophy had failed to resolve. What he discovered instead was Gödel's incompleteness theorems, and the revelation that formal systems are inherently limited. This episode traces the full arc: from mathematical logic and Gödel, through David Chalmers and the hard problem of consciousness, into panpsychism, Bergson's process philosophy, and finally Neoplatonism. Along the way, JP and Tiago work through why materialism cannot account for consciousness, how evolution poses an underappreciated problem for panpsychism, what Plato's theory of forms actually means, and how stories and communities can be just as real as the cells and molecules that compose them.

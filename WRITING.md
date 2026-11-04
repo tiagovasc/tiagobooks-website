@@ -63,7 +63,13 @@ Optional **Spotify episode URL**, **Apple Podcasts episode URL** and **YouTube e
 
 ## Interviews
 
-The Interviews page uses the Podcast row layout with a single Watch button pointing to YouTube. Its existing Markdown remains the content source: use `## Topic | Show or host (Year)`, description paragraphs, then the YouTube URL. Descriptions remain complete. A local episode thumbnail belongs at `public/uploads/interviews/VIDEO_ID.webp`; retain the original image and let the frontend crop it to fill the frame.
+The Interviews page uses the Podcast row layout with a click-to-play preview and one Watch link pointing to YouTube. Its Markdown remains the content source: use `## Topic | Show or host (Year)`, description paragraphs, then the YouTube URL. All description paragraphs in that source are displayed. A local episode thumbnail belongs at `public/uploads/interviews/VIDEO_ID.webp`; retain the original image and let the frontend crop it to fill the frame.
+
+## Books and Talks page layouts
+
+Books and Talks render their existing Markdown as structured rows. Books uses `## Title: Subtitle (Year)`, description paragraphs and its existing Blog/PDF/EPUB/Paperback links. A forthcoming publisher line supplies the status; an unavailable cover gets a typographic placeholder. The unpublished table-of-contents link stays out of the rendered listing.
+
+Talks uses `## Title: Subtitle (Year)`, the YouTube URL, description paragraphs and a `[Transcript](/posts/...)` link. Its original video thumbnail belongs at `public/uploads/video-VIDEO_ID.webp`. Clicking a preview loads the YouTube player; Read more opens the transcript. No player loads until requested. Podcast platform buttons are ordered YouTube, Spotify, Apple, with episode URLs stored in each post's metadata.
 
 ## Book chapter thumbnails
 

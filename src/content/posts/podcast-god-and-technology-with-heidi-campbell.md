@@ -5,6 +5,8 @@ tags:
 - Podcast
 image: /uploads/podcasts/episode-Q20Y5fVb5Jw.webp
 thumbnail: /uploads/podcasts/episode-Q20Y5fVb5Jw-480.webp
+spotify: https://open.spotify.com/episode/5APiPyFx6IDKUqykziF7ND
+apple: https://podcasts.apple.com/us/podcast/god-and-technology-with-heidi-campbell/id1512482918?i=1000762364918
 ---
 
 Heidi Campbell is one of the founders of digital religion studies and has spent 30 years researching how religious communities interact with technology. In this conversation, she walks through her Religious Social Shaping of Technology framework, showing how groups from ultra-Orthodox Jews to American evangelicals don't simply accept or reject new technologies but actively negotiate them based on their core values. She explains how the pandemic forced churches worldwide to confront questions about embodiment, communion, and worship that turned out to be more sociological than theological. The conversation then moves into AI: Campbell argues that GPTs give knowledge but not wisdom, that religious chatbots inherit the biases of their construction, and that the field of digital religion suffers from a serious AI literacy gap. She closes with a career-defining recalibration: the internet has gone from a supplement to religion to, for many, its first point of contact. &nbsp;

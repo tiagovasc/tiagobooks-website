@@ -5,6 +5,8 @@ tags:
 - Podcast
 image: /uploads/podcasts/episode-vIoMVT_7fRM.webp
 thumbnail: /uploads/podcasts/episode-vIoMVT_7fRM-480.webp
+spotify: https://open.spotify.com/episode/7dIIFuaRTlv0HRk0mqMJ7j
+apple: https://podcasts.apple.com/us/podcast/gregg-henriques-revolutionizing-psychology/id1512482918?i=1000547424518
 ---
 
 Psychology has never agreed on what its subject matter actually is. For over a century, schools of thought have carved up the human mind into incompatible pieces, behaviourism, psychodynamics, cognitive therapy, evolutionary psychology, each with insights and none with a shared foundation. Gregg Henriques, clinical psychologist and Professor at James Madison University, has spent thirty years building what he calls the Unified Theory of Knowledge (UTK): a single metatheoretical framework that resolves this fragmentation. In this conversation, Tiago Faleiro draws him through each layer of the system, the Enlightenment Gap, the Tree of Knowledge, Behavioural Investment Theory, the Justification Hypothesis, and the Influence Matrix, before turning to Henriques's first-hand account of how scientific corruption inside Aaron Beck's lab convinced him that the entire edifice of evidence-based psychotherapy is organised around brand promotion rather than truth. Dense, rich, and unusually candid.
