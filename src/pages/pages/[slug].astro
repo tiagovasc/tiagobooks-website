@@ -1,0 +1,11 @@
+---
+import Entry from '../../layouts/Entry.astro';
+import { getAllPages } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const pages = await getAllPages();
+  return pages.map((p) => ({ params: { slug: p.id }, props: { entry: p } }));
+}
+const { entry } = Astro.props;
+---
+<Entry entry={entry} kind="page" />

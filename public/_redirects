@@ -1,0 +1,31 @@
+# Cloudflare Pages redirects. Add one line per old URL (Pika "aliases" equivalent).
+# Pika-hosted subdomain addresses cannot be redirected from here; see DEPLOY.md (cutover section).
+/posts/ /posts 301
+/pages/ / 302
+/feed /posts_feed 301
+/feed.xml /posts_feed 301
+/rss /posts_feed 301
+/rss.xml /posts_feed 301
+/atom.xml /posts_feed 301
+
+# Public chapter addresses retained in the imported navigation.
+/posts/introduction /posts/in-search-of-the-infinite-introduction 301
+/posts/appendix /posts/in-search-of-the-infinite-appendix 301
+/posts/why-music-is-the-ultimate-expression-of-the-sacred /posts/music-and-the-human-experience 301
+/posts/in-search-of-the-infinite-chapter-1-anchors-of-being /posts/in-search-of-the-infinite-anchors-of-being-volume-3-chapter-1 301
+/posts/in-search-of-the-infinite-chapter-1-chasing-the-white-rabbit /posts/in-search-of-the-infinite-chasing-the-white-rabbit-volume-2-chapter-1 301
+/posts/in-search-of-the-infinite-chapter-1-divine-journeys /posts/in-search-of-the-infinite-divine-journeys-volume-1-chapter-1 301
+/posts/in-search-of-the-infinite-chapter-1-the-return /posts/in-search-of-the-infinite-the-return-volume-4-chapter-1 301
+/posts/in-search-of-the-infinite-chapter-2-love-as-ontology /posts/in-search-of-the-infinite-love-as-ontology-volume-4-chapter-2 301
+/posts/in-search-of-the-infinite-chapter-2-meaning-and-technology /posts/in-search-of-the-infinite-volume-3-chapter-2 301
+/posts/in-search-of-the-infinite-chapter-2-the-mystery-of-consciousness /posts/in-search-of-the-infinite-the-mystery-of-consciousness-volume-2-chapter-2 301
+/posts/in-search-of-the-infinite-chapter-2-the-unknown /posts/in-search-of-the-infinite-the-unknown-volume-1-chapter-2 301
+/posts/in-search-of-the-infinite-chapter-3-demons /posts/in-search-of-the-infinite-demons-volume-2-chapter-3 301
+/posts/in-search-of-the-infinite-chapter-3-finding-the-roots /posts/in-search-of-the-infinite-finding-the-roots-volume-1-chapter-3 301
+/posts/in-search-of-the-infinite-chapter-3-searching-for-the-real /posts/in-search-of-the-infinite-searching-for-the-real-volume-3-chapter-3 301
+/posts/in-search-of-the-infinite-chapter-3-the-awakening /posts/in-search-of-the-infinite-the-awakening-volume-4-chapter-3 301
+/posts/in-search-of-the-infinite-chapter-4-despair /posts/in-search-of-the-infinite-despair-volume-2-chapter-4 301
+/posts/in-search-of-the-infinite-chapter-4-the-burden /posts/in-search-of-the-infinite-the-burden-volume-3-chapter-4 301
+/posts/in-search-of-the-infinite-chapter-4-unity-in-duality /posts/in-search-of-the-infinite-unity-in-duality-volume-1-chapter-4 301
+/posts/in-search-of-the-infinite-chapter-5-the-other /posts/in-search-of-the-infinite-the-other-volume-1-chapter-5 301
+/posts/in-search-of-the-infinite-chapter-6-the-inward-hike /posts/in-search-of-the-infinite-the-inward-hike-volume-1-chapter-6 301

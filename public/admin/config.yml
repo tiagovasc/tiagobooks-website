@@ -1,0 +1,68 @@
+# Public content editor. Everything saved to GitHub is public, including drafts.
+# Configure repository and branch through the host environment; see DEPLOYMENT.md.
+backend:
+  name: github
+  repo: integration-repository-not-configured/site
+  branch: main
+  # Personal access token sign-in is available immediately. OAuth is a separate setup.
+
+media_folder: public/uploads
+public_folder: /uploads
+site_url: https://tiagovf.com
+display_url: https://tiagovf.com
+locale: en
+
+collections:
+  - name: posts
+    label: Posts
+    label_singular: Post
+    folder: src/content/posts
+    create: true
+    extension: md
+    format: frontmatter
+    slug: '{{slug}}'
+    summary: '{{date}}  {{title}}'
+    sortable_fields: [date, title]
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Publish date, name: date, widget: datetime, date_format: 'YYYY-MM-DD', time_format: 'HH:mm', format: "YYYY-MM-DD'T'HH:mm:ss'Z'" }
+      - { label: Tags, name: tags, widget: list, required: false, default: [] }
+      - { name: draft, widget: hidden, default: false }
+      - { name: unlisted, widget: hidden, default: false }
+      - { name: protected, widget: hidden, default: false }
+      - { label: Old URL aliases, name: aliases, widget: list, required: false, default: [], hint: 'Old paths that redirect here, e.g. /2024/01/01/old-title' }
+      - { label: Description, name: description, widget: text, required: false }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: pages
+    label: Pages
+    label_singular: Page
+    folder: src/content/pages
+    create: true
+    extension: md
+    format: frontmatter
+    slug: '{{slug}}'
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { name: draft, widget: hidden, default: false }
+      - { name: unlisted, widget: hidden, default: false }
+      - { name: protected, widget: hidden, default: false }
+      - { label: Description, name: description, widget: text, required: false }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: settings
+    label: Settings
+    files:
+      - label: Site settings and navigation
+        name: site
+        file: src/data/site.json
+        fields:
+          - { label: Blog title, name: title, widget: string }
+          - { label: Description, name: description, widget: text }
+          - label: Navigation
+            name: nav
+            widget: list
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: Link, name: href, widget: string }
+          - { label: Footer HTML, name: footerHtml, widget: text, required: false }

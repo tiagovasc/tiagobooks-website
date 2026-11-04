@@ -1,0 +1,11 @@
+---
+import Entry from '../../layouts/Entry.astro';
+import { getAllPosts } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const posts = await getAllPosts();
+  return posts.map((p) => ({ params: { slug: p.id }, props: { entry: p } }));
+}
+const { entry } = Astro.props;
+---
+<Entry entry={entry} kind="post" />

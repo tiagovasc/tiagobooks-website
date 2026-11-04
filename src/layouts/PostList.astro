@@ -1,0 +1,21 @@
+---
+import { groupByYear, shortDate, tagSlug, monthOf, monthLabel, type Post } from '../lib/content';
+interface Props { posts: Post[]; byYear?: boolean; byMonth?: boolean }
+const { posts, byYear = true, byMonth = false } = Astro.props;
+const months = new Map<string,Post[]>();
+if(byMonth)for(const p of posts){const key=monthOf(p.data.date);if(!months.has(key))months.set(key,[]);months.get(key)!.push(p)}
+const groups = byMonth ? [...months].map(([month,posts])=>({year:Number(month.slice(0,4)),month,posts})) : (byYear ? groupByYear(posts) : [{ year: 0, posts }]).map(g=>({...g,month:''}));
+---
+<ul class="site-list-of-posts h-feed">
+  {groups.map((g) => (
+    <>
+      {byMonth ? <li class="blog-month-heading" data-blog-month={g.month}><span>{monthLabel(g.posts[0].data.date)}</span><span class="leader"/><span class="month-count">{g.posts.length} {g.posts.length===1?'post':'posts'}</span></li> : byYear && <li class="post-list-year-h2" data-blog-year={g.year}>{g.year}</li>}
+      {g.posts.map((p) => (
+        <li class="h-entry" data-blog-entry data-year={g.year} data-month={g.month} data-tags={JSON.stringify(p.data.tags.map(tagSlug))}>
+          <time class="dt-published" datetime={p.data.date.toISOString()}>{shortDate(p.data.date)}</time>
+          <span class="post-link"><a class="p-name u-url" href={`/posts/${p.id}`}>{p.data.title}</a></span>
+        </li>
+      ))}
+    </>
+  ))}
+</ul>

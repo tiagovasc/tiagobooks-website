@@ -1,0 +1,102 @@
+---
+// Shared body for posts and pages: normal render, or encrypted payload for protected entries.
+import { render } from 'astro:content';
+import { encryptHtml, markdownToHtml, sitePassword } from '../lib/protect';
+import { longDate, tagSlug, getListedPosts } from '../lib/content';
+import Base from './Base.astro';
+import site from '../lib/site-config.mjs';
+
+interface Props { entry: any; kind: 'post' | 'page' }
+const { entry, kind } = Astro.props;
+const d = entry.data;
+const path = `/${kind === 'post' ? 'posts' : 'pages'}/${entry.id}`;
+
+let Content: any = null;
+let payload = '';
+if (d.protected) {
+  const html = await markdownToHtml(entry.body ?? '');
+  payload = JSON.stringify(await encryptHtml(html, sitePassword()));
+} else {
+  ({ Content } = await render(entry));
+}
+
+// Social preview = explicit image, else first image in the body (Pika setting).
+const firstImg = site.socialPreviewFromFirstImage && !d.protected
+  ? (entry.body ?? '').match(/!\[[^\]]*\]\(\s*<?([^)\s>]+)/)?.[1] : undefined;
+const image = d.image ?? firstImg;
+const noindex = d.protected || d.unlisted;
+
+// Book chapters published as posts get previous/next links, in publication order (which is reading order).
+// Most chapters already end with hand-written **Previous:** / **Next:** links; the cards appear only where the text has none.
+const BOOK_TAG = 'In Search of the Infinite';
+let prevChapter: any = null, nextChapter: any = null;
+if (kind === 'post' && d.tags.includes(BOOK_TAG) && !/\*\*(Previous|Next):/.test(entry.body ?? '')) {
+  const chapters = (await getListedPosts()).filter((p) => p.data.tags.includes(BOOK_TAG)).sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+  const at = chapters.findIndex((p) => p.id === entry.id);
+  if (at >= 0) { prevChapter = chapters[at - 1] ?? null; nextChapter = chapters[at + 1] ?? null; }
+}
+const chapterLabel = (p: any) => p.data.title.trim().replace(new RegExp('^' + BOOK_TAG + '\\s*[-:\u2013\u2014]\\s*'), '');
+
+const jsonLd = kind === 'post' && !d.protected ? {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: d.title,
+  datePublished: d.date.toISOString(),
+  dateModified: (d.updated ?? d.date).toISOString(),
+  author: { '@type': 'Person', name: site.author },
+  mainEntityOfPage: new URL(path, site.url).toString(),
+} : undefined;
+---
+<Base
+  title={d.title}
+  description={d.description}
+  path={path}
+  image={image}
+  noindex={noindex}
+  type={kind === 'post' ? 'article' : 'website'}
+  published={kind === 'post' ? d.date : undefined}
+  updated={d.updated}
+  jsonLd={jsonLd}
+  pagefindBody={!noindex}
+>
+  <article class="h-entry">
+    <h1 class="entry-title p-name" data-pagefind-meta="title">{d.title}</h1>
+    {d.protected ? (
+      <>
+        <div id="locked" data-payload={payload}>
+          <form>
+            <p>This is private. Enter the password to read it.</p>
+            <input type="password" autocomplete="current-password" aria-label="Password" required />
+            <button type="submit">Unlock</button>
+            <p class="locked-msg" role="alert"></p>
+          </form>
+        </div>
+        <div id="unlocked" class="e-content"></div>
+        <script is:inline src="/js/unlock.js" defer></script>
+      </>
+    ) : (
+      <div class="e-content"><Content /></div>
+    )}
+    {(prevChapter || nextChapter) && (
+      <nav class="chapter-nav" aria-label={`${BOOK_TAG} chapters`} data-pagefind-ignore>
+        {prevChapter ? <a class="chapter-link chapter-prev" href={`/posts/${prevChapter.id}`} rel="prev"><span class="chapter-dir">Previous</span><span class="chapter-title">{chapterLabel(prevChapter)}</span></a> : null}
+        {nextChapter ? <a class="chapter-link chapter-next" href={`/posts/${nextChapter.id}`} rel="next"><span class="chapter-dir">Next</span><span class="chapter-title">{chapterLabel(nextChapter)}</span></a> : null}
+      </nav>
+    )}
+    {kind === 'post' && (
+      <div class="entry-footer" data-pagefind-ignore>
+        <div class="published-at">
+          <time class="dt-published" datetime={d.date.toISOString()}>
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>{longDate(d.date)}
+          </time>
+        </div>
+        {d.tags.length > 0 && (
+          <div class="post-tags">
+            {d.tags.map((t: string, i: number) => (<>{i > 0 && ', '}<a href={`/blog?tag=${encodeURIComponent(tagSlug(t))}`}>{t}</a></>))}
+          </div>
+        )}
+        <div><a href="/blog"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8l-4 4 4 4M8 12h8"/></svg>Back to all posts</a></div>
+      </div>
+    )}
+  </article>
+</Base>

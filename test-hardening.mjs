@@ -1,0 +1,148 @@
+// Production-hardening regressions found on 4 November 2026 (MVP-to-production pass).
+// Each test reproduces a real failure: corrupted characters on save, 503s for malformed requests,
+// blocked KaTeX fonts, missing long-term caching, login always returning to the library, and
+// local builds writing localhost URLs into the tracked library page.
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile,writeFile,mkdtemp} from 'node:fs/promises';
+import path from 'node:path';
+import os from 'node:os';
+import http from 'node:http';
+import {randomBytes} from 'node:crypto';
+const fixture=await mkdtemp(path.join(os.tmpdir(),'tiago-hardening-test-'));
+const stateFile=path.join(fixture,'library.json');
+const books=Array.from({length:40},(_,i)=>({id:String(i+1),title:'Fixture book '+i,author:'Fixture author',rating:0,description:'Quote: “I’ll go on.” — '+'x'.repeat(i)}));
+await writeFile(stateFile,JSON.stringify({id:'library',revision:1,books}));
+process.env.LOCAL_LIBRARY_FILE=stateFile;process.env.LIBRARY_PASSWORD=randomBytes(24).toString('hex');process.env.SESSION_SECRET=randomBytes(32).toString('hex');
+const {server}=await import('./server.mjs');
+const {safeNext}=await import('./library/server.mjs');
+const {readBody}=await import('./library/http-utils.mjs');
+await new Promise(r=>server.listen(0,'127.0.0.1',r));const base='http://127.0.0.1:'+server.address().port;
+test.after(async()=>{server.closeAllConnections();await new Promise(r=>server.close(r))});
+async function login(next){
+  const body=new URLSearchParams({password:process.env.LIBRARY_PASSWORD});if(next!==undefined)body.set('next',next);
+  return fetch(base+'/login',{method:'POST',body,redirect:'manual'});
+}
+// Sends the body in two writes, split inside a multi-byte character, the way a slow upload arrives.
+function splitPost(pathname,headers,buffer,at){
+  return new Promise((resolve,reject)=>{
+    const req=http.request(base+pathname,{method:'POST',headers:{...headers,'Content-Length':buffer.length}},res=>{let data='';res.on('data',c=>data+=c);res.on('end',()=>resolve({status:res.statusCode,headers:res.headers,body:data}))});
+    req.on('error',reject);req.write(buffer.subarray(0,at));setTimeout(()=>{req.end(buffer.subarray(at))},50);
+  });
+}
+
+test('readBody decodes multi-byte characters that arrive split across chunks',async()=>{
+  const bytes=Buffer.from('I’ll go on — café');const cut=bytes.indexOf(0xe2)+1;
+  async function* chunks(){yield bytes.subarray(0,cut);yield bytes.subarray(cut);}
+  assert.equal(await readBody(chunks(),1024),'I’ll go on — café');
+  async function* big(){yield Buffer.alloc(600);yield Buffer.alloc(600);}
+  assert.equal(await readBody(big(),1000),null);
+});
+
+test('a library save split inside a character is stored without replacement characters',async()=>{
+  const cookie=(await login()).headers.get('set-cookie').split(';')[0];
+  const next=books.map(b=>({...b,description:b.description+' ‘edited’'}));
+  const buffer=Buffer.from(JSON.stringify(next));const at=buffer.indexOf(Buffer.from('’'))+1;
+  const saved=await splitPost('/save',{Cookie:cookie,'Content-Type':'application/json','X-Library-Revision':'1'},buffer,at);
+  assert.equal(saved.status,200,saved.body);
+  const stored=await(await fetch(base+'/books.json')).json();
+  assert.deepEqual(stored,next);assert.doesNotMatch(JSON.stringify(stored),/�/);
+});
+
+test('malformed origins and paths get client errors, not a storage outage message',async()=>{
+  for(const pathname of ['/login','/save']){
+    const r=await fetch(base+pathname,{method:'POST',headers:{Origin:'null'},body:'password=x'});
+    assert.equal(r.status,pathname==='/save'?401:403,pathname);
+  }
+  const cookie=(await login()).headers.get('set-cookie').split(';')[0];
+  assert.equal((await fetch(base+'/save',{method:'POST',headers:{Origin:'null',Cookie:cookie},body:'[]'})).status,403);
+  for(const bad of ['/tag/%E0%A4%A','/posts/%E0%A4%A'])assert.equal((await fetch(base+bad,{redirect:'manual'})).status,400,bad);
+});
+
+test('signing in and out returns to a same-site page only',async()=>{
+  assert.equal((await login('/blog?tag=Philosophy')).headers.get('location'),'/blog?tag=Philosophy');
+  assert.equal((await login('/#book/12')).headers.get('location'),'/#book/12');
+  for(const hostile of ['//evil.example','https://evil.example','/\\evil.example','javascript:alert(1)','/x\nSet-Cookie: a=b'])assert.equal((await login(hostile)).headers.get('location'),'/',hostile);
+  assert.equal((await login()).headers.get('location'),'/');
+  assert.equal((await fetch(base+'/logout?next=%2Fposts%2Fabc',{redirect:'manual'})).headers.get('location'),'/posts/abc');
+  assert.equal((await fetch(base+'/logout?next=%2F%2Fevil.example',{redirect:'manual'})).headers.get('location'),'/');
+  const form=await(await fetch(base+'/login?next=%2Fblog')).text();assert.match(form,/name="next" value="\/blog"/);assert.match(form,/>Go back</);
+  const escaped=await(await fetch(base+'/login?next=%2F%22%3E%3Cscript%3E')).text();assert.doesNotMatch(escaped,/"><script>/);
+  assert.equal(safeNext('/a?b=c#d'),'/a?b=c#d');assert.equal(safeNext(''),'/');
+});
+
+test('blog pages allow KaTeX data fonts, compress with Brotli and cache hashed assets for a year',async()=>{
+  const blog=await fetch(base+'/blog',{headers:{'Accept-Encoding':'br'}});
+  assert.match(blog.headers.get('content-security-policy'),/font-src 'self' data:/);
+  assert.equal(blog.headers.get('cache-control'),'no-cache');
+  const html=await(await fetch(base+'/blog')).text();
+  const asset=html.match(/\/_astro\/[^"']+\.css/)[0];
+  const r=await fetch(base+asset,{headers:{'Accept-Encoding':'br'}});
+  assert.equal(r.status,200);assert.equal(r.headers.get('cache-control'),'public, max-age=31536000, immutable');
+  const raw=await fetch(base+asset,{headers:{'Accept-Encoding':'identity'}});assert.equal(raw.headers.get('content-encoding'),null);assert.ok((await raw.text()).length>1000);
+  const tag=r.headers.get('etag');assert.equal((await fetch(base+asset,{headers:{'If-None-Match':tag}})).status,304);
+  assert.equal((await fetch(base+'/pagefind/pagefind.js')).headers.get('cache-control'),'no-cache');
+  const missing=await fetch(base+'/no-such-page');assert.equal(missing.status,404);assert.equal(missing.headers.get('cache-control'),'no-cache');
+});
+
+test('the build keeps origin-specific URLs out of the tracked library page',async()=>{
+  const source=await readFile('library/index.html','utf8');
+  assert.doesNotMatch(source,/<link rel="canonical" href="http:\/\/localhost/);assert.doesNotMatch(source,/og:url" content="http:\/\/localhost/);
+  const built=await readFile('dist/index.html','utf8');assert.match(built,/<body data-pagefind-ignore(="")?>/);
+  const served=await(await fetch(base+'/')).text();assert.match(served,/<body data-pagefind-ignore(="")?>/);assert.match(served,/rel="canonical"/);
+});
+
+test('unknown blog tags show a way back to all posts',async()=>{
+  const blog=await(await fetch(base+'/blog')).text();
+  assert.match(blog,/id="blog-empty" hidden/);assert.match(blog,/href="\/blog">Show all posts</);
+  const filter=await(await fetch(base+'/blog-filter.js')).text();assert.match(filter,/toLowerCase\(\)/);
+});
+
+test('behind Railway, failed logins are counted per visitor, not for everyone behind the proxy',async()=>{
+  const before=process.env.NODE_ENV;process.env.NODE_ENV='production';
+  try{
+    const attempt=(ip,password='wrong')=>fetch(base+'/login',{method:'POST',headers:{'X-Real-IP':ip},body:new URLSearchParams({password}),redirect:'manual'});
+    for(let i=0;i<10;i++)assert.equal((await attempt('203.0.113.7')).status,401);
+    assert.equal((await attempt('203.0.113.7')).status,429);
+    assert.equal((await attempt('198.51.100.4')).status,401,'another visitor is not locked out');
+    assert.equal((await attempt('198.51.100.4',process.env.LIBRARY_PASSWORD)).status,303,'the owner can still sign in');
+    assert.equal((await attempt('not-an-ip<script>')).status,401);
+  }finally{if(before===undefined)delete process.env.NODE_ENV;else process.env.NODE_ENV=before}
+  const local=(await import('./library/server.mjs')).clientAddress({headers:{'x-real-ip':'203.0.113.9'},socket:{remoteAddress:'127.0.0.1'}});
+  assert.equal(local,'127.0.0.1','outside production the header is ignored');
+});
+
+test('book chapters without hand-written chapter links get previous/next cards; others are unchanged',async()=>{
+  const appendix=await(await fetch(base+'/posts/in-search-of-the-infinite-appendix')).text();
+  assert.match(appendix,/href="\/posts\/in-search-of-the-infinite-the-awakening-volume-4-chapter-3" rel="prev"/);assert.match(appendix,/chapter-title">The Awakening \(Volume 4, Chapter 3\)</);assert.doesNotMatch(appendix,/rel="next"/);
+  const middle=await(await fetch(base+'/posts/in-search-of-the-infinite-volume-3-chapter-2')).text();
+  assert.doesNotMatch(middle,/class="chapter-nav"/,'hand-written links already present');
+  const other=await(await fetch(base+'/posts/a-700-page-argument-that-beauty-should-come-first')).text();assert.doesNotMatch(other,/class="chapter-nav"/);
+});
+
+test('the GitHub icon points to this website repository on every page',async()=>{
+  for(const route of ['/','/blog','/pages/about']){const html=await(await fetch(base+route)).text();assert.match(html,/href="https:\/\/github.com\/tiagovasc\/tiagobooks-website"/,route);assert.doesNotMatch(html,/tiagovasc\/book-library/,route)}
+});
+
+test('visitors load the library without descriptions; each description loads on its own',async()=>{
+  const full=await(await fetch(base+'/books.json')).json();
+  const pub=await fetch(base+'/books.json?view=public');assert.equal(pub.headers.get('etag')?.endsWith('-public"'),true);
+  const list=await pub.json();assert.equal(list.length,full.length);
+  for(const b of list){assert.equal('description' in b,false);assert.equal('merged_records' in b,false);assert.equal('merge_conflicts' in b,false)}
+  const withText=full.find(b=>b.description&&b.description.trim());assert.equal(list.find(b=>b.id===withText.id).has_description,true);
+  const one=await(await fetch(base+'/book-description?id='+encodeURIComponent(withText.id))).json();assert.equal(one.description,withText.description);
+  assert.equal((await(await fetch(base+'/book-description?id=no-such-book')).json()).description,'');
+  assert.equal((await fetch(base+'/book-description')).status,400);
+  const map=await(await fetch(base+'/book-descriptions.json')).json();assert.equal(map[withText.id],withText.description);
+  assert.equal(Object.keys(map).length,full.filter(b=>b.description&&b.description.trim()).length);
+  const page=await(await fetch(base+'/')).text();assert.match(page,/books\.json\?view=public/);
+});
+
+test('a save that would strip most descriptions is refused',async()=>{
+  const cookie=(await login()).headers.get('set-cookie').split(';')[0];
+  const res=await fetch(base+'/books.json');const revision=res.headers.get('x-library-revision');const full=await res.json();
+  const stripped=full.map(({description,...b})=>b);
+  const r=await fetch(base+'/save',{method:'POST',headers:{Cookie:cookie,'Content-Type':'application/json','X-Library-Revision':revision},body:JSON.stringify(stripped)});
+  assert.equal(r.status,400);assert.match((await r.json()).error,/descriptions/);
+  const ok=await fetch(base+'/save',{method:'POST',headers:{Cookie:cookie,'Content-Type':'application/json','X-Library-Revision':revision},body:JSON.stringify(full)});assert.equal(ok.status,200);
+});

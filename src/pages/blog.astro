@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import PostList from '../layouts/PostList.astro';
+import PostCards from '../layouts/PostCards.astro';
+import site from '../lib/site-config.mjs';
+import { getListedPosts } from '../lib/content';
+const posts=await getListedPosts();
+---
+<Base title="Blog" path="/blog">
+  <p class="writing-kicker">Tiago Faleiro</p><h1 class="entry-title">Blog</h1>
+  <p class="blog-result-count" id="blog-result-count" role="status">{posts.length} posts</p>
+  <div class="blog-empty" id="blog-empty" hidden><p>No posts have this tag.</p><a href="/blog">Show all posts</a></div>
+  {site.blogLayout==='list' ? <PostList posts={posts} byMonth /> : <PostCards posts={posts} />}
+  <script is:inline type="module" src="/blog-filter.js"></script>
+</Base>

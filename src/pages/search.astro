@@ -1,0 +1,59 @@
+---
+import Base from '../layouts/Base.astro';
+// 4 Nov 2026 redesign: one search box for blog, library and TBR, grouped results.
+// The previous page is preserved in ../private/simplify-header-20261104/before/src/pages/search.astro.
+---
+<Base title="Search" path="/search">
+  <h1 class="sr-only">Search</h1>
+  <form class="ss-form" role="search" id="ss-form">
+    <label class="ss-box"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4 4"/></svg><input id="ss-q" type="search" placeholder="Search posts, books and TBR" aria-label="Search posts, books and TBR" autocomplete="off" spellcheck="false" autofocus /></label>
+  </form>
+  <nav class="ss-scopes" aria-label="Search scope">
+    <button type="button" data-scope="all" aria-pressed="true">All<span data-count="all"></span></button>
+    <button type="button" data-scope="blog" aria-pressed="false">Blog<span data-count="blog"></span></button>
+    <button type="button" data-scope="library" aria-pressed="false">Library<span data-count="library"></span></button>
+    <button type="button" data-scope="tbr" aria-pressed="false">TBR<span data-count="tbr"></span></button>
+  </nav>
+  <p class="ss-status" id="ss-status" role="status"></p>
+  <div id="ss-results"></div>
+  <script>
+    import {searchCatalogue} from '../lib/catalogue-search.mjs';
+    const $=(id:string)=>document.getElementById(id) as any;
+    const esc=(s:any)=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'} as any)[c]);
+    const LABEL:any={blog:'Blog',library:'Library',tbr:'TBR'};
+    let scope='all',token=0,timer:any=0,pagefind:any=null;const data:any={};let last:any={blog:[],library:[],tbr:[]};const limit:any={};
+    async function loadPagefind(){if(!pagefind){const url=new URL('/pagefind/pagefind.js',location.origin).href;pagefind=await import(/* @vite-ignore */ url);}return pagefind}
+    // Library search uses the public list plus descriptions (so a description still matches), loaded in parallel.
+    async function libraryBooks(){const [list,desc]=await Promise.all([fetch('/books.json?view=public'),fetch('/book-descriptions.json')]);if(!list.ok||!desc.ok)throw Error('unavailable');const d=await list.json(),map=await desc.json();return (Array.isArray(d)?d:d.books).map((b:any)=>b.has_description?{...b,description:map[b.id]||''}:b)}
+    async function catalogue(kind:string){if(!data[kind]){if(kind==='library')data[kind]=await libraryBooks();else{const r=await fetch('/tbr-bookshops.json');if(!r.ok)throw Error('unavailable');data[kind]=(await r.json()).books}}return data[kind]}
+    async function blogResults(q:string){const pf=await loadPagefind();const r=await pf.search(q);return {total:r.results.length,load:(n:number)=>Promise.all(r.results.slice(0,n).map((x:any)=>x.data()))}}
+    // Results use the library's small web thumbnails (about a tenth of the bytes); the full cover is the fallback.
+    const thumb=(c:string)=>{const m=/^covers\/([^\/]+?)(?:\.[A-Za-z0-9]+)?$/.exec(c||'');return m?'covers/web/'+m[1]+'.jpg':c};
+    function bookRow(b:any,kind:string){const href=kind==='library'?'/#book/'+encodeURIComponent(b.id):'/?collection=tbr&source=bookshops&q='+encodeURIComponent(b.title||'');
+      const shop=kind==='tbr'&&b.sightings&&b.sightings[0]?[b.sightings[0].bookshop,b.sightings[0].city].filter(Boolean).join(', '):'';
+      const meta=[b.author,kind==='library'?b.subject:shop].filter(Boolean).join(' · ');
+      return `<a class="ss-row" href="${esc(href)}"><span class="ss-cover">${b.cover?`<img src="/${esc(thumb(b.cover))}" data-full="/${esc(b.cover)}" alt="" loading="lazy" decoding="async" onerror="if(this.dataset.full){this.src=this.dataset.full;this.removeAttribute('data-full')}else this.remove()">`:''}</span><span class="ss-text"><span class="ss-title">${esc(b.title||'Untitled')}</span>${meta?`<span class="ss-meta">${esc(meta)}</span>`:''}</span></a>`}
+    function postRow(d:any){const kind=d.url.startsWith('/pages/')?'Page':'';return `<a class="ss-row ss-post" href="${esc(d.url)}"><span class="ss-text"><span class="ss-title">${esc(d.meta?.title||d.url)}</span>${kind?`<span class="ss-meta">${kind}</span>`:''}${d.excerpt?`<span class="ss-excerpt">${d.excerpt}</span>`:''}</span></a>`}
+    async function run(){const q=$('ss-q').value.trim(),t=++token;const u=new URL(location.href);if(q)u.searchParams.set('q',q);else u.searchParams.delete('q');if(scope!=='all')u.searchParams.set('scope',scope);else u.searchParams.delete('scope');history.replaceState(null,'',u);
+      if(!q){last={blog:null,library:[],tbr:[]};for(const el of document.querySelectorAll('[data-count]'))el.textContent='';$('ss-status').textContent='';$('ss-results').innerHTML='';return}
+      $('ss-status').textContent='Searching…';
+      try{const [blog,lib,tbr]=await Promise.all([blogResults(q).catch(()=>null),catalogue('library').then(b=>searchCatalogue(b,q)).catch(()=>null),catalogue('tbr').then(b=>searchCatalogue(b,q)).catch(()=>null)]);
+        if(t!==token)return;last={blog,library:lib,tbr};render()}catch(e){if(t===token)$('ss-status').textContent='Search is unavailable right now.'}}
+    async function render(){const t=token;const counts:any={blog:last.blog?last.blog.total:0,library:last.library?.length||0,tbr:last.tbr?.length||0};counts.all=counts.blog+counts.library+counts.tbr;
+      for(const el of document.querySelectorAll<HTMLElement>('[data-count]'))el.textContent=String(counts[el.dataset.count!]);
+      $('ss-status').textContent=counts.all?'':'No results. Try another word.';
+      const kinds=scope==='all'?['blog','library','tbr']:[scope];let html='';
+      for(const k of kinds){if(!counts[k])continue;const n=scope==='all'?5:(limit[k]||40);
+        const rows=k==='blog'?(await last.blog.load(n)).map(postRow):last[k].slice(0,n).map((b:any)=>bookRow(b,k));if(t!==token)return;
+        html+=`<section class="ss-group">${scope==='all'?`<h2 class="ss-group-h"><span>${LABEL[k]}</span><span class="leader"></span><span class="ss-group-n">${counts[k]}</span></h2>`:''}${rows.join('')}${counts[k]>n?`<button type="button" class="ss-more" data-more="${k}">${scope==='all'?'Show all '+counts[k]+' in '+LABEL[k]:'Show more'}</button>`:''}</section>`}
+      $('ss-results').innerHTML=html}
+    function setScope(s:string){scope=s;for(const b of document.querySelectorAll<HTMLElement>('[data-scope]'))b.setAttribute('aria-pressed',String(b.dataset.scope===s));run()}
+    document.querySelector('.ss-scopes')!.addEventListener('click',e=>{const b=(e.target as HTMLElement).closest<HTMLElement>('[data-scope]');if(b)setScope(b.dataset.scope!)});
+    $('ss-results').addEventListener('click',(e:any)=>{const b=e.target.closest('[data-more]');if(!b)return;const k=b.dataset.more;if(scope==='all')setScope(k);else{limit[k]=(limit[k]||40)+40;render()}});
+    $('ss-form').addEventListener('submit',(e:Event)=>{e.preventDefault();clearTimeout(timer);run()});
+    $('ss-q').addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(run,140)});
+    const start=new URL(location.href);$('ss-q').value=start.searchParams.get('q')||'';const s=start.searchParams.get('scope');if(s&&LABEL[s])scope=s;
+    for(const b of document.querySelectorAll<HTMLElement>('[data-scope]'))b.setAttribute('aria-pressed',String(b.dataset.scope===scope));
+    loadPagefind().catch(()=>{});if($('ss-q').value)run();
+  </script>
+</Base>

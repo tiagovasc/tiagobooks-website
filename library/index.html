@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>Tiago Faleiro</title>
+<meta name="description" content="Tiago's personal library: every book bought and read, with covers, ratings and reading dates.">
+
+<meta property="og:type" content="website"><meta property="og:site_name" content="Tiago Faleiro"><meta property="og:title" content="Tiago Faleiro"><meta property="og:description" content="Every book bought and read, with covers, ratings and reading dates."><meta property="og:url" content="https://tiagobooks.com/"><meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#EDEDEA" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+<script>try{let t=JSON.parse(localStorage.getItem("tiago-books-ui-v1")||"{}").theme;if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<style>
+  /* ---------- tokens ---------- */
+  :root{
+    color-scheme:light;
+    --page:#EDEDEA; --surface:#FFFFFF; --surface-2:#F5F5F2; --sunk:#E3E3DF;
+    --ink:#1C1C1E; --muted:#66666B; --faint:#9A9A9F;
+    --line:rgba(28,28,30,.09); --line-2:rgba(28,28,30,.17);
+    --cover-rim:rgba(0,0,0,.10);
+    --cover-shadow:0 1px 1px rgba(0,0,0,.10),0 12px 22px -14px rgba(0,0,0,.42);
+    --focus:#1C1C1E;
+    /* Header and menus follow the selected appearance. */
+    --n-bg:#FFFFFF; --n-ink:#1C1C1E; --n-muted:#66666B; --n-fill:#F0F0ED; --n-fill-2:#E8E8E4; --n-active:#DDDDD8; --n-line:rgba(28,28,30,.12);
+    /* matte tones (NotchOwl-style pastel cards) */
+    --t-read:#91AC98; --t-reading:#C6B86C; --t-next:#98ACC9; --t-unread:#A49FC5; --t-paused:#C6A4A7; --t-unknown:#B2B0A8;
+    --matte-ink:#1B1D1C; --matte-muted:rgba(27,29,28,.62);
+    --sans:"Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;
+    --display:"Segoe UI Variable Display","Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif;
+    --serif:"Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 -0.22'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+    --fleck:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.3' numOctaves='2' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1.4 -1.0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+    --notch-h:120px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      color-scheme:dark;
+      --n-bg:#000000; --n-ink:#F5F5F7; --n-muted:#8E8E93; --n-fill:#1C1C1E; --n-fill-2:#2A2A2C; --n-active:#3A3A3C; --n-line:rgba(255,255,255,.10);
+      --page:#000000; --surface:#1C1C1E; --surface-2:#242426; --sunk:#2C2C2E;
+      --ink:#F5F5F7; --muted:#A1A1A6; --faint:#6E6E73;
+      --line:rgba(255,255,255,.09); --line-2:rgba(255,255,255,.17);
+      --cover-rim:rgba(255,255,255,.09);
+      --cover-shadow:0 14px 26px -16px rgba(0,0,0,.95);
+      --focus:#F5F5F7;
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme:dark;
+    --n-bg:#000000; --n-ink:#F5F5F7; --n-muted:#8E8E93; --n-fill:#1C1C1E; --n-fill-2:#2A2A2C; --n-active:#3A3A3C; --n-line:rgba(255,255,255,.10);
+    --page:#000000; --surface:#1C1C1E; --surface-2:#242426; --sunk:#2C2C2E;
+    --ink:#F5F5F7; --muted:#A1A1A6; --faint:#6E6E73;
+    --line:rgba(255,255,255,.09); --line-2:rgba(255,255,255,.17);
+    --cover-rim:rgba(255,255,255,.09);
+    --cover-shadow:0 14px 26px -16px rgba(0,0,0,.95);
+    --focus:#F5F5F7;
+  }
+
+  /* ---------- base ---------- */
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  html{scrollbar-gutter:stable}
+  html:has(dialog.drawer[open]){overflow:hidden}
+  body{background:var(--page);color:var(--ink);font:15px/1.45 var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;min-height:100vh}
+  button,input,select,textarea{font:inherit;color:inherit}
+  button{cursor:pointer}
+  :focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+  .i{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .i-xs{width:12px;height:12px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .spacer{flex:1 1 auto}
+  [hidden]{display:none!important}
+
+  /* ---------- notch ---------- */
+  .notch{position:fixed;z-index:40;top:0;left:0;right:0;margin:0 auto;width:min(1180px,calc(100% - 32px));
+    background:var(--n-bg);color:var(--n-ink);border-radius:0 0 26px 26px;padding:12px 14px 12px 18px;
+    box-shadow:0 0 0 1px var(--n-line),0 16px 32px -24px rgba(0,0,0,.25);color-scheme:inherit}
+  :root[data-theme="dark"] .notch{box-shadow:0 0 0 1px var(--n-line)}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .notch{box-shadow:0 0 0 1px var(--n-line)}}
+  .notch :focus-visible{outline-color:var(--n-ink)}
+  .n-main{display:grid;grid-template-columns:auto minmax(180px,1fr) auto auto;align-items:center;gap:14px}
+  .brand{display:flex;align-items:center;gap:10px;min-width:0}
+  .mark{width:22px;height:22px;flex:none}
+  .lib-title{margin:0;font:600 15px/1.2 var(--display);letter-spacing:-.005em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:240px;outline:none;border-radius:6px;padding:2px 4px;margin-left:-4px}
+  .lib-title:focus{background:var(--n-fill);box-shadow:0 0 0 2px rgba(255,255,255,.18)}
+  .search{display:flex;align-items:center;gap:8px;height:36px;padding:0 8px 0 11px;background:var(--n-fill);border-radius:12px;color:var(--n-muted);min-width:0;cursor:text}
+  .search:focus-within{box-shadow:0 0 0 2px rgba(255,255,255,.2);color:var(--n-ink)}
+  .search input{flex:1;min-width:0;border:0;background:transparent;color:var(--n-ink);font-size:14px;outline:none;height:100%;padding:0}
+  .search input::placeholder{color:var(--n-muted)}
+  .search input::-webkit-search-cancel-button{display:none}
+  .kbd{font:500 11px/1 var(--sans);color:var(--n-muted);border:1px solid rgba(255,255,255,.16);border-radius:6px;padding:3px 6px}
+  .search:focus-within .kbd{visibility:hidden}
+
+  .seg{display:inline-flex;align-items:center;gap:2px;padding:3px;background:var(--n-fill);border-radius:12px;white-space:nowrap}
+  .seg button{display:inline-flex;align-items:center;gap:6px;border:0;background:transparent;color:var(--n-muted);font-size:13px;font-weight:500;line-height:1;padding:8px 10px;border-radius:9px;transition:background-color .15s,color .15s}
+  .seg button:hover{color:var(--n-ink)}
+  .seg button[aria-pressed="true"]{background:var(--n-active);color:var(--n-ink)}
+  .seg .n{color:var(--n-muted);font-variant-numeric:tabular-nums;font-weight:400}
+  .seg button[aria-pressed="true"] .n{color:var(--n-muted)}
+  .seg button.zero{opacity:.45}
+  .round{position:relative;display:inline-grid;place-items:center;width:36px;height:36px;border-radius:50%;border:0;background:var(--n-fill);color:var(--n-ink)}
+  .round:hover{background:var(--n-fill-2)}
+  .save-dot{position:absolute;top:6px;right:6px;width:7px;height:7px;border-radius:50%;background:var(--n-muted);box-shadow:0 0 0 2px var(--n-fill)}
+  .save-dot.live{background:var(--t-read)} .save-dot.pending{background:var(--t-reading)} .save-dot.error{background:#E2847E}
+
+  .n-more{display:grid;grid-template-rows:1fr;transition:grid-template-rows .3s cubic-bezier(.2,.8,.2,1)}
+  .n-more-inner{min-height:0;overflow:hidden}
+  .n-row2{display:flex;align-items:center;gap:10px;padding-top:12px}
+  .notch.compact .n-more{grid-template-rows:0fr}
+  .notch.compact:focus-within .n-more,.notch.compact.hold .n-more{grid-template-rows:1fr}
+  @media (hover:hover){.notch.compact:hover .n-more{grid-template-rows:1fr}}
+  .statusbar{min-width:0;overflow-x:auto;scrollbar-width:none;flex:0 1 auto}
+  .statusbar::-webkit-scrollbar{display:none}
+  .pill-select{position:relative;display:inline-flex;align-items:center;height:36px;background:var(--n-fill);border-radius:12px;color:var(--n-muted);font-size:13px;padding-left:12px}
+  .pill-select:hover{background:var(--n-fill-2)}
+  .pill-select select{appearance:none;-webkit-appearance:none;border:0;background:transparent;color:var(--n-ink);font-size:13px;font-weight:500;height:100%;padding:0 30px 0 6px;outline:none;cursor:pointer}
+  .pill-select select option{background:var(--n-bg);color:var(--n-ink)}
+  .pill-select:focus-within{box-shadow:0 0 0 2px rgba(255,255,255,.22)}
+  .pill-select::after{content:"";position:absolute;right:12px;top:50%;width:6px;height:6px;margin-top:-5px;border-right:1.5px solid var(--n-muted);border-bottom:1.5px solid var(--n-muted);transform:rotate(45deg);pointer-events:none}
+  .nbtn{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 13px;border:0;border-radius:12px;background:var(--n-fill);color:var(--n-ink);font-size:13px;font-weight:500;white-space:nowrap}
+  .nbtn:hover{background:var(--n-fill-2)}
+  .nbtn[aria-expanded="true"]{background:var(--n-active)}
+  .nbtn.primary{background:var(--n-ink);color:var(--n-bg)}
+  .nbtn.primary:hover{opacity:.9}
+  .badge{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:#F5F5F7;color:#000;font-size:11px;font-weight:600}
+
+  /* popovers hang below the notch */
+  .pop{position:absolute;z-index:45;top:calc(100% + 10px);right:14px;width:320px;max-width:calc(100vw - 24px);
+    background:var(--n-bg);color:var(--n-ink);border-radius:18px;padding:14px;box-shadow:0 0 0 1px var(--n-line),0 28px 60px -24px rgba(0,0,0,.3);font-size:13px}
+  .pop h2{margin:0 0 10px;font-size:13px;font-weight:600}
+  .pop p{margin:0 0 12px;color:var(--n-muted);line-height:1.45}
+  .pop .field{display:grid;grid-template-columns:96px minmax(0,1fr);align-items:center;gap:10px;margin-bottom:10px}
+  .pop .field>span{color:var(--n-muted)}
+  .pop select{width:100%;height:34px;border:0;border-radius:10px;background:var(--n-fill-2);color:var(--n-ink);padding:0 10px;font-size:13px}
+  .pop select option{background:var(--n-bg)}
+  .m-status{display:flex;align-items:center;gap:9px;font-weight:600;margin-bottom:6px}
+  .m-status .dot{width:8px;height:8px;border-radius:50%;background:var(--n-muted);flex:none}
+  .m-status .dot.live{background:var(--t-read)} .m-status .dot.pending{background:var(--t-reading)} .m-status .dot.error{background:#E2847E}
+  .m-item{display:flex;width:100%;align-items:center;gap:10px;border:0;background:transparent;color:var(--n-ink);text-align:left;padding:9px 10px;border-radius:10px;font-size:13px}
+  .m-item:hover{background:var(--n-fill-2)}
+  .m-item.danger{color:#F0A49F}
+  .m-sep{height:1px;background:var(--n-line);margin:8px 2px}
+  .m-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:4px 2px 4px 10px}
+  .m-row>span{color:var(--n-muted)}
+  .seg.mini button{padding:6px 9px;font-size:12px}
+  .m-foot{margin:10px 2px 0!important;font-size:12px}
+  .keys{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;margin:10px 2px 2px;color:var(--n-muted);font-size:12px}
+  .keys kbd{justify-self:start;font:500 11px/1 var(--sans);color:var(--n-ink);border:1px solid rgba(255,255,255,.16);border-radius:6px;padding:3px 6px}
+  .column-options{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;max-height:300px;overflow:auto;padding:2px}
+  .column-options label{display:flex;gap:8px;align-items:center;cursor:pointer;color:var(--n-ink)}
+  .column-options input{accent-color:#F5F5F7}
+  .pop-actions{display:flex;gap:16px;margin-top:12px;padding-top:12px;border-top:1px solid var(--n-line)}
+  .linkbtn{border:0;background:none;padding:2px 0;color:var(--n-ink);font-size:13px;font-weight:500;text-decoration:underline;text-decoration-color:rgba(255,255,255,.3);text-underline-offset:3px}
+  .linkbtn:hover{text-decoration-color:currentColor}
+
+  .toast{position:absolute;left:50%;top:calc(100% + 10px);transform:translate(-50%,-8px);opacity:0;pointer-events:none;background:#000;color:#F5F5F7;
+    padding:9px 16px;border-radius:999px;font-size:13px;font-weight:500;white-space:nowrap;box-shadow:0 0 0 1px var(--n-line),0 16px 30px -18px rgba(0,0,0,.7);transition:opacity .2s,transform .24s cubic-bezier(.2,.8,.2,1)}
+  .toast.show{opacity:1;transform:translate(-50%,0)}
+
+  /* ---------- page ---------- */
+  .wrap{width:min(1360px,calc(100% - 48px));margin:0 auto;padding:calc(var(--notch-h) + 26px) 0 96px}
+  .results{display:flex;align-items:center;gap:14px;margin:0 0 22px;color:var(--muted);font-size:14px}
+  .results b{color:var(--ink);font-weight:600}
+  .results button{border:0;background:var(--sunk);color:var(--ink);border-radius:999px;padding:5px 12px;font-size:13px;font-weight:500}
+  .results button:hover{background:var(--line-2)}
+  .results{flex-wrap:wrap;gap:8px}
+  .results .active-chip{display:inline-flex;align-items:center;gap:8px;max-width:100%;min-height:36px;border:1px solid color-mix(in srgb,var(--t-read) 60%,var(--line));background:color-mix(in srgb,var(--t-read) 13%,var(--surface));text-align:left;font-size:12px}
+  .active-chip .chip-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .active-chip .chip-x{font-size:16px;line-height:1;flex:none}
+  .pill-select.is-active,#filtersBtn.is-active{box-shadow:inset 0 0 0 1.5px var(--t-read);background:color-mix(in srgb,var(--t-read) 18%,var(--n-fill));color:var(--n-ink)}
+  .sort-active-dot{width:6px;height:6px;flex:none;border-radius:50%;background:var(--t-read);margin-left:6px}
+  #filtersBtn.is-active .badge{background:var(--n-ink);color:var(--n-bg)}
+  @media(pointer:coarse){.results .active-chip{min-height:44px}}
+
+  /* group headings: dot-matrix years on a dotted leader */
+  .group{margin-top:34px;scroll-margin-top:100px}
+  .group:first-child{margin-top:8px}
+  .gh{display:flex;align-items:flex-end;gap:16px;margin:0 0 26px;color:var(--ink)}
+  .gh .dm{display:block;flex:none}
+  .gh .gtext{font:600 17px/1 var(--display);letter-spacing:-.01em}
+  .gh .leader{flex:1 1 auto;height:0;border-bottom:2px dotted var(--line-2);margin-bottom:5px;min-width:24px}
+  .gh .gcount{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap;margin-bottom:-1px}
+
+  /* covers grid: books stand on a shared baseline at their own proportions */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(146px,1fr));gap:40px 28px}
+  .tile{display:flex;flex-direction:column;min-width:0;padding:0;border:0;background:none;text-align:left;color:inherit;border-radius:10px}
+  .tile:focus-visible{outline-offset:8px}
+  .cv{display:flex;align-items:flex-end;justify-content:center;aspect-ratio:2/3;margin-bottom:14px}
+  .cv-img{display:block;width:66.67%;height:auto;max-width:100%;border-radius:3px;outline:1px solid var(--cover-rim);outline-offset:-1px;box-shadow:var(--cover-shadow);opacity:0;transition:opacity .25s ease,transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s ease}
+  .cv-img.ok{opacity:1}
+  /* Selected cover treatment: fill the 2:3 browsing frames, cropping at center.
+     The detail drawer retains the complete original cover. */
+  .tile .cv,.l-cv,.tcover{overflow:hidden;border-radius:3px}
+  .tile .cv .cv-img,.l-cv .cv-img,.tcover .cv-img{width:100%!important;height:100%;object-fit:cover;object-position:center}
+  /* Quiet cover feedback: no layout movement or per-scroll JavaScript. */
+  .tile .cv,.l-cv,.tcover{transition:transform .24s cubic-bezier(.2,.8,.2,1),box-shadow .24s ease}
+  @media (hover:hover) and (pointer:fine){
+    .tile:hover .cv{transform:translateY(-3px) scale(1.012);box-shadow:0 0 0 1px rgba(145,172,152,.24),0 0 24px 2px rgba(145,172,152,.13),0 14px 24px -12px rgba(0,0,0,.5)}
+    .lrow:hover .l-cv,tr[data-id]:hover .tcover{transform:translateY(-1px);box-shadow:0 0 0 1px rgba(145,172,152,.22),0 0 16px rgba(145,172,152,.12)}
+  }
+  .tile:focus-visible .cv,.lrow:focus-visible .l-cv{box-shadow:0 0 0 1px rgba(145,172,152,.3),0 0 24px 2px rgba(145,172,152,.13)}
+  @media (prefers-reduced-motion:reduce){
+    .tile:hover .cv,.lrow:hover .l-cv,tr[data-id]:hover .tcover{transform:none}
+  }
+  .t-title{font:600 14px/1.3 var(--sans);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
+  .t-author{margin-top:3px;font-size:13px;line-height:1.35;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .t-meta{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:6px;font-size:12px;line-height:1.3;color:var(--faint);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .t-read{display:inline-flex;align-items:center;gap:4px;color:var(--muted);overflow:hidden;text-overflow:ellipsis}
+  .t-read .i-xs{color:#5F8A6B}
+  .t-state{font-weight:500}
+  .t-state.s-reading{color:#8A7A22} .t-state.s-next{color:#4F6A93} .t-state.s-paused{color:#93626A}
+  :root[data-theme="dark"] .t-read .i-xs{color:var(--t-read)}
+  :root[data-theme="dark"] .t-state.s-reading{color:var(--t-reading)} :root[data-theme="dark"] .t-state.s-next{color:var(--t-next)} :root[data-theme="dark"] .t-state.s-paused{color:var(--t-paused)}
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]) .t-read .i-xs{color:var(--t-read)}
+    :root:not([data-theme="light"]) .t-state.s-reading{color:var(--t-reading)} :root:not([data-theme="light"]) .t-state.s-next{color:var(--t-next)} :root:not([data-theme="light"]) .t-state.s-paused{color:var(--t-paused)}
+  }
+
+  /* missing cover: a plain cloth binding in a matte tone */
+  .ph{position:relative;display:flex;flex-direction:column;justify-content:space-between;width:100%;height:100%;padding:14% 12% 12%;border-radius:3px;
+    background-color:var(--tone);background-image:var(--fleck),var(--grain);color:var(--matte-ink);box-shadow:var(--cover-shadow),inset 3px 0 0 rgba(0,0,0,.08);overflow:hidden;text-align:left}
+  .ph-t{font:600 15px/1.2 var(--serif);display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
+  .ph-a{font-size:11px;line-height:1.3;color:var(--matte-muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+  /* list */
+  .lhead,.lrow{display:grid;grid-template-columns:60px minmax(0,1fr) 92px 128px 112px 96px;gap:20px;align-items:center}
+  .lhead{padding:0 22px 10px;color:var(--faint);font-size:12px;font-weight:500}
+  .lhead span:first-child{grid-column:1 / span 2}
+  .lcard{background:var(--surface);border-radius:20px;padding:4px 22px;box-shadow:0 0 0 1px var(--line)}
+  .lrow{width:100%;padding:14px 0;border:0;border-bottom:1px dotted var(--line-2);background:none;text-align:left;color:inherit;border-radius:0}
+  .lrow:last-child{border-bottom:0}
+  .lrow:hover .l-title{text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}
+  .lrow:focus-visible{outline-offset:-2px;border-radius:12px}
+  .l-cv{display:flex;align-items:flex-end;justify-content:center;width:60px;height:90px}
+  .l-cv .cv-img{box-shadow:0 8px 16px -10px rgba(0,0,0,.45)}
+  .l-cv .ph{padding:10px 8px}
+  .l-cv .ph-t{font-size:10px;-webkit-line-clamp:5}
+  .l-cv .ph-a{display:none}
+  .l-main{min-width:0;display:flex;flex-direction:column;gap:3px}
+  .l-title{font:600 15px/1.3 var(--sans);overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .l-sub{font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .l-author{font-size:13.5px;color:var(--muted)}
+  .l-col{font-size:13.5px;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .l-col.empty{color:var(--faint)}
+  .l-status{display:inline-flex;align-items:center;gap:8px}
+  .sdot{width:9px;height:9px;border-radius:50%;flex:none;background:var(--t-unknown)}
+  .sdot[data-s="read"]{background:var(--t-read)} .sdot[data-s="reading"]{background:var(--t-reading)} .sdot[data-s="next"]{background:var(--t-next)}
+  .sdot[data-s="unread"]{background:var(--t-unread)} .sdot[data-s="paused"]{background:var(--t-paused)}
+  .l-stars{letter-spacing:1px;color:#B0902E;font-size:13px}
+  .l-stars .off{color:var(--line-2)}
+  .l-meta{display:none}
+
+  /* table (kept: every column, inline editing, uniform rows) */
+  .tablewrap{background:var(--surface);border-radius:20px;box-shadow:0 0 0 1px var(--line);overflow:hidden}
+  .tablewrap .scroll{overflow-x:auto}
+  #bookTable{border-collapse:collapse;table-layout:fixed;min-width:0}
+  #bookTable thead th{text-align:left;font-size:12px;font-weight:600;color:var(--muted);padding:14px 12px 12px;border-bottom:1px solid var(--line);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:var(--surface)}
+  #tbody tr{height:96px}
+  #tbody td{height:96px;padding:0;overflow:hidden;border-bottom:1px solid var(--line);vertical-align:middle}
+  #tbody tr:last-child td{border-bottom:0}
+  #tbody tr:hover td{background:var(--surface-2)}
+  #tbody .cell{padding:10px 12px}
+  td.spine{width:5px}
+  .spinebar{width:5px;height:96px;background:var(--t-unknown)}
+  tr[data-status="read"] .spinebar{background:var(--t-read)} tr[data-status="reading"] .spinebar{background:var(--t-reading)} tr[data-status="next"] .spinebar{background:var(--t-next)}
+  tr[data-status="unread"] .spinebar{background:var(--t-unread)} tr[data-status="paused"] .spinebar{background:var(--t-paused)}
+  #tbody td.cover{padding:12px 8px}
+  .tcover{display:flex;align-items:flex-end;justify-content:center;width:44px;height:66px}
+  .tcover .cv-img{box-shadow:0 4px 10px -6px rgba(0,0,0,.5)}
+  .tcover .ph{padding:6px 5px}
+  .tcover .ph-t{font-size:7px;-webkit-line-clamp:5}
+  .tcover .ph-a{display:none}
+  .edit{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;overflow-wrap:anywhere;outline:none;border-radius:6px;padding:3px 5px;margin:-3px -5px;min-height:1.2em}
+  .edit:focus{background:var(--surface-2);box-shadow:0 0 0 2px var(--line-2)}
+  .edit:empty:before{content:attr(data-ph);color:var(--faint)}
+  .col-title .edit{font-size:15px;font-weight:600;line-height:20px;max-height:46px}
+  .col-author,.col-subject .edit,.col-notes{color:var(--muted)}
+  .col-subject .edit,.col-notes .edit{font-size:13.5px}
+  .subtitle{font-size:13px;line-height:16px;color:var(--muted);margin-top:2px;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+  .bookmeta{font-size:12px;line-height:15px;color:var(--faint);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .badge-enriched{display:inline-block;font-size:11px;font-weight:500;line-height:1;padding:3px 7px;border-radius:999px;margin-left:4px;vertical-align:1px;background:color-mix(in srgb,var(--t-read) 30%,transparent);color:inherit}
+  .badge-enriched.bx-med{background:color-mix(in srgb,var(--t-reading) 34%,transparent)}
+  .badge-enriched.bx-low{background:color-mix(in srgb,var(--t-paused) 40%,transparent)}
+  .badge-enriched.bx-none{background:var(--sunk)}
+  .field-text{font-size:13.5px;color:var(--muted);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;overflow-wrap:anywhere;line-height:1.35}
+  .field-text a{color:var(--ink)}
+  .date-read .field-text{color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+  select.status{appearance:none;-webkit-appearance:none;border:0;border-radius:999px;padding:6px 26px 6px 11px;font-size:12.5px;font-weight:600;cursor:pointer;color:var(--matte-ink);
+    background:var(--t-unknown) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5'%3E%3Cpath d='M1 1l3 3 3-3' stroke='%231B1D1C' stroke-width='1.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 10px center}
+  tr[data-status="read"] select.status{background-color:var(--t-read)} tr[data-status="reading"] select.status{background-color:var(--t-reading)} tr[data-status="next"] select.status{background-color:var(--t-next)}
+  tr[data-status="unread"] select.status{background-color:var(--t-unread)} tr[data-status="paused"] select.status{background-color:var(--t-paused)}
+  select.status option{background:var(--surface);color:var(--ink)}
+  .own{border:0;border-radius:999px;padding:6px 12px;font-size:12.5px;font-weight:500;background:var(--sunk);color:var(--muted)}
+  .own.on{background:color-mix(in srgb,var(--t-read) 55%,transparent);color:var(--ink);font-weight:600}
+  .stars{display:inline-flex;gap:1px;white-space:nowrap}
+  .stars button{border:0;background:none;padding:1px;font-size:15px;line-height:1;color:var(--line-2)}
+  .stars button.on,.stars button:hover{color:#B0902E}
+  .row-actions{white-space:nowrap;text-align:center}
+  .row-actions,#bookHeaders th:last-child{position:sticky;right:0;background:var(--surface);box-shadow:-1px 0 0 var(--line)}
+  #tbody tr:hover .row-actions{background:var(--surface-2)}
+  .details-btn{border:0;background:var(--sunk);color:var(--ink);font-size:12.5px;font-weight:500;padding:6px 11px;border-radius:999px}
+  .details-btn:hover{background:var(--line-2)}
+  .delbtn{border:0;background:none;color:var(--faint);font-size:17px;line-height:1;padding:4px 6px;border-radius:8px;margin-left:2px}
+  .delbtn:hover{color:#B4535A;background:color-mix(in srgb,var(--t-paused) 30%,transparent)}
+
+  .loadmore{text-align:center;padding:26px 0 0;font-size:12px;color:var(--faint);font-variant-numeric:tabular-nums}
+  .empty-state{text-align:center;padding:90px 20px}
+  .empty-state h2{margin:0 0 6px;font:600 20px/1.3 var(--display)}
+  .empty-state p{margin:0 0 20px;color:var(--muted)}
+  .empty-state button{border:0;background:var(--ink);color:var(--page);border-radius:12px;padding:10px 16px;font-size:14px;font-weight:500}
+
+  /* ---------- drawer ---------- */
+  dialog.drawer{position:fixed;inset:0 0 0 auto;margin:0;width:min(480px,100vw);max-width:100vw;height:100dvh;max-height:100dvh;padding:0;border:0;
+    background:var(--surface);color:var(--ink);overflow:hidden;transform:translateX(104%);transition:transform .34s cubic-bezier(.2,.8,.2,1);box-shadow:-30px 0 60px -34px rgba(0,0,0,.5)}
+  dialog.drawer.open{transform:none}
+  dialog.drawer::backdrop{background:rgba(0,0,0,.32);opacity:0;transition:opacity .3s}
+  dialog.drawer.open::backdrop{opacity:1}
+  .d-bar{position:absolute;z-index:3;top:14px;left:14px;right:14px;display:flex;gap:8px;pointer-events:none}
+  .d-bar button{pointer-events:auto;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:0;background:rgba(0,0,0,.18);color:var(--matte-ink);backdrop-filter:blur(8px)}
+  .d-bar button:hover{background:rgba(0,0,0,.28)}
+  .d-bar button:disabled{opacity:.35;cursor:default}
+  .d-scroll{height:100%;overflow-y:auto;overscroll-behavior:contain}
+  .cradle{display:flex;align-items:flex-end;justify-content:center;min-height:330px;padding:66px 40px 34px;background-color:var(--tone,var(--t-unknown));background-image:var(--fleck),var(--grain);transition:background-color .35s ease}
+  .d-cv{display:flex;align-items:flex-end;justify-content:center;width:212px;height:318px}
+  .d-cover{box-shadow:0 2px 3px rgba(0,0,0,.18),0 28px 40px -22px rgba(0,0,0,.65);outline-color:rgba(0,0,0,.12)}
+  .cradle .ph{padding:26px 22px}
+  .cradle .ph-t{font-size:21px;-webkit-line-clamp:7}
+  .cradle .ph-a{font-size:13px}
+  .d-body{padding:22px 28px 40px}
+  .in{width:100%;border:0;background:transparent;color:inherit;padding:4px 6px;margin:0 -6px;border-radius:8px;outline:none;resize:none;display:block}
+  .in:hover{background:var(--surface-2)}
+  .in:focus{background:var(--surface-2);box-shadow:0 0 0 2px var(--line-2)}
+  .in::placeholder{color:var(--faint)}
+  .in-title{font:600 23px/1.25 var(--display);letter-spacing:-.012em;overflow:hidden}
+  .d-sub{margin:4px 0 0;color:var(--muted);font-size:15px;line-height:1.4}
+  .in-author{font-size:16px;color:var(--ink);margin-top:6px}
+  .d-also{margin:2px 0 0;font-size:13px;color:var(--muted)}
+  .dseg{display:flex;flex-wrap:wrap;gap:6px;margin:20px 0 0}
+  .dseg button{border:0;border-radius:999px;padding:7px 12px;font-size:13px;font-weight:500;background:var(--sunk);color:var(--muted)}
+  .dseg button:hover{color:var(--ink)}
+  .dseg button[aria-pressed="true"]{background:var(--tone);color:var(--matte-ink);font-weight:600}
+  .d-quick{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:18px 0 6px}
+  .d-quick .stars button{font-size:22px;padding:0 2px}
+  .switch{display:inline-flex;align-items:center;gap:10px;font-size:14px;cursor:pointer;user-select:none}
+  .switch input{position:absolute;opacity:0;pointer-events:none}
+  .switch .track{position:relative;width:38px;height:23px;border-radius:999px;background:var(--sunk);transition:background-color .2s}
+  .switch .track:after{content:"";position:absolute;top:2px;left:2px;width:19px;height:19px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:transform .2s cubic-bezier(.2,.8,.2,1)}
+  .switch input:checked+.track{background:var(--t-read)}
+  .switch input:checked+.track:after{transform:translateX(15px)}
+  .switch input:focus-visible+.track{outline:2px solid var(--focus);outline-offset:2px}
+  .facts{display:grid;grid-template-columns:110px minmax(0,1fr);gap:4px 14px;margin:16px 0 0;padding:14px 0 0;border-top:1px dotted var(--line-2);font-size:14px;align-items:baseline}
+  .facts dt{color:var(--muted);padding:5px 0}
+  .facts dd{margin:0;padding:5px 0;min-width:0;overflow-wrap:anywhere}
+  .facts dd.ed{display:flex;align-items:center;gap:10px;padding:1px 0}
+  .in-inline{width:auto;flex:0 1 150px;min-width:0;font-variant-numeric:tabular-nums}
+  .in-inline.wide{flex:1 1 auto}
+  .in.bad{box-shadow:0 0 0 2px #D9817C}
+  .hint{font-size:12.5px;color:var(--faint);white-space:nowrap}
+  .hint.bad{color:#C0565C}
+  .mini-link{border:0;background:var(--sunk);color:var(--ink);font-size:12px;font-weight:500;padding:4px 10px;border-radius:999px;white-space:nowrap}
+  .mini-link:hover{background:var(--line-2)}
+  .d-sec{margin-top:26px}
+  .d-sec h3{margin:0 0 8px;font-size:13px;font-weight:600;color:var(--muted)}
+  .d-desc{margin:0;font-size:14.5px;line-height:1.6;white-space:pre-line;max-width:62ch}
+  .d-desc-loading{margin:0;display:grid;gap:8px;max-width:62ch}.d-desc-loading span{display:block;height:12px;border-radius:6px;background:var(--sunk);animation:descPulse 1.2s ease-in-out infinite alternate}.d-desc-loading span:nth-child(2){width:92%}.d-desc-loading span:nth-child(3){width:64%}
+  @keyframes descPulse{from{opacity:.55}to{opacity:1}}@media (prefers-reduced-motion:reduce){.d-desc-loading span{animation:none}}
+  .d-desc-note{margin:0;font-size:14px;color:var(--muted)}
+  .d-desc.clamped{display:-webkit-box;-webkit-line-clamp:7;-webkit-box-orient:vertical;overflow:hidden}
+  .more-btn{border:0;background:none;padding:6px 0 0;color:var(--ink);font-size:13px;font-weight:500;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line-2)}
+  .in-notes{min-height:84px;font-size:14.5px;line-height:1.55;background:var(--surface-2);padding:10px 12px;margin:0;border-radius:12px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{font-size:12.5px;padding:4px 10px;border-radius:999px;background:var(--sunk);color:var(--muted)}
+  .d-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .d-links a{font-size:13px;font-weight:500;color:var(--ink);background:var(--sunk);padding:6px 12px;border-radius:999px;text-decoration:none}
+  .d-links a:hover{background:var(--line-2)}
+  .d-record{margin-top:26px;border-top:1px dotted var(--line-2);padding-top:12px}
+  .d-record summary{cursor:pointer;font-size:13px;font-weight:600;color:var(--muted);list-style:none;padding:4px 0}
+  .d-record summary::-webkit-details-marker{display:none}
+  .d-record summary:after{content:" +";color:var(--faint)}
+  .d-record[open] summary:after{content:" \2212"}
+  .d-record .facts{border:0;margin-top:4px;padding-top:4px;font-size:13px}
+  .d-remove{margin-top:28px;border:0;background:none;color:#B4535A;font-size:13.5px;font-weight:500;padding:6px 0}
+  .d-remove:hover{text-decoration:underline;text-underline-offset:3px}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1060px){
+    .seg.views button span{display:none}
+    .seg.views button{padding:8px 10px}
+    .lhead,.lrow{grid-template-columns:56px minmax(0,1fr) 72px 116px 104px}
+    .lhead span:last-child,.l-rating{display:none}
+  }
+  @media (max-width:1200px){
+    .n-row2{flex-wrap:wrap}
+    .statusbar{order:-1;flex:1 1 100%}
+    .n-row2 .spacer{display:none}
+  }
+  @media (max-width:720px){
+    .notch{width:100%;border-radius:0 0 22px 22px;padding:10px 12px}
+    .n-main{grid-template-columns:minmax(0,1fr) auto auto;gap:10px}
+    .n-main .search{grid-column:1 / -1;grid-row:2}
+    .kbd{display:none}
+    .n-row2 .lbl{display:none}
+    .nbtn.primary{width:36px;padding:0;justify-content:center}
+    .pill-select{padding-left:6px}
+    .lib-title{max-width:46vw}
+    .wrap{width:calc(100% - 32px)}
+    .grid{grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:30px 16px}
+    .t-title{font-size:13px}
+    .t-author{font-size:12px}
+    .t-meta{font-size:11px}
+    .gh{margin-bottom:20px}
+    .lhead{display:none}
+    .lcard{padding:2px 14px;border-radius:18px}
+    .lrow{grid-template-columns:52px minmax(0,1fr);gap:14px}
+    .l-cv{width:52px;height:78px}
+    .l-col{display:none}
+    .l-meta{display:flex;gap:10px;font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+    .pop{right:8px!important;left:8px!important;width:auto}
+    dialog.drawer{width:100vw}
+    .d-body{padding:20px 20px 36px}
+    .facts{grid-template-columns:96px minmax(0,1fr)}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{transition:none!important;animation:none!important}
+  }
+
+/* Selected Photos rail: year leads, secondary date/navigation stay quiet. */
+.date-rail{position:fixed;left:28px;top:50%;transform:translateY(-50%);width:178px;z-index:12;display:flex;gap:22px;align-items:center}
+.date-context{width:108px;flex-shrink:0}.date-context .dm{max-width:108px;height:auto}.date-month{font-size:14px;color:var(--muted);margin-top:14px}.date-count{font-size:11px;color:var(--faint);margin-top:8px}
+.date-track{height:min(64vh,520px);width:45px;overflow:auto;scrollbar-width:none;display:flex;flex-direction:column;align-items:center;gap:3px;border-left:1px solid var(--line);padding-left:8px}.date-track::-webkit-scrollbar{display:none}
+.date-track button{flex-shrink:0;border:0;background:none;color:var(--faint);font-size:10px;padding:5px 2px;min-height:24px;min-width:32px;opacity:.65;border-radius:5px}.date-track button.month-tick{font-size:0;min-height:12px;height:12px;padding:2px}.month-tick:after{content:'';display:block;width:3px;height:3px;background:currentColor;border-radius:50%;margin:auto}.date-track button.active{color:var(--ink);opacity:1;background:var(--sunk);font-size:10px}.date-track button.active:after{display:none}.date-track:hover button,.date-track:focus-within button{opacity:1}.date-track button:hover{background:var(--sunk);color:var(--ink)}
+body.has-timeline .wrap{margin-left:250px;width:calc(100% - 290px);max-width:1360px}.has-timeline .gh{color:var(--muted);align-items:center}.has-timeline .gh .gtext{font:500 13px/1.4 var(--sans)}.has-timeline .gh .leader{border-width:1px}.has-timeline .gcount{font-size:11px;color:var(--faint)}
+.card-rating{margin-top:7px;align-self:flex-start}.card-rating button,.l-rating button{font-size:16px;width:22px;height:26px;color:var(--faint)}.card-rating button.on,.l-rating button.on{color:var(--muted)}.card-rating button:hover,.l-rating button:hover{color:var(--ink)}
+@media(max-width:1060px){.l-rating{display:flex!important}.lhead,.lrow{grid-template-columns:48px minmax(0,1fr) 72px 100px 100px}.lrow>.l-status,.lhead>span:nth-child(4){display:none}}
+@media(max-width:760px){.date-rail{left:12px;width:66px;gap:0}.date-context{width:65px}.date-context .dm{width:65px}.date-month{font-size:12px}.date-count{display:none}.date-track{position:absolute;top:calc(100% + 22px);left:6px;height:30vh;width:42px}body.has-timeline .wrap{margin-left:96px;width:calc(100% - 112px)}.l-rating{grid-column:2;grid-row:2}.lhead{display:none}.lrow{grid-template-columns:44px minmax(0,1fr)}.lrow>.l-col:not(.l-rating){display:none}}
+
+
+/* Align the browsing area with the header instead of a fixed left offset. */
+@media(min-width:761px){
+  body .wrap,body.has-timeline .wrap{margin-left:var(--books-left);margin-right:0;width:var(--books-width);max-width:none}
+}
+@media(min-width:761px) and (max-width:1500px){
+  .notch{left:200px;right:16px;width:calc(100% - 232px);margin:0 auto}
+}
+
+/* Consistent card bands keep every metadata line and rating baseline aligned. */
+.tile .cv{flex-shrink:0}
+.tile .t-title{min-height:2.6em;max-height:2.6em;flex-shrink:0}
+.tile .t-author{min-height:1.35em;flex-shrink:0}
+.tile .t-meta{min-height:1.3em;flex-shrink:0}
+.tile .card-rating{height:26px;flex-shrink:0}
+.mobile-month{display:none}
+.header-actions{display:flex;align-items:center;gap:6px}
+.header-actions a{text-decoration:none}
+.public-library #menuBtn,.public-library #menuPop,.public-library #add{display:none!important}
+.public-library .lib-title{cursor:default}
+.public-library .stars button{pointer-events:none}
+.public-library .edit:focus,.public-library .in:focus{background:transparent;box-shadow:none}
+.public-library .d-remove,.public-library .delbtn,.public-library [data-act="today"],.public-library .d-record{display:none}
+.public-library .dseg button:not([aria-pressed="true"]){display:none}
+.public-library .dseg button,.public-library .own,.public-library select.status{cursor:default;opacity:1}
+/* Phone browsing: full-width shelves, reachable controls and a quiet date dock. */
+@media(max-width:760px){
+  html{scroll-padding-top:0}
+  .notch{left:0;right:0;width:100%;padding:10px 12px;border-radius:0 0 20px 20px}
+  .n-main{grid-template-columns:minmax(0,1fr) auto;gap:8px}
+  .n-main .brand{grid-column:1;grid-row:1}
+  .n-main .header-actions{grid-column:2;grid-row:1}
+  .n-main .search{grid-column:1;grid-row:2;height:44px}
+  .n-main #viewSwitch{grid-column:2;grid-row:2;justify-self:end}
+  .search input,.pill-select select,.pop select,.d-body input,.d-body textarea,.d-body select{font-size:16px}
+  .lib-title{font-size:14px;max-width:none}.brand{gap:6px}
+  .seg.views button span,.kbd{display:none}
+  .seg.views button{width:36px;height:44px;padding:0;justify-content:center}
+  .round{width:44px;height:44px}
+  .header-actions{gap:2px}.header-actions .round{width:36px;height:44px}
+  .seg.views button{width:30px}
+  .notch.compact .n-more{grid-template-rows:1fr}
+  .n-row2{flex-wrap:wrap;gap:8px;padding-top:10px}
+  .statusbar{order:-1;flex:1 1 100%;max-width:100%;overscroll-behavior-x:contain}
+  .statusbar .seg button{min-height:44px;padding:10px 12px}
+  .n-row2 .spacer,.n-row2 .lbl{display:none}
+  .pill-select{min-width:0;flex:1;height:44px;padding-left:4px}
+  .pill-select select{width:100%;min-width:0;padding-left:8px}
+  .nbtn{height:44px;padding:0 10px}.nbtn.primary{width:44px;padding:0;justify-content:center}
+  body .wrap,body.has-timeline .wrap{margin:0 auto;width:calc(100% - 32px);padding-bottom:calc(110px + env(safe-area-inset-bottom))}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}
+  .tile{min-width:0}.tile .t-title{font-size:14px}.tile .t-author{font-size:12px}
+  .tile .card-rating{height:36px}.card-rating button{width:24px;height:36px}
+  .group{scroll-margin-top:calc(var(--notch-h) + 16px)}
+  .date-rail{left:16px;right:16px;top:auto;bottom:calc(12px + env(safe-area-inset-bottom));transform:none;width:auto;padding:8px 12px;gap:12px;border:1px solid var(--line);border-radius:18px;background:var(--surface);box-shadow:0 8px 30px #0003;justify-content:space-between}
+  .date-context{width:auto;display:flex;align-items:center;gap:10px;min-width:0}
+  .date-context .dm{width:58px}.date-month{margin:0;font-size:12px}.date-count,.date-track{display:none}
+  .mobile-month{display:block;min-height:44px;min-width:0;max-width:56%;border:1px solid var(--line);border-radius:10px;background:var(--sunk);color:var(--ink);padding:0 8px;font-size:16px}
+  .pop{left:8px!important;right:8px!important;width:auto;max-height:calc(100dvh - var(--notch-h) - 24px);overflow:auto;overscroll-behavior:contain}
+  .m-item,.linkbtn,.pop select{min-height:44px}.keys{display:none}
+  .column-options label{min-height:44px}.column-options{max-height:none}
+  dialog.drawer{width:100%;max-width:100%;height:100dvh;max-height:100dvh}
+  .d-body{padding:20px 16px calc(32px + env(safe-area-inset-bottom))}
+  .d-bar button{width:44px;height:44px}.dseg button,.own,.details-btn{min-height:44px}
+  .facts{grid-template-columns:88px minmax(0,1fr)}
+  .lrow{grid-template-columns:52px minmax(0,1fr);gap:10px}.l-rating button{width:30px;height:40px}
+  .toast{max-width:calc(100vw - 32px);white-space:normal;text-align:center}
+  button,select,a{touch-action:manipulation}
+}
+@media(min-width:540px) and (max-width:760px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:761px) and (max-width:1060px){
+  .n-main{grid-template-columns:minmax(0,1fr) auto;gap:8px}
+  .n-main .brand{grid-column:1;grid-row:1}
+  .n-main .header-actions{grid-column:2;grid-row:1}
+  .n-main .search{grid-column:1;grid-row:2}
+  .n-main #viewSwitch{grid-column:2;grid-row:2;justify-self:end}
+}
+
+/* ===== Production pass, 2 November 2026 (appended so every earlier rule stays as the rollback reference) ===== */
+/* Text contrast: the faint and muted greys fell below 4.5:1 on the page and card backgrounds. */
+:root{--muted:#5A5A5F;--faint:#6C6C71}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--faint:#8A8A90}}
+:root[data-theme="dark"]{--faint:#8A8A90}
+/* Header leftovers from the dark-only header: focus rings, borders and accents that were white on the now-white light header. */
+.lib-title:focus{box-shadow:0 0 0 2px color-mix(in srgb,var(--n-ink) 30%,transparent)}
+.search:focus-within,.pill-select:focus-within{box-shadow:0 0 0 2px color-mix(in srgb,var(--n-ink) 45%,transparent)}
+.kbd,.keys kbd{border-color:var(--n-line)}
+.linkbtn{text-decoration-color:color-mix(in srgb,var(--n-ink) 40%,transparent)}
+.column-options input{accent-color:var(--n-ink)}
+.badge{background:var(--n-ink);color:var(--n-bg)}
+.m-item.danger{color:#B4343A}
+:root[data-theme="dark"] .m-item.danger{color:#F0A49F}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .m-item.danger{color:#F0A49F}}
+/* Search clear button (the native one is hidden) */
+.search-clear{display:inline-grid;place-items:center;flex:none;width:24px;height:24px;border:0;border-radius:50%;background:transparent;color:var(--n-muted);font-size:18px;line-height:1;padding:0}
+.search-clear:hover{background:var(--n-fill-2);color:var(--n-ink)}
+.search.has-text .kbd{display:none}
+/* Pressed states and tap feedback */
+button,a,select,summary,[role="button"]{-webkit-tap-highlight-color:transparent}
+.round,.nbtn,.seg button,.details-btn,.mini-link,.dseg button,.own,.m-item{transition:background-color .15s,color .15s,transform .12s}
+.round:active,.nbtn:active,.seg button:active,.details-btn:active,.mini-link:active,.dseg button:active,.own:active,.m-item:active,.to-top:active{transform:scale(.96)}
+.tile:active .cv{transform:scale(.985)}
+/* Covers sit on a soft tile while they load, so nothing is blank and nothing jumps */
+.tile .cv,.l-cv,.tcover{background:color-mix(in srgb,var(--sunk) 70%,transparent)}
+/* First paint: a quiet skeleton shelf while the library loads */
+.boot-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(146px,1fr));gap:40px 28px;margin-top:8px}
+.boot-card{aspect-ratio:2/3;border-radius:3px;background:var(--sunk);animation:boot-pulse 1.4s ease-in-out infinite}
+.boot-card:nth-child(3n+2){animation-delay:.15s}.boot-card:nth-child(3n){animation-delay:.3s}
+@keyframes boot-pulse{50%{opacity:.45}}
+@media(max-width:760px){.boot-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}}
+/* Back to top */
+.to-top{position:fixed;z-index:30;right:24px;bottom:24px;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:0;background:var(--surface);color:var(--ink);box-shadow:0 0 0 1px var(--line-2),0 10px 24px -10px rgba(0,0,0,.35);transition:transform .12s,opacity .2s}
+.to-top:hover{background:var(--surface-2)}
+@media(max-width:760px){.to-top{right:16px;bottom:calc(16px + env(safe-area-inset-bottom))}body.has-timeline .to-top{bottom:calc(86px + env(safe-area-inset-bottom))}}
+/* Visitors see book details as plain text, not editable-looking fields */
+.public-library .in:hover{background:transparent}
+.public-library .in-title,.public-library .in-author{cursor:default}
+</style>
+<link rel="stylesheet" href="/tbr.css">
+<script type="module" src="/tbr.js"></script>
+<link rel="stylesheet" href="/unified.css"><link rel="alternate" type="application/atom+xml" title="Tiago Faleiro" href="/posts_feed"><link rel="canonical" href="https://tiagobooks.com/"></head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-search" viewBox="0 0 20 20"><circle cx="8.8" cy="8.8" r="5.6"/><path d="M13 13l4 4"/></symbol>
+  <symbol id="i-covers" viewBox="0 0 20 20"><rect x="3" y="3" width="5.5" height="7.5" rx="1.2"/><rect x="11.5" y="3" width="5.5" height="7.5" rx="1.2"/><rect x="3" y="12.5" width="5.5" height="4.5" rx="1.2"/><rect x="11.5" y="12.5" width="5.5" height="4.5" rx="1.2"/></symbol>
+  <symbol id="i-list" viewBox="0 0 20 20"><rect x="3" y="3.5" width="4" height="5.5" rx="1"/><rect x="3" y="11" width="4" height="5.5" rx="1"/><path d="M10 5h7M10 7.5h4.5M10 12.5h7M10 15h4.5"/></symbol>
+  <symbol id="i-table" viewBox="0 0 20 20"><rect x="3" y="3.5" width="14" height="13" rx="2"/><path d="M3 8h14M3 12.3h14M8.5 8v8.5"/></symbol>
+  <symbol id="i-more" viewBox="0 0 20 20"><circle cx="5" cy="10" r=".9" fill="currentColor"/><circle cx="10" cy="10" r=".9" fill="currentColor"/><circle cx="15" cy="10" r=".9" fill="currentColor"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 20 20"><path d="M10 4.5v11M4.5 10h11"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 20 20"><path d="M4 6h7M15 6h1M4 14h1M9 14h7"/><circle cx="13" cy="6" r="1.8"/><circle cx="7" cy="14" r="1.8"/></symbol>
+  <symbol id="i-filter" viewBox="0 0 20 20"><path d="M3.5 4.5h13l-5 6v4.5l-3 1.5v-6z"/></symbol>
+  <symbol id="i-sort" viewBox="0 0 20 20"><path d="M6.5 15.5v-11M3.5 7.5l3-3 3 3M13.5 4.5v11M10.5 12.5l3 3 3-3"/></symbol>
+  <symbol id="i-check" viewBox="0 0 12 12"><path d="M2.5 6.4l2.3 2.3 4.7-5"/></symbol>
+  <symbol id="i-left" viewBox="0 0 20 20"><path d="M12 4.5L6.5 10l5.5 5.5"/></symbol>
+  <symbol id="i-right" viewBox="0 0 20 20"><path d="M8 4.5l5.5 5.5L8 15.5"/></symbol>
+  <symbol id="i-close" viewBox="0 0 20 20"><path d="M5.5 5.5l9 9M14.5 5.5l-9 9"/></symbol>
+</svg>
+
+<!-- site-shell:start --><div class="shell-backdrop" aria-hidden="true"></div><header class="site-shell" id="siteShell"><div class="shell-top"><a class="shell-brand" href="/">Tiago Faleiro</a><div class="shell-actions"><a class="shell-action" href="/search" aria-label="Search the website" title="Search"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4 4"/></svg></a><a class="shell-action" id="githubLink" href="https://github.com/tiagovasc/tiagobooks-website" target="_blank" rel="noopener noreferrer" aria-label="View the source on GitHub (opens in a new tab)" title="GitHub"><svg viewBox="0 0 16 16" aria-hidden="true" class="fill-icon"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><button class="shell-action" id="appearanceBtn" type="button" aria-label="Switch appearance" title="Switch appearance"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="4"/><path d="M10 1v2m0 14v2M1 10h2m14 0h2M3.6 3.6L5 5m10 10 1.4 1.4M3.6 16.4L5 15m10-10 1.4-1.4"/></svg></button><a class="shell-action" id="adminAccess" href="/login" aria-label="Admin login" title="Admin login"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M11 3h5a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-5M3 10h10M9 6l4 4-4 4"/></svg></a></div></div><nav class="unified-nav" aria-label="Main"><a href="/">Library</a><a href="/blog">Blog</a><a href="/pages/books">Books</a><a href="/pages/talks">Talks</a><a href="/pages/podcast-overview">Podcast</a><a href="/pages/interviews">Interviews</a><a href="/pages/about">About</a></nav></header><!-- site-shell:end -->
+<section class="notch library-tools" id="notch" aria-label="Library tools">
+  <div class="n-main" hidden>
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 22 22" aria-hidden="true"><rect x="2.5" y="5" width="4.2" height="14" rx="1.4" fill="#91AC98"/><rect x="8" y="2.5" width="4.2" height="16.5" rx="1.4" fill="#C6B86C"/><rect x="14.6" y="6" width="4.2" height="13.4" rx="1.4" fill="#A49FC5" transform="rotate(9 16.7 19)"/></svg>
+      <h1 class="lib-title" id="libTitle" contenteditable="true" spellcheck="false" title="Rename your library">Tiago's Library</h1>
+    </div>
+    <label class="search" hidden>
+      <svg class="i" aria-hidden="true"><use href="#i-search"/></svg>
+      <input id="search" type="search" placeholder="Search title, author, subject, notes" autocomplete="off" spellcheck="false" aria-label="Search books">
+      <button type="button" class="search-clear" id="searchClear" aria-label="Clear search" hidden><span aria-hidden="true">&times;</span></button>
+      <kbd class="kbd" aria-hidden="true">/</kbd>
+    </label>
+    <div class="header-actions" aria-label="Appearance, GitHub and administration">
+      
+      
+    </div>
+  </div>
+  
+  <div class="n-more" id="notchMore">
+    <div class="n-more-inner">
+      <div class="n-row2">
+        <div class="statusbar"><div class="seg" id="statusSeg" role="group" aria-label="Reading status"></div></div>
+        <span class="spacer"></span>
+        <div class="view-cycle" id="viewSwitch" role="group" aria-label="Layout">
+          <button type="button" data-view="covers" aria-pressed="true" title="Covers view. Click for list" aria-label="Covers view. Click to switch to list"><svg class="i" aria-hidden="true"><use href="#i-covers"/></svg></button>
+          <button type="button" data-view="list" aria-pressed="false" title="List view. Click for table" aria-label="List view. Click to switch to table"><svg class="i" aria-hidden="true"><use href="#i-list"/></svg></button>
+          <button type="button" data-view="table" aria-pressed="false" title="Table view. Click for covers" aria-label="Table view. Click to switch to covers"><svg class="i" aria-hidden="true"><use href="#i-table"/></svg></button>
+        </div>
+        <button class="nbtn icon-btn" id="filtersBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="filtersPop" aria-label="Filters" title="Filters"><svg class="i" aria-hidden="true"><use href="#i-filter"/></svg><span class="badge" id="filterCount" hidden></span></button>
+        <label class="pill-select icon-select" title="Sort"><svg class="i" aria-hidden="true"><use href="#i-sort"/></svg><span class="lbl">Sort</span>
+          <select id="sort" aria-label="Sort books">
+            <option value="dateread">Date read, newest</option>
+            <option value="dateread_asc">Date read, oldest</option>
+            <option value="acquired">Recently acquired</option>
+            <option value="acquired_asc">Acquired, oldest first</option>
+            <option value="title">Title</option>
+            <option value="author">Author</option>
+            <option value="year">Published, newest</option>
+            <option value="year_asc">Published, oldest</option>
+            <option value="rating">Rating</option>
+            <option value="subject">Subject</option>
+          </select>
+        </label>
+        <button class="nbtn primary" id="add" type="button" aria-label="Add book"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg><span class="lbl">Add book</span></button>
+        <button class="round" id="menuBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="menuPop" aria-label="Library menu and saving"><svg class="i" aria-hidden="true"><use href="#i-more"/></svg><span class="save-dot" id="dot"></span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="pop" id="menuPop" hidden>
+    <div class="m-status"><span class="dot" id="dot2"></span><span id="fileStatusText">Saving in this browser</span></div>
+    <p id="fileHint"></p>
+    <button class="m-item" id="connect" type="button">Connect file</button>
+    <button class="m-item" id="exportBtn" type="button">Export JSON</button>
+    <button class="m-item" id="exportCsvBtn" type="button">Export CSV</button>
+    <button class="m-item" id="importBtn" type="button">Import JSON</button>
+    <input type="file" id="importInput" accept=".json,application/json" aria-label="Choose a books.json file to import" hidden>
+    <div class="m-sep"></div>
+    <div class="m-row"><span>Appearance</span>
+      <div class="seg mini" id="themeSwitch" role="group" aria-label="Appearance">
+        <button type="button" data-theme="auto" aria-pressed="true">Auto</button><button type="button" data-theme="light" aria-pressed="false">Light</button><button type="button" data-theme="dark" aria-pressed="false">Dark</button>
+      </div>
+    </div>
+    <div class="m-sep"></div>
+    <div class="keys"><kbd>/</kbd><span>Search the website</span><kbd>1 2 3</kbd><span>Covers, list, table</span><kbd>&larr; &rarr;</kbd><span>Previous or next book while one is open</span><kbd>Ctrl S</kbd><span>Save now</span></div>
+    <div class="m-sep"></div>
+    <button class="m-item danger" id="resetBtn" type="button" title="Restore the original built-in library">Restore built-in library</button>
+    <p class="m-foot" id="provenance"></p>
+  </div>
+
+  <div class="pop" id="filtersPop" hidden>
+    <h2>Filters</h2>
+    <label class="field"><span>Ownership</span><select id="ownFilter"></select></label>
+    <label class="field"><span>Subject</span><select id="subjFilter"></select></label>
+    <label class="field"><span>Metadata</span>
+      <select id="enrichFilter">
+        <option value="all">All metadata</option>
+        <option value="yes">Enriched only</option>
+        <option value="review">Needs review</option>
+        <option value="no">Not enriched</option>
+      </select>
+    </label>
+    <div class="pop-actions"><button class="linkbtn" id="resetFilters" type="button">Clear filters</button></div>
+    <button class="nbtn" id="columnsBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="columnsPop" hidden>Table columns</button>
+  </div>
+
+  <div class="pop" id="columnsPop" hidden>
+    <h2>Table columns</h2>
+    <p>Choose what the table shows. Your choice is remembered in this browser.</p>
+    <div class="column-options" id="columnOptions"></div>
+    <div class="pop-actions"><button class="linkbtn" id="allColumns" type="button">Show all</button><button class="linkbtn" id="defaultColumns" type="button">Reset columns</button></div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</section>
+
+<main class="wrap" id="main">
+  <noscript><div class="empty-state"><h2>JavaScript is needed</h2><p>This library loads its books in the browser. Turn on JavaScript to browse it.</p></div></noscript>
+  <div class="results" id="results" hidden></div>
+  <div id="content" aria-busy="true"><div class="boot-grid" role="status" aria-label="Loading the library"><span class="boot-card"></span><span class="boot-card"></span><span class="boot-card"></span><span class="boot-card"></span><span class="boot-card"></span><span class="boot-card"></span><span class="boot-card"></span><span class="boot-card"></span><span class="boot-card"></span><span class="boot-card"></span><span class="boot-card"></span><span class="boot-card"></span></div></div>
+  <div class="empty-state" id="empty" hidden>
+    <h2 id="emptyTitle">No books match</h2>
+    <p id="emptyText">Try another word, or clear the search and filters.</p>
+    <button type="button" id="emptyAction">Clear search and filters</button>
+  </div>
+  <div id="sentinel" aria-hidden="true"></div>
+  <div class="loadmore" id="loadmore" hidden></div>
+</main>
+
+<datalist id="subjectList"></datalist>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top" title="Back to top" hidden><svg class="i" aria-hidden="true" viewBox="0 0 20 20"><path d="M5 12l5-5 5 5"/></svg></button>
+
+<dialog class="drawer" id="drawer" aria-labelledby="dTitleLabel">
+  <div class="d-bar">
+    <button type="button" id="dPrev" aria-label="Previous book"><svg class="i" aria-hidden="true"><use href="#i-left"/></svg></button>
+    <button type="button" id="dNext" aria-label="Next book"><svg class="i" aria-hidden="true"><use href="#i-right"/></svg></button>
+    <span class="spacer"></span>
+    <button type="button" id="dClose" aria-label="Close"><svg class="i" aria-hidden="true"><use href="#i-close"/></svg></button>
+  </div>
+  <div class="d-scroll" id="dScroll">
+    <div class="cradle" id="dCradle"></div>
+    <div class="d-body" id="dBody"></div>
+  </div>
+</dialog>
+
+<script>
+var SEED = [];
+(function(){
+  "use strict";
+  var STORAGE_KEY = "tiago-books-db-v1";
+  var state = { title:"Tiago's Library", books:[] };
+  var fileHandle=null, filePermission=false, saveTimer=null;
+  var supportsFS = !!(window.showSaveFilePicker && window.showOpenFilePicker);
+  // Server mode: when served over http://localhost by the bundled launcher,
+  // saving goes straight to the local server (zero permission prompts). When
+  // opened as a file:// page, fall back to localStorage + File System Access.
+  var SERVER_MODE = (window.location.protocol === "http:" || window.location.protocol === "https:");
+  var serverSaveState = "idle"; // idle | saving | saved | error
+  var saveFailed=false;
+  var STATUSES=["read","reading","next","unread","paused","unknown"];
+  var LABEL={read:"Read",reading:"Reading",next:"Next up",unread:"Unread",paused:"Paused",unknown:"Unknown"};
+  var DASH="\u2013";
+  // Visitors (not signed in) get the lighter public list; the editor loads complete records because it saves them back.
+  var LITE=!!window.CLOUD_LIBRARY&&!window.CLOUD_CAN_EDIT;
+
+  // ---------- helpers ----------
+  var $=function(id){return document.getElementById(id);};
+  var has=Object.prototype.hasOwnProperty;
+  function esc(s){return (s==null?"":String(s)).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];});}
+  function uid(){return "b"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
+  function num(v){var n=parseInt(v,10);return isNaN(n)?null:n;}
+  var originalBooks=new WeakMap();
+  function normalize(b){
+    b=b||{};
+    var out={
+      id:(b.id!=null?String(b.id):uid()),
+      title:b.title||"", author:b.author||"", additional_authors:b.additional_authors||"",
+      isbn13:b.isbn13||"",
+      read_status:STATUSES.indexOf(b.read_status)>=0?b.read_status:(STATUSES.indexOf(b.status)>=0?b.status:"unread"),
+      owned:!!b.owned,
+      rating:Math.max(0,Math.min(5,parseInt(b.rating,10)||0)),
+      subject:b.subject||"", format:b.format||"", pages:(b.pages==null?null:num(b.pages)),
+      publication_year:(b.publication_year==null?null:num(b.publication_year)),
+      date_read:b.date_read||"", tags:Array.isArray(b.tags)?b.tags:[],
+      notes:b.notes||"", notes_url:b.notes_url||"", review_url:b.review_url||"",
+      goodreads_shelf:b.goodreads_shelf||"", sources:Array.isArray(b.sources)?b.sources:[],
+      subtitle:b.subtitle||"", publisher:b.publisher||"", description:b.description||"",
+      cover:b.cover||"", cover_status:b.cover_status||"", google_books_id:b.google_books_id||"",
+      enriched:!!b.enriched, enrich_status:b.enrich_status||"", enrich_confidence:b.enrich_confidence||""
+    };
+    // Keep any field this page does not know about, so saving never drops data a newer pipeline added.
+    for(var k in b){ if(has.call(b,k) && !has.call(out,k) && k!=="status" && k!=="_new") out[k]=b[k]; }
+    if(b.id!=null)originalBooks.set(out,{raw:JSON.parse(JSON.stringify(b)),normalized:JSON.parse(JSON.stringify(out))});
+    return out;
+  }
+  var byId={};
+  function reindex(){ byId={}; state.books.forEach(function(b){byId[b.id]=b;});state.books.forEach(function(b){(b.merged_record_ids||[]).forEach(function(id){if(!byId[id])byId[id]=b;});}); }
+  function findBook(id){ return byId[id]||null; }
+
+  // ---------- persistence ----------
+  function serialize(){return JSON.stringify(state.books.map(function(b){var baseline=originalBooks.get(b);if(!baseline)return b;var raw=JSON.parse(JSON.stringify(baseline.raw));Object.keys(b).forEach(function(k){if(JSON.stringify(b[k])!==JSON.stringify(baseline.normalized[k]))raw[k]=b[k];});return raw;}),null,2);}            // canonical = bare array
+  function scheduleSave(){ if(saveTimer)clearTimeout(saveTimer); saveTimer=setTimeout(function(){saveTimer=null;saveNow();},400); }
+  function saveNow(){
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify({title:state.title,books:state.books})); }catch(e){}
+    if(SERVER_MODE){ saveToServer(); return; }
+    if(fileHandle&&filePermission) writeToFile(false);
+  }
+  var serverRevision=null, serverSaveQueue=Promise.resolve();
+  function saveToServer(){
+    serverSaveState="saving"; renderFileStatus();
+    var snapshot=serialize();
+    serverSaveQueue=serverSaveQueue.catch(function(){}).then(function(){
+      if(window.CLOUD_LIBRARY&&!serverRevision)throw new Error('Reload the library before saving.');
+      var headers={"Content-Type":"application/json"};if(serverRevision)headers['X-Library-Revision']=serverRevision;
+      return fetch("/save",{method:"POST",headers:headers,body:snapshot});
+    }).then(function(r){ if(!r.ok){return r.json().catch(function(){return {};}).then(function(d){if(r.status===409){serverRevision=null;throw new Error('Another session changed the library. Export your changes, then reload.');}if(r.status===401)throw new Error('Your admin session ended. Sign in again, then repeat the change.');throw new Error(r.status===400&&d&&d.error?d.error:'Could not save. Your changes remain in this browser.');});} serverRevision=r.headers.get('X-Library-Revision')||serverRevision;serverSaveState="saved";saveFailed=false;renderFileStatus(); })
+      .catch(function(error){serverSaveState="error";renderFileStatus();toast(error.message,7000);});
+  }
+  function writeToFile(announce){
+    if(!fileHandle) return;
+    fileHandle.createWritable().then(function(w){return w.write(serialize()).then(function(){return w.close();});})
+    .then(function(){ if(announce) toast("Saved to "+fileHandle.name); })
+    .catch(function(){ filePermission=false; renderFileStatus(); toast("Couldn't write the file. Reconnect to resume."); });
+  }
+  function loadLocal(){
+    try{
+      var raw=localStorage.getItem(STORAGE_KEY);
+      if(raw){ var d=JSON.parse(raw);
+        if(d&&Array.isArray(d.books)){ state.books=d.books.map(normalize); }
+        if(d&&typeof d.title==="string") state.title=d.title;
+        return true;
+      }
+    }catch(e){}
+    return false;
+  }
+  function seedFromBuiltin(){ state.books = (SEED||[]).map(normalize); }
+
+  // ---------- File System Access ----------
+  function idb(cb){var r=indexedDB.open("tiago-books-db",1);r.onupgradeneeded=function(){r.result.createObjectStore("kv");};r.onsuccess=function(){cb(r.result);};r.onerror=function(){cb(null);};}
+  function idbSet(k,v){idb(function(db){if(!db)return;db.transaction("kv","readwrite").objectStore("kv").put(v,k);});}
+  function idbGet(k,cb){idb(function(db){if(!db){cb(null);return;}var rq=db.transaction("kv","readonly").objectStore("kv").get(k);rq.onsuccess=function(){cb(rq.result);};rq.onerror=function(){cb(null);};});}
+  function connectFile(){
+    if(!supportsFS){ toast("File saving needs Chrome or Edge. Use Export JSON instead."); return; }
+    window.showSaveFilePicker({suggestedName:"books.json",types:[{description:"JSON file",accept:{"application/json":[".json"]}}]})
+    .then(function(h){ fileHandle=h; filePermission=true; idbSet("fileHandle",h); renderFileStatus(); writeToFile(true); })
+    .catch(function(){});
+  }
+  function reconnectFile(){
+    if(!fileHandle){ connectFile(); return; }
+    fileHandle.requestPermission({mode:"readwrite"}).then(function(p){
+      if(p==="granted"){ filePermission=true; renderFileStatus(); saveNow(); toast("Reconnected to "+fileHandle.name); }
+      else toast("Permission needed to write the file.");
+    });
+  }
+  function restoreHandle(){
+    if(!supportsFS) return;
+    idbGet("fileHandle",function(h){ if(!h)return; fileHandle=h;
+      if(h.queryPermission){ h.queryPermission({mode:"readwrite"}).then(function(p){ filePermission=(p==="granted"); renderFileStatus(); }); }
+      else renderFileStatus();
+    });
+  }
+
+  // ---------- import / export ----------
+  function download(name,text,type){
+    var blob=new Blob([text],{type:type}); var url=URL.createObjectURL(blob);
+    var a=document.createElement("a"); a.href=url; a.download=name; a.click();
+    setTimeout(function(){URL.revokeObjectURL(url);},1000);
+  }
+  function exportJSON(){ download("books.json",serialize(),"application/json"); toast("Exported books.json"); }
+  function csvCell(v){ v=(v==null?"":String(v)); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v; }
+  function exportCSV(){
+    var cols=["id","title","author","additional_authors","isbn13","read_status","owned","rating","subject","format","pages","publication_year","date_read","tags","notes","notes_url","review_url","goodreads_shelf","sources","acquisition_order","acquired_date","acquisition_basis","acquisition_log_line","acquisition_source","goodreads_date_added"];
+    var lines=[cols.join(",")];
+    state.books.forEach(function(b){
+      lines.push(cols.map(function(c){
+        var v=b[c]; if(Array.isArray(v)) v=v.join("; ");
+        return csvCell(v);
+      }).join(","));
+    });
+    download("books.csv","\ufeff"+lines.join("\r\n"),"text/csv");
+    toast("Exported books.csv");
+  }
+  function applyImported(txt){
+    try{ var d=JSON.parse(txt); var books=Array.isArray(d)?d:(d&&d.books);
+      if(!Array.isArray(books)){ toast("That file didn't contain a library."); return; }
+      if(state.books.length&&!confirm("Replace the "+fmtN(state.books.length)+" books in this library with the "+fmtN(books.length)+" in this file?"+(window.CLOUD_LIBRARY?" The change is saved online right away.":""))) return;
+      state.books=books.map(normalize); if(d&&typeof d.title==="string") state.title=d.title;
+      reindex(); buildFilters(); renderAll(); saveNow(); toast("Imported "+books.length+" books");
+    }catch(e){ toast("Couldn't read that file as JSON."); }
+  }
+  function loadFromFile(){
+    window.showOpenFilePicker({types:[{description:"JSON file",accept:{"application/json":[".json"]}}]}).then(function(arr){
+      var h=arr[0]; fileHandle=h;
+      return h.requestPermission({mode:"readwrite"}).then(function(p){ filePermission=(p==="granted"); return h.getFile(); })
+      .then(function(f){return f.text();}).then(function(txt){ applyImported(txt); idbSet("fileHandle",h); renderFileStatus(); });
+    }).catch(function(){});
+  }
+
+  // ---------- browser-only view preferences (never written to books.json) ----------
+  var UI_KEY="tiago-books-ui-v1";
+  var VIEWS=["covers","list","table"];
+  var SORTS=["dateread","dateread_asc","acquired","acquired_asc","title","author","year","year_asc","rating","subject"];
+  var ui={view:"covers",sort:"dateread",theme:"auto",status:"all",own:"all",subject:"all",enrich:"all"};
+  try{ var savedUI=JSON.parse(localStorage.getItem(UI_KEY)||"null");
+    if(savedUI&&typeof savedUI==="object"){
+      if(VIEWS.indexOf(savedUI.view)>=0) ui.view=savedUI.view;
+      if(SORTS.indexOf(savedUI.sort)>=0) ui.sort=savedUI.sort;
+      if(["auto","light","dark"].indexOf(savedUI.theme)>=0) ui.theme=savedUI.theme;
+    } }catch(e){}
+  function saveUI(){ try{ localStorage.setItem(UI_KEY,JSON.stringify({view:ui.view,sort:ui.status==="unread"&&acquisitionSort()?"dateread":ui.sort,theme:ui.theme})); }catch(e){} }
+
+  // ---------- formatting ----------
+  var MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  function fmtDate(v,withYear){
+    if(!v) return "";
+    var m=/^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?$/.exec(v);
+    if(!m) return String(v);
+    if(!m[2]) return m[1];
+    var mon=MONTHS[Number(m[2])-1]; if(!mon) return String(v);
+    return (m[3]?Number(m[3])+" ":"")+mon+(withYear===false?"":" "+m[1]);
+  }
+  function displayDate(v){ return v?fmtDate(v,true):DASH; }
+  function fmtYear(y){ if(y==null||y===""||y===0) return ""; y=Number(y); if(isNaN(y)) return ""; return y<0?(-y)+" BCE":String(y); }
+  function fmtN(n){ return Number(n||0).toLocaleString("en-GB"); }
+  function countBooks(n){ return fmtN(n)+(n===1?" book":" books"); }
+  function fold(s){ return String(s==null?"":s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g," ").toLowerCase(); }
+  function splitTitle(t){ t=String(t||""); var i=t.indexOf(": "); return (i>1&&i<t.length-2)?[t.slice(0,i),t.slice(i+2)]:[t,""]; }
+  function secondLine(b,parts){ if(b.subtitle&&fold(b.title).indexOf(fold(b.subtitle))<0) return b.subtitle; return parts[1]; }
+  function titleKey(b){ return fold(b.title).replace(/^[^a-z0-9]+/,"").replace(/^(the|a|an)\s+/,""); }
+  var SUFFIX=/^(jr|sr|ii|iii|iv|phd|md)\.?$/i;
+  function authorKey(b){ var a=String(b.author||"").split(",")[0].trim(); var p=a.split(/\s+/).filter(function(x){return x&&!SUFFIX.test(x);}); return fold(p.length?p[p.length-1]:"")+" "+fold(a); }
+  function initialOf(k){ var c=k.charAt(0).toUpperCase(); return /[A-Z]/.test(c)?c:"#"; }
+  function pad2(n){ return (n<10?"0":"")+n; }
+  function todayISO(){ var d=new Date(); return d.getFullYear()+"-"+pad2(d.getMonth()+1)+"-"+pad2(d.getDate()); }
+  function plainText(html){
+    if(!html) return "";
+    var s=String(html).replace(/<br\s*\/?>/gi,"\n").replace(/<\/p>\s*/gi,"\n\n");
+    var doc=new DOMParser().parseFromString(s,"text/html");
+    return (doc.body.textContent||"").replace(/\n{3,}/g,"\n\n").trim();
+  }
+  function ariaFor(b){ var y=fmtYear(b.publication_year); return (b.title||"Untitled")+", by "+(b.author||"unknown author")+(y?", published "+y:"")+(b.date_read?", read "+fmtDate(b.date_read,true):", "+(LABEL[b.read_status]||"").toLowerCase()); }
+  function cssq(s){ return (window.CSS&&CSS.escape)?CSS.escape(String(s)):String(s).replace(/["\\]/g,"\\$&"); }
+
+  // ---------- dot-matrix lettering (5 x 7 grid, like the notch timer) ----------
+  var DM={"0":[14,17,17,17,17,17,14],"1":[4,12,4,4,4,4,14],"2":[14,17,1,2,4,8,31],"3":[31,2,4,2,1,17,14],"4":[2,6,10,18,31,2,2],
+    "5":[31,16,30,1,1,17,14],"6":[6,8,16,30,17,17,14],"7":[31,1,2,4,8,8,8],"8":[14,17,17,14,17,17,14],"9":[14,17,17,15,1,2,12],
+    "A":[14,17,17,17,31,17,17],"B":[30,17,17,30,17,17,30],"C":[14,17,16,16,16,17,14],"D":[28,18,17,17,17,18,28],"E":[31,16,16,30,16,16,31],
+    "F":[31,16,16,30,16,16,16],"G":[14,17,16,23,17,17,15],"H":[17,17,17,31,17,17,17],"I":[14,4,4,4,4,4,14],"J":[7,2,2,2,2,18,12],
+    "K":[17,18,20,24,20,18,17],"L":[16,16,16,16,16,16,31],"M":[17,27,21,21,17,17,17],"N":[17,17,25,21,19,17,17],"O":[14,17,17,17,17,17,14],
+    "P":[30,17,17,30,16,16,16],"Q":[14,17,17,17,21,18,13],"R":[30,17,17,30,20,18,17],"S":[15,16,16,14,1,1,30],"T":[31,4,4,4,4,4,4],
+    "U":[17,17,17,17,17,17,14],"V":[17,17,17,17,17,10,4],"W":[17,17,17,21,21,21,10],"X":[17,17,10,4,10,17,17],"Y":[17,17,17,10,4,4,4],
+    "Z":[31,1,2,4,8,16,31],"s":[0,0,14,16,14,1,30],"#":[10,10,31,10,31,10,10],"*":[4,4,14,31,14,10,17]};
+  function dotMatrix(text,p){
+    var r=(p*0.37).toFixed(2), x=0, out="";
+    for(var i=0;i<text.length;i++){
+      var g=DM[text.charAt(i)]||DM["#"];
+      for(var row=0;row<7;row++){ for(var col=0;col<5;col++){ if(g[row]&(16>>col)) out+='<circle cx="'+(x+col*p+p/2)+'" cy="'+(row*p+p/2)+'" r="'+r+'"/>'; } }
+      x+=6*p;
+    }
+    var w=Math.max(0,x-p), h=7*p;
+    return '<svg class="dm" width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'" fill="currentColor" aria-hidden="true">'+out+'</svg>';
+  }
+
+  // ---------- filtering, sorting, grouping ----------
+  var facets={all:0};
+  function searchTerms(){ var q=fold(($("search").value||"").trim()); return q?q.split(/\s+/):[]; }
+  function haystack(b){ return fold([b.title,b.subtitle,b.author,b.additional_authors,b.subject,b.notes,(b.tags||[]).join(" "),b.publisher,b.isbn13,b.publication_year||""].join(" ")); }
+  function needsReview(b){ return b.enriched && (b.enrich_status==="no_match" || !b.cover || b.enrich_confidence==="low" || b.enrich_confidence==="medium"); }
+  function passes(b,terms){
+    if(ui.enrich==="yes" && !b.enriched) return false;
+    if(ui.enrich==="no" && b.enriched) return false;
+    if(ui.enrich==="review" && !needsReview(b)) return false;
+    if(ui.own==="owned" && !b.owned) return false;
+    if(ui.own==="not" && b.owned) return false;
+    if(ui.subject!=="all"){ var sj=b.subject||"(none)"; if(sj!==ui.subject) return false; }
+    if(terms.length){ var h=haystack(b); for(var i=0;i<terms.length;i++){ if(h.indexOf(terms[i])<0) return false; } }
+    return true;
+  }
+  function emptyFacets(){ var f={all:0}; STATUSES.forEach(function(s){f[s]=0;}); return f; }
+  function computeFacets(){ var t=searchTerms(), f=emptyFacets(); state.books.forEach(function(b){ if(passes(b,t)){ f.all++; f[b.read_status]=(f[b.read_status]||0)+1; } }); facets=f; }
+  function getView(){
+    var t=searchTerms(), f=emptyFacets(), list=[];
+    state.books.forEach(function(b){
+      if(!passes(b,t)) return;
+      f.all++; f[b.read_status]=(f[b.read_status]||0)+1;
+      if(ui.status!=="all" && b.read_status!==ui.status) return;
+      list.push(b);
+    });
+    facets=f; sortList(list); return list;
+  }
+  function cmp(a,b){ return a<b?-1:(a>b?1:0); }
+  // Newest-first reading order opens with what is on the nightstand: reading now, then next up, then the dated history.
+  function acquisitionSort(){return ui.sort==="acquired"||ui.sort==="acquired_asc";}
+  function acquisitionInfo(b){
+    if(b.acquisition_basis==="purchase_log")return "Purchase log · newest first; source line "+b.acquisition_log_line;
+    if(b.acquisition_basis==="user_recent")return "Around October 2026 · your estimate; placement within recent purchases is approximate";
+    if(b.acquisition_basis==="goodreads_added")return "Added to Goodreads "+displayDate(b.goodreads_date_added)+" · ordering estimate, not a confirmed purchase date";
+    return "Acquisition order unknown";
+  }
+  function queueRank(b){ if(b.date_read) return 2; if(b.read_status==="reading") return 0; if(b.read_status==="next") return 1; return 3; }
+  function sortList(list){
+    var s=ui.sort, tk=new Map();
+    list.forEach(function(b){ tk.set(b,titleKey(b)); });
+    var byTitle=function(a,b){ return cmp(tk.get(a),tk.get(b)); };
+    var undatedLast=function(x,y){ return (!x)!==(!y)?(x?-1:1):0; };
+    if(s==="acquired"||s==="acquired_asc") list.sort(function(a,b){var x=Number(a.acquisition_order),y=Number(b.acquisition_order),ax=a.acquisition_order!=null&&isFinite(x),ay=b.acquisition_order!=null&&isFinite(y);return ax!==ay?(ax?-1:1):((ax?(s==="acquired"?x-y:y-x):0)||byTitle(a,b));});
+    else if(s==="dateread") list.sort(function(a,b){ return (queueRank(a)-queueRank(b))||cmp(b.date_read||"",a.date_read||"")||byTitle(a,b); });
+    else if(s==="dateread_asc") list.sort(function(a,b){ var x=a.date_read||"", y=b.date_read||""; return undatedLast(x,y)||cmp(x,y)||byTitle(a,b); });
+    else if(s==="title") list.sort(byTitle);
+    else if(s==="author"){ var ak=new Map(); list.forEach(function(b){ ak.set(b,b.author?authorKey(b):"\uffff"); }); list.sort(function(a,b){ return cmp(ak.get(a),ak.get(b))||byTitle(a,b); }); }
+    else if(s==="year"||s==="year_asc"){ var dir=s==="year"?-1:1; list.sort(function(a,b){ var x=a.publication_year||0, y=b.publication_year||0; if(!x!==!y) return x?-1:1; return dir*(x-y)||byTitle(a,b); }); }
+    else if(s==="rating") list.sort(function(a,b){ return (b.rating-a.rating)||cmp(b.date_read||"",a.date_read||"")||byTitle(a,b); });
+    else if(s==="subject") list.sort(function(a,b){ var x=a.subject?fold(a.subject):"\uffff", y=b.subject?fold(b.subject):"\uffff"; return cmp(x,y)||byTitle(a,b); });
+  }
+  function groupOf(b){
+    var s=ui.sort;
+    if(s==="acquired"||s==="acquired_asc")return b.acquisition_basis==="purchase_log"||b.acquisition_basis==="user_recent"?"~purchases":b.acquisition_basis==="goodreads_added"?"~earlier":"~acquisition_unknown";
+    if(s==="dateread"){ var q=queueRank(b); return q===0?"~reading":(q===1?"~next":(b.date_read?String(b.date_read).slice(0,7):"~none")); }
+    if(s==="dateread_asc") return b.date_read?String(b.date_read).slice(0,7):"~none";
+    if(s==="title") return initialOf(titleKey(b));
+    if(s==="author") return b.author?initialOf(authorKey(b)):"~none";
+    if(s==="year"||s==="year_asc"){ var y=b.publication_year; if(!y) return "~none"; return y>=1900?(Math.floor(y/10)*10)+"s":"~old"; }
+    if(s==="rating") return b.rating?b.rating+"*":"~none";
+    if(s==="subject") return b.subject||"~none";
+    return "~all";
+  }
+  var NONE_LABEL={dateread:"No reading date",dateread_asc:"No reading date",author:"No author",year:"No publication year",year_asc:"No publication year",rating:"Unrated",subject:"No subject"};
+  function groupLabel(k){
+    if(k==="~purchases")return {text:"Purchased books"};
+    if(k==="~earlier")return {text:publicView()?"Earlier books":"Earlier books · ordered by Goodreads date added"};
+    if(k==="~acquisition_unknown")return {text:publicView()?"More unread books":"Acquisition order unknown"};
+    if(/^\d{4}-\d{2}$/.test(k)) return {text:monthName(k)};
+    if(k==="~none") return {text:NONE_LABEL[ui.sort]||"Other"};
+    if(k==="~old") return {text:"Before 1900"};
+    if(k==="~reading") return {text:"Reading now"};
+    if(k==="~next") return {text:"Next up"};
+    if(k==="~all"||ui.sort==="subject") return {text:k};
+    return {dm:k, sr:k.slice(-1)==="*"?k.slice(0,-1)+" stars":k};
+  }
+  function shortDates(){ return ui.sort==="dateread"||ui.sort==="dateread_asc"; }
+
+  // ---------- covers ----------
+  var TONES=["read","reading","next","unread","paused","unknown"];
+  function toneOf(s){ var h=0; s=String(s||""); for(var i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))|0; return TONES[Math.abs(h)%TONES.length]; }
+  function placeholderHTML(b){ return '<span class="ph" style="--tone:var(--t-'+toneOf(b.title)+')"><span class="ph-t">'+esc(splitTitle(b.title)[0]||"Untitled")+'</span><span class="ph-a">'+esc(b.author||"")+'</span></span>'; }
+  // Browsing uses a 640 px rendition (covers/web/); the original stays as the fallback and for any cover without one.
+  function webCover(c){ var m=/^covers\/([^\/]+?)(?:\.[A-Za-z0-9]+)?$/.exec(c||""); return m?"covers/web/"+m[1]+".jpg":c; }
+  function coverHTML(b){ return b.cover?'<img class="cv-img" src="'+esc(webCover(b.cover))+'" data-full="'+esc(b.cover)+'" alt="" loading="lazy" decoding="async">':placeholderHTML(b); }
+  // Every cover box is 2:3. Scale each cover to the largest size that fits the box at its own
+  // proportions (small thumbnails grow, wide covers stay wide), standing on the box's bottom edge.
+  function fitCover(img){ var w=img.naturalWidth, h=img.naturalHeight; if(w&&h) img.style.width=Math.min(100,150*w/h).toFixed(2)+"%"; img.classList.add("ok"); }
+  function markLoaded(root){ lockPublicControls(root); Array.prototype.forEach.call(root.querySelectorAll("img.cv-img:not(.ok)"),function(img){ if(img.complete&&img.naturalWidth) fitCover(img); }); }
+  function onImgLoad(e){ if(e.target.tagName==="IMG"&&e.target.classList.contains("cv-img")) fitCover(e.target); }
+  function onImgError(e){
+    var t=e.target; if(t.tagName!=="IMG") return;
+    var full=t.getAttribute("data-full"); if(full&&t.getAttribute("src")!==full){ t.setAttribute("src",full); return; }
+    var host=t.closest("[data-id]"), b=(host&&findBook(host.getAttribute("data-id")))||dBook||{title:"",author:""};
+    var tmp=document.createElement("div"); tmp.innerHTML=placeholderHTML(b); t.replaceWith(tmp.firstChild);
+  }
+
+  // ---------- covers and list renderers ----------
+  function readHTML(b,shortDate){
+    if(acquisitionSort()&&publicView())return '<span class="t-state">'+esc(LABEL[b.read_status]||'Unread')+'</span>';
+    if(acquisitionSort())return '<span class="t-state" title="'+esc(acquisitionInfo(b))+'">'+esc(b.acquisition_basis==="user_recent"?"~ Oct 2026":b.acquisition_basis==="goodreads_added"?"GR "+fmtDate(b.goodreads_date_added,true):b.acquisition_basis==="purchase_log"?"Purchase log":"Order unknown")+'</span>';
+    if(b.date_read) return '<span class="t-read" title="Read '+esc(fmtDate(b.date_read,true))+'"><svg class="i-xs" aria-hidden="true"><use href="#i-check"/></svg>'+esc(fmtDate(b.date_read,!shortDate))+'</span>';
+    if(b.read_status==="reading"||b.read_status==="next"||b.read_status==="paused") return '<span class="t-state s-'+b.read_status+'">'+LABEL[b.read_status]+'</span>';
+    return '';
+  }
+  function tileHTML(b,sd){
+    var y=fmtYear(b.publication_year);
+    return '<div role="button" tabindex="0" class="tile" data-id="'+esc(b.id)+'" aria-label="'+esc(ariaFor(b))+'">'+
+      '<span class="cv">'+coverHTML(b)+'</span>'+
+      '<span class="t-title">'+esc(splitTitle(b.title)[0]||"Untitled")+'</span>'+
+      '<span class="t-author">'+esc(b.author||"Unknown author")+'</span>'+
+      '<span class="t-meta"><span class="t-year"'+(y?' title="Published '+esc(y)+'"':'')+'>'+esc(y)+'</span>'+readHTML(b,sd)+'</span>'+
+      '<span class="card-rating stars" role="group" aria-label="Your rating for '+esc(b.title)+'">'+starsHTML(b.rating)+'</span>'+
+    '</div>';
+  }
+  function starLine(r){ var s=""; for(var i=1;i<=5;i++) s+=i<=r?"\u2605":'<span class="off">\u2605</span>'; return '<span class="l-stars" title="'+r+' of 5">'+s+'</span>'; }
+  function listRowHTML(b){
+    var parts=splitTitle(b.title), sub=secondLine(b,parts), y=fmtYear(b.publication_year), r=b.date_read?fmtDate(b.date_read,true):"";
+    return '<div role="button" tabindex="0" class="lrow" data-id="'+esc(b.id)+'" aria-label="'+esc(ariaFor(b))+'">'+
+      '<span class="l-cv">'+coverHTML(b)+'</span>'+
+      '<span class="l-main"><span class="l-title">'+esc(parts[0]||"Untitled")+'</span>'+(sub?'<span class="l-sub">'+esc(sub)+'</span>':'')+
+        '<span class="l-author">'+esc(b.author||"Unknown author")+'</span>'+
+        '<span class="l-meta">'+(y?'<span>'+esc(y)+'</span>':'')+(r?'<span>Read '+esc(r)+'</span>':'<span>'+esc(LABEL[b.read_status]||"")+'</span>')+'</span></span>'+
+      '<span class="l-col'+(y?'':' empty')+'">'+(y?esc(y):DASH)+'</span>'+
+      '<span class="l-col'+(r?'':' empty')+'">'+(r?esc(r):DASH)+'</span>'+
+      '<span class="l-col l-status"><i class="sdot" data-s="'+esc(b.read_status)+'"></i>'+esc(LABEL[b.read_status]||b.read_status)+'</span>'+
+      '<span class="l-col l-rating stars" role="group" aria-label="Your rating for '+esc(b.title)+'">'+starsHTML(b.rating)+'</span>'+
+    '</div>';
+  }
+
+  // ---------- table (every field, inline editing) ----------
+  var COLUMN_KEY="tiago-books-columns-v1";
+  var COLUMNS=[
+    ["cover","Cover",62],["title","Title",300],["author","Author",145],["read_status","Status",116],
+    ["date_read","Date read",118],["acquisition_order","Acquisition order",130],["acquired_date","Acquired (approx.)",140],["goodreads_date_added","Goodreads added",140],["acquisition_basis","Order basis",150],["owned","Bought",88],["rating","Rating",126],["subject","Subject",120],["notes","Notes",190],
+    ["subtitle","Subtitle",260],["additional_authors","Additional authors",200],["format","Format",120],["pages","Pages",85],
+    ["publication_year","Publication year",125],["publisher","Publisher",190],["isbn13","ISBN",150],["description","Description",300],
+    ["tags","Tags",180],["sources","Sources",170],["notes_url","Notes link",190],["review_url","Review link",190],
+    ["goodreads_shelf","Goodreads shelf",150],["enriched","Enriched",100],["enrich_status","Metadata status",160],
+    ["enrich_confidence","Metadata confidence",160],["cover_status","Cover status",130],["google_books_id","Google Books ID",160],["id","Book ID",95]
+  ];
+  var DEFAULT_COLUMNS=["cover","title","author","read_status","date_read","owned","rating","subject","notes"];
+  var visibleColumns=DEFAULT_COLUMNS.slice();
+  try{var storedColumns=JSON.parse(localStorage.getItem(COLUMN_KEY));if(Array.isArray(storedColumns)){var known=COLUMNS.map(function(c){return c[0];});storedColumns=storedColumns.filter(function(k){return known.indexOf(k)>=0;});if(storedColumns.length)visibleColumns=storedColumns;}}catch(e){}
+  function selectedColumns(){return COLUMNS.filter(function(c){return visibleColumns.indexOf(c[0])>=0;});}
+  function renderColumnPicker(){
+    $("columnOptions").innerHTML=COLUMNS.map(function(c){return '<label><input type="checkbox" data-column="'+c[0]+'"'+(visibleColumns.indexOf(c[0])>=0?' checked':'')+'>'+esc(c[1])+'</label>';}).join("");
+  }
+  function saveColumns(){try{localStorage.setItem(COLUMN_KEY,JSON.stringify(visibleColumns));}catch(e){}renderColumnPicker();if(ui.view==="table"){renderView(true);var sc=content.querySelector(".scroll");if(sc)sc.scrollLeft=0;}}
+  function renderColumnHeaders(){
+    var cols=selectedColumns();
+    $("bookColumns").innerHTML='<col style="width:5px">'+cols.map(function(c){return '<col style="width:'+c[2]+'px">';}).join("")+'<col style="width:110px">';
+    $("bookHeaders").innerHTML='<th aria-label="Reading status indicator"></th>'+cols.map(function(c){return '<th scope="col" data-column="'+c[0]+'">'+esc(c[1])+'</th>';}).join("")+'<th scope="col">Details</th>';
+    $("bookTable").style.width=(115+cols.reduce(function(n,c){return n+c[2];},0))+"px";
+  }
+  function textValue(b,key){var v=b[key];if(key==="date_read")return displayDate(v);if(key==="read_status")return LABEL[v]||v||DASH;if((key==="pages"||key==="publication_year")&&!v)return DASH;if(key==="publication_year")return fmtYear(v);if(typeof v==="boolean")return v?"Yes":"No";if(Array.isArray(v))return v.length?v.join("; "):DASH;if(key==="description"&&v){return plainText(v)||DASH;}return v==null||v===""?DASH:String(v);}
+  function fieldHTML(b,key){var text=textValue(b,key);if((key==="notes_url"||key==="review_url")&&/^https?:\/\//i.test(b[key]||""))return '<div class="field-text"><a href="'+esc(b[key])+'" target="_blank" rel="noopener noreferrer">Open '+(key==="notes_url"?"notes":"review")+'</a></div>';return '<div class="field-text" title="'+esc(text)+'">'+esc(text)+'</div>';}
+  function starsHTML(r){ var h=""; for(var i=1;i<=5;i++){ h+='<button type="button" data-n="'+i+'"'+(i<=r?' class="on"':'')+' aria-label="'+i+' star'+(i>1?"s":"")+'" aria-pressed="'+(i<=r)+'">'+(i<=r?"\u2605":"\u2606")+'</button>'; } return h; }
+  function statusHTML(b){ var h='<select class="status" data-field="read_status" aria-label="Reading status">'; STATUSES.forEach(function(st){ h+='<option value="'+st+'"'+(b.read_status===st?' selected':'')+'>'+LABEL[st]+'</option>'; }); return h+'</select>'; }
+  function badgeHTML(b){ if(!b.enriched||publicView()) return ""; if(b.enrich_status==="no_match") return ' <span class="badge-enriched bx-none" title="No Google Books match found">No match</span>'; var c=b.enrich_confidence||""; var cls=c==="low"?"bx-low":(c==="medium"?"bx-med":"bx-ok"); var lbl=(c&&c!=="high")?("Enriched, "+c):"Enriched"; return ' <span class="badge-enriched '+cls+'" title="Metadata from Google Books'+(c?" ("+c+" confidence)":"")+'">'+lbl+'</span>'; }
+  function metaHTML(b){ var p=[]; var y=fmtYear(b.publication_year); if(y)p.push(esc(y)); if(b.publisher)p.push(esc(b.publisher)); if(b.format)p.push(esc(b.format)); if(b.pages)p.push(b.pages+"p"); if(b.sources&&b.sources.length&&!publicView())p.push(esc(b.sources.join(" + "))); return p.join(" \u00b7 "); }
+  function rowHTML(b){
+    var cells=selectedColumns().map(function(c){var k=c[0],cls="cell",html="";
+      if(k==="cover"){cls="cover";html='<span class="tcover">'+coverHTML(b)+'</span>';}
+      else if(k==="title"){cls+=" col-title";html='<div class="edit" contenteditable="true" spellcheck="false" data-field="title" data-ph="Untitled" title="'+esc(b.title)+'">'+esc(b.title)+'</div>';
+        if(b.subtitle&&String(b.title).toLowerCase().indexOf(String(b.subtitle).toLowerCase())<0)html+='<div class="subtitle">'+esc(b.subtitle)+'</div>';
+        html+='<div class="bookmeta">'+metaHTML(b)+badgeHTML(b)+'</div>';
+      }else if(["author","subject","notes"].indexOf(k)>=0){cls+=" col-"+k;html='<div class="edit" contenteditable="true" spellcheck="false" data-field="'+k+'" data-ph="'+DASH+'" title="'+esc(b[k]||"")+'">'+esc(b[k]||"")+'</div>';}
+      else if(k==="read_status")html=statusHTML(b);
+      else if(k==="owned")html='<button type="button" class="own'+(b.owned?' on':'')+'" data-act="own" aria-pressed="'+b.owned+'">'+(b.owned?"Bought":"No")+'</button>';
+      else if(k==="rating")html='<div class="stars" data-rating="'+b.rating+'">'+starsHTML(b.rating)+'</div>';
+      else{if(k==="date_read")cls+=" date-read";html=fieldHTML(b,k);}
+      return '<td class="'+cls+'" data-column="'+k+'">'+html+'</td>';
+    }).join("");
+    return '<tr data-id="'+esc(b.id)+'" data-status="'+esc(b.read_status)+'"><td class="spine"><div class="spinebar"></div></td>'+cells+'<td class="row-actions"><button type="button" class="details-btn" data-act="details" aria-label="Open '+esc(b.title||"book")+'">Open</button><button type="button" class="delbtn" data-act="del" title="Remove" aria-label="Remove '+esc(b.title||"book")+'">&times;</button></td></tr>';
+  }
+
+  // ---------- incremental rendering (all three layouts) ----------
+  var content=$("content"), sentinel=$("sentinel");
+  var PAGE={covers:60,list:50,table:50};
+  var view={list:[],rendered:0,key:null,box:null,counts:{}};
+  var loadFailed=false, loadingLibrary=SERVER_MODE;
+  function syncSearchClear(){ var has=!!$("search").value; $("searchClear").hidden=!has; $("search").closest(".search").classList.toggle("has-text",has); }
+  function renderView(keep){
+    if(loadingLibrary){syncSearchClear();renderStatusSeg();return;}
+    if(loadFailed){ showLoadError(); return; }
+    syncSearchClear(); content.removeAttribute("aria-busy");
+    if(LITE&&ui.view==="table"&&selectedColumns().some(function(c){return c[0]==="description";})) loadAllDescriptions();
+    var y=window.scrollY, want=PAGE[ui.view];
+    if(keep&&view.rendered>want) want=view.rendered;
+    if(timelineObserver){timelineObserver.disconnect();nearbyCards.clear();}
+    view.list=getView(); view.rendered=0; view.key=null; view.box=null; view.counts={};
+    if(ui.view!=="table") view.list.forEach(function(b){ var k=groupOf(b); view.counts[k]=(view.counts[k]||0)+1; });
+    document.body.setAttribute("data-view",ui.view);
+    if(ui.view==="table") content.innerHTML='<div class="tablewrap"><div class="scroll"><table id="bookTable"><colgroup id="bookColumns"></colgroup><thead><tr id="bookHeaders"></tr></thead><tbody id="tbody"></tbody></table></div></div>';
+    else if(ui.view==="list") content.innerHTML='<div class="lhead" aria-hidden="true"><span>Book</span><span>Published</span><span>Read</span><span>Status</span><span>Rating</span></div>';
+    else content.innerHTML="";
+    if(ui.view==="table") renderColumnHeaders();
+    var none=view.list.length===0;
+    content.hidden=none; $("empty").hidden=!none;
+    if(none) renderEmpty();
+    renderStatusSeg(); renderResults();
+    appendBatch(want); buildTimeline();
+    window.scrollTo(0,keep?y:0);
+    fill();
+  }
+  function startGroup(k){
+    var lab=groupLabel(k), n=view.counts[k]||0, sec=document.createElement("section");
+    sec.className="group"; sec.dataset.date=k;
+    sec.innerHTML='<div class="gh">'+(lab.dm?dotMatrix(lab.dm,ui.view==="list"?4:5):'<span class="gtext">'+esc(lab.text)+'</span>')+
+      '<h2 class="sr">'+esc(lab.dm?lab.sr:lab.text)+'</h2><span class="leader"></span><span class="gcount">'+countBooks(n)+'</span></div>'+
+      '<div class="'+(ui.view==="covers"?"grid":"lcard")+'"></div>';
+    content.appendChild(sec);
+    return sec.lastChild;
+  }
+  function appendBatch(n){
+    var end=Math.min(view.rendered+n,view.list.length), i, html="";
+    if(view.rendered<end){
+      if(ui.view==="table"){
+        for(i=view.rendered;i<end;i++) html+=rowHTML(view.list[i]);
+        $("tbody").insertAdjacentHTML("beforeend",html);
+      } else {
+        var sd=shortDates();
+        for(i=view.rendered;i<end;i++){
+          var b=view.list[i], k=groupOf(b);
+          if(k!==view.key){ if(html&&view.box) view.box.insertAdjacentHTML("beforeend",html); html=""; view.key=k; view.box=startGroup(k); }
+          html+=ui.view==="covers"?tileHTML(b,sd):listRowHTML(b);
+        }
+        if(html&&view.box) view.box.insertAdjacentHTML("beforeend",html);
+      }
+      view.rendered=end;
+      markLoaded(content); trackTimelineCards();
+    }
+    var lm=$("loadmore");
+    lm.hidden=view.rendered>=view.list.length;
+    lm.textContent="Showing "+fmtN(view.rendered)+" of "+fmtN(view.list.length);
+  }
+  var fillFrame=0;
+  function fill(){
+    if(document.body.classList.contains("tbr-mode"))return;
+    if(fillFrame)return;
+    fillFrame=requestAnimationFrame(function(){fillFrame=0;if(view.rendered<view.list.length&&sentinel.getBoundingClientRect().top<innerHeight+1600){appendBatch(PAGE[ui.view]);fill();}});
+  }
+  function ensureRendered(idx){ while(view.rendered<=idx && view.rendered<view.list.length){ appendBatch(PAGE[ui.view]); } }
+  function refreshBookEls(b){
+    var sd=shortDates();
+    Array.prototype.forEach.call(content.querySelectorAll('[data-id="'+cssq(b.id)+'"]'),function(el){
+      var isTr=el.tagName==="TR", html=el.classList.contains("tile")?tileHTML(b,sd):(el.classList.contains("lrow")?listRowHTML(b):(isTr?rowHTML(b):""));
+      if(!html) return;
+      var tmp=document.createElement(isTr?"tbody":"div"); tmp.innerHTML=html; el.replaceWith(tmp.firstElementChild);
+    });
+    markLoaded(content); trackTimelineCards();
+  }
+
+  // ---------- notch: status counts, filters, results ----------
+  function renderStatusSeg(){
+    var h="";
+    var inTbr=document.body.classList.contains('tbr-mode');
+    [['all','All'],['read',LABEL.read],['unread',LABEL.unread],['tbr','TBR']].concat(STATUSES.filter(function(s){return s!=='read'&&s!=='unread';}).map(function(s){return [s,LABEL[s]];})).forEach(function(p){
+      if(p[0]==='tbr'){var total=$('statusSeg').dataset.tbrCount;h+='<button type="button" data-collection="tbr" aria-pressed="'+inTbr+'">TBR'+(total?' <span class="n">'+fmtN(Number(total))+'</span>':'')+'</button>';return;}
+      var n=facets[p[0]]||0, on=!inTbr&&ui.status===p[0];
+      h+='<button type="button" data-status="'+p[0]+'" aria-pressed="'+on+'"'+(loadingLibrary||n||on?'':' class="zero"')+'>'+p[1]+(loadingLibrary?'':' <span class="n">'+fmtN(n)+'</span>')+'</button>';
+    });
+    $("statusSeg").innerHTML=h;
+  }
+  function refreshCounts(){ computeFacets(); renderStatusSeg(); buildOwnFilter(); }
+  function activeFilters(){ return (ui.own!=="all"?1:0)+(ui.subject!=="all"?1:0)+(ui.enrich!=="all"?1:0); }
+  function defaultSort(){return ui.status==='unread'?'acquired':'dateread';}
+  function renderResults(){
+    var q=($('search').value||'').trim(),fc=activeFilters(),el=$('results'),badge=$('filterCount');
+    var sort=$('sort'),sortLabel=sort.closest('.pill-select'),custom=ui.sort!==defaultSort();
+    sortLabel.classList.toggle('is-active',custom);sortLabel.title=custom?'Custom sorting active — use the sort chip below to reset':'Sort and group';
+    var dot=sortLabel.querySelector('.sort-active-dot');if(!dot){dot=document.createElement('span');dot.className='sort-active-dot';dot.setAttribute('aria-hidden','true');sortLabel.prepend(dot);}dot.hidden=!custom;
+    $('filtersBtn').classList.toggle('is-active',!!fc);$('filtersBtn').setAttribute('aria-label',fc?'Filters, '+fc+' active':'Filters');
+    badge.hidden=!fc;badge.textContent=String(fc);
+    if(!q&&!fc&&!custom){el.hidden=true;el.innerHTML='';return;}
+    var chips=[];
+    function chip(key,label,action){return '<button type="button" class="active-chip" data-clear="'+key+'" aria-label="'+esc(action)+'" title="'+esc(action)+'"><span class="chip-text">'+esc(label)+'</span><span class="chip-x" aria-hidden="true">×</span></button>';}
+    if(custom)chips.push(chip('sort','Sort: '+sort.options[sort.selectedIndex].text,'Reset sorting to '+(ui.status==='unread'?'recently acquired':'date read, newest')));
+    if(q)chips.push(chip('search','Search: '+q,'Clear search'));
+    if(ui.own!=='all')chips.push(chip('own',ui.own==='owned'?'Owned books':'Not owned','Remove ownership filter'));
+    if(ui.subject!=='all')chips.push(chip('subject','Subject: '+ui.subject,'Remove subject filter'));
+    if(ui.enrich!=='all')chips.push(chip('enrich','Metadata: '+$('enrichFilter').options[$('enrichFilter').selectedIndex].text,'Remove metadata filter'));
+    el.innerHTML='<span><b>'+countBooks(view.list.length)+'</b></span>'+chips.join('')+(chips.length>1?'<button type="button" data-clear="all">Reset sort &amp; filters</button>':'');el.hidden=false;
+  }
+  function renderEmpty(){
+    var lib=state.books.length===0;
+    $("emptyTitle").textContent=lib?"Your library is empty":"No books match";
+    $("emptyText").textContent=lib?"Add a book, or import a books.json file from the menu.":"Try another word, or clear the search and filters.";
+    $("emptyAction").textContent=lib?"Add a book":"Clear search and filters";
+  }
+  function buildOwnFilter(){
+    var c={all:state.books.length,owned:0,not:0}; state.books.forEach(function(b){ if(b.owned)c.owned++; else c.not++; });
+    $("ownFilter").innerHTML='<option value="all">All books ('+fmtN(c.all)+')</option><option value="owned">Bought ('+fmtN(c.owned)+')</option><option value="not">Not bought ('+fmtN(c.not)+')</option>';
+    $("ownFilter").value=ui.own;
+  }
+  function buildSubjectFilter(){
+    var set={}; state.books.forEach(function(b){ var s=b.subject||"(none)"; set[s]=(set[s]||0)+1; });
+    var subs=Object.keys(set).sort(function(a,b){ if(a==="(none)")return 1; if(b==="(none)")return -1; return a.localeCompare(b); });
+    var h='<option value="all">All subjects</option>';
+    subs.forEach(function(s){ h+='<option value="'+esc(s)+'">'+esc(s==="(none)"?"No subject":s)+' ('+fmtN(set[s])+')</option>'; });
+    $("subjFilter").innerHTML=h;
+    if(ui.subject!=="all"&&!set[ui.subject]) ui.subject="all";
+    $("subjFilter").value=ui.subject;
+    $("subjectList").innerHTML=subs.filter(function(s){return s!=="(none)";}).map(function(s){return '<option value="'+esc(s)+'"></option>';}).join("");
+  }
+  function buildFilters(){ buildSubjectFilter(); buildOwnFilter(); $("enrichFilter").value=ui.enrich; $("sort").value=ui.sort; }
+  function clearSearchAndFilters(all){ $("search").value=""; ui.own="all"; ui.subject="all"; ui.enrich="all"; if(all) ui.status="all"; buildFilters(); renderView(false); }
+  function setView(v){ if(VIEWS.indexOf(v)<0||v===ui.view) return; ui.view=v; saveUI(); syncViewSwitch(); closePops(); renderView(false); }
+  function syncViewSwitch(){
+    if(document.body.classList.contains("tbr-mode"))return;
+    Array.prototype.forEach.call($("viewSwitch").querySelectorAll("button"),function(btn){ btn.setAttribute("aria-pressed",String(btn.getAttribute("data-view")===ui.view)); });
+    $("columnsBtn").hidden=ui.view!=="table";
+  }
+  function publicView(){return !!window.CLOUD_LIBRARY&&!window.CLOUD_CAN_EDIT;}
+  function lockPublicControls(root){
+    if(!publicView())return;
+    root.querySelectorAll('[contenteditable="true"]').forEach(function(el){el.contentEditable='false';});
+    root.querySelectorAll('input[data-f],textarea[data-f]').forEach(function(el){el.readOnly=true;});
+    root.querySelectorAll('.stars button,.own,.delbtn,select.status,#dOwned,[data-set-status]').forEach(function(el){el.disabled=true;});
+    root.querySelectorAll('.stars[aria-label^="Your rating"]').forEach(function(el){el.setAttribute('aria-label',el.getAttribute('aria-label').replace('Your rating','Tiago’s rating'));});
+  }
+  function applyTheme(){
+    var r=document.documentElement;
+    if(ui.theme==="light"||ui.theme==="dark") r.setAttribute("data-theme",ui.theme); else r.removeAttribute("data-theme");
+    Array.prototype.forEach.call($("themeSwitch").querySelectorAll("button"),function(b){ b.setAttribute("aria-pressed",String(b.getAttribute("data-theme")===ui.theme)); });
+    var dark=ui.theme==='dark'||(ui.theme==='auto'&&matchMedia('(prefers-color-scheme: dark)').matches);
+    var next=dark?'light':'dark',button=$('appearanceBtn');
+    button.setAttribute('aria-label','Switch to '+next+' mode');button.title='Switch to '+next+' mode';
+    button.innerHTML=dark?'<svg class="i" aria-hidden="true" viewBox="0 0 20 20"><circle cx="10" cy="10" r="4"/><path d="M10 1v2m0 14v2M1 10h2m14 0h2M3.6 3.6L5 5m10 10 1.4 1.4M3.6 16.4L5 15m10-10 1.4-1.4"/></svg>':'<svg class="i" aria-hidden="true" viewBox="0 0 20 20"><path d="M17 12.5A7.5 7.5 0 0 1 7.5 3a7.5 7.5 0 1 0 9.5 9.5Z"/></svg>';
+
+  }
+  function renderFileStatus(){
+    var cls="", txt="", hint="", connect=$("connect");
+    if(SERVER_MODE){
+      connect.hidden=true;
+      if(serverSaveState==="saving"){ cls="pending"; txt="Saving to books.json\u2026"; }
+      else if(serverSaveState==="error"){ cls="error"; txt="Save failed. Is the launcher still running?"; }
+      else if(serverSaveState==="saved"){ cls="live"; txt="Saved to books.json"; }
+      else { cls="live"; txt="Auto-saving to books.json"; }
+      hint="Every change is written to books.json by the launcher. Keep its window open while you work.";
+    } else if(!supportsFS){
+      cls="live"; txt="Saving in this browser"; connect.hidden=true;
+      hint="Changes stay in this browser. Use Export JSON for a copy, or open the library with start-dashboard.bat to save to books.json.";
+    } else if(fileHandle&&filePermission){
+      cls="live"; txt="Saving to "+fileHandle.name; connect.hidden=false; connect.textContent="Change file"; connect.onclick=connectFile;
+      hint="Changes stay in this browser and are written to the connected file.";
+    } else if(fileHandle&&!filePermission){
+      cls="pending"; txt="File ready: "+fileHandle.name; connect.hidden=false; connect.textContent="Reconnect "+fileHandle.name; connect.onclick=reconnectFile;
+      hint="The browser needs your permission again before it can write to this file.";
+    } else {
+      txt="Saving in this browser"; connect.hidden=false; connect.textContent="Connect books.json"; connect.onclick=connectFile;
+      hint="Changes stay in this browser. Connect books.json to also save to disk, or open the library with start-dashboard.bat.";
+    }
+    if(window.CLOUD_LIBRARY){
+      txt=window.CLOUD_CAN_EDIT?(serverSaveState==='saving'?'Saving…':serverSaveState==='error'?'Save failed — changes kept in this browser':serverSaveState==='saved'?'Saved to library':'Editing enabled'):'Public view · Editing locked';
+      hint=window.CLOUD_CAN_EDIT?'Changes are saved online. Use Sign out when finished.':'Browse freely. Choose Enable editing to enter the library password.';
+    }
+    $("dot").className="save-dot"+(cls?" "+cls:""); $("dot2").className="dot"+(cls?" "+cls:"");
+    $("fileStatusText").textContent=txt; $("fileHint").textContent=hint;
+  }
+  function renderAll(){ $("libTitle").textContent=state.title; renderView(false); renderFileStatus(); }
+
+  // ---------- popovers hanging from the notch ----------
+  var notch=$("notch");
+  var POPS=[["menuBtn","menuPop"],["filtersBtn","filtersPop"],["columnsBtn","columnsPop"]];
+  function closePops(){ POPS.forEach(function(p){ $(p[1]).hidden=true; $(p[0]).setAttribute("aria-expanded","false"); }); notch.classList.remove("hold"); }
+  function togglePop(btnId,popId){
+    var pop=$(popId), opening=pop.hidden; closePops(); if(!opening) return;
+    var btn=$(btnId), nr=notch.getBoundingClientRect(), br=$(btnId==='columnsBtn'?'filtersBtn':btnId).getBoundingClientRect();
+    pop.style.right=Math.max(8,Math.round(nr.right-br.right))+"px";
+    notch.classList.add("hold"); pop.hidden=false; btn.setAttribute("aria-expanded","true");
+  }
+  function anyPopOpen(){ return POPS.some(function(p){ return !$(p[1]).hidden; }); }
+
+  // ---------- the notch tucks away on scroll and reopens on hover ----------
+  var compact=false, ticking=false;
+  function onScroll(){
+    if(ticking) return; ticking=true;
+    requestAnimationFrame(function(){ ticking=false; updateTimeline();var tt=window.scrollY>window.innerHeight*2; if(toTop.hidden===tt) toTop.hidden=!tt; fill(); });
+  }
+  function setNotchMetric(key,value){var style=document.documentElement.style;if(style.getPropertyValue(key)!==value)style.setProperty(key,value);}
+  function measureNotch(){
+    var main=notch.querySelector(".n-main"), row2=notch.querySelector(".n-row2");
+    var h=(document.getElementById('siteShell')?.offsetHeight||104)+notch.offsetHeight;
+    setNotchMetric("--notch-h",h+"px");
+    // Browsing columns share the logo-to-view-switch span of the header.
+    var bounds=notch.getBoundingClientRect(), left=innerWidth>760?Math.max(222,bounds.left+18):16, right=bounds.right-18;
+    setNotchMetric("--books-left",left+"px");
+    setNotchMetric("--books-width",Math.max(0,right-left)+"px");
+  }
+
+  // ---------- toast (drops from the notch) ----------
+  var toastTimer=null;
+  function toast(msg,ms){ var t=$("toast"); t.textContent=msg; t.classList.add("show"); if(toastTimer)clearTimeout(toastTimer); toastTimer=setTimeout(function(){t.classList.remove("show");},ms||2400); }
+
+  // ---------- book drawer ----------
+  var drawer=$("drawer"), dBody=$("dBody"), dBook=null, dReturnId=null, dViewDirty=false;
+  var REDUCED=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)");
+  var DATE_RE=/^\d{4}(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01]))?)?$/;
+  function validDate(v){
+    if(!DATE_RE.test(v)) return false;
+    if(v.length===10){ var p=v.split("-").map(Number), d=new Date(Date.UTC(p[0],p[1]-1,p[2])); return d.getUTCFullYear()===p[0]&&d.getUTCMonth()===p[1]-1&&d.getUTCDate()===p[2]; }
+    return true;
+  }
+  function dateHint(v){ return v?fmtDate(v,true):"Not set"; }
+  function yearHint(y){ return (y&&y<0)?fmtYear(y):""; }
+  function autoGrow(el){ if(!el) return; el.style.height="auto"; el.style.height=el.scrollHeight+"px"; }
+  function linksHTML(b){
+    var a=[];
+    if(/^https?:\/\//i.test(b.notes_url||"")) a.push('<a href="'+esc(b.notes_url)+'" target="_blank" rel="noopener noreferrer">Open notes</a>');
+    if(/^https?:\/\//i.test(b.review_url||"")) a.push('<a href="'+esc(b.review_url)+'" target="_blank" rel="noopener noreferrer">Open review</a>');
+    return a.length?'<div class="d-links">'+a.join("")+'</div>':"";
+  }
+  function recordHTML(b){
+    var meta=b.enriched?("Enriched"+(b.enrich_status?", "+b.enrich_status.replace(/_/g," "):"")+(b.enrich_confidence?", "+b.enrich_confidence+" confidence":"")):"Not enriched";
+    var rows=[["Acquisition order",b.acquisition_order],["Acquisition evidence",acquisitionInfo(b)],["Acquisition source",b.acquisition_source],["Acquired (approx.)",b.acquired_date],["Goodreads added",b.goodreads_date_added],["Book ID",b.id],["Sources",(b.sources||[]).join(", ")],["Goodreads shelf",b.goodreads_shelf],["Metadata",meta],
+      ["Cover file",b.cover?(b.cover+(b.cover_status?" ("+b.cover_status+")":"")):(b.cover_status?"None ("+b.cover_status+")":"None")],
+      ["Google Books ID",b.google_books_id],["Notes link",/^https?:\/\//i.test(b.notes_url||"")?"":b.notes_url],["Review link",/^https?:\/\//i.test(b.review_url||"")?"":b.review_url]];
+    return rows.filter(function(r){return r[1];}).map(function(r){return '<dt>'+esc(r[0])+'</dt><dd>'+esc(r[1])+'</dd>';}).join("");
+  }
+  function renderDrawer(){
+    var b=dBook; if(!b) return;
+    drawer.style.setProperty("--tone","var(--t-"+(STATUSES.indexOf(b.read_status)>=0?b.read_status:"unknown")+")");
+    $("dCradle").innerHTML='<span class="d-cv">'+(b.cover?'<img class="cv-img d-cover" src="'+esc(webCover(b.cover))+'" data-full="'+esc(b.cover)+'" alt="Cover of '+esc(b.title||"this book")+'">':placeholderHTML(b))+'</span>';
+    markLoaded($("dCradle"));
+    var parts=splitTitle(b.title), sub=(b.subtitle&&fold(b.title).indexOf(fold(b.subtitle))<0)?b.subtitle:"";
+    var fmt=[b.format,b.pages?b.pages+" pages":""].filter(Boolean).join(", ");
+    var h='<h2 class="sr" id="dTitleLabel">'+esc(b.title||"Untitled")+'</h2>'+
+      '<textarea class="in in-title" id="dTitleIn" data-f="title" rows="1" placeholder="Title" aria-label="Title" spellcheck="false">'+esc(b.title)+'</textarea>'+
+      (sub?'<p class="d-sub">'+esc(sub)+'</p>':'')+
+      '<input class="in in-author" data-f="author" value="'+esc(b.author)+'" placeholder="Author" aria-label="Author" spellcheck="false">'+
+      (b.additional_authors?'<p class="d-also">With '+esc(b.additional_authors)+'</p>':'')+
+      '<div class="dseg" id="dStatus" role="group" aria-label="Reading status">'+STATUSES.map(function(s){ return '<button type="button" data-set-status="'+s+'" aria-pressed="'+(b.read_status===s)+'">'+LABEL[s]+'</button>'; }).join("")+'</div>'+
+      '<div class="d-quick"><div class="stars" id="dStars" role="group" aria-label="Rating">'+starsHTML(b.rating)+'</div>'+
+        '<label class="switch"><input type="checkbox" id="dOwned"'+(b.owned?' checked':'')+'><span class="track" aria-hidden="true"></span>Bought</label></div>'+
+      '<dl class="facts">'+
+        '<dt>Read</dt><dd class="ed"><input class="in in-inline" data-f="date_read" value="'+esc(b.date_read)+'" placeholder="YYYY-MM-DD" aria-label="Date read" spellcheck="false" autocomplete="off"><span class="hint" id="dReadHint">'+esc(dateHint(b.date_read))+'</span><button type="button" class="mini-link" data-act="today">Today</button></dd>'+
+        '<dt>Published</dt><dd class="ed"><input class="in in-inline" data-f="publication_year" value="'+esc(b.publication_year?b.publication_year:"")+'" placeholder="Year" aria-label="Publication year" inputmode="numeric" spellcheck="false" autocomplete="off"><span class="hint" id="dYearHint">'+esc(yearHint(b.publication_year))+'</span></dd>'+
+        '<dt>Subject</dt><dd class="ed"><input class="in in-inline wide" data-f="subject" value="'+esc(b.subject)+'" placeholder="Add a subject" list="subjectList" aria-label="Subject" spellcheck="false" autocomplete="off"></dd>'+
+        (b.publisher?'<dt>Publisher</dt><dd>'+esc(b.publisher)+'</dd>':'')+
+        (fmt?'<dt>Format</dt><dd>'+esc(fmt)+'</dd>':'')+
+        (b.isbn13?'<dt>ISBN</dt><dd>'+esc(b.isbn13)+'</dd>':'')+
+      '</dl>'+
+      descSectionHTML(b)+
+      '<section class="d-sec"><h3><label for="dNotes">Notes</label></h3><textarea class="in in-notes" id="dNotes" data-f="notes" placeholder="Add notes">'+esc(b.notes)+'</textarea>'+linksHTML(b)+'</section>'+
+      (b.tags&&b.tags.length?'<section class="d-sec"><h3>Shelves and tags</h3><div class="chips">'+b.tags.map(function(t){return '<span class="chip">'+esc(t)+'</span>';}).join("")+'</div></section>':'')+
+      '<details class="d-record"><summary>Record details</summary><dl class="facts">'+recordHTML(b)+'</dl></details>'+
+      '<button type="button" class="d-remove" data-act="remove">Remove from library</button>';
+    dBody.innerHTML=h;
+    lockPublicControls(dBody);if(publicView()&&!b.notes){var notesSection=$('dNotes').closest('.d-sec');if(notesSection)notesSection.hidden=true;}
+    if(publicView()){Array.prototype.forEach.call(dBody.querySelectorAll('.facts dd.ed'),function(dd){var input=dd.querySelector('input.in');if(input&&!input.value){var dt=dd.previousElementSibling;if(dt&&dt.tagName==='DT')dt.remove();dd.remove();}});var facts=dBody.querySelector('dl.facts');if(facts&&!facts.children.length)facts.remove();}
+    autoGrow($("dTitleIn")); autoGrow($("dNotes")); loadDescription(b);
+    var i=view.list.indexOf(b);
+    $("dPrev").disabled=i<=0; $("dNext").disabled=i<0||i>=view.list.length-1;
+  }
+  // Visitors receive the library without descriptions; each one is fetched when its book is opened and kept for the visit.
+  function descSectionHTML(b,failed){
+    if(needsDescription(b)) return '<section class="d-sec" id="dDescSec"><h3>About this book</h3>'+(failed?'<p class="d-desc-note">The description did not load. <button type="button" class="more-btn" data-act="desc-retry">Try again</button></p>':'<p class="d-desc-loading" role="status" aria-label="Loading the description"><span></span><span></span><span></span></p>')+'</section>';
+    var desc=plainText(b.description), long=desc.length>520;
+    return desc?'<section class="d-sec" id="dDescSec"><h3>About this book</h3><p class="d-desc'+(long?' clamped':'')+'" id="dDesc">'+esc(desc)+'</p>'+(long?'<button type="button" class="more-btn" data-act="more">Show more</button>':'')+'</section>':'';
+  }
+  var descCache={}, descPending={};
+  function needsDescription(b){ return LITE&&!!b&&!!b.has_description&&!has.call(descCache,b.id); }
+  function showDescription(b,failed){ if(dBook!==b) return; var sec=$("dDescSec"); if(!sec) return; var html=descSectionHTML(b,failed); if(html) sec.outerHTML=html; else sec.remove(); }
+  function loadDescription(b){
+    if(!needsDescription(b)||descPending[b.id]) return;
+    descPending[b.id]=fetch("/book-description?id="+encodeURIComponent(b.id),{cache:"no-cache"})
+      .then(function(r){ if(!r.ok) throw new Error("HTTP "+r.status); return r.json(); })
+      .then(function(d){ descCache[b.id]=d.description||""; b.description=descCache[b.id]; showDescription(b,false); })
+      .catch(function(){ showDescription(b,true); })
+      .then(function(){ delete descPending[b.id]; });
+  }
+  // The optional Description column in table view needs every description at once.
+  var allDescriptions=null;
+  function loadAllDescriptions(){
+    if(!LITE||allDescriptions) return; allDescriptions=fetch("/book-descriptions.json",{cache:"no-cache"}).then(function(r){ if(!r.ok) throw new Error("HTTP "+r.status); return r.json(); })
+      .then(function(map){ state.books.forEach(function(b){ if(b.has_description){ descCache[b.id]=map[b.id]||""; b.description=descCache[b.id]; } }); renderView(true); })
+      .catch(function(){ allDescriptions=null; toast("Descriptions did not load. Try again later."); });
+  }
+  var drawerPushed=false;
+  function bookHash(id){ return "#book/"+encodeURIComponent(id); }
+  function hashBookId(){ var m=/^#book\/(.+)$/.exec(location.hash); if(!m) return null; try{ return decodeURIComponent(m[1]); }catch(e){ return null; } }
+  function openDrawer(id,focusTitle,fromHistory){
+    var b=findBook(id); if(!b) return;
+    closePops(); dBook=b; dReturnId=id;
+    if(!drawer.open){
+      drawer.showModal(); renderDrawer(); void drawer.offsetWidth; drawer.classList.add("open");
+      if(fromHistory===true) drawerPushed=true; else if(fromHistory!=="initial"){ try{ history.pushState({book:id},"",bookHash(id)); drawerPushed=true; }catch(e){} }
+    } else { renderDrawer(); try{ history.replaceState({book:id},"",bookHash(id)); }catch(e){} }
+    $("dScroll").scrollTop=0;
+    if(focusTitle) $("dTitleIn").focus(); else $("dClose").focus();
+  }
+  function stepDrawer(d){
+    var i=dBook?view.list.indexOf(dBook):-1; if(i<0) return;
+    var nb=view.list[i+d]; if(!nb) return;
+    dBook=nb; dReturnId=nb.id; renderDrawer(); $("dScroll").scrollTop=0;
+    try{ history.replaceState({book:nb.id},"",bookHash(nb.id)); }catch(e){}
+  }
+  // Closing from the page goes back one history step (so the Back button and the close button agree); popstate does the closing.
+  function closeDrawer(){
+    if(!drawer.open) return;
+    if(drawerPushed){ drawerPushed=false; try{ history.back(); setTimeout(function(){ if(drawer.open) closeDrawerView(); },700); return; }catch(e){} }
+    closeDrawerView();
+  }
+  function closeDrawerView(){
+    if(!drawer.open) return;
+    if(hashBookId()!==null){ try{ history.replaceState(null,"",location.pathname+location.search); }catch(e){} }
+    if(document.activeElement&&dBody.contains(document.activeElement)) document.activeElement.blur();
+    drawer.classList.remove("open");
+    var done=false;
+    var finish=function(){ if(done) return; done=true; drawer.close(); afterDrawerClose(); };
+    if(REDUCED&&REDUCED.matches){ finish(); return; }
+    drawer.addEventListener("transitionend",function h(e){ if(e.target===drawer){ drawer.removeEventListener("transitionend",h); finish(); } });
+    setTimeout(finish,450);
+  }
+  window.addEventListener("popstate",function(){
+    var id=hashBookId();
+    if(id===null){ drawerPushed=false; if(drawer.open) closeDrawerView(); return; }
+    var b=findBook(id); if(!b) return;
+    if(drawer.open){ dBook=b; dReturnId=b.id; renderDrawer(); $("dScroll").scrollTop=0; }
+    else openDrawer(id,false,true);
+  });
+  function afterDrawerClose(){
+    var id=dReturnId; dBook=null; dBody.innerHTML="";
+    if(dViewDirty){ dViewDirty=false; renderView(true); }
+    if(!id) return;
+    var b=findBook(id), idx=b?view.list.indexOf(b):-1;
+    if(idx>=0) ensureRendered(idx);
+    var el=content.querySelector('[data-id="'+cssq(id)+'"]');
+    if(el){ el.focus({preventScroll:true}); var r=el.getBoundingClientRect(); if(r.top<notch.getBoundingClientRect().bottom||r.bottom>window.innerHeight) el.scrollIntoView({block:"center"}); }
+  }
+
+  // ---------- model ops ----------
+  function addBook(){
+    var b=normalize({read_status:"unread",owned:true});
+    state.books.unshift(b); byId[b.id]=b;
+    $("search").value=""; ui.status="all"; ui.own="all"; ui.subject="all"; ui.enrich="all";
+    buildFilters(); renderView(false); saveNow();
+    openDrawer(b.id,true);
+  }
+  function deleteBook(id){ state.books=state.books.filter(function(b){return b.id!==id;}); reindex(); buildFilters(); renderView(true); saveNow(); }
+
+  // ---------- events: content ----------
+  content.addEventListener("load",onImgLoad,true);
+  content.addEventListener("error",onImgError,true);
+  $("dCradle").addEventListener("load",onImgLoad,true);
+  $("dCradle").addEventListener("error",onImgError,true);
+  content.addEventListener("input",function(e){
+    var ed=e.target.closest&&e.target.closest(".edit"); if(!ed) return;
+    var tr=ed.closest("tr"); var b=tr&&findBook(tr.getAttribute("data-id")); if(!b) return;
+    b[ed.getAttribute("data-field")]=ed.textContent.replace(/\u00a0/g," "); scheduleSave();  // contenteditable types leading/double spaces as no-break spaces
+  });
+  content.addEventListener("paste",function(e){
+    var ed=e.target.closest&&e.target.closest(".edit"); if(!ed) return;
+    e.preventDefault(); var t=(e.clipboardData||window.clipboardData).getData("text/plain"); document.execCommand("insertText",false,t);
+  });
+  content.addEventListener("change",function(e){
+    if(!e.target.classList.contains("status")) return;
+    var tr=e.target.closest("tr"); var b=tr&&findBook(tr.getAttribute("data-id")); if(!b) return;
+    b.read_status=e.target.value; tr.setAttribute("data-status",b.read_status); refreshCounts(); saveNow();
+  });
+  content.addEventListener("keydown",function(e){
+    if(e.target.matches('.tile,.lrow')&&(e.key==='Enter'||e.key===' ')){e.preventDefault();openDrawer(e.target.dataset.id);}
+  });
+  content.addEventListener("click",function(e){
+    var ratingButton=e.target.closest('.tile .stars button,.lrow .stars button');
+    if(ratingButton){var host=ratingButton.closest('[data-id]'), book=findBook(host.dataset.id), n=Number(ratingButton.dataset.n);book.rating=book.rating===n?0:n;saveNow();refreshBookEls(book);return;}
+
+    var card=e.target.closest(".tile,.lrow"); if(card){ openDrawer(card.getAttribute("data-id")); return; }
+    var tr=e.target.closest("tr[data-id]"); if(!tr) return; var b=findBook(tr.getAttribute("data-id")); if(!b) return;
+    var star=e.target.closest(".stars button");
+    if(star){ var n=parseInt(star.getAttribute("data-n"),10); b.rating=(b.rating===n)?0:n; var box=tr.querySelector(".stars"); box.setAttribute("data-rating",b.rating); box.innerHTML=starsHTML(b.rating); saveNow(); return; }
+    var actEl=e.target.closest("[data-act]"), act=actEl&&actEl.getAttribute("data-act");
+    if(act==="own"){ b.owned=!b.owned; actEl.classList.toggle("on",b.owned); actEl.setAttribute("aria-pressed",String(b.owned)); actEl.textContent=b.owned?"Bought":"No"; refreshCounts(); saveNow(); return; }
+    if(act==="details"){ openDrawer(b.id); return; }
+    if(act==="del"){ if(confirm("Remove \u201c"+(b.title||"this book")+"\u201d?")) deleteBook(b.id); return; }
+  });
+
+  // ---------- events: drawer ----------
+  dBody.addEventListener("input",function(e){
+    var el=e.target, f=el.getAttribute&&el.getAttribute("data-f"); if(!f||!dBook) return;
+    var b=dBook, v=el.value;
+    if(f==="title"||f==="author"||f==="subject"||f==="notes"){
+      if(f==="title"){ var flat=v.replace(/[\r\n]+/g," "); if(flat!==v){ el.value=flat; v=flat; } autoGrow(el); $("dTitleLabel").textContent=v||"Untitled"; }
+      if(f==="notes") autoGrow(el);
+      b[f]=v; scheduleSave();
+      if(f!=="notes"){ dViewDirty=true; refreshBookEls(b); }
+      return;
+    }
+    if(f==="date_read"){
+      var t=v.trim(), ok=t===""||validDate(t), hint=$("dReadHint");
+      el.classList.toggle("bad",!ok); hint.classList.toggle("bad",!ok); hint.textContent=ok?dateHint(t):"Use YYYY-MM-DD or YYYY-MM";
+      if(ok&&t!==b.date_read){ b.date_read=t; scheduleSave(); dViewDirty=true; refreshBookEls(b); }
+      return;
+    }
+    if(f==="publication_year"){
+      var s=v.trim(), n=s===""?null:(/^-?\d{1,4}$/.test(s)?parseInt(s,10):NaN), ok2=n===null||(!isNaN(n)&&n>=-3000&&n<=2100), yh=$("dYearHint");
+      el.classList.toggle("bad",!ok2); yh.classList.toggle("bad",!ok2); yh.textContent=ok2?yearHint(n):"Use a year such as 1927, or -380 for 380 BCE";
+      if(ok2&&n!==b.publication_year){ b.publication_year=n; scheduleSave(); dViewDirty=true; refreshBookEls(b); }
+    }
+  });
+  dBody.addEventListener("keydown",function(e){ if(e.target.id==="dTitleIn"&&e.key==="Enter"){ e.preventDefault(); e.target.blur(); } });
+  dBody.addEventListener("change",function(e){
+    if(e.target.id!=="dOwned"||!dBook) return;
+    dBook.owned=e.target.checked; saveNow(); dViewDirty=true; refreshBookEls(dBook); refreshCounts();
+  });
+  dBody.addEventListener("click",function(e){
+    if(!dBook) return; var b=dBook;
+    var st=e.target.closest("[data-set-status]");
+    if(st){
+      var s=st.getAttribute("data-set-status"); if(s===b.read_status) return;
+      b.read_status=s; saveNow(); dViewDirty=true;
+      drawer.style.setProperty("--tone","var(--t-"+s+")");
+      Array.prototype.forEach.call($("dStatus").children,function(x){ x.setAttribute("aria-pressed",String(x===st)); });
+      refreshBookEls(b); refreshCounts(); return;
+    }
+    var star=e.target.closest(".stars button");
+    if(star){ var n=parseInt(star.getAttribute("data-n"),10); b.rating=(b.rating===n)?0:n; $("dStars").innerHTML=starsHTML(b.rating); saveNow(); dViewDirty=true; refreshBookEls(b); return; }
+    var actEl=e.target.closest("[data-act]"), act=actEl&&actEl.getAttribute("data-act");
+    if(act==="today"){ var inp=dBody.querySelector('[data-f="date_read"]'); inp.value=todayISO(); inp.dispatchEvent(new Event("input",{bubbles:true})); return; }
+    if(act==="desc-retry"){ showDescription(dBook,false); loadDescription(dBook); return; }
+    if(act==="more"){ $("dDesc").classList.remove("clamped"); actEl.remove(); return; }
+    if(act==="remove"){ if(confirm("Remove \u201c"+(b.title||"this book")+"\u201d from your library?")){ var id=b.id; dReturnId=null; dViewDirty=false; closeDrawer(); deleteBook(id); } return; }
+  });
+  drawer.addEventListener("cancel",function(e){ e.preventDefault(); closeDrawer(); });
+  drawer.addEventListener("click",function(e){
+    if(e.target!==drawer) return;
+    var r=drawer.getBoundingClientRect();
+    if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom) closeDrawer();
+  });
+  $("dClose").addEventListener("click",closeDrawer);
+  $("dPrev").addEventListener("click",function(){ stepDrawer(-1); });
+  $("dNext").addEventListener("click",function(){ stepDrawer(1); });
+
+  // ---------- events: notch ----------
+  // One icon cycles covers -> list -> table: a click on the visible (current) view is re-dispatched to the next view's button, so the library and TBR handlers run unchanged.
+  notch.addEventListener("click",function(e){ var b=e.target.closest("#viewSwitch button[data-view]"); if(!b||b.getAttribute("aria-pressed")!=="true") return; var next=$("viewSwitch").querySelector('[data-view="'+VIEWS[(VIEWS.indexOf(b.dataset.view)+1)%VIEWS.length]+'"]'); e.stopPropagation(); e.preventDefault(); next.click(); },true);
+  $("viewSwitch").addEventListener("click",function(e){ var b=e.target.closest("button[data-view]"); if(b) setView(b.getAttribute("data-view")); });
+  $("statusSeg").addEventListener("click",function(e){ var b=e.target.closest("button[data-status]"); if(!b) return; var previous=ui.status;ui.status=b.getAttribute("data-status");if(ui.status==="unread"&&previous!=="unread")ui.sort="acquired";else if(previous==="unread"&&acquisitionSort())ui.sort="dateread";$("sort").value=ui.sort;saveUI();renderView(false); });
+  $("sort").addEventListener("change",function(){ ui.sort=this.value; saveUI(); renderView(false); });
+  $("ownFilter").addEventListener("change",function(){ ui.own=this.value; renderView(false); });
+  $("subjFilter").addEventListener("change",function(){ ui.subject=this.value; renderView(false); });
+  $("enrichFilter").addEventListener("change",function(){ ui.enrich=this.value; renderView(false); });
+  $("resetFilters").addEventListener("click",function(){ ui.own="all"; ui.subject="all"; ui.enrich="all"; buildFilters(); renderView(false); });
+  $('results').addEventListener('click',function(e){
+    var button=e.target.closest('[data-clear]');if(!button)return;var key=button.dataset.clear;
+    if(key==='all'){$('search').value='';ui.own='all';ui.subject='all';ui.enrich='all';ui.sort=defaultSort();}
+    else if(key==='sort')ui.sort=defaultSort();
+    else if(key==='search')$('search').value='';
+    else if(key==='own')ui.own='all';else if(key==='subject')ui.subject='all';else if(key==='enrich')ui.enrich='all';
+    saveUI();buildFilters();renderView(false);
+    var target=key==='sort'?'sort':key==='search'?'search':'filtersBtn';$(target).focus({preventScroll:true});
+  });
+  $("emptyAction").addEventListener("click",function(){ if(state.books.length===0) addBook(); else clearSearchAndFilters(true); });
+  var searchTimer=null;
+  $("search").addEventListener("input",function(){ syncSearchClear(); if(searchTimer)clearTimeout(searchTimer); searchTimer=setTimeout(function(){ renderView(false); },140); });
+  $("searchClear").addEventListener("click",function(){ $("search").value=""; if(searchTimer)clearTimeout(searchTimer); renderView(false); $("search").focus(); });
+  $("add").addEventListener("click",addBook);
+  $("menuBtn").addEventListener("click",function(){ togglePop("menuBtn","menuPop"); });
+  $("filtersBtn").addEventListener("click",function(){ togglePop("filtersBtn","filtersPop"); });
+  $("columnsBtn").addEventListener("click",function(){ togglePop("columnsBtn","columnsPop"); });
+  document.addEventListener("click",function(e){ if(!anyPopOpen()) return; if(e.target.closest(".pop")||e.target.closest("#menuBtn,#filtersBtn,#columnsBtn")) return; closePops(); });
+  $('appearanceBtn').addEventListener('click',function(){var dark=ui.theme==='dark'||(ui.theme==='auto'&&matchMedia('(prefers-color-scheme: dark)').matches);ui.theme=dark?'light':'dark';saveUI();applyTheme();});
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(){if(ui.theme==='auto')applyTheme();});
+  $("themeSwitch").addEventListener("click",function(e){ var b=e.target.closest("button[data-theme]"); if(!b) return; ui.theme=b.getAttribute("data-theme"); saveUI(); applyTheme(); });
+  $("columnOptions").addEventListener("change",function(e){var key=e.target.getAttribute("data-column");if(!key)return;var next=visibleColumns.filter(function(k){return k!==key;});if(e.target.checked)next.push(key);if(!next.length){e.target.checked=true;toast("Keep at least one column visible");return;}visibleColumns=next;saveColumns();});
+  $("allColumns").addEventListener("click",function(){visibleColumns=COLUMNS.map(function(c){return c[0];});saveColumns();});
+  $("defaultColumns").addEventListener("click",function(){visibleColumns=DEFAULT_COLUMNS.slice();saveColumns();});
+  // NOTE: do not add a static click handler here. renderFileStatus() assigns
+  // connect.onclick dynamically (connectFile when no file is remembered,
+  // reconnectFile when one is). A static listener fired connectFile on every
+  // click, reopening the file picker even when only a permission re-grant was
+  // needed - that was the "navigate the file explorer every session" bug.
+  $("exportBtn").addEventListener("click",exportJSON);
+  $("exportCsvBtn").addEventListener("click",exportCSV);
+  $("importBtn").addEventListener("click",function(){ closePops(); if(supportsFS) loadFromFile(); else $("importInput").click(); });
+  $("importInput").addEventListener("change",function(e){ var f=e.target.files[0]; if(!f)return; var r=new FileReader(); r.onload=function(){applyImported(r.result);}; r.readAsText(f); e.target.value=""; });
+  $("resetBtn").addEventListener("click",function(){ if(confirm("Restore the original built-in library of "+(SEED?SEED.length:0)+" books? This replaces the current list (your saved file is not touched until the next save).")){ closePops(); seedFromBuiltin(); reindex(); buildFilters(); renderAll(); saveNow(); toast("Restored built-in library"); } });
+  var libTitle=$("libTitle");
+  // Keep library naming available in its own tools, below the invariant site header.
+  if(!window.CLOUD_LIBRARY||window.CLOUD_CAN_EDIT){var titleSetting=document.createElement('div');titleSetting.className='library-title-setting';var titleLabel=document.createElement('span');titleLabel.textContent='Library name';titleSetting.append(titleLabel,libTitle);$('menuPop').prepend(titleSetting);}
+  libTitle.addEventListener("input",function(){ state.title=libTitle.textContent.trim()||"Tiago's Library"; scheduleSave(); });
+  libTitle.addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.preventDefault(); libTitle.blur(); } });
+  libTitle.addEventListener("paste",function(e){ e.preventDefault(); document.execCommand("insertText",false,(e.clipboardData||window.clipboardData).getData("text/plain").replace(/\s+/g," ")); });
+  document.addEventListener("keydown",function(e){
+    if(document.body.classList.contains("tbr-mode"))return;
+    var k=e.key, t=e.target, typing=!!t&&(t.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName));
+    if((e.ctrlKey||e.metaKey)&&k&&k.toLowerCase()==="s"){ if(publicView())return;e.preventDefault(); saveNow(); toast(SERVER_MODE?"Saved to books.json":(fileHandle&&filePermission?("Saved to "+fileHandle.name):"Saved in this browser")); return; }
+    if(e.ctrlKey||e.metaKey||e.altKey) return;
+    if(drawer.open){ if(!typing&&(k==="ArrowLeft"||k==="ArrowRight")){ e.preventDefault(); stepDrawer(k==="ArrowLeft"?-1:1); } return; }
+    if(k==="Escape"){ if(anyPopOpen()){ closePops(); return; } if(t&&t.id==="search"&&t.value){ t.value=""; renderView(false); } return; }
+    if(typing) return;
+    if(k==="/"){ e.preventDefault(); location.assign("/search"); return; }
+    if(k==="1"||k==="2"||k==="3") setView(VIEWS[Number(k)-1]);
+  });
+  window.addEventListener("scroll",onScroll,{passive:true});
+  window.addEventListener("resize",function(){ measureNotch(); fill(); });
+  if(window.ResizeObserver){ var ro=new ResizeObserver(measureNotch); ro.observe(notch.querySelector(".n-main")); ro.observe(notch.querySelector(".n-row2")); ro.observe(document.getElementById("siteShell")); ro.observe(notch); }
+  if(window.IntersectionObserver){ new IntersectionObserver(function(en){ if(en[0].isIntersecting) fill(); },{rootMargin:"0px 0px 1600px 0px"}).observe(sentinel); }
+
+
+  // Month navigation is derived from the filtered/sorted list, including unloaded batches.
+  var dateRail=document.createElement('aside');dateRail.className='date-rail';dateRail.setAttribute('aria-label','Reading date navigation');dateRail.hidden=true;document.body.appendChild(dateRail);
+  var dateKeys=[], currentDate='', timelineCounts={}, nearbyCards=new Set();
+  var timelineObserver=window.IntersectionObserver?new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){if(entry.isIntersecting)nearbyCards.add(entry.target);else nearbyCards.delete(entry.target);});updateTimeline();
+  },{rootMargin:'100px 0px 100px 0px'}):null;
+  function trackTimelineCards(){
+    if(!timelineObserver)return;
+    content.querySelectorAll('[data-id]:not([data-scroll-watch])').forEach(function(el){el.dataset.scrollWatch='1';timelineObserver.observe(el);});
+  }
+  function monthName(k){return /^\d{4}-\d{2}$/.test(k)?new Date(Number(k.slice(0,4)),Number(k.slice(5,7))-1,1).toLocaleString('en',{month:'long'}):k;}
+  function buildTimeline(){
+    var enabled=shortDates()&&view.list.some(function(b){return !!b.date_read;});dateRail.hidden=!enabled;document.body.classList.toggle('has-timeline',enabled);if(!enabled)return;
+    timelineCounts={};dateKeys=[];view.list.forEach(function(b){var k=groupOf(b);timelineCounts[k]=(timelineCounts[k]||0)+1;if(/^\d{4}/.test(k)&&dateKeys.indexOf(k)<0)dateKeys.push(k);});
+    var last='', html='';dateKeys.forEach(function(k){var y=k.slice(0,4);if(y!==last){html+='<button data-date="'+k+'" title="Jump to '+y+'">'+y+'</button>';last=y;}html+='<button class="month-tick" data-date="'+k+'" title="'+monthName(k)+' '+y+'" aria-label="Jump to '+monthName(k)+' '+y+'">'+monthName(k).slice(0,3)+'</button>';});
+    dateRail.innerHTML='<div class="date-context"><div id="railYear"></div><div class="date-month" id="railMonth"></div><div class="date-count" id="railCount"></div></div><nav class="date-track" aria-label="Jump to a reading month">'+html+'</nav><select class="mobile-month" aria-label="Jump to reading month">'+dateKeys.map(function(k){return '<option value="'+k+'">'+monthName(k)+' '+k.slice(0,4)+'</option>';}).join('')+'</select>';currentDate='';updateTimeline();
+  }
+  function updateTimeline(){
+    if(dateRail.hidden)return;var nodes=timelineObserver?Array.from(nearbyCards):content.querySelectorAll('[data-id]'), mid=innerHeight/2, chosen=null, best=Infinity;
+    Array.prototype.forEach.call(nodes,function(el){if(!el.isConnected){nearbyCards.delete(el);return;}var rect=el.getBoundingClientRect();if(rect.bottom<0||rect.top>innerHeight)return;var b=findBook(el.dataset.id);if(!b||!b.date_read)return;var dist=Math.abs((rect.top+rect.bottom)/2-mid);if(dist<best){best=dist;chosen=groupOf(b);}});
+    if(!chosen)chosen=dateKeys[0];if(!chosen||chosen===currentDate)return;currentDate=chosen;
+    $('railYear').innerHTML=dotMatrix(chosen.slice(0,4),4);$('railMonth').textContent=monthName(chosen);$('railCount').textContent=countBooks(timelineCounts[chosen]||0);
+    var monthPicker=dateRail.querySelector('.mobile-month');if(monthPicker&&document.activeElement!==monthPicker)monthPicker.value=chosen;
+    dateRail.querySelectorAll('[data-date]').forEach(function(el){var active=el.classList.contains('month-tick')&&el.dataset.date===chosen;el.classList.toggle('active',active);if(active)el.setAttribute('aria-current','date');else el.removeAttribute('aria-current');});
+  }
+  function jumpToReadingMonth(k){var idx=view.list.findIndex(function(b){return groupOf(b)===k;});if(idx<0)return;ensureRendered(idx);var node=content.querySelector('[data-id="'+cssq(view.list[idx].id)+'"]');if(node){var heading=node.closest('.group');(heading||node).scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}}
+  dateRail.addEventListener('click',function(e){var el=e.target.closest('[data-date]');if(el)jumpToReadingMonth(el.dataset.date);});
+  dateRail.addEventListener('change',function(e){if(e.target.matches('.mobile-month'))jumpToReadingMonth(e.target.value);});
+
+  if(window.CLOUD_LIBRARY){
+    // The embedded built-in copy is an old snapshot (and is not even sent to the hosted page), so "Restore built-in library" must not exist here.
+    $('resetBtn').hidden=true;$('provenance').hidden=true;
+    var accessButton=$('adminAccess');accessButton.hidden=false;accessButton.href=window.CLOUD_CAN_EDIT?'/logout':'/login';
+    accessButton.setAttribute('aria-label',window.CLOUD_CAN_EDIT?'Sign out of admin':'Admin login');accessButton.title=accessButton.getAttribute('aria-label');
+    if(window.CLOUD_CAN_EDIT){var signout=document.createElement('a');signout.className='m-item';signout.href='/logout';signout.textContent='Sign out';$('menuPop').prepend(signout);$('menuBtn').setAttribute('aria-label','Admin tools');$('menuBtn').title='Admin tools';}
+    document.documentElement.classList.toggle('public-library',publicView());
+    $('add').hidden=publicView();
+    if(publicView()){lockPublicControls(document);$('libTitle').removeAttribute('title');$('menuBtn').hidden=true;$('enrichFilter').closest('label').hidden=true;}
+
+    if(!window.CLOUD_CAN_EDIT){
+      var editTargets='.stars button,#add,#importBtn,#resetBtn,[data-act="own"],[data-act="remove"],[data-act="today"],.edit,[data-f],#libTitle';
+      document.addEventListener('click',function(e){if(e.target.closest(editTargets)){e.preventDefault();e.stopImmediatePropagation();}},true);
+      document.addEventListener('beforeinput',function(e){if(e.target.closest('.edit,[data-f],#libTitle')){e.preventDefault();e.stopImmediatePropagation();}},true);
+      document.addEventListener('change',function(e){if(e.target.closest('.status,[data-f]')){e.preventDefault();e.stopImmediatePropagation();}},true);
+    }
+  }
+
+  // ---------- boot ----------
+  function bootRender(){
+    reindex(); buildFilters(); syncViewSwitch(); applyTheme(); renderColumnPicker(); renderAll(); measureNotch();
+    $("provenance").textContent="Built-in library: "+countBooks(SEED?SEED.length:0)+".";
+  }
+  var toTop=$("toTop");
+  toTop.addEventListener("click",function(){ window.scrollTo({top:0,behavior:(REDUCED&&REDUCED.matches)?"auto":"smooth"}); });
+  function showLoadError(){
+    loadingLibrary=false;loadFailed=true; content.hidden=false; $("empty").hidden=true; $("loadmore").hidden=true; content.removeAttribute("aria-busy");
+    content.innerHTML='<div class="empty-state"><h2>The library did not load</h2><p>Check your connection, then try again.</p><button type="button" id="retryLoad">Try again</button></div>';
+    $("retryLoad").addEventListener("click",function(){ loadFailed=false; content.setAttribute("aria-busy","true"); content.innerHTML='<div class="boot-grid" role="status" aria-label="Loading the library">'+new Array(13).join('<span class="boot-card"></span>')+'</div>'; loadLibrary(); });
+  }
+  // Source of truth is the stored library served as books.json (revalidated, so an unchanged library costs a 304).
+  // The hosted page never falls back to an old embedded copy: it says the load failed instead.
+  function loadLibrary(){
+    loadingLibrary=true;loadFailed=false;content.hidden=false;$("empty").hidden=true;$("loadmore").hidden=true;content.setAttribute("aria-busy","true");
+    content.innerHTML='<div class="boot-grid" role="status" aria-label="Loading the library">'+new Array(13).join('<span class="boot-card"></span>')+'</div>';renderStatusSeg();
+    fetch(LITE?"books.json?view=public":"books.json",{cache:"no-cache"}).then(function(r){ if(!r.ok) throw new Error("HTTP "+r.status); serverRevision=r.headers.get("X-Library-Revision"); return r.json(); })
+      .then(function(d){ var books=Array.isArray(d)?d:(d&&d.books); if(Array.isArray(books)){ state.books=books.map(normalize); if(d&&typeof d.title==="string") state.title=d.title; } else if(window.CLOUD_LIBRARY){ throw new Error("Unexpected library format"); } else { seedFromBuiltin(); } return true; })
+      .catch(function(){ if(window.CLOUD_LIBRARY) return false; if(!loadLocal()) seedFromBuiltin(); return true; })
+      .then(function(ok){ loadingLibrary=false;if(ok){ loadFailed=false; bootRender(); openLinkedBook(); } else showLoadError(); });
+  }
+  function openLinkedBook(){ var id=hashBookId(); if(id!==null&&findBook(id)) openDrawer(id,false,"initial"); }
+  // Do not lose edits: flush a pending save when the page is hidden, and warn before leaving with an unsaved or failed save.
+  document.addEventListener("visibilitychange",function(){ if(document.visibilityState==="hidden"&&saveTimer&&!publicView()){ clearTimeout(saveTimer); saveTimer=null; saveNow(); } });
+  window.addEventListener("beforeunload",function(e){ if(SERVER_MODE&&!publicView()&&(saveTimer||serverSaveState==="saving"||serverSaveState==="error")){ e.preventDefault(); e.returnValue=""; } });
+  applyTheme(); syncViewSwitch(); measureNotch();
+  if(SERVER_MODE){
+    // The library name is a browser-only label (books.json is a bare array), so reuse the saved one.
+    try{ var savedLocal=JSON.parse(localStorage.getItem(STORAGE_KEY)||"null"); if(savedLocal&&typeof savedLocal.title==="string") state.title=savedLocal.title; }catch(e){}
+    // Source of truth is the on-disk books.json served by the launcher.
+    loadLibrary();
+  } else {
+    var had=loadLocal();
+    if(!had){ seedFromBuiltin(); }
+    bootRender(); restoreHandle();
+  }
+})();
+</script>
+<script src="/unified.js" defer></script></body>
+</html>

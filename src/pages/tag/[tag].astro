@@ -1,0 +1,15 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostList from '../../layouts/PostList.astro';
+import { getTagMap } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const map = await getTagMap();
+  return [...map.entries()].map(([slug, v]) => ({ params: { tag: slug }, props: v }));
+}
+const { label, posts } = Astro.props;
+---
+<Base title={label} path={`/tag/${Astro.params.tag}`}>
+  <h1 class="tag-heading">{label}</h1>
+  <PostList posts={posts} />
+</Base>

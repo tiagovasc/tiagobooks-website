@@ -1,0 +1,15 @@
+---
+title: When Your Body Attacks Your Brain
+date: 2019-12-26 01:17:00-06:00
+tags:
+- Book Reviews
+- Science
+---
+
+**_A book review of&nbsp;‘_Brain on Fire_’ by_ Susannah Cahalan**
+
+The book tells the harrowing story of Susannah Cahalan, a young reporter who suddenly undergoes a radical personality change that spirals into paranoia, hallucinations, and eventually violent seizures. The narrative begins with the desperate quest undertaken by her and her family to uncover the source of her unraveling. In the meantime, while searching for a diagnosis, her condition deteriorates rapidly until she is eventually hospitalized. This descent is quite honestly scary, as she chronicles her journey through madness primarily using hospital video footage and testimonies from friends and family, given that she remembers little of this psychotic period herself. At the height of her illness, she loses all sense of location and self, becoming unrecognizable even to those closest to her. The terror is compounded by the fact that doctors remain baffled as every conceivable test comes back negative. It becomes a race against time because she continues to worsen and because a psychiatric diagnosis feels inevitable. Previous doctors had already suggested this route, but her family steadfastly refused, knowing that such a label would mean the medical community would stop looking for the physiological root of her suffering.
+
+After a carousel of specialists and negative results, Dr. Souhel Najjar is put in charge of the case, a turning point that ultimately saves her life. Following hints from her psychological assessments, Dr. Najjar administers a simple test by asking her to draw a clock. When she crowds all the numbers onto the right side of the circle, it reveals that her brain is inflamed and under attack. This breakthrough leads to a brain biopsy and the correct diagnosis of anti-NMDA receptor encephalitis, a rare type of brain inflammation caused by antibodies attacking the brain's receptors. Despite the relief of a diagnosis, the reality remains grim, as many patients never fully recover and a significant percentage die even with proper treatment. The narrative does not end with the cure but rather delves into the aftermath, following her slow recovery and the deep existential problems that accompany both the illness and the return to a normal life.
+
+The text goes deep into her personal struggles, giving the account a very human feel that I found unexpectedly touching. While I was expecting the book to be more medically oriented, this went well beyond clinical detachment in a very good way. The book concludes by reflecting on the disease itself, discussing how her specific case impacted research and awareness, and highlighting other cases she has encountered. It also serves as a critique of a medical system that is frighteningly prone to misdiagnosis, particularly when symptoms straddle the line between the neurological and the psychiatric. Overall, it is a fantastic book that was very pleasurable to read, offering a profound look at how easily the self can be lost and the immense effort required to reclaim it.

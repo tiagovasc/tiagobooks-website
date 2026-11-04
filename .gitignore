@@ -1,0 +1,25 @@
+node_modules
+dist
+.astro
+.env
+.env.*
+.wrangler
+deploy/Caddyfile
+*.log
+data/link-check-report.json
+data/links-plan.json
+
+# Integration local state stays outside public source.
+.env*
+!.env.example
+private/
+*.log
+/data/
+/deploy/
+INTEGRATED_DEPLOYMENT.md
+.local/
+*.bundle
+*.zip
+*.dpapi
+*.pem
+*.key

@@ -1,0 +1,42 @@
+{
+  "title": "Tiago Faleiro",
+  "description": "Tiago Faleiro's library, essays and writing",
+  "url": "http://localhost:8740",
+  "language": "en-US",
+  "timezone": "America/Chicago",
+  "author": "Tiago Faleiro",
+  "blogLayout": "cards",
+  "newTabForExternalLinks": true,
+  "socialPreviewFromFirstImage": true,
+  "nav": [
+    {
+      "label": "Library",
+      "href": "/"
+    },
+    {
+      "label": "Blog",
+      "href": "/blog"
+    },
+    {
+      "label": "Books",
+      "href": "/pages/books"
+    },
+    {
+      "label": "Talks",
+      "href": "/pages/talks"
+    },
+    {
+      "label": "Podcast",
+      "href": "/pages/podcast-overview"
+    },
+    {
+      "label": "Interviews",
+      "href": "/pages/interviews"
+    },
+    {
+      "label": "About",
+      "href": "/pages/about"
+    }
+  ],
+  "footerHtml": ""
+}

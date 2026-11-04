@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Edit writing" noindex>
+  <h1 class="entry-title">Edit writing</h1>
+  <p>Save Markdown in this integration copy, then rebuild to preview. <a href="/login">Sign in</a> · <a href="/admin/">GitHub editor</a></p>
+  <form class="local-editor" id="editor">
+    <label>Entry <select id="entry" aria-label="Entry"><option value="">Choose a post or page</option></select></label>
+    <details><summary>Create an entry</summary><label>Collection <select id="kind"><option>posts</option><option>pages</option></select></label><label>URL name <input id="slug" pattern="[a-z0-9-]+" placeholder="my-new-essay" /></label><button type="button" id="new-entry">Create draft</button></details>
+    <label for="markdown">Markdown and metadata</label><textarea id="markdown" spellcheck="false" disabled></textarea>
+    <div><button id="save" disabled>Save draft</button> <button type="button" id="build">Rebuild preview</button></div>
+    <p id="status" role="status">Loading entries…</p>
+  </form>
+  <script>
+    const $=(id:string)=>document.getElementById(id) as any;let revision='',current='';
+    const status=(s:string)=>$('status').textContent=s;
+    async function api(path:string,options:any={}){const r=await fetch('/api/editor'+path,options);const d=await r.json();if(!r.ok)throw Error(d.error||'Request failed');return d}
+    async function list(){try{const d=await api('');for(const file of d.files){const o=document.createElement('option');o.value=file;o.textContent=file;$('entry').append(o)}status('Choose an entry. All changes stay in this copy.')}catch(e:any){status(e.message)}}
+    $('entry').addEventListener('change',async()=>{if(!confirmLeave())return;try{const d=await api('?file='+encodeURIComponent($('entry').value));current=$('entry').value;revision=d.revision;$('markdown').value=d.text;$('markdown').disabled=false;$('save').disabled=false;dirty=false;status('Loaded '+current)}catch(e:any){status(e.message)}});
+    let dirty=false;function confirmLeave(){return !dirty||confirm('Discard unsaved edits?')} $('markdown').addEventListener('input',()=>dirty=true);window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue=''}});
+    $('new-entry').addEventListener('click',()=>{if(!confirmLeave())return;const slug=$('slug').value;if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)){status('Use lowercase words separated by hyphens.');return}current=$('kind').value+'/'+slug+'.md';revision='new';$('markdown').value='---\ntitle: New entry\ndate: '+new Date().toISOString()+'\ndraft: true\n---\n\n';$('markdown').disabled=false;$('save').disabled=false;dirty=true;status('New draft: '+current)});
+    $('editor').addEventListener('submit',async e=>{e.preventDefault();try{const d=await api('',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({file:current,revision,text:$('markdown').value})});revision=d.revision;dirty=false;status('Saved '+current+'. Rebuild to update the preview.')}catch(e:any){status(e.message)}});
+    $('build').addEventListener('click',async()=>{if(dirty){status('Save your edits before rebuilding.');return}$('build').disabled=true;status('Building content and search…');try{await api('/build',{method:'POST'});status('Build passed. Open the website to review your changes.')}catch(e:any){status(e.message)}finally{$('build').disabled=false}});list();
+  </script>
+</Base>

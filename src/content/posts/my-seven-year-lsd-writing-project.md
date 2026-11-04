@@ -1,0 +1,30 @@
+---
+title: My Seven-Year LSD Writing Project
+date: 2025-04-05 14:08:00-05:00
+tags:
+- General
+---
+
+Nearly a decade ago, I began taking LSD. It started without a fixed destination, sparked more by a particular mindset — a willingness to discover more about myself and others, guided by an intuition that these two explorations might ultimately be the same. My doses were consistently moderate; I wasn’t chasing the overwhelming mystical visions or the kaleidoscopic beauty often associated with psychedelics. Instead, I found the _cognitive_ shift profoundly alluring — the way it opened doors to thoughts I’d never had, perspectives that hadn’t previously occurred to me.
+
+I started writing during these sessions, partly to anchor the never-ending thoughts, partly to hold onto insights that felt valuable and always seemed to vanish from memory. Over time, the idea emerged that perhaps these notes, these fragments of exploration, could become something more. I’d always enjoyed reading others’ trip logs, yet they often felt like isolated snapshots. Mine felt different; the sessions were purposeful, and with each seemingly building on the last. I sensed I was moving towards something, even if the destination remained hazy. I felt this unfolding journey might be useful to share in the form of a book.
+
+Seven years later, that project is complete. _In Search of the Infinite: A Psychedelic Memoir_ is now published. It’s admittedly an odd book, resistant to easy categorization. It’s deeply philosophical, yet not in an abstract, detached way. It’s intensely personal, tracing how philosophy shaped my life and how life, in turn, reshaped my philosophy. In this sense, it reads like a memoir — sharing aspirations and regrets, doubts, the profound shift in perspective following my mother’s loss, and much else. Likewise, the glimpses into both the wonder and terror that can accompany the psychedelic experience.
+
+Stylistically, it owes debts to writers like Augustine, particularly in its focus on personal struggle and evolving belief, and perhaps Marcus Aurelius, in its reflective, self-directed tone. You could see it as simply a very extended trip log — spanning nearly 400 pages — and I find a certain humility in that label. But I hope it offers something more distinct as well. Its uniqueness lies partly in its deeply personal nature, but also in the sheer number of sessions documented, allowing the reader to witness the gradual evolution of a worldview over the years. Furthermore, my own background — a degree in philosophy followed by a master’s in neuroscience — perhaps provides a particular lens through which these experiences are interpreted and articulated, even while acknowledging neither field holds a monopoly on truth.
+
+My starting point was philosophical inquiry — engaging with questions of reality, morality, knowledge, meaning, consciousness, art, and more. Initially explored through argument, these topics transformed as the journey deepened. They ceased to be intellectual games and revealed themselves as the very frameworks through which we perceive the world, decide what holds true, and ultimately shape our sense of reality itself. With this growing awareness, reality sometimes felt as though it began to disclose itself more readily.
+
+The book documents this progression: the re-evaluation of truth, the search for meaning beyond nihilism, the attempt to reconcile a rationalist upbringing with experiences that felt undeniably profound, bordering on the religious. I also share my own complex, initially negative relationship with religion, tracing those feelings to their roots and contextualizing them within both personal history and our broader cultural moment.
+
+While I hesitate to “spoil” the book’s trajectory — partly fearing judgment — one way to understand its arc is the shift from a standard philosophical and scientific stance towards something one might term “religious.” Crucially, this isn’t presented as the simple result of a single mystical revelation, and the book makes it abundantly clear that the process was far more complex and intellectually involved than validating an experience solely based on any kind of religious phenomenology.
+
+Furthermore, claiming a “religious” worldview feels complicated when common associations with the word differ so starkly from my own understanding. A significant part of the journey documented is precisely this struggle, hitting a conceptual wall when trying to engage with these ideas as they’re often treated today. It required extensive work, including exploring older philosophical and theological sources, to slowly begin grasping the deeper currents of religious thought.
+
+Consider the book as an intimate record of a decade consumed by the two questions that underpin our lives:
+
+> _What is this reality?_
+> 
+> _What ultimately matters?_
+
+This book traces one path through the doubt, the discoveries, and the transformations encountered while seeking answers. If this exploration resonates with you, _In Search of the Infinite: A Psychedelic Memoir_, is available now on Amazon in the [<u>US</u>](https://www.amazon.com/Search-Infinite-Psychedelic-Memoir/dp/B0DWRWCT2R/), [<u>UK</u>](https://www.amazon.co.uk/Search-Infinite-Psychedelic-Memoir/dp/B0DWRWCT2R), [<u>DE</u>](https://www.amazon.de/-/en/Search-Infinite-Psychedelic-Memoir/dp/B0DWRWCT2R/ref=sr_1_1?crid=3UW3IIZHQLZHE&dib=eyJ2IjoiMSJ9.CbzuOsJ1lo5vc6tAoJwEZcayg2P7YoLer7ANPNfXlfR_xdGXBYS3t_aGitiv_40m5E2A-eLzdlBfc8FJQU-hUb3yDhc-lDZmJY1SfF0D5fHktTLALfEI5Whp6kIVfxPnfebJEg2X8xtWx3NFKCxFvhTP39IDIq2eFPQyER1AVPhdWEtp4Z3et7Kt8LrwvEGB9qgR4MGXV7HU6tAchz352yjiDqf8M0hSilxwv31nyXo.4cAG0D5Ioe4A_DAbRLU3TNCKLY6PIYsu6YN8YMnAVFk&dib_tag=se&keywords=in+search+of+the+infinite&qid=1743881543&sprefix=in+search+of+the+infinite%2Caps%2C132&sr=8-1) and most other countries. You can also read it for free on my [<u>blog</u>](https://psychedelicmemoir.com/), in [<u>EPUB</u>](https://drive.google.com/drive/folders/12QynuH3l5DZyXMe6RISSoNRl5mhkoVf2?usp=sharing) format, or [<u>PDF</u>](https://drive.google.com/drive/folders/12QynuH3l5DZyXMe6RISSoNRl5mhkoVf2?usp=sharing).

@@ -1,0 +1,9 @@
+node_modules
+.env*
+private
+.git
+.local
+dist
+/data
+!src/data
+!src/data/**
