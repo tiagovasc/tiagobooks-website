@@ -1,6 +1,7 @@
 import http from 'node:http';
 import {localDB} from '../local-storage.mjs';
 import {readBody,sameOrigin} from './http-utils.mjs';
+import {personalizeSiteHeader} from '../src/lib/site-shell.mjs';
 import {readFile,stat} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -123,7 +124,7 @@ async function pageVariants(){
   if(at>0){const end=html.indexOf('\n',at);html=html.slice(0,at)+'var SEED = [];'+(end<0?'':html.slice(end));}
   const build=async editable=>{
     const text=html.replace('<head>',`<head><script>window.CLOUD_LIBRARY=true;window.CLOUD_CAN_EDIT=${editable};if(!window.CLOUD_CAN_EDIT)document.documentElement.classList.add('public-library');</script>`);
-    const buf=Buffer.from(text);
+    const buf=Buffer.from(personalizeSiteHeader(text,editable));
     return {...await compressed(buf,9),etag:`"${createHash('sha1').update(buf).digest('hex').slice(0,20)}"`};
   };
   page={stamp,public:await build(false),admin:await build(true)};
@@ -213,7 +214,7 @@ export const server=http.createServer(async(req,res)=>{
     const filename=url.pathname==='/'?'index.html':url.pathname.slice(1);
     if(filename==='index.html'){
       const pages=await pageVariants();
-      return sendVariant(req,res,authenticated(req)?pages.admin:pages.public,{type:'text/html; charset=utf-8',etag:(authenticated(req)?pages.admin:pages.public).etag,cache:'no-cache',extra:{'Content-Security-Policy':CSP}});
+      return sendVariant(req,res,authenticated(req)?pages.admin:pages.public,{type:'text/html; charset=utf-8',etag:(authenticated(req)?pages.admin:pages.public).etag,cache:'private, no-cache',extra:{'Content-Security-Policy':CSP,Vary:'Accept-Encoding, Cookie'}});
     }
     if(Object.hasOwn(TBR_FILES,filename)){
       const file=path.join(root,filename),st=await stat(file).catch(()=>null);

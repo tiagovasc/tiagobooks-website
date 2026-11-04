@@ -6,6 +6,7 @@ import {createHash} from 'node:crypto';
 import zlib from 'node:zlib';
 import {server as library,authenticated} from './library/server.mjs';
 import {editorHandler} from './editor-api.mjs';
+import {personalizeSiteHeader} from './src/lib/site-shell.mjs';
 const root=path.dirname(fileURLToPath(import.meta.url)),dist=path.join(root,'dist');
 process.env.LIBRARY_PAGE_FILE??=path.join(dist,'index.html');
 const privateRoot=process.env.INTEGRATION_PRIVATE_DIR||path.resolve(root,'../private');
@@ -71,9 +72,15 @@ export const server=http.createServer(async(req,res)=>{
     let target,st;for(const candidate of [base,base+'.html',path.join(base,'index.html')]){const s=await stat(candidate).catch(()=>null);if(s?.isFile()){target=candidate;st=s;break}}
     const status=target?200:404;if(!target){target=path.join(dist,'404.html');st=await stat(target)}
     const type=p==='/posts_feed'?'application/atom+xml; charset=utf-8':types[path.extname(target)]||'application/octet-stream';const isAdmin=p.startsWith('/admin');
-    const text=compressible.test(type),entry=text?await textVariant(target,st):null;
+    const text=compressible.test(type),personalized=type.startsWith('text/html');
+    let entry=text?await textVariant(target,st):null;
+    if(personalized&&authenticated(req)){
+      // Keep compressed owner/public variants separate, including their validators.
+      entry=entry.owner??=(raw=>({raw,etag:'"'+createHash('sha256').update(raw).digest('hex').slice(0,24)+'"'}))(Buffer.from(personalizeSiteHeader(entry.raw.toString(),true)));
+    }
     const tag=entry?entry.etag:'W/"'+st.size.toString(16)+'-'+Math.floor(st.mtimeMs).toString(16)+'"';
     const h={...headers,'Content-Type':type,'Cache-Control':status===404?'no-cache':cacheControl(p),ETag:tag,'Content-Security-Policy':isAdmin?editorCsp:csp,Vary:'Accept-Encoding'};
+    if(personalized){h['Cache-Control']='private, no-cache';h.Vary='Accept-Encoding, Cookie';}
     if(isAdmin||p==='/editor')h['X-Robots-Tag']='noindex, nofollow';
     if(status===200&&String(req.headers['if-none-match']||'').split(',').some(t=>[tag,'W/'+tag].includes(t.trim()))){res.writeHead(304,h);return res.end()}
     let body;if(entry){const [encoding,data]=encodedBody(entry,req);body=data;if(encoding)h['Content-Encoding']=encoding}else body=req.method==='HEAD'?null:await readFile(target);

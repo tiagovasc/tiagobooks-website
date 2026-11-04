@@ -86,6 +86,15 @@ body.writing-site{max-width:none;padding:0 0 80px;font-family:var(--font);backgr
 .site-shell .shell-action:hover{background:var(--code-bg);color:var(--ink)}
 .site-shell .shell-action svg{width:18px;height:18px}
 .site-shell .shell-action svg.fill-icon{width:16px;height:16px;fill:currentColor;stroke:none}
+/* Choose the icon from the theme set in <head>, before the first paint. */
+.site-shell #appearanceBtn .theme-sun{display:none}
+.site-shell #appearanceBtn .theme-moon{display:block}
+:root[data-theme=dark] .site-shell #appearanceBtn .theme-sun{display:block}
+:root[data-theme=dark] .site-shell #appearanceBtn .theme-moon{display:none}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme=light]) .site-shell #appearanceBtn .theme-sun{display:block}
+  :root:not([data-theme=light]) .site-shell #appearanceBtn .theme-moon{display:none}
+}
 .site-shell .unified-nav{font-size:16px}
 .site-shell .unified-nav a{min-height:38px;padding:7px 13px}
 /* Header and section toolbar read as one fixed panel: no gap, one shared hairline. */

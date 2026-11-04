@@ -19,5 +19,6 @@ ENV NODE_ENV=production PORT=8080 HOST=0.0.0.0
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/library ./library
 COPY server.mjs local-storage.mjs editor-api.mjs ./
+COPY src/lib/site-shell.mjs ./src/lib/site-shell.mjs
 EXPOSE 8080
 CMD ["node","server.mjs"]

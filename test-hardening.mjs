@@ -9,6 +9,7 @@ import path from 'node:path';
 import os from 'node:os';
 import http from 'node:http';
 import {randomBytes} from 'node:crypto';
+import {parseFragment,serialize} from 'parse5';
 import { postSubtitle, displayTitle, visibleTags } from './src/lib/post-presentation.mjs';
 import { parseInterviews } from './src/lib/interviews.mjs';
 const fixture=await mkdtemp(path.join(os.tmpdir(),'tiago-hardening-test-'));
@@ -87,7 +88,7 @@ test('signing in and out returns to a same-site page only',async()=>{
 test('blog pages allow KaTeX data fonts, compress with Brotli and cache hashed assets for a year',async()=>{
   const blog=await fetch(base+'/blog',{headers:{'Accept-Encoding':'br'}});
   assert.match(blog.headers.get('content-security-policy'),/font-src 'self' data:/);
-  assert.equal(blog.headers.get('cache-control'),'no-cache');
+  assert.equal(blog.headers.get('cache-control'),'private, no-cache');
   const html=await(await fetch(base+'/blog')).text();
   const asset=html.match(/\/_astro\/[^"']+\.css/)[0];
   const r=await fetch(base+asset,{headers:{'Accept-Encoding':'br'}});
@@ -95,7 +96,7 @@ test('blog pages allow KaTeX data fonts, compress with Brotli and cache hashed a
   const raw=await fetch(base+asset,{headers:{'Accept-Encoding':'identity'}});assert.equal(raw.headers.get('content-encoding'),null);assert.ok((await raw.text()).length>1000);
   const tag=r.headers.get('etag');assert.equal((await fetch(base+asset,{headers:{'If-None-Match':tag}})).status,304);
   assert.equal((await fetch(base+'/pagefind/pagefind.js')).headers.get('cache-control'),'no-cache');
-  const missing=await fetch(base+'/no-such-page');assert.equal(missing.status,404);assert.equal(missing.headers.get('cache-control'),'no-cache');
+  const missing=await fetch(base+'/no-such-page');assert.equal(missing.status,404);assert.equal(missing.headers.get('cache-control'),'private, no-cache');
 });
 
 test('the build keeps origin-specific URLs out of the tracked library page',async()=>{
@@ -135,6 +136,28 @@ test('book chapters without hand-written chapter links get previous/next cards; 
 
 test('the GitHub icon points to this website repository on every page',async()=>{
   for(const route of ['/','/blog','/pages/about']){const html=await(await fetch(base+route)).text();assert.match(html,/href="https:\/\/github.com\/tiagovasc\/tiagobooks-website"/,route);assert.doesNotMatch(html,/tiagovasc\/book-library/,route)}
+});
+
+test('header actions arrive complete and identical across pages before JavaScript, with separate owner caches',async()=>{
+  const cookie=(await login()).headers.get('set-cookie').split(';')[0];
+  let publicHeader,ownerHeader;
+  for(const route of ['/','/blog','/pages/books','/pages/talks','/pages/podcast-overview','/pages/interviews','/pages/about','/search']){
+    const guest=await fetch(base+route),owner=await fetch(base+route,{headers:{Cookie:cookie,'Accept-Encoding':'br'}});
+    const guestHTML=await guest.text(),ownerHTML=await owner.text();
+    const actions=html=>serialize(parseFragment(html.match(/<div class="shell-actions">([\s\S]*?)<\/div>/)?.[1]||''));
+    const g=actions(guestHTML),o=actions(ownerHTML);
+    assert.ok(g&&o,route);
+    publicHeader??=g;ownerHeader??=o;
+    assert.equal(g,publicHeader,route+' public controls');assert.equal(o,ownerHeader,route+' owner controls');
+    assert.match(g,/id="editAccess" hidden/);assert.doesNotMatch(o,/id="editAccess" hidden/);
+    assert.match(g,/id="adminAccess" href="\/login"/);assert.match(o,/id="adminAccess" href="\/logout"/);
+    assert.match(o,/class="theme-sun"/);assert.match(o,/class="theme-moon"/);
+    assert.match(owner.headers.get('cache-control'),/private/);assert.match(owner.headers.get('vary'),/Cookie/);
+    assert.notEqual(guest.headers.get('etag'),owner.headers.get('etag'),route);
+    assert.equal((await fetch(base+route,{headers:{'If-None-Match':owner.headers.get('etag')}})).status,200,'logout cannot reuse owner HTML');
+    assert.equal((await fetch(base+route,{headers:{Cookie:cookie,'If-None-Match':guest.headers.get('etag')}})).status,200,'login cannot reuse public HTML');
+    assert.equal((await fetch(base+route,{headers:{Cookie:cookie,'If-None-Match':owner.headers.get('etag')}})).status,304);
+  }
 });
 
 test('visitors load the library without descriptions; each description loads on its own',async()=>{
