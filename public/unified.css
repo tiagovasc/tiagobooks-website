@@ -36,6 +36,13 @@ body.writing-site{max-width:none;padding:0 0 80px;font-family:var(--font);backgr
 @media(max-width:760px){.date-rail{left:16px;right:16px;top:auto;bottom:calc(12px + env(safe-area-inset-bottom));transform:none;width:auto;padding:8px 12px;gap:12px;border:1px solid var(--line);border-radius:18px;background:var(--surface);box-shadow:0 8px 30px #0003;justify-content:space-between}.date-context{width:auto;display:flex;align-items:center;gap:10px;min-width:0}.date-context .dm{width:58px}.date-month{margin:0;font-size:12px}.date-count,.date-track{display:none}.mobile-month{display:block;min-height:44px;min-width:0;max-width:56%;border:1px solid var(--line);border-radius:10px;background:var(--sunk);color:var(--ink);padding:0 8px;font-size:16px}}
 
 /* One invariant site header. Section-specific controls live below it. */
+/* Hand off the complete action row between documents without a blank frame,
+   cross-fade, or position interpolation. Regular links/history remain native. */
+@view-transition{navigation:auto}
+.site-shell .shell-actions{view-transition-name:site-actions}
+::view-transition-group(*){animation:none}
+::view-transition-old(*){animation:none;opacity:0}
+::view-transition-new(*){animation:none;mix-blend-mode:normal}
 :root{--shell-h:104px;--section-h:52px;--sunk:#E3E3DF;--faint:#737378;--shell-bg:#fff}
 :root[data-theme=dark]{--sunk:#2C2C2E;--faint:#8A8A90;--shell-bg:#000}
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]){--sunk:#2C2C2E;--faint:#8A8A90;--shell-bg:#000}}
