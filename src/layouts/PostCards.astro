@@ -2,19 +2,24 @@
 // Card layout for the blog listing (4 Nov 2026). The original list layout remains in PostList.astro;
 // choose between them with "blogLayout" in src/data/site.json ("cards" or "list").
 import { shortDate, yearOf, tagSlug, monthOf, monthLabel, type Post } from '../lib/content';
+import { parseFragment } from 'parse5';
 interface Props { posts: Post[] }
 const { posts } = Astro.props;
 const months = new Map<string,Post[]>();
 for(const p of posts){const key=monthOf(p.data.date);if(!months.has(key))months.set(key,[]);months.get(key)!.push(p)}
-const plain=(md:string)=>md
+const decodeEntities=(value:string)=>{
+  const text=(node:any):string=>node.nodeName==='#text'?node.value:(node.childNodes||[]).map(text).join('');
+  return text(parseFragment(value));
+};
+const plain=(md:string)=>decodeEntities(md
   .replace(/```[\s\S]*?```/g,' ').replace(/<[^>]*>/g,' ').replace(/!\[[^\]]*\]\([^)]*\)/g,' ')
   .replace(/\[([^\]]*)\]\([^)]*\)/g,'$1').replace(/^\s*(#{1,6}|>|[-*+]|\d+\.)\s+/gm,'').replace(/^\s*https?:\/\/\S+\s*$/gm,' ')
-  .replace(/[*_`~]/g,'').replace(/\$\$[\s\S]*?\$\$/g,' ');
+  .replace(/[*_`~]/g,'').replace(/\$\$[\s\S]*?\$\$/g,' '));
 function details(p:Post){
   const title=p.data.title, cut=title.indexOf(': ');
   const split=cut>8&&!/^podcast:/i.test(title);
   const heading=split?title.slice(0,cut):title;
-  let sub=p.data.description||(split?title.slice(cut+2):'');
+  let sub=decodeEntities(p.data.description||(split?title.slice(cut+2):'')).replace(/\s+/g,' ').trim();
   const text=p.data.protected?'':plain(p.body||'');
   if(!sub&&text){const para=text.split(/\n\s*\n/).map(s=>s.replace(/\s+/g,' ').trim()).find(s=>s.length>40)||'';const end=[...para.matchAll(/[.!?](?=\s+[A-Z"“‘(]|\s*$)/g)].find(m=>!/(^|\s)([A-Z]|Dr|Mr|Mrs|Ms|St|vs|e\.g|i\.e)$/.test(para.slice(0,m.index)));const sentence=(end?para.slice(0,end.index+1):para).trim();sub=sentence.length>150?sentence.slice(0,147).replace(/\s+\S*$/,'')+'…':sentence}
   const words=text.split(/\s+/).filter(Boolean).length;
