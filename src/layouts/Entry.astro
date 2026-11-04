@@ -82,6 +82,7 @@ const jsonLd = kind === 'post' && !d.protected ? {
         <Content />
       </div>
     )}
+    <slot />
     {(prevChapter || nextChapter) && (
       <nav class="chapter-nav" aria-label={`${BOOK_TAG} chapters`} data-pagefind-ignore>
         {prevChapter ? <a class="chapter-link chapter-prev" href={`/posts/${prevChapter.id}`} rel="prev"><span class="chapter-dir">Previous</span><span class="chapter-title">{chapterLabel(prevChapter)}</span></a> : null}

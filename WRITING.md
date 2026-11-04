@@ -48,3 +48,9 @@ thumbnailCrop:
   y: 35
   zoom: 1.08
 ```
+
+## Podcast page
+
+The Podcast page lists published posts tagged `Podcast`, newest first, with their original episode image, date, guest, opening excerpt and listening links. The image and Read more open the blog post. Edit the page's Markdown to change its introduction. Titles formatted as `Podcast: Topic with Guest Name` display the guest separately.
+
+Optional **Spotify episode URL**, **Apple Podcasts episode URL** and **YouTube episode URL** fields are available in the post editor. Spotify and Apple fall back to the show pages when an episode URL is absent. YouTube uses the video embedded in the post unless overridden. For Markdown editing, use `spotify:`, `apple:` and `youtube:`. Images use the same frontend-only `thumbnailCrop` settings as Blog cards, retaining the original file.

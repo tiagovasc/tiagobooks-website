@@ -146,3 +146,28 @@ test('a save that would strip most descriptions is refused',async()=>{
   assert.equal(r.status,400);assert.match((await r.json()).error,/descriptions/);
   const ok=await fetch(base+'/save',{method:'POST',headers:{Cookie:cookie,'Content-Type':'application/json','X-Library-Revision':revision},body:JSON.stringify(full)});assert.equal(ok.status,200);
 });
+
+test('the Podcast page lists every episode with post, Spotify, Apple Podcasts and YouTube links',async()=>{
+  const html=await(await fetch(base+'/pages/podcast-overview')).text();
+  assert.match(html,/The Anagoge Podcast explores philosophy, theology, consciousness, and the human condition/);
+  const eps=[...html.matchAll(/<article class="ep">([\s\S]*?)<\/article>/g)].map(m=>m[1]);
+  const {readdir,readFile:read}=await import('node:fs/promises');
+  let tagged=0;for(const f of await readdir('src/content/posts')){const t=await read('src/content/posts/'+f,'utf8');const fm=t.split('---')[1]||'';if(/^\s*-\s*Podcast\s*$/m.test(fm)&&!/^draft:\s*true/m.test(fm)&&!/^unlisted:\s*true/m.test(fm)&&!/^protected:\s*true/m.test(fm))tagged++}
+  assert.equal(eps.length,tagged);assert.ok(eps.length>=31);
+  const dates=eps.map(e=>e.match(/datetime="([^"]+)"/)[1]);assert.deepEqual([...dates].sort().reverse(),dates,'newest first');
+  for(const e of eps){
+    const post=e.match(/class="ep-thumb" href="([^"]+)"/)[1];assert.match(post,/^\/posts\/[\w-]+$/);
+    assert.match(e,/src="\/uploads\/podcasts\/episode-[\w-]+\.webp"/,'verified local episode image');
+    assert.doesNotMatch(e,/i\.ytimg\.com|onerror=/,'current episodes need no external thumbnail fallback');
+    assert.match(e,/href="https:\/\/www\.youtube\.com\/watch\?v=[\w-]{11}"/,'every episode has its own YouTube link');
+    assert.match(e,new RegExp(`class="ep-read" href="${post}"`));assert.match(e,new RegExp(`<h2><a href="${post}">`));
+    assert.match(e,/href="https:\/\/open\.spotify\.com\/[^"]+"[^>]*><img src="\/icons\/spotify\.png"/);
+    assert.match(e,/href="https:\/\/podcasts\.apple\.com\/[^"]+"[^>]*><img src="\/icons\/apple-podcasts\.png"/);
+    assert.match(e,/href="https:\/\/www\.youtube\.com\/[^"]+"[^>]*><img src="\/icons\/youtube\.png"/);
+    const desc=e.match(/<p class="ep-desc">([\s\S]*?)<\/p>/)[1];assert.doesNotMatch(desc,/&amp;(nbsp|amp|#\d+);/,'raw entity in teaser');const words=desc.trim().split(/\s+/).length;assert.ok(words>=40&&words<=60,words+' words');
+  }
+  for(const icon of ['spotify','apple-podcasts','youtube'])assert.equal((await fetch(base+'/icons/'+icon+'.png')).status,200);
+  assert.match(html,/href="https:\/\/www\.youtube\.com\/watch\?v=DMXK9tZzGec"/,'recovered Patitsas episode link');
+  const config=await read('public/admin/config.yml','utf8');
+  for(const field of ['spotify','apple','youtube'])assert.match(config,new RegExp('name: '+field+','),'CMS exposes '+field);
+});

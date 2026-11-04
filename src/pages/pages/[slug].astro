@@ -1,5 +1,6 @@
 ---
 import Entry from '../../layouts/Entry.astro';
+import EpisodeList from '../../components/EpisodeList.astro';
 import { getAllPages } from '../../lib/content';
 
 export async function getStaticPaths() {
@@ -8,4 +9,4 @@ export async function getStaticPaths() {
 }
 const { entry } = Astro.props;
 ---
-<Entry entry={entry} kind="page" />
+<Entry entry={entry} kind="page">{entry.id === 'podcast-overview' && !entry.data.protected && <EpisodeList />}</Entry>

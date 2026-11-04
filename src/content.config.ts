@@ -21,6 +21,10 @@ const shared = {
   image: z.string().optional(),
   // Optional smaller card image, including original podcast episode thumbnails.
   thumbnail: z.string().optional(),
+  // Optional episode links; the Podcast page falls back to the show pages.
+  spotify: z.string().url().optional(),
+  apple: z.string().url().optional(),
+  youtube: z.string().url().optional(),
   // Frontend-only thumbnail framing; original images and article figures stay intact.
   thumbnailCrop: z.object({
     x: z.number().min(0).max(100).default(50),

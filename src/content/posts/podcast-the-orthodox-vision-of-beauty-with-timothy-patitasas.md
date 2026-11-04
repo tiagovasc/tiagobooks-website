@@ -5,6 +5,7 @@ tags:
 - Podcast
 image: /uploads/podcasts/episode-DMXK9tZzGec.webp
 thumbnail: /uploads/podcasts/episode-DMXK9tZzGec-480.webp
+youtube: https://www.youtube.com/watch?v=DMXK9tZzGec
 ---
 
 ## Abstract

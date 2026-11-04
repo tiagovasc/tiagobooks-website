@@ -24,9 +24,9 @@ To edit locally, copy `.env.example` to `.env`, set your own `LIBRARY_PASSWORD`,
 | --- | --- |
 | `src/content/posts`, `src/content/pages` | Published Markdown |
 | `src/data/site.json` | Site identity and navigation |
-| `src/layouts`, `src/pages`, `src/lib` | Astro pages and shared rendering |
+| `src/layouts`, `src/pages`, `src/lib`, `src/components` | Astro pages, episode lists and shared rendering |
 | `library/` | Library interface, API, public covers and TBR catalogue |
-| `public/` | Shared styles, scripts, uploads and vendored Sveltia CMS |
+| `public/` | Shared styles, scripts, uploads, platform icons and vendored Sveltia CMS |
 | `server.mjs`, `editor-api.mjs` | Node server and local editing |
 | `scripts/` | Build, content and link checks |
 
