@@ -4,6 +4,16 @@ title: 'Mercy, Judgment, and the Refusal of Form: What the Criticism of Bryan Jo
 date: 2026-05-19 03:49:00-05:00
 tags:
 - General
+image: /uploads/artwork/nikolai-ge-what-is-truth-christ-and-pilate.webp
+artwork:
+  title: What Is Truth? Christ and Pilate
+  artist: Nikolai Ge
+  year: '1890'
+  alt: Pilate stands in bright light facing Christ in the shadow of a doorway.
+  width: 1182
+  height: 1600
+  thumbnail: /uploads/artwork/nikolai-ge-what-is-truth-christ-and-pilate-480.webp
+  source: https://artsandculture.google.com/asset/what-is-truth-christ-and-pilate/mQGhKNKJnQIlWg
 ---
 
 My critique of Bryan Johnson’s psychedelic experiments reached more people than I expected. It first circulated on Reddit, then found a second life on Substack. Most of the responses were very positive, although a minority were hostile. But the most common objection was not really about Bryan Johnson. It was about the legitimacy of critique itself.

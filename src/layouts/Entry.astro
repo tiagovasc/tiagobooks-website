@@ -4,6 +4,7 @@ import { render } from 'astro:content';
 import { encryptHtml, markdownToHtml, sitePassword } from '../lib/protect';
 import { longDate, tagSlug, getListedPosts } from '../lib/content';
 import Base from './Base.astro';
+import Artwork from './Artwork.astro';
 import site from '../lib/site-config.mjs';
 
 interface Props { entry: any; kind: 'post' | 'page' }
@@ -45,6 +46,7 @@ const jsonLd = kind === 'post' && !d.protected ? {
   dateModified: (d.updated ?? d.date).toISOString(),
   author: { '@type': 'Person', name: site.author },
   mainEntityOfPage: new URL(path, site.url).toString(),
+  ...(image ? { image: new URL(image, site.url).toString() } : {}),
 } : undefined;
 ---
 <Base
@@ -75,7 +77,10 @@ const jsonLd = kind === 'post' && !d.protected ? {
         <script is:inline src="/js/unlock.js" defer></script>
       </>
     ) : (
-      <div class="e-content"><Content /></div>
+      <div class="e-content">
+        {d.image && d.artwork && <Artwork image={d.image} artwork={d.artwork} />}
+        <Content />
+      </div>
     )}
     {(prevChapter || nextChapter) && (
       <nav class="chapter-nav" aria-label={`${BOOK_TAG} chapters`} data-pagefind-ignore>

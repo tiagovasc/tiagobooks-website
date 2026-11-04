@@ -3,6 +3,16 @@ title: What Heidegger Can Teach Us About OpenAI Breaking Into Hugging Face
 date: 2026-07-28 02:19:00-05:00
 tags:
 - General
+image: /uploads/artwork/william-blake-newton.webp
+artwork:
+  title: Newton
+  artist: William Blake
+  year: 1795–c. 1805
+  alt: Newton bends over a diagram with compasses while seated on a richly textured rock.
+  width: 1600
+  height: 1231
+  thumbnail: /uploads/artwork/william-blake-newton-480.webp
+  source: https://www.metmuseum.org/exhibitions/listings/2001/william-blake
 ---
 
 A machine can be superb at getting what it was told to get while having no idea what it was for. Those are two capacities, and we run them together under a single word, intelligence.

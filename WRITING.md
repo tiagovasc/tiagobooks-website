@@ -31,3 +31,9 @@ Images are centered and can be enlarged with a click or Enter; Escape closes the
 YouTube, Apple Podcasts and Spotify links placed alone in a paragraph become players. Direct image, MP4/WebM video and MP3/M4A/OGG/WAV/FLAC audio links render suitable media. Inline links remain links; feeds retain source links. These transformations run during the build, so the CMS preview may differ from the published result.
 
 The full-content Atom feed is available at `/posts_feed`, with `/feed`, `/rss`, `/rss.xml` and `/atom.xml` aliases.
+
+## Featured paintings
+
+The optional `image` field supplies the blog card and social preview. Adding `artwork` metadata also displays the painting and its credit above the article and in the feed. Credit fields are `title`, `artist`, optional `year` and `source`, descriptive `alt`, and the image's actual `width` and `height`. An optional `thumbnail` supplies a smaller card image. The browser editor exposes these fields under Featured image and Artwork credit.
+
+Keep the complete composition: card and article images fit within their frames without cropping. Store publication copies under `public/uploads/artwork/`, with embedded private metadata removed. Preserve originals outside this repository. When replacing an image, update its credit and dimensions and either replace or clear the old thumbnail. A painting's inclusion does not grant reproduction rights; check its source and the [rights guidance](RIGHTS.md).

@@ -3,6 +3,16 @@ title: 'Podcast: Apophatic Mysticism and the Limits of Metaphysics with Jussi Jy
 date: 2026-09-07 09:28:00-05:00
 tags:
 - Podcast
+image: /uploads/artwork/caspar-david-friedrich-the-monk-by-the-sea.webp
+artwork:
+  title: The Monk by the Sea
+  artist: Caspar David Friedrich
+  year: 1808–1810
+  alt: A solitary monk stands on a narrow shore beneath an immense sea and clouded sky.
+  width: 1600
+  height: 1018
+  thumbnail: /uploads/artwork/caspar-david-friedrich-the-monk-by-the-sea-480.webp
+  source: https://id.smb.museum/object/965511
 ---
 
 Finnish philosopher and psychologist Jussi Jylkkä describes a mystical experience he had years before entering psychedelic research and explains the metaphysical agnosticism he developed from it. All metaphysical-isms, he argues, are language games. Worldviews are like eyeglasses that become visible only when we learn to see them as models. Classical mystics overreach when they convert their experiences into claims about the ultimate nature of reality.

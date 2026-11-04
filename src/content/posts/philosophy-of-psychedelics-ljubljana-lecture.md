@@ -3,6 +3,16 @@ title: Philosophy of Psychedelics (Ljubljana Lecture)
 date: 2026-04-01 11:53:00-05:00
 tags:
 - General
+image: /uploads/artwork/john-william-waterhouse-the-magic-circle.webp
+artwork:
+  title: The Magic Circle
+  artist: John William Waterhouse
+  year: '1886'
+  alt: A woman traces a circle around a smoking cauldron in a rocky landscape.
+  width: 1068
+  height: 1600
+  thumbnail: /uploads/artwork/john-william-waterhouse-the-magic-circle-480.webp
+  source: https://www.tate.org.uk/art/artworks/waterhouse-the-magic-circle-n01572
 ---
 
 This was a lecture given in March 2026 at Bar Room Theory. You can watch the full recording below, along with a transcript.

@@ -3,6 +3,16 @@ title: 'Podcast: The Orthodox Vision of Beauty with Timothy Patitasas'
 date: 2026-03-26 04:17:00-05:00
 tags:
 - Podcast
+image: /uploads/artwork/unknown-byzantine-artist-the-ladder-of-divine-ascent.webp
+artwork:
+  title: The Ladder of Divine Ascent
+  artist: Unknown Byzantine artist
+  year: 12th century
+  alt: Monks climb a diagonal ladder toward Christ as angels watch and dark figures pull at the climbers.
+  width: 670
+  height: 960
+  thumbnail: /uploads/artwork/unknown-byzantine-artist-the-ladder-of-divine-ascent-480.webp
+  source: https://commons.wikimedia.org/wiki/File:The_Ladder_of_Divine_Ascent_Monastery_of_St_Catherine_Sinai_12th_century.jpg
 ---
 
 ## Abstract

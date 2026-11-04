@@ -3,6 +3,16 @@ title: 'The Mind Was Never in Your Head: Enactivism And Its Consequences'
 date: 2026-06-10 05:44:00-05:00
 tags:
 - General
+image: /uploads/artwork/ivan-grohar-the-sower.webp
+artwork:
+  title: The Sower
+  artist: Ivan Grohar
+  year: '1907'
+  alt: A farmer scatters seed across a sunlit field rendered in dense flecks of color.
+  width: 1600
+  height: 1427
+  thumbnail: /uploads/artwork/ivan-grohar-the-sower-480.webp
+  source: https://www.ng-slo.si/si/stalna-zbirka/1900-1918/sejalec-ivan-grohar?workId=1783
 ---
 
 Your mind is not in your skull. It is the activity of a living body in constant traffic with its environment, and it does not stop at the edge of the nervous system. The brain plays a crucial role. But it is one organ in a larger system that takes in the body and the world, and that whole system is the smallest unit that thinks.

@@ -4,6 +4,16 @@ title: 'Intelligence is not Rationality: A Cognitive-scientific Diagnosis of the
 date: 2026-05-07 03:33:00-05:00
 tags:
 - General
+image: /uploads/artwork/william-blake-the-ancient-of-days.webp
+artwork:
+  title: The Ancient of Days
+  artist: William Blake
+  year: 1794 (design)
+  alt: A white-haired figure bends from a glowing circle and extends compasses into the darkness.
+  width: 944
+  height: 1280
+  thumbnail: /uploads/artwork/william-blake-the-ancient-of-days-480.webp
+  source: https://en.wikipedia.org/wiki/The_Ancient_of_Days
 ---
 
 _Based on my talk at the 6th International Conference on Philosophy of Mind: Artificial Intelligence in_ Porto, May 2026_._ Slides are available [_here_](https://drive.google.com/file/d/1rv13PJ5buuGE_IoYAfafjUfLH3OQt-II/view?usp=sharing)_._&nbsp;

@@ -4,6 +4,16 @@ title: 'The Blind Spot of Bryan Johnson: A Philosophical Critique of his Psyched
 date: 2026-04-09 14:48:00-05:00
 tags:
 - General
+image: /uploads/artwork/attributed-to-philippe-de-champaigne-vanitas.webp
+artwork:
+  title: Vanitas
+  artist: Attributed to Philippe de Champaigne
+  year: 17th century
+  alt: A tulip, a human skull and an hourglass stand in a row against a dark background.
+  width: 1024
+  height: 758
+  thumbnail: /uploads/artwork/attributed-to-philippe-de-champaigne-vanitas-480.webp
+  source: https://pop.culture.gouv.fr/notice/joconde/000PE010874
 ---
 
 Bryan Johnson recently took 27 milligrams of synthetic 5-MeO-DMT on a livestream watched by 200,000 people. It was not his first public psychedelic session. Over the past several months, he has done multiple high-dose psilocybin trips, one of them broadcast live with prominent tech and media figures in attendance. Johnson is a tech entrepreneur who sold Braintree/Venmo to PayPal for $800 million, then reinvented himself as the face of radical life extension. He takes over 100 supplements a day, tracks thousands of biomarkers, and has built an ideology around the premise that death is an engineering problem. His project is called “Don’t Die.” When he came back from 5-MeO-DMT, he said: “You can spend all your time optimising your biology, but if you don’t understand what life and death mean to you, the numbers don’t matter.” Within days, he was back to the protocol.

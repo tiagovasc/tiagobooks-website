@@ -29,7 +29,9 @@ function details(p:Post){
       <li class="blog-month-heading" data-blog-month={month}><span>{monthLabel(group[0].data.date)}</span><span class="leader"/><span class="month-count">{group.length} {group.length===1?'post':'posts'}</span></li>
       {group.map((p) => { const d=details(p); return (
         <li class="h-entry post-card" data-blog-entry data-year={Number(month.slice(0,4))} data-month={month} data-tags={JSON.stringify(p.data.tags.map(tagSlug))}>
-          <a class="pc-thumb" href={`/posts/${p.id}`} tabindex="-1" aria-hidden="true" data-tone={[...p.id].reduce((h,c)=>(h*31+c.charCodeAt(0))>>>0,7)%5}></a>
+          <a class:list={['pc-thumb', {'pc-artwork': !!p.data.image}]} href={`/posts/${p.id}`} tabindex="-1" aria-hidden="true" data-tone={[...p.id].reduce((h,c)=>(h*31+c.charCodeAt(0))>>>0,7)%5}>
+            {p.data.image && <img src={p.data.artwork?.thumbnail || p.data.image} alt="" width="480" height="300" loading="lazy" decoding="async" />}
+          </a>
           <div class="pc-body">
             <time class="pc-date dt-published" datetime={p.data.date.toISOString()}>{d.date}</time>
             <h2 class="pc-title"><a class="p-name u-url" href={`/posts/${p.id}`}>{d.heading}</a></h2>

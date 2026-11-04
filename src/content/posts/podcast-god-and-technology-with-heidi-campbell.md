@@ -3,6 +3,16 @@ title: 'Podcast: God and Technology with Heidi Campbell'
 date: 2026-04-20 03:31:00-05:00
 tags:
 - Podcast
+image: /uploads/artwork/jean-francois-millet-the-angelus.webp
+artwork:
+  title: The Angelus
+  artist: Jean-François Millet
+  year: 1857–1859
+  alt: Two farm workers pause in prayer beside a basket and wheelbarrow in an open field.
+  width: 1200
+  height: 998
+  thumbnail: /uploads/artwork/jean-francois-millet-the-angelus-480.webp
+  source: https://www.musee-orsay.fr/en/artworks/langelus-345
 ---
 
 Heidi Campbell is one of the founders of digital religion studies and has spent 30 years researching how religious communities interact with technology. In this conversation, she walks through her Religious Social Shaping of Technology framework, showing how groups from ultra-Orthodox Jews to American evangelicals don't simply accept or reject new technologies but actively negotiate them based on their core values. She explains how the pandemic forced churches worldwide to confront questions about embodiment, communion, and worship that turned out to be more sociological than theological. The conversation then moves into AI: Campbell argues that GPTs give knowledge but not wisdom, that religious chatbots inherit the biases of their construction, and that the field of digital religion suffers from a serious AI literacy gap. She closes with a career-defining recalibration: the internet has gone from a supplement to religion to, for many, its first point of contact. &nbsp;

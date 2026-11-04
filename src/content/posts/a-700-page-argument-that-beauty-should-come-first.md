@@ -3,6 +3,16 @@ title: A 700-Page Argument That Beauty Should Come First
 date: 2026-03-20 05:33:00-05:00
 tags:
 - Book Reviews
+image: /uploads/artwork/andrei-rublev-trinity.webp
+artwork:
+  title: Trinity
+  artist: Andrei Rublev
+  year: early 15th century
+  alt: Three haloed angels sit around a table in an icon painted in gold, blue and earth colors.
+  width: 1280
+  height: 1594
+  thumbnail: /uploads/artwork/andrei-rublev-trinity-480.webp
+  source: https://en.wikipedia.org/wiki/Trinity_(Andrei_Rublev)
 ---
 
 ### A Book Review of ‘The Ethics of Beauty’ by Timothy Patitsas

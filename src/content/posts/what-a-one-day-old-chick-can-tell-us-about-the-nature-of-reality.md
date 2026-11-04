@@ -3,6 +3,16 @@ title: What a One-Day-Old Chick Can Tell Us About the Nature of Reality
 date: 2026-03-22 16:29:00-05:00
 tags:
 - General
+image: /uploads/artwork/edvard-munch-the-sun.webp
+artwork:
+  title: The Sun
+  artist: Edvard Munch
+  year: '1911'
+  alt: A brilliant sun sends colored rays across water and rocky shores.
+  width: 640
+  height: 365
+  thumbnail: /uploads/artwork/edvard-munch-the-sun-480.webp
+  source: https://www.uio.no/om/kultur/kunstsamlingen/aulaen/solen.html
 ---
 
 ## On symbols, cognition, and the bouba-kiki effect

@@ -1,0 +1,14 @@
+---
+interface Props {
+  image: string;
+  artwork: {title: string; artist: string; year?: string; source?: string; alt: string; width: number; height: number};
+}
+const {image, artwork} = Astro.props;
+---
+<figure class="entry-artwork" data-pagefind-ignore>
+  <img src={image} alt={artwork.alt} width={artwork.width} height={artwork.height} decoding="async" fetchpriority="high" />
+  <figcaption>
+    {artwork.source ? <a href={artwork.source} rel="noopener noreferrer">{artwork.title}</a> : <span>{artwork.title}</span>}
+    {' — '}{artwork.artist}{artwork.year ? `, ${artwork.year}` : ''}
+  </figcaption>
+</figure>

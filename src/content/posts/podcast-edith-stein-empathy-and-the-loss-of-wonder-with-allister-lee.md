@@ -3,6 +3,16 @@ title: 'Podcast: Edith Stein, Empathy & the Loss of Wonder with Allister Lee'
 date: 2026-06-29 11:58:00-05:00
 tags:
 - Podcast
+image: /uploads/artwork/theodule-augustin-ribot-the-good-samaritan.webp
+artwork:
+  title: The Good Samaritan
+  artist: Théodule-Augustin Ribot
+  year: c. 1870
+  alt: A man tends to an injured stranger lying on the ground while a younger companion watches.
+  width: 1280
+  height: 1001
+  thumbnail: /uploads/artwork/theodule-augustin-ribot-the-good-samaritan-480.webp
+  source: https://www.musee-orsay.fr/en/artworks/le-bon-samaritain-75472
 ---
 
 * * *

@@ -4,6 +4,16 @@ title: 'Anthropic Is Right About AI Bullying: The Case For Human Virtue Rather T
 date: 2026-10-09 08:45:00-05:00
 tags:
 - General
+image: /uploads/artwork/joseph-wright-of-derby-an-experiment-on-a-bird-in-the-air-pump.webp
+artwork:
+  title: An Experiment on a Bird in the Air Pump
+  artist: Joseph Wright of Derby
+  year: '1768'
+  alt: A candlelit group watches a scientific demonstration with a bird inside a glass air pump.
+  width: 1600
+  height: 1199
+  thumbnail: /uploads/artwork/joseph-wright-of-derby-an-experiment-on-a-bird-in-the-air-pump-480.webp
+  source: https://www.nationalgallery.org.uk/paintings/joseph-wright-of-derby-an-experiment-on-a-bird-in-the-air-pump
 ---
 
 Anthropic has announced a rule against “sustained and needless abusive or cruel behavior” toward its AI models. The main response to extreme abuse will be for Claude to end the conversation. This has gone viral on X, and I’m seeing it everywhere. Almost all of it is extremely negative, often mocking the implication that Claude has feelings for this rule to make sense.

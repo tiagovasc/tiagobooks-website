@@ -4,6 +4,16 @@ title: 'The Sacred as Participatory Disclosure: Psychedelic Experience, 4E Cogni
 date: 2026-07-06 05:45:00-05:00
 tags:
 - General
+image: /uploads/artwork/caravaggio-saint-francis-of-assisi-in-ecstasy.webp
+artwork:
+  title: Saint Francis of Assisi in Ecstasy
+  artist: Caravaggio
+  year: c. 1595
+  alt: An angel supports Saint Francis in a dark landscape, their faces and robes illuminated.
+  width: 1600
+  height: 1152
+  thumbnail: /uploads/artwork/caravaggio-saint-francis-of-assisi-in-ecstasy-480.webp
+  source: https://en.wikipedia.org/wiki/Saint_Francis_of_Assisi_in_Ecstasy_(Caravaggio)
 ---
 
 _This essay is a slightly expanded version of a talk I gave at the International Interdisciplinary Conference of Psychedelic Studies (IICPS 2026) organized by the University of Bucharest in June 2026.&nbsp;_

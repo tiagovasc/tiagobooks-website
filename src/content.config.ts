@@ -19,6 +19,17 @@ const shared = {
   description: z.string().optional(),
   // Optional explicit social preview image (path or URL).
   image: z.string().optional(),
+  // Public artwork credit; collection IDs, local paths and private notes stay outside Git.
+  artwork: z.object({
+    title: z.string(),
+    artist: z.string(),
+    year: z.string().optional(),
+    source: z.string().url().optional(),
+    alt: z.string(),
+    width: z.number().int().positive(),
+    height: z.number().int().positive(),
+    thumbnail: z.string().optional(),
+  }).optional(),
 };
 
 export const collections = {

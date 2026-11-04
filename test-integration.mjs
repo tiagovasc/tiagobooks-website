@@ -22,7 +22,8 @@ test('library, writing, metadata, scripts, uploads and search files are served o
   const routes=['/','/posts','/search','/editor','/unified.css','/unified.js','/books.json','/tbr-bookshops.json','/pagefind/pagefind.js','/robots.txt','/sitemap-index.xml','/healthz','/favicon.svg'];
   for(const kind of ['posts','pages'])for(const f of await readdir('src/content/'+kind))if(f.endsWith('.md'))routes.push('/'+kind+'/'+f.slice(0,-3));
   for(const f of await readdir('dist/tag'))if(f.endsWith('.html'))routes.push('/tag/'+f.slice(0,-5));
-  for(const f of await readdir('public/uploads'))routes.push('/uploads/'+f);
+  async function uploads(dir,prefix){for(const f of await readdir(dir,{withFileTypes:true})){if(f.isDirectory())await uploads(path.join(dir,f.name),prefix+'/'+f.name);else routes.push(prefix+'/'+f.name)}}
+  await uploads('public/uploads','/uploads');
   for(const route of routes){const r=await fetch(base+route);assert.equal(r.status,200,route);assert.equal(r.headers.get('x-content-type-options'),'nosniff',route)}
   const html=await(await fetch(base+'/')).text();assert.match(html,/CLOUD_CAN_EDIT=false/);assert.match(html,/var SEED = \[\];/);assert.match(html,/href="\/blog"/);
   assert.deepEqual(await(await fetch(base+'/books.json')).json(),source);

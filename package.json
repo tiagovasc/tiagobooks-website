@@ -17,7 +17,7 @@
     "lint:content": "node scripts/lint-content.mjs",
     "optimize:images": "node scripts/optimize-images.mjs",
     "start": "node server.mjs",
-    "test": "node --test library/test-server.mjs library/test-server-prod.mjs library/test-tbr.mjs test-integration.mjs test-hardening.mjs",
+    "test": "node --test library/test-server.mjs library/test-server-prod.mjs library/test-tbr.mjs test-integration.mjs test-hardening.mjs test-artwork.mjs",
     "check:public": "node scripts/check-public.mjs"
   },
   "dependencies": {

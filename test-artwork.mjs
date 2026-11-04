@@ -1,0 +1,45 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile,readdir} from 'node:fs/promises';
+import {load} from 'js-yaml';
+import {parse} from 'parse5';
+import sharp from 'sharp';
+const walk=node=>[node,...(node.childNodes||[]).flatMap(walk)];
+const attr=(node,name)=>node.attrs?.find(a=>a.name===name)?.value;
+const text=node=>node.nodeName==='#text'?node.value:(node.childNodes||[]).map(text).join('');
+const posts=[];
+for(const file of await readdir('src/content/posts')){
+  if(!file.endsWith('.md'))continue;
+  const source=await readFile('src/content/posts/'+file,'utf8'),data=load(source.match(/^---\r?\n([\s\S]*?)\r?\n---/)[1]);
+  if(data.artwork&&!data.draft&&!data.unlisted&&!data.protected)posts.push({slug:file.slice(0,-3),data});
+}
+test('featured artwork decodes with correct dimensions and no embedded private metadata',async()=>{
+  assert.ok(posts.length>0,'No artwork entries were checked');
+  for(const {slug,data} of posts){
+    assert.match(data.image,/^\/uploads\/artwork\/[a-z0-9-]+\.webp$/);
+    const full=await sharp('public'+data.image).metadata();
+    assert.equal(full.width,data.artwork.width,slug);assert.equal(full.height,data.artwork.height,slug);
+    assert.ok(data.artwork.alt.length>20,slug);
+    for(const src of [data.image,data.artwork.thumbnail]){
+      const img=sharp('public'+src),meta=await img.metadata();
+      assert.equal(meta.exif,undefined,src);assert.equal(meta.xmp,undefined,src);assert.equal(meta.iptc,undefined,src);
+      assert.ok((await img.raw().toBuffer()).length>0,src);
+    }
+  }
+});
+test('artwork is credited in articles and feeds, and connected to cards and social previews',async()=>{
+  const blog=walk(parse(await readFile('dist/blog.html','utf8'))),feed=await readFile('dist/posts_feed','utf8');
+  for(const {slug,data} of posts){
+    const nodes=walk(parse(await readFile(`dist/posts/${slug}.html`,'utf8')));
+    const figures=nodes.filter(n=>n.nodeName==='figure'&&attr(n,'class')==='entry-artwork');
+    assert.equal(figures.length,1,slug);assert.ok(text(figures[0]).includes(data.artwork.artist),slug);
+    const hero=walk(figures[0]).find(n=>n.nodeName==='img');assert.equal(attr(hero,'src'),data.image);assert.equal(attr(hero,'alt'),data.artwork.alt);
+    for(const name of ['og:image','twitter:image']){
+      const meta=nodes.find(n=>n.nodeName==='meta'&&(attr(n,'property')===name||attr(n,'name')===name));
+      assert.ok(attr(meta,'content')?.endsWith(data.image),`${slug} ${name}`);
+    }
+    assert.ok(blog.some(n=>n.nodeName==='img'&&attr(n,'src')===data.artwork.thumbnail),`${slug} card`);
+    const entry=feed.split('<entry>').find(e=>e.includes(`Post/${slug}</id>`));
+    if(entry){assert.ok(entry.includes(data.image),`${slug} feed image`);assert.ok(entry.includes(data.artwork.artist),`${slug} feed credit`)}
+  }
+});
