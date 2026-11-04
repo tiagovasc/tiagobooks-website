@@ -15,13 +15,13 @@ Gregory Sadler spent years as a self-described burnout before stumbling into phi
 
 Gregory B. Sadler is a philosopher, educator, and public intellectual who taught for nine years as an assistant professor at Ball State University and Fayetteville State University before relocating to New York. He runs the ReasonIO YouTube channel, one of the most comprehensive free philosophy resources on the internet, and works as a consultant bringing philosophical frameworks, drawn primarily from Aristotle, Stoicism, and Cicero, into professional and business contexts. He is also a co-founder of the Half Hour Hegel project and teaches online courses through the Institute of Competitive Intelligence and other platforms.
 
-## Top 3 Theses
+## Top 3 theses
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The teacher's investment in the student is at least as important as the teacher's investment in the subject. A great philosophy class is not about the material, it is about whether the person in front of you can feel that you want them to actually engage with it.
+- The teacher's investment in the student is at least as important as the teacher's investment in the subject. A great philosophy class is not about the material, it is about whether the person in front of you can feel that you want them to actually engage with it.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Philosophy is not dead and has never been dead. Announcements of its demise go back centuries and are always made by people who lack the philosophical depth to evaluate the discipline they are dismissing.
+- Philosophy is not dead and has never been dead. Announcements of its demise go back centuries and are always made by people who lack the philosophical depth to evaluate the discipline they are dismissing.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The most effective way to introduce philosophy to skeptical audiences is often to withhold the brand name entirely. Present the idea from Aristotle or Aquinas as a practical insight, let it land, and only reveal its source when people are already persuaded by it.
+- The most effective way to introduce philosophy to skeptical audiences is often to withhold the brand name entirely. Present the idea from Aristotle or Aquinas as a practical insight, let it land, and only reveal its source when people are already persuaded by it.
 
 ## Memorable Quotes
 

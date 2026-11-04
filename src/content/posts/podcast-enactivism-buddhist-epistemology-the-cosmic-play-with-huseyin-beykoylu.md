@@ -20,7 +20,9 @@ https://www.youtube.com/embed/6_DM-OseSc0?rel=1
 
 Hüseyin Beyköylü is a cognitive scientist from Cyprus and a 5th year PhD candidate at Leiden University's PRiSM lab. Holding a 1st class medical degree and an MSc in Brain Sciences, his research explores the mind through medicine, neuroscience, and philosophy. Grounded in 4E cognitive science and complex systems theory, he investigates psychedelic, mystical, and self-transcendent experiences.&nbsp;
 
-## **TOP 3 Thesis**
+<span id="top-3-thesis"></span>
+
+## Top 3 theses
 
 **The limits of propositional knowing:** Western cognitive science has fallen into propositional tyranny, overprivileging a narrow, fact-stating mode of knowing that depends on three deeper, largely ineffable modes (procedural, perspectival, participatory); any adequate science of the mind must take these non-propositional kinds of knowing as constitutive rather than auxiliary. &nbsp;
 

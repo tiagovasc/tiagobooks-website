@@ -15,13 +15,15 @@ Steven Sloman has spent his career studying how thinking actually works, and dis
 
 Steven Sloman is Professor of Cognitive, Linguistic, and Psychological Sciences at Brown University. He holds a PhD in Psychology from Stanford University and completed postdoctoral work at the University of Michigan. A cognitive scientist by training, he studies how people think, reason, and make decisions, with a particular focus on causal reasoning and the social distribution of knowledge. He is co-author (with Philip Fernbach) of _The Knowledge Illusion: Why We Never Think Alone_ (2017).
 
-## Top 3 Thesis
+<span id="top-3-thesis"></span>
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; People systematically overestimate how well they understand the world. When asked to explain how ordinary objects or policies work, they discover they cannot, and their confidence drops. This illusion of understanding is not a failure of intelligence but a structural feature of human cognition: we blur the boundary between knowledge in our own heads and knowledge distributed across our community.
+## Top 3 theses
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The right response to epistemic humility is not paralysis but better calibration of trust: choose not the expert with the most confident answer, but the expert most responsive to evidence and most willing to revise their position when the data change.
+- People systematically overestimate how well they understand the world. When asked to explain how ordinary objects or policies work, they discover they cannot, and their confidence drops. This illusion of understanding is not a failure of intelligence but a structural feature of human cognition: we blur the boundary between knowledge in our own heads and knowledge distributed across our community.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Education and politics both suffer from treating knowledge as an individual possession. Reforming them requires treating knowledge as what it actually is, a community property, which means designing institutions around collaboration, outsourcing, and the honest acknowledgement of what individuals do not and cannot know.
+- The right response to epistemic humility is not paralysis but better calibration of trust: choose not the expert with the most confident answer, but the expert most responsive to evidence and most willing to revise their position when the data change.
+
+- Education and politics both suffer from treating knowledge as an individual possession. Reforming them requires treating knowledge as what it actually is, a community property, which means designing institutions around collaboration, outsourcing, and the honest acknowledgement of what individuals do not and cannot know.
 
 ## Memorable Quotes
 

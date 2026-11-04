@@ -271,3 +271,28 @@ test('Books renders the selected cover layout with working original download and
   assert.deepEqual(books[1].actions.map(a=>a.label),['Blog','PDF','EPUB','Paperback']);
   assert.equal((await fetch(base+books[1].image)).status,200);
 });
+
+test('active navigation is present in the delivered HTML before any client scripts run',async()=>{
+  const routes={'/':'Library','/blog':'Blog','/pages/books':'Books','/pages/talks':'Talks','/pages/podcast-overview':'Podcast','/pages/interviews':'Interviews','/pages/about':'About','/posts/podcast-object-oriented-ontology-and-the-nature-of-reality-with-graham-harman':'Blog'};
+  for(const [route,label] of Object.entries(routes)){
+    const html=await(await fetch(base+route)).text();
+    const nav=html.match(/<nav class="unified-nav"[\s\S]*?<\/nav>/)[0];
+    const active=[...nav.matchAll(/<a [^>]*aria-current="page"[^>]*>([^<]+)<\/a>/g)].map(m=>m[1]);
+    assert.deepEqual(active,[label],route);
+    assert.match(nav,/aria-controls="navExtra"/);
+  }
+});
+
+test('audit polish supplies post context, semantic lists and recovery paths',async()=>{
+  const html=await(await fetch(base+'/posts/podcast-object-oriented-ontology-and-the-nature-of-reality-with-graham-harman')).text();
+  assert.ok(html.indexOf('entry-meta')<html.indexOf('class="e-content"'));
+  assert.match(html,/<time class="dt-published"[^>]+>December 28, 2025<\/time>/);
+  assert.match(html,/\d+ min read/);assert.match(html,/Top 3 theses/);
+  assert.match(html,/id="top-3-thesis"/,'old heading links still work');
+  assert.match(html,/<li>\s*(?:<p>)?Objects always withdraw/);assert.doesNotMatch(html,/•/);
+  const library=await(await fetch(base+'/')).text();assert.match(library,/class="skip-link" href="#main"/);assert.match(library,/class="library-intro"/);
+  const login=await(await fetch(base+'/login')).text();assert.match(login,/<main><form/);assert.match(login,/<meta name="description"/);
+  const missing=await fetch(base+'/this-page-does-not-exist');assert.equal(missing.status,404);assert.match(await missing.text(),/class="recovery-links"/);
+  const search=await(await fetch(base+'/search')).text();assert.match(search,/<h1 class="entry-title">Search<\/h1>/);assert.match(search,/search\?q=beauty/);
+  assert.equal(displayTitle('In Search of the Infinite - Anchors of Being'),'In Search of the Infinite: Anchors of Being');
+});

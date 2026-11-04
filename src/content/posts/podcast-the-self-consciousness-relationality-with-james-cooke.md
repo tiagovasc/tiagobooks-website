@@ -15,13 +15,13 @@ James Cooke is a neuroscientist whose intellectual journey began not in a labora
 
 James Cooke is a neuroscientist and author of The Dawn of Mind (2024), in which he develops a philosophy of consciousness grounded in non-dual metaphysics, relational quantum mechanics, and contemplative science. Trained in neuroscience, he draws on the free energy principle, predictive processing, and Buddhist philosophy of emptiness, particularly the Madhyamaka tradition of Nagarjuna, to argue that consciousness is inherently tied to life itself and is best understood as an epistemic relation rather than a separate phenomenon. He is also an advocate for integrating contemplative practice into mainstream mental health and scientific contexts.
 
-## TOP 3 Theses
+## Top 3 theses
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Reality is fundamentally groundless, relational, and whole, all apparent separations are the product of object perception, not features of reality itself. This is the core of non-dual naturalism, and it makes better sense of quantum mechanics, contemplative insight, and the hard problem of consciousness than any framework that starts with separate things.
+- Reality is fundamentally groundless, relational, and whole, all apparent separations are the product of object perception, not features of reality itself. This is the core of non-dual naturalism, and it makes better sense of quantum mechanics, contemplative insight, and the hard problem of consciousness than any framework that starts with separate things.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Consciousness is not an extra ingredient added to physics, it is the epistemic relation a living organism bears to its world. You cannot have it without life, and you cannot locate it in a brain alone. The hard problem dissolves once you stop thingifying consciousness and recognize it as a process of knowingness inseparable from the dynamics of self-persistence.
+- Consciousness is not an extra ingredient added to physics, it is the epistemic relation a living organism bears to its world. You cannot have it without life, and you cannot locate it in a brain alone. The hard problem dissolves once you stop thingifying consciousness and recognize it as a process of knowingness inseparable from the dynamics of self-persistence.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The no-self insight does not destroy ethics, it generalizes suffering automatically. Once you see that the self is a thought and that separateness is illusory, caring about your own suffering extends naturally to caring about suffering as such. The jump from insight to compassion is not an argument; it is a recognition.
+- The no-self insight does not destroy ethics, it generalizes suffering automatically. Once you see that the self is a thought and that separateness is illusory, caring about your own suffering extends naturally to caring about suffering as such. The jump from insight to compassion is not an argument; it is a recognition.
 
 ## Memorable Quotes
 

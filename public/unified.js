@@ -4,7 +4,7 @@ function apply(){const mode=appearance().theme;if(['light','dark'].includes(mode
 apply();
 if(!window.CLOUD_LIBRARY)document.getElementById('appearanceBtn')?.addEventListener('click',()=>{const ui=appearance();const dark=ui.theme==='dark'||(!['dark','light'].includes(ui.theme)&&matchMedia('(prefers-color-scheme:dark)').matches);ui.theme=dark?'light':'dark';try{localStorage.setItem(key,JSON.stringify(ui))}catch{}apply()});
 window.addEventListener('storage',apply);
-for(const link of document.querySelectorAll('.unified-nav a')){const u=new URL(link.href),isBlog=u.pathname==='/blog'&&(location.pathname==='/blog'||location.pathname.startsWith('/posts')||location.pathname.startsWith('/tag/')),isLibrary=u.pathname==='/'&&location.pathname==='/';if(isBlog||isLibrary||(u.pathname!=='/'&&u.pathname===location.pathname))link.setAttribute('aria-current','page')}
+// Active navigation is rendered with each document, before its first paint.
 function measureShell(){const style=document.documentElement.style,shell=document.getElementById('siteShell'),section=document.getElementById('sectionTools');const set=(key,value)=>{if(style.getPropertyValue(key)!==value)style.setProperty(key,value)};if(shell)set('--shell-h',shell.offsetHeight+'px');if(!section)set('--section-h','0px');if(section){set('--section-h',section.offsetHeight+'px');set('--notch-h',(shell.offsetHeight+section.offsetHeight)+'px')}}
 measureShell();if(window.ResizeObserver){const observer=new ResizeObserver(measureShell);for(const el of [document.getElementById('siteShell'),document.getElementById('sectionTools')])if(el)observer.observe(el)}window.addEventListener('resize',measureShell);
 
@@ -21,6 +21,25 @@ function sideRow(row){
   reveal();fade();
 }
 for(const row of document.querySelectorAll('.unified-nav,.tag-chips,#statusSeg'))sideRow(row);
+
+// The mobile overflow menu keeps every destination one explicit tap away.
+const more=document.querySelector('.nav-more'),moreButton=more?.querySelector('button');
+function closeMore(){moreButton?.setAttribute('aria-expanded','false')}
+moreButton?.addEventListener('click',()=>moreButton.setAttribute('aria-expanded',String(moreButton.getAttribute('aria-expanded')!=='true')));
+document.addEventListener('click',e=>{if(more&&!more.contains(e.target))closeMore()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&moreButton?.getAttribute('aria-expanded')==='true'){closeMore();moreButton.focus()}});
+
+// Keep the month picker available on scroll-up, without covering text on scroll-down.
+let lastScroll=window.scrollY;
+window.addEventListener('scroll',()=>{const y=Math.max(0,window.scrollY);if(Math.abs(y-lastScroll)<8)return;
+  document.body.classList.toggle('reading-down',y>lastScroll&&y>120);lastScroll=y;
+},{passive:true});
+document.addEventListener('focusin',e=>{if(e.target.closest?.('.date-rail,.section-tools'))document.body.classList.remove('reading-down')});
+
+// Preserve the media frame and usable link/player if a preview download fails.
+function thumbnailFailed(img){if(!(img instanceof HTMLImageElement)||!img.matches('.ep-thumb img,.ep-video img'))return;img.style.visibility='hidden';img.parentElement.classList.add('thumbnail-unavailable')}
+document.addEventListener('error',e=>thumbnailFailed(e.target),true);
+document.querySelectorAll('.ep-thumb img,.ep-video img').forEach(img=>{if(img.complete&&!img.naturalWidth)thumbnailFailed(img)});
 
 // Links that leave the site open in a new tab so the site stays open (Tiago, 4 Nov 2026). Covers links rendered later too.
 (()=>{const own=h=>h.replace(/^www\./,'')===location.hostname.replace(/^www\./,'');const ext=a=>/^https?:$/.test(a.protocol)&&!own(a.hostname);const mark=a=>{if(ext(a)&&!a.target){a.target='_blank';const r=new Set((a.rel||'').split(/\s+/).filter(Boolean));r.add('noopener');a.rel=[...r].join(' ')}};document.querySelectorAll('a[href]').forEach(mark);document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a[href]');if(a)mark(a)},true)})();

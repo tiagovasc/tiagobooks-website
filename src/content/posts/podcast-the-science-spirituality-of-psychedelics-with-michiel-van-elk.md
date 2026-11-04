@@ -15,13 +15,15 @@ Psychedelic science is riding a wave of hype, and neuroscientist Michiel van Elk
 
 Michiel van Elk is Associate Professor of Cognitive Psychology at Leiden University in the Netherlands, where he teaches courses on consciousness and empirical research methodology. He leads the PRISM Lab, Psychedelic, Religious, Spiritual, and Mystical experiences, a research group using multimethod approaches including neuroimaging, psychophysiology, and qualitative interviews to study altered states of consciousness. Raised in a Pentecostal church in the Netherlands, van Elk studied philosophy before turning to neuroscience, and his work sits at the intersection of empirical psychology, the science of religion, and the philosophy of mind.
 
-## TOP 3 Thesis
+<span id="top-3-thesis"></span>
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The public vastly overestimates the evidence for psychedelic therapy, and scientists vastly overestimate the entropic brain hypothesis, both misconceptions share the same flaw: compelling theory running well ahead of empirical support.
+## Top 3 theses
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The "more real than real" quality of psychedelic experience is not primarily perceptual, it is a reconfiguration of the person's entire framework for meaning-making, one that demands the same kind of post-experience integration that religious traditions have long provided through ritual and community.
+- The public vastly overestimates the evidence for psychedelic therapy, and scientists vastly overestimate the entropic brain hypothesis, both misconceptions share the same flaw: compelling theory running well ahead of empirical support.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The biomedical model of psychedelic treatment is both practically necessary for regulatory approval and philosophically impoverished, it strips away the very contextual, relational, and existential scaffolding that makes these experiences transformative in the first place.
+- The "more real than real" quality of psychedelic experience is not primarily perceptual, it is a reconfiguration of the person's entire framework for meaning-making, one that demands the same kind of post-experience integration that religious traditions have long provided through ritual and community.
+
+- The biomedical model of psychedelic treatment is both practically necessary for regulatory approval and philosophically impoverished, it strips away the very contextual, relational, and existential scaffolding that makes these experiences transformative in the first place.
 
 ## Memorable Quotes
 

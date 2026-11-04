@@ -15,13 +15,15 @@ Peter Sjöstedt-H is a philosopher of mind and associate lecturer at the Univers
 
 Peter Sjöstedt-H is an Anglo-Scandinavian philosopher of mind and associate lecturer and research fellow at the University of Exeter. His PhD focused on panpsychism, the view that mind is ubiquitous throughout nature, and he has written extensively on altered states of consciousness, Nietzschean ethics, and the philosophy of Spinoza and Whitehead. He is the author of Noumenautics (2015) and is based in Cornwall, England.
 
-## Top 3 Thesis
+<span id="top-3-thesis"></span>
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The hard problem of consciousness is not a gap that physicalism will eventually close but a falsification of the entire physicalist paradigm: you cannot explain mind through what we currently understand matter to be, and this has been the cul-de-sac of the philosophy of mind since Leibniz's mill.
+## Top 3 theses
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Moral anti-realism is not nihilism but an honest recognition that there is no absolute standard of good and evil independent of the subject doing the valuing, Spinoza and Nietzsche were right that what we call good is what advances oneself or one's group, and the argument for objective morality quietly presupposes the Platonic Form of the Good that almost no one will openly defend.
+- The hard problem of consciousness is not a gap that physicalism will eventually close but a falsification of the entire physicalist paradigm: you cannot explain mind through what we currently understand matter to be, and this has been the cul-de-sac of the philosophy of mind since Leibniz's mill.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Psychedelics, approached with the reverence of ancient ritual rather than recreational indifference, may give access to attributes of nature beyond mind and matter entirely, a possibility Spinoza himself hinted at, and Whitehead's metaphysics of prehension and eternal objects is currently the framework best positioned to account for what those experiences reveal.
+- Moral anti-realism is not nihilism but an honest recognition that there is no absolute standard of good and evil independent of the subject doing the valuing, Spinoza and Nietzsche were right that what we call good is what advances oneself or one's group, and the argument for objective morality quietly presupposes the Platonic Form of the Good that almost no one will openly defend.
+
+- Psychedelics, approached with the reverence of ancient ritual rather than recreational indifference, may give access to attributes of nature beyond mind and matter entirely, a possibility Spinoza himself hinted at, and Whitehead's metaphysics of prehension and eternal objects is currently the framework best positioned to account for what those experiences reveal.
 
 ## Memorable Quotes
 

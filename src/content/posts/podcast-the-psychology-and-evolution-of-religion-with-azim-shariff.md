@@ -15,13 +15,13 @@ Why does religion keep surviving? Azim Shariff, a social and moral psychologist 
 
 Azim Shariff is Associate Professor of Psychology at the University of British Columbia, where he studies social and moral psychology with a particular focus on the psychology of religion. His research examines how religious belief intersects with morality, prosocial behaviour, and cooperation. More recently, he has expanded into applied moral psychology, including the ethics and public perception of self-driving cars. He completed his graduate training at UBC under Ara Norenzayan.
 
-## Top 3 Theses
+## Top 3 theses
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Religion and morality evolved together to solve the same problem: enabling large groups of unrelated strangers to cooperate. Moralistic gods who watch and judge behaviour emerged precisely when societies outgrew the trust networks of small bands and needed a supernatural enforcer to hold cooperation together.
+- Religion and morality evolved together to solve the same problem: enabling large groups of unrelated strangers to cooperate. Moralistic gods who watch and judge behaviour emerged precisely when societies outgrew the trust networks of small bands and needed a supernatural enforcer to hold cooperation together.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Cultural evolution does not guarantee that everything which persists is adaptive. Religious ideas survive through a combination of cognitive fit with the human mind, demographic reproduction, and prestige copying, and some linger well past their usefulness, functioning as what Dawkins would call mind viruses.
+- Cultural evolution does not guarantee that everything which persists is adaptive. Religious ideas survive through a combination of cognitive fit with the human mind, demographic reproduction, and prestige copying, and some linger well past their usefulness, functioning as what Dawkins would call mind viruses.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Religion is far more than a set of beliefs. Participatory practices, painful rituals, and synchronized physiological states between members produce a kind of group fusion that cannot be fully captured by questionnaires, and that science is only beginning to measure.
+- Religion is far more than a set of beliefs. Participatory practices, painful rituals, and synchronized physiological states between members produce a kind of group fusion that cannot be fully captured by questionnaires, and that science is only beginning to measure.
 
 ## Memorable Quotes
 

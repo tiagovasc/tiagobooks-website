@@ -67,6 +67,8 @@ The Interviews page uses the Podcast row layout with a click-to-play preview and
 
 ## Books and Talks page layouts
 
+Post pages show the publication date and estimated reading time under the title. Chapter titles beginning `In Search of the Infinite - ` display with a colon; original metadata and URLs stay unchanged. Use normal Markdown lists (`- item`) in podcast summaries. When renaming a heading, retain an explicit anchor for its old fragment identifier so existing links keep working.
+
 Books and Talks render their existing Markdown as structured rows. Books uses `## Title: Subtitle (Year)`, description paragraphs and its existing Blog/PDF/EPUB/Paperback links. A forthcoming publisher line supplies the status; an unavailable cover gets a typographic placeholder. The unpublished table-of-contents link stays out of the rendered listing.
 
 Talks uses `## Title: Subtitle (Year)`, the YouTube URL, description paragraphs and a `[Transcript](/posts/...)` link. Its original video thumbnail belongs at `public/uploads/video-VIDEO_ID.webp`. Clicking a preview loads the YouTube player; Read more opens the transcript. No player loads until requested. Podcast platform buttons are ordered YouTube, Spotify, Apple, with episode URLs stored in each post's metadata.

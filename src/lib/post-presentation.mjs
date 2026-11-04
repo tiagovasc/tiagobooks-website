@@ -2,7 +2,14 @@ import { parseFragment } from 'parse5';
 
 export const BLOG_SECTIONS = ['General', 'Podcast', 'Book Reviews', 'In Search of the Infinite'];
 export const visibleTags = tags => BLOG_SECTIONS.filter(tag => tags.includes(tag));
-export const displayTitle = title => title.trim().replace(/^Podcast:\s*/i, '');
+export const displayTitle = title => title.trim().replace(/^Podcast:\s*/i, '').replace(/^In Search of the Infinite\s+-\s+/, 'In Search of the Infinite: ');
+
+export function readingMinutes(body='') {
+  const text=plainText(body.replace(/```[\s\S]*?```/g,' ').replace(/<[^>]*>/g,' ')
+    .replace(/^\s*https?:\/\/\S+\s*$/gm,' ').replace(/\$\$[\s\S]*?\$\$/g,' ')
+    .replace(/^\s*(#{1,6}|>|[-*+]|\d+\.)\s+/gm,''));
+  return Math.max(1,Math.round(text.split(/\s+/).filter(Boolean).length/230));
+}
 
 export function plainText(value) {
   const text = node => node.nodeName === '#text' ? node.value : (node.childNodes || []).map(text).join('');

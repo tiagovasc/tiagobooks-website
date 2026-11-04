@@ -17,7 +17,7 @@ https://www.youtube.com/embed/NDcgzJxbU84?rel=1
 
 Danny Forde is an assistant lecturer at University College Cork, teaching in the religion and philosophy departments. He completed his PhD in 2023 on the phenomenology of psychedelic experiences and published the book of the same title in 2024. He is training as a psychotherapist and works in the realist phenomenology tradition. &nbsp;
 
-## Top 3 Theses
+## Top 3 theses
 
 - **Psychedelics give direct contact with mind-independent essences.** When the ego is suspended, what's left is what Danny calls "ego-free seeing": perception without the pragmatic and narrative impositions that normally cognitively penetrate experience, putting you in direct touch with the flowerness of flowers, the essence of love, and the ground of being.
 

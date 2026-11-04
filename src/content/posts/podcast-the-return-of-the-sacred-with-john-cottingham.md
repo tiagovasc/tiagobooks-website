@@ -15,13 +15,15 @@ John Cottingham has spent fifty years working at the intersection of Descartes, 
 
 John Cottingham is Emeritus Professor of Philosophy at the University of Reading and an Honorary Fellow of St John's College, Oxford. He is one of the foremost scholars of early modern philosophy, particularly Descartes, and in the last two decades has become a leading voice in the philosophy of religion. His recent books include In Search of the Soul (Princeton University Press) and The Humane Perspective (Oxford University Press). His work consistently argues for a broader, non-scientistic conception of philosophical inquiry that draws on literature, art, emotion, and spiritual experience alongside analytic argument.
 
-## TOP 3 Thesis
+<span id="top-3-thesis"></span>
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Philosophy should be synoptic, not specialized: the big questions about meaning, purpose, and rightness are not academic curiosities but endemic to the human condition, and the philosopher's job is to articulate them as clearly and accessibly as possible for everyone, not just specialists.
+## Top 3 theses
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Scientism is the distortion, not science: science is one of humanity's greatest achievements, but the error lies in treating it as the sole touchstone of truth. An "epistemology of receptivity", a mode of knowing that requires openness and porosity rather than detached analysis, is necessary to perceive the dimensions of reality that science cannot capture.
+- Philosophy should be synoptic, not specialized: the big questions about meaning, purpose, and rightness are not academic curiosities but endemic to the human condition, and the philosopher's job is to articulate them as clearly and accessibly as possible for everyone, not just specialists.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The good must be enacted, not merely affirmed: the gap between Platonic philosophy and living Christianity is not primarily doctrinal but practical. Worship, liturgy, and embodied ritual are not decorations around a philosophical truth, they are the mechanism through which human beings actually incorporate allegiance to the good into their lives.
+- Scientism is the distortion, not science: science is one of humanity's greatest achievements, but the error lies in treating it as the sole touchstone of truth. An "epistemology of receptivity", a mode of knowing that requires openness and porosity rather than detached analysis, is necessary to perceive the dimensions of reality that science cannot capture.
+
+- The good must be enacted, not merely affirmed: the gap between Platonic philosophy and living Christianity is not primarily doctrinal but practical. Worship, liturgy, and embodied ritual are not decorations around a philosophical truth, they are the mechanism through which human beings actually incorporate allegiance to the good into their lives.
 
 ## Memorable Quotes
 

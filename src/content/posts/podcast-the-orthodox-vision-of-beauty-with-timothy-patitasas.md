@@ -24,7 +24,7 @@ Timothy Patitsas is Assistant Professor of Ethics at Holy Cross Greek Orthodox S
 
 * * *
 
-## Top 3 Theses
+## Top 3 theses
 
 - The West's truth-first ethics has produced impoverished therapy, broken institutions, and disenchanted civilization — because it skips the step that actually works: falling in love with beauty first, practicing goodness second, and becoming true through that process.
 

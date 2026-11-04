@@ -15,13 +15,13 @@ JP Marceau spent four years in dialogue with Jonathan Pageau and John Vervaeke b
 
 JP Marceau is a philosopher and author whose work sits at the intersection of classical metaphysics, cognitive science, and Christian theology. His book Post-Reductionist Christianity: A Way Out of the Meaning Crisis synthesizes the thought of Jonathan Pageau and John Vervaeke, two thinkers he has maintained ongoing dialogues with for several years. He is also associated with the Symbolic World community and teaches a course through that platform exploring the same themes developed in the book.
 
-## Top 3 Theses
+## Top 3 theses
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Reductionism was never a proven theory, it was a working hypothesis from Galileo's era that has since broken down in cognitive science, neuroscience, and biology. Abandoning it does not require abandoning science; it requires catching up with what science is actually doing.
+- Reductionism was never a proven theory, it was a working hypothesis from Galileo's era that has since broken down in cognitive science, neuroscience, and biology. Abandoning it does not require abandoning science; it requires catching up with what science is actually doing.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Christianity is best approached as a scientific hypothesis: grant the model of the Incarnation and test it for explanatory power. Like Newton's gravity, initially counterintuitive but predictively superior, the model earns adoption not through proof but through its capacity to account for what competing frameworks cannot.
+- Christianity is best approached as a scientific hypothesis: grant the model of the Incarnation and test it for explanatory power. Like Newton's gravity, initially counterintuitive but predictively superior, the model earns adoption not through proof but through its capacity to account for what competing frameworks cannot.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Love, defined ontologically as the dynamic in which the higher gives itself to the lower and the lower emerges into the higher, is not a metaphor borrowed from human experience but the fundamental pattern of reality, the same logic visible in emanation, in the Incarnation, and in how consciousness develops between parent and infant.
+- Love, defined ontologically as the dynamic in which the higher gives itself to the lower and the lower emerges into the higher, is not a metaphor borrowed from human experience but the fundamental pattern of reality, the same logic visible in emanation, in the Incarnation, and in how consciousness develops between parent and infant.
 
 ## Memorable Quotes
 

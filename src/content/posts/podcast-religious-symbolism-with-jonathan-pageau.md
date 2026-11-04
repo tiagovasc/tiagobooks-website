@@ -15,13 +15,15 @@ Jonathan Pageau has spent decades carving his way to the heart of Christian symb
 
 Jonathan Pageau is a French-Canadian wood carver, iconographer, and Orthodox Christian thinker based in Quebec. He runs a YouTube channel with roughly 80,000 subscribers exploring religious symbolism, iconography, and the symbolic structure of reality from a Christian perspective. He is the brother of Mathieu Pageau, author of The Language of Creation. His work draws on the Eastern Church Fathers, particularly Maximus the Confessor and Gregory of Nyssa, as well as thinkers ranging from Heidegger and Derrida to René Guénon and René Girard.
 
-## TOP 3 Thesis
+<span id="top-3-thesis"></span>
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Christianity's incarnational principle resolves the central tension in Western philosophy: essence does not hover above the world (Plato) nor disappear into instances (Aristotle), it exists to be embodied, which is why things in the world are not illusions but the only place where the patterns can actually be encountered.
+## Top 3 theses
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Committing to a single religious path is not intolerance but a prerequisite for any genuine spiritual growth. The universalist who stands above all traditions and picks what they like ends up constructing a religion with no friction, and friction is precisely what makes transformation possible.
+- Christianity's incarnational principle resolves the central tension in Western philosophy: essence does not hover above the world (Plato) nor disappear into instances (Aristotle), it exists to be embodied, which is why things in the world are not illusions but the only place where the patterns can actually be encountered.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Love, properly understood in the Christian tradition, is the force that allows multiplicity and unity to coexist without collapsing into each other, a fractal principle that scales from the parts of a chair through human relationships all the way to the doctrine of the Trinity.
+- Committing to a single religious path is not intolerance but a prerequisite for any genuine spiritual growth. The universalist who stands above all traditions and picks what they like ends up constructing a religion with no friction, and friction is precisely what makes transformation possible.
+
+- Love, properly understood in the Christian tradition, is the force that allows multiplicity and unity to coexist without collapsing into each other, a fractal principle that scales from the parts of a chair through human relationships all the way to the doctrine of the Trinity.
 
 ## Memorable Quotes
 

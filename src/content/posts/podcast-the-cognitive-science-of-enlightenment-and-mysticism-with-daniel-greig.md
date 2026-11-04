@@ -16,13 +16,15 @@ What if insight, flow, and mystical experience are not separate phenomena but po
 
 Daniel Greig is a philosopher, educator, and artist based in Canada. He holds an undergraduate degree specializing in the philosophy of religion and psychedelic research from the University of Toronto. He is co-authoring The Cognitive Continuum with Dr. John Vervaeke, which maps the progression from everyday insight through flow states to mystical experience using embodied cognitive science. He has organized the Mapping the Mind psychedelic conference in Canada and is a vocal advocate for the integration of psychedelics into culture through education, community-building, and the arts.
 
-## TOP 3 Thesis
+<span id="top-3-thesis"></span>
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Insight, flow, and mystical experience are not separate categories but successive deployments of the same core neural mechanism, the ventral attention network's capacity to interrupt focused awareness and incorporate novel information into one's model of reality.
+## Top 3 theses
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Psychedelics are culturally indispensable because they are the only tool that forces a confrontation with non-ordinary reality regardless of one's prior beliefs, making them not merely one piece of the consciousness revolution but its primary lever.
+- Insight, flow, and mystical experience are not separate categories but successive deployments of the same core neural mechanism, the ventral attention network's capacity to interrupt focused awareness and incorporate novel information into one's model of reality.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Wisdom is incomplete without its cosmic dimension: beyond philosophical and practical wisdom lies a form of insight in which the individual organism, embedded in its ecological and social context, becomes a vehicle for processes larger than itself, what traditions have called divine wisdom.
+- Psychedelics are culturally indispensable because they are the only tool that forces a confrontation with non-ordinary reality regardless of one's prior beliefs, making them not merely one piece of the consciousness revolution but its primary lever.
+
+- Wisdom is incomplete without its cosmic dimension: beyond philosophical and practical wisdom lies a form of insight in which the individual organism, embedded in its ecological and social context, becomes a vehicle for processes larger than itself, what traditions have called divine wisdom.
 
 ## Memorable Quotes
 

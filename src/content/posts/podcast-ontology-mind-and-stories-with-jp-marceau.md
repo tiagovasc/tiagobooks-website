@@ -15,13 +15,13 @@ JP Marceau began his intellectual life convinced that mathematics could answer t
 
 JP Marceau is a philosopher and independent researcher whose work sits at the intersection of analytic philosophy of mind, process philosophy, and classical metaphysics. He trained in mathematics, computer science, and logic before moving into philosophy, a trajectory shaped by the encounter with Gödel's incompleteness theorems. His thinking draws on David Chalmers, Henri Bergson, Alfred North Whitehead, and the Christian Neoplatonist tradition, with particular interest in the combination problem in panpsychism and the ontology of forms and patterns.
 
-## Top 3 Theses
+## Top 3 theses
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Materialism fails not just because it cannot explain consciousness, but because it cannot explain why consciousness, which is too complex to be a mere side effect of evolution, would be selected for at all. Panpsychism is a more honest starting point, but only if it accounts for both bottom-up emergence and top-down causation simultaneously.
+- Materialism fails not just because it cannot explain consciousness, but because it cannot explain why consciousness, which is too complex to be a mere side effect of evolution, would be selected for at all. Panpsychism is a more honest starting point, but only if it accounts for both bottom-up emergence and top-down causation simultaneously.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The hard problem of consciousness reveals that physical science only ever describes behavior, never intrinsic nature. The best candidate for the intrinsic nature of reality is consciousness, which extends down through all levels of being, but the combination problem shows this cannot be solved from the bottom up alone.
+- The hard problem of consciousness reveals that physical science only ever describes behavior, never intrinsic nature. The best candidate for the intrinsic nature of reality is consciousness, which extends down through all levels of being, but the combination problem shows this cannot be solved from the bottom up alone.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stories, communities, and abstract patterns are real in exactly the same sense that genetic information in a cell is real: they organize, inform, and sustain the concrete members that instantiate them. The reality of the abstract does not compete with the reality of the material; each requires the other.
+- Stories, communities, and abstract patterns are real in exactly the same sense that genetic information in a cell is real: they organize, inform, and sustain the concrete members that instantiate them. The reality of the abstract does not compete with the reality of the material; each requires the other.
 
 ## Memorable Quotes
 

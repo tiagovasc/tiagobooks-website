@@ -15,13 +15,13 @@ Nathan Dufour Oglesby is a classicist, rapper, and philosopher who makes songs a
 
 Nathan Dufour Oglesby holds a PhD in Classics from a major research university and teaches and lectures on ancient philosophy, language, and intellectual history. He is also a rapper and musician who performs under the name Nathan Dufour and collaborates on environmentally themed music as Nate Angela. His work sits at the intersection of classical scholarship and contemporary discourse, using hip-hop as a vehicle for philosophical and ideological critique.
 
-## Top 3 Theses
+## Top 3 theses
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The division between artistic expression and philosophical argument is a modern invention. In antiquity, wisdom transmission was always performative and quasi-poetic, the split comes from Plato systematizing Socrates and Aristotle systematizing Plato, not from some natural distinction between art and thought.
+- The division between artistic expression and philosophical argument is a modern invention. In antiquity, wisdom transmission was always performative and quasi-poetic, the split comes from Plato systematizing Socrates and Aristotle systematizing Plato, not from some natural distinction between art and thought.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hip-hop is not a degraded popular form but one of the healthiest surviving modes of public discourse: a place where ideas are exchanged, institutions are critiqued, and the lived experience of a community is articulated with precision. What reaches mainstream radio is not representative of what the form is capable of.
+- Hip-hop is not a degraded popular form but one of the healthiest surviving modes of public discourse: a place where ideas are exchanged, institutions are critiqued, and the lived experience of a community is articulated with precision. What reaches mainstream radio is not representative of what the form is capable of.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Whitehead’s process philosophy demands a complete inversion of our ordinary metaphysics: the universe is not made of static things with fixed essences but of events in collaboration, with God functioning not as an external lawgiver but as a repository of possibilities that the universe freely takes up and sets aside.
+- Whitehead’s process philosophy demands a complete inversion of our ordinary metaphysics: the universe is not made of static things with fixed essences but of events in collaboration, with God functioning not as an external lawgiver but as a repository of possibilities that the universe freely takes up and sets aside.
 
 ## Memorable Quotes
 

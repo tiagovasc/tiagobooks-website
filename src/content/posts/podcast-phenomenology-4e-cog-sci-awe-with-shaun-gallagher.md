@@ -15,13 +15,13 @@ Shaun Gallagher is one of the leading figures at the intersection of phenomenolo
 
 Shaun Gallagher is the Lillian and Morrie Moss Professor of Excellence in Philosophy at the University of Memphis and a Senior Researcher at the University of Tromsø. He is one of the editors of the Oxford Handbook of 4E Cognition and has published widely on phenomenology, embodied and enactive cognition, psychopathology, agency, and intersubjectivity. His major works include The Phenomenological Mind (with Dan Zahavi), Enactivist Interventions, and Action and Interaction. He is a leading proponent of interaction theory as an alternative to theory-of-mind and simulation accounts of social cognition, and directed the neurophenomenological spaceflight study published in The Neurophenomenology of Awe and Wonder (2015).
 
-## Top 3 Theses
+## Top 3 theses
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Phenomenology is not simply a method for describing subjective experience. It is a rigorous philosophical tradition with its own internal debates, and when brought into dialogue with empirical cognitive science it opens up the body, temporality, intersubjectivity, and the environment as legitimate objects of scientific inquiry, not just introspective curiosities.
+- Phenomenology is not simply a method for describing subjective experience. It is a rigorous philosophical tradition with its own internal debates, and when brought into dialogue with empirical cognitive science it opens up the body, temporality, intersubjectivity, and the environment as legitimate objects of scientific inquiry, not just introspective curiosities.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Embodied and enactive approaches to cognition are not a minor amendment to standard cognitive science. They are a fundamental reconception: the cognitive system includes brain, body, and environment as constitutively coupled, and the specific details of biological embodiment, not just functional organisation, determine what kind of cognition is possible.
+- Embodied and enactive approaches to cognition are not a minor amendment to standard cognitive science. They are a fundamental reconception: the cognitive system includes brain, body, and environment as constitutively coupled, and the specific details of biological embodiment, not just functional organisation, determine what kind of cognition is possible.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Understanding the other person is not primarily a matter of reading their mind from the outside. It is achieved through bodily, pragmatic, and emotionally engaged interaction, and this face-to-face primary intersubjectivity is the foundation that both Heidegger and standard theory-of-mind accounts systematically miss.
+- Understanding the other person is not primarily a matter of reading their mind from the outside. It is achieved through bodily, pragmatic, and emotionally engaged interaction, and this face-to-face primary intersubjectivity is the foundation that both Heidegger and standard theory-of-mind accounts systematically miss.
 
 ## Memorable Quotes
 

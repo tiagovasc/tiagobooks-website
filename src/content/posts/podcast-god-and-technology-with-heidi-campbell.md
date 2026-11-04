@@ -17,7 +17,9 @@ Heidi A. Campbell is Professor of Communication and Presidential Impact Fellow a
 
 https://www.youtube.com/embed/Q20Y5fVb5Jw?rel=1
 
-## TOP 3 Thesis
+<span id="top-3-thesis"></span>
+
+## Top 3 theses
 
 1. Religious communities do not simply accept or reject technology; they actively negotiate it through their existing values, authority structures, and communal identity, and this process is predictable once you understand those underlying commitments.
 

@@ -15,13 +15,15 @@ Graham Harman argues that philosophy has been too long trapped between two impov
 
 Graham Harman is Professor of Philosophy at the Southern California Institute of Architecture in Los Angeles. He received his doctorate from DePaul University and previously taught for many years at the American University in Cairo. He is the founder of Object-Oriented Ontology and one of the key figures associated with Speculative Realism. His books include _Tool-Being_, _The Quadruple Object_, _Object-Oriented Ontology: A New Theory of Everything_, _Art and Objects_, and _Architecture and Objects_.
 
-## Top 3 Thesis
+<span id="top-3-thesis"></span>
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Objects always withdraw from full contact with everything else, not just from human perception, but from each other. Fire does not access the smell, color, or price of the cotton it burns. This universal withdrawal is the core claim of OOO, and it applies symmetrically to every relation in the cosmos.
+## Top 3 theses
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; There is no such thing as matter, only forms. Every translation of a thing into another medium (a person into a photograph, a reality into a theory) changes the form. Nothing is extracted intact. There is no translation without information loss, which is why a perfect mathematical model of a person is not the person.
+- Objects always withdraw from full contact with everything else, not just from human perception, but from each other. Fire does not access the smell, color, or price of the cotton it burns. This universal withdrawal is the core claim of OOO, and it applies symmetrically to every relation in the cosmos.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Aesthetics is not decorative but philosophically essential. Metaphor, wine-dark sea, Picasso's Guernica, demonstrates that objects and their qualities have a loose, non-identical relationship. This is why aesthetics does work that literal knowledge cannot, and why art is not just culturally valuable but metaphysically revealing.
+- There is no such thing as matter, only forms. Every translation of a thing into another medium (a person into a photograph, a reality into a theory) changes the form. Nothing is extracted intact. There is no translation without information loss, which is why a perfect mathematical model of a person is not the person.
+
+- Aesthetics is not decorative but philosophically essential. Metaphor, wine-dark sea, Picasso's Guernica, demonstrates that objects and their qualities have a loose, non-identical relationship. This is why aesthetics does work that literal knowledge cannot, and why art is not just culturally valuable but metaphysically revealing.
 
 ## Memorable Quotes
 

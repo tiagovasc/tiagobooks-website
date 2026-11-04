@@ -4,7 +4,9 @@ import Base from '../layouts/Base.astro';
 // The previous page is preserved in ../private/simplify-header-20261104/before/src/pages/search.astro.
 ---
 <Base title="Search" path="/search">
-  <h1 class="sr-only">Search</h1>
+  <h1 class="entry-title">Search</h1>
+  <p class="search-guidance">Find essays, books and books to read by title, author or subject.</p>
+  <div class="search-suggestions" id="search-suggestions">Try <a href="/search?q=beauty">beauty</a>, <a href="/search?q=Heidegger">Heidegger</a> or <a href="/search?q=consciousness">consciousness</a>.</div>
   <form class="ss-form" role="search" id="ss-form">
     <label class="ss-box"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4 4"/></svg><input id="ss-q" type="search" placeholder="Search posts, books and TBR" aria-label="Search posts, books and TBR" autocomplete="off" spellcheck="false" autofocus /></label>
   </form>
@@ -35,6 +37,7 @@ import Base from '../layouts/Base.astro';
       return `<a class="ss-row" href="${esc(href)}"><span class="ss-cover">${b.cover?`<img src="/${esc(thumb(b.cover))}" data-full="/${esc(b.cover)}" alt="" loading="lazy" decoding="async" onerror="if(this.dataset.full){this.src=this.dataset.full;this.removeAttribute('data-full')}else this.remove()">`:''}</span><span class="ss-text"><span class="ss-title">${esc(b.title||'Untitled')}</span>${meta?`<span class="ss-meta">${esc(meta)}</span>`:''}</span></a>`}
     function postRow(d:any){const kind=d.url.startsWith('/pages/')?'Page':'';return `<a class="ss-row ss-post" href="${esc(d.url)}"><span class="ss-text"><span class="ss-title">${esc(d.meta?.title||d.url)}</span>${kind?`<span class="ss-meta">${kind}</span>`:''}${d.excerpt?`<span class="ss-excerpt">${d.excerpt}</span>`:''}</span></a>`}
     async function run(){const q=$('ss-q').value.trim(),t=++token;const u=new URL(location.href);if(q)u.searchParams.set('q',q);else u.searchParams.delete('q');if(scope!=='all')u.searchParams.set('scope',scope);else u.searchParams.delete('scope');history.replaceState(null,'',u);
+      $('search-suggestions').hidden=Boolean(q);
       if(!q){last={blog:null,library:[],tbr:[]};for(const el of document.querySelectorAll('[data-count]'))el.textContent='';$('ss-status').textContent='';$('ss-results').innerHTML='';return}
       $('ss-status').textContent='Searching…';
       try{const [blog,lib,tbr]=await Promise.all([blogResults(q).catch(()=>null),catalogue('library').then(b=>searchCatalogue(b,q)).catch(()=>null),catalogue('tbr').then(b=>searchCatalogue(b,q)).catch(()=>null)]);

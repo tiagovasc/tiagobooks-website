@@ -15,13 +15,13 @@ Arthur Versluis has spent decades excavating a tradition that modern philosophy 
 
 Arthur Versluis is Professor in the Department of Religious Studies at Michigan State University and one of the leading authorities on Western esotericism, Platonic mysticism, and the history of American spirituality. His books include _Platonic Mysticism_, _Perennial Philosophy_, _American Gurus_, _American Gnosis_, _Entering the Mysteries_, and _Breaking Through the Materialistic Deception_ (2024-25). He is a founder of the journal _Esoterica_ and has spent his career recovering traditions that mainstream academic philosophy has neglected or mischaracterised.
 
-## Top 3 Theses
+## Top 3 theses
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The eclipse of Platonism is not an intellectual accident but a structural consequence of global materialism, a worldview so pervasive it shapes both Marxist dialectical materialism and capitalist economics simultaneously, leaving no mainstream foothold for a tradition centred on transcendence.
+- The eclipse of Platonism is not an intellectual accident but a structural consequence of global materialism, a worldview so pervasive it shapes both Marxist dialectical materialism and capitalist economics simultaneously, leaving no mainstream foothold for a tradition centred on transcendence.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The apophatic tradition, running from Dionysius the Areopagite through Meister Eckhart, the Christian theosophers, and into modernity, constitutes a single continuous lineage of direct spiritual insight that is essentially parallel to what Buddhism expresses in the Heart Sutra, and Versluis's work is, so far as he knows, the only contemporary book to recover and trace this lineage in its entirety.
+- The apophatic tradition, running from Dionysius the Areopagite through Meister Eckhart, the Christian theosophers, and into modernity, constitutes a single continuous lineage of direct spiritual insight that is essentially parallel to what Buddhism expresses in the Heart Sutra, and Versluis's work is, so far as he knows, the only contemporary book to recover and trace this lineage in its entirety.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; New Age spirituality fails not primarily because of its guru scandals but because it is structurally materialistic, it promises awakening without a path, collapses the discipline required for contemplative ascent, and thereby mirrors, rather than subverts, the consumerist culture it claims to transcend.
+- New Age spirituality fails not primarily because of its guru scandals but because it is structurally materialistic, it promises awakening without a path, collapses the discipline required for contemplative ascent, and thereby mirrors, rather than subverts, the consumerist culture it claims to transcend.
 
 ## Memorable Quotes
 

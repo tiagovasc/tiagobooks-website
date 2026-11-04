@@ -15,13 +15,13 @@ What actually makes modern science different from every other attempt to underst
 
 Michael Strevens is a philosopher of science at New York University. His research spans theories of complex systems, statistical explanation, and the social structure of science. His book The Knowledge Machine (2020) offers a sweeping account of what makes modern science uniquely powerful,and why its success depends on a rule that forces scientists to behave in ways that are, philosophically speaking, deeply strange.
 
-## Top 3 Theses
+## Top 3 theses
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Modern science is distinguished not by any particular method or mindset, but by a single institutional rule: all disputes must be settled through empirical evidence alone. Philosophical, theological, and aesthetic arguments are banned from scientific journals,regardless of whether any individual scientist finds them compelling.
+- Modern science is distinguished not by any particular method or mindset, but by a single institutional rule: all disputes must be settled through empirical evidence alone. Philosophical, theological, and aesthetic arguments are banned from scientific journals,regardless of whether any individual scientist finds them compelling.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Popper and Kuhn were both right about the most important thing,that small, intractable empirical facts are what ultimately topple great theories,but both wrong about the scientist’s psychology. Real scientists are neither Popper’s hyper-rational falsificationists nor Kuhn’s almost credulous paradigm-followers. They are ordinary people, which is why institutional structure matters more than individual virtue.
+- Popper and Kuhn were both right about the most important thing,that small, intractable empirical facts are what ultimately topple great theories,but both wrong about the scientist’s psychology. Real scientists are neither Popper’s hyper-rational falsificationists nor Kuhn’s almost credulous paradigm-followers. They are ordinary people, which is why institutional structure matters more than individual virtue.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The iron rule works precisely because it forces scientists with completely different background beliefs, aesthetic preferences, and philosophical commitments to do more experiments rather than argue. Disagreement is not an obstacle to scientific progress; it is the engine of it, because the only permitted way to win a disagreement is to produce more data.
+- The iron rule works precisely because it forces scientists with completely different background beliefs, aesthetic preferences, and philosophical commitments to do more experiments rather than argue. Disagreement is not an obstacle to scientific progress; it is the engine of it, because the only permitted way to win a disagreement is to produce more data.
 
 ## Memorable Quotes
 

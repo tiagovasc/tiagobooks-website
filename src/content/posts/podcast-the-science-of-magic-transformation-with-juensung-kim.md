@@ -15,13 +15,13 @@ What if magic is not superstition but a coherent system of psychotechnologies wa
 
 Juensung Kim is a PhD candidate at the University of Toronto whose research focuses on the phenomenology and mechanisms of self-transformation, with particular attention to practices, including magic, meditation, and ritual, that facilitate that process. His work bridges cognitive science, philosophy, and the study of esotericism, and sits within an emerging fourth camp in the academic study of magic that seeks to integrate the psychological, sociological, and anthropological traditions into a unified research programme. He is also a practitioner of historical European martial arts, tai chi, and sword-based disciplines.
 
-## Top 3 Theses
+## Top 3 theses
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Magic is not a single phenomenon but a family of practices that every major civilisation abstracted from shamanism and ran with in different directions, and when you strip away the cultural theoretical layer and apply a cognitive-science lens, Eastern and Western practical magic look remarkably similar, which is exactly what a unified cognitive science of magic would predict.
+- Magic is not a single phenomenon but a family of practices that every major civilisation abstracted from shamanism and ran with in different directions, and when you strip away the cultural theoretical layer and apply a cognitive-science lens, Eastern and Western practical magic look remarkably similar, which is exactly what a unified cognitive science of magic would predict.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Randomised divination systems such as tarot and the I Ching function not by revealing a hidden cosmic order but by externalising the practitioner's own pattern-recognition capacity: the symbolism acts as flyaper for thoughts, allowing the practitioner to examine intuitions they could not otherwise hold at arm's length.
+- Randomised divination systems such as tarot and the I Ching function not by revealing a hidden cosmic order but by externalising the practitioner's own pattern-recognition capacity: the symbolism acts as flyaper for thoughts, allowing the practitioner to examine intuitions they could not otherwise hold at arm's length.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The deeper problem beneath both magical practice and self-improvement culture is not how to make people better once they want to change, but how to make people want to change at all, and almost no research addresses that prior question.
+- The deeper problem beneath both magical practice and self-improvement culture is not how to make people better once they want to change, but how to make people want to change at all, and almost no research addresses that prior question.
 
 ## Memorable Quotes
 

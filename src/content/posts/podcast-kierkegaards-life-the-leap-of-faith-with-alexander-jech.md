@@ -17,13 +17,15 @@ Kierkegaard is the philosopher who most refuses to stay inside philosophy. His l
 
 Alexander Jack is a philosopher and Kierkegaard scholar at the University of Notre Dame. Originally from Seattle, he came to Kierkegaard through an accidental summer teaching assignment in existentialism, a moment he describes as classically Kierkegaardian. He subsequently learned Danish and has published a new translation of Fear and Trembling, notable for its 200-page glossary and a series of corrective translation choices developed in response to student needs. His research focuses on Kierkegaard’s ethics, indirect communication, and the philosophy of faith.
 
-## Top 3 Thesis
+<span id="top-3-thesis"></span>
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kierkegaard’s philosophy is inseparable from his personal suffering. His relationship with his father, his broken engagement with Regina Olsen, and his lifelong practice of indirection are not background biography, they are the engine of his thought. The universal emerges, as Kierkegaard himself noted, precisely because he worked through what was most personal.
+## Top 3 theses
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The dominant interpretation of Fear and Trembling is backwards. Kierkegaard did not see himself as Abraham sacrificing Isaac. He saw himself as the man who lacked Abraham’s faith. Had he possessed it, he would have married Regina. Fear and Trembling is not a self-justification but a confession of failure and a map of what he should have done.
+- Kierkegaard’s philosophy is inseparable from his personal suffering. His relationship with his father, his broken engagement with Regina Olsen, and his lifelong practice of indirection are not background biography, they are the engine of his thought. The universal emerges, as Kierkegaard himself noted, precisely because he worked through what was most personal.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The paradox of Problema I cannot be dissolved, only correctly understood. Translating the key Danish word as “want” rather than “intend” collapses the distinction between temptation and sin, and makes Abraham’s situation incoherent. Once “intend” is restored, the paradox holds: Abraham does not want to kill Isaac, does not wish to, but fully intends to, and believes simultaneously that it will all work out.
+- The dominant interpretation of Fear and Trembling is backwards. Kierkegaard did not see himself as Abraham sacrificing Isaac. He saw himself as the man who lacked Abraham’s faith. Had he possessed it, he would have married Regina. Fear and Trembling is not a self-justification but a confession of failure and a map of what he should have done.
+
+- The paradox of Problema I cannot be dissolved, only correctly understood. Translating the key Danish word as “want” rather than “intend” collapses the distinction between temptation and sin, and makes Abraham’s situation incoherent. Once “intend” is restored, the paradox holds: Abraham does not want to kill Isaac, does not wish to, but fully intends to, and believes simultaneously that it will all work out.
 
 ## Memorable Quotes
 

@@ -32,7 +32,7 @@ test('library, writing, metadata, scripts, uploads and search files are served o
 
 test('one shared header, selected blog sections and publication months preserve the complete listing',async()=>{
   const library=await(await fetch(base+'/')).text(),blog=await(await fetch(base+'/blog')).text();
-  const shell=html=>serialize(parseFragment(html.match(/<header class="site-shell"[\s\S]*?<\/header>/)?.[0]||''));
+  const shell=html=>serialize(parseFragment((html.match(/<header class="site-shell"[\s\S]*?<\/header>/)?.[0]||'').replace(/ aria-current="page"/g,'')));
   assert.ok(shell(library));assert.equal(shell(library),shell(blog));assert.doesNotMatch(shell(blog),/>Writing<|>General<|>Reviews<|>TBR</);
   assert.match(library,/data-collection="tbr"/);assert.doesNotMatch(await readFile('library/tbr.css','utf8'),/\.tbr-mode #statusSeg/);
   assert.deepEqual([...blog.matchAll(/data-blog-tag="([^"]*)"/g)].map(m=>m[1]),['','General','Podcast','Book-Reviews','In-Search-of-the-Infinite']);

@@ -15,13 +15,13 @@ John Vervaeke is a cognitive scientist, philosopher, and creator of the acclaime
 
 John Vervaeke is Professor of Psychology, Cognitive Science, and Buddhist Psychology at the University of Toronto. He is the creator and host of Awakening from the Meaning Crisis, a fifty-episode lecture series that has reached millions of viewers worldwide. His academic work focuses on relevance realization, intelligence, rationality, wisdom, and the cognitive science of mindfulness and transformative experience. He holds a PhD in cognitive psychology and has practiced Tai Chi, Chi Kung, and Vipassana meditation for over thirty years. He is a central figure in the dialogos and participatory knowing revival alongside Christopher Mastropietro, Philip Verviski, and others.
 
-## Top 3 Theses
+## Top 3 theses
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dialogos is not simply a good conversation but a distributed flow state in which people access collective intelligence, resonate into deeper layers of self-knowledge, and can afford genuine self-transcendence, an experience that consistently elicits reverence regardless of the participants' religious or secular backgrounds.
+- Dialogos is not simply a good conversation but a distributed flow state in which people access collective intelligence, resonate into deeper layers of self-knowledge, and can afford genuine self-transcendence, an experience that consistently elicits reverence regardless of the participants' religious or secular backgrounds.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The most productive way to bridge the religious-atheist divide is not to engage the doctrinal or knowledge arena at all, but to shift both parties into the wisdom arena by asking what practices they use to overcome self-deception, a challenge neither group can easily deflect.
+- The most productive way to bridge the religious-atheist divide is not to engage the doctrinal or knowledge arena at all, but to shift both parties into the wisdom arena by asking what practices they use to overcome self-deception, a challenge neither group can easily deflect.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The propositions that emerge from mystical experience deserve serious consideration as candidates for truth about phenomenological and relational reality, but the state that generates the experience heavily predicts which propositions emerge, which constrains their independent epistemic weight.
+- The propositions that emerge from mystical experience deserve serious consideration as candidates for truth about phenomenological and relational reality, but the state that generates the experience heavily predicts which propositions emerge, which constrains their independent epistemic weight.
 
 ## Memorable Quotes
 

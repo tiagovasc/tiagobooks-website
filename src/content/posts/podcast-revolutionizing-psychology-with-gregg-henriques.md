@@ -15,13 +15,13 @@ Psychology has never agreed on what its subject matter actually is. For over a c
 
 Gregg Henriques is Professor of Graduate Psychology at James Madison University, where he directs the Combined-Integrated Doctoral Program in Clinical and School Psychology. He trained at the University of Vermont, completed a postdoctoral fellowship at the University of Pennsylvania under Aaron Beck, and has spent three decades developing the Unified Theory of Knowledge, a metatheoretical system integrating philosophy of mind, evolutionary biology, complexity theory, and clinical psychology. He is incoming president of the Society for the Exploration of Psychotherapy Integration.
 
-## Top 3 Theses
+## Top 3 theses
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Psychology has never established a shared ontology of its subject matter, what the mind actually is, and has papered over this failure by defining itself through methodology rather than object of study. This is not a minor gap but a foundational crisis that makes the entire field incoherent.
+- Psychology has never established a shared ontology of its subject matter, what the mind actually is, and has papered over this failure by defining itself through methodology rather than object of study. This is not a minor gap but a foundational crisis that makes the entire field incoherent.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The jump from animal to human is not a quantitative increase in cognitive complexity but a qualitative shift into a new plane of existence, the culture-person plane, driven by the emergence of propositional language and the justification dynamic it creates. Evolutionary psychology is useful but structurally insufficient to account for this shift.
+- The jump from animal to human is not a quantitative increase in cognitive complexity but a qualitative shift into a new plane of existence, the culture-person plane, driven by the emergence of propositional language and the justification dynamic it creates. Evolutionary psychology is useful but structurally insufficient to account for this shift.
 
-•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The dominant model of evidence-based psychotherapy is organised primarily around school-of-thought brand promotion rather than the pursuit of accurate knowledge. The dodo bird finding, that bona fide therapies produce roughly equivalent outcomes, points toward common factors rather than specific mechanisms, and the empirical apparatus built to validate specific brands is structurally corrupt.
+- The dominant model of evidence-based psychotherapy is organised primarily around school-of-thought brand promotion rather than the pursuit of accurate knowledge. The dodo bird finding, that bona fide therapies produce roughly equivalent outcomes, points toward common factors rather than specific mechanisms, and the empirical apparatus built to validate specific brands is structurally corrupt.
 
 ## Memorable Quotes
 
