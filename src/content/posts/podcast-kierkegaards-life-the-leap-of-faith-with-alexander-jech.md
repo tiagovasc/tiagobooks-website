@@ -3,6 +3,8 @@ title: 'Podcast: Kierkegaard’s Life & The Leap Of Faith with Alexander Jech'
 date: 2025-06-28 09:44:00-05:00
 tags:
 - Podcast
+image: /uploads/podcasts/episode-yy_FEW9L67U.webp
+thumbnail: /uploads/podcasts/episode-yy_FEW9L67U-480.webp
 ---
 
 ## Abstract

@@ -3,6 +3,19 @@ title: In Search of the Infinite - Finding the Roots (Volume 1, Chapter 3)
 date: 2017-05-14 05:18:00-05:00
 tags:
 - In Search of the Infinite
+image: /uploads/artwork/jean-francois-millet-the-sower-5dbe833.webp
+artwork:
+  title: The Sower
+  artist: Jean-François Millet
+  alt: A man strides across a ploughed field scattering seed.
+  width: 463
+  height: 600
+  thumbnail: /uploads/artwork/jean-francois-millet-the-sower-5dbe833-480.webp
+  year: '1850'
+thumbnailCrop:
+  x: 50
+  y: 5
+  zoom: 1
 ---
 
 This chapter is part of the book _In Search of the Infinite_. The table of contents and introduction are available [here](/posts/in-search-of-the-infinite-introduction), and all chapters are listed [here](/tag/In-Search-of-the-Infinite).

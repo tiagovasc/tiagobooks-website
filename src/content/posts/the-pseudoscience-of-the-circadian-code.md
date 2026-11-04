@@ -4,6 +4,16 @@ date: 2020-09-09 01:29:00-05:00
 tags:
 - Book Reviews
 - Science
+image: /uploads/artwork/edvard-munch-the-sun.webp
+artwork:
+  title: The Sun
+  artist: Edvard Munch
+  alt: A brilliant sun sends rays over a fjord and rocky shore.
+  width: 640
+  height: 365
+  thumbnail: /uploads/artwork/edvard-munch-the-sun-480.webp
+  year: '1911'
+  source: https://www.uio.no/om/kultur/kunstsamlingen/aulaen/solen.html
 ---
 
 **_A book review of&nbsp;‘_The Circadian Code: Lose Weight, Supercharge Your Energy and Sleep Well Every N_’ by_ Satchin Panda**

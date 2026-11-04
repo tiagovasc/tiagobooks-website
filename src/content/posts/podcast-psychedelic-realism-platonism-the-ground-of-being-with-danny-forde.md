@@ -3,20 +3,8 @@ title: 'Podcast: Psychedelic Realism, Platonism & The Ground of Being with Danny
 date: 2026-05-18 05:14:00-05:00
 tags:
 - Podcast
-image: /uploads/artwork/raphael-the-school-of-athens.webp
-thumbnailCrop:
-  x: 50
-  y: 75
-  zoom: 1
-artwork:
-  title: The School of Athens
-  artist: Raphael
-  year: 1509–1511
-  alt: Philosophers gather beneath monumental arches, with Plato and Aristotle walking at the center.
-  width: 1600
-  height: 1241
-  thumbnail: /uploads/artwork/raphael-the-school-of-athens-480.webp
-  source: https://www.museivaticani.va/content/museivaticani/en/collezioni/musei/stanze-di-raffaello/stanza-della-segnatura/scuola-di-atene.html
+image: /uploads/podcasts/episode-NDcgzJxbU84.webp
+thumbnail: /uploads/podcasts/episode-NDcgzJxbU84-480.webp
 ---
 
 Danny Forde is a philosopher and lecturer at University College Cork whose 2024 book _Phenomenology of Psychedelic Experiences_ argues that psychedelics give direct contact with mind-independent features of reality. He grounds the claim in realist phenomenology, the Munich-Göttingen tradition that rejected Husserl's idealist turn after 1905, and defends what Joseph Seifert called sober Platonism: essences are real, but not floating in a separate realm of forms. The conversation runs through anti-reductionism via Husserl's anti-psychologism, the failure of representationalism, the tripartite structure of the self with for-me-ness as the irreducible minimal core, and the claim that psychedelics reveal essences once the ego stops cognitively penetrating perception. Tiago pushes back at length on essentialism, perennialism, and the place of existential orientation against perception, with Danny defending essentialism and a Sawyer-style perennialism that takes traditions seriously without collapsing them.&nbsp;

@@ -3,6 +3,8 @@ title: The Timaeus, Beauty and Tradition (Anagoge Podcast)
 date: 2026-03-02 02:23:00-06:00
 tags:
 - Podcast
+image: /uploads/podcasts/episode-oIh-a7q4b54.webp
+thumbnail: /uploads/podcasts/episode-oIh-a7q4b54-480.webp
 ---
 
 ## Abstract

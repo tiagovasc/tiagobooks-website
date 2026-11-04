@@ -4,6 +4,20 @@ date: 2020-02-01 07:03:00-06:00
 tags:
 - Book Reviews
 - Philosophy
+image: /uploads/artwork/lu-wenying-river-village-in-a-rainstorm-1627dbd.webp
+artwork:
+  title: River Village in a Rainstorm
+  artist: Lu Wenying
+  alt: Wind-driven rain sweeps across a mountainous river village.
+  width: 548
+  height: 893
+  thumbnail: /uploads/artwork/lu-wenying-river-village-in-a-rainstorm-1627dbd-480.webp
+  year: c. 1480–1507
+  source: https://clevelandart.org/art/1970.76
+thumbnailCrop:
+  x: 50
+  y: 55
+  zoom: 1
 ---
 
 **_A book review of&nbsp;‘_Eastern Philosophy: The Basics_’ by_ Victoria Harrison**

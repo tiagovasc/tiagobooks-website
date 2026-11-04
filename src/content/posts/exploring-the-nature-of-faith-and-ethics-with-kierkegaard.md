@@ -5,6 +5,20 @@ tags:
 - Book Reviews
 - Philosophy
 - Religion
+image: /uploads/artwork/andrea-del-sarto-the-sacrifice-of-isaac-f7838ca.webp
+artwork:
+  title: The Sacrifice of Isaac
+  artist: Andrea del Sarto
+  alt: Abraham raises a knife over Isaac as an angel intervenes.
+  width: 697
+  height: 900
+  thumbnail: /uploads/artwork/andrea-del-sarto-the-sacrifice-of-isaac-f7838ca-480.webp
+  year: c. 1527
+  source: https://clevelandart.org/art/1937.577
+thumbnailCrop:
+  x: 50
+  y: 0
+  zoom: 1
 ---
 
 **_A book review of&nbsp;‘_Fear and Trembling_’ by_ Søren Kierkegaard**

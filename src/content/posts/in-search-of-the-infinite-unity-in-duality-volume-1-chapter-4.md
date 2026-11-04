@@ -3,6 +3,20 @@ title: In Search of the Infinite - Unity in Duality (Volume 1, Chapter 4)
 date: 2017-06-26 05:21:00-05:00
 tags:
 - In Search of the Infinite
+image: /uploads/artwork/jean-delville-the-love-of-souls-ac3f7fc.webp
+artwork:
+  title: The Love of Souls
+  artist: Jean Delville
+  alt: Two pale figures rise together within flowing blue and gold forms.
+  width: 500
+  height: 795
+  thumbnail: /uploads/artwork/jean-delville-the-love-of-souls-ac3f7fc-480.webp
+  year: '1900'
+  source: https://commons.wikimedia.org/wiki/File:L%E2%80%99Amour_des_%C3%A2mes_(1900)_-_Jean_Delville.jpg
+thumbnailCrop:
+  x: 50
+  y: 0
+  zoom: 1
 ---
 
 This chapter is part of the book _In Search of the Infinite_. The table of contents and introduction are available [here](/posts/in-search-of-the-infinite-introduction), and all chapters are listed [here](/tag/In-Search-of-the-Infinite).

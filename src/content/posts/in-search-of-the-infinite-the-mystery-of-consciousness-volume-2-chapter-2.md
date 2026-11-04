@@ -4,6 +4,20 @@ title: In Search of the Infinite - The Mystery of Consciousness (Volume 2, Chapt
 date: 2017-09-06 05:35:00-05:00
 tags:
 - In Search of the Infinite
+image: /uploads/artwork/odilon-redon-closed-eyes-8d77e14.webp
+artwork:
+  title: Closed Eyes
+  artist: Odilon Redon
+  alt: A woman's closed-eyed face floats above a quiet grey-blue horizon.
+  width: 1280
+  height: 1582
+  thumbnail: /uploads/artwork/odilon-redon-closed-eyes-8d77e14-480.webp
+  year: '1890'
+  source: https://commons.wikimedia.org/wiki/File:Odilon_Redon_-_Closed_Eyes_-_Google_Art_Project.jpg
+thumbnailCrop:
+  x: 50
+  y: 40
+  zoom: 1
 ---
 
 This chapter is part of the book _In Search of the Infinite_. The table of contents and introduction are available [here](/posts/in-search-of-the-infinite-introduction), and all chapters are listed [here](/tag/In-Search-of-the-Infinite).

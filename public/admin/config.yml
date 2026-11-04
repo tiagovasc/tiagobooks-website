@@ -28,6 +28,7 @@ collections:
       - { label: Publish date, name: date, widget: datetime, date_format: 'YYYY-MM-DD', time_format: 'HH:mm', format: "YYYY-MM-DD'T'HH:mm:ss'Z'" }
       - { label: Tags, name: tags, widget: list, required: false, default: [] }
       - { label: Featured image, name: image, widget: image, required: false }
+      - { label: Small thumbnail, name: thumbnail, widget: image, required: false, hint: 'Optional smaller copy for blog cards. Podcast episodes use their own episode thumbnail.' }
       - label: Thumbnail crop
         name: thumbnailCrop
         widget: object

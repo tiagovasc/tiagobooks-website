@@ -3,6 +3,16 @@ title: In Search of the Infinite - The Inward Hike (Volume 1, Chapter 6)
 date: 2017-08-09 05:25:00-05:00
 tags:
 - In Search of the Infinite
+image: /uploads/artwork/eugene-carriere-the-contemplator-fc688da.webp
+artwork:
+  title: The Contemplator
+  artist: Eugène Carrière
+  alt: A small contemplative figure reclines under a dim sky and a crescent moon.
+  width: 750
+  height: 611
+  thumbnail: /uploads/artwork/eugene-carriere-the-contemplator-fc688da-480.webp
+  year: '1901'
+  source: https://clevelandart.org/art/1946.283
 ---
 
 This chapter is part of the book _In Search of the Infinite_. The table of contents and introduction are available [here](/posts/in-search-of-the-infinite-introduction), and all chapters are listed [here](/tag/In-Search-of-the-Infinite).

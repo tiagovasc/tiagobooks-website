@@ -3,6 +3,20 @@ title: In Search of the Infinite - The Unknown (Volume 1, Chapter 2)
 date: 2017-04-12 05:06:00-05:00
 tags:
 - In Search of the Infinite
+image: /uploads/artwork/caspar-david-friedrich-wanderer-above-the-sea-of-fog-8856acd.webp
+artwork:
+  title: Wanderer above the Sea of Fog
+  artist: Caspar David Friedrich
+  alt: A man stands on a rocky summit overlooking a sea of fog.
+  width: 1249
+  height: 1600
+  thumbnail: /uploads/artwork/caspar-david-friedrich-wanderer-above-the-sea-of-fog-8856acd-480.webp
+  year: c. 1817–1818
+  source: https://www.kmw.ch/ausstellungen/friedrich/digital/wanderer/
+thumbnailCrop:
+  x: 50
+  y: 42
+  zoom: 1
 ---
 
 This chapter is part of the book _In Search of the Infinite_. The table of contents and introduction are available [here](/posts/in-search-of-the-infinite-introduction), and all chapters are listed [here](/tag/In-Search-of-the-Infinite).

@@ -5,6 +5,16 @@ tags:
 - Book Reviews
 - Philosophy
 - Science
+image: /uploads/artwork/joseph-wright-of-derby-an-experiment-on-a-bird-in-the-air-pump.webp
+artwork:
+  title: An Experiment on a Bird in the Air Pump
+  artist: Joseph Wright of Derby
+  alt: A group watches a bird suspended inside a glass air pump by lamplight.
+  width: 1600
+  height: 1199
+  thumbnail: /uploads/artwork/joseph-wright-of-derby-an-experiment-on-a-bird-in-the-air-pump-480.webp
+  year: '1768'
+  source: https://www.nationalgallery.org.uk/paintings/joseph-wright-of-derby-an-experiment-on-a-bird-in-the-air-pump
 ---
 
 **_A book review of&nbsp;‘_Theory and Reality_’ by_ Peter Godfrey-Smith**

@@ -5,6 +5,20 @@ tags:
 - Book Reviews
 - Religion
 - Philosophy
+image: /uploads/artwork/georges-de-la-tour-the-penitent-magdalen-f4545bf.webp
+artwork:
+  title: The Penitent Magdalen
+  artist: Georges de La Tour
+  alt: A woman sits beside a candle and mirror with a skull resting in her lap.
+  width: 460
+  height: 624
+  thumbnail: /uploads/artwork/georges-de-la-tour-the-penitent-magdalen-f4545bf-480.webp
+  year: ca. 1640
+  source: https://www.metmuseum.org/art/collection/search/436839
+thumbnailCrop:
+  x: 50
+  y: 10
+  zoom: 1.2
 ---
 
 **_A book review of&nbsp;‘_Confessions_’ by_ Augustine of Hippo**

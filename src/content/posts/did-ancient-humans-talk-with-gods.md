@@ -5,6 +5,16 @@ tags:
 - Book Reviews
 - Psychology
 - Philosophy
+image: /uploads/artwork/william-blake-the-angel-appearing-to-zacharias-eb964b5.webp
+artwork:
+  title: The Angel Appearing to Zacharias
+  artist: William Blake
+  alt: An angel appears before a robed man beside a many-branched lamp.
+  width: 599
+  height: 422
+  thumbnail: /uploads/artwork/william-blake-the-angel-appearing-to-zacharias-eb964b5-480.webp
+  year: 1799–1800
+  source: https://www.metmuseum.org/art/collection/search/435671
 ---
 
 **_A book review of&nbsp;‘_The Origin of Consciousness in the Breakdown of the Bicameral Mind_’ by_ Julian Jaynes**

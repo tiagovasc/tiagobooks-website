@@ -4,6 +4,16 @@ date: 2019-10-24 01:06:00-05:00
 tags:
 - Book Reviews
 - Philosophy
+image: /uploads/artwork/caspar-david-friedrich-the-monk-by-the-sea.webp
+artwork:
+  title: The Monk by the Sea
+  artist: Caspar David Friedrich
+  alt: A tiny solitary figure stands on a shore below a vast misty sky.
+  width: 1600
+  height: 1018
+  thumbnail: /uploads/artwork/caspar-david-friedrich-the-monk-by-the-sea-480.webp
+  year: 1808–1810
+  source: https://id.smb.museum/object/965511
 ---
 
 **_A book review of&nbsp;‘_The Stranger_’ by_ Albert Camus&nbsp;**

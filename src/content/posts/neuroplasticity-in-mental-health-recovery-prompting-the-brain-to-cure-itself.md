@@ -4,6 +4,16 @@ date: 2023-01-05 12:23:00-06:00
 tags:
 - General
 - Psychedelics
+image: /uploads/artwork/vincent-van-gogh-the-large-plane-trees-road-menders-at-saint-remy-862f5b9.webp
+artwork:
+  title: The Large Plane Trees (Road Menders at Saint-Rémy)
+  artist: Vincent van Gogh
+  alt: Plane trees line a road where small figures work beneath the branches.
+  width: 900
+  height: 718
+  thumbnail: /uploads/artwork/vincent-van-gogh-the-large-plane-trees-road-menders-at-saint-remy-862f5b9-480.webp
+  year: '1889'
+  source: https://clevelandart.org/art/1947.209
 ---
 
 **This post was first published in** [**Drug Science**](https://www.drugscience.org.uk/neuroplasticity-in-mental-health-recovery-prompting-the-brain-to-cure-itself) **back in 2023 .**

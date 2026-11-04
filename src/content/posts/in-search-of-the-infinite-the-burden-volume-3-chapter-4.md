@@ -3,6 +3,19 @@ title: In Search of the Infinite - The Burden (Volume 3, Chapter 4)
 date: 2020-02-09 05:49:00-06:00
 tags:
 - In Search of the Infinite
+image: /uploads/artwork/gustav-klimt-death-and-life-cfef1f2.webp
+artwork:
+  title: Death and Life
+  artist: Gustav Klimt
+  alt: A skeletal Death faces a cluster of embracing and sleeping human figures.
+  width: 1280
+  height: 1114
+  thumbnail: /uploads/artwork/gustav-klimt-death-and-life-cfef1f2-480.webp
+  source: https://tiagovf.com/posts/in-search-of-the-infinite-chapter-4-the-burden
+thumbnailCrop:
+  x: 50
+  y: 25
+  zoom: 1
 ---
 
 This chapter is part of the book _In Search of the Infinite_. The table of contents and introduction are available [here](/posts/in-search-of-the-infinite-introduction), and all chapters are listed [here](/tag/In-Search-of-the-Infinite).

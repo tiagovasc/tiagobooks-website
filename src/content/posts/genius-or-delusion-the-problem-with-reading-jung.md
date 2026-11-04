@@ -4,6 +4,16 @@ date: 2021-02-19 10:13:00-06:00
 tags:
 - Book Reviews
 - Philosophy
+image: /uploads/artwork/unknown-artist-twenty-three-deity-nairatma-mandala-0a0189e.webp
+artwork:
+  title: Twenty-three Deity Nairatma Mandala
+  artist: Unknown artist
+  alt: A richly colored mandala arranges deities within concentric circular and square enclosures.
+  width: 783
+  height: 900
+  thumbnail: /uploads/artwork/unknown-artist-twenty-three-deity-nairatma-mandala-0a0189e-480.webp
+  year: c. 1375
+  source: https://clevelandart.org/art/1993.4
 ---
 
 **_A book review of&nbsp;‘The Archetypes and the Collective Unconscious’ by Carl Jung_**

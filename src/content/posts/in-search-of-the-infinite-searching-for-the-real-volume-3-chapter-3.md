@@ -3,6 +3,16 @@ title: In Search of the Infinite - Searching for the Real (Volume 3, Chapter 3)
 date: 2019-03-20 05:47:00-05:00
 tags:
 - In Search of the Infinite
+image: /uploads/artwork/theodule-augustin-ribot-the-good-samaritan.webp
+artwork:
+  title: The Good Samaritan
+  artist: Théodule-Augustin Ribot
+  alt: Two people attend to an injured man lying on a roadside.
+  width: 1280
+  height: 1001
+  thumbnail: /uploads/artwork/theodule-augustin-ribot-the-good-samaritan-480.webp
+  year: c. 1870
+  source: https://www.musee-orsay.fr/en/artworks/le-bon-samaritain-75472
 ---
 
 This chapter is part of the book _In Search of the Infinite_. The table of contents and introduction are available [here](/posts/in-search-of-the-infinite-introduction), and all chapters are listed [here](/tag/In-Search-of-the-Infinite).

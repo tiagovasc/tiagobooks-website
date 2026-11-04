@@ -5,6 +5,20 @@ tags:
 - Book Reviews
 - Psychology
 - Religion
+image: /uploads/artwork/john-william-waterhouse-the-magic-circle.webp
+artwork:
+  title: The Magic Circle
+  artist: John William Waterhouse
+  alt: A woman tends a steaming cauldron while drawing a circle on the ground.
+  width: 1068
+  height: 1600
+  thumbnail: /uploads/artwork/john-william-waterhouse-the-magic-circle-480.webp
+  year: '1886'
+  source: https://www.tate.org.uk/art/artworks/waterhouse-the-magic-circle-n01572
+thumbnailCrop:
+  x: 50
+  y: 35
+  zoom: 1
 ---
 
 **_A book review of Aion by Carl Jung_**

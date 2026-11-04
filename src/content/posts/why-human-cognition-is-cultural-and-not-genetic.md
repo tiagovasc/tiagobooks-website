@@ -4,6 +4,16 @@ date: 2020-12-01 09:27:00-06:00
 tags:
 - Book Reviews
 - Psychology
+image: /uploads/artwork/edgar-degas-frieze-of-dancers-6cd05c9.webp
+artwork:
+  title: Frieze of Dancers
+  artist: Edgar Degas
+  alt: A horizontal sequence of dancers bends, stretches, and adjusts their poses.
+  width: 900
+  height: 314
+  thumbnail: /uploads/artwork/edgar-degas-frieze-of-dancers-6cd05c9-480.webp
+  year: c. 1895
+  source: https://clevelandart.org/art/1946.83
 ---
 
 **_A book review of&nbsp;‘_Cognitive Gadgets_’ by_ Cecilia Heyes**

@@ -4,6 +4,15 @@ date: 2019-10-01 06:56:00-05:00
 tags:
 - Book Reviews
 - Philosophy
+image: /uploads/artwork/jean-leon-gerome-diogenes-dbdcf02.webp
+artwork:
+  title: Diogenes
+  artist: Jean-Léon Gérôme
+  alt: Diogenes sits inside a large vessel beside several dogs.
+  width: 1600
+  height: 1175
+  thumbnail: /uploads/artwork/jean-leon-gerome-diogenes-dbdcf02-480.webp
+  year: '1860'
 ---
 
 **_A book review of&nbsp;‘_Heidegger: A Very Short Introduction_’ by_ Michael Inwood**

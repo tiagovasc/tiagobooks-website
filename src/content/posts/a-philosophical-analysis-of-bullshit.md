@@ -4,6 +4,20 @@ date: 2020-07-01 08:12:00-05:00
 tags:
 - Book Reviews
 - Philosophy
+image: /uploads/artwork/nikolai-ge-what-is-truth-christ-and-pilate.webp
+artwork:
+  title: What Is Truth? Christ and Pilate
+  artist: Nikolai Ge
+  alt: Pilate gestures toward Christ in a sunlit stone doorway.
+  width: 1182
+  height: 1600
+  thumbnail: /uploads/artwork/nikolai-ge-what-is-truth-christ-and-pilate-480.webp
+  year: '1890'
+  source: https://artsandculture.google.com/asset/what-is-truth-christ-and-pilate/mQGhKNKJnQIlWg
+thumbnailCrop:
+  x: 50
+  y: 32
+  zoom: 1
 ---
 
 **_A book review of&nbsp;‘_On Bullshit_’ by_ Harry Frankfurt**

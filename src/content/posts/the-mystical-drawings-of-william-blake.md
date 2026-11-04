@@ -4,6 +4,15 @@ date: 2020-12-01 09:13:00-06:00
 tags:
 - Book Reviews
 - Non-Fiction
+image: /uploads/artwork/william-blake-the-lovers-whirlwind-francesca-da-rimini-and-paolo-malatesta-b46a43d.webp
+artwork:
+  title: The Lovers’ Whirlwind, Francesca da Rimini and Paolo Malatesta
+  artist: William Blake
+  alt: A sweeping pale whirlwind carries figures across the sky above a recumbent figure and two standing observers.
+  width: 1046
+  height: 770
+  thumbnail: /uploads/artwork/william-blake-the-lovers-whirlwind-francesca-da-rimini-and-paolo-malatesta-b46a43d-480.webp
+  year: 1824–1827
 ---
 
 **_A book review of&nbsp;‘_William Blake - Dante's Divine Comedy_’ by_ Maria Antonietta Terzoli and Sebastian Schütze**

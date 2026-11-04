@@ -5,6 +5,16 @@ tags:
 - Book Reviews
 - Science
 - Philosophy
+image: /uploads/artwork/albert-bierstadt-yosemite-valley-sunset-20b4df5.webp
+artwork:
+  title: Yosemite Valley Sunset
+  artist: Albert Bierstadt
+  alt: A broad river reflects golden evening light beneath Yosemite’s cliffs.
+  width: 750
+  height: 540
+  thumbnail: /uploads/artwork/albert-bierstadt-yosemite-valley-sunset-20b4df5-480.webp
+  year: '1865'
+  source: https://www.wikiart.org/en/albert-bierstadt/yosemite-valley-sunset
 ---
 
 **_A book review of&nbsp;‘_A Passion for Nature: The Life of John Muir_’ by_ Donald Worster**

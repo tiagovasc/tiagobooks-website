@@ -3,6 +3,8 @@ title: 'Podcast: The Science of Magic & Transformation with Juensung Kim'
 date: 2021-08-09 08:41:00-05:00
 tags:
 - Podcast
+image: /uploads/podcasts/episode-jlbwdKvS_Zo.webp
+thumbnail: /uploads/podcasts/episode-jlbwdKvS_Zo-480.webp
 ---
 
 What if magic is not superstition but a coherent system of psychotechnologies waiting for cognitive science to catch up? Juensung Kim, PhD candidate at the University of Toronto, argues that the toolbox of a practising magician, ritual, trance, meditation, divination, maps onto established research programmes in psychology, anthropology, and cognitive science, and that the real project is getting those disciplines to talk to each other. The conversation moves from the etymology of magic and its contested relationship with sorcery and shamanism, through the rubber-hand illusion and the concept of the astral body, to divination systems as externalised pattern-recognition tools, the dangers of unstructured magical practice, and the open question of what makes people aspire to genuine self-transformation in the first place.

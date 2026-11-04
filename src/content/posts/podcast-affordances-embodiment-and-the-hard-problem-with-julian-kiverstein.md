@@ -3,16 +3,8 @@ title: 'Podcast: Affordances, Embodiment & the Hard Problem with Julian Kiverste
 date: 2026-07-28 04:17:00-05:00
 tags:
 - Podcast
-image: /uploads/artwork/mary-cassatt-the-boating-party.webp
-artwork:
-  title: The Boating Party
-  artist: Mary Cassatt
-  year: 1893–1894
-  alt: A boatman rows a woman and child across blue water beneath a pale sail.
-  width: 1280
-  height: 982
-  thumbnail: /uploads/artwork/mary-cassatt-the-boating-party-480.webp
-  source: https://www.nga.gov/artworks/46569-boating-party
+image: /uploads/podcasts/episode-sD93E4c7IOs.webp
+thumbnail: /uploads/podcasts/episode-sD93E4c7IOs-480.webp
 ---
 
 What does it take to bring scientific explanation and first-person experience back together? Philosopher Julian Kiverstein has spent his career on exactly that gap, with a foot in continental philosophy, cognitive neuroscience, and a psychiatry department in Amsterdam.&nbsp;

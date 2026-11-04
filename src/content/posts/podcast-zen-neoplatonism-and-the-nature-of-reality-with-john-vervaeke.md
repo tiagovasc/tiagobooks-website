@@ -3,20 +3,8 @@ title: 'Podcast: Zen Neoplatonism and the Nature of Reality with John Vervaeke'
 date: 2026-08-11 04:32:00-05:00
 tags:
 - Podcast
-image: /uploads/artwork/odilon-redon-buddha.webp
-thumbnailCrop:
-  x: 50
-  y: 35
-  zoom: 1
-artwork:
-  title: Buddha
-  artist: Odilon Redon
-  year: c. 1905
-  alt: A standing Buddha appears beside a tree amid yellow light and richly colored flowers.
-  width: 774
-  height: 1047
-  thumbnail: /uploads/artwork/odilon-redon-buddha-480.webp
-  source: https://www.musee-orsay.fr/fr/oeuvres/le-bouddha-3659
+image: /uploads/podcasts/episode-bQ2eI-oQlXg.webp
+thumbnail: /uploads/podcasts/episode-bQ2eI-oQlXg-480.webp
 ---
 
 Raised in a fundamentalist Christian family he later left in therapy, cognitive scientist John Vervaeke could have become one of religion's most effective debunkers. Instead, he became its unlikely defender. In this conversation, he traces the path from religious trauma through Socrates, Plotinus and Zen practice to his current identity as a Zen Neoplatonist. Religion, on his account, is less a belief system than a comprehensive way of orienting ourselves towards reality, one that science itself quietly presupposes.

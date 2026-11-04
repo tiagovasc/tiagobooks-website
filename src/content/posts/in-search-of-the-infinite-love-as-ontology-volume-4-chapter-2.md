@@ -3,6 +3,16 @@ title: In Search of the Infinite - Love as Ontology (Volume 4, Chapter 2)
 date: 2024-12-21 05:55:00-06:00
 tags:
 - In Search of the Infinite
+image: /uploads/artwork/theodule-augustin-ribot-the-good-samaritan.webp
+artwork:
+  title: The Good Samaritan
+  artist: Théodule-Augustin Ribot
+  alt: A wounded traveler lies in the foreground as a man bends over him to offer aid.
+  width: 1280
+  height: 1001
+  thumbnail: /uploads/artwork/theodule-augustin-ribot-the-good-samaritan-480.webp
+  year: c. 1870
+  source: https://www.musee-orsay.fr/en/artworks/le-bon-samaritain-75472
 ---
 
 This chapter is part of the book _In Search of the Infinite_. The table of contents and introduction are available [here](/posts/in-search-of-the-infinite-introduction), and all chapters are listed [here](/tag/In-Search-of-the-Infinite).

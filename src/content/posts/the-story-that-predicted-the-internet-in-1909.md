@@ -4,6 +4,15 @@ date: 2019-12-18 01:13:00-06:00
 tags:
 - Book Reviews
 - Philosophy
+image: /uploads/artwork/paul-nash-we-are-making-a-new-world-e4f33ec.webp
+artwork:
+  title: We Are Making a New World
+  artist: Paul Nash
+  alt: A pale sun rises over blasted tree trunks and churned ground.
+  width: 1600
+  height: 1253
+  thumbnail: /uploads/artwork/paul-nash-we-are-making-a-new-world-e4f33ec-480.webp
+  year: '1918'
 ---
 
 **_A book review of&nbsp;‘_The Machine Stops_’ by_ E. M. Forster &nbsp;**

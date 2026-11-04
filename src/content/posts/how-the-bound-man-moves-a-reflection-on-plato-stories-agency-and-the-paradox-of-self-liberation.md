@@ -4,6 +4,19 @@ title: 'How the Bound Man Moves: A Reflection on Plato, Stories, Agency, and the
 date: 2025-08-19 10:48:00-05:00
 tags:
 - General
+image: /uploads/artwork/matias-del-carmine-plato-philosophy-allegory-of-the-cave-e7f62b0.webp
+artwork:
+  title: Plato Philosophy Allegory of the Cave
+  artist: Matías del Carmine
+  alt: A figure inside an orange cavern looks toward a luminous flame above.
+  width: 926
+  height: 1280
+  thumbnail: /uploads/artwork/matias-del-carmine-plato-philosophy-allegory-of-the-cave-e7f62b0-480.webp
+  year: 21st century
+thumbnailCrop:
+  x: 50
+  y: 95
+  zoom: 1
 ---
 
 I recently shared a short narration on [<u>Instagram</u>](https://www.instagram.com/p/DNfaXRNIxQN/) from my book [_<u>In Search of the Infinite</u>_](https://tiagovf.medium.com/my-seven-year-lsd-writing-project-30656c66089e), a psychedelic memoir chronicling my experiences with LSD over a span of seven years. Each chapter takes the form of an essay, written during the experience itself. The book explores themes of ultimate reality, morality, meaning, and religion. What began as a search for truth, in whatever form it might take, gradually became a personal journey from a secular to a religious worldview, tracing the philosophical ground that led me there.

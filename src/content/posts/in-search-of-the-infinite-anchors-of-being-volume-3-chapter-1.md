@@ -3,6 +3,15 @@ title: In Search of the Infinite - Anchors of Being (Volume 3, Chapter 1)
 date: 2017-12-17 05:43:00-06:00
 tags:
 - In Search of the Infinite
+image: /uploads/artwork/ivan-aivazovsky-the-ninth-wave-35ed711.webp
+artwork:
+  title: The Ninth Wave
+  artist: Ivan Aivazovsky
+  alt: Shipwreck survivors cling to timber on a luminous storm-tossed sea.
+  width: 1600
+  height: 1075
+  thumbnail: /uploads/artwork/ivan-aivazovsky-the-ninth-wave-35ed711-480.webp
+  year: '1850'
 ---
 
 This chapter is part of the book _In Search of the Infinite_. The table of contents and introduction are available [here](/posts/in-search-of-the-infinite-introduction), and all chapters are listed [here](/tag/In-Search-of-the-Infinite).

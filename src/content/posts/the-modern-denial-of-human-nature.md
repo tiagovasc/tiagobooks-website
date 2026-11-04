@@ -5,6 +5,16 @@ tags:
 - Book Reviews
 - Psychology
 - Science
+image: /uploads/artwork/william-blake-nebuchadnezzar-b7c16f1.webp
+artwork:
+  title: Nebuchadnezzar
+  artist: William Blake
+  alt: A long-haired man crawls on all fours through dark vegetation.
+  width: 1280
+  height: 916
+  thumbnail: /uploads/artwork/william-blake-nebuchadnezzar-b7c16f1-480.webp
+  year: '1795'
+  source: https://www.tate.org.uk/art/artworks/blake-nebuchadnezzar-n05059
 ---
 
 **_A book review of&nbsp;‘_The Blank Slate: The Modern Denial of Human Nature_’ by_ Steven Pinker**

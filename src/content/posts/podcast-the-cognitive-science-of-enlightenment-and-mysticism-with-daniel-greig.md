@@ -4,6 +4,8 @@ title: 'Podcast: The Cognitive Science of Enlightenment and Mysticism with Danie
 date: 2020-05-21 08:12:00-05:00
 tags:
 - Podcast
+image: /uploads/podcasts/episode-dKMU9r-WpI0.webp
+thumbnail: /uploads/podcasts/episode-dKMU9r-WpI0-480.webp
 ---
 
 What if insight, flow, and mystical experience are not separate phenomena but points on a single continuum, one mechanism, progressively amplified? Daniel Greig, co-author of The Cognitive Continuum, makes exactly that case. Drawing on cognitive science, embodied cognition, and the neuroscience of attention, he traces how the everyday "aha" moment shares its neural architecture with the ecstatic dissolution of the mystic, and argues that understanding this continuity is the key to making sense of psychedelics, wisdom traditions, and the consciousness revolution now underway. The conversation also ventures into naive realism, the danger of interpreting altered states too literally, the distinction between mystical and awakening experiences, and what it would mean to live in a culture genuinely oriented toward the sacred.

@@ -4,6 +4,19 @@ date: 2022-10-05 09:19:00-05:00
 tags:
 - Book Reviews
 - Philosophy
+image: /uploads/artwork/carl-gustav-carus-pilgrim-in-a-rocky-valley-e709d1f.webp
+artwork:
+  title: Pilgrim in a Rocky Valley
+  artist: Carl Gustav Carus
+  alt: A lone pilgrim stands between steep rocky walls beneath an evening sky.
+  width: 916
+  height: 1200
+  thumbnail: /uploads/artwork/carl-gustav-carus-pilgrim-in-a-rocky-valley-e709d1f-480.webp
+  year: 1820s
+thumbnailCrop:
+  x: 50
+  y: 72
+  zoom: 1
 ---
 
 **_A book review of&nbsp;‘_Heidegger and Happiness: Dwelling on Fitting and Being_’ by_ Matthew King**

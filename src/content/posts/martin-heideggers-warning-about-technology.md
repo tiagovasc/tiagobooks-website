@@ -4,6 +4,16 @@ date: 2020-09-01 09:06:00-05:00
 tags:
 - Book Reviews
 - Philosophy
+image: /uploads/artwork/julian-alden-weir-the-building-of-the-dam-4acab2f.webp
+artwork:
+  title: The Building of the Dam
+  artist: Julian Alden Weir
+  alt: Workers build a dam within a wooded landscape.
+  width: 900
+  height: 668
+  thumbnail: /uploads/artwork/julian-alden-weir-the-building-of-the-dam-4acab2f-480.webp
+  year: '1908'
+  source: https://clevelandart.org/art/1927.171
 ---
 
 **_A book review of&nbsp;‘_The Question Concerning Technology_’ by_ Martin Heidegger**

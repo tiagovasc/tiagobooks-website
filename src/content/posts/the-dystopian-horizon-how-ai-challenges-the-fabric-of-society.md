@@ -3,6 +3,15 @@ title: 'The Dystopian Horizon: How AI Challenges the Fabric of Society'
 date: 2024-02-19 11:40:00-06:00
 tags:
 - General
+image: /uploads/artwork/umberto-boccioni-the-city-rises-9503922.webp
+artwork:
+  title: The City Rises
+  artist: Umberto Boccioni
+  alt: Workers and a huge red horse surge through a turbulent scene of urban construction.
+  width: 1600
+  height: 1063
+  thumbnail: /uploads/artwork/umberto-boccioni-the-city-rises-9503922-480.webp
+  year: '1910'
 ---
 
 Artificial Intelligence has been, for the most part, a largely failed field filled with arrogance. Ever since its beginning, it has constantly overpromised and underdelivered. In large part, this has been because it has been an attempt to replicate us, human beings. But we don’t really understand what human beings are, or how we work. Partially a gap of scientific knowledge, particularly psychology and cognitive science, and partially due to our cultural framing everything, from the broader universe to the conscious experience, into atomistic, materialistic, and mechanical terms.

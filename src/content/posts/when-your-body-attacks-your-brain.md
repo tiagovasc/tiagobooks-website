@@ -4,6 +4,19 @@ date: 2019-12-26 01:17:00-06:00
 tags:
 - Book Reviews
 - Science
+image: /uploads/artwork/edvard-munch-the-sick-child-e3bf050.webp
+artwork:
+  title: The Sick Child
+  artist: Edvard Munch
+  alt: A sick child and an adult sit together beside a bed.
+  width: 580
+  height: 600
+  thumbnail: /uploads/artwork/edvard-munch-the-sick-child-e3bf050-480.webp
+  year: 1885–1886
+thumbnailCrop:
+  x: 50
+  y: 20
+  zoom: 1
 ---
 
 **_A book review of&nbsp;‘_Brain on Fire_’ by_ Susannah Cahalan**

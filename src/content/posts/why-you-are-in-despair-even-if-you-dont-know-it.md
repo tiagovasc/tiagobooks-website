@@ -5,6 +5,15 @@ tags:
 - Book Reviews
 - Philosophy
 - Religion
+image: /uploads/artwork/ivan-kramskoi-christ-in-the-desert-0b667a1.webp
+artwork:
+  title: Christ in the Desert
+  artist: Ivan Kramskoi
+  alt: Christ sits alone among stones with clasped hands in a barren landscape.
+  width: 1600
+  height: 1403
+  thumbnail: /uploads/artwork/ivan-kramskoi-christ-in-the-desert-0b667a1-480.webp
+  year: '1872'
 ---
 
 **_A book review of&nbsp;‘_The Sickness unto Death_’ by_ Søren Kierkegaard**

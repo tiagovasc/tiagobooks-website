@@ -3,6 +3,8 @@ title: 'Podcast: The Self, Consciousness & Relationality with James Cooke'
 date: 2025-08-01 09:47:00-05:00
 tags:
 - Podcast
+image: /uploads/podcasts/episode-mNuOr8-KVNU.webp
+thumbnail: /uploads/podcasts/episode-mNuOr8-KVNU-480.webp
 ---
 
 James Cooke is a neuroscientist whose intellectual journey began not in a laboratory but at age thirteen, when an intense rumination on Catholic theology collapsed into a spontaneous mystical experience, what Zen Buddhism would call kensho. That experience, he argues, revealed nothing supernatural. It revealed that reality is fundamentally groundless, relational, and whole. In this conversation, Cooke walks through the central thesis of his book The Dawn of Mind: that a framework called non-dual naturalism, drawing on relational quantum mechanics, Buddhist philosophy, and the free energy principle, dissolves the hard problem of consciousness by refusing to treat consciousness as a separate thing. He argues that mind is not a computation running in a skull but the epistemic relationship between a living organism and its world, present in all life from single cells upward. The conversation covers the no-self insight and its link to ethics, the difference between persons and selves, why LLMs are "fancy napkins," and the strange wisdom that reality may be neither real nor unreal.

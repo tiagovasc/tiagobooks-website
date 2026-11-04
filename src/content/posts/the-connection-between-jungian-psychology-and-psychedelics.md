@@ -4,6 +4,15 @@ date: 2021-01-01 09:23:00-06:00
 tags:
 - Book Reviews
 - Psychology
+image: /uploads/artwork/mikhail-vrubel-demon-seated-b79c62a.webp
+artwork:
+  title: Demon Seated
+  artist: Mikhail Vrubel
+  alt: A muscular dark figure sits folded inward amid violet crystalline flowers and a glowing landscape.
+  width: 1600
+  height: 879
+  thumbnail: /uploads/artwork/mikhail-vrubel-demon-seated-b79c62a-480.webp
+  year: '1890'
 ---
 
 **_A book review of&nbsp;‘_Confrontation with the Unconscious: Jungian Depth Psychology and Psychedelic Ex_’ by_ Scott J. Hill**

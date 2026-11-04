@@ -3,6 +3,19 @@ title: Music and The Human Experience
 date: 2025-04-24 14:11:00-05:00
 tags:
 - General
+image: /uploads/artwork/raphael-parnassus-81ecba6.webp
+artwork:
+  title: Parnassus
+  artist: Raphael
+  alt: Apollo plays a stringed instrument among the Muses and poets in a fresco.
+  width: 1600
+  height: 1054
+  thumbnail: /uploads/artwork/raphael-parnassus-81ecba6-480.webp
+  year: '1511'
+thumbnailCrop:
+  x: 50
+  y: 20
+  zoom: 1
 ---
 
 This article originates from and expands upon a lecture I had the pleasure of delivering at the Kitarika guitar festival in Slovenia, in late 2024.

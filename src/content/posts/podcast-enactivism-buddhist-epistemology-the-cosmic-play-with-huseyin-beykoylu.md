@@ -4,16 +4,8 @@ title: 'Podcast: Enactivism, Buddhist Epistemology & the Cosmic Play with Hüsey
 date: 2026-06-08 11:56:00-05:00
 tags:
 - Podcast
-image: /uploads/artwork/henri-matisse-dance.webp
-artwork:
-  title: Dance
-  artist: Henri Matisse
-  year: '1910'
-  alt: Five red figures hold hands and dance in a ring against green earth and a blue sky.
-  width: 800
-  height: 526
-  thumbnail: /uploads/artwork/henri-matisse-dance-480.webp
-  source: https://archive.artic.edu/matisseinteractive/p2.html
+image: /uploads/podcasts/episode-6_DM-OseSc0.webp
+thumbnail: /uploads/podcasts/episode-6_DM-OseSc0-480.webp
 ---
 
 Hüseyin Beyköylü left medicine for cognitive science after an LSD experience, and five years later he's arguing that mainstream psychology and neuroscience are built on assumptions that systematically miss what matters most about the mind. This is a dense, careful conversation about four ways of knowing (only one of which science actually measures), why randomized controlled trials can't capture human transformation, and why "psychedelics are not transformative, lived experience in a context is."&nbsp;

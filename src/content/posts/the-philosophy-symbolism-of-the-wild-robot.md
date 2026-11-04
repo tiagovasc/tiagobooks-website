@@ -5,6 +5,16 @@ tags:
 - General
 - Philosophy
 - Religion
+image: /uploads/artwork/theodule-augustin-ribot-the-good-samaritan.webp
+artwork:
+  title: The Good Samaritan
+  artist: Théodule-Augustin Ribot
+  alt: A man kneels beside a wounded traveler, with a younger attendant behind him.
+  width: 1280
+  height: 1001
+  thumbnail: /uploads/artwork/theodule-augustin-ribot-the-good-samaritan-480.webp
+  year: c. 1870
+  source: https://www.musee-orsay.fr/en/artworks/le-bon-samaritain-75472
 ---
 
 > This is available in video form, accompanied by movie footage, which you can watch below. I had to cut down the movie footage substantially because of copyright problems. A more enjoyable video version is available [here](https://drive.google.com/file/d/1fdyNfC8CpeucJKpHCWfBg4Zi6r2tCcg7/view?usp=sharing).

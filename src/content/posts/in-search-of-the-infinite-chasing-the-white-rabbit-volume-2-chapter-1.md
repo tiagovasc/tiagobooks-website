@@ -3,6 +3,18 @@ title: In Search of the Infinite - Chasing the White Rabbit (Volume 2, Chapter 1
 date: 2017-08-16 05:27:00-05:00
 tags:
 - In Search of the Infinite
+image: /uploads/artwork/john-william-waterhouse-psyche-opening-the-door-into-cupid-s-garden-355a216.webp
+artwork:
+  title: Psyche Opening the Door into Cupid’s Garden
+  artist: John William Waterhouse
+  alt: A woman reaches toward an opening in a garden gate.
+  width: 377
+  height: 600
+  thumbnail: /uploads/artwork/john-william-waterhouse-psyche-opening-the-door-into-cupid-s-garden-355a216-480.webp
+thumbnailCrop:
+  x: 50
+  y: 0
+  zoom: 1
 ---
 
 This chapter is part of the book _In Search of the Infinite_. The table of contents and introduction are available [here](/posts/in-search-of-the-infinite-introduction), and all chapters are listed [here](/tag/In-Search-of-the-Infinite).

@@ -3,6 +3,8 @@ title: 'Podcast: Platonism, Mysticism & Mysteries with Arthur Versluis'
 date: 2026-01-21 13:07:00-06:00
 tags:
 - Podcast
+image: /uploads/podcasts/episode-2usb727f6P8.webp
+thumbnail: /uploads/podcasts/episode-2usb727f6P8-480.webp
 ---
 
 Arthur Versluis has spent decades excavating a tradition that modern philosophy almost entirely lost: the lineage of apophatic mysticism running from Plato through Plotinus, Dionysius the Areopagite, Meister Eckhart, and into the Christian theosophers of the seventeenth century. In this conversation, he traces how Platonism was eclipsed, not through refutation, but through the slow triumph of materialist thinking on both the left and the right, and why recovering it matters now more than at the time of Plato himself. He explains why the forms are less important than the movement from duality to unity, how the Hudson River School's luminism is a visual embodiment of the same illumination tradition, why Schelling opens a door that Kant closes, and what the ancient mysteries, John Pordage's trance states, and the dark night of the soul all share. The conversation closes with Versluis's argument that Buddhism provides the most precise contemplative maps available today, and that the West's urgent task is to recover and recognise its own mystical inheritance before it disappears entirely.

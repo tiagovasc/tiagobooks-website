@@ -5,6 +5,19 @@ tags:
 - Book Reviews
 - Psychology
 - Philosophy
+image: /uploads/artwork/william-blake-jacob-s-ladder-a7fac18.webp
+artwork:
+  title: Jacob’s Ladder
+  artist: William Blake
+  alt: Angels move along a luminous spiral stairway above a sleeping Jacob.
+  width: 1257
+  height: 1600
+  thumbnail: /uploads/artwork/william-blake-jacob-s-ladder-a7fac18-480.webp
+  year: c. 1800
+thumbnailCrop:
+  x: 50
+  y: 75
+  zoom: 1
 ---
 
 **_A book review of&nbsp;‘_Metaphors We Live By_’ by_ George Lakoff and Mark Johnson**

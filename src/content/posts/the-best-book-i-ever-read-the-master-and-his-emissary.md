@@ -5,6 +5,16 @@ tags:
 - Book Reviews
 - Philosophy
 - Psychology
+image: /uploads/artwork/william-blake-newton.webp
+artwork:
+  title: Newton
+  artist: William Blake
+  alt: A seated nude bends over geometric drawing with a compass amid textured rocks.
+  width: 1600
+  height: 1231
+  thumbnail: /uploads/artwork/william-blake-newton-480.webp
+  year: 1795–c. 1805
+  source: https://www.metmuseum.org/exhibitions/listings/2001/william-blake
 ---
 
 **_A book review of&nbsp;‘_The Master and His Emissary_’ by_ Iain McGilchrist**

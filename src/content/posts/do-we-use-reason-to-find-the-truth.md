@@ -4,6 +4,15 @@ date: 2021-02-17 09:50:00-06:00
 tags:
 - Book Reviews
 - Psychology
+image: /uploads/artwork/hendrick-ter-brugghen-heraclitus-and-democritus-acc26e2.webp
+artwork:
+  title: Heraclitus and Democritus
+  artist: Hendrick ter Brugghen
+  alt: Two philosophers gesture and look outward with contrasting expressions.
+  width: 1600
+  height: 982
+  thumbnail: /uploads/artwork/hendrick-ter-brugghen-heraclitus-and-democritus-acc26e2-480.webp
+  year: '1628'
 ---
 
 **_A book review of&nbsp;‘The Enigma of Reason’ by Mercier and Sperber_**

@@ -5,6 +5,20 @@ tags:
 - Book Reviews
 - Science
 - Philosophy
+image: /uploads/artwork/piet-mondrian-composition-with-red-yellow-and-blue-fa22fc4.webp
+artwork:
+  title: Composition with Red, Yellow, and Blue
+  artist: Piet Mondrian
+  alt: Black horizontal and vertical lines divide white space with red, yellow, and blue rectangles.
+  width: 887
+  height: 900
+  thumbnail: /uploads/artwork/piet-mondrian-composition-with-red-yellow-and-blue-fa22fc4-480.webp
+  year: '1927'
+  source: https://clevelandart.org/art/1967.215
+thumbnailCrop:
+  x: 50
+  y: 5
+  zoom: 1.08
 ---
 
 **_A book review of&nbsp;‘_Gödel, Escher, Bach: an Eternal Golden Braid_’ by_ Douglas Hofstadter**

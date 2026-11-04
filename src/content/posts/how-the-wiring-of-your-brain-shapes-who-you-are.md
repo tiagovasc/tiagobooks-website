@@ -5,6 +5,20 @@ tags:
 - Book Reviews
 - Science
 - Psychology
+image: /uploads/artwork/unknown-artist-korea-joseon-dynasty-1392-1910-tiger-family-59ed61a.webp
+artwork:
+  title: Tiger Family
+  artist: Unknown artist (Korea, Joseon dynasty (1392–1910))
+  alt: An adult tiger and smaller tigers gather beneath a pine tree.
+  width: 478
+  height: 893
+  thumbnail: /uploads/artwork/unknown-artist-korea-joseon-dynasty-1392-1910-tiger-family-59ed61a-480.webp
+  year: late 1800s
+  source: https://clevelandart.org/art/1997.148
+thumbnailCrop:
+  x: 50
+  y: 65
+  zoom: 1
 ---
 
 **_A book review of&nbsp;‘_Innate: How the Wiring of Our Brains Shapes Who We Are_’ by_ Kevin J. Mitchell**

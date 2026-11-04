@@ -3,6 +3,20 @@ title: 'In Search of the Infinite: Introduction'
 date: 2017-03-11 11:07:00-06:00
 tags:
 - In Search of the Infinite
+image: /uploads/artwork/thomas-cole-the-titan-s-goblet-f50bdc6.webp
+artwork:
+  title: The Titan's Goblet
+  artist: Thomas Cole
+  alt: An enormous stone goblet holds a lake and settlements above a mountain landscape.
+  width: 524
+  height: 624
+  thumbnail: /uploads/artwork/thomas-cole-the-titan-s-goblet-f50bdc6-480.webp
+  year: '1833'
+  source: https://www.metmuseum.org/art/collection/search/10499
+thumbnailCrop:
+  x: 50
+  y: 10
+  zoom: 1
 ---
 
 This book is available in [paperback](https://amzn.eu/d/8MM0JhE), [PDF](https://drive.google.com/drive/folders/12QynuH3l5DZyXMe6RISSoNRl5mhkoVf2?usp=sharing) and [EPUB](https://drive.google.com/drive/folders/12QynuH3l5DZyXMe6RISSoNRl5mhkoVf2?usp=sharing)

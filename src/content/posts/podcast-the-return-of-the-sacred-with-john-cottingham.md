@@ -3,6 +3,8 @@ title: 'Podcast: The Return of the Sacred with John Cottingham'
 date: 2025-04-15 09:36:00-05:00
 tags:
 - Podcast
+image: /uploads/podcasts/episode-l-nSyXGbO24.webp
+thumbnail: /uploads/podcasts/episode-l-nSyXGbO24-480.webp
 ---
 
 John Cottingham has spent fifty years working at the intersection of Descartes, moral philosophy, and the philosophy of religion, and this conversation covers the full arc of those concerns. He begins by arguing that philosophy should never be a narrow academic specialty but a synoptic discipline engaging the deepest questions of the human condition, then traces how he tries to make those questions accessible without diluting them. The conversation moves through the limits of scientism and the need for an "epistemology of receptivity," through the relationship between the Platonic Good and the Christian God, and into why abstract affirmation of the Good is not enough without practice, liturgy, and embodied enactment. It closes with a reflection on career, integrity, and what Aristotle meant when he said that living without a telos is a sign of great folly.

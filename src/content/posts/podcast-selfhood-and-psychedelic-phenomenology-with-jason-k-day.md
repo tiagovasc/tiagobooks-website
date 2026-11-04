@@ -3,16 +3,8 @@ title: 'Podcast: Selfhood and Psychedelic Phenomenology with Jason K. Day'
 date: 2026-10-07 08:34:00-05:00
 tags:
 - Podcast
-image: /uploads/artwork/odilon-redon-the-golden-cell.webp
-artwork:
-  title: The Golden Cell
-  artist: Odilon Redon
-  year: '1892'
-  alt: A blue face in profile emerges from a luminous gold background.
-  width: 1281
-  height: 1600
-  thumbnail: /uploads/artwork/odilon-redon-the-golden-cell-480.webp
-  source: https://artsandculture.google.com/asset/odilon-redon-la-cellule-d-or-a-drawing-in-oil-and-metallic-paint/GAFtY4hZOHUaLA
+image: /uploads/podcasts/episode-sdZjDP7D5hI.webp
+thumbnail: /uploads/podcasts/episode-sdZjDP7D5hI-480.webp
 ---
 
 Jason K. Day examines what psychedelic experiences reveal about selfhood and the structure of consciousness. He argues that describing an experience carefully should precede theories about its neural basis or metaphysical significance. Drawing on his analysis of trip reports, he explains the recurring changes that give psychedelic experience its distinctive style and questions the familiar idea that psychedelics simply expand consciousness. His account of attention draws on Aron Gurwitsch’s phenomenology to describe changes in salience, meaning and our engagement with the world. The discussion turns to ego dissolution and Day’s argument that even profound experiences of self-loss can retain a minimal sense of self-awareness. DMT entity encounters raise further questions about interpretation and the limits of what we can claim to know. Day also discusses the relationship between Husserl and Buddhist philosophy, the value of non-clinging, and his case for communal support for drug use, including recreational and sacred practices.

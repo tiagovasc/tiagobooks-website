@@ -4,6 +4,16 @@ date: 2018-11-23 00:50:00-06:00
 tags:
 - Book Reviews
 - Science
+image: /uploads/artwork/raphael-the-school-of-athens.webp
+artwork:
+  title: The School of Athens
+  artist: Raphael
+  alt: Philosophers converse and work beneath the arches of a grand classical hall.
+  width: 1600
+  height: 1241
+  thumbnail: /uploads/artwork/raphael-the-school-of-athens-480.webp
+  year: 1509–1511
+  source: https://www.museivaticani.va/content/museivaticani/en/collezioni/musei/stanze-di-raffaello/stanza-della-segnatura/scuola-di-atene.html
 ---
 
 **_A book review of&nbsp;‘_The Neuroscience of Intelligence_’ by_ Richard J. Haier**

@@ -3,6 +3,20 @@ title: In Search of the Infinite - The Return (Volume 4, Chapter 1)
 date: 2024-07-16 05:52:00-05:00
 tags:
 - In Search of the Infinite
+image: /uploads/artwork/unknown-byzantine-artist-the-ladder-of-divine-ascent.webp
+artwork:
+  title: The Ladder of Divine Ascent
+  artist: Unknown Byzantine artist
+  alt: Monks ascend a diagonal ladder toward Christ while dark figures try to pull them away.
+  width: 670
+  height: 960
+  thumbnail: /uploads/artwork/unknown-byzantine-artist-the-ladder-of-divine-ascent-480.webp
+  year: 12th century
+  source: https://commons.wikimedia.org/wiki/File:The_Ladder_of_Divine_Ascent_Monastery_of_St_Catherine_Sinai_12th_century.jpg
+thumbnailCrop:
+  x: 50
+  y: 8
+  zoom: 1
 ---
 
 This chapter is part of the book _In Search of the Infinite_. The table of contents and introduction are available [here](/posts/in-search-of-the-infinite-introduction), and all chapters are listed [here](/tag/In-Search-of-the-Infinite).

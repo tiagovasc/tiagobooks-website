@@ -3,6 +3,8 @@ title: 'Podcast: Music, Ancient Greece and Whitehead with Nathan Dufour'
 date: 2021-10-19 08:49:00-05:00
 tags:
 - Podcast
+image: /uploads/podcasts/episode-Qhueoc4hQr8.webp
+thumbnail: /uploads/podcasts/episode-Qhueoc4hQr8-480.webp
 ---
 
 Nathan Dufour Oglesby is a classicist, rapper, and philosopher who makes songs about critical theory, economic ideology, and the history of ideas. In this conversation, he traces the deep continuity between ancient poetic wisdom and modern philosophy, arguing that the split between artistic expression and philosophical argument is a modern invention that impoverished both. He walks through his own haphazard path from Latin major to PhD in classics, explains how hip-hop functions as a mode of trenchant social discourse rather than simple entertainment, and introduces Alfred North Whitehead’s process philosophy, a system in which the universe is not a collection of static things governed by external laws, but a self-creating organism choosing its own forms in collaboration with God. The conversation closes on the tension between system-building and mystery: whether Whitehead’s refusal of essentialism leaves room for the sacred, or quietly forecloses it.

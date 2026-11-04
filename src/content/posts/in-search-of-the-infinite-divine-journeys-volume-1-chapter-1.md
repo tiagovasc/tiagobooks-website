@@ -3,6 +3,19 @@ title: In Search of the Infinite - Divine Journeys (Volume 1, Chapter 1)
 date: 2017-03-12 11:50:00-05:00
 tags:
 - In Search of the Infinite
+image: /uploads/artwork/william-blake-jacob-s-ladder-a7fac18.webp
+artwork:
+  title: Jacob’s Ladder
+  artist: William Blake
+  alt: Sleeping Jacob lies below a luminous spiral stairway filled with angels.
+  width: 1257
+  height: 1600
+  thumbnail: /uploads/artwork/william-blake-jacob-s-ladder-a7fac18-480.webp
+  year: c. 1800
+thumbnailCrop:
+  x: 50
+  y: 45
+  zoom: 1
 ---
 
 This chapter is part of the book _In Search of the Infinite_. The table of contents and introduction are available [here](/posts/in-search-of-the-infinite-introduction), and all chapters are listed [here](/tag/In-Search-of-the-Infinite).

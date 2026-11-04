@@ -3,6 +3,8 @@ title: 'Podcast: Collective Knowledge and Overcoming Ignorance with Steven Sloma
 date: 2020-07-25 08:22:00-05:00
 tags:
 - Podcast
+image: /uploads/podcasts/episode-IqqBCUkdP84.webp
+thumbnail: /uploads/podcasts/episode-IqqBCUkdP84-480.webp
 ---
 
 Steven Sloman has spent his career studying how thinking actually works, and discovering, repeatedly, that it works far less than we assume. In this conversation, he walks through the Knowledge Illusion: the pervasive human tendency to believe we understand things we cannot begin to explain. He demonstrates the phenomenon across ballpoint pens, political policies, and toilet mechanisms, then traces its deeper cause, we confuse knowledge stored in other people's heads with knowledge in our own. The conversation moves into evolutionary origins, the explosion of complexity from hunter-gatherer bands to internet-age civilisation, the limits of online information access, and what all of this means for expertise, education, and politics. Sloman distinguishes collaboration from outsourcing as separate cognitive skills, engages critically with Hugo Mercier's argumentative theory of reason, and reflects on how short-lived the puncturing of the illusion actually is, and what it takes to make intellectual humility last.

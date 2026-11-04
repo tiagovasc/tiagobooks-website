@@ -4,6 +4,14 @@ date: 2019-11-01 07:07:00-05:00
 tags:
 - Book Reviews
 - Philosophy
+image: /uploads/artwork/marianne-von-werefkin-at-the-cafe-23973b1.webp
+artwork:
+  title: At the Café
+  artist: Marianne von Werefkin
+  alt: Four stylized people sit around a café table with coloured drinks.
+  width: 1280
+  height: 940
+  thumbnail: /uploads/artwork/marianne-von-werefkin-at-the-cafe-23973b1-480.webp
 ---
 
 **_A book review of&nbsp;‘_At the Existentialist Café_’ by_ Sarah Bakewell**

@@ -4,6 +4,19 @@ date: 2020-04-01 08:06:00-05:00
 tags:
 - Book Reviews
 - Psychology
+image: /uploads/artwork/francisco-goya-the-sleep-of-reason-produces-monsters-fff0d8f.webp
+artwork:
+  title: The Sleep of Reason Produces Monsters
+  artist: Francisco Goya
+  alt: A sleeping man at a desk is surrounded by owls and bats.
+  width: 640
+  height: 968
+  thumbnail: /uploads/artwork/francisco-goya-the-sleep-of-reason-produces-monsters-fff0d8f-480.webp
+  year: '1799'
+thumbnailCrop:
+  x: 50
+  y: 58
+  zoom: 1
 ---
 
 **_A book review of&nbsp;‘_The Psychology of Conspiracy Theories_’ by_ Jan-Willem Prooijen**

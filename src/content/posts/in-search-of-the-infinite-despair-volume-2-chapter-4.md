@@ -3,6 +3,20 @@ title: In Search of the Infinite - Despair (Volume 2, Chapter 4)
 date: 2017-11-21 05:41:00-06:00
 tags:
 - In Search of the Infinite
+image: /uploads/artwork/william-blake-dante-and-virgil-at-the-gates-of-hell-b27c66e.webp
+artwork:
+  title: Dante and Virgil at the Gates of Hell
+  artist: William Blake
+  alt: Two robed figures stand before a great opening into darkness.
+  width: 883
+  height: 1280
+  thumbnail: /uploads/artwork/william-blake-dante-and-virgil-at-the-gates-of-hell-b27c66e-480.webp
+  year: 1824–1827
+  source: https://tiagovf.com/posts/in-search-of-the-infinite-chapter-4-despair
+thumbnailCrop:
+  x: 50
+  y: 63
+  zoom: 1
 ---
 
 This chapter is part of the book _In Search of the Infinite_. The table of contents and introduction are available [here](/posts/in-search-of-the-infinite-introduction), and all chapters are listed [here](/tag/In-Search-of-the-Infinite).

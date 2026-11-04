@@ -4,6 +4,16 @@ date: 2020-07-01 08:09:00-05:00
 tags:
 - Book Reviews
 - Psychology
+image: /uploads/artwork/henri-matisse-dance.webp
+artwork:
+  title: Dance
+  artist: Henri Matisse
+  alt: Red figures join hands in a circle against blue sky and green earth.
+  width: 800
+  height: 526
+  thumbnail: /uploads/artwork/henri-matisse-dance-480.webp
+  year: '1910'
+  source: https://archive.artic.edu/matisseinteractive/p2.html
 ---
 
 **_A book review of&nbsp;‘_Mind in Motion: How Action Shapes Thought_’ by_ Barbara Tversky**

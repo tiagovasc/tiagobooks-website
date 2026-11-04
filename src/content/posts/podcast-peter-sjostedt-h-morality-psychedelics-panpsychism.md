@@ -3,6 +3,8 @@ title: 'Podcast: Peter Sjöstedt-H - Morality, Psychedelics & Panpsychism'
 date: 2020-05-13 11:47:00-05:00
 tags:
 - Podcast
+image: /uploads/podcasts/episode-tKDC4__LfTg.webp
+thumbnail: /uploads/podcasts/episode-tKDC4__LfTg-480.webp
 ---
 
 Peter Sjöstedt-H is a philosopher of mind and associate lecturer at the University of Exeter whose work sits at the intersection of panpsychism, altered states of consciousness, and meta-ethics. In this conversation he traces his path from Eastern philosophy through Schopenhauer to panpsychism, and explains why the hard problem of consciousness is not a puzzle awaiting a solution but a symptom of a fundamentally broken physicalist paradigm. He defends a thoroughgoing moral anti-realism, arguing that cruelty and kindness are real, but that calling them objectively good or evil requires a transcendent standard most people quietly abandon the moment they examine it. He then turns to psychedelics: why salvia and DMT crack open states beyond mind and matter entirely, why the ancient ritualized approach to these substances was correct and our recreational dismissal of them is not, and how Whitehead's process philosophy, with its actual occasions, prehensions, and eternal objects, may be the metaphysical framework best equipped to make sense of what these experiences reveal. The conversation closes on emergence, epiphenomenalism, and why mental causation remains the central unsolved crisis of the materialist worldview.

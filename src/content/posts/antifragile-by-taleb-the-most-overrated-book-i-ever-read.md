@@ -4,6 +4,20 @@ date: 2020-04-01 08:03:00-05:00
 tags:
 - Book Reviews
 - Philosophy
+image: /uploads/artwork/gustave-moreau-hercules-and-the-lernaean-hydra-408c36f.webp
+artwork:
+  title: Hercules and the Lernaean Hydra
+  artist: Gustave Moreau
+  alt: Hercules confronts a many-headed Hydra in a rocky landscape.
+  width: 1280
+  height: 1479
+  thumbnail: /uploads/artwork/gustave-moreau-hercules-and-the-lernaean-hydra-408c36f-480.webp
+  year: 1875/76
+  source: https://commons.wikimedia.org/wiki/File:Hercules_and_the_Lernaean_Hydra,_1875-1876,_by_Gustave_Moreau_-_Art_Institute_of_Chicago_-_DSC09590.JPG
+thumbnailCrop:
+  x: 50
+  y: 62
+  zoom: 1
 ---
 
 **_A book review of&nbsp;‘_Antifragile: Things That Gain from Disorder_’ by_ Nassim Nicholas Taleb**

@@ -3,6 +3,19 @@ title: In Search of the Infinite - The Awakening (Volume 4, Chapter 3)
 date: 2025-01-18 05:57:00-06:00
 tags:
 - In Search of the Infinite
+image: /uploads/artwork/unknown-byzantine-artist-christ-pantocrator-sinai-4012598.webp
+artwork:
+  title: Christ Pantocrator (Sinai)
+  artist: Unknown Byzantine artist
+  alt: Christ holds a decorated book and raises his hand in blessing in an ancient icon.
+  width: 686
+  height: 1280
+  thumbnail: /uploads/artwork/unknown-byzantine-artist-christ-pantocrator-sinai-4012598-480.webp
+  year: 6th century
+thumbnailCrop:
+  x: 50
+  y: 23
+  zoom: 1
 ---
 
 This chapter is part of the book _In Search of the Infinite_. The table of contents and introduction are available [here](/posts/in-search-of-the-infinite-introduction), and all chapters are listed [here](/tag/In-Search-of-the-Infinite).

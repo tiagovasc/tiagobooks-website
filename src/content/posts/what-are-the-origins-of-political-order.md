@@ -4,6 +4,14 @@ date: 2020-02-01 07:50:00-06:00
 tags:
 - Book Reviews
 - Non-Fiction
+image: /uploads/artwork/john-gilbert-the-morning-of-the-battle-of-agincourt-71ec2f1.webp
+artwork:
+  title: The Morning of the Battle of Agincourt
+  artist: John Gilbert
+  alt: Armoured soldiers and banners gather under a stormy sky before battle.
+  width: 1280
+  height: 964
+  thumbnail: /uploads/artwork/john-gilbert-the-morning-of-the-battle-of-agincourt-71ec2f1-480.webp
 ---
 
 **_A book review of&nbsp;‘_The Origins of Political Order_’ by_ Francis Fukuyama**

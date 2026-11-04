@@ -4,6 +4,15 @@ date: 2021-01-20 01:36:00-06:00
 tags:
 - Book Reviews
 - Psychology
+image: /uploads/artwork/pablo-picasso-guernica-ef71b38.webp
+artwork:
+  title: Guernica
+  artist: Pablo Picasso
+  alt: Fragmented figures, a horse, a bull, and grieving faces fill a black-and-white scene.
+  width: 1240
+  height: 698
+  thumbnail: /uploads/artwork/pablo-picasso-guernica-ef71b38-480.webp
+  year: '1937'
 ---
 
 **_A book review of&nbsp;‘_Ordinary Men: Reserve Police Battalion 101 and the Final Solution in Poland_’ by_ Christopher Browning**

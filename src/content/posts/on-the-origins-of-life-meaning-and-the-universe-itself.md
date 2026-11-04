@@ -5,6 +5,16 @@ tags:
 - Book Reviews
 - Science
 - Philosophy
+image: /uploads/artwork/edvard-munch-the-sun.webp
+artwork:
+  title: The Sun
+  artist: Edvard Munch
+  alt: Sunlight radiates across a fjord between steep rocky shores.
+  width: 640
+  height: 365
+  thumbnail: /uploads/artwork/edvard-munch-the-sun-480.webp
+  year: '1911'
+  source: https://www.uio.no/om/kultur/kunstsamlingen/aulaen/solen.html
 ---
 
 **_A book review of&nbsp;‘_The Big Picture: On the Origins of Life, Meaning, and the Universe Itself_’ by_ Sean M. Carroll**

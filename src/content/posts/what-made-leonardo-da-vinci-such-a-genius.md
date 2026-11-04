@@ -4,6 +4,16 @@ date: 2020-09-01 08:59:00-05:00
 tags:
 - Book Reviews
 - Non-Fiction
+image: /uploads/artwork/raphael-the-school-of-athens.webp
+artwork:
+  title: The School of Athens
+  artist: Raphael
+  alt: Groups of philosophers fill an immense Renaissance architectural space.
+  width: 1600
+  height: 1241
+  thumbnail: /uploads/artwork/raphael-the-school-of-athens-480.webp
+  year: 1509–1511
+  source: https://www.museivaticani.va/content/museivaticani/en/collezioni/musei/stanze-di-raffaello/stanza-della-segnatura/scuola-di-atene.html
 ---
 
 **_A book review of&nbsp;‘_Leonardo da Vinci_’ by_ Walter Isaacson**

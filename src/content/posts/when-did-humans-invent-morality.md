@@ -5,6 +5,16 @@ tags:
 - Book Reviews
 - Philosophy
 - Non-Fiction
+image: /uploads/artwork/raphael-the-school-of-athens.webp
+artwork:
+  title: The School of Athens
+  artist: Raphael
+  alt: Ancient philosophers gather beneath monumental vaulted architecture.
+  width: 1600
+  height: 1241
+  thumbnail: /uploads/artwork/raphael-the-school-of-athens-480.webp
+  year: 1509–1511
+  source: https://www.museivaticani.va/content/museivaticani/en/collezioni/musei/stanze-di-raffaello/stanza-della-segnatura/scuola-di-atene.html
 ---
 
 **_A book review of&nbsp;‘_Moral Revolution'&nbsp;_by_ Jason Vallotton and Kris Vallotton**

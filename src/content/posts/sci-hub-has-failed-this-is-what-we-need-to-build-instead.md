@@ -3,6 +3,18 @@ title: 'Sci-Hub Has Failed: This is What We Need to Build Instead'
 date: 2025-09-24 10:41:00-05:00
 tags:
 - General
+image: /uploads/artwork/jan-cossiers-prometheus-carrying-fire-4f7ffaf.webp
+artwork:
+  title: Prometheus Carrying Fire
+  artist: Jan Cossiers
+  alt: Prometheus strides forward carrying a burning torch, his red cloak streaming behind him.
+  width: 1024
+  height: 1589
+  thumbnail: /uploads/artwork/jan-cossiers-prometheus-carrying-fire-4f7ffaf-480.webp
+thumbnailCrop:
+  x: 50
+  y: 30
+  zoom: 1
 ---
 
 Now, a warning. The document you are about to read **is not real**. It’s a piece from my upcoming novel, The Phantom DOI. In the story, the main characters find this text on an old hard drive. It’s a plan written by a mysterious person who wants to turn the world of academic publishing upside down. The characters know right away that the author must be a supervillain, because only a truly evil person could come up with a plan like this. What follows is an exact copy of that cursed document. Read at your own risk.

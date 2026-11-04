@@ -3,6 +3,15 @@ title: In Search of the Infinite - Meaning and Technology (Volume 3, Chapter 2)
 date: 2019-03-04 05:45:00-06:00
 tags:
 - In Search of the Infinite
+image: /uploads/artwork/umberto-boccioni-the-city-rises-9503922.webp
+artwork:
+  title: The City Rises
+  artist: Umberto Boccioni
+  alt: Workers and powerful horses surge through a city construction scene.
+  width: 1600
+  height: 1063
+  thumbnail: /uploads/artwork/umberto-boccioni-the-city-rises-9503922-480.webp
+  year: '1910'
 ---
 
 This chapter is part of the book _In Search of the Infinite_. The table of contents and introduction are available [here](/posts/in-search-of-the-infinite-introduction), and all chapters are listed [here](/tag/In-Search-of-the-Infinite).

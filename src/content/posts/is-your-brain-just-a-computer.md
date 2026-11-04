@@ -4,6 +4,16 @@ date: 2019-08-01 06:48:00-05:00
 tags:
 - Book Reviews
 - Psychology
+image: /uploads/artwork/william-blake-newton.webp
+artwork:
+  title: Newton
+  artist: William Blake
+  alt: A seated nude bends over geometric drawing with a compass amid textured rocks.
+  width: 1600
+  height: 1231
+  thumbnail: /uploads/artwork/william-blake-newton-480.webp
+  year: 1795–c. 1805
+  source: https://www.metmuseum.org/exhibitions/listings/2001/william-blake
 ---
 
 **_A book review of&nbsp;‘Cognitive Science: An Introduction to the Science of the Mind’ by José Luis Bermúdez_**

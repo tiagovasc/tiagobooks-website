@@ -5,6 +5,20 @@ tags:
 - Book Reviews
 - Psychology
 - Science
+image: /uploads/artwork/george-frederic-watts-hope-fcfa0cc.webp
+artwork:
+  title: Hope
+  artist: George Frederic Watts
+  alt: A blindfolded figure bends over a lyre while seated on a globe.
+  width: 1268
+  height: 1600
+  thumbnail: /uploads/artwork/george-frederic-watts-hope-fcfa0cc-480.webp
+  year: '1886'
+  source: https://en.wikipedia.org/wiki/Hope_(Watts)
+thumbnailCrop:
+  x: 50
+  y: 38
+  zoom: 1
 ---
 
 **_A book review of&nbsp;‘_Musicophilia: Tales of Music and the Brain_’ by_ Oliver Sacks**

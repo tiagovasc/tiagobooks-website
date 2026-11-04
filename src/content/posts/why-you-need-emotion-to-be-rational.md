@@ -5,6 +5,15 @@ tags:
 - Book Reviews
 - Psychology
 - Science
+image: /uploads/artwork/gustave-courbet-the-desperate-man-0d66a26.webp
+artwork:
+  title: The Desperate Man
+  artist: Gustave Courbet
+  alt: A wide-eyed young man grips his hair with both hands.
+  width: 1024
+  height: 838
+  thumbnail: /uploads/artwork/gustave-courbet-the-desperate-man-0d66a26-480.webp
+  year: c. 1843–1845
 ---
 
 **_A book review of&nbsp;_ Descartes’ Error** &nbsp; **_- Psychosis and Human Nature’ by&nbsp;_Antonio Damasio**

@@ -4,6 +4,20 @@ date: 2020-12-10 01:32:00-06:00
 tags:
 - Book Reviews
 - Science
+image: /uploads/artwork/kawanabe-kyosai-and-others-calligraphy-and-painting-party-82dfe23.webp
+artwork:
+  title: Calligraphy and Painting Party
+  artist: Kawanabe Kyōsai; and Others
+  alt: Many small figures gather around painting and calligraphy in a tall illustrated composition.
+  width: 452
+  height: 893
+  thumbnail: /uploads/artwork/kawanabe-kyosai-and-others-calligraphy-and-painting-party-82dfe23-480.webp
+  year: '1880'
+  source: https://clevelandart.org/art/1983.88
+thumbnailCrop:
+  x: 50
+  y: 73
+  zoom: 1
 ---
 
 **_A book review of&nbsp;‘_Surely You’re Joking, Mr. Feynman!_’ by_ Richard Feynman**

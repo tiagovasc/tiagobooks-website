@@ -3,6 +3,19 @@ title: What Is My Philosophy PhD About?
 date: 2026-03-06 05:09:00-06:00
 tags:
 - General
+image: /uploads/artwork/associated-with-hildegard-of-bingen-the-cosmic-spheres-and-the-human-being-liber-divinorum-operum-0fd2ab8.webp
+artwork:
+  title: The Cosmic Spheres and the Human Being — Liber Divinorum Operum
+  artist: Associated with Hildegard of Bingen
+  alt: A luminous circular cosmos arranged in concentric bands in an illuminated manuscript.
+  width: 1155
+  height: 1600
+  thumbnail: /uploads/artwork/associated-with-hildegard-of-bingen-the-cosmic-spheres-and-the-human-being-liber-divinorum-operum-0fd2ab8-480.webp
+  year: 13th-century manuscript
+thumbnailCrop:
+  x: 50
+  y: 43
+  zoom: 1
 ---
 
 I get this question a lot from friends and people who follow my work, and I never quite know where to start. It’s an incredibly difficult question, as it tends to be for most people doing one. It gets worse when the project is interdisciplinary, like mine. It also depends on how much time we have.

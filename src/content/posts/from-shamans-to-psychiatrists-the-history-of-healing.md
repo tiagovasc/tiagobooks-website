@@ -5,6 +5,15 @@ tags:
 - Book Reviews
 - Psychology
 - Philosophy
+image: /uploads/artwork/henry-fuseli-the-nightmare-c4f9145.webp
+artwork:
+  title: The Nightmare
+  artist: Henry Fuseli
+  alt: A sleeping woman lies across a bed while a dark creature sits upon her and a horse peers through a curtain.
+  width: 1600
+  height: 1297
+  thumbnail: /uploads/artwork/henry-fuseli-the-nightmare-c4f9145-480.webp
+  year: '1781'
 ---
 
 **_A book review of&nbsp;_The Discovery of the Unconscious _- Psychosis and Human Nature’ by_ Henri Ellenberger**

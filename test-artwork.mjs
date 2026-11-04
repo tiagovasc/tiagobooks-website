@@ -7,12 +7,35 @@ import sharp from 'sharp';
 const walk=node=>[node,...(node.childNodes||[]).flatMap(walk)];
 const attr=(node,name)=>node.attrs?.find(a=>a.name===name)?.value;
 const text=node=>node.nodeName==='#text'?node.value:(node.childNodes||[]).map(text).join('');
-const posts=[];
+const listed=[];
 for(const file of await readdir('src/content/posts')){
   if(!file.endsWith('.md'))continue;
   const source=await readFile('src/content/posts/'+file,'utf8'),data=load(source.match(/^---\r?\n([\s\S]*?)\r?\n---/)[1]);
-  if(data.artwork&&!data.draft&&!data.unlisted&&!data.protected)posts.push({slug:file.slice(0,-3),data});
+  if(!data.draft&&!data.unlisted&&!data.protected)listed.push({slug:file.slice(0,-3),data});
 }
+const posts=listed.filter(p=>p.data.artwork);
+
+test('every published post has an image and podcast episodes use their own thumbnails',async()=>{
+  const blog=walk(parse(await readFile('dist/blog.html','utf8')));
+  const checked=new Set();
+  for(const {slug,data} of listed){
+    assert.ok(data.image,`${slug} has no featured image`);
+    const thumbnail=data.thumbnail||data.artwork?.thumbnail||data.image;
+    assert.ok(blog.some(n=>n.nodeName==='img'&&attr(n,'src')===thumbnail),`${slug} thumbnail missing`);
+    if(data.tags.includes('Podcast')||slug.startsWith('podcast-')){
+      assert.equal(data.artwork,undefined,`${slug} must use its episode thumbnail, not a painting`);
+      assert.match(data.image,/^\/uploads\/podcasts\//);
+    }
+    for(const src of [data.image,thumbnail]){
+      assert.match(src,/^\/uploads\/(artwork|podcasts)\/[A-Za-z0-9_-]+\.webp$/);
+      if(checked.has(src))continue;checked.add(src);
+      const img=sharp('public'+src),meta=await img.metadata();
+      assert.ok(meta.width>=200&&meta.height>=100,src);
+      assert.ok(!meta.exif&&!meta.xmp&&!meta.iptc,src);
+      assert.ok((await img.raw().toBuffer()).length>0,src);
+    }
+  }
+});
 test('featured artwork decodes with correct dimensions and no embedded private metadata',async()=>{
   assert.ok(posts.length>0,'No artwork entries were checked');
   for(const {slug,data} of posts){

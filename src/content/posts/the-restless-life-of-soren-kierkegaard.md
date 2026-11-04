@@ -5,6 +5,19 @@ tags:
 - Book Reviews
 - Philosophy
 - Religion
+image: /uploads/artwork/edvard-munch-separation-6accd8a.webp
+artwork:
+  title: Separation
+  artist: Edvard Munch
+  alt: A dark-clothed man holds his chest as a pale woman turns away by the sea.
+  width: 1600
+  height: 1205
+  thumbnail: /uploads/artwork/edvard-munch-separation-6accd8a-480.webp
+  year: '1896'
+thumbnailCrop:
+  x: 50
+  y: 35
+  zoom: 1
 ---
 
 **_A book review of&nbsp;‘_Philosopher of the Heart: The Restless Life of Søren Kierkegaard_’ by_ Clare Carlisle**

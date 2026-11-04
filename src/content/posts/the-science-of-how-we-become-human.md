@@ -4,6 +4,16 @@ date: 2020-07-01 09:53:00-05:00
 tags:
 - Book Reviews
 - Psychology
+image: /uploads/artwork/mary-cassatt-the-boating-party.webp
+artwork:
+  title: The Boating Party
+  artist: Mary Cassatt
+  alt: A woman holds an infant opposite a rower in a small green boat on blue water.
+  width: 1280
+  height: 982
+  thumbnail: /uploads/artwork/mary-cassatt-the-boating-party-480.webp
+  year: 1893–1894
+  source: https://www.nga.gov/artworks/46569-boating-party
 ---
 
 **_A book review of&nbsp;‘_Becoming Human: A Theory of Ontogeny_’ by_ Michael Tomasello**

@@ -5,6 +5,15 @@ tags:
 - Book Reviews
 - Psychology
 - Science
+image: /uploads/artwork/hendrick-ter-brugghen-heraclitus-and-democritus-acc26e2.webp
+artwork:
+  title: Heraclitus and Democritus
+  artist: Hendrick ter Brugghen
+  alt: Two philosophers face one another with contrasting sorrowful and laughing expressions.
+  width: 1600
+  height: 982
+  thumbnail: /uploads/artwork/hendrick-ter-brugghen-heraclitus-and-democritus-acc26e2-480.webp
+  year: '1628'
 ---
 
 **_A book review of&nbsp;‘_How Emotions Are Made: The Secret Life of the Brain_’ by_ Lisa Feldman Barrett**

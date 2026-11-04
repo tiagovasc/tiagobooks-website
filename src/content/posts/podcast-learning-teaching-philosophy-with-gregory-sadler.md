@@ -3,6 +3,8 @@ title: 'Podcast: Learning & Teaching Philosophy with Gregory Sadler'
 date: 2023-04-15 09:15:00-05:00
 tags:
 - Podcast
+image: /uploads/podcasts/episode-gLwN0Cb3Zk8.webp
+thumbnail: /uploads/podcasts/episode-gLwN0Cb3Zk8-480.webp
 ---
 
 Gregory Sadler spent years as a self-described burnout before stumbling into philosophy at random, and he has spent three decades since trying to get out of the way and let the thinkers speak. In this conversation he traces that journey from a Catholic high school substitute teacher who taught Plato in a sacraments class, through the Army and a series of wrong turns, to becoming one of the most prolific philosophy educators on the internet. The discussion moves through the craft of teaching, why caring about the student matters more than caring about the subject, why philosophy never actually died no matter how many times Hawking or Russell said it did, and why the smartest move in a room full of business executives is often to keep Aristotle anonymous until after the ideas have landed. Sadler and Tiago then work through the honest trade-offs between primary texts and secondary literature, the dangers of autodidactic bias, and what it means to believe in God without having a particularly good relationship with him.

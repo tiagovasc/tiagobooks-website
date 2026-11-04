@@ -5,6 +5,19 @@ tags:
 - Book Reviews
 - Philosophy
 - Religion
+image: /uploads/artwork/jean-delville-the-last-idols-4b7d9da.webp
+artwork:
+  title: The Last Idols
+  artist: Jean Delville
+  alt: A powerful figure strains between monumental idols as light breaks above.
+  width: 1280
+  height: 1546
+  thumbnail: /uploads/artwork/jean-delville-the-last-idols-4b7d9da-480.webp
+  year: '1931'
+thumbnailCrop:
+  x: 50
+  y: 28
+  zoom: 1
 ---
 
 **_A book review of&nbsp;‘_The Crisis of the Modern World_’ by_ René Guénon**

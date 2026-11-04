@@ -4,6 +4,20 @@ date: 2020-05-20 01:26:00-05:00
 tags:
 - Book Reviews
 - Philosophy
+image: /uploads/artwork/william-blake-albion-rose-7a1b043.webp
+artwork:
+  title: Albion Rose
+  artist: William Blake
+  alt: A naked youth opens his arms before radiating coloured light.
+  width: 1180
+  height: 1600
+  thumbnail: /uploads/artwork/william-blake-albion-rose-7a1b043-480.webp
+  year: June 1793
+  source: https://commons.wikimedia.org/wiki/File:William_Blake_-_Albion_Rose_-_from_A_Large_Book_of_Designs_1793-6.jpg
+thumbnailCrop:
+  x: 50
+  y: 28
+  zoom: 1
 ---
 
 **_A book review of&nbsp;‘_Existentialism Is a Humanism_’ by_ Jean-Paul Sartre**

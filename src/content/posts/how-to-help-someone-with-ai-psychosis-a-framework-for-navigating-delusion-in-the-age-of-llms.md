@@ -4,6 +4,15 @@ title: 'How to Help Someone with AI Psychosis: A Framework for Navigating Delusi
 date: 2025-09-05 14:18:00-05:00
 tags:
 - General
+image: /uploads/artwork/vasily-surikov-the-good-samaritan-d9a4a0e.webp
+artwork:
+  title: The Good Samaritan
+  artist: Vasily Surikov
+  alt: A traveler tends an injured man while another figure and a donkey wait nearby.
+  width: 1176
+  height: 800
+  thumbnail: /uploads/artwork/vasily-surikov-the-good-samaritan-d9a4a0e-480.webp
+  year: '1874'
 ---
 
 AI psychosis is a term that’s been talked about a lot recently, with new cases seemingly popping up every week. It describes a psychological phenomenon in people after they’ve spent a great deal of time with conversational AI. While it’s not a formal clinical diagnosis, it’s a useful descriptor for when psychosis-like symptoms emerge or intensify, especially the formation of strong delusional beliefs.

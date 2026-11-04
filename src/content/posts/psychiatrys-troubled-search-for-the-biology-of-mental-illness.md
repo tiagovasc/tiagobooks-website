@@ -4,6 +4,16 @@ date: 2020-07-01 08:40:00-05:00
 tags:
 - Book Reviews
 - Psychology
+image: /uploads/artwork/francisco-goya-the-madhouse-b83fdde.webp
+artwork:
+  title: The Madhouse
+  artist: Francisco Goya
+  alt: People confined in a dim asylum gather beneath a barred window.
+  width: 1280
+  height: 786
+  thumbnail: /uploads/artwork/francisco-goya-the-madhouse-b83fdde-480.webp
+  year: 1808/1812
+  source: https://commons.wikimedia.org/wiki/File:Francisco_de_Goya_-_La_casa_de_locos_-_Google_Art_Project.jpg
 ---
 
 **_A book review of&nbsp;‘_Mind Fixers: Psychiatry's Troubled Search for the Biology of Mental Illness_’ by_ Anne Harrington**

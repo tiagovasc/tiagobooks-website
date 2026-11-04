@@ -5,6 +5,19 @@ tags:
 - Book Reviews
 - Philosophy
 - Psychology
+image: /uploads/artwork/gustave-courbet-the-desperate-man-0d66a26.webp
+artwork:
+  title: The Desperate Man
+  artist: Gustave Courbet
+  alt: A wide-eyed young man clutches his hair with both hands.
+  width: 1024
+  height: 838
+  thumbnail: /uploads/artwork/gustave-courbet-the-desperate-man-0d66a26-480.webp
+  year: c. 1843–1845
+thumbnailCrop:
+  x: 50
+  y: 32
+  zoom: 1
 ---
 
 **_A book review of&nbsp;‘_Notes from Underground_’ by_ Fyodor Dostoevsky**

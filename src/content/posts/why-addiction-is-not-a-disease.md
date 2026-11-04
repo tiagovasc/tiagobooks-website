@@ -5,6 +5,20 @@ tags:
 - Book Reviews
 - Psychology
 - Science
+image: /uploads/artwork/rembrandt-the-return-of-the-prodigal-son-dfa8d27.webp
+artwork:
+  title: The Return of the Prodigal Son
+  artist: Rembrandt
+  alt: An elderly father embraces a kneeling son in worn clothes while figures watch from the shadows.
+  width: 1226
+  height: 1600
+  thumbnail: /uploads/artwork/rembrandt-the-return-of-the-prodigal-son-dfa8d27-480.webp
+  year: c. 1668–1669
+  source: https://en.wikipedia.org/wiki/The_Return_of_the_Prodigal_Son_(Rembrandt)
+thumbnailCrop:
+  x: 50
+  y: 38
+  zoom: 1
 ---
 
 **_A book review of&nbsp;‘_The Biology of Desire_’ by_ Marc Lewis**

@@ -4,6 +4,15 @@ date: 2019-06-01 07:55:00-05:00
 tags:
 - Book Reviews
 - Science
+image: /uploads/artwork/vincent-van-gogh-the-potato-eaters-58bfcc4.webp
+artwork:
+  title: The Potato Eaters
+  artist: Vincent van Gogh
+  alt: Five people share potatoes around a lamplit table in a dark room.
+  width: 700
+  height: 497
+  thumbnail: /uploads/artwork/vincent-van-gogh-the-potato-eaters-58bfcc4-480.webp
+  year: '1885'
 ---
 
 **_A book review of&nbsp;‘_Behave_’ by_ Robert Sapolsky**

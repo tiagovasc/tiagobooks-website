@@ -4,6 +4,20 @@ date: 2022-05-24 12:26:00-05:00
 tags:
 - General
 - Psychedelics
+image: /uploads/artwork/george-frederic-watts-hope-fcfa0cc.webp
+artwork:
+  title: Hope
+  artist: George Frederic Watts
+  alt: A blindfolded woman bends over a lyre while sitting on a globe.
+  width: 1268
+  height: 1600
+  thumbnail: /uploads/artwork/george-frederic-watts-hope-fcfa0cc-480.webp
+  year: '1886'
+  source: https://en.wikipedia.org/wiki/Hope_(Watts)
+thumbnailCrop:
+  x: 50
+  y: 30
+  zoom: 1
 ---
 
 **This post was first published in** [**Drug Science**](https://www.drugscience.org.uk/ketamine-for-alcohol-use-disorder) **back in 2022.**

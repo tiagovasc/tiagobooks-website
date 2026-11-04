@@ -4,6 +4,20 @@ date: 2018-10-09 03:18:00-05:00
 tags:
 - Book Reviews
 - Psychology
+image: /uploads/artwork/zhang-feng-listening-to-the-sound-of-autumn-in-a-misty-grove-5d8c3f9.webp
+artwork:
+  title: Listening to the Sound of Autumn in a Misty Grove
+  artist: Zhang Feng
+  alt: A small figure listens among trees beside mist-covered water.
+  width: 332
+  height: 893
+  thumbnail: /uploads/artwork/zhang-feng-listening-to-the-sound-of-autumn-in-a-misty-grove-5d8c3f9-480.webp
+  year: '1657'
+  source: https://clevelandart.org/art/1977.173
+thumbnailCrop:
+  x: 50
+  y: 85
+  zoom: 1
 ---
 
 **_A book review of&nbsp;‘_The Voices Within_’ by_ Charles Fernyhough**

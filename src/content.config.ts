@@ -19,6 +19,8 @@ const shared = {
   description: z.string().optional(),
   // Optional explicit social preview image (path or URL).
   image: z.string().optional(),
+  // Optional smaller card image, including original podcast episode thumbnails.
+  thumbnail: z.string().optional(),
   // Frontend-only thumbnail framing; original images and article figures stay intact.
   thumbnailCrop: z.object({
     x: z.number().min(0).max(100).default(50),

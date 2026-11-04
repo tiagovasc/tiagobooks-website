@@ -3,6 +3,15 @@ title: In Search of the Infinite - Demons (Volume 2, Chapter 3)
 date: 2017-09-24 05:38:00-05:00
 tags:
 - In Search of the Infinite
+image: /uploads/artwork/mikhail-vrubel-demon-seated-b79c62a.webp
+artwork:
+  title: Demon Seated
+  artist: Mikhail Vrubel
+  alt: A dark-haired winged figure sits with hands clasped against a mosaic-like landscape.
+  width: 1600
+  height: 879
+  thumbnail: /uploads/artwork/mikhail-vrubel-demon-seated-b79c62a-480.webp
+  year: '1890'
 ---
 
 This chapter is part of the book _In Search of the Infinite_. The table of contents and introduction are available [here](/posts/in-search-of-the-infinite-introduction), and all chapters are listed [here](/tag/In-Search-of-the-Infinite).

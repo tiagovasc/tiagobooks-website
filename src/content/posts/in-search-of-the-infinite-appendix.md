@@ -3,6 +3,20 @@ title: ' In Search of the Infinite: Appendix'
 date: 2025-01-20 11:09:00-06:00
 tags:
 - In Search of the Infinite
+image: /uploads/artwork/william-blake-albion-rose-7a1b043.webp
+artwork:
+  title: Albion Rose
+  artist: William Blake
+  alt: A young figure opens his arms against a burst of rainbow-colored light.
+  width: 1180
+  height: 1600
+  thumbnail: /uploads/artwork/william-blake-albion-rose-7a1b043-480.webp
+  year: June 1793
+  source: https://commons.wikimedia.org/wiki/File:William_Blake_-_Albion_Rose_-_from_A_Large_Book_of_Designs_1793-6.jpg
+thumbnailCrop:
+  x: 50
+  y: 4
+  zoom: 1.06
 ---
 
 Read the [Introduction](/posts/in-search-of-the-infinite-introduction) first if you haven't yet.

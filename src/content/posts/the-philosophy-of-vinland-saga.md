@@ -4,6 +4,14 @@ date: 2024-12-09 11:09:00-06:00
 tags:
 - General
 - Philosophy
+image: /uploads/artwork/louis-jean-francois-lagrenee-mars-and-venus-an-allegory-of-peace-510be7a.webp
+artwork:
+  title: Mars and Venus, an Allegory of Peace
+  artist: Louis-Jean-François Lagrenée
+  alt: Venus rests beside Mars as figures gather around his discarded armor and weapons.
+  width: 870
+  height: 1024
+  thumbnail: /uploads/artwork/louis-jean-francois-lagrenee-mars-and-venus-an-allegory-of-peace-510be7a-480.webp
 ---
 
 Vinland Saga is one of the most brilliant pieces of fiction ever written. It presents an incredibly complex and deep story that can be analyzed from many different angles, but I will focus on two aspects that have influenced me the most: how it approaches violence and its ability to inspire and spread its ideas. Its stance towards violence is very&nbsp;peculiar. Its writer, Yukimura, is a deep and committed&nbsp;pacifist, but paradoxically, the story contains a large degree of violence, especially in the first season. It has plenty of action, fight scenes, and gore.

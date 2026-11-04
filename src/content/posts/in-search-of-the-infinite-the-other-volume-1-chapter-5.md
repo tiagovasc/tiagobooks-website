@@ -3,6 +3,16 @@ title: In Search of the Infinite - The Other (Volume 1, Chapter 5)
 date: 2017-07-15 05:23:00-05:00
 tags:
 - In Search of the Infinite
+image: /uploads/artwork/francisco-goya-witches-sabbath-b3f5b78.webp
+artwork:
+  title: Witches’ Sabbath
+  artist: Francisco Goya
+  alt: A horned goat presides over a group of women beneath a crescent moon.
+  width: 896
+  height: 1280
+  thumbnail: /uploads/artwork/francisco-goya-witches-sabbath-b3f5b78-480.webp
+  year: '1798'
+  source: https://tiagovf.com/posts/in-search-of-the-infinite-chapter-5-the-other
 ---
 
 This chapter is part of the book _In Search of the Infinite_. The table of contents and introduction are available [here](/posts/in-search-of-the-infinite-introduction), and all chapters are listed [here](/tag/In-Search-of-the-Infinite).

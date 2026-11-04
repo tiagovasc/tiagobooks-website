@@ -4,6 +4,20 @@ date: 2020-04-01 07:59:00-05:00
 tags:
 - Book Reviews
 - Philosophy
+image: /uploads/artwork/william-blake-the-ancient-of-days.webp
+artwork:
+  title: The Ancient of Days
+  artist: William Blake
+  alt: A white-haired figure bends from a fiery circle with a measuring compass.
+  width: 944
+  height: 1280
+  thumbnail: /uploads/artwork/william-blake-the-ancient-of-days-480.webp
+  year: 1794 (design)
+  source: https://en.wikipedia.org/wiki/The_Ancient_of_Days
+thumbnailCrop:
+  x: 50
+  y: 30
+  zoom: 1
 ---
 
 **_A book review of&nbsp;‘_The Structure Of Scientific Revolutions_’ by_ Thomas Kuhn**

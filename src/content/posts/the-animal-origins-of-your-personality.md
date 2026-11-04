@@ -5,6 +5,20 @@ tags:
 - Book Reviews
 - Psychology
 - Science
+image: /uploads/artwork/nagasawa-rosetsu-monkeys-by-a-stream-f05c989.webp
+artwork:
+  title: Monkeys by a Stream
+  artist: Nagasawa Rosetsu
+  alt: Two alert monkeys perch together on rocks above a stream.
+  width: 539
+  height: 900
+  thumbnail: /uploads/artwork/nagasawa-rosetsu-monkeys-by-a-stream-f05c989-480.webp
+  year: c. 1796
+  source: https://clevelandart.org/art/1985.192
+thumbnailCrop:
+  x: 50
+  y: 20
+  zoom: 1
 ---
 
 **_A book review of&nbsp;‘_The Emotional Foundations of Personality_’ by_ Jaak Panksepp and Kenneth L. Davis &nbsp;**

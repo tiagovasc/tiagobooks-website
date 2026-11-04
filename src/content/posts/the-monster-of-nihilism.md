@@ -4,6 +4,20 @@ date: 2019-11-01 07:11:00-05:00
 tags:
 - Book Reviews
 - Philosophy
+image: /uploads/artwork/francisco-goya-the-dog-e7920e0.webp
+artwork:
+  title: The Dog
+  artist: Francisco Goya
+  alt: A small dog's head rises above a dark slope beneath a vast ochre space.
+  width: 942
+  height: 1600
+  thumbnail: /uploads/artwork/francisco-goya-the-dog-e7920e0-480.webp
+  year: c. 1819–1823
+  source: https://en.wikipedia.org/wiki/The_Dog_(Goya)
+thumbnailCrop:
+  x: 50
+  y: 80
+  zoom: 1
 ---
 
 **_A book review of&nbsp;‘_Zombies in Western Culture_’ by_ Christopher Mastropietro, Filip Miscevic, and John Vervaeke**

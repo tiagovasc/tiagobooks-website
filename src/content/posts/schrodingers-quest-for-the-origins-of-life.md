@@ -5,6 +5,19 @@ tags:
 - Book Reviews
 - Science
 - Philosophy
+image: /uploads/artwork/associated-with-hildegard-of-bingen-the-cosmic-spheres-and-the-human-being-liber-divinorum-operum-0fd2ab8.webp
+artwork:
+  title: The Cosmic Spheres and the Human Being — Liber Divinorum Operum
+  artist: Associated with Hildegard of Bingen
+  alt: Concentric colored bands arrange a cosmological order within a manuscript page.
+  width: 1155
+  height: 1600
+  thumbnail: /uploads/artwork/associated-with-hildegard-of-bingen-the-cosmic-spheres-and-the-human-being-liber-divinorum-operum-0fd2ab8-480.webp
+  year: 13th-century manuscript
+thumbnailCrop:
+  x: 50
+  y: 43
+  zoom: 1
 ---
 
 **_A book review of&nbsp;‘_Mind and matter_’ by_ Erwin Schrödinger**

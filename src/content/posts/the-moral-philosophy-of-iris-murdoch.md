@@ -4,6 +4,16 @@ date: 2021-01-01 09:32:00-06:00
 tags:
 - Book Reviews
 - Philosophy
+image: /uploads/artwork/claude-monet-water-lilies-agapanthus-e86eb82.webp
+artwork:
+  title: Water Lilies (Agapanthus)
+  artist: Claude Monet
+  alt: Water lilies and reflections dissolve into bands of green, blue, and violet.
+  width: 900
+  height: 419
+  thumbnail: /uploads/artwork/claude-monet-water-lilies-agapanthus-e86eb82-480.webp
+  year: c. 1915–26
+  source: https://clevelandart.org/art/1960.81
 ---
 
 **_A book review of&nbsp;‘_The Sovereignty of Good_’ by_ Iris Murdoch**

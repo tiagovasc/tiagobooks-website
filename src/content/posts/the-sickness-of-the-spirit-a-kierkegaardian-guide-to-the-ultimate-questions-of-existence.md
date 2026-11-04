@@ -4,6 +4,20 @@ title: 'The Sickness of the Spirit: A Kierkegaardian Guide to the Ultimate Quest
 date: 2025-06-21 14:24:00-05:00
 tags:
 - General
+image: /uploads/artwork/gustave-dore-jacob-wrestling-with-the-angel-74b951b.webp
+artwork:
+  title: Jacob Wrestling with the Angel
+  artist: Gustave Doré
+  alt: Jacob wrestles an angel above a moonlit rocky landscape.
+  width: 795
+  height: 1000
+  thumbnail: /uploads/artwork/gustave-dore-jacob-wrestling-with-the-angel-74b951b-480.webp
+  year: c. 1865–1866 · Bible illustration
+  source: https://commons.wikimedia.org/wiki/File:Jacob_Wrestling_with_the_Angel.jpg
+thumbnailCrop:
+  x: 50
+  y: 12
+  zoom: 1
 ---
 
 Engaging with Søren Kierkegaard can never be a detached intellectual exercise; it is an encounter that often demands a significant personal and philosophical involvement. His work resists easy systematization, standing in stark contrast to the Hegelian philosophy of his time, which sought a comprehensive rational understanding. Kierkegaard instead championed the subjective, the passionate, and the paradoxical aspects of existence. He confronts us with fundamental questions. What does it mean to be human? How can one live authentically as an individual when faced with social pressures and internal conflicts? And for Kierkegaard, a question inextricably linked to the others, what does it mean, existentially, to be a Christian? His writings, particularly the intense explorations in Fear and Trembling and The Sickness Unto Death, offer no complete, logical systems. Instead, they immerse the reader in paradox, unsettling the ground of both secular reason and complacent religiosity.

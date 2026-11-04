@@ -4,6 +4,16 @@ date: 2020-08-01 08:46:00-05:00
 tags:
 - Book Reviews
 - Philosophy
+image: /uploads/artwork/jacob-van-ruisdael-low-waterfall-in-a-wooded-landscape-with-a-dead-beech-tree-0764803.webp
+artwork:
+  title: Low Waterfall in a Wooded Landscape with a Dead Beech Tree
+  artist: Jacob van Ruisdael
+  alt: Water rushes over rocks beneath a dense woodland and a dead beech tree.
+  width: 1184
+  height: 893
+  thumbnail: /uploads/artwork/jacob-van-ruisdael-low-waterfall-in-a-wooded-landscape-with-a-dead-beech-tree-0764803-480.webp
+  year: c. 1660–70
+  source: https://clevelandart.org/art/1967.63
 ---
 
 **_A book review of&nbsp;‘_The Spell of the Sensuous_’ by_ David Abram**

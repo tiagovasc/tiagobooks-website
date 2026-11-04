@@ -4,6 +4,16 @@ date: 2018-08-15 03:12:00-05:00
 tags:
 - Book Reviews
 - Psychology
+image: /uploads/artwork/david-teniers-landscape-with-peasants-dancing-adc7a6b.webp
+artwork:
+  title: Landscape with Peasants Dancing
+  artist: David Teniers
+  alt: Villagers dance and gather beside cottages in a broad rural landscape.
+  width: 1263
+  height: 792
+  thumbnail: /uploads/artwork/david-teniers-landscape-with-peasants-dancing-adc7a6b-480.webp
+  year: c. 1645–50
+  source: https://clevelandart.org/art/1996.271
 ---
 
 **_A book review of&nbsp;‘_The Righteous Mind_’ by_ Jonathan Haidt**

@@ -4,6 +4,18 @@ date: 2021-01-01 09:39:00-06:00
 tags:
 - Book Reviews
 - Philosophy
+image: /uploads/artwork/gustave-moreau-prometheus-d676edc.webp
+artwork:
+  title: Prometheus
+  artist: Gustave Moreau
+  alt: Prometheus sits bound against a cliff while an eagle approaches.
+  width: 949
+  height: 1600
+  thumbnail: /uploads/artwork/gustave-moreau-prometheus-d676edc-480.webp
+thumbnailCrop:
+  x: 50
+  y: 30
+  zoom: 1
 ---
 
 **_A book review of&nbsp;‘_Technological Slavery_’ by_ Ted Kaczynski**

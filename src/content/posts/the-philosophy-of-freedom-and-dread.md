@@ -4,6 +4,19 @@ date: 2020-02-05 01:20:00-06:00
 tags:
 - Book Reviews
 - Philosophy
+image: /uploads/artwork/gustave-caillebotte-young-man-at-his-window-92f017c.webp
+artwork:
+  title: Young Man at His Window
+  artist: Gustave Caillebotte
+  alt: A man in dark clothes stands at an open window overlooking a street.
+  width: 1095
+  height: 1600
+  thumbnail: /uploads/artwork/gustave-caillebotte-young-man-at-his-window-92f017c-480.webp
+  year: '1876'
+thumbnailCrop:
+  x: 50
+  y: 5
+  zoom: 1
 ---
 
 **_A book review of&nbsp;‘_Existentialism from Dostoevsky to Sartre_’ by_ Walter Kaufmann**

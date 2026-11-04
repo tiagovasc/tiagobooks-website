@@ -5,6 +5,19 @@ tags:
 - Book Reviews
 - Non-Fiction
 - Philosophy
+image: /uploads/artwork/edvard-munch-the-sick-child-e3bf050.webp
+artwork:
+  title: The Sick Child
+  artist: Edvard Munch
+  alt: A pale child rests beside a seated woman whose head is bowed.
+  width: 580
+  height: 600
+  thumbnail: /uploads/artwork/edvard-munch-the-sick-child-e3bf050-480.webp
+  year: 1885–1886
+thumbnailCrop:
+  x: 50
+  y: 30
+  zoom: 1
 ---
 
 **_A book review of&nbsp;‘_When Breath Becomes Air_’ by_ Paul Kalanithi**
