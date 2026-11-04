@@ -5,6 +5,7 @@ import { glob } from 'astro/loaders';
 // features actually used on the live blog: drafts, password-protected entries.
 const shared = {
   title: z.string(),
+  subtitle: z.string().optional(),
   // Publish datetime (UTC or with offset). Pages may omit it.
   date: z.coerce.date().optional(),
   updated: z.coerce.date().optional(),

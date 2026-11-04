@@ -9,7 +9,19 @@ import path from 'node:path';
 import os from 'node:os';
 import http from 'node:http';
 import {randomBytes} from 'node:crypto';
+import { postSubtitle, displayTitle, visibleTags } from './src/lib/post-presentation.mjs';
 const fixture=await mkdtemp(path.join(os.tmpdir(),'tiago-hardening-test-'));
+test('subtitles use authored opening lines without confusing section headings or provenance',()=>{
+  const post=body=>({data:{title:'Example'},body});
+  assert.equal(postSubtitle(post('#### Rescuing the Ultimate Good\n\nEssay text.')),'Rescuing the Ultimate Good');
+  assert.equal(postSubtitle(post('**_A book review of&nbsp;‘On Bullshit’ by Harry Frankfurt_**\n\nEssay text.')),'A book review of ‘On Bullshit’ by Harry Frankfurt');
+  assert.equal(postSubtitle(post('## Abstract\n\nPodcast discussion.')),'');
+  assert.equal(postSubtitle(post('Opening paragraph.\n\n## Later section')),'');
+  assert.equal(postSubtitle(post('**This post was first published elsewhere.**')),'');
+  assert.equal(postSubtitle({data:{title:'Example',subtitle:'Explicit subtitle'},body:'## Other heading'}),'Explicit subtitle');
+  assert.equal(displayTitle('Podcast: Topic with Guest'),'Topic with Guest');
+  assert.deepEqual(visibleTags(['Non-Fiction','Science','Book Reviews']),['Book Reviews']);
+});
 const stateFile=path.join(fixture,'library.json');
 const books=Array.from({length:40},(_,i)=>({id:String(i+1),title:'Fixture book '+i,author:'Fixture author',rating:0,description:'Quote: “I’ll go on.” — '+'x'.repeat(i)}));
 await writeFile(stateFile,JSON.stringify({id:'library',revision:1,books}));
@@ -170,4 +182,17 @@ test('the Podcast page lists every episode with post, Spotify, Apple Podcasts an
   assert.match(html,/href="https:\/\/www\.youtube\.com\/watch\?v=DMXK9tZzGec"/,'recovered Patitsas episode link');
   const config=await read('public/admin/config.yml','utf8');
   for(const field of ['spotify','apple','youtube'])assert.match(config,new RegExp('name: '+field+','),'CMS exposes '+field);
+});
+
+test('published subtitles and podcast titles stay consistent across cards, articles and feeds',async()=>{
+  const blog=await(await fetch(base+'/blog')).text();
+  assert.match(blog,/<p class="pc-sub p-summary">Rescuing the Ultimate Good<\/p>/);
+  assert.match(blog,/<p class="pc-sub p-summary">On symbols, cognition, and the bouba-kiki effect<\/p>/);
+  assert.doesNotMatch(blog,/<a class="p-name u-url"[^>]*>Podcast:/);
+  const chips=[...blog.matchAll(/class="pc-tag"[^>]*>([^<]+)</g)].map(m=>m[1]);
+  assert.ok(chips.length>100);assert.ok(chips.every(t=>['General','Podcast','Book Reviews','In Search of the Infinite'].includes(t)));
+  const article=await(await fetch(base+'/posts/podcast-selfhood-and-psychedelic-phenomenology-with-jason-k-day')).text();
+  assert.match(article,/<h1[^>]*>Selfhood and Psychedelic Phenomenology with Jason K\. Day<\/h1>/);
+  assert.doesNotMatch(article,/<title>Podcast:|"headline":"Podcast:/);
+  assert.doesNotMatch(await(await fetch(base+'/posts_feed')).text(),/<title>Podcast:/);
 });

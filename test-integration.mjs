@@ -30,12 +30,13 @@ test('library, writing, metadata, scripts, uploads and search files are served o
   assert.equal((await(await fetch(base+'/tbr-bookshops.json')).json()).books.length,753);
 });
 
-test('one shared header, all blog tags and publication months preserve the complete listing',async()=>{
+test('one shared header, selected blog sections and publication months preserve the complete listing',async()=>{
   const library=await(await fetch(base+'/')).text(),blog=await(await fetch(base+'/blog')).text();
   const shell=html=>serialize(parseFragment(html.match(/<header class="site-shell"[\s\S]*?<\/header>/)?.[0]||''));
   assert.ok(shell(library));assert.equal(shell(library),shell(blog));assert.doesNotMatch(shell(blog),/>Writing<|>General<|>Reviews<|>TBR</);
   assert.match(library,/data-collection="tbr"/);assert.doesNotMatch(await readFile('library/tbr.css','utf8'),/\.tbr-mode #statusSeg/);
-  const tags=await readdir('dist/tag');assert.equal([...blog.matchAll(/data-blog-tag="[^"]+"/g)].length,tags.filter(f=>f.endsWith('.html')).length);
+  assert.deepEqual([...blog.matchAll(/data-blog-tag="([^"]*)"/g)].map(m=>m[1]),['','General','Podcast','Book-Reviews','In-Search-of-the-Infinite']);
+  const tags=await readdir('dist/tag');assert.ok(tags.includes('Non-Fiction.html'),'legacy tag routes remain available');
   assert.equal([...blog.matchAll(/data-blog-entry/g)].length,141);assert.ok([...blog.matchAll(/data-blog-month=/g)].length>12);
   assert.equal((await fetch(base+'/posts',{redirect:'manual'})).headers.get('location'),'/blog');
   assert.equal((await fetch(base+'/tag/Book-Reviews',{redirect:'manual'})).headers.get('location'),'/blog?tag=Book-Reviews');

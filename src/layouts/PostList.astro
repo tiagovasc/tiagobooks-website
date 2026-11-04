@@ -1,5 +1,6 @@
 ---
 import { groupByYear, shortDate, tagSlug, monthOf, monthLabel, type Post } from '../lib/content';
+import { displayTitle, postSubtitle } from '../lib/post-presentation.mjs';
 interface Props { posts: Post[]; byYear?: boolean; byMonth?: boolean }
 const { posts, byYear = true, byMonth = false } = Astro.props;
 const months = new Map<string,Post[]>();
@@ -13,7 +14,7 @@ const groups = byMonth ? [...months].map(([month,posts])=>({year:Number(month.sl
       {g.posts.map((p) => (
         <li class="h-entry" data-blog-entry data-year={g.year} data-month={g.month} data-tags={JSON.stringify(p.data.tags.map(tagSlug))}>
           <time class="dt-published" datetime={p.data.date.toISOString()}>{shortDate(p.data.date)}</time>
-          <span class="post-link"><a class="p-name u-url" href={`/posts/${p.id}`}>{p.data.title}</a></span>
+          <span class="post-link"><a class="p-name u-url" href={`/posts/${p.id}`}>{displayTitle(p.data.title)}</a>{postSubtitle(p) && <span class="post-list-subtitle">{postSubtitle(p)}</span>}</span>
         </li>
       ))}
     </>

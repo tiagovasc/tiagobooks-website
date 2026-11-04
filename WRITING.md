@@ -51,6 +51,12 @@ thumbnailCrop:
 
 ## Podcast page
 
+### Titles, subtitles and Blog sections
+
+Blog navigation uses All posts, General, Podcast, Book Reviews and In Search of the Infinite, in that order. Older topic tags remain in source metadata and their links still work, but are not displayed as chips. Use one of the four sections for new posts.
+
+Use the optional **Subtitle** field for an explicit subtitle. Otherwise cards use an opening Markdown heading or short emphasized subtitle, skipping generic headings such as Abstract and Introduction. A title's colon-separated subtitle is used when there is no opening subtitle; an excerpt remains the final fallback. Podcast titles display without a leading `Podcast:` in listings, articles, search and feeds. Source titles, bodies and URLs stay unchanged.
+
 The Podcast page lists published posts tagged `Podcast`, newest first, with their original episode image, date, guest, opening excerpt and listening links. The image and Read more open the blog post. Edit the page's Markdown to change its introduction. Titles formatted as `Podcast: Topic with Guest Name` display the guest separately.
 
 Optional **Spotify episode URL**, **Apple Podcasts episode URL** and **YouTube episode URL** fields are available in the post editor. Spotify and Apple fall back to the show pages when an episode URL is absent. YouTube uses the video embedded in the post unless overridden. For Markdown editing, use `spotify:`, `apple:` and `youtube:`. Images use the same frontend-only `thumbnailCrop` settings as Blog cards, retaining the original file.

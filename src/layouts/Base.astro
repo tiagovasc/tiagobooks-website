@@ -5,6 +5,7 @@ import '../../public/unified.css';
 import site from '../lib/site-config.mjs';
 import { renderSiteHeader } from '../lib/site-shell.mjs';
 import { getTagMap } from '../lib/content';
+import { BLOG_SECTIONS } from '../lib/post-presentation.mjs';
 import { normalizeSiteLink, absoluteSiteLink } from '../lib/link-policy.mjs';
 
 interface Props {
@@ -29,7 +30,7 @@ const canonical = new URL(path === '/' ? '/' : path, site.url).toString();
 const imageUrl = image ? absoluteSiteLink(image) : undefined;
 const isBlog = path === '/blog' || path.startsWith('/posts') || path.startsWith('/tag/');
 const tagMap = isBlog ? await getTagMap() : new Map();
-const tagChoices = [...tagMap.entries()].sort((a,b)=>a[1].label.localeCompare(b[1].label));
+const tagChoices = BLOG_SECTIONS.map(label=>[label.replace(/\s+/g,'-'),tagMap.get(label.replace(/\s+/g,'-'))] as const).filter(([,tag])=>tag);
 const activeTag = path.startsWith('/tag/') ? decodeURIComponent(path.slice(5)) : '';
 ---
 <!doctype html>

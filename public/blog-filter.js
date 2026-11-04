@@ -3,7 +3,7 @@ const chips=[...document.querySelectorAll('[data-blog-tag]')],rows=[...document.
 const headings=[...document.querySelectorAll('[data-blog-month]')];
 const rail=createDateRail(rows,headings);
 // Tag links from older posts, feeds or typed URLs may differ in case or use spaces; resolve them to the chip's key.
-function currentTag(){const raw=(new URL(location.href).searchParams.get('tag')||'').trim().replace(/\s+/g,'-');const chip=chips.find(c=>c.dataset.blogTag.toLowerCase()===raw.toLowerCase());return chip?chip.dataset.blogTag:raw}
+function currentTag(){const raw=(new URL(location.href).searchParams.get('tag')||'').trim().replace(/\s+/g,'-');const keys=rows.flatMap(row=>JSON.parse(row.dataset.tags));return keys.find(tag=>tag.toLowerCase()===raw.toLowerCase())||raw}
 function filterBlog(){const tag=currentTag();let count=0;const years=new Set();
   for(const row of rows){const visible=!tag||JSON.parse(row.dataset.tags).includes(tag);row.hidden=!visible;if(visible){count++;years.add(row.dataset.year)}}
   for(const heading of document.querySelectorAll('[data-blog-year]'))heading.hidden=!years.has(heading.dataset.blogYear);

@@ -2,6 +2,7 @@
 // Each episode links to its blog post; Spotify and Apple Podcasts use per-post frontmatter
 // (`spotify:`, `apple:`) when present and otherwise the show pages.
 import { getListedPosts, longDate, type Post } from './content';
+import { postSubtitle } from './post-presentation.mjs';
 
 export const SHOW = {
   spotify: 'https://open.spotify.com/show/4ifa95kknLrUQblYTUMQ7T',
@@ -64,7 +65,7 @@ export function toEpisode(p: Post): Episode {
   const { topic, guest } = split(d.title);
   return {
     id: p.id, href: `/posts/${p.id}`, topic, guest, date: longDate(d.date), iso: d.date.toISOString(),
-    teaser: teaserFrom(body),
+    teaser: postSubtitle(p) || teaserFrom(body),
     youtubeId: yt, image,
     crop: d.thumbnailCrop ?? { x: 50, y: 50, zoom: 1 },
     spotify: d.spotify || SHOW.spotify, apple: d.apple || SHOW.apple,

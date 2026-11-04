@@ -5,11 +5,14 @@ import { encryptHtml, markdownToHtml, sitePassword } from '../lib/protect';
 import { longDate, tagSlug, getListedPosts } from '../lib/content';
 import Base from './Base.astro';
 import Artwork from './Artwork.astro';
+import { displayTitle, visibleTags } from '../lib/post-presentation.mjs';
 import site from '../lib/site-config.mjs';
 
 interface Props { entry: any; kind: 'post' | 'page' }
 const { entry, kind } = Astro.props;
 const d = entry.data;
+const title = kind === 'post' ? displayTitle(d.title) : d.title;
+const tags = visibleTags(d.tags);
 const path = `/${kind === 'post' ? 'posts' : 'pages'}/${entry.id}`;
 
 let Content: any = null;
@@ -41,7 +44,7 @@ const chapterLabel = (p: any) => p.data.title.trim().replace(new RegExp('^' + BO
 const jsonLd = kind === 'post' && !d.protected ? {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
-  headline: d.title,
+  headline: title,
   datePublished: d.date.toISOString(),
   dateModified: (d.updated ?? d.date).toISOString(),
   author: { '@type': 'Person', name: site.author },
@@ -50,8 +53,8 @@ const jsonLd = kind === 'post' && !d.protected ? {
 } : undefined;
 ---
 <Base
-  title={d.title}
-  description={d.description}
+  title={title}
+  description={d.description || d.subtitle}
   path={path}
   image={image}
   noindex={noindex}
@@ -62,7 +65,8 @@ const jsonLd = kind === 'post' && !d.protected ? {
   pagefindBody={!noindex}
 >
   <article class="h-entry">
-    <h1 class="entry-title p-name" data-pagefind-meta="title">{d.title}</h1>
+    <h1 class="entry-title p-name" data-pagefind-meta="title">{title}</h1>
+    {d.subtitle && !d.protected && <p class="entry-subtitle">{d.subtitle}</p>}
     {d.protected ? (
       <>
         <div id="locked" data-payload={payload}>
@@ -96,9 +100,9 @@ const jsonLd = kind === 'post' && !d.protected ? {
             <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>{longDate(d.date)}
           </time>
         </div>
-        {d.tags.length > 0 && (
+        {tags.length > 0 && (
           <div class="post-tags">
-            {d.tags.map((t: string, i: number) => (<>{i > 0 && ', '}<a href={`/blog?tag=${encodeURIComponent(tagSlug(t))}`}>{t}</a></>))}
+            {tags.map((t: string, i: number) => (<>{i > 0 && ', '}<a href={`/blog?tag=${encodeURIComponent(tagSlug(t))}`}>{t}</a></>))}
           </div>
         )}
         <div><a href="/blog"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8l-4 4 4 4M8 12h8"/></svg>Back to all posts</a></div>

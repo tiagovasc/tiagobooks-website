@@ -25,6 +25,7 @@ collections:
     sortable_fields: [date, title]
     fields:
       - { label: Title, name: title, widget: string }
+      - { label: Subtitle, name: subtitle, widget: string, required: false, hint: 'Optional subtitle shown beneath the title and on Blog cards. Existing opening subtitles are detected automatically.' }
       - { label: Publish date, name: date, widget: datetime, date_format: 'YYYY-MM-DD', time_format: 'HH:mm', format: "YYYY-MM-DD'T'HH:mm:ss'Z'" }
       - { label: Tags, name: tags, widget: list, required: false, default: [] }
       - { label: Featured image, name: image, widget: image, required: false }

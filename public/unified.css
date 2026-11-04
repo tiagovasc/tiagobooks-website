@@ -288,3 +288,5 @@ dialog.drawer,dialog.drawer::backdrop{right:calc(100% - 100vw)}
 .ep-read:focus-visible,.ep-icon:focus-visible,.ep-body h2 a:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 @media(max-width:760px){.ep{grid-template-columns:1fr;gap:16px;padding:26px 0}.ep-body h2{font-size:21px}}
 @media(prefers-reduced-motion:reduce){.ep-thumb img{transition:none}}
+.post-list-subtitle{display:block;margin-top:5px;color:var(--muted);font:14px/1.45 var(--font)}
+.entry-subtitle{margin:-10px 0 28px;color:var(--muted);font:20px/1.5 var(--font)}

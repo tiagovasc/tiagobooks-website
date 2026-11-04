@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import { render } from 'astro:content';
 import { experimental_AstroContainer as AstroContainer } from 'astro/container';
 import { getListedPosts } from '../lib/content';
+import { displayTitle } from '../lib/post-presentation.mjs';
 import site from '../lib/site-config.mjs';
 import { rewriteHtml } from '../lib/html-links.mjs';
 import Artwork from '../layouts/Artwork.astro';
@@ -24,7 +25,7 @@ export const GET: APIRoute = async () => {
     <published>${p.data.date.toISOString()}</published>
     <updated>${(p.data.updated ?? p.data.date).toISOString()}</updated>
     <link rel="alternate" type="text/html" href="${url}"/>
-    <title>${esc(p.data.title)}</title>
+    <title>${esc(displayTitle(p.data.title))}</title>
     <content type="html">${esc(html)}</content>
   </entry>`);
   }
