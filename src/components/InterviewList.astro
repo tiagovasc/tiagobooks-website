@@ -1,0 +1,23 @@
+---
+import { parseInterviews } from '../lib/interviews.mjs';
+interface Props { body: string }
+const interviews = parseInterviews(Astro.props.body);
+---
+<section class="ep-list interview-list" aria-label="Interviews">
+  {interviews.map((item) => (
+    <article class="ep">
+      <div class="ep-thumb">
+        <img src={item.image} alt="" loading="lazy" decoding="async" width="1280" height="720" />
+      </div>
+      <div class="ep-body">
+        {item.year && <time datetime={item.year}>{item.year}</time>}
+        <h2>{item.title}</h2>
+        {item.host && <p class="ep-guest">{item.host}</p>}
+        {item.paragraphs.map(p => <p class="ep-desc">{p}</p>)}
+        <div class="ep-actions">
+          <a class="ep-read" href={item.href} target="_blank" rel="noopener" aria-label={`Watch: ${item.title}`}>Watch<span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </article>
+  ))}
+</section>

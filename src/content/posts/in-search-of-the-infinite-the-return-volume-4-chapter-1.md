@@ -13,10 +13,11 @@ artwork:
   thumbnail: /uploads/artwork/unknown-byzantine-artist-the-ladder-of-divine-ascent-480.webp
   year: 12th century
   source: https://commons.wikimedia.org/wiki/File:The_Ladder_of_Divine_Ascent_Monastery_of_St_Catherine_Sinai_12th_century.jpg
+thumbnail: /uploads/book-chapters/in-search-of-the-infinite-the-return-volume-4-chapter-1-480.webp
 thumbnailCrop:
   x: 50
-  y: 8
-  zoom: 1
+  y: 55
+  zoom: 1.15
 ---
 
 This chapter is part of the book _In Search of the Infinite_. The table of contents and introduction are available [here](/posts/in-search-of-the-infinite-introduction), and all chapters are listed [here](/tag/In-Search-of-the-Infinite).

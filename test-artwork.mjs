@@ -27,7 +27,7 @@ test('every published post has an image and podcast episodes use their own thumb
       assert.match(data.image,/^\/uploads\/podcasts\//);
     }
     for(const src of [data.image,thumbnail]){
-      assert.match(src,/^\/uploads\/(artwork|podcasts)\/[A-Za-z0-9_-]+\.webp$/);
+      assert.match(src,/^\/uploads\/(artwork|podcasts|book-chapters)\/[A-Za-z0-9_-]+\.webp$/);
       if(checked.has(src))continue;checked.add(src);
       const img=sharp('public'+src),meta=await img.metadata();
       assert.ok(meta.width>=200&&meta.height>=100,src);
@@ -61,8 +61,22 @@ test('artwork is credited in articles and feeds, and connected to cards and soci
       const meta=nodes.find(n=>n.nodeName==='meta'&&(attr(n,'property')===name||attr(n,'name')===name));
       assert.ok(attr(meta,'content')?.endsWith(data.image),`${slug} ${name}`);
     }
-    assert.ok(blog.some(n=>n.nodeName==='img'&&attr(n,'src')===data.artwork.thumbnail),`${slug} card`);
+    assert.ok(blog.some(n=>n.nodeName==='img'&&attr(n,'src')===(data.thumbnail||data.artwork.thumbnail)),`${slug} card`);
     const entry=feed.split('<entry>').find(e=>e.includes(`Post/${slug}</id>`));
     if(entry){assert.ok(entry.includes(data.image),`${slug} feed image`);assert.ok(entry.includes(data.artwork.artist),`${slug} feed credit`)}
+  }
+});
+
+test('book posts use their own illustrations as thumbnails, with the approved Appendix exception',async()=>{
+  const chapters=listed.filter(p=>p.data.tags.includes('In Search of the Infinite'));
+  assert.equal(chapters.length,19);
+  for(const {slug,data} of chapters){
+    if(slug==='in-search-of-the-infinite-appendix'){
+      assert.equal(data.thumbnail,undefined);assert.match(data.artwork.thumbnail,/william-blake-albion-rose/);continue;
+    }
+    const source=await readFile(`src/content/posts/${slug}.md`,'utf8');
+    const body=source.replace(/^---[\s\S]*?\r?\n---/,'');
+    assert.match(body,/!\[[^\]]*\]\(\/?uploads\//,slug+' retains its original embedded image');
+    assert.equal(data.thumbnail,`/uploads/book-chapters/${slug}-480.webp`);
   }
 });

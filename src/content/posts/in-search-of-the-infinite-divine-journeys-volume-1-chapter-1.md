@@ -12,9 +12,10 @@ artwork:
   height: 1600
   thumbnail: /uploads/artwork/william-blake-jacob-s-ladder-a7fac18-480.webp
   year: c. 1800
+thumbnail: /uploads/book-chapters/in-search-of-the-infinite-divine-journeys-volume-1-chapter-1-480.webp
 thumbnailCrop:
   x: 50
-  y: 45
+  y: 70
   zoom: 1
 ---
 

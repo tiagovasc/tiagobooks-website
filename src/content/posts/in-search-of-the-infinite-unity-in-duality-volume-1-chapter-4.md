@@ -13,9 +13,10 @@ artwork:
   thumbnail: /uploads/artwork/jean-delville-the-love-of-souls-ac3f7fc-480.webp
   year: '1900'
   source: https://commons.wikimedia.org/wiki/File:L%E2%80%99Amour_des_%C3%A2mes_(1900)_-_Jean_Delville.jpg
+thumbnail: /uploads/book-chapters/in-search-of-the-infinite-unity-in-duality-volume-1-chapter-4-480.webp
 thumbnailCrop:
   x: 50
-  y: 0
+  y: 50
   zoom: 1
 ---
 

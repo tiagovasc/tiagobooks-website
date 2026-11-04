@@ -12,9 +12,10 @@ artwork:
   height: 1114
   thumbnail: /uploads/artwork/gustav-klimt-death-and-life-cfef1f2-480.webp
   source: https://tiagovf.com/posts/in-search-of-the-infinite-chapter-4-the-burden
+thumbnail: /uploads/book-chapters/in-search-of-the-infinite-the-burden-volume-3-chapter-4-480.webp
 thumbnailCrop:
   x: 50
-  y: 25
+  y: 50
   zoom: 1
 ---
 

@@ -13,9 +13,10 @@ artwork:
   thumbnail: /uploads/artwork/thomas-cole-the-titan-s-goblet-f50bdc6-480.webp
   year: '1833'
   source: https://www.metmuseum.org/art/collection/search/10499
+thumbnail: /uploads/book-chapters/in-search-of-the-infinite-introduction-480.webp
 thumbnailCrop:
   x: 50
-  y: 10
+  y: 40
   zoom: 1
 ---
 

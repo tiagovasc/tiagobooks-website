@@ -13,6 +13,11 @@ artwork:
   thumbnail: /uploads/artwork/francisco-goya-witches-sabbath-b3f5b78-480.webp
   year: '1798'
   source: https://tiagovf.com/posts/in-search-of-the-infinite-chapter-5-the-other
+thumbnail: /uploads/book-chapters/in-search-of-the-infinite-the-other-volume-1-chapter-5-480.webp
+thumbnailCrop:
+  x: 50
+  y: 65
+  zoom: 1
 ---
 
 This chapter is part of the book _In Search of the Infinite_. The table of contents and introduction are available [here](/posts/in-search-of-the-infinite-introduction), and all chapters are listed [here](/tag/In-Search-of-the-Infinite).

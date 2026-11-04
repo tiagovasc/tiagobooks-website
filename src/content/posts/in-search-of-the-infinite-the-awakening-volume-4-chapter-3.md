@@ -12,9 +12,10 @@ artwork:
   height: 1280
   thumbnail: /uploads/artwork/unknown-byzantine-artist-christ-pantocrator-sinai-4012598-480.webp
   year: 6th century
+thumbnail: /uploads/book-chapters/in-search-of-the-infinite-the-awakening-volume-4-chapter-3-480.webp
 thumbnailCrop:
   x: 50
-  y: 23
+  y: 25
   zoom: 1
 ---
 

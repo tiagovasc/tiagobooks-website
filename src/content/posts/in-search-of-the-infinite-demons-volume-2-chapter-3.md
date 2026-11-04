@@ -12,6 +12,11 @@ artwork:
   height: 879
   thumbnail: /uploads/artwork/mikhail-vrubel-demon-seated-b79c62a-480.webp
   year: '1890'
+thumbnail: /uploads/book-chapters/in-search-of-the-infinite-demons-volume-2-chapter-3-480.webp
+thumbnailCrop:
+  x: 50
+  y: 30
+  zoom: 1
 ---
 
 This chapter is part of the book _In Search of the Infinite_. The table of contents and introduction are available [here](/posts/in-search-of-the-infinite-introduction), and all chapters are listed [here](/tag/In-Search-of-the-Infinite).

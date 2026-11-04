@@ -13,9 +13,10 @@ artwork:
   thumbnail: /uploads/artwork/caspar-david-friedrich-wanderer-above-the-sea-of-fog-8856acd-480.webp
   year: c. 1817–1818
   source: https://www.kmw.ch/ausstellungen/friedrich/digital/wanderer/
+thumbnail: /uploads/book-chapters/in-search-of-the-infinite-the-unknown-volume-1-chapter-2-480.webp
 thumbnailCrop:
   x: 50
-  y: 42
+  y: 55
   zoom: 1
 ---
 

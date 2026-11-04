@@ -1,6 +1,7 @@
 ---
 import Entry from '../../layouts/Entry.astro';
 import EpisodeList from '../../components/EpisodeList.astro';
+import InterviewList from '../../components/InterviewList.astro';
 import { getAllPages } from '../../lib/content';
 
 export async function getStaticPaths() {
@@ -9,4 +10,7 @@ export async function getStaticPaths() {
 }
 const { entry } = Astro.props;
 ---
-<Entry entry={entry} kind="page">{entry.id === 'podcast-overview' && !entry.data.protected && <EpisodeList />}</Entry>
+<Entry entry={entry} kind="page" replaceBody={entry.id === 'interviews'}>
+  {entry.id === 'podcast-overview' && !entry.data.protected && <EpisodeList />}
+  {entry.id === 'interviews' && !entry.data.protected && <InterviewList body={entry.body ?? ''} />}
+</Entry>

@@ -13,9 +13,10 @@ artwork:
   thumbnail: /uploads/artwork/william-blake-dante-and-virgil-at-the-gates-of-hell-b27c66e-480.webp
   year: 1824–1827
   source: https://tiagovf.com/posts/in-search-of-the-infinite-chapter-4-despair
+thumbnail: /uploads/book-chapters/in-search-of-the-infinite-despair-volume-2-chapter-4-480.webp
 thumbnailCrop:
   x: 50
-  y: 63
+  y: 60
   zoom: 1
 ---
 

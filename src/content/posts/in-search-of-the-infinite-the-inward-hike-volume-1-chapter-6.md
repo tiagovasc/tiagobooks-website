@@ -13,6 +13,11 @@ artwork:
   thumbnail: /uploads/artwork/eugene-carriere-the-contemplator-fc688da-480.webp
   year: '1901'
   source: https://clevelandart.org/art/1946.283
+thumbnail: /uploads/book-chapters/in-search-of-the-infinite-the-inward-hike-volume-1-chapter-6-480.webp
+thumbnailCrop:
+  x: 50
+  y: 50
+  zoom: 1
 ---
 
 This chapter is part of the book _In Search of the Infinite_. The table of contents and introduction are available [here](/posts/in-search-of-the-infinite-introduction), and all chapters are listed [here](/tag/In-Search-of-the-Infinite).

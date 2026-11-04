@@ -11,9 +11,10 @@ artwork:
   width: 377
   height: 600
   thumbnail: /uploads/artwork/john-william-waterhouse-psyche-opening-the-door-into-cupid-s-garden-355a216-480.webp
+thumbnail: /uploads/book-chapters/in-search-of-the-infinite-chasing-the-white-rabbit-volume-2-chapter-1-480.webp
 thumbnailCrop:
   x: 50
-  y: 0
+  y: 35
   zoom: 1
 ---
 

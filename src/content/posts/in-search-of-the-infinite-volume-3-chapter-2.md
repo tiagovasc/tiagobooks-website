@@ -12,6 +12,11 @@ artwork:
   height: 1063
   thumbnail: /uploads/artwork/umberto-boccioni-the-city-rises-9503922-480.webp
   year: '1910'
+thumbnail: /uploads/book-chapters/in-search-of-the-infinite-volume-3-chapter-2-480.webp
+thumbnailCrop:
+  x: 50
+  y: 50
+  zoom: 1
 ---
 
 This chapter is part of the book _In Search of the Infinite_. The table of contents and introduction are available [here](/posts/in-search-of-the-infinite-introduction), and all chapters are listed [here](/tag/In-Search-of-the-Infinite).

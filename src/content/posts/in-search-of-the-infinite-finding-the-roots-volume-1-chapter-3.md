@@ -12,9 +12,10 @@ artwork:
   height: 600
   thumbnail: /uploads/artwork/jean-francois-millet-the-sower-5dbe833-480.webp
   year: '1850'
+thumbnail: /uploads/book-chapters/in-search-of-the-infinite-finding-the-roots-volume-1-chapter-3-480.webp
 thumbnailCrop:
   x: 50
-  y: 5
+  y: 35
   zoom: 1
 ---
 

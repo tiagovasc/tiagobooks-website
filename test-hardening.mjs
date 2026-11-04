@@ -10,6 +10,7 @@ import os from 'node:os';
 import http from 'node:http';
 import {randomBytes} from 'node:crypto';
 import { postSubtitle, displayTitle, visibleTags } from './src/lib/post-presentation.mjs';
+import { parseInterviews } from './src/lib/interviews.mjs';
 const fixture=await mkdtemp(path.join(os.tmpdir(),'tiago-hardening-test-'));
 test('subtitles use authored opening lines without confusing section headings or provenance',()=>{
   const post=body=>({data:{title:'Example'},body});
@@ -195,4 +196,25 @@ test('published subtitles and podcast titles stay consistent across cards, artic
   assert.match(article,/<h1[^>]*>Selfhood and Psychedelic Phenomenology with Jason K\. Day<\/h1>/);
   assert.doesNotMatch(article,/<title>Podcast:|"headline":"Podcast:/);
   assert.doesNotMatch(await(await fetch(base+'/posts_feed')).text(),/<title>Podcast:/);
+});
+
+test('Interviews uses the episode layout with complete descriptions and one YouTube Watch link',async()=>{
+  const markdown=await readFile('src/content/pages/interviews.md','utf8');
+  const source=markdown.replace(/^---[\s\S]*?\r?\n---/,'');
+  const expected=parseInterviews(source);assert.equal(expected.length,4);
+  const html=await(await fetch(base+'/pages/interviews')).text();
+  const entries=[...html.matchAll(/<article class="ep">([\s\S]*?)<\/article>/g)].map(m=>m[1]);
+  assert.equal(entries.length,expected.length);
+  const {parseFragment}=await import('parse5');
+  const text=node=>node.nodeName==='#text'?node.value:(node.childNodes||[]).map(text).join('');
+  for(let i=0;i<entries.length;i++){
+    const item=expected[i],entry=entries[i];
+    assert.equal((entry.match(/<a /g)||[]).length,1,'only the Watch action');
+    assert.ok(entry.includes(`href="${item.href}"`));assert.match(entry,/>Watch<span/);
+    assert.doesNotMatch(entry,/\/posts\/|Read more|spotify|apple-podcasts|<iframe/);
+    const visible=text(parseFragment(entry));
+    assert.ok(visible.includes(item.title));for(const p of item.paragraphs)assert.ok(visible.includes(p),'complete description');
+    const image=await fetch(base+item.image);assert.equal(image.status,200);assert.match(image.headers.get('content-type'),/image\/webp/);
+  }
+  assert.throws(()=>parseInterviews('## Missing video\n\nDescription.\n'),/missing a YouTube/);
 });

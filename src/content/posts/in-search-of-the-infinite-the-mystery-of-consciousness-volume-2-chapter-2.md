@@ -14,10 +14,11 @@ artwork:
   thumbnail: /uploads/artwork/odilon-redon-closed-eyes-8d77e14-480.webp
   year: '1890'
   source: https://commons.wikimedia.org/wiki/File:Odilon_Redon_-_Closed_Eyes_-_Google_Art_Project.jpg
+thumbnail: /uploads/book-chapters/in-search-of-the-infinite-the-mystery-of-consciousness-volume-2-chapter-2-480.webp
 thumbnailCrop:
   x: 50
-  y: 40
-  zoom: 1
+  y: 50
+  zoom: 1.2
 ---
 
 This chapter is part of the book _In Search of the Infinite_. The table of contents and introduction are available [here](/posts/in-search-of-the-infinite-introduction), and all chapters are listed [here](/tag/In-Search-of-the-Infinite).

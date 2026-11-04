@@ -8,8 +8,8 @@ import Artwork from './Artwork.astro';
 import { displayTitle, visibleTags } from '../lib/post-presentation.mjs';
 import site from '../lib/site-config.mjs';
 
-interface Props { entry: any; kind: 'post' | 'page' }
-const { entry, kind } = Astro.props;
+interface Props { entry: any; kind: 'post' | 'page'; replaceBody?: boolean }
+const { entry, kind, replaceBody = false } = Astro.props;
 const d = entry.data;
 const title = kind === 'post' ? displayTitle(d.title) : d.title;
 const tags = visibleTags(d.tags);
@@ -80,13 +80,13 @@ const jsonLd = kind === 'post' && !d.protected ? {
         <div id="unlocked" class="e-content"></div>
         <script is:inline src="/js/unlock.js" defer></script>
       </>
-    ) : (
+    ) : replaceBody ? <slot /> : (
       <div class="e-content">
         {d.image && d.artwork && <Artwork image={d.image} artwork={d.artwork} />}
         <Content />
       </div>
     )}
-    <slot />
+    {!replaceBody && <slot />}
     {(prevChapter || nextChapter) && (
       <nav class="chapter-nav" aria-label={`${BOOK_TAG} chapters`} data-pagefind-ignore>
         {prevChapter ? <a class="chapter-link chapter-prev" href={`/posts/${prevChapter.id}`} rel="prev"><span class="chapter-dir">Previous</span><span class="chapter-title">{chapterLabel(prevChapter)}</span></a> : null}

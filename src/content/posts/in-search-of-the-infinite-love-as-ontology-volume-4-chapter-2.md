@@ -13,6 +13,11 @@ artwork:
   thumbnail: /uploads/artwork/theodule-augustin-ribot-the-good-samaritan-480.webp
   year: c. 1870
   source: https://www.musee-orsay.fr/en/artworks/le-bon-samaritain-75472
+thumbnail: /uploads/book-chapters/in-search-of-the-infinite-love-as-ontology-volume-4-chapter-2-480.webp
+thumbnailCrop:
+  x: 50
+  y: 50
+  zoom: 1
 ---
 
 This chapter is part of the book _In Search of the Infinite_. The table of contents and introduction are available [here](/posts/in-search-of-the-infinite-introduction), and all chapters are listed [here](/tag/In-Search-of-the-Infinite).

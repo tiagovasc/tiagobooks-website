@@ -60,3 +60,11 @@ Use the optional **Subtitle** field for an explicit subtitle. Otherwise cards us
 The Podcast page lists published posts tagged `Podcast`, newest first, with their original episode image, date, guest, opening excerpt and listening links. The image and Read more open the blog post. Edit the page's Markdown to change its introduction. Titles formatted as `Podcast: Topic with Guest Name` display the guest separately.
 
 Optional **Spotify episode URL**, **Apple Podcasts episode URL** and **YouTube episode URL** fields are available in the post editor. Spotify and Apple fall back to the show pages when an episode URL is absent. YouTube uses the video embedded in the post unless overridden. For Markdown editing, use `spotify:`, `apple:` and `youtube:`. Images use the same frontend-only `thumbnailCrop` settings as Blog cards, retaining the original file.
+
+## Interviews
+
+The Interviews page uses the Podcast row layout with a single Watch button pointing to YouTube. Its existing Markdown remains the content source: use `## Topic | Show or host (Year)`, description paragraphs, then the YouTube URL. Descriptions remain complete. A local episode thumbnail belongs at `public/uploads/interviews/VIDEO_ID.webp`; retain the original image and let the frontend crop it to fill the frame.
+
+## Book chapter thumbnails
+
+The *In Search of the Infinite* posts use small, uncropped copies of their original embedded illustrations as `thumbnail` overrides. The Appendix keeps its painting because it has no embedded illustration. `thumbnailCrop` controls frontend framing only; the full original image, article artwork and credits stay intact.
