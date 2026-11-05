@@ -9,6 +9,7 @@ The production application uses the included Dockerfile and Railway configuratio
 | `SITE_URL` | Public HTTPS origin; required at build and runtime |
 | `CMS_REPOSITORY` | GitHub `owner/repository` for the editor |
 | `CMS_BRANCH` | Branch the editor publishes to |
+| `CMS_GIT_SSH_KEY` | Server-only OpenSSH private deploy key; write access to this repository only |
 | `SUPABASE_URL` | Your Supabase project URL |
 | `SUPABASE_SECRET_KEY` | Server-only Supabase service credential |
 | `LIBRARY_PASSWORD` | Your library administrator password |
@@ -16,6 +17,10 @@ The production application uses the included Dockerfile and Railway configuratio
 | `PORT` | HTTP listening port; Docker defaults to 8080 |
 
 Use host-managed secrets. Never put credentials in Docker build arguments, source, screenshots or issue reports. Only the public site/CMS configuration is needed during the build. The Dockerfile sets `NODE_ENV=production` and `HOST=0.0.0.0`.
+
+The password editor uses the existing signed administrator session. Generate a dedicated Ed25519 SSH key, add its public key as a write-enabled deploy key on the website repository, and store the private key only as the multiline runtime secret `CMS_GIT_SSH_KEY`. Do not use an account-wide GitHub token. Git connects to `ssh.github.com:443` with GitHub's pinned Ed25519 host key. Temporary bare Git storage retrieves current source and pushes ordinary commits without force; content filenames, metadata, origin and revision are checked before writing. No key is sent to the browser. Missing publishing configuration disables saves without affecting the public website or the advanced `/admin/` editor.
+
+Rotate the publishing key by adding a replacement deploy key and updating the runtime secret, then revoke the old key after verification. Removing the deploy key disables this publishing path. Keep the existing login password and session secret private; both library and writing administration share that access.
 
 ## Storage
 
@@ -29,7 +34,7 @@ Connect your repository and intended branch to the host, configure the variables
 
 The published Tiago Books site tracks `codex/unified-site`. Forks should set their own repository, branch, branding and domain before enabling CMS writes.
 
-Verify `/`, `/blog`, `/search`, `/posts_feed`, `/admin/config.yml` and `/healthz`; then check authenticated library saving and a CMS publication using your own account. Run `node scripts/check-links.mjs --live https://your-domain.example` with `SITE_URL` set to that origin after building it.
+Verify `/`, `/blog`, `/search`, `/posts_feed`, `/admin/config.yml` and `/healthz`; then check authenticated library saving and a publication through `/editor`. Anonymous `/editor` should redirect to site login, and `/api/editor` must reject anonymous and cross-origin writes. Run `node scripts/check-links.mjs --live https://your-domain.example` with `SITE_URL` set to that origin after building it.
 
 ## Recovery
 

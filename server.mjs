@@ -6,11 +6,12 @@ import {createHash} from 'node:crypto';
 import zlib from 'node:zlib';
 import {server as library,authenticated} from './library/server.mjs';
 import {editorHandler} from './editor-api.mjs';
+import {productionEditorHandler} from './production-editor-api.mjs';
 import {personalizeSiteHeader} from './src/lib/site-shell.mjs';
 const root=path.dirname(fileURLToPath(import.meta.url)),dist=path.join(root,'dist');
 process.env.LIBRARY_PAGE_FILE??=path.join(dist,'index.html');
 const privateRoot=process.env.INTEGRATION_PRIVATE_DIR||path.resolve(root,'../private');
-const editor=editorHandler({root,privateRoot,authenticated});
+const editor=process.env.NODE_ENV==='production'?productionEditorHandler({authenticated}):editorHandler({root,privateRoot,authenticated});
 const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.ico':'image/x-icon','.xml':'application/xml','.txt':'text/plain; charset=utf-8','.wasm':'application/wasm','.woff2':'font/woff2','.woff':'font/woff','.ttf':'font/ttf','.mp3':'audio/mpeg','.mp4':'video/mp4','.pdf':'application/pdf','.webm':'video/webm'};
 const csp="default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https:; media-src 'self' https:; frame-src https://www.youtube-nocookie.com https://www.youtube.com https://open.spotify.com https://embed.podcasts.apple.com; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'self'";
 const editorCsp="default-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://api.github.com https://github.com https://raw.githubusercontent.com; worker-src 'self' blob:; frame-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'self'";
@@ -45,7 +46,7 @@ async function redirectMap(){
 export const server=http.createServer(async(req,res)=>{
   try{
     const url=new URL(req.url,'http://localhost'),p=url.pathname;
-    if(p==='/editor'&&process.env.NODE_ENV==='production')return reply(res,302,'Open the blog editor',{Location:'/admin/','Cache-Control':'no-store'});
+    if(p==='/editor'&&process.env.NODE_ENV==='production'&&!authenticated(req))return reply(res,302,'Sign in to edit',{Location:'/login?next=%2Feditor','Cache-Control':'no-store'});
     if(p==='/api/session')return reply(res,200,JSON.stringify({canEdit:authenticated(req)}),{'Content-Type':'application/json','Cache-Control':'no-store'});
     if(p.startsWith('/api/editor'))return await editor(req,res);
     if(p==='/healthz'){await stat(path.join(dist,'blog.html'));await stat(path.join(dist,'pagefind/pagefind.js'));req.url='/health';return library.emit('request',req,res)}
@@ -82,6 +83,7 @@ export const server=http.createServer(async(req,res)=>{
     const h={...headers,'Content-Type':type,'Cache-Control':status===404?'no-cache':cacheControl(p),ETag:tag,'Content-Security-Policy':isAdmin?editorCsp:csp,Vary:'Accept-Encoding'};
     if(personalized){h['Cache-Control']='private, no-cache';h.Vary='Accept-Encoding, Cookie';}
     if(isAdmin||p==='/editor')h['X-Robots-Tag']='noindex, nofollow';
+    if(p==='/editor')h['Cache-Control']='private, no-store';
     if(status===200&&String(req.headers['if-none-match']||'').split(',').some(t=>[tag,'W/'+tag].includes(t.trim()))){res.writeHead(304,h);return res.end()}
     let body;if(entry){const [encoding,data]=encodedBody(entry,req);body=data;if(encoding)h['Content-Encoding']=encoding}else body=req.method==='HEAD'?null:await readFile(target);
     h['Content-Length']=body?body.length:st.size;res.writeHead(status,h);res.end(req.method==='HEAD'?undefined:body);

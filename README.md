@@ -28,6 +28,7 @@ To edit locally, copy `.env.example` to `.env`, set your own `LIBRARY_PASSWORD`,
 | `library/` | Library interface, API, public covers and TBR catalogue |
 | `public/` | Shared styles, scripts, uploads, platform icons and vendored Sveltia CMS |
 | `server.mjs`, `editor-api.mjs` | Node server and local editing |
+| `production-editor-api.mjs`, `github-publisher.mjs` | Site-password editing and repository-scoped publishing |
 | `scripts/` | Build, content and link checks |
 
 Astro generates the blog; Pagefind indexes writing; the Node server combines it with the library API and catalogue search. Production library storage uses Supabase. The Docker image runs Node without installing build dependencies at startup.
@@ -41,7 +42,7 @@ npm test
 npm run check:build
 ```
 
-Tests use synthetic library records. They exercise content routes, search, feeds, redirects, authentication, saving, editor round trips and server protections. GitHub Actions runs these checks for pushes and pull requests.
+Tests use synthetic library records and temporary local Git repositories. They exercise content routes, search, feeds, redirects, authentication, saving, editor round trips, concurrent publishing and server protections. GitHub Actions runs these checks for pushes and pull requests.
 
 ## Hosting and editing
 

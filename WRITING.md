@@ -8,9 +8,11 @@ Everything committed here is public, including earlier revisions. Keep unfinishe
 
 ## Browser editor
 
-Open [the editor](https://tiagobooks.com/admin/). Only a GitHub account with write access can publish. Use token sign-in with a fine-grained token restricted to this repository and Contents read/write. Enter the token only in the editor; never save it in source or a post. OAuth sign-in requires a separately configured provider.
+Open [Edit writing](https://tiagobooks.com/editor), or use the pencil in the header. Sign in with the same site password used for library administration. Choose a post or page, edit its Markdown and metadata, then select **Publish changes**. No GitHub sign-in or token is needed in this editor. Unsaved text stays in the current tab; it is not a private draft storage service.
 
-The editor writes to `tiagovasc/tiagobooks-website`, branch `codex/unified-site`. Saving publishes source to GitHub and triggers the connected host's build. Verify that deployment succeeds before checking the live page. Library sign-in and GitHub CMS sign-in are separate.
+Publishing creates a versioned commit in `tiagovasc/tiagobooks-website`, branch `codex/unified-site`, and triggers the host's build. The live site updates after a successful deployment, usually within a few minutes; a failed build leaves the last successful website live. Conflicting edits are rejected: copy your unsaved text, reload the entry and compare before retrying. Metadata is validated without reformatting the original Markdown. Private flags and recognizable credentials are rejected.
+
+The [advanced GitHub editor](https://tiagobooks.com/admin/) remains available for its visual fields, media picker and navigation settings. That separate editor still requires a GitHub account with write access: use a fine-grained token restricted to this repository with Contents read/write. OAuth needs a separately configured provider. The following visual-field steps refer to this advanced editor.
 
 1. Choose Posts or Pages and create an entry.
 2. Add the title, date (for posts), tags, optional description and body.
@@ -18,7 +20,7 @@ The editor writes to `tiagovasc/tiagobooks-website`, branch `codex/unified-site`
 4. Save only content ready to be public. Review the deployment result.
 5. Preserve the slug when editing; add an alias when changing an existing URL.
 
-Navigation is editable in Settings. A future date does not schedule publication. For local editing, follow the README and use `/editor`; commits and pushes remain separate steps.
+Navigation is editable in the advanced editor's Settings. A future date does not schedule publication. For local editing, follow the README and use `/editor`; Save locally and Rebuild preview stay local, with commits and pushes as separate steps.
 
 ## Links, images and mathematics
 

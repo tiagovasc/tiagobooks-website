@@ -56,9 +56,9 @@ test('private source, receipts and original CMS destination cannot leak or be ed
   assert.equal((await fetch(base+'/save',{method:'POST',body:'[]'})).status,401);
 });
 
-test('production editor opens the configured CMS without enabling local source writes',async()=>{
+test('production editor requires site login without enabling local source writes',async()=>{
   const before=process.env.NODE_ENV;process.env.NODE_ENV='production';
-  try{const response=await fetch(base+'/editor',{redirect:'manual'});assert.equal(response.status,302);assert.equal(response.headers.get('location'),'/admin/');assert.equal((await fetch(base+'/api/editor')).status,404)}
+  try{const response=await fetch(base+'/editor',{redirect:'manual'});assert.equal(response.status,302);assert.equal(response.headers.get('location'),'/login?next=%2Feditor');assert.equal((await fetch(base+'/api/editor')).status,404)}
   finally{if(before===undefined)delete process.env.NODE_ENV;else process.env.NODE_ENV=before}
 });
 test('authenticated library editing persists, rejects stale saves, and preserves revision history',async()=>{
