@@ -2,6 +2,7 @@ import http from 'node:http';
 import {localDB} from '../local-storage.mjs';
 import {readBody,sameOrigin} from './http-utils.mjs';
 import {personalizeSiteHeader} from '../src/lib/site-shell.mjs';
+import {tripMonth,publicTripCatalogue} from './trip-privacy.mjs';
 import {readFile,stat} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -82,9 +83,17 @@ export function plausibleSave(previousCount,nextCount){
 
 // Visitors get the library without descriptions (fetched one book at a time when a book is opened) and without
 // merge bookkeeping that no screen shows. The signed-in editor always loads the complete records it saves back.
-const PUBLIC_OMIT=['description','merged_records','merge_conflicts'];
+const PUBLIC_OMIT=['description','merged_records','merge_conflicts','acquisition_events'];
 const described=b=>typeof b?.description==='string'&&b.description.trim()!=='';
-export function publicBooks(books){return books.map(b=>{const o={};for(const k of Object.keys(b))if(!PUBLIC_OMIT.includes(k))o[k]=b[k];if(described(b))o.has_description=true;return o;});}
+export function publicBooks(books){return books.map(b=>{
+  const o={};for(const k of Object.keys(b))if(!PUBLIC_OMIT.includes(k))o[k]=b[k];
+  if(['purchase_receipt','user_trip'].includes(b.acquisition_basis)||(b.acquisition_events||[]).length){
+    if(o.acquired_date)o.acquired_date=tripMonth(o.acquired_date);
+    // Receipt notes can repeat exact dates even after the structured fields are redacted.
+    delete o.notes;delete o.acquisition_source;
+  }
+  if(described(b))o.has_description=true;return o;
+});}
 // A save that would strip descriptions from most books is refused, like one that would remove most books.
 export function keepsDescriptions(previousDescribed,nextDescribed){return !(typeof previousDescribed==='number'&&previousDescribed>=20&&nextDescribed<previousDescribed*0.5);}
 
@@ -184,8 +193,8 @@ export const server=http.createServer(async(req,res)=>{
     if(url.pathname==='/health'){if(!local&&(!base||!key))return send(res,503,{ok:false});const rows=await db('GET','?id=eq.library&select=revision');return send(res,rows.length?200:503,{ok:!!rows.length});}
     if(url.pathname==='/books.json'&&req.method==='GET'){
       const snap=await librarySnapshot();if(!snap)return send(res,503,{error:'Library is not initialized'});
-      if(url.searchParams.get('view')==='public')return sendVariant(req,res,snap.publicVariant,{type:'application/json',etag:`"r${snap.revision}-public"`,cache:'no-cache',extra:{'X-Library-Revision':String(snap.revision)}});
-      return sendVariant(req,res,snap.variant,{type:'application/json',etag:`"r${snap.revision}"`,cache:'no-cache',extra:{'X-Library-Revision':String(snap.revision)}});
+      if(!authenticated(req)||url.searchParams.get('view')==='public')return sendVariant(req,res,snap.publicVariant,{type:'application/json',etag:`"r${snap.revision}-month-public"`,cache:'private, no-cache',extra:{'X-Library-Revision':String(snap.revision),Vary:'Accept-Encoding, Cookie'}});
+      return sendVariant(req,res,snap.variant,{type:'application/json',etag:`"r${snap.revision}"`,cache:'private, no-store',extra:{'X-Library-Revision':String(snap.revision),Vary:'Accept-Encoding, Cookie'}});
     }
     if(url.pathname==='/book-descriptions.json'&&req.method==='GET'){
       const snap=await librarySnapshot();if(!snap)return send(res,503,{error:'Library is not initialized'});
@@ -221,9 +230,9 @@ export const server=http.createServer(async(req,res)=>{
     if(Object.hasOwn(TBR_FILES,filename)){
       const file=path.join(root,filename),st=await stat(file).catch(()=>null);
       if(!st||!st.isFile())return send(res,404,{error:'Not found'});
-      const etag=`W/"${st.size.toString(16)}-${Math.floor(st.mtimeMs).toString(16)}"`;
+      const etag=`W/"${st.size.toString(16)}-${Math.floor(st.mtimeMs).toString(16)}-month"`;
       let cached=tbrVariants.get(filename);
-      if(!cached||cached.etag!==etag){cached={etag,variant:await compressed(await readFile(file),5)};tbrVariants.set(filename,cached);}
+      if(!cached||cached.etag!==etag){let raw=await readFile(file);if(filename.endsWith('.json'))raw=Buffer.from(JSON.stringify(publicTripCatalogue(JSON.parse(raw))));cached={etag,variant:await compressed(raw,5)};tbrVariants.set(filename,cached);}
       return sendVariant(req,res,cached.variant,{type:TBR_FILES[filename],etag,cache:'no-cache'});
     }
     if(!(ROOT_FILES.includes(filename)||COVER.test(filename)))return send(res,404,{error:'Not found'});

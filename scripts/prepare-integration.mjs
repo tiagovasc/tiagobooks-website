@@ -2,11 +2,13 @@ import {readFileSync,writeFileSync,mkdirSync,copyFileSync} from 'node:fs';
 import {resolve} from 'node:path';
 import site from '../src/lib/site-config.mjs';
 import {renderSiteHeader} from '../src/lib/site-shell.mjs';
+import {assertPublicTripDates} from '../library/trip-privacy.mjs';
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 // The tracked library/index.html only receives the shared header, which depends on src/data/site.json alone.
 // Origin-dependent tags (canonical, og:url) go into the generated dist/library.html, so a local build with a
 // localhost SITE_URL can no longer leave localhost URLs in the source (as happened before 9ce445e).
 if(!process.argv.includes('--finish')){
+  for(const name of ['tbr-bookshops.json','tbr-catalogue.json'])assertPublicTripDates(JSON.parse(readFileSync('library/'+name,'utf8')));
   mkdirSync('data',{recursive:true});
   const source=readFileSync('library/index.html','utf8');
   if(!/^var SEED = \[\];\r?$/m.test(source))throw Error('Personal library must not be embedded');

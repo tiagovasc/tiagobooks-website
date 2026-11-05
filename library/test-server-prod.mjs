@@ -5,6 +5,7 @@ import fs from 'node:fs';
 
 // ---- an in-memory stand-in for the hosted storage table ----
 const seed=Array.from({length:40},(_,i)=>({id:String(i+1),title:'Book '+(i+1),rating:i%6}));
+Object.assign(seed[0],{acquisition_basis:'purchase_receipt',acquired_date:'2001-08-19',acquisition_events:[{date:'2001-08-19',shop:'Example shop'}],notes:'Purchased on 19 August',acquisition_source:'Receipt 19 August'});
 let row={id:'library',books:seed,revision:7};
 let storageDown=false, reads=0;
 const storage=http.createServer(async(req,res)=>{
@@ -53,16 +54,32 @@ test('plausibleSave refuses empty or gutted libraries but allows normal edits',(
 test('books.json is compressed, revision-tagged and answers conditional requests with 304',async()=>{
   const first=await fetch(base+'/books.json',{headers:{'Accept-Encoding':'gzip'}});
   assert.equal(first.status,200);assert.equal(first.headers.get('content-encoding'),'gzip');
-  assert.equal(first.headers.get('x-library-revision'),'7');assert.equal(first.headers.get('etag'),'"r7"');
+  assert.equal(first.headers.get('x-library-revision'),'7');assert.equal(first.headers.get('etag'),'"r7-month-public"');
   assert.equal((await first.json()).length,40,'fetch transparently decodes, so a readable body proves the encoding is valid');
   const br=await fetch(base+'/books.json',{headers:{'Accept-Encoding':'br'}});
   assert.equal(br.headers.get('content-encoding'),'br');
   const plain=await fetch(base+'/books.json',{headers:{'Accept-Encoding':'identity'}});
   assert.equal(plain.headers.get('content-encoding'),null);assert.equal((await plain.json()).length,40);
   const before=reads;
-  const cached=await fetch(base+'/books.json',{headers:{'If-None-Match':'"r7"'}});
+  const cached=await fetch(base+'/books.json',{headers:{'If-None-Match':'"r7-month-public"'}});
   assert.equal(cached.status,304);assert.equal(cached.headers.get('x-library-revision'),'7');
   assert.equal(reads,before,'an unchanged library is not re-read from storage');
+});
+
+test('anonymous library reads cannot reveal exact trip dates; owner data stays intact',async()=>{
+ const cookie=await login();
+ const owner=await fetch(base+'/books.json',{headers:{Cookie:cookie}});
+ const full=await owner.json();assert.equal(full[0].acquired_date,'2001-08-19');assert.equal(full[0].acquisition_events[0].date,'2001-08-19');
+ assert.match(owner.headers.get('cache-control'),/private, no-store/);
+ for(const suffix of ['', '?view=public', '?view=full']){
+  const r=await fetch(base+'/books.json'+suffix);const book=(await r.json())[0];
+  assert.equal(book.acquired_date,'2001-08');
+  for(const field of ['acquisition_events','notes','acquisition_source'])assert.equal(field in book,false);
+  assert.match(r.headers.get('vary'),/Cookie/);
+ }
+ assert.equal((await fetch(base+'/books.json',{headers:{'If-None-Match':owner.headers.get('etag')}})).status,200);
+ assert.equal((await fetch(base+'/books.json',{headers:{'If-None-Match':'"r7-public"'}})).status,200,'old public cache must refresh after privacy change');
+ assert.deepEqual(row.books,seed);
 });
 
 test('the hosted page leaves out the embedded offline copy and keeps the edit flag correct',async()=>{

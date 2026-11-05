@@ -1,7 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {filterBooks,groupBooks,SOURCES,sourceBooks,filterCatalogue,collectionGroups,sourceLabel,SOURCE_VIEWS,catalogueCounts} from './tbr.js';
+import {filterBooks,groupBooks,SOURCES,sourceBooks,filterCatalogue,collectionGroups,sourceLabel,SOURCE_VIEWS,catalogueCounts,tripMonthLabel} from './tbr.js';
+import {publicTripCatalogue,assertPublicTripDates} from './trip-privacy.mjs';
 const data=JSON.parse(fs.readFileSync(new URL('./tbr-bookshops.json',import.meta.url),'utf8'));
 
 test('All TBR combines every source once, searches places and supports undated discoveries',()=>{
@@ -27,14 +28,27 @@ test('bookshop import preserves every photograph, unique public IDs and chronolo
  assert.equal(data.books.reduce((n,b)=>n+b.sightings.length,0),819);
  assert.equal(new Set(data.books.map(b=>b.id)).size,753);
  assert.equal(data.books[0].sightings[0].bookshop,'Watkins Books');
- assert.match(data.books[0].sightings[0].photographed_at,/^2026-10-29/);
+ assert.match(data.books[0].sightings[0].photographed_at,/^2026-10$/);
  for(const b of data.books){
   assert.ok(b.title);assert.ok(b.sightings.length);
   for(let i=1;i<b.sightings.length;i++)assert.ok(Date.parse(b.sightings[i-1].photographed_at)>=Date.parse(b.sightings[i].photographed_at));
-  for(const s of b.sightings){assert.ok(s.city&&s.bookshop);assert.ok(Number.isFinite(Date.parse(s.photographed_at)));}
+  for(const s of b.sightings){assert.ok(s.city&&s.bookshop);assert.match(s.photographed_at,/^\d{4}-\d{2}$/);}
   if(b.cover){assert.match(b.cover,/^covers\/web\/tbr_bookshop_[a-f\d]+\.jpg$/);assert.ok(fs.existsSync(new URL('./'+b.cover,import.meta.url)));}
  }
  for(let i=1;i<data.books.length;i++)assert.ok(Date.parse(data.books[i-1].sightings[0].photographed_at)>=Date.parse(data.books[i].sightings[0].photographed_at));
+});
+
+test('public trip exports and displayed dates never expose a day or timestamp',()=>{
+ const privateData={books:[{id:'example',sightings:[{visit_id:'example',city:'Example city',bookshop:'Example shop',photographed_at:'2001-08-19T11:45:00Z',private_note:'day details'}]}]};
+ const before=JSON.stringify(privateData),pub=publicTripCatalogue(privateData);
+ assert.equal(pub.books[0].sightings[0].photographed_at,'2001-08');
+ assert.equal('private_note' in pub.books[0].sightings[0],false);
+ assert.equal(tripMonthLabel('2001-08-19T11:45:00Z'),'Aug 2001');
+ assert.equal(tripMonthLabel('2001-08'),'Aug 2001');
+ assert.throws(()=>assertPublicTripDates(privateData),/YYYY-MM/);
+ assert.doesNotThrow(()=>assertPublicTripDates(pub));
+ assert.doesNotThrow(()=>assertPublicTripDates(data));
+ assert.equal(JSON.stringify(privateData),before);
 });
 test('public TBR has no original paths, filenames, GPS or library state',()=>{
  const serialized=JSON.stringify(data);

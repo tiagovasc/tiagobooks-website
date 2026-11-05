@@ -60,7 +60,7 @@ test('a library save split inside a character is stored without replacement char
   const buffer=Buffer.from(JSON.stringify(next));const at=buffer.indexOf(Buffer.from('’'))+1;
   const saved=await splitPost('/save',{Cookie:cookie,'Content-Type':'application/json','X-Library-Revision':'1'},buffer,at);
   assert.equal(saved.status,200,saved.body);
-  const stored=await(await fetch(base+'/books.json')).json();
+  const stored=await(await fetch(base+'/books.json',{headers:{Cookie:cookie}})).json();
   assert.deepEqual(stored,next);assert.doesNotMatch(JSON.stringify(stored),/�/);
 });
 
@@ -172,7 +172,8 @@ test('header actions arrive complete and identical across pages before JavaScrip
 });
 
 test('visitors load the library without descriptions; each description loads on its own',async()=>{
-  const full=await(await fetch(base+'/books.json')).json();
+  const cookie=(await login()).headers.get('set-cookie').split(';')[0];
+  const full=await(await fetch(base+'/books.json',{headers:{Cookie:cookie}})).json();
   const pub=await fetch(base+'/books.json?view=public');assert.equal(pub.headers.get('etag')?.endsWith('-public"'),true);
   const list=await pub.json();assert.equal(list.length,full.length);
   for(const b of list){assert.equal('description' in b,false);assert.equal('merged_records' in b,false);assert.equal('merge_conflicts' in b,false)}
@@ -187,7 +188,7 @@ test('visitors load the library without descriptions; each description loads on 
 
 test('a save that would strip most descriptions is refused',async()=>{
   const cookie=(await login()).headers.get('set-cookie').split(';')[0];
-  const res=await fetch(base+'/books.json');const revision=res.headers.get('x-library-revision');const full=await res.json();
+  const res=await fetch(base+'/books.json',{headers:{Cookie:cookie}});const revision=res.headers.get('x-library-revision');const full=await res.json();
   const stripped=full.map(({description,...b})=>b);
   const r=await fetch(base+'/save',{method:'POST',headers:{Cookie:cookie,'Content-Type':'application/json','X-Library-Revision':revision},body:JSON.stringify(stripped)});
   assert.equal(r.status,400);assert.match((await r.json()).error,/descriptions/);
