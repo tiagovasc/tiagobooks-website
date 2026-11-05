@@ -1,5 +1,6 @@
 ---
-title: In Search of the Infinite - Demons (Volume 2, Chapter 3)
+title: "Demons"
+subtitle: "In Search of the Infinite: Chapter 3"
 date: 2017-09-24 05:38:00-05:00
 tags:
 - In Search of the Infinite

@@ -1,5 +1,6 @@
 ---
-title: In Search of the Infinite - Meaning and Technology (Volume 3, Chapter 2)
+title: "Meaning and Technology"
+subtitle: "In Search of the Infinite: Chapter 2"
 date: 2019-03-04 05:45:00-06:00
 tags:
 - In Search of the Infinite

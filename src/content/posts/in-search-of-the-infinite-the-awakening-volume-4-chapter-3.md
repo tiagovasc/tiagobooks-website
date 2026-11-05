@@ -1,5 +1,6 @@
 ---
-title: In Search of the Infinite - The Awakening (Volume 4, Chapter 3)
+title: "The Awakening"
+subtitle: "In Search of the Infinite: Chapter 3"
 date: 2025-01-18 05:57:00-06:00
 tags:
 - In Search of the Infinite

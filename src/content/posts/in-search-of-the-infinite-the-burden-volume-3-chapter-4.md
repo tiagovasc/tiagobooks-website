@@ -1,5 +1,6 @@
 ---
-title: In Search of the Infinite - The Burden (Volume 3, Chapter 4)
+title: "The Burden"
+subtitle: "In Search of the Infinite: Chapter 4"
 date: 2020-02-09 05:49:00-06:00
 tags:
 - In Search of the Infinite

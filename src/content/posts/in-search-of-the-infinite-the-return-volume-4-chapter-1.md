@@ -1,5 +1,6 @@
 ---
-title: In Search of the Infinite - The Return (Volume 4, Chapter 1)
+title: "The Return"
+subtitle: "In Search of the Infinite: Chapter 1"
 date: 2024-07-16 05:52:00-05:00
 tags:
 - In Search of the Infinite

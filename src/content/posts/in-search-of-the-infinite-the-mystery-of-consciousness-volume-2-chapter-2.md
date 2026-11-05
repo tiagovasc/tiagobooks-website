@@ -1,6 +1,6 @@
 ---
-title: In Search of the Infinite - The Mystery of Consciousness (Volume 2, Chapter
-  2)
+title: "The Mystery of Consciousness"
+subtitle: "In Search of the Infinite: Chapter 2"
 date: 2017-09-06 05:35:00-05:00
 tags:
 - In Search of the Infinite

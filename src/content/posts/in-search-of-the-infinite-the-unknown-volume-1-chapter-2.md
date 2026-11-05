@@ -1,5 +1,6 @@
 ---
-title: In Search of the Infinite - The Unknown (Volume 1, Chapter 2)
+title: "The Unknown"
+subtitle: "In Search of the Infinite: Chapter 2"
 date: 2017-04-12 05:06:00-05:00
 tags:
 - In Search of the Infinite

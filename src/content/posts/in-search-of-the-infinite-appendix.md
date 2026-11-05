@@ -1,5 +1,6 @@
 ---
-title: ' In Search of the Infinite: Appendix'
+title: "Appendix"
+subtitle: "In Search of the Infinite"
 date: 2025-01-20 11:09:00-06:00
 tags:
 - In Search of the Infinite

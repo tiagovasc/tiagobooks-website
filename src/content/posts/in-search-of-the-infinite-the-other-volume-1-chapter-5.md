@@ -1,5 +1,6 @@
 ---
-title: In Search of the Infinite - The Other (Volume 1, Chapter 5)
+title: "The Other"
+subtitle: "In Search of the Infinite: Chapter 5"
 date: 2017-07-15 05:23:00-05:00
 tags:
 - In Search of the Infinite

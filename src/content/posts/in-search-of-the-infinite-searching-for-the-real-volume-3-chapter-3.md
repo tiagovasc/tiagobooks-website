@@ -1,5 +1,6 @@
 ---
-title: In Search of the Infinite - Searching for the Real (Volume 3, Chapter 3)
+title: "Searching for the Real"
+subtitle: "In Search of the Infinite: Chapter 3"
 date: 2019-03-20 05:47:00-05:00
 tags:
 - In Search of the Infinite

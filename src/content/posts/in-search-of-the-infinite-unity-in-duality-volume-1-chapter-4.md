@@ -1,5 +1,6 @@
 ---
-title: In Search of the Infinite - Unity in Duality (Volume 1, Chapter 4)
+title: "Unity in Duality"
+subtitle: "In Search of the Infinite: Chapter 4"
 date: 2017-06-26 05:21:00-05:00
 tags:
 - In Search of the Infinite

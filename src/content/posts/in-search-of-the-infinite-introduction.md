@@ -1,5 +1,6 @@
 ---
-title: 'In Search of the Infinite: Introduction'
+title: "Introduction"
+subtitle: "In Search of the Infinite"
 date: 2017-03-11 11:07:00-06:00
 tags:
 - In Search of the Infinite

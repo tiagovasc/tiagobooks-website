@@ -1,5 +1,6 @@
 ---
-title: In Search of the Infinite - Finding the Roots (Volume 1, Chapter 3)
+title: "Finding the Roots"
+subtitle: "In Search of the Infinite: Chapter 3"
 date: 2017-05-14 05:18:00-05:00
 tags:
 - In Search of the Infinite

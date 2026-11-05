@@ -1,5 +1,6 @@
 ---
-title: In Search of the Infinite - Anchors of Being (Volume 3, Chapter 1)
+title: "Anchors of Being"
+subtitle: "In Search of the Infinite: Chapter 1"
 date: 2017-12-17 05:43:00-06:00
 tags:
 - In Search of the Infinite

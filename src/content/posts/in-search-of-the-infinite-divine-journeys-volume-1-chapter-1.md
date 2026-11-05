@@ -1,5 +1,6 @@
 ---
-title: In Search of the Infinite - Divine Journeys (Volume 1, Chapter 1)
+title: "Divine Journeys"
+subtitle: "In Search of the Infinite: Chapter 1"
 date: 2017-03-12 11:50:00-05:00
 tags:
 - In Search of the Infinite

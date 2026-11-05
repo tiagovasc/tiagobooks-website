@@ -1,5 +1,6 @@
 ---
-title: In Search of the Infinite - Despair (Volume 2, Chapter 4)
+title: "Despair"
+subtitle: "In Search of the Infinite: Chapter 4"
 date: 2017-11-21 05:41:00-06:00
 tags:
 - In Search of the Infinite

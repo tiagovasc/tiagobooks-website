@@ -2,6 +2,8 @@
 
 Published posts live in `src/content/posts/`, pages in `src/content/pages/`, and uploaded media in `public/uploads/`. Preserve filenames to keep existing URLs working.
 
+For book chapters, use the chapter name as `title` and `In Search of the Infinite: Chapter X` as `subtitle`, retaining the chapter's existing number. Introduction and Appendix use the series name without a chapter number. Keep the original filename so links remain stable.
+
 ## Public repository boundary
 
 Everything committed here is public, including earlier revisions. Keep unfinished private work outside this repository. `draft`, `unlisted` and `protected` are rendering features, not GitHub privacy controls. The public-source check rejects entries with these flags enabled; use a separate private source repository if you need that workflow. Do not enter private text into this site's remote CMS.

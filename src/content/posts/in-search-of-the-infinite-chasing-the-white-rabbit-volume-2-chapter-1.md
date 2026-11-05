@@ -1,5 +1,6 @@
 ---
-title: In Search of the Infinite - Chasing the White Rabbit (Volume 2, Chapter 1)
+title: "Chasing the White Rabbit"
+subtitle: "In Search of the Infinite: Chapter 1"
 date: 2017-08-16 05:27:00-05:00
 tags:
 - In Search of the Infinite

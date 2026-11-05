@@ -1,5 +1,6 @@
 ---
-title: In Search of the Infinite - Love as Ontology (Volume 4, Chapter 2)
+title: "Love as Ontology"
+subtitle: "In Search of the Infinite: Chapter 2"
 date: 2024-12-21 05:55:00-06:00
 tags:
 - In Search of the Infinite
