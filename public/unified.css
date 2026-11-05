@@ -34,15 +34,16 @@ body.writing-site{max-width:none;padding:0 0 80px;font-family:var(--font);backgr
 .date-track button{flex-shrink:0;border:0;background:none;color:var(--faint);font-size:10px;padding:5px 2px;min-height:24px;min-width:32px;opacity:.65;border-radius:5px;cursor:pointer}.date-track button.month-tick{font-size:0;min-height:12px;height:12px;padding:2px}.month-tick:after{content:'';display:block;width:3px;height:3px;background:currentColor;border-radius:50%;margin:auto}.date-track button.active{color:var(--ink);opacity:1;background:var(--sunk);font-size:10px}.date-track button.active:after{display:none}.date-track:hover button,.date-track:focus-within button{opacity:1}.date-track button:hover{background:var(--sunk);color:var(--ink)}
 .mobile-month{display:none}
 /* Discreet publication archive, centered in the desktop content gutter. */
-.date-rail.editorial-rail{left:var(--archive-center,110px);top:calc((100dvh + var(--shell-h,74px))/2);transform:translate(-50%,-50%);width:104px;display:flex;flex-direction:column;align-items:stretch;gap:16px;max-height:calc(100dvh - var(--shell-h,74px) - 40px);color:var(--muted)}
+.date-rail.editorial-rail{left:var(--archive-center,110px);top:calc((100dvh + var(--shell-h,74px))/2);transform:translate(-50%,-50%);width:128px;display:flex;flex-direction:column;align-items:stretch;gap:18px;max-height:calc(100dvh - var(--shell-h,74px) - 40px);color:var(--muted)}
 .editorial-rail .date-context{width:auto;flex-shrink:0}
 .editorial-rail .archive-label{font:500 9px/1.5 var(--font);letter-spacing:.14em;text-transform:uppercase;margin-bottom:9px}
-.editorial-rail [data-rail-year]{font:400 30px/1.2 Georgia,"Times New Roman",serif;letter-spacing:-.5px;font-variant-numeric:lining-nums}
-.editorial-rail .date-month{font:400 12px/1.5 var(--font);margin-top:5px}
-.editorial-rail .date-count{font:400 10px/1.5 var(--font);color:var(--muted);margin-top:2px}
-.editorial-rail .date-track{position:relative;width:auto;height:auto;max-height:min(34dvh,270px);min-height:0;align-items:stretch;gap:0;padding:0 0 0 10px;border-color:var(--line);overscroll-behavior:contain;scrollbar-width:thin}
-.editorial-rail .date-track button{position:relative;text-align:left;min-height:28px;min-width:44px;padding:5px 8px;border-radius:0;font:400 11px/1.5 var(--font);color:var(--muted);opacity:1}
-.editorial-rail .date-track button.month-tick{height:auto;min-height:26px;padding:4px 8px 4px 18px;font-size:10px}
+.editorial-rail [data-rail-year]{font:400 42px/1.2 Georgia,"Times New Roman",serif;letter-spacing:-.5px;font-variant-numeric:lining-nums}
+.editorial-rail .date-month{font:400 14px/1.5 var(--font);margin-top:5px}
+.editorial-rail .date-count{font:400 11px/1.5 var(--font);color:var(--muted);margin-top:2px}
+.editorial-rail .date-track{position:relative;width:auto;height:auto;max-height:min(48dvh,420px);min-height:0;align-items:stretch;gap:0;padding:0 0 0 10px;border-color:var(--line);overscroll-behavior:contain;scrollbar-width:none}
+.editorial-rail .date-track::-webkit-scrollbar{display:none;width:0;height:0}
+.editorial-rail .date-track button{position:relative;text-align:left;min-height:30px;min-width:44px;padding:5px 8px;border-radius:0;font:400 12px/1.5 var(--font);color:var(--muted);opacity:1}
+.editorial-rail .date-track button.month-tick{height:auto;min-height:28px;padding:4px 8px 4px 18px;font-size:11px}
 .editorial-rail .month-tick:after{display:none}
 .editorial-rail .date-track button.current-year{color:var(--accent)}
 .editorial-rail .date-track button.active{background:transparent;color:var(--accent)}
