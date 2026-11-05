@@ -3,6 +3,7 @@ import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {spawn} from 'node:child_process';
 import {readBody,sameOrigin} from './library/http-utils.mjs';
+import {isExternalArticleUrl} from './src/lib/linked-post.mjs';
 const hash=t=>createHash('sha256').update(t).digest('hex');
 let queue=Promise.resolve(),building=false;
 export function editorHandler({root,privateRoot,authenticated}){
@@ -39,6 +40,8 @@ export function editorHandler({root,privateRoot,authenticated}){
     // Validate through the same YAML parser, while preserving source bytes on save.
     const {load}=await import('js-yaml');let metadata;try{metadata=load(input.text.match(/^---\r?\n([\s\S]*?)\r?\n---/)[1])}catch{return send(res,400,{error:'Invalid YAML metadata'})}
     if(typeof metadata?.title!=='string'||(file.startsWith('posts/')&&!Number.isFinite(Date.parse(metadata.date))))return send(res,400,{error:'A title and valid post date are required'});
+    if(metadata.externalUrl!==undefined&&metadata.externalUrl!==''&&!isExternalArticleUrl(metadata.externalUrl))return send(res,400,{error:'Use a complete HTTPS external article URL.'});
+    if(metadata.readingMinutes!==undefined&&(!Number.isInteger(metadata.readingMinutes)||metadata.readingMinutes<=0))return send(res,400,{error:'Reading minutes must be a positive whole number.'});
     const op=queue.then(async()=>{
       const prior=await readFile(target,'utf8').catch(e=>{if(e.code==='ENOENT')return null;throw e});
       if(input.revision!==(prior===null?'new':hash(prior)))return send(res,409,{error:'This entry changed. Reload before saving.'});

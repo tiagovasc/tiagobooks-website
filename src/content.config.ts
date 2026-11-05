@@ -1,5 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { isExternalArticleUrl } from './lib/linked-post.mjs';
 
 // Frontmatter mirrors what Pika exports (title, date, slug, tags) plus the few
 // features actually used on the live blog: drafts, password-protected entries.
@@ -48,7 +49,10 @@ const shared = {
 export const collections = {
   posts: defineCollection({
     loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/posts' }),
-    schema: z.object({ ...shared, date: z.coerce.date() }),
+    schema: z.object({ ...shared, date: z.coerce.date(),
+      externalUrl: z.string().refine(v=>!v||isExternalArticleUrl(v), 'Use a complete HTTPS article URL').optional(),
+      readingMinutes: z.number().int().positive().optional(),
+    }),
   }),
   pages: defineCollection({
     loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/pages' }),

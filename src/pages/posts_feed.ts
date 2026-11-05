@@ -19,12 +19,12 @@ export const GET: APIRoute = async () => {
     const artwork = p.data.image && p.data.artwork
       ? await container.renderToString(Artwork, {props:{image:new URL(p.data.image,site.url).toString(),artwork:p.data.artwork}}) : '';
     const html = rewriteHtml(artwork + await container.renderToString(Content), {fragment:true,basePath:`/posts/${p.id}`});
-    const url = `${site.url}/posts/${p.id}`;
+    const url = p.data.externalUrl || `${site.url}/posts/${p.id}`;
     entries.push(`  <entry>
     <id>tag:tiagovf.com,2005:Post/${p.id}</id>
     <published>${p.data.date.toISOString()}</published>
     <updated>${(p.data.updated ?? p.data.date).toISOString()}</updated>
-    <link rel="alternate" type="text/html" href="${url}"/>
+    <link rel="alternate" type="text/html" href="${esc(url)}"/>
     <title>${esc(displayTitle(p.data.title))}</title>
     <content type="html">${esc(html)}</content>
   </entry>`);

@@ -67,7 +67,7 @@ export const server=http.createServer(async(req,res)=>{
     let decoded;try{decoded=decodeURIComponent(p)}catch{return reply(res,400,'Invalid path')}
     const redirects=await redirectMap(),fixed={'/posts':{to:'/blog',status:301},'/index.html':{to:'/',status:308},'/index':{to:'/',status:308}};
     if(p.startsWith('/tag/')){const tagFile=path.resolve(dist,'.'+decoded+'.html');if(tagFile.startsWith(dist+path.sep)&&(await stat(tagFile).catch(()=>null))?.isFile())return reply(res,301,'Redirecting',{Location:'/blog?tag='+encodeURIComponent(decoded.slice(5))});}
-    const r=fixed[p]||redirects.get(p);if(r)return reply(res,r.status,'Redirecting',{Location:r.to+url.search});
+    const r=fixed[p]||redirects.get(p);if(r)return reply(res,r.status,'Redirecting',{Location:/^https:\/\//.test(r.to)?r.to:r.to+url.search});
     if(p.endsWith('/')&&p!=='/'&&p!=='/admin/')return reply(res,308,'Redirecting',{Location:p.slice(0,-1)+url.search});
     if(p.endsWith('.html'))return reply(res,308,'Redirecting',{Location:p.slice(0,-5)+url.search});
     if(decoded.includes('\\')||decoded.includes('\0')||decoded.split('/').some(s=>s.startsWith('.'))||['/_headers','/_redirects'].includes(decoded))return reply(res,404,'Not found');

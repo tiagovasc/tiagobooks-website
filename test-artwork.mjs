@@ -28,7 +28,7 @@ test('every published post has an image and podcast episodes use their own thumb
       assert.match(data.image,/^\/uploads\/podcasts\//);
     }
     for(const src of [data.image,thumbnail]){
-      assert.match(src,/^\/uploads\/(artwork|podcasts|book-chapters)\/[A-Za-z0-9_-]+\.webp$/);
+      assert.match(src,/^\/uploads\/(artwork|podcasts|book-chapters|linked-posts)\/[A-Za-z0-9_-]+\.webp$/);
       if(checked.has(src))continue;checked.add(src);
       const img=sharp('public'+src),meta=await img.metadata();
       assert.ok(meta.width>=200&&meta.height>=100,src);

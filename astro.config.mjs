@@ -10,6 +10,7 @@ import rehypeKatex from 'rehype-katex';
 import rehypeMedia from './src/lib/rehype-media.mjs';
 import rehypeContent from './src/lib/rehype-content.mjs';
 import site from './src/lib/site-config.mjs';
+import {isExternalArticleUrl} from './src/lib/linked-post.mjs';
 
 // Imported plugin edits must invalidate Astro's cached Markdown output too.
 const mediaRevision = createHash('sha256').update(readFileSync(new URL('./src/lib/rehype-media.mjs', import.meta.url))).digest('hex');
@@ -41,7 +42,12 @@ function aliasRedirects() {
           for (const f of readdirSync(cdir)) {
             if (!/\.mdx?$/.test(f)) continue;
             const fm = readFileSync(`${cdir}/${f}`, 'utf8').match(/^---\n([\s\S]*?)\n---/)?.[1];
-            const aliases = fm ? (yamlLoad(fm)?.aliases ?? []) : [];
+            const metadata = fm ? yamlLoad(fm) : {};
+            const aliases = metadata?.aliases ?? [];
+            if(prefix==='/posts/'&&metadata?.externalUrl){
+              if(!isExternalArticleUrl(metadata.externalUrl))throw Error('Invalid external article URL');
+              lines.push(`${prefix}${f.replace(/\.mdx?$/, '')} ${metadata.externalUrl} 302`);
+            }
             for (const a of aliases) lines.push(`${a.startsWith('/') ? a : '/' + a} ${prefix}${f.replace(/\.mdx?$/, '')} 301`);
           }
         }

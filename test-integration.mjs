@@ -10,6 +10,8 @@ import {searchCatalogue} from './src/lib/catalogue-search.mjs';
 import {editorHandler} from './editor-api.mjs';
 import {load as yaml} from 'js-yaml';
 import {BLOG_VISIBILITY,isBlogPostVisible,blogMenuSections} from './src/lib/post-presentation.mjs';
+import {isExternalArticleUrl,postHref} from './src/lib/linked-post.mjs';
+import {validatePublicEntry} from './production-editor-api.mjs';
 const listedSourcePosts=(await Promise.all((await readdir('src/content/posts')).filter(f=>f.endsWith('.md')).map(async f=>{
  const text=await readFile('src/content/posts/'+f,'utf8');return {id:f.slice(0,-3),data:yaml(text.match(/^---\r?\n([\s\S]*?)\r?\n---/)[1])};
 }))).filter(p=>!p.data.draft&&!p.data.unlisted&&!p.data.protected);
@@ -30,7 +32,7 @@ test('library, writing, metadata, scripts, uploads and search files are served o
   for(const f of await readdir('dist/tag'))if(f.endsWith('.html'))routes.push('/tag/'+f.slice(0,-5));
   async function uploads(dir,prefix){for(const f of await readdir(dir,{withFileTypes:true})){if(f.isDirectory())await uploads(path.join(dir,f.name),prefix+'/'+f.name);else routes.push(prefix+'/'+f.name)}}
   await uploads('public/uploads','/uploads');
-  for(const route of routes){const r=await fetch(base+route);assert.equal(r.status,200,route);assert.equal(r.headers.get('x-content-type-options'),'nosniff',route)}
+  for(const route of routes){const linked=listedSourcePosts.find(p=>route==='/posts/'+p.id&&p.data.externalUrl);const r=await fetch(base+route,linked?{redirect:'manual'}:{});assert.equal(r.status,linked?302:200,route);if(linked)assert.equal(r.headers.get('location'),linked.data.externalUrl);assert.equal(r.headers.get('x-content-type-options'),'nosniff',route)}
   const html=await(await fetch(base+'/library')).text();assert.match(html,/CLOUD_CAN_EDIT=false/);assert.match(html,/var SEED = \[\];/);assert.match(html,/href="\/">Blog/);
   assert.deepEqual(await(await fetch(base+'/books.json')).json(),source);
   assert.equal((await(await fetch(base+'/tbr-bookshops.json')).json()).books.length,745);
@@ -75,10 +77,26 @@ test('Podcast visibility is a reversible Blog-only choice; episode links and art
 });
 
 test('all retained aliases redirect and the full-content feed has the original 50-entry window',async()=>{
-  for(const line of (await readFile('dist/_redirects','utf8')).split(/\r?\n/).filter(l=>l.startsWith('/'))){const [from,to,status]=line.split(/\s+/);const r=await fetch(base+from,{redirect:'manual'});assert.equal(r.status,Number(status),from);assert.equal(r.headers.get('location'),to,from);assert.equal((await fetch(base+to)).status,200,to)}
+  for(const line of (await readFile('dist/_redirects','utf8')).split(/\r?\n/).filter(l=>l.startsWith('/'))){const [from,to,status]=line.split(/\s+/);const r=await fetch(base+from,{redirect:'manual'});assert.equal(r.status,Number(status),from);assert.equal(r.headers.get('location'),to,from);if(!/^https:\/\//.test(to))assert.equal((await fetch(base+to)).status,200,to)}
   for(const route of ['/feed','/rss','/rss.xml','/atom.xml'])assert.equal((await fetch(base+route,{redirect:'manual'})).headers.get('location'),'/posts_feed');
   const r=await fetch(base+'/posts_feed');assert.match(r.headers.get('content-type'),/application\/atom\+xml/);const feed=await r.text();assert.equal([...feed.matchAll(/<entry>/g)].length,50);assert.match(feed,/<content type="html">/);
   assert.equal((await fetch(base+'/missing-page')).status,404);
+});
+
+test('linked article retains the normal card and CMS source while clicks/permalink/feed lead to its publisher',async()=>{
+ const target='https://journal.nyphilosophy.org/p/why-we-need-iris-murdoch-now',slug='why-we-need-iris-murdoch-now';
+ const blog=await(await fetch(base+'/')).text();
+ assert.match(blog,new RegExp('class="p-name u-url" href="'+target+'"'));
+ assert.match(blog,/Why We Need Iris Murdoch Now/);assert.match(blog,/11 min read/);
+ assert.doesNotMatch(blog,/pc-external|published elsewhere/i);
+ const redirect=await fetch(base+'/posts/'+slug+'?local=private',{redirect:'manual'});assert.equal(redirect.status,302);assert.equal(redirect.headers.get('location'),target);
+ const feed=await(await fetch(base+'/posts_feed')).text();assert.ok(feed.includes('href="'+target+'"'));
+ const source=await readFile('src/content/posts/'+slug+'.md','utf8');assert.doesNotThrow(()=>validatePublicEntry('posts/'+slug+'.md',source));
+ assert.equal(postHref({id:'ordinary',data:{}}),'/posts/ordinary');assert.equal(postHref({id:slug,data:{externalUrl:target}}),target);
+ for(const bad of ['javascript:alert(1)','data:text/html,x','//bad.example','http://bad.example','https://user:password@bad.example','https://bad.example/\nX: y']){
+  assert.equal(isExternalArticleUrl(bad),false);assert.throws(()=>validatePublicEntry('posts/'+slug+'.md',source.replace('externalUrl: '+target,'externalUrl: '+JSON.stringify(bad))),e=>e.status===400);
+ }
+ assert.match(await readFile('public/admin/config.yml','utf8'),/name: externalUrl/);
 });
 test('private source, receipts and original CMS destination cannot leak or be edited',async()=>{
   for(const route of ['/private/library-state.json','/src/content/posts/test.md','/.env','/server.mjs','/_headers','/_redirects','/library/server.mjs','/data/pika-urls.txt','/%2e%2e/private/library-state.json'])assert.equal((await fetch(base+route)).status,404,route);
@@ -113,7 +131,7 @@ test('the real Pagefind WASM index searches all 146 writing entries',async()=>{
   try{
     const results=await index.search('beauty');assert.ok(results.results.length>0);
     const entry=await results.results[0].data();assert.ok(entry.meta.title);assert.match(entry.url,/\/(posts|pages)\//);assert.equal((await fetch(new URL(entry.url,base))).status,200);
-    const all=await index.search(null);assert.equal(all.results.length,146);
+    const all=await index.search(null);assert.equal(all.results.length,147);
     const empty=await index.search('"qzxvjkqzxvjkqzxvjk"');assert.equal(empty.results.length,0);
   }finally{await index.destroy()}
 });

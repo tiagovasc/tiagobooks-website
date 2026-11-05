@@ -26,6 +26,8 @@ collections:
     fields:
       - { label: Title, name: title, widget: string }
       - { label: Subtitle, name: subtitle, widget: string, required: false, hint: 'Optional subtitle shown beneath the title and on Blog cards. Existing opening subtitles are detected automatically.' }
+      - { label: External article URL, name: externalUrl, widget: string, required: false, hint: 'Optional HTTPS link. The card keeps its normal design and opens this article. Leave blank for a normal post.' }
+      - { label: Reading minutes override, name: readingMinutes, widget: number, value_type: int, min: 1, required: false, hint: 'Usually automatic. Set this for a linked article whose full text is hosted elsewhere.' }
       - { label: Publish date, name: date, widget: datetime, date_format: 'YYYY-MM-DD', time_format: 'HH:mm', format: "YYYY-MM-DD'T'HH:mm:ss'Z'" }
       - { label: Tags, name: tags, widget: list, required: false, default: [] }
       - { label: Featured image, name: image, widget: image, required: false }
@@ -63,7 +65,7 @@ collections:
       - { name: protected, widget: hidden, default: false }
       - { label: Old URL aliases, name: aliases, widget: list, required: false, default: [], hint: 'Old paths that redirect here, e.g. /2024/01/01/old-title' }
       - { label: Description, name: description, widget: text, required: false }
-      - { label: Body, name: body, widget: markdown }
+      - { label: Body, name: body, widget: markdown, required: false, hint: 'For an article published elsewhere, a short note or link is enough.' }
 
   - name: pages
     label: Pages

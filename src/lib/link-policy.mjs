@@ -28,6 +28,8 @@ export function normalizeSiteLink(value, { basePath = '/', redirectMap = redirec
     if (visited.has(path)) throw new Error(`Redirect cycle at ${path}`);
     visited.add(path); path = redirectMap.get(path);
   }
+  // A linked article has one declared destination; don't forward local query data to it.
+  if(/^https:\/\//.test(path))return path;
   return path + url.search + url.hash;
 }
 

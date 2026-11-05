@@ -78,3 +78,10 @@ Talks uses `## Title: Subtitle (Year)`, the YouTube URL, description paragraphs 
 ## Book chapter thumbnails
 
 The *In Search of the Infinite* posts use small, uncropped copies of their original embedded illustrations as `thumbnail` overrides. The Appendix keeps its painting because it has no embedded illustration. `thumbnailCrop` controls frontend framing only; the full original image, article artwork and credits stay intact.
+
+
+## Linking an article hosted elsewhere
+
+Create a normal post with its title, original publication date, tags, description and image. Set the optional **External article URL** (`externalUrl`) to the publisher's complete HTTPS URL. The Blog card/list keeps its regular design with no publication badge; its image and title open that URL. The local post permalink uses a temporary302redirect, so saved/search links also reach the original. Feed links point to the original article.
+
+Use a short note/link as the body rather than copying the publisher's full text. If needed, set **Reading minutes override** (`readingMinutes`) to a positive whole-number estimate for the original article; otherwise reading time is calculated normally. Clear/remove `externalUrl` to return the entry to a normal local post. This uses the existing Posts collection and editor; no separate collection or migration is needed. Only HTTPS destinations without credentials/control characters are accepted.

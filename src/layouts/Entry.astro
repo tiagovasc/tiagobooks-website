@@ -69,7 +69,7 @@ const jsonLd = kind === 'post' && !d.protected ? {
     {d.subtitle && !d.protected && <p class="entry-subtitle">{d.subtitle}</p>}
     {kind === 'post' && <p class="entry-meta" data-pagefind-ignore>
       <time class="dt-published" datetime={d.date.toISOString()}>{longDate(d.date)}</time>
-      {!d.protected && <span>{readingMinutes(entry.body)} min read</span>}
+      {!d.protected && !d.externalUrl && <span>{readingMinutes(entry.body)} min read</span>}
     </p>}
     {d.protected ? (
       <>

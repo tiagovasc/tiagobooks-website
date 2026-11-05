@@ -12,6 +12,8 @@ The shared header floats above the page, with underlined active navigation and c
 
 Blog listing preferences are controlled by `BLOG_VISIBILITY` in `src/lib/post-presentation.mjs`. Podcast cards and their Blog filter are hidden by default; setting `showPodcastPosts` to `true` restores both after rebuilding. Published articles, podcast-page links, search and feeds remain available.
 
+Posts can optionally link to an article hosted elsewhere, using the same card design and existing CMS collection. See WRITING.md for `externalUrl` and the permalink/feed behavior.
+
 ## Run locally
 
 Use Node.js **22.19 or later** and npm.

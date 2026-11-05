@@ -22,5 +22,6 @@ COPY --from=build /app/library ./library
 COPY server.mjs local-storage.mjs editor-api.mjs production-editor-api.mjs github-publisher.mjs ./
 COPY --from=build /app/node_modules/js-yaml ./node_modules/js-yaml
 COPY src/lib/site-shell.mjs ./src/lib/site-shell.mjs
+COPY src/lib/linked-post.mjs ./src/lib/linked-post.mjs
 EXPOSE 8080
 CMD ["node","server.mjs"]

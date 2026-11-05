@@ -1,6 +1,7 @@
 import {load} from 'js-yaml';
 import {readBody} from './library/http-utils.mjs';
 import {createPublisher,PublishError,validEntry} from './github-publisher.mjs';
+import {isExternalArticleUrl} from './src/lib/linked-post.mjs';
 
 export function validatePublicEntry(file,text,secrets=[]){
   if(!validEntry(file))throw new PublishError(400,'Invalid entry path');
@@ -14,6 +15,8 @@ export function validatePublicEntry(file,text,secrets=[]){
   for(const field of ['date','updated'])if(m[field]!==undefined&&(m[field]===null||!Number.isFinite(new Date(m[field]).getTime())))invalid();
   for(const field of ['draft','unlisted','protected'])if(m[field]!==undefined&&m[field]!==false)throw new PublishError(400,'Only public entries can be published here. Keep private drafts outside the public repository.');
   for(const field of ['subtitle','description','image','thumbnail'])if(m[field]!==undefined&&typeof m[field]!=='string')invalid();
+  if(m.externalUrl!==undefined&&m.externalUrl!==''&&!isExternalArticleUrl(m.externalUrl))invalid();
+  if(m.readingMinutes!==undefined&&(!Number.isInteger(m.readingMinutes)||m.readingMinutes<=0))invalid();
   for(const field of ['tags','aliases'])if(m[field]!==undefined&&(!Array.isArray(m[field])||!m[field].every(v=>typeof v==='string')))invalid();
   const url=value=>{try{return ['https:','http:'].includes(new URL(value).protocol)}catch{return false}};
   for(const field of ['spotify','apple','youtube'])if(m[field]!==undefined&&!url(m[field]))invalid();
