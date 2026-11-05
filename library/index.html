@@ -953,6 +953,8 @@ var SEED = [];
   // Newest-first reading order opens with what is on the nightstand: reading now, then next up, then the dated history.
   function acquisitionSort(){return ui.sort==="acquired"||ui.sort==="acquired_asc";}
   function acquisitionInfo(b){
+    if(b.acquisition_basis==="purchase_receipt")return "Purchased "+displayDate(b.acquired_date)+" · "+(b.acquisition_source||"receipt");
+    if(b.acquisition_basis==="user_trip")return "Edinburgh and London trip · October 2026; exact purchase date unconfirmed";
     if(b.acquisition_basis==="purchase_log")return "Purchase log · newest first; source line "+b.acquisition_log_line;
     if(b.acquisition_basis==="user_recent")return "Around October 2026 · your estimate; placement within recent purchases is approximate";
     if(b.acquisition_basis==="goodreads_added")return "Added to Goodreads "+displayDate(b.goodreads_date_added)+" · ordering estimate, not a confirmed purchase date";
@@ -975,7 +977,7 @@ var SEED = [];
   }
   function groupOf(b){
     var s=ui.sort;
-    if(s==="acquired"||s==="acquired_asc")return b.acquisition_basis==="purchase_log"||b.acquisition_basis==="user_recent"?"~purchases":b.acquisition_basis==="goodreads_added"?"~earlier":"~acquisition_unknown";
+    if(s==="acquired"||s==="acquired_asc")return ["purchase_log","user_recent","purchase_receipt","user_trip"].indexOf(b.acquisition_basis)!==-1?"~purchases":b.acquisition_basis==="goodreads_added"?"~earlier":"~acquisition_unknown";
     if(s==="dateread"){ var q=queueRank(b); return q===0?"~reading":(q===1?"~next":(b.date_read?String(b.date_read).slice(0,7):"~none")); }
     if(s==="dateread_asc") return b.date_read?String(b.date_read).slice(0,7):"~none";
     if(s==="title") return initialOf(titleKey(b));
@@ -1023,7 +1025,7 @@ var SEED = [];
   function readHTML(b,shortDate){
     if(isUnfinished(b))return '<span class="t-state">Unfinished</span>';
     if(acquisitionSort()&&publicView())return '<span class="t-state">'+esc(LABEL[b.read_status]||'Unread')+'</span>';
-    if(acquisitionSort())return '<span class="t-state" title="'+esc(acquisitionInfo(b))+'">'+esc(b.acquisition_basis==="user_recent"?"~ Oct 2026":b.acquisition_basis==="goodreads_added"?"GR "+fmtDate(b.goodreads_date_added,true):b.acquisition_basis==="purchase_log"?"Purchase log":"Order unknown")+'</span>';
+    if(acquisitionSort())return '<span class="t-state" title="'+esc(acquisitionInfo(b))+'">'+esc(b.acquisition_basis==="purchase_receipt"?fmtDate(b.acquired_date,true):b.acquisition_basis==="user_recent"||b.acquisition_basis==="user_trip"?"~ Oct 2026":b.acquisition_basis==="goodreads_added"?"GR "+fmtDate(b.goodreads_date_added,true):b.acquisition_basis==="purchase_log"?"Purchase log":"Order unknown")+'</span>';
     if(b.date_read) return '<span class="t-read" title="Read '+esc(fmtDate(b.date_read,true))+'"><svg class="i-xs" aria-hidden="true"><use href="#i-check"/></svg>'+esc(fmtDate(b.date_read,!shortDate))+'</span>';
     if(b.read_status==="reading"||b.read_status==="next"||b.read_status==="paused") return '<span class="t-state s-'+b.read_status+'">'+LABEL[b.read_status]+'</span>';
     return '';
@@ -1057,7 +1059,7 @@ var SEED = [];
   var COLUMN_KEY="tiago-books-columns-v1";
   var COLUMNS=[
     ["cover","Cover",62],["title","Title",300],["author","Author",145],["read_status","Status",116],
-    ["date_read","Date read",118],["acquisition_order","Acquisition order",130],["acquired_date","Acquired (approx.)",140],["goodreads_date_added","Goodreads added",140],["acquisition_basis","Order basis",150],["owned","Bought",88],["rating","Rating",126],["subject","Subject",120],["notes","Notes",190],
+    ["date_read","Date read",118],["acquisition_order","Acquisition order",130],["acquired_date","Acquired",140],["goodreads_date_added","Goodreads added",140],["acquisition_basis","Order basis",150],["owned","Bought",88],["rating","Rating",126],["subject","Subject",120],["notes","Notes",190],
     ["subtitle","Subtitle",260],["additional_authors","Additional authors",200],["format","Format",120],["pages","Pages",85],
     ["publication_year","Publication year",125],["publisher","Publisher",190],["isbn13","ISBN",150],["description","Description",300],
     ["tags","Tags",180],["sources","Sources",170],["notes_url","Notes link",190],["review_url","Review link",190],
@@ -1338,7 +1340,7 @@ var SEED = [];
   }
   function recordHTML(b){
     var meta=b.enriched?("Enriched"+(b.enrich_status?", "+b.enrich_status.replace(/_/g," "):"")+(b.enrich_confidence?", "+b.enrich_confidence+" confidence":"")):"Not enriched";
-    var rows=[["Acquisition order",b.acquisition_order],["Acquisition evidence",acquisitionInfo(b)],["Acquisition source",b.acquisition_source],["Acquired (approx.)",b.acquired_date],["Goodreads added",b.goodreads_date_added],["Book ID",b.id],["Sources",(b.sources||[]).join(", ")],["Goodreads shelf",b.goodreads_shelf],["Metadata",meta],
+    var rows=[["Acquisition order",b.acquisition_order],["Acquisition evidence",acquisitionInfo(b)],["Acquisition source",b.acquisition_source],["Acquired",b.acquired_date],["Goodreads added",b.goodreads_date_added],["Book ID",b.id],["Sources",(b.sources||[]).join(", ")],["Goodreads shelf",b.goodreads_shelf],["Metadata",meta],
       ["Cover file",b.cover?(b.cover+(b.cover_status?" ("+b.cover_status+")":"")):(b.cover_status?"None ("+b.cover_status+")":"None")],
       ["Google Books ID",b.google_books_id],["Notes link",/^https?:\/\//i.test(b.notes_url||"")?"":b.notes_url],["Review link",/^https?:\/\//i.test(b.review_url||"")?"":b.review_url]];
     return rows.filter(function(r){return r[1];}).map(function(r){return '<dt>'+esc(r[0])+'</dt><dd>'+esc(r[1])+'</dd>';}).join("");
