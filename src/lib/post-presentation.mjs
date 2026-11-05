@@ -1,6 +1,12 @@
 import { parseFragment } from 'parse5';
 
 export const BLOG_SECTIONS = ['General', 'Podcast', 'Book Reviews', 'In Search of the Infinite'];
+// Reversible presentation preference: true restores both Podcast cards and its Blog filter.
+export const BLOG_VISIBILITY = { showPodcastPosts: false };
+export const isBlogPostVisible = (post, showPodcastPosts = BLOG_VISIBILITY.showPodcastPosts) =>
+  showPodcastPosts || !(post.data.tags || []).some(tag => tag.toLowerCase() === 'podcast');
+export const blogMenuSections = (showPodcastPosts = BLOG_VISIBILITY.showPodcastPosts) =>
+  BLOG_SECTIONS.filter(tag => showPodcastPosts || tag !== 'Podcast');
 export const visibleTags = tags => BLOG_SECTIONS.filter(tag => tags.includes(tag));
 export const displayTitle = title => title.trim().replace(/^Podcast:\s*/i, '').replace(/^In Search of the Infinite\s+-\s+/, 'In Search of the Infinite: ');
 

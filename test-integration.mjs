@@ -8,6 +8,12 @@ import {randomBytes} from 'node:crypto';
 import {parseFragment,serialize} from 'parse5';
 import {searchCatalogue} from './src/lib/catalogue-search.mjs';
 import {editorHandler} from './editor-api.mjs';
+import {load as yaml} from 'js-yaml';
+import {BLOG_VISIBILITY,isBlogPostVisible,blogMenuSections} from './src/lib/post-presentation.mjs';
+const listedSourcePosts=(await Promise.all((await readdir('src/content/posts')).filter(f=>f.endsWith('.md')).map(async f=>{
+ const text=await readFile('src/content/posts/'+f,'utf8');return {id:f.slice(0,-3),data:yaml(text.match(/^---\r?\n([\s\S]*?)\r?\n---/)[1])};
+}))).filter(p=>!p.data.draft&&!p.data.unlisted&&!p.data.protected);
+const blogSourcePosts=listedSourcePosts.filter(p=>isBlogPostVisible(p));
 const root=path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Z]:)/,'$1'));
 const fixture=await mkdtemp(path.join(os.tmpdir(),'tiago-unified-test-'));
 const source=Array.from({length:40},(_,i)=>({id:String(i+1),title:'Fixture book '+i,author:'Fixture author',rating:i%6}));
@@ -35,22 +41,37 @@ test('one shared header, selected blog sections and publication months preserve 
   const shell=html=>serialize(parseFragment((html.match(/<header class="site-shell"[\s\S]*?<\/header>/)?.[0]||'').replace(/ aria-current="page"/g,'').replace(/nav-more-toggle is-current/g,'nav-more-toggle').replace(/(aria-controls="navExtra">)[^<]+/g,'$1More')));
   assert.ok(shell(library));assert.equal(shell(library),shell(blog));assert.doesNotMatch(shell(blog),/>Writing<|>General<|>Reviews<|>TBR</);
   assert.match(library,/data-collection="tbr"/);assert.doesNotMatch(await readFile('library/tbr.css','utf8'),/\.tbr-mode #statusSeg/);
-  assert.deepEqual([...blog.matchAll(/data-blog-tag="([^"]*)"/g)].map(m=>m[1]),['','General','Podcast','Book-Reviews','In-Search-of-the-Infinite']);
+  assert.deepEqual([...blog.matchAll(/data-blog-tag="([^"]*)"/g)].map(m=>m[1]),['',...blogMenuSections().map(s=>s.replace(/\s+/g,'-'))]);
   const tags=await readdir('dist/tag');assert.ok(tags.includes('Non-Fiction.html'),'legacy tag routes remain available');
-  assert.equal([...blog.matchAll(/data-blog-entry/g)].length,141);assert.ok([...blog.matchAll(/data-blog-month=/g)].length>12);
+  assert.equal([...blog.matchAll(/data-blog-entry/g)].length,blogSourcePosts.length);assert.ok([...blog.matchAll(/data-blog-month=/g)].length>12);
   assert.equal((await fetch(base+'/posts',{redirect:'manual'})).headers.get('location'),'/blog');
   assert.equal((await fetch(base+'/tag/Book-Reviews',{redirect:'manual'})).headers.get('location'),'/blog?tag=Book-Reviews');
   assert.equal((await fetch(base+'/date-rail.js')).status,200);
 });
 test('blog is the homepage and library initial counts do not depend on opening TBR',async()=>{
   const home=await(await fetch(base+'/')).text(),library=await(await fetch(base+'/library')).text();
-  assert.equal([...home.matchAll(/data-blog-entry/g)].length,141);
+  assert.equal([...home.matchAll(/data-blog-entry/g)].length,blogSourcePosts.length);
   const catalogue=await(await fetch(base+'/tbr-catalogue.json')).json();
   assert.match(library,new RegExp('id="statusSeg" data-tbr-count="'+catalogue.books.length+'"'));
   assert.match(library,/var STATUSES=\["read","reading","next","unread","paused"\]/);
   assert.match(home,/\/\^#book\\\//);
   const legacy=await fetch(base+'/?collection=tbr',{redirect:'manual'});
   assert.equal(legacy.status,302);assert.equal(legacy.headers.get('location'),'/library?collection=tbr');
+});
+
+test('Podcast visibility is a reversible Blog-only choice; episode links and articles remain available',async()=>{
+ const podcastPosts=listedSourcePosts.filter(p=>!isBlogPostVisible(p,false));
+ assert.equal(blogMenuSections(false).includes('Podcast'),false);assert.equal(blogMenuSections(true).includes('Podcast'),true);
+ assert.equal(listedSourcePosts.filter(p=>isBlogPostVisible(p,true)).length,listedSourcePosts.length);
+ assert.equal(listedSourcePosts.filter(p=>isBlogPostVisible(p,false)).length,listedSourcePosts.length-podcastPosts.length);
+ const blog=await(await fetch(base+'/')).text(),index=await(await fetch(base+'/pages/podcast-overview')).text();
+ for(const post of podcastPosts){
+  const href='/posts/'+post.id;
+  if(!BLOG_VISIBILITY.showPodcastPosts)assert.ok(!blog.includes('href="'+href+'"'),href+' hidden from Blog');
+  assert.ok(index.includes('href="'+href+'"'),href+' retained on Podcasts');
+  assert.equal((await fetch(base+href)).status,200,href);
+ }
+ if(!BLOG_VISIBILITY.showPodcastPosts){assert.doesNotMatch(blog,/data-blog-tag="Podcast"/);assert.match(blog,/data-hidden-podcast-url="\/pages\/podcast-overview"/);}
 });
 
 test('all retained aliases redirect and the full-content feed has the original 50-entry window',async()=>{

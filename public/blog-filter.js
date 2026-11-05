@@ -1,6 +1,9 @@
 import {createDateRail} from '/date-rail.js';
 const chips=[...document.querySelectorAll('[data-blog-tag]')],rows=[...document.querySelectorAll('[data-blog-entry]')];
 const headings=[...document.querySelectorAll('[data-blog-month]')];
+// Existing Podcast category links still lead to the episode/article index during this trial.
+const podcastIndex=document.getElementById('blog-empty')?.dataset.hiddenPodcastUrl;
+if(podcastIndex && (new URL(location.href).searchParams.get('tag')||'').trim().toLowerCase()==='podcast')location.replace(podcastIndex);
 const rail=createDateRail(rows,headings);
 // Tag links from older posts, feeds or typed URLs may differ in case or use spaces; resolve them to the chip's key.
 function currentTag(){const raw=(new URL(location.href).searchParams.get('tag')||'').trim().replace(/\s+/g,'-');const keys=rows.flatMap(row=>JSON.parse(row.dataset.tags));return keys.find(tag=>tag.toLowerCase()===raw.toLowerCase())||raw}

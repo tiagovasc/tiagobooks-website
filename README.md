@@ -10,6 +10,8 @@ The homepage is the Blog; the library lives at `/library`. The shared menu follo
 
 The shared header floats above the page, with underlined active navigation and contextual filters below. Narrow layouts retain a compact overflow menu and theme/admin controls.
 
+Blog listing preferences are controlled by `BLOG_VISIBILITY` in `src/lib/post-presentation.mjs`. Podcast cards and their Blog filter are hidden by default; setting `showPodcastPosts` to `true` restores both after rebuilding. Published articles, podcast-page links, search and feeds remain available.
+
 ## Run locally
 
 Use Node.js **22.19 or later** and npm.

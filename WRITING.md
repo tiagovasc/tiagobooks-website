@@ -55,7 +55,7 @@ thumbnailCrop:
 
 ### Titles, subtitles and Blog sections
 
-Blog navigation uses All posts, General, Podcast, Book Reviews and In Search of the Infinite, in that order. Older topic tags remain in source metadata and their links still work, but are not displayed as chips. Use one of the four sections for new posts.
+Blog navigation uses All posts, General, Book Reviews and In Search of the Infinite. Podcast articles are currently hidden from the Blog listing and its category menu; they remain published and linked from the Podcasts page. Set `BLOG_VISIBILITY.showPodcastPosts` to `true` in `src/lib/post-presentation.mjs` and rebuild to restore both. Continue tagging episode articles Podcast; the presentation preference does not change content metadata, search or feeds. Older Podcast category links lead to the Podcasts page during this trial. Other topic tags remain in source metadata and retain their links, but are not displayed as chips.
 
 Use the optional **Subtitle** field for an explicit subtitle. Otherwise cards use an opening Markdown heading or short emphasized subtitle, skipping generic headings such as Abstract and Introduction. A title's colon-separated subtitle is used when there is no opening subtitle; an excerpt remains the final fallback. Podcast titles display without a leading `Podcast:` in listings, articles, search and feeds. Source titles, bodies and URLs stay unchanged.
 

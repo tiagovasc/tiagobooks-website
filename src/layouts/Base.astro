@@ -5,7 +5,7 @@ import '../../public/unified.css';
 import site from '../lib/site-config.mjs';
 import { renderSiteHeader } from '../lib/site-shell.mjs';
 import { getTagMap } from '../lib/content';
-import { BLOG_SECTIONS } from '../lib/post-presentation.mjs';
+import { blogMenuSections, isBlogPostVisible } from '../lib/post-presentation.mjs';
 import { normalizeSiteLink, absoluteSiteLink } from '../lib/link-policy.mjs';
 
 interface Props {
@@ -30,7 +30,10 @@ const canonical = new URL(path === '/' ? '/' : path, site.url).toString();
 const imageUrl = image ? absoluteSiteLink(image) : undefined;
 const isBlog = path === '/' || path === '/blog' || path.startsWith('/posts') || path.startsWith('/tag/');
 const tagMap = isBlog ? await getTagMap() : new Map();
-const tagChoices = BLOG_SECTIONS.map(label=>[label.replace(/\s+/g,'-'),tagMap.get(label.replace(/\s+/g,'-'))] as const).filter(([,tag])=>tag);
+const tagChoices = blogMenuSections().map(label=>{
+  const key=label.replace(/\s+/g,'-'),tag=tagMap.get(key);
+  return [key,tag ? {...tag,posts:tag.posts.filter(post=>isBlogPostVisible(post))} : undefined] as const;
+}).filter(([,tag])=>tag && tag.posts.length);
 const activeTag = path.startsWith('/tag/') ? decodeURIComponent(path.slice(5)) : '';
 ---
 <!doctype html>

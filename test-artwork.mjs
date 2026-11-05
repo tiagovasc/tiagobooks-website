@@ -4,6 +4,7 @@ import {readFile,readdir} from 'node:fs/promises';
 import {load} from 'js-yaml';
 import {parse} from 'parse5';
 import sharp from 'sharp';
+import {isBlogPostVisible} from './src/lib/post-presentation.mjs';
 const walk=node=>[node,...(node.childNodes||[]).flatMap(walk)];
 const attr=(node,name)=>node.attrs?.find(a=>a.name===name)?.value;
 const text=node=>node.nodeName==='#text'?node.value:(node.childNodes||[]).map(text).join('');
@@ -21,7 +22,7 @@ test('every published post has an image and podcast episodes use their own thumb
   for(const {slug,data} of listed){
     assert.ok(data.image,`${slug} has no featured image`);
     const thumbnail=data.thumbnail||data.artwork?.thumbnail||data.image;
-    assert.ok(blog.some(n=>n.nodeName==='img'&&attr(n,'src')===thumbnail),`${slug} thumbnail missing`);
+    if(isBlogPostVisible({data}))assert.ok(blog.some(n=>n.nodeName==='img'&&attr(n,'src')===thumbnail),`${slug} visible thumbnail missing`);
     if(data.tags.includes('Podcast')||slug.startsWith('podcast-')){
       assert.equal(data.artwork,undefined,`${slug} must use its episode thumbnail, not a painting`);
       assert.match(data.image,/^\/uploads\/podcasts\//);

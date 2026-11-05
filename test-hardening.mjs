@@ -10,7 +10,7 @@ import os from 'node:os';
 import http from 'node:http';
 import {randomBytes} from 'node:crypto';
 import {parseFragment,serialize} from 'parse5';
-import { postSubtitle, displayTitle, visibleTags } from './src/lib/post-presentation.mjs';
+import { postSubtitle, displayTitle, visibleTags, BLOG_VISIBILITY } from './src/lib/post-presentation.mjs';
 import { parseInterviews } from './src/lib/interviews.mjs';
 import { parseTalks, parseBooks } from './src/lib/page-sections.mjs';
 const fixture=await mkdtemp(path.join(os.tmpdir(),'tiago-hardening-test-'));
@@ -224,11 +224,13 @@ test('the Podcast page lists every episode with post, Spotify, Apple Podcasts an
 
 test('published subtitles and podcast titles stay consistent across cards, articles and feeds',async()=>{
   const blog=await(await fetch(base+'/blog')).text();
-  assert.match(blog,/<p class="pc-sub p-summary">Rescuing the Ultimate Good<\/p>/);
-  assert.match(blog,/<p class="pc-sub p-summary">On symbols, cognition, and the bouba-kiki effect<\/p>/);
+  if(BLOG_VISIBILITY.showPodcastPosts){
+    assert.match(blog,/<p class="pc-sub p-summary">Rescuing the Ultimate Good<\/p>/);
+    assert.match(blog,/<p class="pc-sub p-summary">On symbols, cognition, and the bouba-kiki effect<\/p>/);
+  }
   assert.doesNotMatch(blog,/<a class="p-name u-url"[^>]*>Podcast:/);
   const chips=[...blog.matchAll(/class="pc-tag"[^>]*>([^<]+)</g)].map(m=>m[1]);
-  assert.ok(chips.length>100);assert.ok(chips.every(t=>['General','Podcast','Book Reviews','In Search of the Infinite'].includes(t)));
+  assert.ok(chips.length>0);assert.ok(chips.every(t=>['General','Podcast','Book Reviews','In Search of the Infinite'].includes(t)));
   const article=await(await fetch(base+'/posts/podcast-selfhood-and-psychedelic-phenomenology-with-jason-k-day')).text();
   assert.match(article,/<h1[^>]*>Selfhood and Psychedelic Phenomenology with Jason K\. Day<\/h1>/);
   assert.doesNotMatch(article,/<title>Podcast:|"headline":"Podcast:/);

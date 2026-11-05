@@ -4,12 +4,13 @@ import PostList from '../layouts/PostList.astro';
 import PostCards from '../layouts/PostCards.astro';
 import site from '../lib/site-config.mjs';
 import { getListedPosts } from '../lib/content';
-const posts=await getListedPosts();
+import { BLOG_VISIBILITY, isBlogPostVisible } from '../lib/post-presentation.mjs';
+const posts=(await getListedPosts()).filter(post=>isBlogPostVisible(post));
 ---
 <Base title="Blog" path="/">
   <h1 class="sr-only">Blog</h1>
   <p class="sr-only" id="blog-result-count" role="status">{posts.length} posts</p>
-  <div class="blog-empty" id="blog-empty" hidden><p>No posts have this tag.</p><a href="/blog">Show all posts</a></div>
+  <div class="blog-empty" id="blog-empty" hidden data-hidden-podcast-url={!BLOG_VISIBILITY.showPodcastPosts ? '/pages/podcast-overview' : undefined}><p>No posts have this tag.</p><a href="/blog">Show all posts</a></div>
   {site.blogLayout==='list' ? <PostList posts={posts} byMonth /> : <PostCards posts={posts} />}
   <script is:inline type="module" src="/blog-filter.js"></script>
 </Base>
