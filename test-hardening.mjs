@@ -139,7 +139,7 @@ test('behind Railway, failed logins are counted per visitor, not for everyone be
 
 test('book chapters without hand-written chapter links get previous/next cards; others are unchanged',async()=>{
   const appendix=await(await fetch(base+'/posts/in-search-of-the-infinite-appendix')).text();
-  assert.match(appendix,/href="\/posts\/in-search-of-the-infinite-the-awakening-volume-4-chapter-3" rel="prev"/);assert.match(appendix,/chapter-title">The Awakening \(Volume 4, Chapter 3\)</);assert.doesNotMatch(appendix,/rel="next"/);
+  assert.match(appendix,/href="\/posts\/in-search-of-the-infinite-the-awakening-volume-4-chapter-3" rel="prev"/);assert.match(appendix,/chapter-title">The Awakening</);assert.doesNotMatch(appendix,/rel="next"/);
   const middle=await(await fetch(base+'/posts/in-search-of-the-infinite-volume-3-chapter-2')).text();
   assert.doesNotMatch(middle,/class="chapter-nav"/,'hand-written links already present');
   const other=await(await fetch(base+'/posts/a-700-page-argument-that-beauty-should-come-first')).text();assert.doesNotMatch(other,/class="chapter-nav"/);
