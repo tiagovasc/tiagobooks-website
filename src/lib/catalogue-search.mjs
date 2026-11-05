@@ -5,6 +5,6 @@ export function searchCatalogue(books, query){
 }
 
 // A shared discovery has one search result. Keep its physical bookshop version preferred.
-export function tbrSource(book){return book.sources?.includes('bookshops')||book.sightings?.length?'bookshops':'online'}
+export function tbrSource(book){return book.sources?.includes('bookshops')||book.sightings?.length?'bookshops':book.sources?.includes('online')?'online':'instagram'}
 export function tbrHref(book){return '/library?collection=tbr&source='+tbrSource(book)+'&q='+encodeURIComponent(book.title||'')}
-export function tbrLabel(book){return tbrSource(book)==='bookshops'?[book.sightings?.[0]?.bookshop,book.sightings?.[0]?.city].filter(Boolean).join(', '):'Online'}
+export function tbrLabel(book){return tbrSource(book)==='bookshops'?[book.sightings?.[0]?.bookshop,book.sightings?.[0]?.city].filter(Boolean).join(', '):tbrSource(book)==='online'?'Online':'Instagram'}

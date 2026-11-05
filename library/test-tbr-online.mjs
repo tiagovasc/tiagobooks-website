@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {sourceBooks,catalogueCounts,filterCatalogue,collectionGroups,sortOptions} from './tbr.js';
+import {tbrHref,tbrLabel} from '../src/lib/catalogue-search.mjs';
 
 const sightings=[
   {visit_id:'new',city:'London',bookshop:'Watkins',photographed_at:'2026-10-29T12:00:00Z'},
@@ -52,4 +53,18 @@ test('bookshop filtering keeps original visit history and chronological grouping
   assert.equal(collectionGroups(all,'bookshops').length,2);
   assert.equal(collectionGroups(all,'bookshops','title').length,1);
   assert.equal(JSON.stringify(books),before);
+});
+
+test('Instagram has independent source ordering, one shared identity and appropriate search links',()=>{
+  const all=[{...books[0],sources:['bookshops','online','instagram'],instagram_order:2},
+    {...books[2],sources:['online','instagram'],instagram_order:3},
+    {id:'ig-only',title:'Instagram Discovery',author:'',description:'Needle',cover:'',sources:['instagram'],sightings:[],instagram_order:1}];
+  assert.deepEqual(catalogueCounts(all),{total:3,bookshops:1,instagram:3,online:2});
+  assert.deepEqual(filterCatalogue(all,{source:'instagram'}).map(b=>b.id),['ig-only','shared','online']);
+  assert.deepEqual(filterCatalogue(all,{source:'instagram',sort:'oldest'}).map(b=>b.id),['online','shared','ig-only']);
+  assert.deepEqual(filterCatalogue(all,{source:'instagram',query:'needle'}).map(b=>b.id),['ig-only']);
+  assert.equal(collectionGroups(all,'instagram')[0].place,undefined);
+  assert.match(tbrHref(all[0]),/source=bookshops/);
+  assert.match(tbrHref(all[1]),/source=online/);
+  assert.match(tbrHref(all[2]),/source=instagram/);assert.equal(tbrLabel(all[2]),'Instagram');
 });

@@ -20,12 +20,14 @@ test('unified TBR retains every bookshop field and counts shared books once',()=
   }
   const shared=catalogue.books.filter(b=>b.sources.includes('online')&&b.sources.includes('bookshops'));
   assert.ok(shared.length>40);
-  assert.equal(catalogue.counts.total,catalogue.counts.bookshops+catalogue.counts.online-shared.length);
+  const membershipTotal=catalogue.books.reduce((n,b)=>n+b.sources.length,0);
+  const repeatedMemberships=catalogue.books.reduce((n,b)=>n+b.sources.length-1,0);
+  assert.equal(catalogue.counts.total,membershipTotal-repeatedMemberships);
   assert.equal(sourceBooks(catalogue.books,'bookshops').reduce((n,b)=>n+b.sightings.length,0),819);
 });
 
 test('Online records expose only public book metadata and existing local covers',()=>{
-  const allowed=new Set(['id','title','author','cover','description','identity_status','sightings','sources','online_order']);
+  const allowed=new Set(['id','title','author','cover','description','identity_status','sightings','sources','online_order','instagram_order']);
   for(const book of catalogue.books){
     if(!book.sources.includes('online'))continue;
     assert.ok(book.title&&Number.isFinite(book.online_order));
@@ -55,6 +57,34 @@ test('search finds Online-only and shared books once with the appropriate destin
   assert.match(tbrHref(shared),/source=bookshops/);assert.ok(tbrLabel(shared).includes(shared.sightings[0].bookshop));
 });
 
+test('Instagram records expose only public fields and search every source member once',()=>{
+  const instagram=sourceBooks(catalogue.books,'instagram');
+  assert.ok(instagram.length>0);
+  const allowed=new Set(['id','title','author','cover','description','identity_status','sightings','sources','instagram_order']);
+  for(const book of instagram){
+    assert.ok(book.title&&Number.isFinite(book.instagram_order));
+    if(book.sources.length===1){
+      assert.deepEqual(book.sightings,[]);
+      assert.match(book.id,/^instagram-[a-f\d]+$/);
+      for(const key of Object.keys(book))assert.ok(allowed.has(key),'unexpected Instagram field: '+key);
+    }
+    if(book.cover){
+      assert.match(book.cover,/^covers\/web\/tbr_(?:bookshop|online|instagram)_[a-f\d]+\.jpg$/);
+      assert.ok(fs.existsSync('library/'+book.cover),book.cover);
+    }
+  }
+  const text=JSON.stringify(catalogue);
+  for(const forbidden of ['instagram.com/','post_id','post_url','instagram_url','collection_id','collection_key','raw_caption','raw_ai_response','username'])assert.ok(!text.includes(forbidden),forbidden);
+  const only=instagram.find(b=>b.sources.length===1),shared=instagram.find(b=>b.sources.includes('bookshops'));
+  assert.ok(only&&shared);
+  for(const book of [only,shared]){
+    assert.equal(searchCatalogue(catalogue.books,book.title).filter(b=>b.id===book.id).length,1);
+    assert.equal(filterCatalogue(catalogue.books,{source:'instagram',query:book.title}).filter(b=>b.id===book.id).length,1);
+  }
+  assert.match(tbrHref(only),/source=instagram/);assert.equal(tbrLabel(only),'Instagram');
+  assert.match(tbrHref(shared),/source=bookshops/);
+});
+
 test('unified catalogue HTTP route supports compression and cache validation but no writes',async()=>{
   const {server}=await import('./library/server.mjs');
   await new Promise(r=>server.listen(0,'127.0.0.1',r));
@@ -65,6 +95,6 @@ test('unified catalogue HTTP route supports compression and cache validation but
     assert.deepEqual(await r.json(),catalogue);
     assert.equal((await fetch(base+'/tbr-catalogue.json',{headers:{'If-None-Match':r.headers.get('etag')}})).status,304);
     assert.equal((await fetch(base+'/tbr-catalogue.json',{method:'POST',body:'[]'})).status,405);
-    for(const route of ['/Amazon_books.csv','/Book_provenance.jsonl','/private/online-import-20261105-provenance.json'])assert.equal((await fetch(base+route)).status,404);
+    for(const route of ['/Amazon_books.csv','/Book_provenance.jsonl','/private/online-import-20261105-provenance.json','/private/instagram-import-20261105-snapshot.json','/private/instagram-import-20261105-mapping.json'])assert.equal((await fetch(base+route)).status,404);
   }finally{server.closeAllConnections();await new Promise(r=>server.close(r));}
 });
