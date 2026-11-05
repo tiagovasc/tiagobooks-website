@@ -82,3 +82,17 @@ test('TBR files are compressed, cache validated and read-only; source tooling is
   for(const route of ['/books-metadata.json','/grouped-visits.json','/_build/tbr_bookshops_20261102/import-report.json'])assert.equal((await fetch(base+route)).status,404);
  }finally{await new Promise(r=>server.close(r));}
 });
+
+
+test('month-only sorting keeps each visit together across pagination',()=>{
+ for(const sort of ['recent','oldest']){
+  const books=filterBooks(data.books,{sort});
+  const groups=groupBooks(books);
+  assert.equal(new Set(groups.map(g=>g.key)).size,groups.length,'A visit must not become repeated separate sections');
+  assert.equal(groups.reduce((n,g)=>n+g.books.length,0),books.length);
+  for(let i=1;i<books.length;i++){
+   const previous=books[i-1].sightings[0].photographed_at,current=books[i].sightings[0].photographed_at;
+   assert.ok(sort==='oldest'?previous<=current:previous>=current);
+  }
+ }
+});

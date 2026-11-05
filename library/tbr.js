@@ -9,7 +9,7 @@ export function filterBooks(books,{query='',city='',shop='',sort='recent'}={}) {
     const text=[b.title,b.author,...b.sightings.flatMap(s=>[s.city,s.bookshop])].join(' ').toLocaleLowerCase();
     return sightings.length&&words.every(w=>text.includes(w))?[{...b,sightings}]:[];
   }).sort((a,b)=>sort==='title'?a.title.localeCompare(b.title):sort==='author'?a.author.localeCompare(b.author):
-    (Date.parse(b.sightings[0].photographed_at)-Date.parse(a.sightings[0].photographed_at))*(sort==='oldest'?-1:1)||a.id.localeCompare(b.id));
+    (Date.parse(b.sightings[0].photographed_at)-Date.parse(a.sightings[0].photographed_at))*(sort==='oldest'?-1:1)||a.sightings[0].visit_id.localeCompare(b.sightings[0].visit_id)||a.id.localeCompare(b.id));
 }
 export function groupBooks(books,chronological=true) {
   if(!chronological)return [{key:'all',books}];
