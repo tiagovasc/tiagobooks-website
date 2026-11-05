@@ -45,7 +45,7 @@ export function collectionGroups(books,source,sort='recent') {
   return groupBooks(books,source==='bookshops'&&['recent','oldest'].includes(sort));
 }
 export function sortOptions(source) {
-  return [['recent',source==='bookshops'?'Newest photos':'Default order'],['oldest',source==='bookshops'?'Oldest photos':'Reverse order'],['title','Title'],['author','Author']];
+  return [['recent',source==='bookshops'?'Newest photos':source==='instagram'?'Newest saved':'Default order'],['oldest',source==='bookshops'?'Oldest photos':source==='instagram'?'Oldest saved':'Reverse order'],['title','Title'],['author','Author']];
 }
 const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const number=n=>Number(n||0).toLocaleString('en-GB');

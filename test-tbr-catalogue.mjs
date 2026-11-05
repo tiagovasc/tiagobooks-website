@@ -6,6 +6,19 @@ import {catalogueCounts,sourceBooks,filterCatalogue} from './library/tbr.js';
 const catalogue=JSON.parse(fs.readFileSync('library/tbr-catalogue.json','utf8'));
 const original=JSON.parse(fs.readFileSync('library/tbr-bookshops.json','utf8'));
 
+test('Instagram excludes the ten requested children’s books and follows saved-post order',()=>{
+  const excluded=new Set(["Little Pilgrim's Progress",'C Is for Christian','The Ology','The Biggest Story ABC','Our God: A Shapes Primer','From Eden to Bethlehem: An Animals Primer','The Kingdom of Heaven: A Gardening Primer','The Gospel','I Thank God for This Day!','Thank You, Lord, for Everything']);
+  assert.ok(catalogue.books.every(b=>!excluded.has(b.title)));
+  const recent=filterCatalogue(catalogue.books,{source:'instagram'});
+  assert.equal(recent.length,1706);
+  assert.deepEqual(recent.map(b=>b.instagram_order),Array.from({length:1706},(_,i)=>i));
+  const oldest=filterCatalogue(catalogue.books,{source:'instagram',sort:'oldest'});
+  assert.deepEqual(oldest.map(b=>b.id),recent.map(b=>b.id).reverse());
+  const scrambled=[{id:'older',title:'A',sources:['instagram'],instagram_order:20,sightings:[]},{id:'newer',title:'Z',sources:['instagram'],instagram_order:0,sightings:[]}];
+  assert.equal(filterCatalogue(scrambled,{source:'instagram'})[0].id,'newer');
+  assert.equal(filterCatalogue(scrambled,{source:'instagram',sort:'oldest'})[0].id,'older');
+});
+
 test('reviewed metadata identifies the reported gaps and preserves distinct adaptations',()=>{
   const byId=new Map(catalogue.books.map(b=>[b.id,b]));
   const orwell=byId.get('online-09c40b63998a9c4f7960');
