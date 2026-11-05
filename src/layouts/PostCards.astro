@@ -1,7 +1,7 @@
 ---
 // Card layout for the blog listing (4 Nov 2026). The original list layout remains in PostList.astro;
 // choose between them with "blogLayout" in src/data/site.json ("cards" or "list").
-import { shortDate, yearOf, tagSlug, monthOf, monthLabel, type Post } from '../lib/content';
+import { shortDate, yearOf, tagSlug, monthOf, type Post } from '../lib/content';
 import { parseFragment } from 'parse5';
 import { displayTitle, postSubtitle, visibleTags } from '../lib/post-presentation.mjs';
 import { postHref } from '../lib/linked-post.mjs';
@@ -26,27 +26,24 @@ function details(p:Post){
   const text=p.data.protected?'':plain(p.body||'');
   if(!sub&&text){const para=text.split(/\n\s*\n/).map(s=>s.replace(/\s+/g,' ').trim()).find(s=>s.length>40)||'';const end=[...para.matchAll(/[.!?](?=\s+[A-Z"“‘(]|\s*$)/g)].find(m=>!/(^|\s)([A-Z]|Dr|Mr|Mrs|Ms|St|vs|e\.g|i\.e)$/.test(para.slice(0,m.index)));const sentence=(end?para.slice(0,end.index+1):para).trim();sub=sentence.length>150?sentence.slice(0,147).replace(/\s+\S*$/,'')+'…':sentence}
   const words=text.split(/\s+/).filter(Boolean).length;
-  const minutes=p.data.readingMinutes ?? (words?Math.max(1,Math.round(words/230)):0);
-  const video=/youtube(-nocookie)?\.com\/(embed|watch)|youtu\.be\//.test(p.body||'');
-  return {heading,sub,minutes,video,date:`${shortDate(p.data.date)}, ${yearOf(p.data.date)}`};
+  const minutes=p.data.readingMinutes ?? Math.max(1,Math.round(words/230));
+  return {heading,sub,minutes,date:`${shortDate(p.data.date)}, ${yearOf(p.data.date)}`};
 }
 ---
 <ul class="post-cards h-feed">
   {[...months].map(([month,group]) => (
     <>
-      <li class="blog-month-heading" data-blog-month={month}><span>{monthLabel(group[0].data.date)}</span><span class="leader"/></li>
       {group.map((p) => { const d=details(p); return (
         <li class="h-entry post-card" data-blog-entry data-year={Number(month.slice(0,4))} data-month={month} data-tags={JSON.stringify(p.data.tags.map(tagSlug))}>
           <a class:list={['pc-thumb', {'pc-artwork': !!p.data.image}]} href={postHref(p)} tabindex="-1" aria-hidden="true" data-tone={[...p.id].reduce((h,c)=>(h*31+c.charCodeAt(0))>>>0,7)%5}>
             {p.data.image && <img src={p.data.thumbnail || p.data.artwork?.thumbnail || p.data.image} alt="" width="480" height="300" loading="lazy" decoding="async" style={`--thumbnail-position:${p.data.thumbnailCrop?.x ?? 50}% ${p.data.thumbnailCrop?.y ?? 50}%;--thumbnail-zoom:${p.data.thumbnailCrop?.zoom ?? 1}`} />}
           </a>
           <div class="pc-body">
-            <time class="pc-date dt-published" datetime={p.data.date.toISOString()}>{d.date}</time>
             <h2 class="pc-title"><a class="p-name u-url" href={postHref(p)}>{d.heading}</a></h2>
             {d.sub && <p class="pc-sub p-summary">{d.sub}</p>}
             <div class="pc-meta">
               {visibleTags(p.data.tags).map(t=><a class="pc-tag" href={`/blog?tag=${encodeURIComponent(tagSlug(t))}`}>{t}</a>)}
-              {d.video ? <span class="pc-time">Watch</span> : d.minutes>0 && <span class="pc-time">{d.minutes} min read</span>}
+              <span class="pc-reading"><time class="pc-date dt-published" datetime={p.data.date.toISOString()}>{d.date}</time><span class="pc-meta-separator" aria-hidden="true">·</span><span class="pc-time">{d.minutes} min read</span></span>
             </div>
           </div>
         </li>

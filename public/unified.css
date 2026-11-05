@@ -27,12 +27,27 @@ body.writing-site{max-width:none;padding:0 0 80px;font-family:var(--font);backgr
 [hidden]{display:none!important}:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
 @media(max-width:760px){.writing-site .site-header{padding:18px 18px 5px}.writing-site main{padding:0 18px;margin-top:30px}.unified-nav a{min-height:44px;padding:8px 11px}.writing-site .e-content{font-size:17px}.writing-site .site-title{font-size:18px}.notch>.unified-nav{margin-inline:-4px}.writing-site .site-list-of-posts .h-entry{gap:12px;grid-template-columns:50px 1fr}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}
-/* The library date rail is shared unchanged with the blog. */
+/* Base date rail; the blog's quieter editorial treatment is scoped below. */
 .date-rail{position:fixed;left:28px;top:calc((100dvh + var(--notch-h,200px))/2);transform:translateY(-50%);width:178px;z-index:12;display:flex;gap:22px;align-items:center;font-family:var(--font)}
 .date-context{width:108px;flex-shrink:0}.date-context .dm{max-width:108px;height:auto}.date-month{font-size:14px;color:var(--muted);margin-top:14px}.date-count{font-size:11px;color:var(--faint);margin-top:8px}
 .date-track{height:min(calc(100dvh - var(--notch-h,200px) - 50px),520px);width:45px;overflow:auto;scrollbar-width:none;display:flex;flex-direction:column;align-items:center;gap:3px;border-left:1px solid var(--line);padding-left:8px}.date-track::-webkit-scrollbar{display:none}
 .date-track button{flex-shrink:0;border:0;background:none;color:var(--faint);font-size:10px;padding:5px 2px;min-height:24px;min-width:32px;opacity:.65;border-radius:5px;cursor:pointer}.date-track button.month-tick{font-size:0;min-height:12px;height:12px;padding:2px}.month-tick:after{content:'';display:block;width:3px;height:3px;background:currentColor;border-radius:50%;margin:auto}.date-track button.active{color:var(--ink);opacity:1;background:var(--sunk);font-size:10px}.date-track button.active:after{display:none}.date-track:hover button,.date-track:focus-within button{opacity:1}.date-track button:hover{background:var(--sunk);color:var(--ink)}
 .mobile-month{display:none}
+/* Discreet publication archive, centered in the desktop content gutter. */
+.date-rail.editorial-rail{left:var(--archive-center,110px);top:calc((100dvh + var(--shell-h,74px))/2);transform:translate(-50%,-50%);width:104px;display:flex;flex-direction:column;align-items:stretch;gap:16px;max-height:calc(100dvh - var(--shell-h,74px) - 40px);color:var(--muted)}
+.editorial-rail .date-context{width:auto;flex-shrink:0}
+.editorial-rail .archive-label{font:500 9px/1.5 var(--font);letter-spacing:.14em;text-transform:uppercase;margin-bottom:9px}
+.editorial-rail [data-rail-year]{font:400 30px/1.2 Georgia,"Times New Roman",serif;letter-spacing:-.5px;font-variant-numeric:lining-nums}
+.editorial-rail .date-month{font:400 12px/1.5 var(--font);margin-top:5px}
+.editorial-rail .date-count{font:400 10px/1.5 var(--font);color:var(--muted);margin-top:2px}
+.editorial-rail .date-track{position:relative;width:auto;height:auto;max-height:min(34dvh,270px);min-height:0;align-items:stretch;gap:0;padding:0 0 0 10px;border-color:var(--line);overscroll-behavior:contain;scrollbar-width:thin}
+.editorial-rail .date-track button{position:relative;text-align:left;min-height:28px;min-width:44px;padding:5px 8px;border-radius:0;font:400 11px/1.5 var(--font);color:var(--muted);opacity:1}
+.editorial-rail .date-track button.month-tick{height:auto;min-height:26px;padding:4px 8px 4px 18px;font-size:10px}
+.editorial-rail .month-tick:after{display:none}
+.editorial-rail .date-track button.current-year{color:var(--accent)}
+.editorial-rail .date-track button.active{background:transparent;color:var(--accent)}
+.editorial-rail .date-track button.active:before{content:'';position:absolute;left:7px;top:7px;bottom:7px;width:1px;background:var(--accent)}
+.editorial-rail .date-track button:hover{background:var(--code-bg);color:var(--ink)}
 @media(max-width:760px){.date-rail{left:16px;right:16px;top:auto;bottom:calc(12px + env(safe-area-inset-bottom));transform:none;width:auto;padding:8px 12px;gap:12px;border:1px solid var(--line);border-radius:18px;background:var(--surface);box-shadow:0 8px 30px #0003;justify-content:space-between}.date-context{width:auto;display:flex;align-items:center;gap:10px;min-width:0}.date-context .dm{width:58px}.date-month{margin:0;font-size:12px}.date-count,.date-track{display:none}.mobile-month{display:block;min-height:44px;min-width:0;max-width:56%;border:1px solid var(--line);border-radius:10px;background:var(--sunk);color:var(--ink);padding:0 8px;font-size:16px}}
 
 /* One invariant site header. Section-specific controls live below it. */
@@ -173,15 +188,18 @@ body:has(.library-tools,.section-tools) .site-shell{border-radius:0;box-shadow:0
 .pc-play{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#ffffffd9;box-shadow:0 4px 14px #0003}
 .pc-play svg{width:20px;height:20px;fill:#1C1C1E;margin-left:2px}
 .pc-body{min-width:0}
-.pc-date{display:block;font:650 11.5px/1.2 var(--font);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.pc-title{margin:7px 0 0;font:400 25px/1.25 "Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;letter-spacing:-.2px}
+.pc-date{font:inherit;white-space:nowrap;color:inherit}
+.pc-title{margin:0;font:400 25px/1.25 "Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;letter-spacing:-.2px}
 .pc-title a{color:var(--ink);text-decoration:none}
 .pc-title a:hover{text-decoration:underline;text-decoration-color:var(--sage);text-underline-offset:4px}
 .pc-sub{margin:6px 0 0;color:var(--muted);font:15px/1.5 var(--font)}
 .pc-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:13px}
 .pc-tag{padding:4px 10px;border-radius:999px;background:var(--code-bg);color:var(--muted);font:500 12px/1.3 var(--font);text-decoration:none}
 .pc-tag:hover{color:var(--ink)}
-.pc-time{margin-left:6px;color:var(--faint);font:650 11px/1.2 var(--font);letter-spacing:.08em;text-transform:uppercase}
+.pc-reading{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;font:400 11px/1.5 var(--font);color:var(--muted)}
+.pc-time{font:inherit;color:inherit}
+.pc-meta-separator{color:var(--muted)}
+.post-card{scroll-margin-top:calc(var(--notch-h,var(--shell-h)) + 20px)}
 @media(max-width:760px){
   .post-card{grid-template-columns:104px minmax(0,1fr);gap:14px;padding:18px 0}
   .pc-play{width:32px;height:32px}.pc-play svg{width:16px;height:16px}
@@ -386,6 +404,14 @@ dialog.drawer,dialog.drawer::backdrop{right:calc(100% - 100vw)}
   .entry-meta{font-size:13px;gap:8px 12px}
 }
 
+/* Mobile archive keeps a native month picker and a generous touch target. */
+@media(max-width:760px){
+  .date-rail.editorial-rail{left:auto;right:16px;top:auto;bottom:calc(16px + env(safe-area-inset-bottom));transform:none;width:auto;max-height:none;height:46px;padding:0 28px 0 12px;display:flex;flex-direction:row;gap:0}
+  .editorial-rail .date-context{display:flex;align-items:center;gap:6px}
+  .editorial-rail .archive-label,.editorial-rail .date-count,.editorial-rail .date-track{display:none}
+  .editorial-rail [data-rail-year]{font:400 12px/1.5 var(--font);letter-spacing:0}
+  .editorial-rail .date-month{order:-1;margin:0;font-size:12px}
+}
 /* Floating capsule header; current pages and contextual tabs use an underline. */
 :root{--shell-h:74px;--section-h:52px}
 .site-shell,body:has(.library-tools,.section-tools) .site-shell{

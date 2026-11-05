@@ -45,7 +45,8 @@ test('one shared header, selected blog sections and publication months preserve 
   assert.match(library,/data-collection="tbr"/);assert.doesNotMatch(await readFile('library/tbr.css','utf8'),/\.tbr-mode #statusSeg/);
   assert.deepEqual([...blog.matchAll(/data-blog-tag="([^"]*)"/g)].map(m=>m[1]),['',...blogMenuSections().map(s=>s.replace(/\s+/g,'-'))]);
   const tags=await readdir('dist/tag');assert.ok(tags.includes('Non-Fiction.html'),'legacy tag routes remain available');
-  assert.equal([...blog.matchAll(/data-blog-entry/g)].length,blogSourcePosts.length);assert.ok([...blog.matchAll(/data-blog-month=/g)].length>12);
+  assert.equal([...blog.matchAll(/data-blog-entry/g)].length,blogSourcePosts.length);assert.equal([...blog.matchAll(/data-blog-month=/g)].length,0);
+  assert.equal([...blog.matchAll(/class="pc-time"/g)].length,blogSourcePosts.length);assert.doesNotMatch(blog,/>Watch<\/span>/);assert.match(blog,/\d+ min read/);
   assert.equal((await fetch(base+'/posts',{redirect:'manual'})).headers.get('location'),'/blog');
   assert.equal((await fetch(base+'/tag/Book-Reviews',{redirect:'manual'})).headers.get('location'),'/blog?tag=Book-Reviews');
   assert.equal((await fetch(base+'/date-rail.js')).status,200);

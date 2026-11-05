@@ -11,7 +11,7 @@ const groups = byMonth ? [...months].map(([month,posts])=>({year:Number(month.sl
 <ul class="site-list-of-posts h-feed">
   {groups.map((g) => (
     <>
-      {byMonth ? <li class="blog-month-heading" data-blog-month={g.month}><span>{monthLabel(g.posts[0].data.date)}</span><span class="leader"/></li> : byYear && <li class="post-list-year-h2" data-blog-year={g.year}>{g.year}</li>}
+      {!byMonth && byYear && <li class="post-list-year-h2" data-blog-year={g.year}>{g.year}</li>}
       {g.posts.map((p) => (
         <li class="h-entry" data-blog-entry data-year={g.year} data-month={g.month} data-tags={JSON.stringify(p.data.tags.map(tagSlug))}>
           <time class="dt-published" datetime={p.data.date.toISOString()}>{shortDate(p.data.date)}</time>

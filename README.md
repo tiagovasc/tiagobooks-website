@@ -4,6 +4,8 @@ The source for [tiagobooks.com](https://tiagobooks.com): Tiago Faleiro's persona
 
 Browse the library in cover, list or table view; filter reading status and TBR collections; explore the blog by tag and date; or search across books and writing. The site includes full-content Atom feeds, stable links, light and dark themes, and authenticated editing.
 
+The blog has a discreet desktop archive centered in the left content gutter and a native month picker on mobile. Category filters update the archive; month links jump directly to the first matching article. Each card groups its publication date and word-count reading estimate together, including articles with embedded video.
+
 TBR includes Book shops, Online and Instagram discoveries. Shared books retain their bookshop version and visit history, appear in each relevant source view and count once in the combined catalogue and search. Online and Instagram cards use general source labels without invented locations or dates. `library/tbr-catalogue.json` is the derived public catalogue; `tbr-bookshops.json` preserves the original bookshop data. Private collection provenance is excluded from this repository.
 
 The homepage is the Blog; the library lives at `/library`. The shared menu follows Blog, Books, Talks, Podcasts, Interviews, Library and About. Existing `/blog` links still work, and older homepage book and TBR links lead to the library.
