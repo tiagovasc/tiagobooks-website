@@ -35,9 +35,9 @@ function details(p:Post){
     <>
       {group.map((p) => { const d=details(p); return (
         <li class="h-entry post-card" data-blog-entry data-year={Number(month.slice(0,4))} data-month={month} data-tags={JSON.stringify(p.data.tags.map(tagSlug))}>
-          <a class:list={['pc-thumb', {'pc-artwork': !!p.data.image}]} href={postHref(p)} tabindex="-1" aria-hidden="true" data-tone={[...p.id].reduce((h,c)=>(h*31+c.charCodeAt(0))>>>0,7)%5}>
+          <div class="pc-visual"><a class:list={['pc-thumb', {'pc-artwork': !!p.data.image}]} href={postHref(p)} tabindex="-1" aria-hidden="true" data-tone={[...p.id].reduce((h,c)=>(h*31+c.charCodeAt(0))>>>0,7)%5}>
             {p.data.image && <img src={p.data.thumbnail || p.data.artwork?.thumbnail || p.data.image} alt="" width="480" height="300" loading="lazy" decoding="async" style={`--thumbnail-position:${p.data.thumbnailCrop?.x ?? 50}% ${p.data.thumbnailCrop?.y ?? 50}%;--thumbnail-zoom:${p.data.thumbnailCrop?.zoom ?? 1}`} />}
-          </a>
+          </a><time class="pc-mobile-date dt-published" datetime={p.data.date.toISOString()}>{d.date}</time></div>
           <div class="pc-body">
             <h2 class="pc-title"><a class="p-name u-url" href={postHref(p)}>{d.heading}</a></h2>
             {d.sub && <p class="pc-sub p-summary">{d.sub}</p>}
