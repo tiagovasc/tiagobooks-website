@@ -8,6 +8,8 @@ TBR includes Book shops, Online and Instagram discoveries. Shared books retain t
 
 The homepage is the Blog; the library lives at `/library`. The shared menu follows Blog, Books, Talks, Podcasts, Interviews, Library and About. Existing `/blog` links still work, and older homepage book and TBR links lead to the library.
 
+The shared header floats above the page, with underlined active navigation and contextual filters below. Narrow layouts retain a compact overflow menu and theme/admin controls.
+
 ## Run locally
 
 Use Node.js **22.19 or later** and npm.

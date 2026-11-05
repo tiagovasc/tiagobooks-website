@@ -5,7 +5,7 @@ apply();
 if(!window.CLOUD_LIBRARY)document.getElementById('appearanceBtn')?.addEventListener('click',()=>{const ui=appearance();const dark=ui.theme==='dark'||(!['dark','light'].includes(ui.theme)&&matchMedia('(prefers-color-scheme:dark)').matches);ui.theme=dark?'light':'dark';try{localStorage.setItem(key,JSON.stringify(ui))}catch{}apply()});
 window.addEventListener('storage',apply);
 // Active navigation is rendered with each document, before its first paint.
-function measureShell(){const style=document.documentElement.style,shell=document.getElementById('siteShell'),section=document.getElementById('sectionTools');const set=(key,value)=>{if(style.getPropertyValue(key)!==value)style.setProperty(key,value)};if(shell)set('--shell-h',shell.offsetHeight+'px');if(!section)set('--section-h','0px');if(section){set('--section-h',section.offsetHeight+'px');set('--notch-h',(shell.offsetHeight+section.offsetHeight)+'px')}}
+function measureShell(){const style=document.documentElement.style,shell=document.getElementById('siteShell'),section=document.getElementById('sectionTools');const set=(key,value)=>{if(style.getPropertyValue(key)!==value)style.setProperty(key,value)};if(shell)set('--shell-h',shell.getBoundingClientRect().bottom+'px');if(!section)set('--section-h','0px');if(section){set('--section-h',section.offsetHeight+'px');set('--notch-h',section.getBoundingClientRect().bottom+'px')}}
 measureShell();if(window.ResizeObserver){const observer=new ResizeObserver(measureShell);for(const el of [document.getElementById('siteShell'),document.getElementById('sectionTools')])if(el)observer.observe(el)}window.addEventListener('resize',measureShell);
 
 

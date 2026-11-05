@@ -70,7 +70,7 @@ const activeTag = path.startsWith('/tag/') ? decodeURIComponent(path.slice(5)) :
     <Fragment set:html={renderSiteHeader(site,path)} />
     {isBlog && <aside class="section-tools" id="sectionTools" aria-label="Blog tools">
       <nav class="tag-chips" aria-label="Filter blog by tag">
-        <a href="/blog" data-blog-tag="" aria-current={!activeTag && path === '/blog' ? 'true' : undefined}>All posts</a>
+        <a href="/blog" data-blog-tag="" aria-current={!activeTag && (path === '/' || path === '/blog') ? 'true' : undefined}>All posts</a>
         {tagChoices.map(([key,tag])=><a href={`/blog?tag=${encodeURIComponent(key)}`} data-blog-tag={key} aria-current={activeTag===key?'true':undefined}>{tag.label}<span>{tag.posts.length}</span></a>)}
       </nav>
     </aside>}
