@@ -24,16 +24,16 @@ test('All TBR combines every source once, searches places and supports undated d
  assert.equal(JSON.stringify(books),before);
 });
 test('bookshop import preserves every photograph, unique public IDs and chronological order',()=>{
- assert.equal(data.photo_records,819);assert.equal(data.books.length,753);
+ assert.equal(data.photo_records,819);assert.equal(data.books.length,745);
  assert.equal(data.books.reduce((n,b)=>n+b.sightings.length,0),819);
- assert.equal(new Set(data.books.map(b=>b.id)).size,753);
+ assert.equal(new Set(data.books.map(b=>b.id)).size,745);
  assert.equal(data.books[0].sightings[0].bookshop,'Watkins Books');
  assert.match(data.books[0].sightings[0].photographed_at,/^2026-10$/);
  for(const b of data.books){
   assert.ok(b.title);assert.ok(b.sightings.length);
   for(let i=1;i<b.sightings.length;i++)assert.ok(Date.parse(b.sightings[i-1].photographed_at)>=Date.parse(b.sightings[i].photographed_at));
   for(const s of b.sightings){assert.ok(s.city&&s.bookshop);assert.match(s.photographed_at,/^\d{4}-\d{2}$/);}
-  if(b.cover){assert.match(b.cover,/^covers\/web\/tbr_bookshop_[a-f\d]+\.jpg$/);assert.ok(fs.existsSync(new URL('./'+b.cover,import.meta.url)));}
+  if(b.cover){assert.match(b.cover,/^covers\/web\/tbr_(?:bookshop|metadata)_[a-f\d]+\.jpg$/);assert.ok(fs.existsSync(new URL('./'+b.cover,import.meta.url)));}
  }
  for(let i=1;i<data.books.length;i++)assert.ok(Date.parse(data.books[i-1].sightings[0].photographed_at)>=Date.parse(data.books[i].sightings[0].photographed_at));
 });
@@ -54,8 +54,8 @@ test('public TBR has no original paths, filenames, GPS or library state',()=>{
  const serialized=JSON.stringify(data);
  for(const token of ['latitude','longitude','photo_id','original','OneDrive','_build','read_status','owned','rating','PXL_','PXL\\','20261029_'])assert.ok(!serialized.includes('"'+token+'"'),token);
  assert.deepEqual(Object.keys(SOURCES).sort(),['bookshops','instagram','online']);
- assert.equal(data.books.filter(b=>b.identity_status==='needs_review').length,1);
- assert.equal(data.books.filter(b=>!b.cover).length,28);
+ assert.equal(data.books.filter(b=>b.identity_status==='needs_review').length,0);
+ assert.equal(data.books.filter(b=>!b.cover).length,0);
 });
 test('filters combine words, city and shop; old sightings remain discoverable without mutating source',()=>{
  const books=[{id:'a',title:'The Book',author:'One',sightings:[{visit_id:'new',city:'London',bookshop:'Watkins',photographed_at:'2026-10-29T12:00:00+00:00'},{visit_id:'old',city:'Porto',bookshop:'Old shop',photographed_at:'2021-01-01T12:00:00+00:00'}]},{id:'b',title:'Other',author:'Two',sightings:[{visit_id:'mid',city:'Porto',bookshop:'Old shop',photographed_at:'2025-01-01T12:00:00+00:00'}]}];

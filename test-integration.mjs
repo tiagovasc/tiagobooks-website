@@ -27,7 +27,7 @@ test('library, writing, metadata, scripts, uploads and search files are served o
   for(const route of routes){const r=await fetch(base+route);assert.equal(r.status,200,route);assert.equal(r.headers.get('x-content-type-options'),'nosniff',route)}
   const html=await(await fetch(base+'/library')).text();assert.match(html,/CLOUD_CAN_EDIT=false/);assert.match(html,/var SEED = \[\];/);assert.match(html,/href="\/">Blog/);
   assert.deepEqual(await(await fetch(base+'/books.json')).json(),source);
-  assert.equal((await(await fetch(base+'/tbr-bookshops.json')).json()).books.length,753);
+  assert.equal((await(await fetch(base+'/tbr-bookshops.json')).json()).books.length,745);
 });
 
 test('one shared header, selected blog sections and publication months preserve the complete listing',async()=>{

@@ -6,11 +6,32 @@ import {catalogueCounts,sourceBooks,filterCatalogue} from './library/tbr.js';
 const catalogue=JSON.parse(fs.readFileSync('library/tbr-catalogue.json','utf8'));
 const original=JSON.parse(fs.readFileSync('library/tbr-bookshops.json','utf8'));
 
+test('reviewed metadata identifies the reported gaps and preserves distinct adaptations',()=>{
+  const byId=new Map(catalogue.books.map(b=>[b.id,b]));
+  const orwell=byId.get('online-09c40b63998a9c4f7960');
+  assert.match(orwell.author,/George Orwell/);
+  assert.ok(orwell.sources.includes('instagram'));
+  assert.ok(orwell.cover&&fs.existsSync('library/'+orwell.cover));
+  assert.ok(!byId.has('instagram-3f7553a7a61eb24fd1a8'),'duplicate original novel removed');
+  assert.ok(byId.has('online-8ed3bdfb50ae697ab091'),'graphic adaptation remains distinct');
+  for(const [id,creator] of [
+    ['instagram-5f6d456f4ba836f83270',/David Wengrow/],
+    ['instagram-d3d48f67d9836b0d4c52',/Couliano|Culianu/],
+    ['instagram-750d5a637c4e82108a18',/Ambrose/],
+  ]){
+    const book=byId.get(id);assert.ok(book,id);assert.match(book.author,creator);
+    assert.ok(book.cover&&fs.existsSync('library/'+book.cover),id);
+  }
+  assert.ok(byId.get('instagram-5f6d456f4ba836f83270').creators.some(c=>c.name==='David Wengrow'&&c.role==='editor'));
+  assert.ok(!byId.has('instagram-1dc73e576a69c350bdbb'),'incidental previous-read mention is held privately');
+  assert.ok(byId.has('instagram-31802ee5c4b9224548c1'),'actual featured Encyclopedia of the Dead retained');
+});
+
 test('unified TBR retains every bookshop field and counts shared books once',()=>{
   assert.equal(catalogue.schema_version,2);
   assert.deepEqual(catalogueCounts(catalogue.books),catalogue.counts);
   assert.equal(new Set(catalogue.books.map(b=>b.id)).size,catalogue.books.length);
-  assert.equal(catalogue.counts.bookshops,753);
+  assert.equal(catalogue.counts.bookshops,745);
   assert.ok(catalogue.counts.online>3200);
   const byId=new Map(catalogue.books.map(b=>[b.id,b]));
   for(const book of original.books){
@@ -27,17 +48,17 @@ test('unified TBR retains every bookshop field and counts shared books once',()=
 });
 
 test('Online records expose only public book metadata and existing local covers',()=>{
-  const allowed=new Set(['id','title','author','cover','description','identity_status','sightings','sources','online_order','instagram_order']);
+  const allowed=new Set(['id','title','author','cover','description','identity_status','sightings','sources','creators','online_order','instagram_order']);
   for(const book of catalogue.books){
     if(!book.sources.includes('online'))continue;
     assert.ok(book.title&&Number.isFinite(book.online_order));
     if(!book.sources.includes('bookshops')){
       assert.deepEqual(book.sightings,[]);
       for(const key of Object.keys(book))assert.ok(allowed.has(key),'unexpected public field: '+key);
-      assert.match(book.id,/^online-[a-f\d]+$/);
+      assert.match(book.id,/^(?:online|instagram)-[a-f\d]+$/);
     }
     if(book.cover){
-      assert.match(book.cover,/^covers\/web\/tbr_(?:bookshop|online)_[a-f\d]+\.jpg$/);
+      assert.match(book.cover,/^covers\/web\/tbr_(?:bookshop|online|instagram|metadata)_[a-f\d]+\.jpg$/);
       assert.ok(fs.existsSync('library/'+book.cover),book.cover);
     }
   }
@@ -60,7 +81,7 @@ test('search finds Online-only and shared books once with the appropriate destin
 test('Instagram records expose only public fields and search every source member once',()=>{
   const instagram=sourceBooks(catalogue.books,'instagram');
   assert.ok(instagram.length>0);
-  const allowed=new Set(['id','title','author','cover','description','identity_status','sightings','sources','instagram_order']);
+  const allowed=new Set(['id','title','author','cover','description','identity_status','sightings','sources','creators','instagram_order']);
   for(const book of instagram){
     assert.ok(book.title&&Number.isFinite(book.instagram_order));
     if(book.sources.length===1){
@@ -69,7 +90,7 @@ test('Instagram records expose only public fields and search every source member
       for(const key of Object.keys(book))assert.ok(allowed.has(key),'unexpected Instagram field: '+key);
     }
     if(book.cover){
-      assert.match(book.cover,/^covers\/web\/tbr_(?:bookshop|online|instagram)_[a-f\d]+\.jpg$/);
+      assert.match(book.cover,/^covers\/web\/tbr_(?:bookshop|online|instagram|metadata)_[a-f\d]+\.jpg$/);
       assert.ok(fs.existsSync('library/'+book.cover),book.cover);
     }
   }
