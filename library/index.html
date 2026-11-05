@@ -897,7 +897,9 @@ var SEED = [];
     var doc=new DOMParser().parseFromString(s,"text/html");
     return (doc.body.textContent||"").replace(/\n{3,}/g,"\n\n").trim();
   }
-  function ariaFor(b){ var y=fmtYear(b.publication_year); return (b.title||"Untitled")+", by "+(b.author||"unknown author")+(y?", published "+y:"")+(b.date_read?", read "+fmtDate(b.date_read,true):", "+(LABEL[b.read_status]||"").toLowerCase()); }
+  function isUnfinished(b){ return b.unfinished===true||(b.tags||[]).some(function(t){return String(t).toLowerCase()==="unfinished";}); }
+  function statusLabel(b){return (LABEL[b.read_status]||b.read_status||"Unread")+(isUnfinished(b)?" (unfinished)":"");}
+  function ariaFor(b){ var y=fmtYear(b.publication_year); return (b.title||"Untitled")+", by "+(b.author||"unknown author")+(y?", published "+y:"")+(b.date_read?", read "+fmtDate(b.date_read,true):", "+statusLabel(b).toLowerCase())+(b.date_read&&isUnfinished(b)?", unfinished":""); }
   function cssq(s){ return (window.CSS&&CSS.escape)?CSS.escape(String(s)):String(s).replace(/["\\]/g,"\\$&"); }
 
   // ---------- dot-matrix lettering (5 x 7 grid, like the notch timer) ----------
@@ -1019,6 +1021,7 @@ var SEED = [];
 
   // ---------- covers and list renderers ----------
   function readHTML(b,shortDate){
+    if(isUnfinished(b))return '<span class="t-state">Unfinished</span>';
     if(acquisitionSort()&&publicView())return '<span class="t-state">'+esc(LABEL[b.read_status]||'Unread')+'</span>';
     if(acquisitionSort())return '<span class="t-state" title="'+esc(acquisitionInfo(b))+'">'+esc(b.acquisition_basis==="user_recent"?"~ Oct 2026":b.acquisition_basis==="goodreads_added"?"GR "+fmtDate(b.goodreads_date_added,true):b.acquisition_basis==="purchase_log"?"Purchase log":"Order unknown")+'</span>';
     if(b.date_read) return '<span class="t-read" title="Read '+esc(fmtDate(b.date_read,true))+'"><svg class="i-xs" aria-hidden="true"><use href="#i-check"/></svg>'+esc(fmtDate(b.date_read,!shortDate))+'</span>';
@@ -1042,10 +1045,10 @@ var SEED = [];
       '<span class="l-cv">'+coverHTML(b)+'</span>'+
       '<span class="l-main"><span class="l-title">'+esc(parts[0]||"Untitled")+'</span>'+(sub?'<span class="l-sub">'+esc(sub)+'</span>':'')+
         '<span class="l-author">'+esc(b.author||"Unknown author")+'</span>'+
-        '<span class="l-meta">'+(y?'<span>'+esc(y)+'</span>':'')+(r?'<span>Read '+esc(r)+'</span>':'<span>'+esc(LABEL[b.read_status]||"")+'</span>')+'</span></span>'+
+        '<span class="l-meta">'+(y?'<span>'+esc(y)+'</span>':'')+(r?'<span>Read '+esc(r)+'</span>':'<span>'+esc(statusLabel(b))+'</span>')+'</span></span>'+
       '<span class="l-col'+(y?'':' empty')+'">'+(y?esc(y):DASH)+'</span>'+
       '<span class="l-col'+(r?'':' empty')+'">'+(r?esc(r):DASH)+'</span>'+
-      '<span class="l-col l-status"><i class="sdot" data-s="'+esc(b.read_status)+'"></i>'+esc(LABEL[b.read_status]||b.read_status)+'</span>'+
+      '<span class="l-col l-status"><i class="sdot" data-s="'+esc(b.read_status)+'"></i>'+esc(statusLabel(b))+'</span>'+
       '<span class="l-col l-rating stars" role="group" aria-label="Your rating for '+esc(b.title)+'">'+starsHTML(b.rating)+'</span>'+
     '</div>';
   }
@@ -1075,10 +1078,10 @@ var SEED = [];
     $("bookHeaders").innerHTML='<th aria-label="Reading status indicator"></th>'+cols.map(function(c){return '<th scope="col" data-column="'+c[0]+'">'+esc(c[1])+'</th>';}).join("")+'<th scope="col">Details</th>';
     $("bookTable").style.width=(115+cols.reduce(function(n,c){return n+c[2];},0))+"px";
   }
-  function textValue(b,key){var v=b[key];if(key==="date_read")return displayDate(v);if(key==="read_status")return LABEL[v]||v||DASH;if((key==="pages"||key==="publication_year")&&!v)return DASH;if(key==="publication_year")return fmtYear(v);if(typeof v==="boolean")return v?"Yes":"No";if(Array.isArray(v))return v.length?v.join("; "):DASH;if(key==="description"&&v){return plainText(v)||DASH;}return v==null||v===""?DASH:String(v);}
+  function textValue(b,key){var v=b[key];if(key==="date_read")return displayDate(v);if(key==="read_status")return statusLabel(b);if((key==="pages"||key==="publication_year")&&!v)return DASH;if(key==="publication_year")return fmtYear(v);if(typeof v==="boolean")return v?"Yes":"No";if(Array.isArray(v))return v.length?v.join("; "):DASH;if(key==="description"&&v){return plainText(v)||DASH;}return v==null||v===""?DASH:String(v);}
   function fieldHTML(b,key){var text=textValue(b,key);if((key==="notes_url"||key==="review_url")&&/^https?:\/\//i.test(b[key]||""))return '<div class="field-text"><a href="'+esc(b[key])+'" target="_blank" rel="noopener noreferrer">Open '+(key==="notes_url"?"notes":"review")+'</a></div>';return '<div class="field-text" title="'+esc(text)+'">'+esc(text)+'</div>';}
   function starsHTML(r){ var h=""; for(var i=1;i<=5;i++){ h+='<button type="button" data-n="'+i+'"'+(i<=r?' class="on"':'')+' aria-label="'+i+' star'+(i>1?"s":"")+'" aria-pressed="'+(i<=r)+'">'+(i<=r?"\u2605":"\u2606")+'</button>'; } return h; }
-  function statusHTML(b){ var h='<select class="status" data-field="read_status" aria-label="Reading status">'; STATUSES.forEach(function(st){ h+='<option value="'+st+'"'+(b.read_status===st?' selected':'')+'>'+LABEL[st]+'</option>'; }); return h+'</select>'; }
+  function statusHTML(b){ var h='<select class="status" data-field="read_status" aria-label="Reading status">'; STATUSES.forEach(function(st){ h+='<option value="'+st+'"'+(b.read_status===st?' selected':'')+'>'+LABEL[st]+(b.read_status===st&&isUnfinished(b)?' (unfinished)':'')+'</option>'; }); return h+'</select>'; }
   function badgeHTML(b){ if(!b.enriched||publicView()) return ""; if(b.enrich_status==="no_match") return ' <span class="badge-enriched bx-none" title="No Google Books match found">No match</span>'; var c=b.enrich_confidence||""; var cls=c==="low"?"bx-low":(c==="medium"?"bx-med":"bx-ok"); var lbl=(c&&c!=="high")?("Enriched, "+c):"Enriched"; return ' <span class="badge-enriched '+cls+'" title="Metadata from Google Books'+(c?" ("+c+" confidence)":"")+'">'+lbl+'</span>'; }
   function metaHTML(b){ var p=[]; var y=fmtYear(b.publication_year); if(y)p.push(esc(y)); if(b.publisher)p.push(esc(b.publisher)); if(b.format)p.push(esc(b.format)); if(b.pages)p.push(b.pages+"p"); if(b.sources&&b.sources.length&&!publicView())p.push(esc(b.sources.join(" + "))); return p.join(" \u00b7 "); }
   function rowHTML(b){
