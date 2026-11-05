@@ -20,7 +20,31 @@ export function groupBooks(books,chronological=true) {
   }
   return groups;
 }
+// A work can belong to several collections while remaining one catalogue record.
+export function sourceBooks(books,source) {
+  return books.filter(b=>(b.sources||((b.sightings||[]).length?['bookshops']:[])).includes(source));
+}
+export function catalogueCounts(books) {
+  return {total:new Set(books.map(b=>b.id)).size,...Object.fromEntries(Object.keys(SOURCES).map(source=>[source,new Set(sourceBooks(books,source).map(b=>b.id)).size]))};
+}
+export function filterCatalogue(books,{source='bookshops',query='',city='',shop='',sort='recent'}={}) {
+  const collection=sourceBooks(books,source);
+  if(source==='bookshops')return filterBooks(collection,{query,city,shop,sort});
+  const words=query.toLocaleLowerCase().trim().split(/\s+/).filter(Boolean);
+  return collection.filter(b=>{
+    const text=[b.title,b.author,b.description].join(' ').toLocaleLowerCase();
+    return words.every(w=>text.includes(w));
+  }).sort((a,b)=>sort==='title'?a.title.localeCompare(b.title):sort==='author'?(a.author||'').localeCompare(b.author||''):
+    ((a.online_order??0)-(b.online_order??0))*(sort==='oldest'?-1:1)||a.id.localeCompare(b.id));
+}
+export function collectionGroups(books,source,sort='recent') {
+  return groupBooks(books,source==='bookshops'&&['recent','oldest'].includes(sort));
+}
+export function sortOptions(source) {
+  return [['recent',source==='bookshops'?'Newest photos':'Default order'],['oldest',source==='bookshops'?'Oldest photos':'Reverse order'],['title','Title'],['author','Author']];
+}
 const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const number=n=>Number(n||0).toLocaleString('en-GB');
 const date=s=>new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}).format(new Date(s.slice(0,10)+'T12:00:00Z'));
 // Metadata dates describe local photo dates, never date read or acquired.
 export function placeLabel(s){return [s.city,s.bookshop].filter(Boolean).join(' · ');}
@@ -36,7 +60,7 @@ function init(){
   let active=false,source='bookshops',books=null,loading=null,error=false,limit=48,view='covers',sort='recent',city='',shop='',libSearch='',libView='covers',tbrSearch='';
   function pressViews(v){$('viewSwitch').querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===v)));}
   function views(v){view=v;pressViews(v);}
-  function sources(k){source=k;city='';shop='';limit=48;$('tbrSourceMobile').value=k;$('tbrSourceTabs').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.source===k)));}
+  function sources(k){source=Object.hasOwn(SOURCES,k)?k:'bookshops';city='';shop='';limit=48;$('tbrSourceMobile').value=source;$('tbrSourceTabs').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.source===source)));if(active)search.placeholder=source==='bookshops'?'Search TBR books, authors, cities or shops':'Search TBR books and authors';}
   function address(){const u=new URL(location.href);if(active){u.searchParams.set('collection','tbr');u.searchParams.set('source',source);}else{u.searchParams.delete('collection');u.searchParams.delete('source');}history.pushState(null,'',u);}
   function enter(on,k='bookshops',push=true){
     if(on&&!active){libSearch=search.value;libView=$('viewSwitch').querySelector('[aria-pressed="true"]')?.dataset.view||'covers';search.value=tbrSearch;}
@@ -51,30 +75,36 @@ function init(){
     if(push){address();window.scrollTo({top:0,behavior:'instant'});}window.dispatchEvent(new Event('resize'));
   }
   async function load(){
-    if(books||loading||source!=='bookshops')return;
+    if(books||loading||source==='instagram')return;
     error=false;
-    loading=fetch('/tbr-bookshops.json').then(r=>{if(!r.ok)throw Error('load');return r.json();}).then(data=>{if(!Array.isArray(data.books))throw Error('schema');books=data.books;status.dataset.tbrCount=books.length;const tbrButton=status.querySelector('[data-collection="tbr"]');if(tbrButton)tbrButton.innerHTML='TBR <span class="n">'+books.length+'</span>';}).catch(()=>{error=true;}).finally(()=>{loading=null;if(active)render();});
+    loading=fetch('/tbr-catalogue.json').then(r=>{if(!r.ok)throw Error('load');return r.json();}).then(data=>{if(!Array.isArray(data.books)||data.books.some(b=>!b.id||!b.title||!Array.isArray(b.sightings)||!Array.isArray(b.sources)))throw Error('schema');books=data.books;const total=catalogueCounts(books).total;status.dataset.tbrCount=total;const tbrButton=status.querySelector('[data-collection="tbr"]');if(tbrButton)tbrButton.innerHTML='TBR <span class="n">'+number(total)+'</span>';}).catch(()=>{error=true;}).finally(()=>{loading=null;if(active)render();});
   }
   function cover(b){return b.cover?`<span class="tbr-cover"><img src="${escape(b.cover)}" alt="" width="320" height="480" loading="lazy" decoding="async"></span>`:`<span class="tbr-cover"><span class="tbr-placeholder">${escape(b.title)}<br><small>Cover unavailable</small></span></span>`;}
-  function place(b){const s=b.sightings[0];return `<span class="tbr-place" title="${escape(placeLabel(s))}"><span class="tbr-city">${escape(s.city)}</span><span class="tbr-shop">${escape(s.bookshop)}</span><span class="tbr-date"><time datetime="${escape(s.photographed_at)}">${date(s.photographed_at)}</time>${b.sightings.length>1?` · ${b.sightings.length} photos`:''}</span></span>`;}
-  function card(b){return `<button type="button" class="tbr-book" data-tbr-id="${b.id}" aria-label="${escape(b.title+' by '+(b.author||'uncredited')+'. '+placeLabel(b.sightings[0]))}">${cover(b)}<span class="tbr-copy"><h3>${escape(b.title)}</h3><span class="tbr-author">${escape(b.author||'Author not identified')}</span></span>${place(b)}</button>`;}
+  function place(b){if(source!=='bookshops')return '<span class="tbr-place">Online</span>';const s=b.sightings[0];return `<span class="tbr-place" title="${escape(placeLabel(s))}"><span class="tbr-city">${escape(s.city)}</span><span class="tbr-shop">${escape(s.bookshop)}</span><span class="tbr-date"><time datetime="${escape(s.photographed_at)}">${date(s.photographed_at)}</time>${b.sightings.length>1?` · ${b.sightings.length} photos`:''}</span></span>`;}
+  function card(b){return `<button type="button" class="tbr-book" data-tbr-id="${escape(b.id)}" aria-label="${escape(b.title+' by '+(b.author||'uncredited')+'. '+(source==='bookshops'?placeLabel(b.sightings[0]):'Online'))}">${cover(b)}<span class="tbr-copy"><h3>${escape(b.title)}</h3><span class="tbr-author">${escape(b.author||'Author not identified')}</span></span>${place(b)}</button>`;}
+  function filtered(){return filterCatalogue(books||[],{source,query:search.value,city,shop,sort});}
+  function sorting(){return sortOptions(source).map(([value,label])=>`<option value="${value}">${label}</option>`).join('');}
   function render(){
     moreObserver?.disconnect();
     if(!active)return;
-    const list=books&&source==='bookshops'?filterBooks(books,{query:search.value,city,shop,sort}):[];
-    $('tbrIntro').innerHTML=`<div class="tbr-intro"><div><p class="tbr-eyebrow">To be read</p><h2>${SOURCES[source]}</h2><p>${source==='bookshops'?'Books that caught my eye on bookshop visits, starting with the most recent photos.':'Books to explore, saved for later.'}</p></div>${books&&source==='bookshops'?`<span class="tbr-count">${list.length} ${list.length===1?'book':'books'}${list.length!==books.length?' of '+books.length:''}</span>`:''}</div>`;
-    $('tbrSort').value=sort;$('tbrSortLabel').classList.toggle('is-active',sort!=='recent');
+    const list=filtered(),collection=books?sourceBooks(books,source):[];
+    $('tbrIntro').innerHTML=`<div class="tbr-intro"><div><p class="tbr-eyebrow">To be read</p><h2>${SOURCES[source]}</h2><p>${source==='bookshops'?'Books that caught my eye on bookshop visits, starting with the most recent photos.':source==='online'?'Books I found online and saved to explore.':'Books to explore, saved for later.'}</p></div>${books&&source!=='instagram'?`<span class="tbr-count">${number(list.length)} ${list.length===1?'book':'books'}${list.length!==collection.length?' of '+number(collection.length):''}</span>`:''}</div>`;
+    $('tbrSort').innerHTML=sorting();$('tbrSort').value=sort;$('tbrSortLabel').classList.toggle('is-active',sort!=='recent');
     const filter=$('tbrFilters');filter.innerHTML='';
     if(books&&source==='bookshops'){
-      const cities=[...new Set(books.flatMap(b=>b.sightings.map(s=>s.city)))].sort();
-      const shops=[...new Set(books.flatMap(b=>b.sightings.filter(s=>!city||s.city===city).map(s=>s.bookshop)))].sort();
+      const cities=[...new Set(collection.flatMap(b=>b.sightings.map(s=>s.city)))].sort();
+      const shops=[...new Set(collection.flatMap(b=>b.sightings.filter(s=>!city||s.city===city).map(s=>s.bookshop)))].sort();
       const options=(xs,v)=>xs.map(x=>`<option ${x===v?'selected':''} value="${escape(x)}">${escape(x)}</option>`).join('');
       filter.innerHTML=`<select id="tbrCity" class="${city?'is-active':''}" aria-label="Filter by city"><option value="">All cities</option>${options(cities,city)}</select><select id="tbrShop" class="${shop?'is-active':''}" aria-label="Filter by bookshop"><option value="">All bookshops</option>${options(shops,shop)}</select><select id="tbrSortMobile" aria-label="Sort TBR books"><option value="recent">Newest photos</option><option value="oldest">Oldest photos</option><option value="title">Title</option><option value="author">Author</option></select>${city||shop||search.value||sort!=='recent'?'<button type="button" data-tbr-clear>Reset browsing</button>':''}`;
       $('tbrSortMobile').value=sort;
     }
-    if(source!=='bookshops'){$('tbrContent').innerHTML=`<div class="empty-state"><h2>No ${SOURCES[source]==='Online'?'online':SOURCES[source]} books added yet</h2><p>This part of the TBR is waiting to be added.</p><button type="button" data-source="bookshops">Explore book shops</button></div>`;return;}
-    if(!books){$('tbrContent').innerHTML=error?'<div class="empty-state"><h2>Couldn’t load these books</h2><p>Please try again.</p><button class="tbr-retry" type="button">Retry</button></div>':'<div class="empty-state" role="status">Loading bookshop discoveries…</div>';return;}
-    if(!list.length){$('tbrContent').innerHTML='<div class="empty-state"><h2>No books match</h2><p>Try another title, city or bookshop.</p><button type="button" data-tbr-clear>Clear search and filters</button></div>';return;}
+    if(books&&source==='online'){
+      filter.innerHTML=`<select id="tbrSortMobile" aria-label="Sort TBR books">${sorting()}</select>${search.value||sort!=='recent'?'<button type="button" data-tbr-clear>Reset browsing</button>':''}`;
+      $('tbrSortMobile').value=sort;
+    }
+    if(source==='instagram'){$('tbrContent').innerHTML='<div class="empty-state"><h2>No Instagram books added yet</h2><p>This part of the TBR is waiting to be added.</p><button type="button" data-source="bookshops">Explore book shops</button></div>';return;}
+    if(!books){$('tbrContent').innerHTML=error?'<div class="empty-state"><h2>Couldn’t load these books</h2><p>Please try again.</p><button class="tbr-retry" type="button">Retry</button></div>':`<div class="empty-state" role="status">Loading ${source==='bookshops'?'bookshop discoveries':'online books'}…</div>`;return;}
+    if(!list.length){$('tbrContent').innerHTML=`<div class="empty-state"><h2>No books match</h2><p>${source==='bookshops'?'Try another title, city or bookshop.':'Try another title or author.'}</p><button type="button" data-tbr-clear>Clear search and filters</button></div>`;return;}
     drawBatch(list,0);
   }
   function drawBatch(list,start){
@@ -83,10 +113,10 @@ function init(){
     content.querySelector('.tbr-more')?.remove();
     if(!start)content.innerHTML='';
     if(view==='table'){
-      if(!start)content.innerHTML='<div class="tbr-table-scroll" tabindex="0" role="region" aria-label="TBR books table"><table class="tbr-table"><thead><tr><th scope="col">Book</th><th scope="col">Author</th><th scope="col">City</th><th scope="col">Bookshop</th><th scope="col">Photo date</th></tr></thead><tbody></tbody></table></div>';
-      content.querySelector('tbody').insertAdjacentHTML('beforeend',shown.map(b=>{const s=b.sightings[0];return `<tr><td><button type="button" data-tbr-id="${b.id}">${escape(b.title)}</button></td><td>${escape(b.author||'Author not identified')}</td><td>${escape(s.city)}</td><td>${escape(s.bookshop)}</td><td><time datetime="${s.photographed_at}">${date(s.photographed_at)}</time></td></tr>`;}).join(''));
+      if(!start)content.innerHTML=`<div class="tbr-table-scroll" tabindex="0" role="region" aria-label="TBR books table"><table class="tbr-table"><thead><tr><th scope="col">Book</th><th scope="col">Author</th>${source==='bookshops'?'<th scope="col">City</th><th scope="col">Bookshop</th><th scope="col">Photo date</th>':'<th scope="col">Source</th>'}</tr></thead><tbody></tbody></table></div>`;
+      content.querySelector('tbody').insertAdjacentHTML('beforeend',shown.map(b=>{const s=b.sightings[0];return `<tr><td><button type="button" data-tbr-id="${escape(b.id)}">${escape(b.title)}</button></td><td>${escape(b.author||'Author not identified')}</td>${source==='bookshops'?`<td>${escape(s.city)}</td><td>${escape(s.bookshop)}</td><td><time datetime="${escape(s.photographed_at)}">${date(s.photographed_at)}</time></td>`:'<td>Online</td>'}</tr>`;}).join(''));
     }else{
-      for(const g of groupBooks(shown,['recent','oldest'].includes(sort))){
+      for(const g of collectionGroups(shown,source,sort)){
         let section=content.lastElementChild;
         if(!section||section.dataset.group!==g.key){
           content.insertAdjacentHTML('beforeend',`<section class="tbr-section" data-group="${escape(g.key)}">${g.place?`<div class="tbr-heading"><h3>${escape(g.place.bookshop)}<br><span>${escape(g.place.city)} · ${date(g.place.photographed_at)}</span></h3></div>`:''}<div class="${view==='list'?'tbr-list':'tbr-grid'}"></div></section>`);
@@ -95,26 +125,28 @@ function init(){
         section.lastElementChild.insertAdjacentHTML('beforeend',g.books.map(card).join(''));
       }
     }
-    content.insertAdjacentHTML('beforeend',`<div class="tbr-more"><span role="status">Showing ${Math.min(limit,list.length)} of ${list.length} books</span>${limit<list.length?'<button type="button" data-tbr-more>Load more books</button>':''}</div>`);
+    content.insertAdjacentHTML('beforeend',`<div class="tbr-more"><span role="status">Showing ${number(Math.min(limit,list.length))} of ${number(list.length)} books</span>${limit<list.length?'<button type="button" data-tbr-more>Load more books</button>':''}</div>`);
     content.querySelectorAll('img:not([data-error-bound])').forEach(img=>{img.dataset.errorBound='true';img.addEventListener('error',()=>{const p=document.createElement('span');p.className='tbr-placeholder';p.textContent='Cover unavailable';img.replaceWith(p);},{once:true});});
     const more=content.querySelector('[data-tbr-more]');
     if(more&&window.IntersectionObserver){
       if(!moreObserver)moreObserver=new IntersectionObserver(entries=>{
-        if(active&&source==='bookshops'&&entries.some(e=>e.isIntersecting&&e.target.isConnected))appendMore();
+        if(active&&source!=='instagram'&&entries.some(e=>e.isIntersecting&&e.target.isConnected))appendMore();
       },{rootMargin:'0px 0px 1000px 0px'});
       moreObserver.observe(more);
     }
   }
   function appendMore(){
-    if(!active||source!=='bookshops'||!books)return;
-    const list=filterBooks(books,{query:search.value,city,shop,sort}),start=limit;
+    if(!active||source==='instagram'||!books)return;
+    const list=filtered(),start=limit;
     if(start>=list.length)return;
     limit+=48;drawBatch(list,start);
   }
 
   function openBook(id){
     const b=books?.find(x=>x.id===id);if(!b)return;
-    $('tbrDetail').innerHTML=`${b.cover?`<img src="${escape(b.cover)}" alt="Cover of ${escape(b.title)}">`:''}<h2 id="tbrDetailTitle">${escape(b.title)}</h2><p>${escape(b.author||'Author not identified')}</p>${b.identity_status==='needs_review'?'<p class="tbr-note">The exact book is still being identified.</p>':''}${b.description?`<p>${escape(b.description)}</p>`:''}<h3>Spotted in book shops</h3><ul>${b.sightings.map(s=>`<li><strong>${escape(s.bookshop)}</strong><br>${escape(s.city)}${s.country?', '+escape(s.country):''} · ${date(s.photographed_at)}${/unresolved|probable|possible|uncertain|unknown/i.test(s.shop_status)?`<br>Shop identification: ${escape(s.shop_status)}`:''}</li>`).join('')}</ul><p class="tbr-note">Saved as a reading interest. This doesn’t indicate ownership or a completed read. Cover and description may represent a different edition from the photographed copy.</p>`;
+    $('tbrDialog').querySelector('.tbr-dialog-head span').textContent='TBR · '+SOURCES[source];
+    const sightings=b.sightings.length?`<h3>Spotted in book shops</h3><ul>${b.sightings.map(s=>`<li><strong>${escape(s.bookshop)}</strong><br>${escape(s.city)}${s.country?', '+escape(s.country):''} · ${date(s.photographed_at)}${/unresolved|probable|possible|uncertain|unknown/i.test(s.shop_status)?`<br>Shop identification: ${escape(s.shop_status)}`:''}</li>`).join('')}</ul>`:'';
+    $('tbrDetail').innerHTML=`${b.cover?`<img src="${escape(b.cover)}" alt="Cover of ${escape(b.title)}">`:''}<h2 id="tbrDetailTitle">${escape(b.title)}</h2><p>${escape(b.author||'Author not identified')}</p>${b.identity_status==='needs_review'?'<p class="tbr-note">The exact book is still being identified.</p>':''}${b.description?`<p>${escape(b.description)}</p>`:''}${source==='online'?'<p class="tbr-note">Found online and saved to explore.</p>':''}${sightings}<p class="tbr-note">Saved as a reading interest. This doesn’t indicate ownership or a completed read.${b.sightings.length?' Cover and description may represent a different edition from the photographed copy.':''}</p>`;
     $('tbrDialog').showModal();
   }
   status.addEventListener('click',e=>{if(active&&e.target.closest('[data-status]'))enter(false,source);},true);

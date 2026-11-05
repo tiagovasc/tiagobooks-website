@@ -10,7 +10,7 @@ if(!process.argv.includes('--finish')){
   mkdirSync('data',{recursive:true});
   const source=readFileSync('library/index.html','utf8');
   if(!/^var SEED = \[\];\r?$/m.test(source))throw Error('Personal library must not be embedded');
-  const tbrCount=JSON.parse(readFileSync('library/tbr-bookshops.json','utf8')).books.length;
+  const tbrCount=JSON.parse(readFileSync('library/tbr-catalogue.json','utf8')).books.length;
   const html=source.replace(/<!-- site-shell:start -->[\s\S]*?<!-- site-shell:end -->/,'<!-- site-shell:start -->'+renderSiteHeader(site,'/library')+'<!-- site-shell:end -->').replace(/data-tbr-count="\d*"/,`data-tbr-count="${tbrCount}"`);
   if(html!==source)writeFileSync('library/index.html',html);
 }else{

@@ -19,7 +19,7 @@ import Base from '../layouts/Base.astro';
   <p class="ss-status" id="ss-status" role="status"></p>
   <div id="ss-results"></div>
   <script>
-    import {searchCatalogue} from '../lib/catalogue-search.mjs';
+    import {searchCatalogue,tbrHref,tbrLabel} from '../lib/catalogue-search.mjs';
     const $=(id:string)=>document.getElementById(id) as any;
     const esc=(s:any)=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'} as any)[c]);
     const LABEL:any={blog:'Blog',library:'Library',tbr:'TBR'};
@@ -27,12 +27,12 @@ import Base from '../layouts/Base.astro';
     async function loadPagefind(){if(!pagefind){const url=new URL('/pagefind/pagefind.js',location.origin).href;pagefind=await import(/* @vite-ignore */ url);}return pagefind}
     // Library search uses the public list plus descriptions (so a description still matches), loaded in parallel.
     async function libraryBooks(){const [list,desc]=await Promise.all([fetch('/books.json?view=public'),fetch('/book-descriptions.json')]);if(!list.ok||!desc.ok)throw Error('unavailable');const d=await list.json(),map=await desc.json();return (Array.isArray(d)?d:d.books).map((b:any)=>b.has_description?{...b,description:map[b.id]||''}:b)}
-    async function catalogue(kind:string){if(!data[kind]){if(kind==='library')data[kind]=await libraryBooks();else{const r=await fetch('/tbr-bookshops.json');if(!r.ok)throw Error('unavailable');data[kind]=(await r.json()).books}}return data[kind]}
+    async function catalogue(kind:string){if(!data[kind]){if(kind==='library')data[kind]=await libraryBooks();else{const r=await fetch('/tbr-catalogue.json');if(!r.ok)throw Error('unavailable');data[kind]=(await r.json()).books}}return data[kind]}
     async function blogResults(q:string){const pf=await loadPagefind();const r=await pf.search(q);return {total:r.results.length,load:(n:number)=>Promise.all(r.results.slice(0,n).map((x:any)=>x.data()))}}
     // Results use the library's small web thumbnails (about a tenth of the bytes); the full cover is the fallback.
     const thumb=(c:string)=>{const m=/^covers\/([^\/]+?)(?:\.[A-Za-z0-9]+)?$/.exec(c||'');return m?'covers/web/'+m[1]+'.jpg':c};
-    function bookRow(b:any,kind:string){const href=kind==='library'?'/library#book/'+encodeURIComponent(b.id):'/library?collection=tbr&source=bookshops&q='+encodeURIComponent(b.title||'');
-      const shop=kind==='tbr'&&b.sightings&&b.sightings[0]?[b.sightings[0].bookshop,b.sightings[0].city].filter(Boolean).join(', '):'';
+    function bookRow(b:any,kind:string){const href=kind==='library'?'/library#book/'+encodeURIComponent(b.id):tbrHref(b);
+      const shop=kind==='tbr'?tbrLabel(b):'';
       const meta=[b.author,kind==='library'?b.subject:shop].filter(Boolean).join(' · ');
       return `<a class="ss-row" href="${esc(href)}"><span class="ss-cover">${b.cover?`<img src="/${esc(thumb(b.cover))}" data-full="/${esc(b.cover)}" alt="" loading="lazy" decoding="async" onerror="if(this.dataset.full){this.src=this.dataset.full;this.removeAttribute('data-full')}else this.remove()">`:''}</span><span class="ss-text"><span class="ss-title">${esc(b.title||'Untitled')}</span>${meta?`<span class="ss-meta">${esc(meta)}</span>`:''}</span></a>`}
     function postRow(d:any){const kind=d.url.startsWith('/pages/')?'Page':'';return `<a class="ss-row ss-post" href="${esc(d.url)}"><span class="ss-text"><span class="ss-title">${esc(d.meta?.title||d.url)}</span>${kind?`<span class="ss-meta">${kind}</span>`:''}${d.excerpt?`<span class="ss-excerpt">${d.excerpt}</span>`:''}</span></a>`}

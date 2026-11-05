@@ -45,7 +45,7 @@ test('one shared header, selected blog sections and publication months preserve 
 test('blog is the homepage and library initial counts do not depend on opening TBR',async()=>{
   const home=await(await fetch(base+'/')).text(),library=await(await fetch(base+'/library')).text();
   assert.equal([...home.matchAll(/data-blog-entry/g)].length,141);
-  const catalogue=await(await fetch(base+'/tbr-bookshops.json')).json();
+  const catalogue=await(await fetch(base+'/tbr-catalogue.json')).json();
   assert.match(library,new RegExp('id="statusSeg" data-tbr-count="'+catalogue.books.length+'"'));
   assert.match(library,/var STATUSES=\["read","reading","next","unread","paused"\]/);
   assert.match(home,/\/\^#book\\\//);

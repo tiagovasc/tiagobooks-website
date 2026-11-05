@@ -4,7 +4,7 @@
 // local builds writing localhost URLs into the tracked library page.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {readFile,writeFile,mkdtemp} from 'node:fs/promises';
+import {readFile,writeFile,mkdtemp,utimes} from 'node:fs/promises';
 import path from 'node:path';
 import os from 'node:os';
 import http from 'node:http';
@@ -105,6 +105,16 @@ test('the build keeps origin-specific URLs out of the tracked library page',asyn
   assert.doesNotMatch(source,/<link rel="canonical" href="http:\/\/localhost/);assert.doesNotMatch(source,/og:url" content="http:\/\/localhost/);
   const built=await readFile('dist/library.html','utf8');assert.match(built,/<body data-pagefind-ignore(="")?>/);
   const served=await(await fetch(base+'/library')).text();assert.match(served,/<body data-pagefind-ignore(="")?>/);assert.match(served,/rel="canonical"/);
+});
+
+test('configured library build wins even when its timestamp predates editable source',async()=>{
+  const before=process.env.LIBRARY_PAGE_FILE;
+  const configured=path.join(fixture,'configured-library.html');
+  await writeFile(configured,'<!doctype html><head></head><body data-pagefind-ignore>Configured build fixture</body>');
+  await utimes(configured,new Date('2000-01-01'),new Date('2000-01-01'));
+  process.env.LIBRARY_PAGE_FILE=configured;
+  try{assert.match(await(await fetch(base+'/library')).text(),/Configured build fixture/)}
+  finally{process.env.LIBRARY_PAGE_FILE=before}
 });
 
 test('unknown blog tags show a way back to all posts',async()=>{

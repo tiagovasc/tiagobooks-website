@@ -52,7 +52,7 @@ export const server=http.createServer(async(req,res)=>{
     if(p==='/healthz'){await stat(path.join(dist,'blog.html'));await stat(path.join(dist,'pagefind/pagefind.js'));req.url='/health';return library.emit('request',req,res)}
     if(p==='/'&&url.searchParams.get('collection')==='tbr')return reply(res,302,'Open the library',{Location:'/library'+url.search,'Cache-Control':'no-store'});
     if(p==='/library'){req.url='/'+url.search;return library.emit('request',req,res)}
-    if(['/books.json','/book-descriptions.json','/book-description','/save','/login','/logout','/health','/tbr.js','/tbr.css','/tbr-bookshops.json','/favicon.svg','/favicon.ico','/apple-touch-icon.png'].includes(p)||p.startsWith('/covers/'))return library.emit('request',req,res);
+    if(['/books.json','/book-descriptions.json','/book-description','/save','/login','/logout','/health','/tbr.js','/tbr.css','/tbr-bookshops.json','/tbr-catalogue.json','/favicon.svg','/favicon.ico','/apple-touch-icon.png'].includes(p)||p.startsWith('/covers/'))return library.emit('request',req,res);
     if(!['GET','HEAD'].includes(req.method))return reply(res,405,'Method not allowed');
     if(p==='/admin/config.yml'){
       const repo=process.env.CMS_REPOSITORY;

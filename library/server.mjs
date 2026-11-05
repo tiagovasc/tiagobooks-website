@@ -117,7 +117,9 @@ async function pageVariants(){
   // The integrated site serves the build's dist/index.html (shared header and canonical URL filled in); the source copy is the fallback.
   const choices=[];for(const file of [process.env.LIBRARY_PAGE_FILE,path.join(root,'index.html')]){if(!file)continue;const st=await stat(file).catch(()=>null);if(st?.isFile())choices.push({file,st});}
   if(!choices.length)throw new Error('Library page missing');
-  const {file,st}=choices.reduce((a,b)=>b.st.mtimeMs>a.st.mtimeMs?b:a), stamp=`${file}:${st.mtimeMs}:${st.size}`;
+  // Prefer the configured build even if another editor has just touched the source.
+  // Its canonical URL, search exclusions and catalogue count belong to one build.
+  const {file,st}=choices[0], stamp=`${file}:${st.mtimeMs}:${st.size}`;
   if(page&&page.stamp===stamp)return page;
   let html=(await readFile(file)).toString();
   const at=html.indexOf('var SEED = ');
@@ -149,7 +151,7 @@ async function librarySnapshot(){
 export function resetCaches(){page=null;snapshot=null;attempts.clear();allFailures.count=0;}
 
 const STATIC_TYPES={'.svg':'image/svg+xml','.ico':'image/x-icon','.png':'image/png','.webp':'image/webp','.jpg':'image/jpeg','.jpeg':'image/jpeg'};
-const TBR_FILES={'tbr.js':'text/javascript; charset=utf-8','tbr.css':'text/css; charset=utf-8','tbr-bookshops.json':'application/json; charset=utf-8'};
+const TBR_FILES={'tbr.js':'text/javascript; charset=utf-8','tbr.css':'text/css; charset=utf-8','tbr-bookshops.json':'application/json; charset=utf-8','tbr-catalogue.json':'application/json; charset=utf-8'};
 const tbrVariants=new Map();
 const ROOT_FILES=['favicon.svg','favicon.ico','apple-touch-icon.png'];
 const COVER=/^covers\/(?:web\/)?[a-zA-Z0-9_.-]+\.(jpg|png|webp|jpeg)$/;
