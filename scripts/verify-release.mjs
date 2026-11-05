@@ -10,7 +10,7 @@ for(const kind of ['posts','pages']) for(const name of readdirSync(`src/content/
   if(data.draft) {assert(!existsSync(output)); continue;}
   assert(existsSync(output), `Missing ${output}`); count++;
 }
-for(const file of ['index.html','search.html','404.html','posts_feed','robots.txt','sitemap-index.xml','pagefind/pagefind.js','admin/index.html','admin/sveltia-cms.js']) assert(existsSync('dist/'+file),`Missing ${file}`);
+for(const file of ['index.html','library.html','search.html','404.html','posts_feed','robots.txt','sitemap-index.xml','pagefind/pagefind.js','admin/index.html','admin/sveltia-cms.js']) assert(existsSync('dist/'+file),`Missing ${file}`);
 assert(!readFileSync('dist/index.html','utf8').includes('Sample Post'));
 assert(readFileSync('dist/posts_feed','utf8').includes('<content type="html">'));
 console.log(`Verified ${count} published entries and essential runtime files`);

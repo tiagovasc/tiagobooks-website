@@ -6,7 +6,7 @@ import site from '../lib/site-config.mjs';
 import { getListedPosts } from '../lib/content';
 const posts=await getListedPosts();
 ---
-<Base title="Blog" path="/blog">
+<Base title="Blog" path="/">
   <h1 class="sr-only">Blog</h1>
   <p class="sr-only" id="blog-result-count" role="status">{posts.length} posts</p>
   <div class="blog-empty" id="blog-empty" hidden><p>No posts have this tag.</p><a href="/blog">Show all posts</a></div>

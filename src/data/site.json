@@ -10,12 +10,8 @@
   "socialPreviewFromFirstImage": true,
   "nav": [
     {
-      "label": "Library",
-      "href": "/"
-    },
-    {
       "label": "Blog",
-      "href": "/blog"
+      "href": "/"
     },
     {
       "label": "Books",
@@ -26,12 +22,16 @@
       "href": "/pages/talks"
     },
     {
-      "label": "Podcast",
+      "label": "Podcasts",
       "href": "/pages/podcast-overview"
     },
     {
       "label": "Interviews",
       "href": "/pages/interviews"
+    },
+    {
+      "label": "Library",
+      "href": "/library"
     },
     {
       "label": "About",

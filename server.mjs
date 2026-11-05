@@ -9,7 +9,7 @@ import {editorHandler} from './editor-api.mjs';
 import {productionEditorHandler} from './production-editor-api.mjs';
 import {personalizeSiteHeader} from './src/lib/site-shell.mjs';
 const root=path.dirname(fileURLToPath(import.meta.url)),dist=path.join(root,'dist');
-process.env.LIBRARY_PAGE_FILE??=path.join(dist,'index.html');
+process.env.LIBRARY_PAGE_FILE??=path.join(dist,'library.html');
 const privateRoot=process.env.INTEGRATION_PRIVATE_DIR||path.resolve(root,'../private');
 const editor=process.env.NODE_ENV==='production'?productionEditorHandler({authenticated}):editorHandler({root,privateRoot,authenticated});
 const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.ico':'image/x-icon','.xml':'application/xml','.txt':'text/plain; charset=utf-8','.wasm':'application/wasm','.woff2':'font/woff2','.woff':'font/woff','.ttf':'font/ttf','.mp3':'audio/mpeg','.mp4':'video/mp4','.pdf':'application/pdf','.webm':'video/webm'};
@@ -50,7 +50,9 @@ export const server=http.createServer(async(req,res)=>{
     if(p==='/api/session')return reply(res,200,JSON.stringify({canEdit:authenticated(req)}),{'Content-Type':'application/json','Cache-Control':'no-store'});
     if(p.startsWith('/api/editor'))return await editor(req,res);
     if(p==='/healthz'){await stat(path.join(dist,'blog.html'));await stat(path.join(dist,'pagefind/pagefind.js'));req.url='/health';return library.emit('request',req,res)}
-    if(p==='/'||p==='/index.html'||['/books.json','/book-descriptions.json','/book-description','/save','/login','/logout','/health','/tbr.js','/tbr.css','/tbr-bookshops.json','/favicon.svg','/favicon.ico','/apple-touch-icon.png'].includes(p)||p.startsWith('/covers/'))return library.emit('request',req,res);
+    if(p==='/'&&url.searchParams.get('collection')==='tbr')return reply(res,302,'Open the library',{Location:'/library'+url.search,'Cache-Control':'no-store'});
+    if(p==='/library'){req.url='/'+url.search;return library.emit('request',req,res)}
+    if(['/books.json','/book-descriptions.json','/book-description','/save','/login','/logout','/health','/tbr.js','/tbr.css','/tbr-bookshops.json','/favicon.svg','/favicon.ico','/apple-touch-icon.png'].includes(p)||p.startsWith('/covers/'))return library.emit('request',req,res);
     if(!['GET','HEAD'].includes(req.method))return reply(res,405,'Method not allowed');
     if(p==='/admin/config.yml'){
       const repo=process.env.CMS_REPOSITORY;
@@ -63,13 +65,13 @@ export const server=http.createServer(async(req,res)=>{
       if(!process.env.CMS_REPOSITORY)return reply(res,503,'The remote editor needs its own repository. Use /editor for local Markdown editing.',{'Cache-Control':'no-store'});
     }
     let decoded;try{decoded=decodeURIComponent(p)}catch{return reply(res,400,'Invalid path')}
-    const redirects=await redirectMap(),fixed={'/posts':{to:'/blog',status:301},'/library':{to:'/',status:302}};
+    const redirects=await redirectMap(),fixed={'/posts':{to:'/blog',status:301},'/index.html':{to:'/',status:308},'/index':{to:'/',status:308}};
     if(p.startsWith('/tag/')){const tagFile=path.resolve(dist,'.'+decoded+'.html');if(tagFile.startsWith(dist+path.sep)&&(await stat(tagFile).catch(()=>null))?.isFile())return reply(res,301,'Redirecting',{Location:'/blog?tag='+encodeURIComponent(decoded.slice(5))});}
     const r=fixed[p]||redirects.get(p);if(r)return reply(res,r.status,'Redirecting',{Location:r.to+url.search});
-    if(p.endsWith('/')&&p!=='/admin/')return reply(res,308,'Redirecting',{Location:p.slice(0,-1)+url.search});
+    if(p.endsWith('/')&&p!=='/'&&p!=='/admin/')return reply(res,308,'Redirecting',{Location:p.slice(0,-1)+url.search});
     if(p.endsWith('.html'))return reply(res,308,'Redirecting',{Location:p.slice(0,-5)+url.search});
     if(decoded.includes('\\')||decoded.includes('\0')||decoded.split('/').some(s=>s.startsWith('.'))||['/_headers','/_redirects'].includes(decoded))return reply(res,404,'Not found');
-    const base=path.resolve(dist,'.'+decoded);if(!base.startsWith(dist+path.sep))return reply(res,404,'Not found');
+    const base=path.resolve(dist,p==='/'?'index.html':'.'+decoded);if(!base.startsWith(dist+path.sep))return reply(res,404,'Not found');
     let target,st;for(const candidate of [base,base+'.html',path.join(base,'index.html')]){const s=await stat(candidate).catch(()=>null);if(s?.isFile()){target=candidate;st=s;break}}
     const status=target?200:404;if(!target){target=path.join(dist,'404.html');st=await stat(target)}
     const type=p==='/posts_feed'?'application/atom+xml; charset=utf-8':types[path.extname(target)]||'application/octet-stream';const isAdmin=p.startsWith('/admin');

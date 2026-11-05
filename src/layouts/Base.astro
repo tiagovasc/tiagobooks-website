@@ -28,7 +28,7 @@ const {
 const fullTitle = title && title !== site.title ? `${title} | ${site.title}` : site.title;
 const canonical = new URL(path === '/' ? '/' : path, site.url).toString();
 const imageUrl = image ? absoluteSiteLink(image) : undefined;
-const isBlog = path === '/blog' || path.startsWith('/posts') || path.startsWith('/tag/');
+const isBlog = path === '/' || path === '/blog' || path.startsWith('/posts') || path.startsWith('/tag/');
 const tagMap = isBlog ? await getTagMap() : new Map();
 const tagChoices = BLOG_SECTIONS.map(label=>[label.replace(/\s+/g,'-'),tagMap.get(label.replace(/\s+/g,'-'))] as const).filter(([,tag])=>tag);
 const activeTag = path.startsWith('/tag/') ? decodeURIComponent(path.slice(5)) : '';
@@ -36,6 +36,7 @@ const activeTag = path.startsWith('/tag/') ? decodeURIComponent(path.slice(5)) :
 <!doctype html>
 <html lang={site.language.split('-')[0]} data-newtab={site.newTabForExternalLinks ? '' : undefined}>
   <head>
+    <script is:inline>if(location.pathname==='/'&&/^#book\//.test(location.hash))location.replace('/library'+location.search+location.hash);</script>
     <script is:inline>try{let t=JSON.parse(localStorage.getItem("tiago-books-ui-v1")||"{}").theme;if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch{}</script>
     <link rel="stylesheet" href="/unified.css" />
     <meta charset="utf-8" />

@@ -31,7 +31,7 @@ import Base from '../layouts/Base.astro';
     async function blogResults(q:string){const pf=await loadPagefind();const r=await pf.search(q);return {total:r.results.length,load:(n:number)=>Promise.all(r.results.slice(0,n).map((x:any)=>x.data()))}}
     // Results use the library's small web thumbnails (about a tenth of the bytes); the full cover is the fallback.
     const thumb=(c:string)=>{const m=/^covers\/([^\/]+?)(?:\.[A-Za-z0-9]+)?$/.exec(c||'');return m?'covers/web/'+m[1]+'.jpg':c};
-    function bookRow(b:any,kind:string){const href=kind==='library'?'/#book/'+encodeURIComponent(b.id):'/?collection=tbr&source=bookshops&q='+encodeURIComponent(b.title||'');
+    function bookRow(b:any,kind:string){const href=kind==='library'?'/library#book/'+encodeURIComponent(b.id):'/library?collection=tbr&source=bookshops&q='+encodeURIComponent(b.title||'');
       const shop=kind==='tbr'&&b.sightings&&b.sightings[0]?[b.sightings[0].bookshop,b.sightings[0].city].filter(Boolean).join(', '):'';
       const meta=[b.author,kind==='library'?b.subject:shop].filter(Boolean).join(' · ');
       return `<a class="ss-row" href="${esc(href)}"><span class="ss-cover">${b.cover?`<img src="/${esc(thumb(b.cover))}" data-full="/${esc(b.cover)}" alt="" loading="lazy" decoding="async" onerror="if(this.dataset.full){this.src=this.dataset.full;this.removeAttribute('data-full')}else this.remove()">`:''}</span><span class="ss-text"><span class="ss-title">${esc(b.title||'Untitled')}</span>${meta?`<span class="ss-meta">${esc(meta)}</span>`:''}</span></a>`}

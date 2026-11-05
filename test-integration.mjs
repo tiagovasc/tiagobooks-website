@@ -19,20 +19,20 @@ await new Promise(r=>server.listen(0,'127.0.0.1',r));const base='http://127.0.0.
 let cookie;
 test.after(async()=>{server.closeAllConnections();await new Promise(r=>server.close(r))});
 test('library, writing, metadata, scripts, uploads and search files are served on one origin',async()=>{
-  const routes=['/','/posts','/search','/editor','/unified.css','/unified.js','/books.json','/tbr-bookshops.json','/pagefind/pagefind.js','/robots.txt','/sitemap-index.xml','/healthz','/favicon.svg'];
+  const routes=['/','/library','/posts','/search','/editor','/unified.css','/unified.js','/books.json','/tbr-bookshops.json','/pagefind/pagefind.js','/robots.txt','/sitemap-index.xml','/healthz','/favicon.svg'];
   for(const kind of ['posts','pages'])for(const f of await readdir('src/content/'+kind))if(f.endsWith('.md'))routes.push('/'+kind+'/'+f.slice(0,-3));
   for(const f of await readdir('dist/tag'))if(f.endsWith('.html'))routes.push('/tag/'+f.slice(0,-5));
   async function uploads(dir,prefix){for(const f of await readdir(dir,{withFileTypes:true})){if(f.isDirectory())await uploads(path.join(dir,f.name),prefix+'/'+f.name);else routes.push(prefix+'/'+f.name)}}
   await uploads('public/uploads','/uploads');
   for(const route of routes){const r=await fetch(base+route);assert.equal(r.status,200,route);assert.equal(r.headers.get('x-content-type-options'),'nosniff',route)}
-  const html=await(await fetch(base+'/')).text();assert.match(html,/CLOUD_CAN_EDIT=false/);assert.match(html,/var SEED = \[\];/);assert.match(html,/href="\/blog"/);
+  const html=await(await fetch(base+'/library')).text();assert.match(html,/CLOUD_CAN_EDIT=false/);assert.match(html,/var SEED = \[\];/);assert.match(html,/href="\/">Blog/);
   assert.deepEqual(await(await fetch(base+'/books.json')).json(),source);
   assert.equal((await(await fetch(base+'/tbr-bookshops.json')).json()).books.length,753);
 });
 
 test('one shared header, selected blog sections and publication months preserve the complete listing',async()=>{
-  const library=await(await fetch(base+'/')).text(),blog=await(await fetch(base+'/blog')).text();
-  const shell=html=>serialize(parseFragment((html.match(/<header class="site-shell"[\s\S]*?<\/header>/)?.[0]||'').replace(/ aria-current="page"/g,'')));
+  const library=await(await fetch(base+'/library')).text(),blog=await(await fetch(base+'/blog')).text();
+  const shell=html=>serialize(parseFragment((html.match(/<header class="site-shell"[\s\S]*?<\/header>/)?.[0]||'').replace(/ aria-current="page"/g,'').replace(/nav-more-toggle is-current/g,'nav-more-toggle').replace(/(aria-controls="navExtra">)[^<]+/g,'$1More')));
   assert.ok(shell(library));assert.equal(shell(library),shell(blog));assert.doesNotMatch(shell(blog),/>Writing<|>General<|>Reviews<|>TBR</);
   assert.match(library,/data-collection="tbr"/);assert.doesNotMatch(await readFile('library/tbr.css','utf8'),/\.tbr-mode #statusSeg/);
   assert.deepEqual([...blog.matchAll(/data-blog-tag="([^"]*)"/g)].map(m=>m[1]),['','General','Podcast','Book-Reviews','In-Search-of-the-Infinite']);
@@ -42,6 +42,17 @@ test('one shared header, selected blog sections and publication months preserve 
   assert.equal((await fetch(base+'/tag/Book-Reviews',{redirect:'manual'})).headers.get('location'),'/blog?tag=Book-Reviews');
   assert.equal((await fetch(base+'/date-rail.js')).status,200);
 });
+test('blog is the homepage and library initial counts do not depend on opening TBR',async()=>{
+  const home=await(await fetch(base+'/')).text(),library=await(await fetch(base+'/library')).text();
+  assert.equal([...home.matchAll(/data-blog-entry/g)].length,141);
+  const catalogue=await(await fetch(base+'/tbr-bookshops.json')).json();
+  assert.match(library,new RegExp('id="statusSeg" data-tbr-count="'+catalogue.books.length+'"'));
+  assert.match(library,/var STATUSES=\["read","reading","next","unread","paused"\]/);
+  assert.match(home,/\/\^#book\\\//);
+  const legacy=await fetch(base+'/?collection=tbr',{redirect:'manual'});
+  assert.equal(legacy.status,302);assert.equal(legacy.headers.get('location'),'/library?collection=tbr');
+});
+
 test('all retained aliases redirect and the full-content feed has the original 50-entry window',async()=>{
   for(const line of (await readFile('dist/_redirects','utf8')).split(/\r?\n/).filter(l=>l.startsWith('/'))){const [from,to,status]=line.split(/\s+/);const r=await fetch(base+from,{redirect:'manual'});assert.equal(r.status,Number(status),from);assert.equal(r.headers.get('location'),to,from);assert.equal((await fetch(base+to)).status,200,to)}
   for(const route of ['/feed','/rss','/rss.xml','/atom.xml'])assert.equal((await fetch(base+route,{redirect:'manual'})).headers.get('location'),'/posts_feed');

@@ -103,8 +103,8 @@ test('blog pages allow KaTeX data fonts, compress with Brotli and cache hashed a
 test('the build keeps origin-specific URLs out of the tracked library page',async()=>{
   const source=await readFile('library/index.html','utf8');
   assert.doesNotMatch(source,/<link rel="canonical" href="http:\/\/localhost/);assert.doesNotMatch(source,/og:url" content="http:\/\/localhost/);
-  const built=await readFile('dist/index.html','utf8');assert.match(built,/<body data-pagefind-ignore(="")?>/);
-  const served=await(await fetch(base+'/')).text();assert.match(served,/<body data-pagefind-ignore(="")?>/);assert.match(served,/rel="canonical"/);
+  const built=await readFile('dist/library.html','utf8');assert.match(built,/<body data-pagefind-ignore(="")?>/);
+  const served=await(await fetch(base+'/library')).text();assert.match(served,/<body data-pagefind-ignore(="")?>/);assert.match(served,/rel="canonical"/);
 });
 
 test('unknown blog tags show a way back to all posts',async()=>{
@@ -172,7 +172,7 @@ test('visitors load the library without descriptions; each description loads on 
   assert.equal((await fetch(base+'/book-description')).status,400);
   const map=await(await fetch(base+'/book-descriptions.json')).json();assert.equal(map[withText.id],withText.description);
   assert.equal(Object.keys(map).length,full.filter(b=>b.description&&b.description.trim()).length);
-  const page=await(await fetch(base+'/')).text();assert.match(page,/books\.json\?view=public/);
+  const page=await(await fetch(base+'/library')).text();assert.match(page,/books\.json\?view=public/);
 });
 
 test('a save that would strip most descriptions is refused',async()=>{
@@ -273,7 +273,7 @@ test('Books renders the selected cover layout with working original download and
 });
 
 test('active navigation is present in the delivered HTML before any client scripts run',async()=>{
-  const routes={'/':'Library','/blog':'Blog','/pages/books':'Books','/pages/talks':'Talks','/pages/podcast-overview':'Podcast','/pages/interviews':'Interviews','/pages/about':'About','/posts/podcast-object-oriented-ontology-and-the-nature-of-reality-with-graham-harman':'Blog'};
+  const routes={'/':'Blog','/library':'Library','/blog':'Blog','/pages/books':'Books','/pages/talks':'Talks','/pages/podcast-overview':'Podcasts','/pages/interviews':'Interviews','/pages/about':'About','/posts/podcast-object-oriented-ontology-and-the-nature-of-reality-with-graham-harman':'Blog'};
   for(const [route,label] of Object.entries(routes)){
     const html=await(await fetch(base+route)).text();
     const nav=html.match(/<nav class="unified-nav"[\s\S]*?<\/nav>/)[0];
@@ -290,7 +290,7 @@ test('audit polish supplies post context, semantic lists and recovery paths',asy
   assert.match(html,/\d+ min read/);assert.match(html,/Top 3 theses/);
   assert.match(html,/id="top-3-thesis"/,'old heading links still work');
   assert.match(html,/<li>\s*(?:<p>)?Objects always withdraw/);assert.doesNotMatch(html,/•/);
-  const library=await(await fetch(base+'/')).text();assert.match(library,/class="skip-link" href="#main"/);assert.match(library,/class="library-intro"/);
+  const library=await(await fetch(base+'/library')).text();assert.match(library,/class="skip-link" href="#main"/);assert.match(library,/class="library-intro"/);
   const login=await(await fetch(base+'/login')).text();assert.match(login,/<main><form/);assert.match(login,/<meta name="description"/);
   const missing=await fetch(base+'/this-page-does-not-exist');assert.equal(missing.status,404);assert.match(await missing.text(),/class="recovery-links"/);
   const search=await(await fetch(base+'/search')).text();assert.match(search,/<h1 class="entry-title">Search<\/h1>/);assert.match(search,/search\?q=beauty/);

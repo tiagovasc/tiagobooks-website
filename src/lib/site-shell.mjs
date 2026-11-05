@@ -1,7 +1,7 @@
 const esc=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const icon=(body)=>`<svg viewBox="0 0 20 20" aria-hidden="true">${body}</svg>`;
 export function renderSiteHeader(site, path='/'){
-  const current=(href)=>href==='/'?path==='/':href==='/blog'?/^\/(blog|posts|tag)(\/|$)/.test(path):href===path;
+  const current=(href)=>href==='/'||href==='/blog'?path==='/'||/^\/(blog|posts|tag)(\/|$)/.test(path):href===path;
   const nav=site.nav.filter(n=>!n.href.startsWith('/tag/'));
   const link=n=>`<a href="${esc(n.href)}"${current(n.href)?' aria-current="page"':''}>${esc(n.label)}</a>`;
   const extra=nav.slice(3),selected=extra.find(n=>current(n.href));

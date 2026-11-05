@@ -4,6 +4,8 @@ The source for [tiagobooks.com](https://tiagobooks.com): Tiago Faleiro's persona
 
 Browse the library in cover, list or table view; filter reading status and TBR collections; explore the blog by tag and date; or search across books and writing. The site includes full-content Atom feeds, stable links, light and dark themes, and authenticated editing.
 
+The homepage is the Blog; the library lives at `/library`. The shared menu follows Blog, Books, Talks, Podcasts, Interviews, Library and About. Existing `/blog` links still work, and older homepage book and TBR links lead to the library.
+
 ## Run locally
 
 Use Node.js **22.19 or later** and npm.
