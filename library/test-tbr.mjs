@@ -1,8 +1,27 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {filterBooks,groupBooks,SOURCES} from './tbr.js';
+import {filterBooks,groupBooks,SOURCES,sourceBooks,filterCatalogue,collectionGroups,sourceLabel,SOURCE_VIEWS,catalogueCounts} from './tbr.js';
 const data=JSON.parse(fs.readFileSync(new URL('./tbr-bookshops.json',import.meta.url),'utf8'));
+
+test('All TBR combines every source once, searches places and supports undated discoveries',()=>{
+ const shared={id:'shared',title:'A Shared Book',author:'A Writer',sources:['bookshops','instagram','online'],sightings:[{visit_id:'visit',city:'London',bookshop:'Watkins',photographed_at:'2026-10-28T12:00:00Z'}]};
+ const online={id:'web',title:'Web Discovery',author:'B Writer',description:'Consciousness',sources:['online'],sightings:[]};
+ const instagram={id:'ig',title:'Instagram Discovery',author:'C Writer',sources:['instagram'],sightings:[]};
+ const books=[shared,online,instagram],before=JSON.stringify(books);
+ assert.equal(Object.keys(SOURCE_VIEWS)[0],'all');
+ assert.deepEqual(sourceBooks([...books,shared],'all').map(b=>b.id),['shared','web','ig']);
+ assert.equal(filterCatalogue(books).length,catalogueCounts(books).total);
+ assert.deepEqual(filterCatalogue(books,{source:'all',query:'watkins'}).map(b=>b.id),['shared']);
+ assert.deepEqual(filterCatalogue(books,{source:'all',query:'consciousness'}).map(b=>b.id),['web']);
+ assert.deepEqual(filterCatalogue(books,{source:'all',query:'instagram'}).map(b=>b.id),['shared','ig']);
+ assert.deepEqual(filterCatalogue(books,{source:'all',sort:'oldest'}).map(b=>b.id),['ig','web','shared']);
+ assert.deepEqual(filterCatalogue(books,{source:'all',sort:'title'}).map(b=>b.id),['shared','ig','web']);
+ assert.deepEqual(collectionGroups(books,'all'),[{key:'all',books}]);
+ assert.equal(sourceLabel(shared),'Book shops · Instagram · Online');
+ assert.equal(sourceLabel(online),'Online');
+ assert.equal(JSON.stringify(books),before);
+});
 test('bookshop import preserves every photograph, unique public IDs and chronological order',()=>{
  assert.equal(data.photo_records,819);assert.equal(data.books.length,753);
  assert.equal(data.books.reduce((n,b)=>n+b.sightings.length,0),819);
