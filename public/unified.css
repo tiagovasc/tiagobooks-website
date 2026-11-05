@@ -394,7 +394,7 @@ dialog.drawer,dialog.drawer::backdrop{right:calc(100% - 100vw)}
   box-shadow:0 0 0 1px var(--line),0 12px 28px -20px #0004;
 }
 .site-shell .shell-top{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:22px;height:auto;min-height:44px}
-.site-shell .shell-brand{font-size:18px;overflow:hidden;text-overflow:ellipsis}
+.site-shell .shell-brand{font-size:18px;line-height:1.5;padding-block:2px;overflow:hidden;text-overflow:ellipsis}
 .site-shell .unified-nav{justify-content:center;gap:3px;min-width:0;padding:0;overflow:visible;font-size:14px}
 .site-shell .unified-nav a{position:relative;padding:10px 10px;min-height:44px;border-radius:0}
 .site-shell .unified-nav a:hover,.site-shell .unified-nav a[aria-current=page],
