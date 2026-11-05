@@ -1356,6 +1356,7 @@ var SEED = [];
       '<input class="in in-author" data-f="author" value="'+esc(b.author)+'" placeholder="Author" aria-label="Author" spellcheck="false">'+
       (b.additional_authors?'<p class="d-also">With '+esc(b.additional_authors)+'</p>':'')+
       '<div class="dseg" id="dStatus" role="group" aria-label="Reading status">'+STATUSES.map(function(s){ return '<button type="button" data-set-status="'+s+'" aria-pressed="'+(b.read_status===s)+'">'+LABEL[s]+'</button>'; }).join("")+'</div>'+
+      (isUnfinished(b)?'<p class="d-sub">Unfinished</p>':'')+
       '<div class="d-quick"><div class="stars" id="dStars" role="group" aria-label="Rating">'+starsHTML(b.rating)+'</div>'+
         '<label class="switch"><input type="checkbox" id="dOwned"'+(b.owned?' checked':'')+'><span class="track" aria-hidden="true"></span>Bought</label></div>'+
       '<dl class="facts">'+
