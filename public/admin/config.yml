@@ -50,7 +50,7 @@ collections:
         widget: object
         required: false
         collapsed: true
-        hint: Public artwork information only. Update the credit and dimensions when replacing the image.
+        hint: Preview attribution only; never inserted into article or feed content. Preserve original body images and text. Update credit and dimensions when replacing a preview image.
         fields:
           - { label: Title, name: title, widget: string }
           - { label: Artist, name: artist, widget: string }

@@ -51,20 +51,19 @@ test('featured artwork decodes with correct dimensions and no embedded private m
     }
   }
 });
-test('artwork is credited in articles and feeds, and connected to cards and social previews',async()=>{
+test('preview artwork stays on cards and social previews, never injected into articles or feeds',async()=>{
   const blog=walk(parse(await readFile('dist/blog.html','utf8'))),feed=await readFile('dist/posts_feed','utf8');
   for(const {slug,data} of posts){
     const nodes=walk(parse(await readFile(`dist/posts/${slug}.html`,'utf8')));
     const figures=nodes.filter(n=>n.nodeName==='figure'&&attr(n,'class')==='entry-artwork');
-    assert.equal(figures.length,1,slug);assert.ok(text(figures[0]).includes(data.artwork.artist),slug);
-    const hero=walk(figures[0]).find(n=>n.nodeName==='img');assert.equal(attr(hero,'src'),data.image);assert.equal(attr(hero,'alt'),data.artwork.alt);
+    assert.equal(figures.length,0,slug+' must retain authored body only');
     for(const name of ['og:image','twitter:image']){
       const meta=nodes.find(n=>n.nodeName==='meta'&&(attr(n,'property')===name||attr(n,'name')===name));
       assert.ok(attr(meta,'content')?.endsWith(data.image),`${slug} ${name}`);
     }
     assert.ok(blog.some(n=>n.nodeName==='img'&&attr(n,'src')===(data.thumbnail||data.artwork.thumbnail)),`${slug} card`);
     const entry=feed.split('<entry>').find(e=>e.includes(`Post/${slug}</id>`));
-    if(entry){assert.ok(entry.includes(data.image),`${slug} feed image`);assert.ok(entry.includes(data.artwork.artist),`${slug} feed credit`)}
+    if(entry)assert.ok(!entry.includes('entry-artwork'),`${slug} no injected feed painting`);
   }
 });
 
@@ -78,6 +77,11 @@ test('book posts use their own illustrations as thumbnails, with the approved Ap
     const source=await readFile(`src/content/posts/${slug}.md`,'utf8');
     const body=source.replace(/^---[\s\S]*?\r?\n---/,'');
     assert.match(body,/!\[[^\]]*\]\(\/?uploads\//,slug+' retains its original embedded image');
+    const rendered=walk(parse(await readFile(`dist/posts/${slug}.html`,'utf8')));
+    for(const match of body.matchAll(/!\[[^\]]*\]\((\/?uploads\/[^\s)]+)/g)){
+      const original='/'+match[1].replace(/^\//,'');
+      assert.ok(rendered.some(n=>n.nodeName==='img'&&attr(n,'src')?.endsWith(original)),slug+' renders original inline image '+original);
+    }
     assert.equal(data.thumbnail,`/uploads/book-chapters/${slug}-480.webp`);
   }
 });

@@ -5,7 +5,6 @@ import { getListedPosts } from '../lib/content';
 import { displayTitle } from '../lib/post-presentation.mjs';
 import site from '../lib/site-config.mjs';
 import { rewriteHtml } from '../lib/html-links.mjs';
-import Artwork from '../layouts/Artwork.astro';
 
 // Atom feed at the same URL Pika uses (/posts_feed) so existing subscribers keep working.
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -16,9 +15,8 @@ export const GET: APIRoute = async () => {
   const entries: string[] = [];
   for (const p of posts) {
     const { Content } = await render(p);
-    const artwork = p.data.image && p.data.artwork
-      ? await container.renderToString(Artwork, {props:{image:new URL(p.data.image,site.url).toString(),artwork:p.data.artwork}}) : '';
-    const html = rewriteHtml(artwork + await container.renderToString(Content), {fragment:true,basePath:`/posts/${p.id}`});
+    // Match article pages: preview metadata must never be injected into authored content.
+    const html = rewriteHtml(await container.renderToString(Content), {fragment:true,basePath:`/posts/${p.id}`});
     const url = p.data.externalUrl || `${site.url}/posts/${p.id}`;
     entries.push(`  <entry>
     <id>tag:tiagovf.com,2005:Post/${p.id}</id>

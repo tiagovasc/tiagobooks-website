@@ -38,7 +38,7 @@ The full-content Atom feed is available at `/posts_feed`, with `/feed`, `/rss`, 
 
 ## Featured paintings
 
-The optional `image` field supplies the blog card and social preview. Adding `artwork` metadata also displays the painting and its credit above the article and in the feed. Credit fields are `title`, `artist`, optional `year` and `source`, descriptive `alt`, and the image's actual `width` and `height`. An optional `thumbnail` supplies a smaller card image. The browser editor exposes these fields under Featured image and Artwork credit.
+The optional `image` field supplies the blog card and social preview only. `artwork` stores preview attribution; it must never inject a painting into an article or its feed content. Article content must come exclusively from the authored body: preserve every original image and text passage. Add an in-article image only when explicitly requested, using the body itself. Credit fields are `title`, `artist`, optional `year` and `source`, descriptive `alt`, and the image's actual `width` and `height`. An optional `thumbnail` supplies a smaller card image. The browser editor exposes these fields under Featured image and Artwork credit.
 
 Podcast episodes use their original episode thumbnails instead of paintings. Set `image` and, optionally, the top-level `thumbnail` field to the episode images; leave `artwork` empty. The existing player and episode body remain intact. For paintings, the thumbnail under Artwork credit remains supported; a top-level Small thumbnail takes precedence when supplied.
 
@@ -79,7 +79,7 @@ Talks uses `## Title: Subtitle (Year)`, the YouTube URL, description paragraphs 
 
 ## Book chapter thumbnails
 
-The *In Search of the Infinite* posts use small, uncropped copies of their original embedded illustrations as `thumbnail` overrides. The Appendix keeps its painting because it has no embedded illustration. `thumbnailCrop` controls frontend framing only; the full original image, article artwork and credits stay intact.
+The *In Search of the Infinite* posts use small, uncropped copies of their original embedded illustrations as `thumbnail` overrides. The Appendix keeps its painting as a preview because it has no embedded illustration. `thumbnailCrop` controls frontend framing only. Preserve original inline images and preview credits; do not add featured paintings to the article body.
 
 
 ## Linking an article hosted elsewhere

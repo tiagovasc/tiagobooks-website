@@ -4,7 +4,6 @@ import { render } from 'astro:content';
 import { encryptHtml, markdownToHtml, sitePassword } from '../lib/protect';
 import { longDate, tagSlug, getListedPosts } from '../lib/content';
 import Base from './Base.astro';
-import Artwork from './Artwork.astro';
 import { displayTitle, visibleTags, readingMinutes } from '../lib/post-presentation.mjs';
 import site from '../lib/site-config.mjs';
 
@@ -86,7 +85,7 @@ const jsonLd = kind === 'post' && !d.protected ? {
       </>
     ) : replaceBody ? <slot /> : (
       <div class="e-content">
-        {d.image && d.artwork && <Artwork image={d.image} artwork={d.artwork} />}
+        {/* Featured artwork belongs to previews; article content comes only from its authored body. */}
         <Content />
       </div>
     )}
