@@ -4,8 +4,8 @@ export function renderSiteHeader(site, path='/'){
   const current=(href)=>href==='/'||href==='/blog'?path==='/'||/^\/(blog|posts|tag)(\/|$)/.test(path):href===path;
   const nav=site.nav.filter(n=>!n.href.startsWith('/tag/'));
   const link=n=>`<a href="${esc(n.href)}"${current(n.href)?' aria-current="page"':''}>${esc(n.label)}</a>`;
-  const extra=nav.slice(3),selected=extra.find(n=>current(n.href));
-  const navigation=nav.slice(0,3).map(link).join('')+`<div class="nav-more"><button type="button" class="nav-more-toggle${selected?' is-current':''}" aria-expanded="false" aria-controls="navExtra">${esc(selected?.label||'More')}<span aria-hidden="true">&#8964;</span></button><div class="nav-extra" id="navExtra">${extra.map(link).join('')}</div></div>`;
+  const selected=nav.find(n=>current(n.href));
+  const navigation=`<div class="nav-more"><button type="button" class="nav-more-toggle${selected?' is-current':''}" aria-expanded="false" aria-controls="navExtra">${esc(selected?.label||'Blog')}<span class="nav-chevron" aria-hidden="true"></span></button><ul class="nav-extra" id="navExtra">${nav.map(n=>`<li>${link(n)}</li>`).join('')}</ul></div>`;
   // 4 Nov 2026: GitHub points to this website's repository (was the old book-library repo).
   // 4 Nov 2026: plain-name brand (no mark), quiet icon actions, GitHub moved here from the library toolbar.
   const github='<svg viewBox="0 0 16 16" aria-hidden="true" class="fill-icon"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>';

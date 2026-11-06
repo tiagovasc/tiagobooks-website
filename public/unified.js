@@ -22,12 +22,16 @@ function sideRow(row){
 }
 for(const row of document.querySelectorAll('.unified-nav,.tag-chips,#statusSeg'))sideRow(row);
 
-// The mobile overflow menu keeps every destination one explicit tap away.
+// One mobile page disclosure; desktop keeps the same links visible inline.
 const more=document.querySelector('.nav-more'),moreButton=more?.querySelector('button');
 function closeMore(){moreButton?.setAttribute('aria-expanded','false')}
 moreButton?.addEventListener('click',()=>moreButton.setAttribute('aria-expanded',String(moreButton.getAttribute('aria-expanded')!=='true')));
 document.addEventListener('click',e=>{if(more&&!more.contains(e.target))closeMore()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&moreButton?.getAttribute('aria-expanded')==='true'){closeMore();moreButton.focus()}});
+more?.addEventListener('focusout',e=>{if(!more.contains(e.relatedTarget))closeMore()});
+more?.querySelectorAll('.nav-extra a').forEach(a=>a.addEventListener('click',closeMore));
+window.matchMedia('(max-width:760px)').addEventListener('change',closeMore);
+window.addEventListener('pageshow',closeMore);
 
 // Keep the month picker available on scroll-up, without covering text on scroll-down.
 let lastScroll=window.scrollY;
