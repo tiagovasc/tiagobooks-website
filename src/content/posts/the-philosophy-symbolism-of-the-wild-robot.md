@@ -5,16 +5,20 @@ tags:
 - General
 - Philosophy
 - Religion
-image: /uploads/artwork/theodule-augustin-ribot-the-good-samaritan.webp
+image: /uploads/artwork/william-adolphe-bouguereau-rest-unique-6136cbc1.webp
 artwork:
-  title: The Good Samaritan
-  artist: Théodule-Augustin Ribot
-  alt: A man kneels beside a wounded traveler, with a younger attendant behind him.
-  width: 1280
-  height: 1001
-  thumbnail: /uploads/artwork/theodule-augustin-ribot-the-good-samaritan-480.webp
-  year: c. 1870
-  source: https://www.musee-orsay.fr/en/artworks/le-bon-samaritain-75472
+  title: Rest
+  artist: William Adolphe Bouguereau
+  alt: A seated woman holds a small child while another child sleeps on the grass beneath trees.
+  width: 640
+  height: 900
+  thumbnail: /uploads/artwork/william-adolphe-bouguereau-rest-unique-6136cbc1-480.webp
+  year: '1879'
+  source: https://clevelandart.org/art/1915.722
+thumbnailCrop:
+  x: 45
+  y: 25
+  zoom: 1
 ---
 
 > This is available in video form, accompanied by movie footage, which you can watch below. I had to cut down the movie footage substantially because of copyright problems. A more enjoyable video version is available [here](https://drive.google.com/file/d/1fdyNfC8CpeucJKpHCWfBg4Zi6r2tCcg7/view?usp=sharing).

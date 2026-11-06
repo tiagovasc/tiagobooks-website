@@ -5,16 +5,15 @@ tags:
 - Book Reviews
 - Philosophy
 - Science
-image: /uploads/artwork/joseph-wright-of-derby-an-experiment-on-a-bird-in-the-air-pump.webp
+image: /uploads/artwork/nicolas-poussin-et-in-arcadia-ego-unique-947a7929.webp
 artwork:
-  title: An Experiment on a Bird in the Air Pump
-  artist: Joseph Wright of Derby
-  alt: A group watches a bird suspended inside a glass air pump by lamplight.
-  width: 1600
-  height: 1199
-  thumbnail: /uploads/artwork/joseph-wright-of-derby-an-experiment-on-a-bird-in-the-air-pump-480.webp
-  year: '1768'
-  source: https://www.nationalgallery.org.uk/paintings/joseph-wright-of-derby-an-experiment-on-a-bird-in-the-air-pump
+  title: Et in Arcadia Ego
+  artist: Nicolas Poussin
+  alt: Three shepherds and a woman in yellow gather around a stone tomb and inspect its inscription in a wooded landscape.
+  width: 1280
+  height: 912
+  thumbnail: /uploads/artwork/nicolas-poussin-et-in-arcadia-ego-unique-947a7929-480.webp
+  year: c. 1637–1638
 ---
 
 **_A book review of&nbsp;‘_Theory and Reality_’ by_ Peter Godfrey-Smith**

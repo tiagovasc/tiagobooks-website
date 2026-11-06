@@ -4,16 +4,19 @@ date: 2019-11-01 06:59:00-05:00
 tags:
 - Book Reviews
 - Philosophy
-image: /uploads/artwork/vincent-van-gogh-the-large-plane-trees-road-menders-at-saint-remy-862f5b9.webp
+image: /uploads/artwork/claude-monet-woman-with-a-parasol-madame-monet-and-her-son-unique-06663df4.webp
 artwork:
-  title: The Large Plane Trees (Road Menders at Saint-Rémy)
-  artist: Vincent van Gogh
-  alt: People work along a road beneath large spreading plane trees.
-  width: 900
-  height: 718
-  thumbnail: /uploads/artwork/vincent-van-gogh-the-large-plane-trees-road-menders-at-saint-remy-862f5b9-480.webp
-  year: '1889'
-  source: https://clevelandart.org/art/1947.209
+  title: Woman with a Parasol — Madame Monet and Her Son
+  artist: Claude Monet
+  alt: A woman in a white dress holds a green parasol on a grassy rise while a child stands behind her beneath a bright clouded sky.
+  width: 1291
+  height: 1600
+  thumbnail: /uploads/artwork/claude-monet-woman-with-a-parasol-madame-monet-and-her-son-unique-06663df4-480.webp
+  year: '1875'
+thumbnailCrop:
+  x: 50
+  y: 20
+  zoom: 1
 ---
 
 **_A book review of&nbsp;‘_Phenomenology: An Introduction_’ by_ Anthony Chemero and Stephan Kaufer**

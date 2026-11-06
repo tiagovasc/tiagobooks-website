@@ -4,16 +4,16 @@ date: 2018-11-23 00:50:00-06:00
 tags:
 - Book Reviews
 - Science
-image: /uploads/artwork/raphael-the-school-of-athens.webp
+image: /uploads/artwork/leon-cogniet-the-artist-in-his-room-at-the-villa-medici-rome-unique-1857d1ea.webp
 artwork:
-  title: The School of Athens
-  artist: Raphael
-  alt: Philosophers converse and work beneath the arches of a grand classical hall.
-  width: 1600
-  height: 1241
-  thumbnail: /uploads/artwork/raphael-the-school-of-athens-480.webp
-  year: 1509–1511
-  source: https://www.museivaticani.va/content/museivaticani/en/collezioni/musei/stanze-di-raffaello/stanza-della-segnatura/scuola-di-atene.html
+  title: The Artist in His Room at the Villa Medici, Rome
+  artist: Léon Cogniet
+  alt: A man reads beside an unmade bed in a dim studio, with papers on a table and an open window overlooking distant land.
+  width: 740
+  height: 900
+  thumbnail: /uploads/artwork/leon-cogniet-the-artist-in-his-room-at-the-villa-medici-rome-unique-1857d1ea-480.webp
+  year: '1817'
+  source: https://clevelandart.org/art/1978.51
 ---
 
 **_A book review of&nbsp;‘_The Neuroscience of Intelligence_’ by_ Richard J. Haier**

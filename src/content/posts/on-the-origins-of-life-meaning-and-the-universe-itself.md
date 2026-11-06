@@ -5,16 +5,16 @@ tags:
 - Book Reviews
 - Science
 - Philosophy
-image: /uploads/artwork/edvard-munch-the-sun.webp
+image: /uploads/artwork/george-frederic-watts-after-the-deluge-unique-37fc6a35.webp
 artwork:
-  title: The Sun
-  artist: Edvard Munch
-  alt: Sunlight radiates across a fjord between steep rocky shores.
-  width: 640
-  height: 365
-  thumbnail: /uploads/artwork/edvard-munch-the-sun-480.webp
-  year: '1911'
-  source: https://www.uio.no/om/kultur/kunstsamlingen/aulaen/solen.html
+  title: After the Deluge
+  artist: George Frederic Watts
+  alt: A vast orange sun fills a glowing sky above a narrow green and red horizon.
+  width: 1200
+  height: 693
+  thumbnail: /uploads/artwork/george-frederic-watts-after-the-deluge-unique-37fc6a35-480.webp
+  year: '1886'
+  source: https://commons.wikimedia.org/wiki/File:Watts_%E2%80%93_After_the_Deluge.jpg
 ---
 
 **_A book review of&nbsp;‘_The Big Picture: On the Origins of Life, Meaning, and the Universe Itself_’ by_ Sean M. Carroll**

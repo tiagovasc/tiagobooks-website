@@ -5,19 +5,18 @@ tags:
 - Book Reviews
 - Psychology
 - Religion
-image: /uploads/artwork/john-william-waterhouse-the-magic-circle.webp
+image: /uploads/artwork/william-blake-the-great-red-dragon-and-the-woman-clothed-with-the-sun-unique-a1edf0c3.webp
 artwork:
-  title: The Magic Circle
-  artist: John William Waterhouse
-  alt: A woman tends a steaming cauldron while drawing a circle on the ground.
-  width: 1068
+  title: The Great Red Dragon and the Woman Clothed with the Sun
+  artist: William Blake
+  alt: A muscular horned dragon with enormous outstretched wings towers over a radiant reclining woman.
+  width: 1263
   height: 1600
-  thumbnail: /uploads/artwork/john-william-waterhouse-the-magic-circle-480.webp
-  year: '1886'
-  source: https://www.tate.org.uk/art/artworks/waterhouse-the-magic-circle-n01572
+  thumbnail: /uploads/artwork/william-blake-the-great-red-dragon-and-the-woman-clothed-with-the-sun-unique-a1edf0c3-480.webp
+  year: c. 1805
 thumbnailCrop:
   x: 50
-  y: 35
+  y: 0
   zoom: 1
 ---
 

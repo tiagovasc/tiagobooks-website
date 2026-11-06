@@ -4,16 +4,16 @@ date: 2021-11-12 12:29:00-06:00
 tags:
 - General
 - Psychedelics
-image: /uploads/artwork/joseph-wright-of-derby-an-experiment-on-a-bird-in-the-air-pump.webp
+image: /uploads/artwork/vincent-van-gogh-two-poplars-in-the-alpilles-near-saint-remy-unique-10d68689.webp
 artwork:
-  title: An Experiment on a Bird in the Air Pump
-  artist: Joseph Wright of Derby
-  alt: A group watches a scientist demonstrate an air pump around a brightly lit table.
-  width: 1600
-  height: 1199
-  thumbnail: /uploads/artwork/joseph-wright-of-derby-an-experiment-on-a-bird-in-the-air-pump-480.webp
-  year: '1768'
-  source: https://www.nationalgallery.org.uk/paintings/joseph-wright-of-derby-an-experiment-on-a-bird-in-the-air-pump
+  title: Two Poplars in the Alpilles near Saint-Rémy
+  artist: Vincent van Gogh
+  alt: Two tall golden poplars rise before blue hills, a pale building, and a sky of swirling blue brushstrokes.
+  width: 673
+  height: 900
+  thumbnail: /uploads/artwork/vincent-van-gogh-two-poplars-in-the-alpilles-near-saint-remy-unique-10d68689-480.webp
+  year: '1889'
+  source: https://clevelandart.org/art/1958.32
 ---
 
 **This post was first published in** [**Drug Science**](https://www.drugscience.org.uk/is-lsd-safe-latest-research-findings) **back in 2021.**

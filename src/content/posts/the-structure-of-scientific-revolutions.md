@@ -4,20 +4,16 @@ date: 2020-04-01 07:59:00-05:00
 tags:
 - Book Reviews
 - Philosophy
-image: /uploads/artwork/william-blake-the-ancient-of-days.webp
+image: /uploads/artwork/unknown-artist-diagrams-of-the-universe-the-two-and-a-half-continents-the-universe-in-the-shape-of-a-person-an-unique-e7552a6f.webp
 artwork:
-  title: The Ancient of Days
-  artist: William Blake
-  alt: A white-haired figure bends from a fiery circle with a measuring compass.
-  width: 944
-  height: 1280
-  thumbnail: /uploads/artwork/william-blake-the-ancient-of-days-480.webp
-  year: 1794 (design)
-  source: https://en.wikipedia.org/wiki/The_Ancient_of_Days
-thumbnailCrop:
-  x: 50
-  y: 30
-  zoom: 1
+  title: 'Diagrams of the Universe: The Two-and-a-Half Continents, the Universe in the Shape of a Person, and the Seven Levels of Hell'
+  artist: Unknown artist
+  alt: A painted cosmological chart combines a circular diagram at left, a large human-shaped universe in the centre and rows of figures at right.
+  width: 900
+  height: 495
+  thumbnail: /uploads/artwork/unknown-artist-diagrams-of-the-universe-the-two-and-a-half-continents-the-universe-in-the-shape-of-a-person-an-unique-e7552a6f-480.webp
+  year: '1613'
+  source: https://clevelandart.org/art/2018.201
 ---
 
 **_A book review of&nbsp;‘_The Structure Of Scientific Revolutions_’ by_ Thomas Kuhn**

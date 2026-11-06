@@ -4,19 +4,18 @@ date: 2020-08-01 08:38:00-05:00
 tags:
 - Book Reviews
 - Philosophy
-image: /uploads/artwork/nikolai-ge-what-is-truth-christ-and-pilate.webp
+image: /uploads/artwork/caravaggio-saint-john-the-baptist-in-the-wilderness-unique-8b29ad2e.webp
 artwork:
-  title: What Is Truth? Christ and Pilate
-  artist: Nikolai Ge
-  alt: Pilate stands in bright light facing Christ in a shadowed doorway.
-  width: 1182
+  title: Saint John the Baptist in the Wilderness
+  artist: Caravaggio
+  alt: A young bare-chested Saint John sits in deep woodland shadow holding a slender cross, with red cloth across his lap.
+  width: 1213
   height: 1600
-  thumbnail: /uploads/artwork/nikolai-ge-what-is-truth-christ-and-pilate-480.webp
-  year: '1890'
-  source: https://artsandculture.google.com/asset/what-is-truth-christ-and-pilate/mQGhKNKJnQIlWg
+  thumbnail: /uploads/artwork/caravaggio-saint-john-the-baptist-in-the-wilderness-unique-8b29ad2e-480.webp
+  year: '1604'
 thumbnailCrop:
   x: 50
-  y: 2
+  y: 10
   zoom: 1
 ---
 

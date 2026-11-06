@@ -5,20 +5,16 @@ tags:
 - Book Reviews
 - Psychology
 - Science
-image: /uploads/artwork/george-frederic-watts-hope-fcfa0cc.webp
+image: /uploads/artwork/unknown-artist-korea-joseon-dynasty-1392-1910-scholar-playing-a-qin-unique-c4aebe41.webp
 artwork:
-  title: Hope
-  artist: George Frederic Watts
-  alt: A blindfolded figure bends over a lyre while seated on a globe.
-  width: 1268
-  height: 1600
-  thumbnail: /uploads/artwork/george-frederic-watts-hope-fcfa0cc-480.webp
-  year: '1886'
-  source: https://en.wikipedia.org/wiki/Hope_(Watts)
-thumbnailCrop:
-  x: 50
-  y: 38
-  zoom: 1
+  title: Scholar Playing a Qin
+  artist: Unknown artist (Korea, Joseon dynasty (1392–1910))
+  alt: A robed scholar sits beneath a tree playing a long stringed qin while a companion rests nearby.
+  width: 902
+  height: 893
+  thumbnail: /uploads/artwork/unknown-artist-korea-joseon-dynasty-1392-1910-scholar-playing-a-qin-unique-c4aebe41-480.webp
+  year: 1800s
+  source: https://clevelandart.org/art/1990.69
 ---
 
 **_A book review of&nbsp;‘_Musicophilia: Tales of Music and the Brain_’ by_ Oliver Sacks**

@@ -4,16 +4,16 @@ date: 2020-09-01 08:59:00-05:00
 tags:
 - Book Reviews
 - Non-Fiction
-image: /uploads/artwork/raphael-the-school-of-athens.webp
+image: /uploads/artwork/thomas-cole-view-from-mount-holyoke-northampton-massachusetts-after-a-thunderstorm-the-oxbow-unique-28903629.webp
 artwork:
-  title: The School of Athens
-  artist: Raphael
-  alt: Groups of philosophers fill an immense Renaissance architectural space.
-  width: 1600
-  height: 1241
-  thumbnail: /uploads/artwork/raphael-the-school-of-athens-480.webp
-  year: 1509–1511
-  source: https://www.museivaticani.va/content/museivaticani/en/collezioni/musei/stanze-di-raffaello/stanza-della-segnatura/scuola-di-atene.html
+  title: View from Mount Holyoke, Northampton, Massachusetts, after a Thunderstorm—The Oxbow
+  artist: Thomas Cole
+  alt: A winding river crosses sunlit farmland beyond dark trees and departing storm clouds.
+  width: 599
+  height: 409
+  thumbnail: /uploads/artwork/thomas-cole-view-from-mount-holyoke-northampton-massachusetts-after-a-thunderstorm-the-oxbow-unique-28903629-480.webp
+  year: '1836'
+  source: https://www.metmuseum.org/art/collection/search/10497
 ---
 
 **_A book review of&nbsp;‘_Leonardo da Vinci_’ by_ Walter Isaacson**

@@ -3,16 +3,15 @@ title: Iris Murdoch’s Metaphysics as a Guide to Morals
 date: 2026-02-12 23:19:00-06:00
 tags:
 - Book Reviews
-image: /uploads/artwork/edvard-munch-the-sun.webp
+image: /uploads/artwork/jean-francois-millet-the-angelus-unique-07288653.webp
 artwork:
-  title: The Sun
-  artist: Edvard Munch
-  alt: A brilliant sun radiates over water and rocky shores.
-  width: 640
-  height: 365
-  thumbnail: /uploads/artwork/edvard-munch-the-sun-480.webp
-  year: '1911'
-  source: https://www.uio.no/om/kultur/kunstsamlingen/aulaen/solen.html
+  title: The Angelus
+  artist: Jean-François Millet
+  alt: Two farm workers bow their heads in a field beside a basket and wheelbarrow.
+  width: 1200
+  height: 998
+  thumbnail: /uploads/artwork/jean-francois-millet-the-angelus-unique-07288653-480.webp
+  year: 1857–1859
 ---
 
 #### Rescuing the Ultimate Good

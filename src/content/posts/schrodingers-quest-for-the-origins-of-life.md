@@ -5,18 +5,18 @@ tags:
 - Book Reviews
 - Science
 - Philosophy
-image: /uploads/artwork/associated-with-hildegard-of-bingen-the-cosmic-spheres-and-the-human-being-liber-divinorum-operum-0fd2ab8.webp
+image: /uploads/artwork/jean-francois-millet-the-sower-unique-5dbe8336.webp
 artwork:
-  title: The Cosmic Spheres and the Human Being — Liber Divinorum Operum
-  artist: Associated with Hildegard of Bingen
-  alt: Concentric colored bands arrange a cosmological order within a manuscript page.
-  width: 1155
-  height: 1600
-  thumbnail: /uploads/artwork/associated-with-hildegard-of-bingen-the-cosmic-spheres-and-the-human-being-liber-divinorum-operum-0fd2ab8-480.webp
-  year: 13th-century manuscript
+  title: The Sower
+  artist: Jean-François Millet
+  alt: A farm worker strides across a dark field while scattering seed from his hand.
+  width: 463
+  height: 600
+  thumbnail: /uploads/artwork/jean-francois-millet-the-sower-unique-5dbe8336-480.webp
+  year: '1850'
 thumbnailCrop:
   x: 50
-  y: 43
+  y: 0
   zoom: 1
 ---
 

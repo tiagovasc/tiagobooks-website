@@ -4,18 +4,18 @@ title: 'How the Bound Man Moves: A Reflection on Plato, Stories, Agency, and the
 date: 2025-08-19 10:48:00-05:00
 tags:
 - General
-image: /uploads/artwork/matias-del-carmine-plato-philosophy-allegory-of-the-cave-e7f62b0.webp
+image: /uploads/artwork/titian-sisyphus-unique-94bf1658.webp
 artwork:
-  title: Plato Philosophy Allegory of the Cave
-  artist: Matías del Carmine
-  alt: A figure inside an orange cavern looks toward a luminous flame above.
-  width: 926
-  height: 1280
-  thumbnail: /uploads/artwork/matias-del-carmine-plato-philosophy-allegory-of-the-cave-e7f62b0-480.webp
-  year: 21st century
+  title: Sisyphus
+  artist: Titian
+  alt: A muscular man braces his feet on a rocky slope and strains upward beneath a huge boulder resting against his back and arms.
+  width: 700
+  height: 795
+  thumbnail: /uploads/artwork/titian-sisyphus-unique-94bf1658-480.webp
+  year: 1548–1549
 thumbnailCrop:
   x: 50
-  y: 95
+  y: 0
   zoom: 1
 ---
 

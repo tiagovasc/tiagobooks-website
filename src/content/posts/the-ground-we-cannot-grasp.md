@@ -3,20 +3,16 @@ title: The Ground We Cannot Grasp
 date: 2026-05-23 04:18:00-05:00
 tags:
 - General
-image: /uploads/artwork/caspar-david-friedrich-wanderer-above-the-sea-of-fog.webp
-thumbnailCrop:
-  x: 50
-  y: 35
-  zoom: 1
+image: /uploads/artwork/caspar-david-friedrich-the-sea-of-ice-unique-3a814a53.webp
 artwork:
-  title: Wanderer above the Sea of Fog
+  title: The Sea of Ice
   artist: Caspar David Friedrich
-  year: c. 1817–1818
-  alt: A traveler stands with his back to the viewer on rocks above a mist-filled mountain landscape.
-  width: 800
-  height: 1024
-  thumbnail: /uploads/artwork/caspar-david-friedrich-wanderer-above-the-sea-of-fog-480.webp
-  source: https://www.kmw.ch/ausstellungen/friedrich/digital/wanderer/
+  alt: Jagged slabs of pale Arctic ice rise in a heap around the dark remains of a crushed ship.
+  width: 1280
+  height: 957
+  thumbnail: /uploads/artwork/caspar-david-friedrich-the-sea-of-ice-unique-3a814a53-480.webp
+  year: 1823–1824
+  source: https://en.wikipedia.org/wiki/The_Sea_of_Ice
 ---
 
 > This dialogue gives form to conversations I have been having for years around reality, knowledge, love, emptiness, and the possibility of transcendence, especially by way of phenomenology, cognitive science, Christianity, and Buddhism.

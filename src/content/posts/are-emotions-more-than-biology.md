@@ -5,15 +5,20 @@ tags:
 - Book Reviews
 - Psychology
 - Science
-image: /uploads/artwork/hendrick-ter-brugghen-heraclitus-and-democritus-acc26e2.webp
+image: /uploads/artwork/alexandre-cabanel-the-fallen-angel-unique-1b2f7414.webp
 artwork:
-  title: Heraclitus and Democritus
-  artist: Hendrick ter Brugghen
-  alt: Two philosophers face one another with contrasting sorrowful and laughing expressions.
-  width: 1600
-  height: 982
-  thumbnail: /uploads/artwork/hendrick-ter-brugghen-heraclitus-and-democritus-acc26e2-480.webp
-  year: '1628'
+  title: The Fallen Angel
+  artist: Alexandre Cabanel
+  alt: A seated winged young man looks over his folded arms while distant angels fly above.
+  width: 1280
+  height: 875
+  thumbnail: /uploads/artwork/alexandre-cabanel-the-fallen-angel-unique-1b2f7414-480.webp
+  year: '1847'
+  source: https://en.wikipedia.org/wiki/The_Fallen_Angel_(painting)
+thumbnailCrop:
+  x: 43
+  zoom: 1
+  y: 45
 ---
 
 **_A book review of&nbsp;‘_How Emotions Are Made: The Secret Life of the Brain_’ by_ Lisa Feldman Barrett**

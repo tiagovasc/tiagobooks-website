@@ -4,16 +4,16 @@ date: 2025-08-09 10:58:00-05:00
 tags:
 - Book Reviews
 - Philosophy
-image: /uploads/artwork/william-blake-newton.webp
+image: /uploads/artwork/georgia-o-keeffe-morning-glory-with-black-unique-ec01a65a.webp
 artwork:
-  title: Newton
-  artist: William Blake
-  alt: Newton bends over a diagram with compasses while seated on a rock.
-  width: 1600
-  height: 1231
-  thumbnail: /uploads/artwork/william-blake-newton-480.webp
-  year: 1795–c. 1805
-  source: https://www.metmuseum.org/exhibitions/listings/2001/william-blake
+  title: Morning Glory with Black
+  artist: Georgia O'Keeffe
+  alt: Pale white flower petals curl inward above a sweeping black edge.
+  width: 749
+  height: 900
+  thumbnail: /uploads/artwork/georgia-o-keeffe-morning-glory-with-black-unique-ec01a65a-480.webp
+  year: '1926'
+  source: https://clevelandart.org/art/1958.42
 ---
 
 A book review of ‘The Blind Spot:&nbsp;Why Science Cannot Ignore Human Experience’ by Adam Frank, Evan Thompson, and Marcelo Gleiser

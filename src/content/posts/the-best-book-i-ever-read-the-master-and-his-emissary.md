@@ -5,16 +5,16 @@ tags:
 - Book Reviews
 - Philosophy
 - Psychology
-image: /uploads/artwork/william-blake-newton.webp
+image: /uploads/artwork/georgia-o-keeffe-white-flower-unique-c8dcb274.webp
 artwork:
-  title: Newton
-  artist: William Blake
-  alt: A seated nude bends over geometric drawing with a compass amid textured rocks.
-  width: 1600
-  height: 1231
-  thumbnail: /uploads/artwork/william-blake-newton-480.webp
-  year: 1795–c. 1805
-  source: https://www.metmuseum.org/exhibitions/listings/2001/william-blake
+  title: White Flower
+  artist: Georgia O'Keeffe
+  alt: Broad white petals curl around a yellow and green flower centre, with blue-green shapes between the petals.
+  width: 750
+  height: 625
+  thumbnail: /uploads/artwork/georgia-o-keeffe-white-flower-unique-c8dcb274-480.webp
+  year: '1929'
+  source: https://clevelandart.org/art/1930.2162
 ---
 
 **_A book review of&nbsp;‘_The Master and His Emissary_’ by_ Iain McGilchrist**

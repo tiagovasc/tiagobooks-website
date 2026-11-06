@@ -4,19 +4,19 @@ date: 2020-07-01 08:12:00-05:00
 tags:
 - Book Reviews
 - Philosophy
-image: /uploads/artwork/nikolai-ge-what-is-truth-christ-and-pilate.webp
+image: /uploads/artwork/jean-auguste-dominique-ingres-oedipus-and-the-sphinx-unique-1e322bdf.webp
 artwork:
-  title: What Is Truth? Christ and Pilate
-  artist: Nikolai Ge
-  alt: Pilate gestures toward Christ in a sunlit stone doorway.
-  width: 1182
+  title: Oedipus and the Sphinx
+  artist: Jean-Auguste-Dominique Ingres
+  alt: A nude young man gestures toward a winged sphinx in a rocky passage.
+  width: 1223
   height: 1600
-  thumbnail: /uploads/artwork/nikolai-ge-what-is-truth-christ-and-pilate-480.webp
-  year: '1890'
-  source: https://artsandculture.google.com/asset/what-is-truth-christ-and-pilate/mQGhKNKJnQIlWg
+  thumbnail: /uploads/artwork/jean-auguste-dominique-ingres-oedipus-and-the-sphinx-unique-1e322bdf-480.webp
+  year: 1808; reworked 1827
+  source: https://en.wikipedia.org/wiki/Oedipus_and_the_Sphinx_(Ingres)
 thumbnailCrop:
-  x: 50
-  y: 32
+  x: 45
+  y: 25
   zoom: 1
 ---
 

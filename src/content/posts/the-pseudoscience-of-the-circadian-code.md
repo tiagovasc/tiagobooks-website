@@ -4,16 +4,16 @@ date: 2020-09-09 01:29:00-05:00
 tags:
 - Book Reviews
 - Science
-image: /uploads/artwork/edvard-munch-the-sun.webp
+image: /uploads/artwork/odilon-redon-the-chariot-of-apollo-unique-083df486.webp
 artwork:
-  title: The Sun
-  artist: Edvard Munch
-  alt: A brilliant sun sends rays over a fjord and rocky shore.
-  width: 640
-  height: 365
-  thumbnail: /uploads/artwork/edvard-munch-the-sun-480.webp
-  year: '1911'
-  source: https://www.uio.no/om/kultur/kunstsamlingen/aulaen/solen.html
+  title: The Chariot of Apollo
+  artist: Odilon Redon
+  alt: Pale horses and a small chariot float across a turquoise sky filled with pink and gold clouds.
+  width: 599
+  height: 483
+  thumbnail: /uploads/artwork/odilon-redon-the-chariot-of-apollo-unique-083df486-480.webp
+  year: 1905–16
+  source: https://www.metmuseum.org/art/collection/search/437380
 ---
 
 **_A book review of&nbsp;‘_The Circadian Code: Lose Weight, Supercharge Your Energy and Sleep Well Every N_’ by_ Satchin Panda**

@@ -5,16 +5,20 @@ tags:
 - Book Reviews
 - Philosophy
 - Science
-image: /uploads/artwork/william-blake-newton.webp
+image: /uploads/artwork/odilon-redon-closed-eyes-unique-8d77e141.webp
 artwork:
-  title: Newton
-  artist: William Blake
-  alt: A figure bends over a geometrical diagram on a rock amid dark organic textures.
-  width: 1600
-  height: 1231
-  thumbnail: /uploads/artwork/william-blake-newton-480.webp
-  year: 1795–c. 1805
-  source: https://www.metmuseum.org/exhibitions/listings/2001/william-blake
+  title: Closed Eyes
+  artist: Odilon Redon
+  alt: A softly painted head with closed eyes rises above a pale reflective surface against a lavender background.
+  width: 1280
+  height: 1582
+  thumbnail: /uploads/artwork/odilon-redon-closed-eyes-unique-8d77e141-480.webp
+  year: '1890'
+  source: https://commons.wikimedia.org/wiki/File:Odilon_Redon_-_Closed_Eyes_-_Google_Art_Project.jpg
+thumbnailCrop:
+  x: 50
+  y: 35
+  zoom: 1
 ---
 
 **_A book review of&nbsp;‘_Galileo's Error_’ by_ Philip Goff**

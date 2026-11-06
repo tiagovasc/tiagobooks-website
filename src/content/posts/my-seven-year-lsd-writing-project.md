@@ -3,19 +3,15 @@ title: My Seven-Year LSD Writing Project
 date: 2025-04-05 14:08:00-05:00
 tags:
 - General
-image: /uploads/artwork/unknown-engraver-the-flammarion-engraving-95fc693.webp
+image: /uploads/artwork/carl-gustav-carus-the-goethe-monument-unique-521056d8.webp
 artwork:
-  title: The Flammarion Engraving
-  artist: Unknown engraver
-  alt: A traveler peers beyond a starry sky into a patterned cosmic realm.
-  width: 1000
-  height: 833
-  thumbnail: /uploads/artwork/unknown-engraver-the-flammarion-engraving-95fc693-480.webp
-  year: '1888'
-thumbnailCrop:
-  x: 50
-  y: 72
-  zoom: 1
+  title: The Goethe Monument
+  artist: Carl Gustav Carus
+  alt: A dark monument topped by a harp and two winged figures stands before misty mountain cliffs under a pale moon.
+  width: 1165
+  height: 1600
+  thumbnail: /uploads/artwork/carl-gustav-carus-the-goethe-monument-unique-521056d8-480.webp
+  year: '1832'
 ---
 
 Nearly a decade ago, I began taking LSD. It started without a fixed destination, sparked more by a particular mindset — a willingness to discover more about myself and others, guided by an intuition that these two explorations might ultimately be the same. My doses were consistently moderate; I wasn’t chasing the overwhelming mystical visions or the kaleidoscopic beauty often associated with psychedelics. Instead, I found the _cognitive_ shift profoundly alluring — the way it opened doors to thoughts I’d never had, perspectives that hadn’t previously occurred to me.

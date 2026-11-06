@@ -5,15 +5,16 @@ tags:
 - Book Reviews
 - Psychology
 - Science
-image: /uploads/artwork/gustave-courbet-the-desperate-man-0d66a26.webp
+image: /uploads/artwork/henry-fuseli-lady-macbeth-seizing-the-daggers-unique-c088c56a.webp
 artwork:
-  title: The Desperate Man
-  artist: Gustave Courbet
-  alt: A wide-eyed young man grips his hair with both hands.
-  width: 1024
-  height: 838
-  thumbnail: /uploads/artwork/gustave-courbet-the-desperate-man-0d66a26-480.webp
-  year: c. 1843–1845
+  title: Lady Macbeth Seizing the Daggers
+  artist: Henry Fuseli
+  alt: A frightened man holds bloody daggers as a pale woman in flowing robes reaches toward him with one finger raised to her lips.
+  width: 1280
+  height: 1024
+  thumbnail: /uploads/artwork/henry-fuseli-lady-macbeth-seizing-the-daggers-unique-c088c56a-480.webp
+  year: exhibited 1812
+  source: https://commons.wikimedia.org/wiki/File:F%C3%BCssli_-_Lady_Macbeth_con_los_pu%C3%B1ales_(1812)_Tate.jpg
 ---
 
 **_A book review of&nbsp;_ Descartes’ Error** &nbsp; **_- Psychosis and Human Nature’ by&nbsp;_Antonio Damasio**
