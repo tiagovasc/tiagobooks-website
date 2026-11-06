@@ -93,7 +93,7 @@ function init(){
     moreObserver?.disconnect();
     if(!active)return;
     const list=filtered(),collection=books?sourceBooks(books,source):[];
-    $('tbrIntro').innerHTML=`<div class="tbr-intro"><div><p class="tbr-eyebrow">To be read</p><h2>${SOURCE_VIEWS[source]}</h2><p>${source==='all'?'Everything saved from book shops, Instagram and online, together.':source==='bookshops'?'Books that caught my eye on bookshop visits, starting with the most recent photos.':source==='online'?'Books I found online and saved to explore.':'Books discovered on Instagram and saved to explore.'}</p></div>${books?`<span class="tbr-count">${number(list.length)} ${list.length===1?'book':'books'}${list.length!==collection.length?' of '+number(collection.length):''}</span>`:''}</div>`;
+    $('tbrIntro').innerHTML=`<div class="tbr-intro"><div><p class="tbr-eyebrow">To be read</p><h2>${SOURCE_VIEWS[source]}</h2><p>${source==='all'?'Interesting books I’ve saved over the years.':source==='bookshops'?'Books that caught my eye on bookshop visits, starting with the most recent photos.':source==='online'?'Books I found online and saved to explore.':'Books discovered on Instagram and saved to explore.'}</p></div>${books?`<span class="tbr-count">${number(list.length)} ${list.length===1?'book':'books'}${list.length!==collection.length?' of '+number(collection.length):''}</span>`:''}</div>`;
     $('tbrSort').innerHTML=sorting();$('tbrSort').value=sort;$('tbrSortLabel').classList.toggle('is-active',sort!=='recent');
     const filter=$('tbrFilters');filter.innerHTML='';
     if(books&&source==='bookshops'){

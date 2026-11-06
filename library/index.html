@@ -673,7 +673,7 @@ button,a,select,summary,[role="button"]{-webkit-tap-highlight-color:transparent}
 </section>
 
 <main class="wrap" id="main" tabindex="-1">
-  <p class="library-intro">Tiago’s library: books I’ve read, am reading, and want to read.</p>
+  <p class="library-intro">Books I own.</p>
   <noscript><div class="empty-state"><h2>JavaScript is needed</h2><p>This library loads its books in the browser. Turn on JavaScript to browse it.</p></div></noscript>
   <div class="results" id="results" hidden></div>
   <div id="content" aria-busy="true"><div class="boot-grid" role="status" aria-label="Loading the library"><span class="boot-card"></span><span class="boot-card"></span><span class="boot-card"></span><span class="boot-card"></span><span class="boot-card"></span><span class="boot-card"></span><span class="boot-card"></span><span class="boot-card"></span><span class="boot-card"></span><span class="boot-card"></span><span class="boot-card"></span><span class="boot-card"></span></div></div>
@@ -717,7 +717,7 @@ var SEED = [];
   var serverSaveState = "idle"; // idle | saving | saved | error
   var saveFailed=false;
   var STATUSES=["read","reading","next","unread","paused"];
-  var LABEL={read:"Read",reading:"Reading",next:"Next up",unread:"Unread",paused:"Paused"};
+  var LABEL={read:"Read",reading:"Reading",next:"Next Reads",unread:"Unread",paused:"Paused"};
   var DASH="\u2013";
   // Visitors (not signed in) get the lighter public list; the editor loads complete records because it saves them back.
   var LITE=!!window.CLOUD_LIBRARY&&!window.CLOUD_CAN_EDIT;
@@ -998,7 +998,7 @@ var SEED = [];
     if(k==="~none") return {text:NONE_LABEL[ui.sort]||"Other"};
     if(k==="~old") return {text:"Before 1900"};
     if(k==="~reading") return {text:"Reading now"};
-    if(k==="~next") return {text:"Next up"};
+    if(k==="~next") return {text:"Next Reads"};
     if(k==="~all"||ui.sort==="subject") return {text:k};
     return {dm:k, sr:k.slice(-1)==="*"?k.slice(0,-1)+" stars":k};
   }
@@ -1185,12 +1185,13 @@ var SEED = [];
   function renderStatusSeg(){
     var h="";
     var inTbr=document.body.classList.contains('tbr-mode');
-    [['all','All'],['read',LABEL.read],['unread',LABEL.unread],['tbr','TBR']].concat(STATUSES.filter(function(s){return s!=='read'&&s!=='unread';}).map(function(s){return [s,LABEL[s]];})).forEach(function(p){
+    [['all','Owned']].concat(STATUSES.map(function(s){return [s,LABEL[s]];}),[['tbr','TBR']]).forEach(function(p){
       if(p[0]==='tbr'){var total=$('statusSeg').dataset.tbrCount;h+='<button type="button" data-collection="tbr" aria-pressed="'+inTbr+'">TBR'+(total?' <span class="n">'+fmtN(Number(total))+'</span>':'')+'</button>';return;}
       var n=facets[p[0]]||0, on=!inTbr&&ui.status===p[0];
       h+='<button type="button" data-status="'+p[0]+'" aria-pressed="'+on+'"'+(loadingLibrary||n||on?'':' class="zero"')+'>'+p[1]+(loadingLibrary?'':' <span class="n">'+fmtN(n)+'</span>')+'</button>';
     });
     $("statusSeg").innerHTML=h;
+    document.querySelector('.library-intro').textContent={all:'Books I own.',read:'Books I’ve read.',reading:'Books I’m reading right now.',next:'Books I plan to read next.',unread:'Books I own but haven’t read.',paused:'Books I started reading but have paused for now.'}[ui.status]||'Books I own.';
   }
   function refreshCounts(){ computeFacets(); renderStatusSeg(); buildOwnFilter(); }
   function activeFilters(){ return (ui.own!=="all"?1:0)+(ui.subject!=="all"?1:0)+(ui.enrich!=="all"?1:0); }
