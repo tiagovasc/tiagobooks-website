@@ -40,7 +40,8 @@ body.writing-site{max-width:none;padding:0 0 80px;font-family:var(--font);backgr
 .editorial-rail [data-rail-year]{font:400 42px/1.2 Georgia,"Times New Roman",serif;letter-spacing:-.5px;font-variant-numeric:lining-nums}
 .editorial-rail .date-month{font:400 14px/1.5 var(--font);margin-top:5px}
 .editorial-rail .date-count{font:400 11px/1.5 var(--font);color:var(--muted);margin-top:2px}
-.editorial-rail .date-track{position:relative;width:auto;height:auto;max-height:min(48dvh,420px);min-height:0;align-items:stretch;gap:0;padding:0 0 0 10px;border-color:var(--line);overscroll-behavior:contain;scrollbar-width:none}
+/* Reserve 30px per year and 28px per month, matching the button rows below. */
+.editorial-rail .date-track{position:relative;width:auto;height:min(calc(var(--archive-year-count,1)*30px + var(--archive-month-count,12)*28px),48dvh,420px);min-height:0;align-items:stretch;gap:0;padding:0 0 0 10px;border-color:var(--line);overscroll-behavior:contain;overflow-anchor:none;scrollbar-width:none}
 .editorial-rail .date-track::-webkit-scrollbar{display:none;width:0;height:0}
 .editorial-rail .date-track button{position:relative;text-align:left;min-height:30px;min-width:44px;padding:5px 8px;border-radius:0;font:400 12px/1.5 var(--font);color:var(--muted);opacity:1}
 .editorial-rail .date-track button.month-tick{height:auto;min-height:28px;padding:4px 8px 4px 18px;font-size:11px}
@@ -410,11 +411,11 @@ dialog.drawer,dialog.drawer::backdrop{right:calc(100% - 100vw)}
 
 /* Mobile archive keeps a native month picker and a generous touch target. */
 @media(max-width:760px){
-  .date-rail.editorial-rail{left:auto;right:16px;top:auto;bottom:calc(16px + env(safe-area-inset-bottom));transform:none;width:auto;max-height:none;height:46px;padding:0 28px 0 12px;display:flex;flex-direction:row;gap:0}
+  .date-rail.editorial-rail{left:auto;right:16px;top:auto;bottom:calc(16px + env(safe-area-inset-bottom));transform:none;width:162px;max-height:none;height:46px;padding:0 28px 0 12px;display:flex;flex-direction:row;gap:0}
   .editorial-rail .date-context{display:flex;align-items:center;gap:6px}
   .editorial-rail .archive-label,.editorial-rail .date-count,.editorial-rail .date-track{display:none}
   .editorial-rail [data-rail-year]{font:400 12px/1.5 var(--font);letter-spacing:0}
-  .editorial-rail .date-month{order:-1;margin:0;font-size:12px}
+  .editorial-rail .date-month{order:-1;margin:0;font-size:12px;width:9ch;white-space:nowrap}
 }
 /* Floating capsule header; current pages and contextual tabs use an underline. */
 :root{--shell-h:74px;--section-h:52px}
