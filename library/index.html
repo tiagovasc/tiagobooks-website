@@ -764,16 +764,18 @@ var SEED = [];
     if(SERVER_MODE){ saveToServer(); return; }
     if(fileHandle&&filePermission) writeToFile(false);
   }
-  var serverRevision=null, serverSaveQueue=Promise.resolve();
+  var serverRevision=null, serverSaveQueue=Promise.resolve(), pendingServerSaves=0;
   function saveToServer(){
+    pendingServerSaves++;
     serverSaveState="saving"; renderFileStatus();
     var snapshot=serialize();
     serverSaveQueue=serverSaveQueue.catch(function(){}).then(function(){
       if(window.CLOUD_LIBRARY&&!serverRevision)throw new Error('Reload the library before saving.');
       var headers={"Content-Type":"application/json"};if(serverRevision)headers['X-Library-Revision']=serverRevision;
       return fetch("/save",{method:"POST",headers:headers,body:snapshot});
-    }).then(function(r){ if(!r.ok){return r.json().catch(function(){return {};}).then(function(d){if(r.status===409){serverRevision=null;throw new Error('Another session changed the library. Export your changes, then reload.');}if(r.status===401)throw new Error('Your admin session ended. Sign in again, then repeat the change.');throw new Error(r.status===400&&d&&d.error?d.error:'Could not save. Your changes remain in this browser.');});} serverRevision=r.headers.get('X-Library-Revision')||serverRevision;serverSaveState="saved";saveFailed=false;renderFileStatus(); })
-      .catch(function(error){serverSaveState="error";renderFileStatus();toast(error.message,7000);});
+    }).then(function(r){ if(!r.ok){return r.json().catch(function(){return {};}).then(function(d){if(r.status===409){serverRevision=null;throw new Error('Another session changed the library. Export your changes, then reload.');}if(r.status===401)throw new Error('Your admin session ended. Sign in again, then repeat the change.');throw new Error(r.status===400&&d&&d.error?d.error:'Could not save. Your changes remain in this browser.');});} serverRevision=r.headers.get('X-Library-Revision')||serverRevision;saveFailed=false; })
+      .catch(function(error){saveFailed=true;toast(error.message,7000);})
+      .finally(function(){pendingServerSaves--;serverSaveState=pendingServerSaves?"saving":saveFailed?"error":"saved";renderFileStatus();});
   }
   function writeToFile(announce){
     if(!fileHandle) return;
@@ -1613,7 +1615,7 @@ var SEED = [];
   document.addEventListener("keydown",function(e){
     if(document.body.classList.contains("tbr-mode"))return;
     var k=e.key, t=e.target, typing=!!t&&(t.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName));
-    if((e.ctrlKey||e.metaKey)&&k&&k.toLowerCase()==="s"){ if(publicView())return;e.preventDefault(); saveNow(); toast(SERVER_MODE?"Saved to books.json":(fileHandle&&filePermission?("Saved to "+fileHandle.name):"Saved in this browser")); return; }
+    if((e.ctrlKey||e.metaKey)&&k&&k.toLowerCase()==="s"){ if(publicView())return;e.preventDefault(); saveNow(); toast(SERVER_MODE?"Saving changes…":(fileHandle&&filePermission?("Saving to "+fileHandle.name+"…"):"Saved in this browser")); return; }
     if(e.ctrlKey||e.metaKey||e.altKey) return;
     if(drawer.open){ if(!typing&&(k==="ArrowLeft"||k==="ArrowRight")){ e.preventDefault(); stepDrawer(k==="ArrowLeft"?-1:1); } return; }
     if(k==="Escape"){ if(anyPopOpen()){ closePops(); return; } if(t&&t.id==="search"&&t.value){ t.value=""; renderView(false); } return; }

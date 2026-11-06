@@ -22,7 +22,7 @@ function hiddenPaths() {
     if (!existsSync(dir)) continue;
     for (const f of readdirSync(dir)) {
       if (!/\.mdx?$/.test(f)) continue;
-      const fm = readFileSync(`${dir}/${f}`, 'utf8').match(/^---\n([\s\S]*?)\n---/)?.[1] ?? '';
+      const fm = readFileSync(`${dir}/${f}`, 'utf8').match(/^---\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? '';
       if (/^(protected|unlisted|draft):\s*true\s*$/m.test(fm)) out.add(prefix + f.replace(/\.mdx?$/, ''));
     }
   }
@@ -41,7 +41,7 @@ function aliasRedirects() {
           if (!existsSync(cdir)) continue;
           for (const f of readdirSync(cdir)) {
             if (!/\.mdx?$/.test(f)) continue;
-            const fm = readFileSync(`${cdir}/${f}`, 'utf8').match(/^---\n([\s\S]*?)\n---/)?.[1];
+            const fm = readFileSync(`${cdir}/${f}`, 'utf8').match(/^---\r?\n([\s\S]*?)\r?\n---/)?.[1];
             const metadata = fm ? yamlLoad(fm) : {};
             const aliases = metadata?.aliases ?? [];
             if(prefix==='/posts/'&&metadata?.externalUrl){

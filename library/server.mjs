@@ -44,7 +44,7 @@ export function authenticated(req){
   const cookie=(req.headers.cookie||'').split(';').map(x=>x.trim()).find(x=>x.startsWith('library_session='));
   if(!cookie)return false;
   const [expiry,signature]=cookie.slice(16).split('.');
-  return Number(expiry)>Date.now()&&typeof signature==='string'&&signature.length===64&&timingSafeEqual(Buffer.from(signature),Buffer.from(sign(expiry)));
+  return Number(expiry)>Date.now()&&typeof signature==='string'&&/^[a-f0-9]{64}$/.test(signature)&&timingSafeEqual(Buffer.from(signature),Buffer.from(sign(expiry)));
 }
 
 const escapeHtml=value=>String(value).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -72,7 +72,7 @@ async function db(method,query,body){
 }
 function send(res,status,data,headers={}){res.writeHead(status,{'Content-Type':'application/json','Cache-Control':'no-store',...SECURITY,...headers});res.end(JSON.stringify(data));}
 export function validBooks(books){
-  return Array.isArray(books)&&books.length<=10000&&new Set(books.map(b=>b?.id)).size===books.length&&books.every(b=>b&&typeof b.id==='string'&&typeof b.title==='string'&&Number.isInteger(b.rating)&&b.rating>=0&&b.rating<=5);
+  return Array.isArray(books)&&books.length<=10000&&new Set(books.map(b=>b?.id)).size===books.length&&books.every(b=>b&&typeof b.id==='string'&&typeof b.title==='string'&&Number.isInteger(b.rating)&&b.rating>=0&&b.rating<=5&&(b.merged_record_ids==null||Array.isArray(b.merged_record_ids)));
 }
 // A save must never silently wipe or gut the library (for example after an accidental import of the wrong file).
 export function plausibleSave(previousCount,nextCount){

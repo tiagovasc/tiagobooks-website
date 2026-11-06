@@ -17,13 +17,14 @@ import Base from '../layouts/Base.astro';
     <button type="button" data-scope="tbr" aria-pressed="false">TBR<span data-count="tbr"></span></button>
   </nav>
   <p class="ss-status" id="ss-status" role="status"></p>
+  <button type="button" class="ss-more" id="ss-retry" hidden>Retry search</button>
   <div id="ss-results"></div>
   <script>
     import {searchCatalogue,tbrHref,tbrLabel} from '../lib/catalogue-search.mjs';
     const $=(id:string)=>document.getElementById(id) as any;
     const esc=(s:any)=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'} as any)[c]);
     const LABEL:any={blog:'Blog',library:'Library',tbr:'TBR'};
-    let scope='all',token=0,timer:any=0,pagefind:any=null;const data:any={};let last:any={blog:[],library:[],tbr:[]};const limit:any={};
+    let scope='all',token=0,renderToken=0,timer:any=0,pagefind:any=null,lastQuery='';const data:any={};let last:any={blog:null,library:[],tbr:[]};const limit:any={};
     async function loadPagefind(){if(!pagefind){const url=new URL('/pagefind/pagefind.js',location.origin).href;pagefind=await import(/* @vite-ignore */ url);}return pagefind}
     // Library search uses the public list plus descriptions (so a description still matches), loaded in parallel.
     async function libraryBooks(){const [list,desc]=await Promise.all([fetch('/books.json?view=public'),fetch('/book-descriptions.json')]);if(!list.ok||!desc.ok)throw Error('unavailable');const d=await list.json(),map=await desc.json();return (Array.isArray(d)?d:d.books).map((b:any)=>b.has_description?{...b,description:map[b.id]||''}:b)}
@@ -37,24 +38,34 @@ import Base from '../layouts/Base.astro';
       return `<a class="ss-row" href="${esc(href)}"><span class="ss-cover">${b.cover?`<img src="/${esc(thumb(b.cover))}" data-full="/${esc(b.cover)}" alt="" loading="lazy" decoding="async" onerror="if(this.dataset.full){this.src=this.dataset.full;this.removeAttribute('data-full')}else this.remove()">`:''}</span><span class="ss-text"><span class="ss-title">${esc(b.title||'Untitled')}</span>${meta?`<span class="ss-meta">${esc(meta)}</span>`:''}</span></a>`}
     function postRow(d:any){const kind=d.url.startsWith('/pages/')?'Page':'';return `<a class="ss-row ss-post" href="${esc(d.url)}"><span class="ss-text"><span class="ss-title">${esc(d.meta?.title||d.url)}</span>${kind?`<span class="ss-meta">${kind}</span>`:''}${d.excerpt?`<span class="ss-excerpt">${d.excerpt}</span>`:''}</span></a>`}
     async function run(){const q=$('ss-q').value.trim(),t=++token;const u=new URL(location.href);if(q)u.searchParams.set('q',q);else u.searchParams.delete('q');if(scope!=='all')u.searchParams.set('scope',scope);else u.searchParams.delete('scope');history.replaceState(null,'',u);
+      renderToken++;$('ss-retry').hidden=true;$('ss-results').innerHTML='';
+      if(q!==lastQuery){for(const k of Object.keys(limit))delete limit[k];lastQuery=q}
       $('search-suggestions').hidden=Boolean(q);
-      if(!q){last={blog:null,library:[],tbr:[]};for(const el of document.querySelectorAll('[data-count]'))el.textContent='';$('ss-status').textContent='';$('ss-results').innerHTML='';return}
-      $('ss-status').textContent='Searching…';
+      if(!q){last={blog:null,library:[],tbr:[]};for(const el of document.querySelectorAll('[data-count]'))el.textContent='';$('ss-status').textContent='';$('ss-results').setAttribute('aria-busy','false');return}
+      $('ss-status').textContent='Searching…';$('ss-results').setAttribute('aria-busy','true');
       try{const [blog,lib,tbr]=await Promise.all([blogResults(q).catch(()=>null),catalogue('library').then(b=>searchCatalogue(b,q)).catch(()=>null),catalogue('tbr').then(b=>searchCatalogue(b,q)).catch(()=>null)]);
-        if(t!==token)return;last={blog,library:lib,tbr};render()}catch(e){if(t===token)$('ss-status').textContent='Search is unavailable right now.'}}
-    async function render(){const t=token;const counts:any={blog:last.blog?last.blog.total:0,library:last.library?.length||0,tbr:last.tbr?.length||0};counts.all=counts.blog+counts.library+counts.tbr;
-      for(const el of document.querySelectorAll<HTMLElement>('[data-count]'))el.textContent=String(counts[el.dataset.count!]);
-      $('ss-status').textContent=counts.all?'':'No results. Try another word.';
-      const kinds=scope==='all'?['blog','library','tbr']:[scope];let html='';
-      for(const k of kinds){if(!counts[k])continue;const n=scope==='all'?5:(limit[k]||40);
-        const rows=k==='blog'?(await last.blog.load(n)).map(postRow):last[k].slice(0,n).map((b:any)=>bookRow(b,k));if(t!==token)return;
-        html+=`<section class="ss-group">${scope==='all'?`<h2 class="ss-group-h"><span>${LABEL[k]}</span><span class="leader"></span><span class="ss-group-n">${counts[k]}</span></h2>`:''}${rows.join('')}${counts[k]>n?`<button type="button" class="ss-more" data-more="${k}">${scope==='all'?'Show all '+counts[k]+' in '+LABEL[k]:'Show more'}</button>`:''}</section>`}
-      $('ss-results').innerHTML=html}
+        if(t!==token)return;last={blog,library:lib,tbr};await render()}catch(e){if(t===token){$('ss-status').textContent='Search is unavailable right now.';$('ss-retry').hidden=false;$('ss-results').setAttribute('aria-busy','false')}}}
+    async function render(){const t=token,r=++renderToken,s=scope,result=last;const current=()=>t===token&&r===renderToken;
+      $('ss-results').setAttribute('aria-busy','true');
+      const kinds=s==='all'?['blog','library','tbr']:[s];
+      const groups=await Promise.all(kinds.map(async k=>{const count=k==='blog'?result.blog?.total:result[k]?.length;if(!count)return '';
+        const n=s==='all'?5:(limit[k]||40);
+        try{const rows=k==='blog'?(await result.blog.load(n)).map(postRow):result[k].slice(0,n).map((b:any)=>bookRow(b,k));
+          return `<section class="ss-group">${s==='all'?`<h2 class="ss-group-h"><span>${LABEL[k]}</span><span class="leader"></span><span class="ss-group-n">${count}</span></h2>`:''}${rows.join('')}${count>n?`<button type="button" class="ss-more" data-more="${k}">${s==='all'?'Show all '+count+' in '+LABEL[k]:'Show more'}</button>`:''}</section>`
+        }catch{if(current())result[k]=null;return ''}}));
+      if(!current())return;
+      const counts:any={blog:result.blog?.total||0,library:result.library?.length||0,tbr:result.tbr?.length||0};counts.all=counts.blog+counts.library+counts.tbr;
+      for(const el of document.querySelectorAll<HTMLElement>('[data-count]'))el.textContent=el.dataset.count!=='all'&&result[el.dataset.count!]===null?'':String(counts[el.dataset.count!]);
+      const failed=kinds.filter(k=>result[k]===null),shown=kinds.reduce((n,k)=>n+counts[k],0);
+      let message=shown?'':s==='all'?'No results. Try another word.':`No results in ${LABEL[s]}. Try another word or choose All.`;
+      if(failed.length)message=failed.length===kinds.length&&s==='all'?'Search is unavailable right now. Please retry.':(shown||failed.length===kinds.length?'':'No matches in the available sources. ')+`${failed.map(k=>LABEL[k]).join(', ')} search is unavailable. Please retry.`;
+      $('ss-status').textContent=message;$('ss-retry').hidden=!failed.length;$('ss-results').innerHTML=groups.join('');$('ss-results').setAttribute('aria-busy','false')}
     function setScope(s:string){scope=s;for(const b of document.querySelectorAll<HTMLElement>('[data-scope]'))b.setAttribute('aria-pressed',String(b.dataset.scope===s));run()}
     document.querySelector('.ss-scopes')!.addEventListener('click',e=>{const b=(e.target as HTMLElement).closest<HTMLElement>('[data-scope]');if(b)setScope(b.dataset.scope!)});
     $('ss-results').addEventListener('click',(e:any)=>{const b=e.target.closest('[data-more]');if(!b)return;const k=b.dataset.more;if(scope==='all')setScope(k);else{limit[k]=(limit[k]||40)+40;render()}});
     $('ss-form').addEventListener('submit',(e:Event)=>{e.preventDefault();clearTimeout(timer);run()});
-    $('ss-q').addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(run,140)});
+    $('ss-retry').addEventListener('click',()=>{clearTimeout(timer);run()});
+    $('ss-q').addEventListener('input',()=>{clearTimeout(timer);token++;renderToken++;$('ss-results').innerHTML='';$('ss-retry').hidden=true;$('ss-status').textContent=$('ss-q').value.trim()?'Searching…':'';timer=setTimeout(run,140)});
     const start=new URL(location.href);$('ss-q').value=start.searchParams.get('q')||'';const s=start.searchParams.get('scope');if(s&&LABEL[s])scope=s;
     for(const b of document.querySelectorAll<HTMLElement>('[data-scope]'))b.setAttribute('aria-pressed',String(b.dataset.scope===scope));
     loadPagefind().catch(()=>{});if($('ss-q').value)run();
