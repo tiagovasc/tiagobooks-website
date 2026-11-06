@@ -25,7 +25,6 @@ const {
   noindex = false, type = 'website', published, updated, jsonLd, pagefindBody = false,
 } = Astro.props;
 
-const fullTitle = title && title !== site.title ? `${title} | ${site.title}` : site.title;
 const canonical = new URL(path === '/' ? '/' : path, site.url).toString();
 const imageUrl = image ? absoluteSiteLink(image) : undefined;
 const isBlog = path === '/' || path === '/blog' || path.startsWith('/posts') || path.startsWith('/tag/');
@@ -47,7 +46,7 @@ const activeTag = path.startsWith('/tag/') ? decodeURIComponent(path.slice(5)) :
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#EDEDEA" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
-    <title>{fullTitle}</title>
+    <title>{site.title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     {noindex && <meta name="robots" content="noindex,nofollow" />}
@@ -65,7 +64,9 @@ const activeTag = path.startsWith('/tag/') ? decodeURIComponent(path.slice(5)) :
     {published && <meta property="article:published_time" content={published.toISOString()} />}
     {updated && <meta property="article:modified_time" content={updated.toISOString()} />}
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.svg?v=quill-20261106" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico?v=quill-20261106" sizes="16x16 32x32 48x48" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=quill-20261106" sizes="180x180" />
   </head>
   <body class="writing-site">
     <div id="top"></div>

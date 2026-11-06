@@ -51,7 +51,7 @@ const escapeHtml=value=>String(value).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&l
 // Only same-site paths are accepted as a return destination, so the login form cannot redirect elsewhere.
 export function safeNext(value){const v=String(value||'');return v.length<1000&&/^\/(?![\/\\])/.test(v)&&!/[\u0000-\u001f\u007f]/.test(v)?v:'/';}
 function loginPage(message='',next='/'){
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><meta name="robots" content="noindex"><meta name="description" content="Sign in to manage Tiago Faleiro’s library and writing."><title>Admin login · Tiago Faleiro</title><link rel="icon" href="/favicon.svg" type="image/svg+xml"><style>
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><meta name="robots" content="noindex"><meta name="description" content="Sign in to manage Tiago Faleiro’s library and writing."><title>Tiago Faleiro</title><link rel="icon" href="/favicon.svg?v=quill-20261106" type="image/svg+xml"><style>
 :root{color-scheme:light dark;--bg:#EDEDEA;--field:#FFFFFF;--ink:#1C1C1E;--muted:#5A5A5F;--line:rgba(28,28,30,.18);--btn:#1C1C1E;--btn-ink:#FFFFFF;--err:#B4343A}
 @media (prefers-color-scheme:dark){:root{--bg:#000;--field:#1C1C1E;--ink:#F5F5F7;--muted:#A1A1A6;--line:rgba(255,255,255,.17);--btn:#F5F5F7;--btn-ink:#111;--err:#F0A49F}}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif;display:grid;place-items:center;min-height:100vh;min-height:100dvh}
