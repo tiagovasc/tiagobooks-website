@@ -410,7 +410,7 @@ dialog.drawer,dialog.drawer::backdrop{right:calc(100% - 100vw)}
   .site-shell .nav-extra a:focus-visible{outline-offset:-3px}
   .reading-down .date-rail:not(:focus-within){opacity:0;pointer-events:none}
   .reading-down .section-tools:not(:focus-within){opacity:0;pointer-events:none}
-  .reading-down .shell-backdrop{height:var(--shell-h)}
+  .reading-down:has(.section-tools) .shell-backdrop{height:var(--shell-h)}
   .date-rail,body .date-rail{height:44px}
   .e-content .anchor{min-width:44px;min-height:44px}
   .entry-meta{font-size:13px;gap:8px 12px}
@@ -447,7 +447,7 @@ dialog.drawer,dialog.drawer::backdrop{right:calc(100% - 100vw)}
   top:calc(var(--shell-h) + 10px);width:min(1180px,calc(100% - 40px));
   border-radius:0;background:transparent;box-shadow:none;padding:0 8px 10px;
 }
-.notch.library-tools{padding:2px 8px 10px}
+.notch.library-tools{padding:2px 8px 10px;background:var(--page)}
 .section-tools .tag-chips{gap:10px}
 .section-tools .tag-chips a{position:relative;min-height:42px;padding:10px 10px;border-radius:0}
 .section-tools .tag-chips a:hover,.section-tools .tag-chips a[aria-current]{background:transparent;box-shadow:none;color:var(--ink)}
