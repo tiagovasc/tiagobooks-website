@@ -4,7 +4,7 @@ import {fileURLToPath} from 'node:url';
 import {readFile,stat} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import zlib from 'node:zlib';
-import {server as library,authenticated} from './library/server.mjs';
+import {server as library,authenticated,activateBookReconciliation} from './library/server.mjs';
 import {editorHandler} from './editor-api.mjs';
 import {productionEditorHandler} from './production-editor-api.mjs';
 import {personalizeSiteHeader} from './src/lib/site-shell.mjs';
@@ -51,6 +51,7 @@ export const server=http.createServer(async(req,res)=>{
     if(p.startsWith('/api/editor'))return await editor(req,res);
     if(p==='/api/tbr-favorites')return library.emit('request',req,res);
     if(p==='/api/tbr-owned')return library.emit('request',req,res);
+    if(p==='/api/book-reconciliation')return library.emit('request',req,res);
     if(p==='/healthz'){await stat(path.join(dist,'blog.html'));await stat(path.join(dist,'pagefind/pagefind.js'));req.url='/health';return library.emit('request',req,res)}
     if(p==='/'&&url.searchParams.get('collection')==='tbr')return reply(res,302,'Open the library',{Location:'/library'+url.search,'Cache-Control':'no-store'});
     if(p==='/library'){req.url='/'+url.search;return library.emit('request',req,res)}
@@ -95,6 +96,9 @@ export const server=http.createServer(async(req,res)=>{
 });
 server.keepAliveTimeout=65000;server.headersTimeout=66000;
 if(process.argv[1]===fileURLToPath(import.meta.url)){
+  // The first release installs compatible readers/writers with activation off.
+  // Only the reviewed personal-site deployment may activate the backed-up plan.
+  if(process.env.NODE_ENV==='production'&&process.env.CMS_REPOSITORY==='tiagovasc/tiagobooks-website')await activateBookReconciliation();
   const port=Number(process.env.PORT||8740);const host=process.env.HOST||(process.env.NODE_ENV==='production'?'0.0.0.0':'127.0.0.1');
   server.listen(port,host,()=>console.log(`Integrated website: http://${host}:${port}`));
   for(const signal of ['SIGTERM','SIGINT'])process.on(signal,()=>{server.close(()=>process.exit());server.closeIdleConnections();setTimeout(()=>process.exit(),10000).unref()});

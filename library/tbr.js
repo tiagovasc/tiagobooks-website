@@ -36,7 +36,7 @@ export function filterCatalogue(books,{source='all',query='',city='',shop='',sor
   if(source==='bookshops')return filterBooks(collection,{query,city,shop,sort});
   const words=query.toLocaleLowerCase().trim().split(/\s+/).filter(Boolean);
   return collection.filter(b=>{
-    const text=[b.title,b.author,b.description,...(source==='all'?[sourceLabel(b),...(b.sightings||[]).flatMap(s=>[s.city,s.bookshop])]:[])].join(' ').toLocaleLowerCase();
+    const text=[b.title,b.author,b.source_title,b.source_author,b.description,...(source==='all'?[sourceLabel(b),...(b.sightings||[]).flatMap(s=>[s.city,s.bookshop])]:[])].join(' ').toLocaleLowerCase();
     return words.every(w=>text.includes(w));
   }).sort((a,b)=>sort==='title'?a.title.localeCompare(b.title):sort==='author'?(a.author||'').localeCompare(b.author||''):
     (source==='all'?order.get(a.id)-order.get(b.id):(a[source+'_order']??0)-(b[source+'_order']??0))*(sort==='oldest'?-1:1)||a.id.localeCompare(b.id));
@@ -162,6 +162,7 @@ function init(){
 
   function openBook(id){
     const b=books?.find(x=>x.id===id);if(!b)return;
+    if(b.canonical_ready&&b.library_id&&window.openCanonicalBook){window.openCanonicalBook(b.library_id);return;}
     $('tbrDialog').querySelector('.tbr-dialog-head span').textContent='TBR · '+(source==='all'?sourceLabel(b):SOURCES[source]);
     const sightings=b.sightings.length?`<h3>Spotted in book shops</h3><ul>${b.sightings.map(s=>`<li><strong>${escape(s.bookshop)}</strong><br>${escape(s.city)}${s.country?', '+escape(s.country):''} · ${date(s.photographed_at)}${/unresolved|probable|possible|uncertain|unknown/i.test(s.shop_status)?`<br>Shop identification: ${escape(s.shop_status)}`:''}</li>`).join('')}</ul>`:'';
     $('tbrDetail').innerHTML=`${favorite(b)}${tbrOwnedHTML(ownedIds.has(b.id))}${b.cover?`<img class="${favoriteIds.has(b.id)?'is-favorite':''}" src="${escape(b.cover)}" alt="Cover of ${escape(b.title)}">`:''}<h2 id="tbrDetailTitle">${escape(b.title)}</h2><p>${escape(b.author||'Author not identified')}</p>${b.identity_status==='needs_review'?'<p class="tbr-note">The exact book is still being identified.</p>':''}${b.description?`<p>${escape(b.description)}</p>`:''}${source==='all'?`<p class="tbr-note">Saved from: ${escape(sourceLabel(b))}.</p>`:source!=='bookshops'?`<p class="tbr-note">${source==='instagram'?'Discovered on Instagram':'Found online'} and saved to explore.</p>`:''}${sightings}<p class="tbr-note">Saved as a reading interest. This doesn’t indicate ownership or a completed read.${b.sightings.length?' Cover and description may represent a different edition from the photographed copy.':''}</p>`;
@@ -196,6 +197,11 @@ function init(){
     if(!typing&&e.key==='/'&&!$('tbrDialog').open){e.preventDefault();search.focus();search.select();}
     if(e.key==='Escape'&&e.target===search){search.value='';$('searchClear').hidden=true;render();}
   },true);
+  window.addEventListener('canonical-favorite-change',event=>{
+    const related=(books||[]).filter(b=>b.canonical_ready&&b.book_id===event.detail.id);
+    related.forEach(b=>{event.detail.favorite?favoriteIds.add(b.id):favoriteIds.delete(b.id);});
+    if(active&&window.FAVORITES_ONLY)render();else related.forEach(b=>syncFavorite(b.id));
+  });
   window.addEventListener('favorite-filter-change',()=>{limit=48;if(active)render();});
   $('tbrDialog').addEventListener('close',()=>{openId=null;});
   function syncFavorite(id){
@@ -211,22 +217,29 @@ function init(){
   }
   async function setFavorite(id){
     if(!window.CLOUD_CAN_EDIT||pendingFavorites.has(id)||!books?.some(b=>b.id===id))return;
-    const previous=favoriteIds.has(id),selected=!previous;
-    selected?favoriteIds.add(id):favoriteIds.delete(id);
-    pendingFavorites.add(id);$('tbrFavoriteMessage').textContent='Saving favorite…';
+    const book=books.find(b=>b.id===id),related=book.canonical_ready?books.filter(b=>b.book_id===book.book_id).map(b=>b.id):[id];
+    if(related.some(key=>pendingFavorites.has(key)))return;
+    const previous=new Map(related.map(key=>[key,favoriteIds.has(key)])),selected=!favoriteIds.has(id);
+    related.forEach(key=>{selected?favoriteIds.add(key):favoriteIds.delete(key);pendingFavorites.add(key);});
+    $('tbrFavoriteMessage').textContent='Saving favorite…';
     if(window.FAVORITES_ONLY)render();
-    syncFavorite(id);
+    related.forEach(syncFavorite);
     try{
-      const response=await fetch('/api/tbr-favorites',{method:'POST',keepalive:true,headers:{'Content-Type':'application/json'},body:JSON.stringify({id,favorite:selected})});
-      if(!response.ok)throw Error(response.status===401?'Sign in again to save favorites.':'Could not save favorite. Please try again.');
-      const result=await response.json();if(result.id!==id||result.favorite!==selected)throw Error('Favorite was not confirmed. Please try again.');
+      let result;
+      if(window.saveMembershipFavorite)result=await window.saveMembershipFavorite(id,selected,book.book_id);
+      else{
+        const response=await fetch('/api/tbr-favorites',{method:'POST',keepalive:true,headers:{'Content-Type':'application/json'},body:JSON.stringify({id,favorite:selected})});
+        if(!response.ok)throw Error(response.status===401?'Sign in again to save favorites.':'Could not save favorite. Please try again.');
+        result=await response.json();
+      }
+      if(result.id!==id||result.favorite!==selected)throw Error('Favorite was not confirmed. Please try again.');
       $('tbrFavoriteMessage').textContent='Favorite saved.';
     }catch(error){
-      previous?favoriteIds.add(id):favoriteIds.delete(id);
+      previous.forEach((was,key)=>{was?favoriteIds.add(key):favoriteIds.delete(key);});
       if(window.FAVORITES_ONLY)render();
       $('tbrFavoriteMessage').textContent=error.message;
     }finally{
-      pendingFavorites.delete(id);syncFavorite(id);
+      related.forEach(key=>pendingFavorites.delete(key));related.forEach(syncFavorite);
       if(active){
         const control=(openId===id?$('tbrDetail'):$('tbrContent')).querySelector('[data-tbr-favorite="'+CSS.escape(id)+'"]');
         (control||$('favoriteFilter')).focus({preventScroll:true});

@@ -168,3 +168,15 @@ test('favorite saves persist, publish, clear, and preserve all other fields',asy
  assert.equal((await (await fetch(base+'/books.json')).json())[0].favorite,undefined);
  assert.equal((await save(changed,row.revision,null)).status,401);
 });
+
+test('Library reads hide discovery-only books and saves retain their complete data',async()=>{
+ const cookie=await login(),before=structuredClone(row);
+ const hidden={id:'hidden',title:'TBR only',rating:0,library_member:false,book_identity_version:'test',favorite:true,discovery_records:[{id:'source',sources:['online']}]};
+ try{
+  row.books.push(hidden);row.revision++;resetCaches();
+  const visible=await (await fetch(base+'/books.json',{headers:{Cookie:cookie}})).json();
+  assert.equal(visible.length,before.books.length);assert.ok(!visible.some(b=>b.id==='hidden'));
+  visible[0].rating=2;assert.equal((await save(visible,row.revision,cookie)).status,200);
+  assert.deepEqual(row.books.find(b=>b.id==='hidden'),hidden);
+ }finally{row=before;resetCaches();}
+});

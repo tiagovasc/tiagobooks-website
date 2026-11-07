@@ -41,6 +41,17 @@ test('queued library saves stay pending until the latest snapshot is acknowledge
   assert.equal(h.context.serverRevision,'139');assert.equal(h.context.serverSaveState,'saved');assert.equal(h.warns(),false);
 });
 
+test('TBR favorites share the library revision queue and update the underlying book',async()=>{
+  const h=harness(),book={id:'one',favorite:false};
+  Object.assign(h.context,{libraryReady:Promise.resolve(true),findBook:()=>book,refreshFavoriteControls(){},announceCanonicalFavorite(){}});
+  h.context.saveToServer();
+  const favorite=h.context.window.saveMembershipFavorite('tbr-one',true,'one');
+  await turn();assert.equal(h.requests.length,1);assert.equal(book.favorite,true);
+  h.respond(0);await turn();assert.equal(h.requests.length,2);
+  assert.equal(h.requests[1].url,'/api/tbr-favorites');assert.equal(h.requests[1].options.headers['X-Library-Revision'],'138');
+  h.respond(1,200,'139');await favorite;await h.context.serverSaveQueue;assert.equal(h.context.serverRevision,'139');
+});
+
 test('a later full snapshot can recover an earlier network failure',async()=>{
   const h=harness();h.context.saveToServer();h.setSnapshot('second edit');h.context.saveToServer();
   await turn();h.requests[0].reject(new Error('offline'));await turn();

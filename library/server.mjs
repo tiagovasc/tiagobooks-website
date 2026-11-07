@@ -2,6 +2,7 @@ import http from 'node:http';
 import {localDB} from '../local-storage.mjs';
 import {createTbrFavoritesStore} from './tbr-favorites-store.mjs';
 import {ownedTbrIds} from './tbr-ownership.mjs';
+import {isLibraryMember,mergeLibrarySave,projectTbrCatalogue,canonicalFavoriteIds,createReconciliationBackup,runBookReconciliation} from './canonical-books.mjs';
 import {readBody,sameOrigin} from './http-utils.mjs';
 import {personalizeSiteHeader} from '../src/lib/site-shell.mjs';
 import {tripMonth,publicTripCatalogue} from './trip-privacy.mjs';
@@ -20,6 +21,14 @@ if(local && process.env.NODE_ENV==='production')throw Error('Local catalogue is 
 const port=Number(process.env.PORT||8732);
 const table='book_library_state';
 const tbrFavorites=createTbrFavoritesStore({url:base,key,localFile:local?local+'.tbr-favorites.json':null});
+let reconciliationStatus={state:'not_started',compatible:true};
+export async function activateBookReconciliation(){
+  const plan=JSON.parse(await readFile(path.join(root,'book-reconciliation.json'),'utf8'));
+  const catalogue=JSON.parse(await readFile(path.join(root,'tbr-catalogue.json'),'utf8'));
+  reconciliationStatus=await runBookReconciliation({db,catalogue,plan,legacyFavorites:()=>tbrFavorites.list(),backup:createReconciliationBackup(base,key)});
+  snapshot=null;
+  return reconciliationStatus;
+}
 const attempts=new Map(),allFailures={count:0,until:0};
 // Railway's edge always sets X-Real-IP and overwrites any copy a visitor sends (Railway staff, Central Station,
 // checked 4 Nov 2026). Behind it every request arrives from the proxy, so production counts failed logins per visitor.
@@ -86,7 +95,7 @@ export function plausibleSave(previousCount,nextCount){
 
 // Visitors get the library without descriptions (fetched one book at a time when a book is opened) and without
 // merge bookkeeping that no screen shows. The signed-in editor always loads the complete records it saves back.
-const PUBLIC_OMIT=['description','merged_records','merge_conflicts','acquisition_events'];
+const PUBLIC_OMIT=['description','merged_records','merge_conflicts','acquisition_events','discovery_records','book_identity_version','series_original_record'];
 const described=b=>typeof b?.description==='string'&&b.description.trim()!=='';
 export function publicBooks(books){return books.map(b=>{
   const o={};for(const k of Object.keys(b))if(!PUBLIC_OMIT.includes(k))o[k]=b[k];
@@ -153,10 +162,11 @@ async function librarySnapshot(){
   if(snapshot&&snapshot.revision===meta.revision&&snapshot.variant)return snapshot;
   const [row]=await db('GET','?id=eq.library&select=books,revision');
   if(!row)return null;
-  const descriptions=new Map(row.books.filter(described).map(b=>[String(b.id),b.description]));
-  snapshot={revision:row.revision,count:row.books.length,described:descriptions.size,descriptions,
-    variant:await compressed(Buffer.from(JSON.stringify(row.books)),6),
-    publicVariant:await compressed(Buffer.from(JSON.stringify(publicBooks(row.books))),6),
+  const members=row.books.filter(isLibraryMember);
+  const descriptions=new Map(members.filter(described).map(b=>[String(b.id),b.description]));
+  snapshot={revision:row.revision,count:members.length,described:descriptions.size,descriptions,allBooks:row.books,
+    variant:await compressed(Buffer.from(JSON.stringify(members)),6),
+    publicVariant:await compressed(Buffer.from(JSON.stringify(publicBooks(members))),6),
     descriptionsVariant:await compressed(Buffer.from(JSON.stringify(Object.fromEntries(descriptions))),6)};
   return snapshot;
 }
@@ -193,14 +203,19 @@ export const server=http.createServer(async(req,res)=>{
     if(url.pathname==='/login'&&req.method==='GET'){return htmlReply(200,'');}
     if(url.pathname==='/logout'){res.writeHead(303,{Location:safeNext(next), 'Set-Cookie':'library_session=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0','Cache-Control':'no-store',...SECURITY});return res.end();}
     if(url.pathname==='/save'&&!authenticated(req))return send(res,401,{error:'Enter the library password to enable edits'});
+    if(url.pathname==='/api/book-reconciliation'&&req.method==='GET')return send(res,200,reconciliationStatus);
     if(url.pathname==='/api/tbr-owned'&&req.method==='GET'){
       const snap=await librarySnapshot();if(!snap)return send(res,503,{error:'Library is not initialized'});
       const catalogue=JSON.parse(await readFile(path.join(root,'tbr-catalogue.json'),'utf8'));
-      const books=JSON.parse(snap.variant.raw.toString());
+      const books=snap.allBooks;
       return send(res,200,{ids:ownedTbrIds(books,catalogue.books)});
     }
     if(url.pathname==='/api/tbr-favorites'){
-      if(req.method==='GET')return send(res,200,{ids:await tbrFavorites.list()});
+      if(req.method==='GET'){
+        const catalogue=JSON.parse(await readFile(path.join(root,'tbr-catalogue.json'),'utf8'));
+        const snap=await librarySnapshot();if(!snap)return send(res,503,{error:'Library is not initialized'});
+        return send(res,200,{ids:canonicalFavoriteIds(catalogue,snap.allBooks,await tbrFavorites.list())});
+      }
       if(req.method!=='POST')return send(res,405,{error:'Method not allowed'});
       if(!authenticated(req))return send(res,401,{error:'Sign in to favorite books'});
       if(!sameOrigin(req))return send(res,403,{error:'Origin rejected'});
@@ -208,9 +223,24 @@ export const server=http.createServer(async(req,res)=>{
       let value;try{value=JSON.parse(raw);}catch{return send(res,400,{error:'Invalid JSON'});}
       if(!value||typeof value.id!=='string'||!/^[A-Za-z0-9_-]{1,160}$/.test(value.id)||typeof value.favorite!=='boolean')return send(res,400,{error:'Invalid favorite'});
       const catalogue=JSON.parse(await readFile(path.join(root,'tbr-catalogue.json'),'utf8'));
-      if(!catalogue.books.some(b=>b.id===value.id))return send(res,404,{error:'Book not found'});
+      const membership=catalogue.books.find(b=>b.id===value.id);
+      if(!membership)return send(res,404,{error:'Book not found'});
+      for(let attempt=0;attempt<5;attempt++){
+        const [row]=await db('GET','?id=eq.library&select=books,revision');
+        const book=row?.books.find(b=>b.id===membership.book_id);
+        if(!book?.book_identity_version)break;
+        const expected=req.headers['x-library-revision'];
+        if(expected&&String(row.revision)!==String(expected))return send(res,409,{error:'Another session changed the library. Reload before saving.'});
+        book.favorite=value.favorite;
+        const updated=await db('PATCH',`?id=eq.library&revision=eq.${row.revision}`,{books:row.books,revision:row.revision+1,updated_at:new Date().toISOString()});
+        if(!updated.length){if(expected)return send(res,409,{error:'Another session changed the library. Reload before saving.'});continue;}
+        snapshot=null;
+        return send(res,200,{id:value.id,favorite:value.favorite,book_id:membership.book_id},{'X-Library-Revision':String(row.revision+1)});
+      }
+      const [current]=await db('GET','?id=eq.library&select=books,revision');
+      if(current?.books.some(b=>b.id===membership.book_id&&b.book_identity_version))return send(res,409,{error:'Another session changed the library. Reload before saving.'});
       await tbrFavorites.set(value.id,value.favorite);
-      return send(res,200,{id:value.id,favorite:value.favorite});
+      return send(res,200,{id:value.id,favorite:value.favorite},{'X-Library-Revision':String(current?.revision||'')});
     }
     if(url.pathname==='/health'){if(!local&&(!base||!key))return send(res,503,{ok:false});const rows=await db('GET','?id=eq.library&select=revision');return send(res,rows.length?200:503,{ok:!!rows.length});}
     if(url.pathname==='/books.json'&&req.method==='GET'){
@@ -233,12 +263,14 @@ export const server=http.createServer(async(req,res)=>{
       let books;try{books=JSON.parse(body);}catch{return send(res,400,{error:'Invalid JSON'});}
       if(!validBooks(books))return send(res,400,{error:'Invalid library or rating'});
       const revision=Number(req.headers['x-library-revision']);if(!Number.isSafeInteger(revision)||revision<1)return send(res,409,{error:'Reload the library before saving'});
-      let previous=snapshot&&snapshot.revision===revision?snapshot.count:null,previousDescribed=previous===null?null:snapshot.described;
-      if(previous===null){const [current]=await db('GET',`?id=eq.library&revision=eq.${revision}&select=books`);if(!current)return send(res,409,{error:'Another session changed the library. Export your changes, then reload.'});previous=current.books.length;previousDescribed=current.books.filter(described).length;}
+      const [current]=await db('GET',`?id=eq.library&revision=eq.${revision}&select=books`);
+      if(!current)return send(res,409,{error:'Another session changed the library. Export your changes, then reload.'});
+      const members=current.books.filter(isLibraryMember),previous=members.length,previousDescribed=members.filter(described).length;
       const nextDescribed=books.filter(described).length;
       if(!keepsDescriptions(previousDescribed,nextDescribed))return send(res,400,{error:'Refusing to save: this would remove most book descriptions. Reload the page and check the change.'});
       if(!plausibleSave(previous,books.length))return send(res,400,{error:'Refusing to save: this would remove most of the library. Reload the page and check the change.'});
-      const rows=await db('PATCH',`?id=eq.library&revision=eq.${revision}`,{books,revision:revision+1,updated_at:new Date().toISOString()});
+      let combined;try{combined=mergeLibrarySave(current.books,books);}catch{return send(res,400,{error:'Invalid canonical library membership'});}
+      const rows=await db('PATCH',`?id=eq.library&revision=eq.${revision}`,{books:combined,revision:revision+1,updated_at:new Date().toISOString()});
       if(!rows.length)return send(res,409,{error:'Another session changed the library. Export your changes, then reload.'});
       snapshot={revision:revision+1,count:books.length,described:nextDescribed,variant:null};
       return send(res,200,{ok:true},{'X-Library-Revision':String(revision+1)});
@@ -252,9 +284,11 @@ export const server=http.createServer(async(req,res)=>{
     if(Object.hasOwn(TBR_FILES,filename)){
       const file=path.join(root,filename),st=await stat(file).catch(()=>null);
       if(!st||!st.isFile())return send(res,404,{error:'Not found'});
-      const etag=`W/"${st.size.toString(16)}-${Math.floor(st.mtimeMs).toString(16)}-month"`;
+      const canonical=filename==='tbr-catalogue.json'||filename==='tbr-bookshops.json';
+      const snap=canonical&&(local||(base&&key))?await librarySnapshot():null;
+      const etag=`W/"${st.size.toString(16)}-${Math.floor(st.mtimeMs).toString(16)}-month${snap?'-r'+snap.revision:''}"`;
       let cached=tbrVariants.get(filename);
-      if(!cached||cached.etag!==etag){let raw=await readFile(file);if(filename.endsWith('.json'))raw=Buffer.from(JSON.stringify(publicTripCatalogue(JSON.parse(raw))));cached={etag,variant:await compressed(raw,5)};tbrVariants.set(filename,cached);}
+      if(!cached||cached.etag!==etag){let raw=await readFile(file);if(filename.endsWith('.json')){let data=JSON.parse(raw);if(snap)data=projectTbrCatalogue(data,snap.allBooks);raw=Buffer.from(JSON.stringify(publicTripCatalogue(data)));}cached={etag,variant:await compressed(raw,5)};tbrVariants.set(filename,cached);}
       return sendVariant(req,res,cached.variant,{type:TBR_FILES[filename],etag,cache:'no-cache'});
     }
     if(!(ROOT_FILES.includes(filename)||COVER.test(filename)))return send(res,404,{error:'Not found'});

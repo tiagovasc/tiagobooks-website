@@ -44,4 +44,12 @@ Verify `/`, `/blog`, `/search`, `/posts_feed`, `/admin/config.yml` and `/healthz
 
 ## Recovery
 
+### Shared book identities (November 2026)
+
+`library/book-reconciliation.json` contains reviewed identity links and the eight-volume Continental Philosophy expansion. TBR rows retain their original IDs, source arrays, sightings and order, and reference a single underlying database book through `book_id`. The existing JSONB array stores canonical books; `library_member: false` hides discovery-only records and the preserved original set from the main library. Library saves retain these records and protected source history. The eight individual volumes are owned; only volume 1 is read. The original set's complete record, notes and rating remain in `series_original_record` on the collection.
+
+Deploy compatible readers/writers with `activate: false` first. Verify `/api/book-reconciliation` reports `ready`, then deploy `activate: true`. Production startup first saves the complete authenticated database row into the **private** `tiagovf-library-backups` bucket and verifies byte-for-byte readback. It then updates the row with revision comparison; a concurrent edit triggers a fresh backup and retry. Failure stops startup before an unsafe write. The safe status endpoint reports the backup hash and counts, never database contents or credentials. Subsequent startup is idempotent. Expected memberships after the explicitly requested volume expansion: Library 1,007; TBR 5,227. All nine original TBR favorite selections are imported, alongside owned favorites. Canonical favorites then use the same revision queue as Library edits; the old favorite bucket remains preserved for recovery.
+
+Application rollback must use the compatible shared-identity version or later. Do not deploy older readers that treat every canonical record as a Library membership. Database rollback requires the verified private snapshot and a review of subsequent edits; never overwrite newer changes merely to roll back presentation.
+
 Keep database backups and any private source snapshots outside Git. Roll back application code using your host's previous successful deployment or a reviewed Git commit. Database recovery is separate: do not overwrite a newer catalogue merely to roll back the UI.

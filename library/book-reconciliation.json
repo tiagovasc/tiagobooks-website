@@ -1,0 +1,994 @@
+{
+  "version": "canonical-books-20261107-v1",
+  "activate": false,
+  "library_memberships": 1007,
+  "tbr_memberships": 5227,
+  "expected_library": {
+    "28": {
+      "title": "A Short History of Truth: Consolations for a Post-Truth World",
+      "author": "Julian Baggini"
+    },
+    "52": {
+      "title": "Alchemy & Mysticism",
+      "author": "Alexander Roob"
+    },
+    "57": {
+      "title": "An Answer to the Question: What Is Enlightenment?",
+      "author": "Immanuel Kant"
+    },
+    "59": {
+      "title": "An Atheist's History of Belief: Understanding Our Most Extraordinary Invention",
+      "author": "Matthew Kneale"
+    },
+    "62": {
+      "title": "Animal Farm",
+      "author": "George Orwell"
+    },
+    "64": {
+      "title": "Anime, Religion and Spirituality: Profane and Sacred Worlds in Contemporary Japan",
+      "author": "Katharine Buljan, Carole M. Cusack"
+    },
+    "65": {
+      "title": "Antifragile: Things That Gain from Disorder",
+      "author": "Nassim Nicholas Taleb"
+    },
+    "80": {
+      "title": "Bad Science",
+      "author": "Ben Goldacre"
+    },
+    "84": {
+      "title": "Beauty: A Very Short Introduction",
+      "author": "Roger Scruton"
+    },
+    "86": {
+      "title": "Becoming Human: A Theory of Ontogeny",
+      "author": "Michael Tomasello"
+    },
+    "87": {
+      "title": "Behave: The Biology of Humans at Our Best and Worst",
+      "author": "Robert M. Sapolsky"
+    },
+    "113": {
+      "title": "Beyond Good and Evil",
+      "author": "Friedrich Nietzsche"
+    },
+    "115": {
+      "title": "Blink: The Power of Thinking Without Thinking",
+      "author": "Malcolm Gladwell"
+    },
+    "117": {
+      "title": "Blockchain Security from the Bottom Up: Securing and Preventing Attacks on Cryptocurrencies, Decentralized Applications, NFTs, and Smart Contracts",
+      "author": "Howard E Poston"
+    },
+    "118": {
+      "title": "Blueprint: How DNA Makes Us Who We Are",
+      "author": "Robert Plomin"
+    },
+    "119": {
+      "title": "Blueprint: The Evolutionary Origins of a Good Society",
+      "author": "Nicholas A. Christakis"
+    },
+    "121": {
+      "title": "Brain and Mind Made Simple",
+      "author": "David J. Nutt"
+    },
+    "122": {
+      "title": "Brain on Fire: My Month of Madness",
+      "author": "Susannah Cahalan"
+    },
+    "127": {
+      "title": "Buddhism is a Religion: You Can Believe It",
+      "author": "David Brazier"
+    },
+    "134": {
+      "title": "Bullies and Saints: An Honest Look at the Good and Evil of Christian History",
+      "author": "John Dickson"
+    },
+    "144": {
+      "title": "Capitalist Realism: Is There No Alternative?",
+      "author": "Mark Fisher"
+    },
+    "145": {
+      "title": "Chaos",
+      "author": "James Gleick"
+    },
+    "146": {
+      "title": "Christ the Eternal Tao",
+      "author": "Hieromonk Damascene"
+    },
+    "147": {
+      "title": "Christian Philosophy as a Way of Life: An Invitation to Wonder",
+      "author": "Ross D Inman"
+    },
+    "150": {
+      "title": "Civilized to Death: The Price of Progress",
+      "author": "Christopher  Ryan"
+    },
+    "152": {
+      "title": "Classical Philosophy: A History of Philosophy Without Any Gaps",
+      "author": "Peter Adamson"
+    },
+    "155": {
+      "title": "Code: The Hidden Language of Computer Hardware and Software",
+      "author": "Charles Petzold"
+    },
+    "160": {
+      "title": "Cognitive Science: An Introduction to the Science of the Mind",
+      "author": "José Luis Bermúdez"
+    },
+    "162": {
+      "title": "Conditions of Love: The Philosophy of Intimacy",
+      "author": "John Armstrong"
+    },
+    "165": {
+      "title": "Confessions of a Philosopher: A Personal Journey Through Western Philosophy from Plato to Popper",
+      "author": "Bryan Magee"
+    },
+    "172": {
+      "title": "Conscience: The Origins of Moral Intuition",
+      "author": "Patricia S. Churchland"
+    },
+    "173": {
+      "title": "Conscious: A Brief Guide to the Fundamental Mystery of the Mind",
+      "author": "Annaka Harris"
+    },
+    "183": {
+      "title": "Daoism Explained: From the Dream of the Butterfly to the Fishnet Allegory",
+      "author": "Hans-Georg Moeller"
+    },
+    "186": {
+      "title": "Deep Work: Rules for Focused Success in a Distracted World",
+      "author": "Cal Newport"
+    },
+    "192": {
+      "title": "Discrimination and Disparities",
+      "author": "Thomas Sowell"
+    },
+    "202": {
+      "title": "Eight Key Brain Areas of Mental Health and Illness",
+      "author": "Jennifer Sweeton"
+    },
+    "205": {
+      "title": "Endurance: Shackleton's Incredible Voyage",
+      "author": "Alfred Lansing"
+    },
+    "207": {
+      "title": "Engaging Buddhism: Why It Matters to Philosophy",
+      "author": "Jay L. Garfield"
+    },
+    "211": {
+      "title": "Essentials Of Marketing",
+      "author": "Jim Blythe"
+    },
+    "218": {
+      "title": "Everybody Lies: Big Data, New Data, and What the Internet Can Tell Us About Who We Really Are",
+      "author": "Seth Stephens-Davidowitz"
+    },
+    "224": {
+      "title": "Existentialism is a Humanism",
+      "author": "Jean-Paul Sartre"
+    },
+    "236": {
+      "title": "Fierce Loyalty: Unlocking the DNA of Wildly Successful Communities",
+      "author": "Sarah Robinson"
+    },
+    "239": {
+      "title": "First as Tragedy, Then as Farce",
+      "author": "Slavoj Žižek"
+    },
+    "246": {
+      "title": "Foucault a Very Short Introduction",
+      "author": "Gary Gutting"
+    },
+    "247": {
+      "title": "Foundational Concepts in Neuroscience: A Brain-Mind Odyssey (Norton Series on Interpersonal Neurobiology, Band 0)",
+      "author": "David E. Presti"
+    },
+    "257": {
+      "title": "Genesis: The Deep Origin of Societies",
+      "author": "Edward O. Wilson"
+    },
+    "258": {
+      "title": "Genome: The Autobiography of a Species in 23 Chapters",
+      "author": "Matt Ridley"
+    },
+    "271": {
+      "title": "Good Chemistry: The Science of Connection, from Soul to Psychedelics",
+      "author": "Julie Holland"
+    },
+    "275": {
+      "title": "Great Thinkers: Simple Tools from 60 Great Thinkers to Improve Your Life Today",
+      "author": "The School of Life"
+    },
+    "279": {
+      "title": "Gödel, Escher, Bach: An Eternal Golden Braid",
+      "author": "Douglas R. Hofstadter"
+    },
+    "284": {
+      "title": "Heidegger and Happiness: Dwelling on Fitting and Being (Continuum Studies in Continental Philosophy, 72)",
+      "author": "Matthew King"
+    },
+    "290": {
+      "title": "Heidegger's Being and Time and Kierkegaard's The Sickness Unto Death as Hermeneutic to Paul's Epistles",
+      "author": "Bong-Choul Hwang"
+    },
+    "293": {
+      "title": "Heidegger: A Very Short Introduction",
+      "author": "Michael J. Inwood"
+    },
+    "294": {
+      "title": "Heidegger: An Introduction by Polt",
+      "author": "Richard Polt"
+    },
+    "303": {
+      "title": "How Emotions Are Made: The Secret Life of the Brain",
+      "author": "Lisa Feldman Barrett"
+    },
+    "307": {
+      "title": "How to Feel: The Science and Meaning of Touch",
+      "author": "Sushma Subramanian"
+    },
+    "313": {
+      "title": "How to Win Friends & Influence People",
+      "author": "Dale Carnegie"
+    },
+    "338": {
+      "title": "In Our Image: Artificial Intelligence and the Human Spirit",
+      "author": "Noreen Herzfeld"
+    },
+    "339": {
+      "title": "In Search of the Soul: A Philosophical Essay",
+      "author": "John Cottingham"
+    },
+    "341": {
+      "title": "Innate: How the Wiring of Our Brains Shapes Who We Are",
+      "author": "Kevin J. Mitchell"
+    },
+    "343": {
+      "title": "Intimations of Christianity Among the Ancient Greeks",
+      "author": "Simone Weil"
+    },
+    "355": {
+      "title": "Journey to the Edge of Reason: The Life of Kurt Gödel",
+      "author": "Stephen Budiansky"
+    },
+    "364": {
+      "title": "Lack and Transcendence: The Problem of Death and Life in Psychotherapy, Existentialism, and Buddhism",
+      "author": "David R. Loy"
+    },
+    "368": {
+      "title": "Leonardo da Vinci",
+      "author": "Walter Isaacson"
+    },
+    "371": {
+      "title": "Life 3.0: Being Human in the Age of Artificial Intelligence",
+      "author": "Max Tegmark"
+    },
+    "372": {
+      "title": "Life Is Hard: How Philosophy Can Help Us Find Our Way",
+      "author": "Kieran Setiya"
+    },
+    "377": {
+      "title": "Love Sense: The Revolutionary New Science of Romantic Relationships (The Dr. Sue Johnson Collection, 2)",
+      "author": "Sue Johnson"
+    },
+    "378": {
+      "title": "LSD and the Mind of the Universe: Diamonds from Heaven",
+      "author": "Christopher M. Bache"
+    },
+    "379": {
+      "title": "LSD Psychotherapy: The Healing Potential of Psychedelic Medicine",
+      "author": "Stanislav Grof"
+    },
+    "382": {
+      "title": "Lying",
+      "author": "Sam Harris"
+    },
+    "403": {
+      "title": "Mere Christianity",
+      "author": "C. S. Lewis"
+    },
+    "407": {
+      "title": "Metazoa: Animal Life and the Birth of the Mind",
+      "author": "Peter Godfrey-Smith"
+    },
+    "409": {
+      "title": "Mind Fixers: Psychiatry's Troubled Search for the Biology of Mental Illness",
+      "author": "Anne Harrington"
+    },
+    "423": {
+      "title": "Music Theory in One Lesson: Discover How Easy Music Theory Can Be!",
+      "author": "Ross Trottier"
+    },
+    "424": {
+      "title": "Musical Concerns: Essays in Philosophy of Music",
+      "author": "Jerrold Levinson"
+    },
+    "433": {
+      "title": "Natural Goodness",
+      "author": "Philippa Foot"
+    },
+    "437": {
+      "title": "Neuromarketing Essentials: What Every Marketer Needs to Know (NMSBA)",
+      "author": "Peter Steidl"
+    },
+    "438": {
+      "title": "Neuroplasticity (The MIT Press Essential Knowledge series)",
+      "author": "Moheb Costandi"
+    },
+    "444": {
+      "title": "Nonduality : In Buddhism and Beyond",
+      "author": "David R. Loy"
+    },
+    "447": {
+      "title": "Notes on Grief",
+      "author": "Chimamanda Ngozi Adichie"
+    },
+    "449": {
+      "title": "Object-Oriented Ontology: A New Theory of Everything (Pelican Books)",
+      "author": "Graham Harman"
+    },
+    "453": {
+      "title": "On Liberty",
+      "author": "John Stuart Mill"
+    },
+    "457": {
+      "title": "On the Genealogy of Morals",
+      "author": "Friedrich Nietzsche"
+    },
+    "458": {
+      "title": "On the Road with Saint Augustine: A Real-World Spirituality for Restless Hearts",
+      "author": "James K.A. Smith"
+    },
+    "461": {
+      "title": "Ordinary Men: Reserve Police Battalion 101 and the Final Solution in Poland",
+      "author": "Christopher R. Browning"
+    },
+    "462": {
+      "title": "Other Minds",
+      "author": "Peter Godfrey-Smith"
+    },
+    "465": {
+      "title": "Overcoming Body-Focused Repetitive Behaviors: A Comprehensive Behavioral Treatment for Hair Pulling and Skin Picking",
+      "author": "Charles S. Mansueto"
+    },
+    "466": {
+      "title": "Overcoming Gravity: A Systematic Approach to Gymnastics and Bodyweight Strength",
+      "author": "Steven Low"
+    },
+    "476": {
+      "title": "Patterns in Nature: Why the Natural World Looks the Way It Does",
+      "author": "Philip Ball"
+    },
+    "484": {
+      "title": "PHARMACOLOGY OF LSD P: A Critical Review",
+      "author": "Annelie Hintzen"
+    },
+    "491": {
+      "title": "Philosophical Investigations",
+      "author": "Ludwig Wittgenstein"
+    },
+    "494": {
+      "title": "Philosophical Progress: In Defence of a Reasonable Optimism",
+      "author": "Daniel Stoljar"
+    },
+    "497": {
+      "title": "Philosophy as a Way of Life: Spiritual Exercises from Socrates to Foucault",
+      "author": "Pierre Hadot"
+    },
+    "499": {
+      "title": "Philosophy in the Hellenistic and Roman Worlds: A History of Philosophy Without Any Gaps",
+      "author": "Peter Adamson"
+    },
+    "504": {
+      "title": "Philosophy of Music: An Introduction",
+      "author": "R.A. Sharpe"
+    },
+    "506": {
+      "title": "Philosophy of Psychedelics (International Perspectives in Philosophy and Psychiatry)",
+      "author": "Chris Letheby"
+    },
+    "507": {
+      "title": "Philosophy of Psychology: An Introduction",
+      "author": "Kengo Miyazono"
+    },
+    "508": {
+      "title": "Philosophy of the Buddha: An Introduction",
+      "author": "Christopher W. Gowans"
+    },
+    "509": {
+      "title": "Philosophy of the Home: Domestic Space and Happiness",
+      "author": "Emanuele Coccia"
+    },
+    "531": {
+      "title": "Predictably Irrational: The Hidden Forces That Shape Our Decisions",
+      "author": "Dan Ariely"
+    },
+    "535": {
+      "title": "Psychedelic Information Theory: Shamanism in the Age of Reason",
+      "author": "James L. Kent"
+    },
+    "542": {
+      "title": "Psychology: The Science of Mind and Behaviour",
+      "author": "Richard Gross"
+    },
+    "543": {
+      "title": "Psychopolitics: Neoliberalism and New Technologies of Power",
+      "author": "Byung-Chul Han"
+    },
+    "552": {
+      "title": "Reality Switch Technologies: Psychedelics as Tools for the Discovery and Exploration of New Worlds",
+      "author": "Andrew R Gallimore"
+    },
+    "558": {
+      "title": "Religion for Atheists: A Non-Believer's Guide to the Uses of Religion",
+      "author": "Alain de Botton"
+    },
+    "563": {
+      "title": "Rescuing Socrates: How the Great Books Changed My Life and Why They Matter for a New Generation",
+      "author": "Roosevelt Montás"
+    },
+    "570": {
+      "title": "Sacred Knowledge: Psychedelics and Religious Experiences",
+      "author": "William A. Richards"
+    },
+    "574": {
+      "title": "Saving Beauty",
+      "author": "Byung-Chul Han"
+    },
+    "576": {
+      "title": "Scattered Minds : The Origins and Healing of Attention Deficit Disorder",
+      "author": "Gabor Maté"
+    },
+    "585": {
+      "title": "Seven and a Half Lessons About the Brain",
+      "author": "Lisa Feldman Barrett"
+    },
+    "592": {
+      "title": "Simulacra and Simulation",
+      "author": "Jean Baudrillard"
+    },
+    "597": {
+      "title": "Social: Why Our Brains Are Wired to Connect",
+      "author": "Matthew D. Lieberman"
+    },
+    "602": {
+      "title": "Soul Story: Evolution and The Purpose of Life",
+      "author": "Tim Freke"
+    },
+    "605": {
+      "title": "Starting Strength: Basic Barbell Training",
+      "author": "Mark Rippetoe"
+    },
+    "609": {
+      "title": "Strange Tools: Art and Human Nature",
+      "author": "Alva Noë"
+    },
+    "614": {
+      "title": "Supernatural Selection: How Religion Evolved",
+      "author": "Matt J. Rossano"
+    },
+    "622": {
+      "title": "Technic and Magic: The Reconstruction of Reality",
+      "author": "Federico Campagna"
+    },
+    "624": {
+      "title": "Technological Slavery",
+      "author": "Theodore John Kaczynski"
+    },
+    "628": {
+      "title": "The Amphetamine Debate: The Use of Adderall, Ritalin and Related Drugs for Behavior Modification, Neuroenhancement and Anti-Aging Purposes (McFarland Health Topics)",
+      "author": "Elaine A. Moore"
+    },
+    "630": {
+      "title": "The Archetypes and the Collective Unconscious (Collected Works 9i)",
+      "author": "C.G. Jung"
+    },
+    "631": {
+      "title": "The Art of C. G. Jung",
+      "author": "The Foundation of the Works of C.G. Jung"
+    },
+    "633": {
+      "title": "The Art of Loving",
+      "author": "Erich Fromm"
+    },
+    "641": {
+      "title": "The Big Picture: On the Origins of Life, Meaning, and the Universe Itself",
+      "author": "Sean Carroll"
+    },
+    "643": {
+      "title": "The Blank Slate: The Modern Denial of Human Nature",
+      "author": "Steven Pinker"
+    },
+    "644": {
+      "title": "The Blind Spot",
+      "author": "Adam Frank"
+    },
+    "645": {
+      "title": "The Bodhisattva's Brain : Buddhism Naturalized",
+      "author": "Owen J. Flanagan"
+    },
+    "649": {
+      "title": "The Book of Humans: A Brief History of Culture, Sex, War and the Evolution of Us",
+      "author": "Adam Rutherford"
+    },
+    "652": {
+      "title": "The Boulder: A Philosophy for Bouldering",
+      "author": "Francis Sanzaro"
+    },
+    "658": {
+      "title": "The Call and the Response (Perspectives in Continental Philosophy)",
+      "author": "Jean-Louis Chrétien"
+    },
+    "662": {
+      "title": "The Case Against Reality: Why Evolution Hid the Truth from Our Eyes",
+      "author": "Donald D. Hoffman"
+    },
+    "664": {
+      "title": "The Character Gap: How Good Are We? (Philosophy in Action)",
+      "author": "Christian B. Miller"
+    },
+    "675": {
+      "title": "The Consolations of Philosophy",
+      "author": "Alain de Botton"
+    },
+    "680": {
+      "title": "The Crisis of Religious Symbolism & Symbolism and Reality",
+      "author": "Jean Borella"
+    },
+    "684": {
+      "title": "The Death of Ivan Ilyich",
+      "author": "Leo Tolstoy"
+    },
+    "689": {
+      "title": "The Disappearance of Rituals: A Topology of the Present",
+      "author": "Byung-Chul Han"
+    },
+    "692": {
+      "title": "The Divided Self: An Existential Study in Sanity and Madness",
+      "author": "R.D. Laing"
+    },
+    "694": {
+      "title": "The Divine Spark: Psychedelics, Consciousness and the Birth of Civilization",
+      "author": "Graham Hancock"
+    },
+    "697": {
+      "title": "The Dream of Enlightenment: The Rise of Modern Philosophy",
+      "author": "Anthony Gottlieb"
+    },
+    "701": {
+      "title": "The Embodied Mind, revised edition: Cognitive Science and Human Experience (Mit Press)",
+      "author": "Francisco J. Varela"
+    },
+    "704": {
+      "title": "The Emperor of All Maladies: A Biography of Cancer",
+      "author": "Siddhartha Mukherjee"
+    },
+    "706": {
+      "title": "The Entanglement: How Art and Philosophy Make Us What We Are",
+      "author": "Alva Noë"
+    },
+    "710": {
+      "title": "The Ethics of Beauty",
+      "author": "Timothy G. Patitsas"
+    },
+    "713": {
+      "title": "The Experience of God : Being, Consciousness, Bliss",
+      "author": "David Bentley Hart"
+    },
+    "718": {
+      "title": "The Foundations of Buddhism",
+      "author": "Rupert Gethin"
+    },
+    "719": {
+      "title": "The Gene: An Intimate History",
+      "author": "Siddhartha Mukherjee"
+    },
+    "727": {
+      "title": "The Hero With a Thousand Faces",
+      "author": "Joseph Campbell"
+    },
+    "729": {
+      "title": "The History of Continental Philosophy",
+      "author": "Alan D. Schrift"
+    },
+    "732": {
+      "title": "The Idea of the World: A multi-disciplinary argument for the mental nature of reality",
+      "author": "Bernardo Kastrup"
+    },
+    "740": {
+      "title": "The Language of Creation: Cosmic Symbolism in Genesis",
+      "author": "Matthieu Pageau"
+    },
+    "746": {
+      "title": "The Lost Way to the Good: Dionysian Platonism, Shin Buddhism, and the Shared Quest to Reconnect a Divided World",
+      "author": "Thomas Plant"
+    },
+    "754": {
+      "title": "The Master and His Emissary: The Divided Brain and the Making of the Western World",
+      "author": "Iain McGilchrist"
+    },
+    "762": {
+      "title": "The Murder of Professor Schlick: The Rise and Fall of the Vienna Circle",
+      "author": "David Edmonds"
+    },
+    "765": {
+      "title": "The Myth of Sisyphus",
+      "author": "Albert Camus"
+    },
+    "766": {
+      "title": "The Need for Roots: Prelude to a Declaration of Duties towards Mankind",
+      "author": "Simone Weil"
+    },
+    "768": {
+      "title": "The New Big Book of Christian Mysticism: An Essential Guide to Contemplative Spirituality",
+      "author": "Carl McColman"
+    },
+    "769": {
+      "title": "The Old Man and the Sea",
+      "author": "Ernest Hemingway"
+    },
+    "770": {
+      "title": "The Origin of Consciousness in the Breakdown of the Bicameral Mind",
+      "author": "Julian Jaynes"
+    },
+    "773": {
+      "title": "The Origins of Political Order: From Prehuman Times to the French Revolution",
+      "author": "Francis Fukuyama"
+    },
+    "778": {
+      "title": "The Palliative Society: Pain Today",
+      "author": "Byung-Chul Han"
+    },
+    "780": {
+      "title": "The Phenomenological Mind",
+      "author": "Shaun Gallagher"
+    },
+    "784": {
+      "title": "The Philosophers' Library: Books That Shaped the World",
+      "author": "Adam Ferner, Chris Meyns"
+    },
+    "797": {
+      "title": "The Philosophy of Zen Buddhism",
+      "author": "Byung-Chul Han"
+    },
+    "799": {
+      "title": "The Pocket Book of Plato",
+      "author": "Michael Moore"
+    },
+    "817": {
+      "title": "The Quotable Kierkegaard",
+      "author": "Søren Kierkegaard"
+    },
+    "818": {
+      "title": "The Rape of Nanking: The Forgotten Holocaust of World War II",
+      "author": "Iris Chang"
+    },
+    "821": {
+      "title": "The Reasons of Love",
+      "author": "Harry G. Frankfurt"
+    },
+    "823": {
+      "title": "The Religion of the Apostles: Orthodox Christianity in the First Century",
+      "author": "Stephen De Young"
+    },
+    "829": {
+      "title": "The River of Doubt: Theodore Roosevelt's Darkest Journey",
+      "author": "Candice Millard"
+    },
+    "830": {
+      "title": "The Routledge Handbook of Embodied Cognition (Routledge Handbooks in Philosophy)",
+      "author": "Lawrence Shapiro (Editor)"
+    },
+    "832": {
+      "title": "The Sacred and the Profane: The Nature of Religion",
+      "author": "Mircea Eliade"
+    },
+    "834": {
+      "title": "The Scent of Time: A Philosophical Essay on the Art of Lingering",
+      "author": "Byung-Chul Han"
+    },
+    "845": {
+      "title": "The Selfish Gene",
+      "author": "Richard Dawkins"
+    },
+    "853": {
+      "title": "The Sovereignty of Good",
+      "author": "Iris Murdoch"
+    },
+    "857": {
+      "title": "The Story of the Human Body: Evolution, Health, and Disease",
+      "author": "Daniel E. Lieberman"
+    },
+    "858": {
+      "title": "The Storytelling Animal: How Stories Make Us Human",
+      "author": "Jonathan Gottschall"
+    },
+    "860": {
+      "title": "The Stranger",
+      "author": "Albert Camus"
+    },
+    "862": {
+      "title": "The Subversive Simone Weil: A Life in Five Ideas",
+      "author": "Robert Zaretsky"
+    },
+    "872": {
+      "title": "The Tyranny of Merit: What's Become of the Common Good?",
+      "author": "Michael J. Sandel"
+    },
+    "882": {
+      "title": "The Varieties of Religious Experience",
+      "author": "William  James"
+    },
+    "883": {
+      "title": "The Veil of Isis: An Essay on the History of the Idea of Nature",
+      "author": "Pierre Hadot"
+    },
+    "897": {
+      "title": "Theory and Reality: An Introduction to the Philosophy of Science (Science and Its Conceptual Foundations series)",
+      "author": "Peter Godfrey-Smith"
+    },
+    "902": {
+      "title": "Thinking Statistically",
+      "author": "Uri Bram"
+    },
+    "905": {
+      "title": "Thus Spoke Zarathustra",
+      "author": "Friedrich Nietzsche"
+    },
+    "908": {
+      "title": "Timaeus in Paradise: Metaphors and Beauty from Plato to Dante and Beyond",
+      "author": "Piero Boitani"
+    },
+    "913": {
+      "title": "Top Five Regrets of the Dying: A Life Transformed by the Dearly Departing",
+      "author": "Bronnie Ware"
+    },
+    "919": {
+      "title": "Transcend: The New Science of Self-Actualization",
+      "author": "Scott Barry Kaufman"
+    },
+    "920": {
+      "title": "Transformative Experience",
+      "author": "L.A. Paul"
+    },
+    "928": {
+      "title": "Understanding Music: Philosophy and Interpretation Roger Scruton",
+      "author": "Roger Scruton"
+    },
+    "929": {
+      "title": "Understanding the Brain: From Cells to Behavior to Cognition",
+      "author": "John E. Dowling"
+    },
+    "930": {
+      "title": "Understanding World Religions: An Interdisciplinary Approach",
+      "author": "Irving Hexham"
+    },
+    "957": {
+      "title": "Web3 Marketing: A Handbook for the Next Internet Revolution",
+      "author": "Amanda Cassatt"
+    },
+    "967": {
+      "title": "What is it like to be a Bat? / Wie ist es, eine Fledermaus zu sein?: Englisch/Deutsch (Reclams Universal-Bibliothek – [Was bedeutet das alles?]) (German Edition)",
+      "author": "Thomas Nagel"
+    },
+    "968": {
+      "title": "What Is Life? with Mind and Matter and Autobiographical Sketches",
+      "author": "Erwin Schrödinger"
+    },
+    "972": {
+      "title": "What is Metaphysics?",
+      "author": "John Heil"
+    },
+    "977": {
+      "title": "When an Adult You Love Has ADHD: Professional Advice for Parents, Partners, and Siblings (APA LifeTools Series)",
+      "author": "Russell A. Barkley"
+    },
+    "979": {
+      "title": "When the Air Hits Your Brain: Tales from Neurosurgery",
+      "author": "Frank T. Vertosick Jr."
+    },
+    "981": {
+      "title": "Where Shall Wisdom Be Found?",
+      "author": "Harold Bloom"
+    },
+    "982": {
+      "title": "White Nights",
+      "author": "Fyodor Dostoyevsky"
+    },
+    "984": {
+      "title": "Who We Are and How We Got Here: Ancient DNA and the New Science of the Human Past",
+      "author": "David  Reich"
+    },
+    "993": {
+      "title": "Wisdom: A History",
+      "author": "Trevor Curnow"
+    },
+    "994": {
+      "title": "Wisdom: From Philosophy to Neuroscience",
+      "author": "Stephen S. Hall"
+    },
+    "1003": {
+      "title": "You Are Not So Smart",
+      "author": "David McRaney"
+    },
+    "1029": {
+      "title": "The Power of the Name: The Jesus Prayer in Orthodox Spirituality",
+      "author": "Kallistos Ware"
+    },
+    "1031": {
+      "title": "The Whole Mystery of Christ: Creation as Incarnation in Maximus Confessor",
+      "author": "Jordan Daniel Wood"
+    },
+    "1038": {
+      "title": "A Radical God: Theopoetics, Phenomenology, and the Future of Religion",
+      "author": "John D. Caputo"
+    },
+    "1048": {
+      "title": "Introduction to Philosophy: Thinking and Poetizing",
+      "author": "Martin Heidegger"
+    },
+    "1049": {
+      "title": "Husserl’s Legacy: Phenomenology, Metaphysics, and Transcendental Philosophy",
+      "author": "Dan Zahavi"
+    },
+    "1050": {
+      "title": "Emmanuel Levinas",
+      "author": "Seán Hand"
+    },
+    "1051": {
+      "title": "The Religious Philosophy of Simone Weil: An Introduction",
+      "author": "Lissa McCullough"
+    },
+    "1053": {
+      "title": "Jacques Derrida: Basic Writings",
+      "author": "Jacques Derrida"
+    },
+    "1060": {
+      "title": "Love: A Very Short Introduction",
+      "author": "Ronald de Sousa"
+    },
+    "1065": {
+      "title": "In Praise of Shadows",
+      "author": "Junichirō Tanizaki"
+    },
+    "1066": {
+      "title": "In Praise of Love",
+      "author": "Alain Badiou"
+    },
+    "1067": {
+      "title": "The Face of God",
+      "author": "Roger Scruton"
+    },
+    "1070": {
+      "title": "Philosophy: The Classics",
+      "author": "Nigel Warburton"
+    },
+    "1074": {
+      "title": "Why Context Matters",
+      "author": "Alicia Juarrero"
+    },
+    "1075": {
+      "title": "The Book of Enoch",
+      "author": "Anonymous"
+    },
+    "1076": {
+      "title": "LOGOS: The First and Last Theory of Everything",
+      "author": "Stella Skopelitou"
+    },
+    "1077": {
+      "title": "On Beauty and Being Just",
+      "author": "Elaine Scarry"
+    },
+    "1078": {
+      "title": "Simone Weil",
+      "author": "Palle Yourgrau"
+    },
+    "1080": {
+      "title": "A Short History of Modern Philosophy",
+      "author": "Roger Scruton"
+    },
+    "1081": {
+      "title": "Prayer of the Heart in Christian & Sufi Mysticism",
+      "author": "Llewellyn Vaughan-Lee"
+    },
+    "1082": {
+      "title": "Theology and Philosophy in Eastern Orthodoxy: Essays on Orthodox Christianity and Contemporary Thought",
+      "author": "Christoph Schneider (editor)"
+    },
+    "1085": {
+      "title": "The Christian Platonism of Simone Weil",
+      "author": "E. Jane Doering; Eric O. Springsted (editors)"
+    },
+    "1086": {
+      "title": "Philosophy Before Socrates: An Introduction with Texts and Commentary",
+      "author": "Richard D. McKirahan"
+    }
+  },
+  "canonical_book_count": 5992,
+  "membership_counts": {
+    "bookshops": 745,
+    "online": 3232,
+    "instagram": 1706
+  },
+  "corrections": {
+    "online-eef782537d5bea4bfe31": {
+      "title": "The History of Continental Philosophy",
+      "author": "Alan D. Schrift"
+    }
+  },
+  "series_expansion": {
+    "parent_id": "729",
+    "expected_title": "The History of Continental Philosophy",
+    "read_volume": 1,
+    "source": "https://press.uchicago.edu/ucp/books/book/chicago/H/bo10462669.html",
+    "volumes": [
+      {
+        "id": "729-v1",
+        "title": "Kant, Kantianism, and Idealism: The Origins of Continental Philosophy",
+        "subtitle": "The History of Continental Philosophy, Volume 1",
+        "author": "Thomas Nenon",
+        "volume": 1,
+        "notes": "Individual volume of owned set 729. Original set notes and rating retained with the collection record."
+      },
+      {
+        "id": "729-v2",
+        "title": "Nineteenth-Century Philosophy: Revolutionary Responses to the Existing Order",
+        "subtitle": "The History of Continental Philosophy, Volume 2",
+        "author": "Alan D. Schrift",
+        "additional_authors": "Daniel Conway",
+        "volume": 2,
+        "notes": "Individual volume of owned set 729. Original set notes and rating retained with the collection record."
+      },
+      {
+        "id": "729-v3",
+        "title": "The New Century: Bergsonism, Phenomenology and Responses to Modern Science",
+        "subtitle": "The History of Continental Philosophy, Volume 3",
+        "author": "Keith Ansell-Pearson",
+        "additional_authors": "Alan D. Schrift",
+        "volume": 3,
+        "notes": "Individual volume of owned set 729. Original set notes and rating retained with the collection record."
+      },
+      {
+        "id": "729-v4",
+        "title": "Phenomenology: Responses and Developments",
+        "subtitle": "The History of Continental Philosophy, Volume 4",
+        "author": "Leonard Lawlor",
+        "volume": 4,
+        "notes": "Individual volume of owned set 729. Original set notes and rating retained with the collection record."
+      },
+      {
+        "id": "729-v5",
+        "title": "Critical Theory to Structuralism: Philosophy, Politics and the Human Sciences",
+        "subtitle": "The History of Continental Philosophy, Volume 5",
+        "author": "David Ingram",
+        "volume": 5,
+        "notes": "Individual volume of owned set 729. Original set notes and rating retained with the collection record."
+      },
+      {
+        "id": "729-v6",
+        "title": "Poststructuralism and Critical Theory’s Second Generation",
+        "subtitle": "The History of Continental Philosophy, Volume 6",
+        "author": "Alan D. Schrift",
+        "volume": 6,
+        "notes": "Individual volume of owned set 729. Original set notes and rating retained with the collection record."
+      },
+      {
+        "id": "729-v7",
+        "title": "After Poststructuralism: Transitions and Transformations",
+        "subtitle": "The History of Continental Philosophy, Volume 7",
+        "author": "Rosi Braidotti",
+        "volume": 7,
+        "notes": "Individual volume of owned set 729. Original set notes and rating retained with the collection record."
+      },
+      {
+        "id": "729-v8",
+        "title": "Emerging Trends in Continental Philosophy",
+        "subtitle": "The History of Continental Philosophy, Volume 8",
+        "author": "Todd May",
+        "volume": 8,
+        "notes": "Individual volume of owned set 729. Original set notes and rating retained with the collection record."
+      }
+    ]
+  }
+}

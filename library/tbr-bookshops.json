@@ -30,7 +30,8 @@
           "bookshop": "Watkins Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-6dc8fd4cb8eced0a"
     },
     {
       "id": "shop-7b12368993e41fe2",
@@ -49,7 +50,8 @@
           "bookshop": "Watkins Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-7b12368993e41fe2"
     },
     {
       "id": "shop-08d43b6423952ba2",
@@ -68,7 +70,8 @@
           "bookshop": "Watkins Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-08d43b6423952ba2"
     },
     {
       "id": "shop-dfa8c843180d14be",
@@ -95,7 +98,8 @@
           "bookshop": "BookPeople",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-dfa8c843180d14be"
     },
     {
       "id": "shop-93af1c933579ab62",
@@ -114,7 +118,8 @@
           "bookshop": "Watkins Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-93af1c933579ab62"
     },
     {
       "id": "shop-fdd7950a90b43ec0",
@@ -138,7 +143,8 @@
           "bookshop": "Watkins Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-fdd7950a90b43ec0"
     },
     {
       "id": "shop-88c76c620180fbfd",
@@ -157,7 +163,8 @@
           "bookshop": "Watkins Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-88c76c620180fbfd"
     },
     {
       "id": "shop-207e09f7f14d6c59",
@@ -197,7 +204,9 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "1075",
+      "library_id": "1075"
     },
     {
       "id": "shop-93cb7a88dd0a62e4",
@@ -224,7 +233,8 @@
           "bookshop": "Watkins Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-93cb7a88dd0a62e4"
     },
     {
       "id": "shop-96bbd7227db0cf50",
@@ -243,7 +253,9 @@
           "bookshop": "Watkins Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "1081",
+      "library_id": "1081"
     },
     {
       "id": "shop-e3bfc4d4c165fd96",
@@ -267,7 +279,8 @@
           "bookshop": "Watkins Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e3bfc4d4c165fd96"
     },
     {
       "id": "shop-fa806e6209251671",
@@ -295,7 +308,9 @@
           "bookshop": "Skoob Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "1085",
+      "library_id": "1085"
     },
     {
       "id": "shop-25e880334cf8cf58",
@@ -314,7 +329,8 @@
           "bookshop": "Skoob Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-25e880334cf8cf58"
     },
     {
       "id": "shop-47f4becf4643df43",
@@ -333,7 +349,8 @@
           "bookshop": "Skoob Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-47f4becf4643df43"
     },
     {
       "id": "shop-296748832483e2da",
@@ -357,7 +374,8 @@
           "bookshop": "Skoob Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-296748832483e2da"
     },
     {
       "id": "shop-b9e4be629e56c5fc",
@@ -376,7 +394,8 @@
           "bookshop": "Skoob Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b9e4be629e56c5fc"
     },
     {
       "id": "shop-adc7a794c76d06fd",
@@ -403,7 +422,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-adc7a794c76d06fd"
     },
     {
       "id": "shop-ff331bf174476120",
@@ -422,7 +442,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ff331bf174476120"
     },
     {
       "id": "shop-2d6eb108bcfd0566",
@@ -441,7 +462,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-2d6eb108bcfd0566"
     },
     {
       "id": "shop-e9162376def1195b",
@@ -460,7 +482,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e9162376def1195b"
     },
     {
       "id": "shop-8ccfeced566bf988",
@@ -479,7 +502,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-8ccfeced566bf988"
     },
     {
       "id": "shop-9093efcbf3810972",
@@ -498,7 +522,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-9093efcbf3810972"
     },
     {
       "id": "shop-e03b58ca9b8cd7e8",
@@ -517,7 +542,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e03b58ca9b8cd7e8"
     },
     {
       "id": "shop-c1e6a6f4ff3b1e29",
@@ -536,7 +562,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-c1e6a6f4ff3b1e29"
     },
     {
       "id": "shop-f90a105b45f467f6",
@@ -564,7 +591,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-f90a105b45f467f6"
     },
     {
       "id": "shop-af736747a44e9728",
@@ -583,7 +611,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-af736747a44e9728"
     },
     {
       "id": "shop-fc3eb4317d8e6c64",
@@ -602,7 +631,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-fc3eb4317d8e6c64"
     },
     {
       "id": "shop-f8b0f94feef66755",
@@ -621,7 +651,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-f8b0f94feef66755"
     },
     {
       "id": "shop-7f08b8dbe955fbe1",
@@ -640,7 +671,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-7f08b8dbe955fbe1"
     },
     {
       "id": "shop-d6349e000c191e91",
@@ -659,7 +691,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-d6349e000c191e91"
     },
     {
       "id": "shop-69e62a9df42c379e",
@@ -678,7 +711,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-69e62a9df42c379e"
     },
     {
       "id": "shop-5997477addc17213",
@@ -697,7 +731,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-5997477addc17213"
     },
     {
       "id": "shop-95b15115a0768be2",
@@ -721,7 +756,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-95b15115a0768be2"
     },
     {
       "id": "shop-70a0dc1970512f70",
@@ -740,7 +776,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-70a0dc1970512f70"
     },
     {
       "id": "shop-7da71d20c883e77b",
@@ -772,7 +809,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-7da71d20c883e77b"
     },
     {
       "id": "shop-d5cb97b2e5145528",
@@ -791,7 +829,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-d5cb97b2e5145528"
     },
     {
       "id": "shop-a2314edb21bce7bd",
@@ -810,7 +849,9 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "1076",
+      "library_id": "1076"
     },
     {
       "id": "shop-b678ba7b7449b3e8",
@@ -829,7 +870,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b678ba7b7449b3e8"
     },
     {
       "id": "shop-e4bfbda2d7f6215d",
@@ -848,7 +890,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e4bfbda2d7f6215d"
     },
     {
       "id": "shop-7461139ff785e7a0",
@@ -867,7 +910,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-7461139ff785e7a0"
     },
     {
       "id": "shop-93b53cce5a727e23",
@@ -886,7 +930,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-93b53cce5a727e23"
     },
     {
       "id": "shop-abdb1ba25d0c4ab3",
@@ -905,7 +950,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-abdb1ba25d0c4ab3"
     },
     {
       "id": "shop-e4b294f96bf9f89b",
@@ -924,7 +970,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e4b294f96bf9f89b"
     },
     {
       "id": "shop-1b5b114acf7e9a7b",
@@ -948,7 +995,9 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "1082",
+      "library_id": "1082"
     },
     {
       "id": "shop-ab33eef46245081e",
@@ -967,7 +1016,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ab33eef46245081e"
     },
     {
       "id": "shop-87f66ef48374d290",
@@ -986,7 +1036,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-87f66ef48374d290"
     },
     {
       "id": "shop-94a7d043825117f5",
@@ -1005,7 +1056,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-94a7d043825117f5"
     },
     {
       "id": "shop-729c31350b73d00f",
@@ -1024,7 +1076,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-729c31350b73d00f"
     },
     {
       "id": "shop-d518a6a85920e409",
@@ -1043,7 +1096,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-d518a6a85920e409"
     },
     {
       "id": "shop-6f1f7d8367a76092",
@@ -1062,7 +1116,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-6f1f7d8367a76092"
     },
     {
       "id": "shop-2bc3959477936721",
@@ -1089,7 +1144,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-2bc3959477936721"
     },
     {
       "id": "shop-67d0c3be8d4a7a42",
@@ -1108,7 +1164,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-67d0c3be8d4a7a42"
     },
     {
       "id": "shop-5bd312e766908428",
@@ -1127,7 +1184,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-5bd312e766908428"
     },
     {
       "id": "shop-d923e07c200dd46d",
@@ -1146,7 +1204,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-d923e07c200dd46d"
     },
     {
       "id": "shop-da3572c55fb723e9",
@@ -1165,7 +1224,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-da3572c55fb723e9"
     },
     {
       "id": "shop-c68830a4eadddf92",
@@ -1184,7 +1244,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-c68830a4eadddf92"
     },
     {
       "id": "shop-c8edd448ef263812",
@@ -1203,7 +1264,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-c8edd448ef263812"
     },
     {
       "id": "shop-25fd08f7f51a78da",
@@ -1235,7 +1297,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-25fd08f7f51a78da"
     },
     {
       "id": "shop-7113cdb10a438852",
@@ -1259,7 +1322,8 @@
           "bookshop": "Waterstones — Gower Street",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-7113cdb10a438852"
     },
     {
       "id": "shop-3bf732dc3476ccd5",
@@ -1287,7 +1351,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-3bf732dc3476ccd5"
     },
     {
       "id": "shop-62b1b64190f96dbd",
@@ -1306,7 +1371,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-62b1b64190f96dbd"
     },
     {
       "id": "shop-d318689e7a31197a",
@@ -1325,7 +1391,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-d318689e7a31197a"
     },
     {
       "id": "shop-8bc51830c6c600ea",
@@ -1344,7 +1411,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-8bc51830c6c600ea"
     },
     {
       "id": "shop-3e364603196d2ab2",
@@ -1376,7 +1444,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-3e364603196d2ab2"
     },
     {
       "id": "shop-b2902e38736fa473",
@@ -1395,7 +1464,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b2902e38736fa473"
     },
     {
       "id": "shop-c0d606dfa0050b40",
@@ -1414,7 +1484,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-c0d606dfa0050b40"
     },
     {
       "id": "shop-078663c748932feb",
@@ -1433,7 +1504,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-078663c748932feb"
     },
     {
       "id": "shop-4f88fa007bced06e",
@@ -1452,7 +1524,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-4f88fa007bced06e"
     },
     {
       "id": "shop-50d9c7bf5334207a",
@@ -1471,7 +1544,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-50d9c7bf5334207a"
     },
     {
       "id": "shop-b991a258bba3e007",
@@ -1490,7 +1564,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b991a258bba3e007"
     },
     {
       "id": "shop-7d42acf58ac3b745",
@@ -1509,7 +1584,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-7d42acf58ac3b745"
     },
     {
       "id": "shop-ba1c5ed1c997a306",
@@ -1528,7 +1604,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ba1c5ed1c997a306"
     },
     {
       "id": "shop-5169a110a473e0d5",
@@ -1547,7 +1624,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-5169a110a473e0d5"
     },
     {
       "id": "shop-2581dde3b5b9544d",
@@ -1566,7 +1644,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-2581dde3b5b9544d"
     },
     {
       "id": "shop-e94695f2b4b10bec",
@@ -1585,7 +1664,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e94695f2b4b10bec"
     },
     {
       "id": "shop-318e88c969fd6a2c",
@@ -1604,7 +1684,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-318e88c969fd6a2c"
     },
     {
       "id": "shop-70a8e668fc83b978",
@@ -1623,7 +1704,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-70a8e668fc83b978"
     },
     {
       "id": "shop-f589c16ba3409988",
@@ -1642,7 +1724,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-f589c16ba3409988"
     },
     {
       "id": "shop-636f4eb202d98518",
@@ -1666,7 +1749,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-636f4eb202d98518"
     },
     {
       "id": "shop-d29a6c33b64ee698",
@@ -1685,7 +1769,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-d29a6c33b64ee698"
     },
     {
       "id": "shop-c43c35a5accbc6e6",
@@ -1704,7 +1789,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-c43c35a5accbc6e6"
     },
     {
       "id": "shop-9309200692733202",
@@ -1723,7 +1809,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-9309200692733202"
     },
     {
       "id": "shop-d1309565210b5c0f",
@@ -1742,7 +1829,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-d1309565210b5c0f"
     },
     {
       "id": "shop-8937867f1f6b92fe",
@@ -1761,7 +1849,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-8937867f1f6b92fe"
     },
     {
       "id": "shop-e260c52af4569797",
@@ -1780,7 +1869,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e260c52af4569797"
     },
     {
       "id": "shop-d361422e06cf3fa4",
@@ -1799,7 +1889,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-d361422e06cf3fa4"
     },
     {
       "id": "shop-a0bfb952959f559e",
@@ -1818,7 +1909,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a0bfb952959f559e"
     },
     {
       "id": "shop-a8eaa31fa43a3e58",
@@ -1837,7 +1929,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a8eaa31fa43a3e58"
     },
     {
       "id": "shop-b964f6a5f4e91686",
@@ -1856,7 +1949,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b964f6a5f4e91686"
     },
     {
       "id": "shop-7083ab542abc81a6",
@@ -1875,7 +1969,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-7083ab542abc81a6"
     },
     {
       "id": "shop-9836ee0944a74a8e",
@@ -1894,7 +1989,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-9836ee0944a74a8e"
     },
     {
       "id": "shop-88b37adcacb130ba",
@@ -1913,7 +2009,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-88b37adcacb130ba"
     },
     {
       "id": "shop-3ef3f04cc1c0ce41",
@@ -1932,7 +2029,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-3ef3f04cc1c0ce41"
     },
     {
       "id": "shop-c692f8220b054e6b",
@@ -1951,7 +2049,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-c692f8220b054e6b"
     },
     {
       "id": "shop-d007a2f166407b03",
@@ -1986,7 +2085,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-d007a2f166407b03"
     },
     {
       "id": "shop-aba15b5350a82029",
@@ -2005,7 +2105,9 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "1051",
+      "library_id": "1051"
     },
     {
       "id": "shop-dde309d75fc84126",
@@ -2029,7 +2131,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-dde309d75fc84126"
     },
     {
       "id": "shop-42fe265d50c8de1a",
@@ -2048,7 +2151,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-42fe265d50c8de1a"
     },
     {
       "id": "shop-6fb7394fee9522d3",
@@ -2067,7 +2171,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-6fb7394fee9522d3"
     },
     {
       "id": "shop-2be6786b4e3aa0f7",
@@ -2095,7 +2200,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-2be6786b4e3aa0f7"
     },
     {
       "id": "shop-86857a26ed993444",
@@ -2114,7 +2220,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-86857a26ed993444"
     },
     {
       "id": "shop-bc71bd8b0ef670a5",
@@ -2133,7 +2240,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-bc71bd8b0ef670a5"
     },
     {
       "id": "shop-17e7a7fcbbd4e49f",
@@ -2152,7 +2260,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-17e7a7fcbbd4e49f"
     },
     {
       "id": "shop-4559d7b5d3709b53",
@@ -2171,7 +2280,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-4559d7b5d3709b53"
     },
     {
       "id": "shop-e887d0280768f457",
@@ -2190,7 +2300,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e887d0280768f457"
     },
     {
       "id": "shop-3a451a3306a223cb",
@@ -2209,7 +2320,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-3a451a3306a223cb"
     },
     {
       "id": "shop-c972476633c2a46f",
@@ -2236,7 +2348,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-c972476633c2a46f"
     },
     {
       "id": "shop-35832bcdb418009f",
@@ -2255,7 +2368,9 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "1050",
+      "library_id": "1050"
     },
     {
       "id": "shop-896fc0ab7cd22899",
@@ -2287,7 +2402,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-896fc0ab7cd22899"
     },
     {
       "id": "shop-e3e04255569200d9",
@@ -2306,7 +2422,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e3e04255569200d9"
     },
     {
       "id": "shop-fd8621ef6bc5f5e8",
@@ -2325,7 +2442,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-fd8621ef6bc5f5e8"
     },
     {
       "id": "shop-50b882d815107d7b",
@@ -2360,7 +2478,9 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "1049",
+      "library_id": "1049"
     },
     {
       "id": "shop-ef60831f3660fd67",
@@ -2379,7 +2499,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ef60831f3660fd67"
     },
     {
       "id": "shop-764d9a4299a19c31",
@@ -2398,7 +2519,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-764d9a4299a19c31"
     },
     {
       "id": "shop-e6a02fb7ffeaa04d",
@@ -2417,7 +2539,9 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "1048",
+      "library_id": "1048"
     },
     {
       "id": "shop-119fdfd6f0e33966",
@@ -2436,7 +2560,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-119fdfd6f0e33966"
     },
     {
       "id": "shop-946ff142649b517b",
@@ -2455,7 +2580,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-946ff142649b517b"
     },
     {
       "id": "shop-94b3ae7c83c415dc",
@@ -2474,7 +2600,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-94b3ae7c83c415dc"
     },
     {
       "id": "shop-f0e51fbeae97e9a3",
@@ -2493,7 +2620,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-f0e51fbeae97e9a3"
     },
     {
       "id": "shop-cb6a0864b82b3a2e",
@@ -2512,7 +2640,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-cb6a0864b82b3a2e"
     },
     {
       "id": "shop-0fde716a1993f514",
@@ -2531,7 +2660,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-0fde716a1993f514"
     },
     {
       "id": "shop-b03c6142d5b0ae33",
@@ -2550,7 +2680,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b03c6142d5b0ae33"
     },
     {
       "id": "shop-4dc7b91f2bbc18c1",
@@ -2577,7 +2708,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-4dc7b91f2bbc18c1"
     },
     {
       "id": "shop-9c5d7015bbe41e29",
@@ -2596,7 +2728,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-9c5d7015bbe41e29"
     },
     {
       "id": "shop-b0ee38ccd564d299",
@@ -2624,7 +2757,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b0ee38ccd564d299"
     },
     {
       "id": "shop-2724b2512ce74b6d",
@@ -2643,7 +2777,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-2724b2512ce74b6d"
     },
     {
       "id": "shop-0bc407ff570c97c5",
@@ -2662,7 +2797,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-0bc407ff570c97c5"
     },
     {
       "id": "shop-77019b773c2ff493",
@@ -2681,7 +2817,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-77019b773c2ff493"
     },
     {
       "id": "shop-45984fc823910c20",
@@ -2700,7 +2837,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-45984fc823910c20"
     },
     {
       "id": "shop-dd5ca41078867355",
@@ -2727,7 +2865,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-dd5ca41078867355"
     },
     {
       "id": "shop-8de1fd4c524a4b8c",
@@ -2746,7 +2885,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Probable"
         }
-      ]
+      ],
+      "book_id": "work-shop-8de1fd4c524a4b8c"
     },
     {
       "id": "shop-46f8db18e14d88cd",
@@ -2765,7 +2905,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Probable"
         }
-      ]
+      ],
+      "book_id": "work-shop-46f8db18e14d88cd"
     },
     {
       "id": "shop-9861fc23057339b3",
@@ -2784,7 +2925,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Probable"
         }
-      ]
+      ],
+      "book_id": "work-shop-9861fc23057339b3"
     },
     {
       "id": "shop-e2f10aa388034d1e",
@@ -2803,7 +2945,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Probable"
         }
-      ]
+      ],
+      "book_id": "work-shop-e2f10aa388034d1e"
     },
     {
       "id": "shop-9be3a6d981f96122",
@@ -2822,7 +2965,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Probable"
         }
-      ]
+      ],
+      "book_id": "work-shop-9be3a6d981f96122"
     },
     {
       "id": "shop-e768f9b1e95f79fd",
@@ -2841,7 +2985,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Probable"
         }
-      ]
+      ],
+      "book_id": "work-shop-e768f9b1e95f79fd"
     },
     {
       "id": "shop-3362d2e8180d9969",
@@ -2860,7 +3005,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Probable"
         }
-      ]
+      ],
+      "book_id": "work-shop-3362d2e8180d9969"
     },
     {
       "id": "shop-4f16409af9d5a433",
@@ -2879,7 +3025,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Probable"
         }
-      ]
+      ],
+      "book_id": "work-shop-4f16409af9d5a433"
     },
     {
       "id": "shop-589df3a6d2a7390c",
@@ -2898,7 +3045,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Probable"
         }
-      ]
+      ],
+      "book_id": "work-shop-589df3a6d2a7390c"
     },
     {
       "id": "shop-1d0e0e083b0e3f39",
@@ -2917,7 +3065,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Probable"
         }
-      ]
+      ],
+      "book_id": "work-shop-1d0e0e083b0e3f39"
     },
     {
       "id": "shop-c22b06abf5ac05c3",
@@ -2936,7 +3085,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Probable"
         }
-      ]
+      ],
+      "book_id": "work-shop-c22b06abf5ac05c3"
     },
     {
       "id": "shop-190415767f98def0",
@@ -2955,7 +3105,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Probable"
         }
-      ]
+      ],
+      "book_id": "work-shop-190415767f98def0"
     },
     {
       "id": "shop-50726cf41c18c79d",
@@ -2974,7 +3125,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Probable"
         }
-      ]
+      ],
+      "book_id": "work-shop-50726cf41c18c79d"
     },
     {
       "id": "shop-c69a1c8373ec0e12",
@@ -2993,7 +3145,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Probable"
         }
-      ]
+      ],
+      "book_id": "work-shop-c69a1c8373ec0e12"
     },
     {
       "id": "shop-d03cf422fe0dace3",
@@ -3012,7 +3165,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Probable"
         }
-      ]
+      ],
+      "book_id": "work-shop-d03cf422fe0dace3"
     },
     {
       "id": "shop-a47c7ddc1e6aaa1f",
@@ -3031,7 +3185,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a47c7ddc1e6aaa1f"
     },
     {
       "id": "shop-e7a289ce32cb5a89",
@@ -3050,7 +3205,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e7a289ce32cb5a89"
     },
     {
       "id": "shop-350829e62c467ecb",
@@ -3077,7 +3233,8 @@
           "bookshop": "Feltrinelli — Via Orlando",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-350829e62c467ecb"
     },
     {
       "id": "shop-e6a212e9d2b9e13f",
@@ -3096,7 +3253,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e6a212e9d2b9e13f"
     },
     {
       "id": "shop-4468d8e0b5300725",
@@ -3115,7 +3273,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-4468d8e0b5300725"
     },
     {
       "id": "shop-0e5ff30b59366a9d",
@@ -3134,7 +3293,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-0e5ff30b59366a9d"
     },
     {
       "id": "shop-1abc3c85581d2147",
@@ -3153,7 +3313,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-1abc3c85581d2147"
     },
     {
       "id": "shop-8f8719ebdf628cbe",
@@ -3172,7 +3333,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-8f8719ebdf628cbe"
     },
     {
       "id": "shop-51b202e23301ee35",
@@ -3191,7 +3353,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-51b202e23301ee35"
     },
     {
       "id": "shop-05aebcd248fd1e55",
@@ -3210,7 +3373,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-05aebcd248fd1e55"
     },
     {
       "id": "shop-3592906a36be2035",
@@ -3229,7 +3393,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-3592906a36be2035"
     },
     {
       "id": "shop-12e5e3fad07039c1",
@@ -3248,7 +3413,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-12e5e3fad07039c1"
     },
     {
       "id": "shop-f04f43d4b8eb4c11",
@@ -3272,7 +3438,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-f04f43d4b8eb4c11"
     },
     {
       "id": "shop-3775d9dee7a4e239",
@@ -3291,7 +3458,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-3775d9dee7a4e239"
     },
     {
       "id": "shop-e420d530a58c9441",
@@ -3310,7 +3478,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e420d530a58c9441"
     },
     {
       "id": "shop-7e35c9f2a311cc69",
@@ -3329,7 +3498,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-7e35c9f2a311cc69"
     },
     {
       "id": "shop-73a38b48c5af2f03",
@@ -3353,7 +3523,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-73a38b48c5af2f03"
     },
     {
       "id": "shop-563b6c4f38564158",
@@ -3372,7 +3543,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-563b6c4f38564158"
     },
     {
       "id": "shop-aa27ed980ac472e2",
@@ -3400,7 +3572,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-aa27ed980ac472e2"
     },
     {
       "id": "shop-cbb874c3fee009b2",
@@ -3424,7 +3597,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-cbb874c3fee009b2"
     },
     {
       "id": "shop-dd44d95bff224f19",
@@ -3448,7 +3622,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-dd44d95bff224f19"
     },
     {
       "id": "shop-25632abd407a3f93",
@@ -3472,7 +3647,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-25632abd407a3f93"
     },
     {
       "id": "shop-4a2619691e6ec4cd",
@@ -3491,7 +3667,9 @@
           "bookshop": "Edinburgh Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "1086",
+      "library_id": "1086"
     },
     {
       "id": "shop-e7f60662acc63818",
@@ -3510,7 +3688,9 @@
           "bookshop": "Edinburgh Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "1078",
+      "library_id": "1078"
     },
     {
       "id": "shop-3f2b9e4f5ccb81ec",
@@ -3529,7 +3709,9 @@
           "bookshop": "Edinburgh Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "1077",
+      "library_id": "1077"
     },
     {
       "id": "shop-297112811491b9bc",
@@ -3548,7 +3730,8 @@
           "bookshop": "National Library of Scotland shop",
           "shop_status": "Probable"
         }
-      ]
+      ],
+      "book_id": "work-shop-297112811491b9bc"
     },
     {
       "id": "shop-b274603b5aab014f",
@@ -3575,7 +3758,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b274603b5aab014f"
     },
     {
       "id": "shop-7a6680b21eccda1e",
@@ -3594,7 +3778,8 @@
           "bookshop": "Topping & Company — Edinburgh",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-7a6680b21eccda1e"
     },
     {
       "id": "shop-af8cea4ce403f47e",
@@ -3613,7 +3798,8 @@
           "bookshop": "Topping & Company — Edinburgh",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-af8cea4ce403f47e"
     },
     {
       "id": "shop-7e45d0c9e2881730",
@@ -3637,7 +3823,9 @@
           "bookshop": "Topping & Company — Edinburgh",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "1053",
+      "library_id": "1053"
     },
     {
       "id": "shop-9e010d269bf80c25",
@@ -3656,7 +3844,8 @@
           "bookshop": "Topping & Company — Edinburgh",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-9e010d269bf80c25"
     },
     {
       "id": "shop-bf47653dfc6528ed",
@@ -3675,7 +3864,8 @@
           "bookshop": "Topping & Company — Edinburgh",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-bf47653dfc6528ed"
     },
     {
       "id": "shop-6941551ca60b20dd",
@@ -3694,7 +3884,8 @@
           "bookshop": "Topping & Company — Edinburgh",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-6941551ca60b20dd"
     },
     {
       "id": "shop-3d11dbbe816b16f3",
@@ -3713,7 +3904,8 @@
           "bookshop": "Topping & Company — Edinburgh",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-3d11dbbe816b16f3"
     },
     {
       "id": "shop-ce6ea0a39d8f3a24",
@@ -3741,7 +3933,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ce6ea0a39d8f3a24"
     },
     {
       "id": "shop-7e59471a25f0b02a",
@@ -3760,7 +3953,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-7e59471a25f0b02a"
     },
     {
       "id": "shop-66690819f4fd8014",
@@ -3779,7 +3973,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-66690819f4fd8014"
     },
     {
       "id": "shop-de22783c1ce0bb2c",
@@ -3798,7 +3993,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-de22783c1ce0bb2c"
     },
     {
       "id": "shop-9a134204df2ec495",
@@ -3817,7 +4013,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-9a134204df2ec495"
     },
     {
       "id": "shop-685624126723c013",
@@ -3836,7 +4033,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-685624126723c013"
     },
     {
       "id": "shop-28fbe7715226c7b0",
@@ -3855,7 +4053,9 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "1065",
+      "library_id": "1065"
     },
     {
       "id": "shop-cf4819ed07ba1cb8",
@@ -3874,7 +4074,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-cf4819ed07ba1cb8"
     },
     {
       "id": "shop-5fc6a0b023555ce3",
@@ -3893,7 +4094,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-5fc6a0b023555ce3"
     },
     {
       "id": "shop-1bc49fc7f9db1932",
@@ -3912,7 +4114,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-1bc49fc7f9db1932"
     },
     {
       "id": "shop-235031dd0d0936a9",
@@ -3931,7 +4134,9 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "1067",
+      "library_id": "1067"
     },
     {
       "id": "shop-e9c25695fbcfe48c",
@@ -3950,7 +4155,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e9c25695fbcfe48c"
     },
     {
       "id": "shop-435caa7bec41099e",
@@ -3969,7 +4175,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-435caa7bec41099e"
     },
     {
       "id": "shop-561eccc3add34f15",
@@ -3988,7 +4195,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-561eccc3add34f15"
     },
     {
       "id": "shop-e8698768daae6db1",
@@ -4007,7 +4215,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e8698768daae6db1"
     },
     {
       "id": "shop-d718206dbacff670",
@@ -4031,7 +4240,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-d718206dbacff670"
     },
     {
       "id": "shop-3bb6815fd21f6bc6",
@@ -4058,7 +4268,8 @@
           "bookshop": "BookPeople",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-3bb6815fd21f6bc6"
     },
     {
       "id": "shop-7f80bbde7018fb90",
@@ -4077,7 +4288,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-7f80bbde7018fb90"
     },
     {
       "id": "shop-7283e9474136da4a",
@@ -4101,7 +4313,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-7283e9474136da4a"
     },
     {
       "id": "shop-88a6efdad98dde0b",
@@ -4120,7 +4333,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-88a6efdad98dde0b"
     },
     {
       "id": "shop-4cc537aa01786f17",
@@ -4139,7 +4353,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-4cc537aa01786f17"
     },
     {
       "id": "shop-df7c8e7c15f9704f",
@@ -4158,7 +4373,9 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "1066",
+      "library_id": "1066"
     },
     {
       "id": "shop-878c4e9f079e8ca2",
@@ -4177,7 +4394,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-878c4e9f079e8ca2"
     },
     {
       "id": "shop-befa29424828e42c",
@@ -4196,7 +4414,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-befa29424828e42c"
     },
     {
       "id": "shop-1efc341f4201593c",
@@ -4215,7 +4434,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-1efc341f4201593c"
     },
     {
       "id": "shop-8f105ccffe089cf6",
@@ -4234,7 +4454,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-8f105ccffe089cf6"
     },
     {
       "id": "shop-fc55fa2570b58bb1",
@@ -4261,7 +4482,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-fc55fa2570b58bb1"
     },
     {
       "id": "shop-66fe27092c46b152",
@@ -4288,7 +4510,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-66fe27092c46b152"
     },
     {
       "id": "shop-871f8bb6074b86ae",
@@ -4307,7 +4530,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-871f8bb6074b86ae"
     },
     {
       "id": "shop-c2bf8969a08138dc",
@@ -4339,7 +4563,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-c2bf8969a08138dc"
     },
     {
       "id": "shop-ca8b3a6646cf802f",
@@ -4358,7 +4583,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ca8b3a6646cf802f"
     },
     {
       "id": "shop-1d04e51373698306",
@@ -4377,7 +4603,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-1d04e51373698306"
     },
     {
       "id": "shop-5a8eea91fde322f3",
@@ -4396,7 +4623,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-5a8eea91fde322f3"
     },
     {
       "id": "shop-d806c3fa12660740",
@@ -4415,7 +4643,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-d806c3fa12660740"
     },
     {
       "id": "shop-b4884a80aed04bae",
@@ -4434,7 +4663,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b4884a80aed04bae"
     },
     {
       "id": "shop-705643d11ec54ee3",
@@ -4453,7 +4683,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-705643d11ec54ee3"
     },
     {
       "id": "shop-f710c228686892d7",
@@ -4472,7 +4703,8 @@
           "bookshop": "Blackwell's — South Bridge",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-f710c228686892d7"
     },
     {
       "id": "shop-1249f6d92cd8df74",
@@ -4491,7 +4723,8 @@
           "bookshop": "Armchair Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-1249f6d92cd8df74"
     },
     {
       "id": "shop-d8fd833130d41972",
@@ -4515,7 +4748,9 @@
           "bookshop": "Armchair Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "1080",
+      "library_id": "1080"
     },
     {
       "id": "shop-7aa3ff4ad918af64",
@@ -4534,7 +4769,8 @@
           "bookshop": "Armchair Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-7aa3ff4ad918af64"
     },
     {
       "id": "shop-c8636e9ca119646a",
@@ -4553,7 +4789,8 @@
           "bookshop": "Armchair Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-c8636e9ca119646a"
     },
     {
       "id": "shop-46c6ce321a8ecf33",
@@ -4572,7 +4809,8 @@
           "bookshop": "Armchair Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-46c6ce321a8ecf33"
     },
     {
       "id": "shop-8830b8798e7820bf",
@@ -4591,7 +4829,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-8830b8798e7820bf"
     },
     {
       "id": "shop-a89851b9722ea572",
@@ -4618,7 +4857,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a89851b9722ea572"
     },
     {
       "id": "shop-66466b9b8234ed99",
@@ -4637,7 +4877,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-66466b9b8234ed99"
     },
     {
       "id": "shop-5b0fe161a6126649",
@@ -4656,7 +4897,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-5b0fe161a6126649"
     },
     {
       "id": "shop-acab4ee7511aaaf6",
@@ -4683,7 +4925,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-acab4ee7511aaaf6"
     },
     {
       "id": "shop-32df09cee7afb9ce",
@@ -4707,7 +4950,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-32df09cee7afb9ce"
     },
     {
       "id": "shop-418e4f8e6dac53cd",
@@ -4735,7 +4979,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-418e4f8e6dac53cd"
     },
     {
       "id": "shop-1131dedb661b821b",
@@ -4754,7 +4999,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-1131dedb661b821b"
     },
     {
       "id": "shop-a5bedc744f564ac2",
@@ -4773,7 +5019,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a5bedc744f564ac2"
     },
     {
       "id": "shop-56e1a043687cf28f",
@@ -4801,7 +5048,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-56e1a043687cf28f"
     },
     {
       "id": "shop-c8adca25412b9357",
@@ -4820,7 +5068,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-c8adca25412b9357"
     },
     {
       "id": "shop-9ce94b2fe0f41289",
@@ -4839,7 +5088,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-9ce94b2fe0f41289"
     },
     {
       "id": "shop-ed70399d710f51fb",
@@ -4867,7 +5117,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ed70399d710f51fb"
     },
     {
       "id": "shop-cd3433447ad232b7",
@@ -4894,7 +5145,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-cd3433447ad232b7"
     },
     {
       "id": "shop-70a8ece691443ffb",
@@ -4913,7 +5165,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-70a8ece691443ffb"
     },
     {
       "id": "shop-55e7e2a855caff8e",
@@ -4940,7 +5193,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-55e7e2a855caff8e"
     },
     {
       "id": "shop-c8c8949a75ec6e21",
@@ -4967,7 +5221,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-c8c8949a75ec6e21"
     },
     {
       "id": "shop-9d508f931113bfa6",
@@ -4986,7 +5241,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-9d508f931113bfa6"
     },
     {
       "id": "shop-de8eb5f44d1e6b26",
@@ -5005,7 +5261,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-de8eb5f44d1e6b26"
     },
     {
       "id": "shop-2d264d080e9b273d",
@@ -5032,7 +5289,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-2d264d080e9b273d"
     },
     {
       "id": "shop-f5a118111cbf0816",
@@ -5051,7 +5309,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-f5a118111cbf0816"
     },
     {
       "id": "shop-ce2cb5d78a79f559",
@@ -5070,7 +5329,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ce2cb5d78a79f559"
     },
     {
       "id": "shop-c0cd5a5434ce621f",
@@ -5089,7 +5349,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-c0cd5a5434ce621f"
     },
     {
       "id": "shop-3b3f699c41d66557",
@@ -5108,7 +5369,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-3b3f699c41d66557"
     },
     {
       "id": "shop-97c40ba995a41ab8",
@@ -5127,7 +5389,8 @@
           "bookshop": "Livraria Trama",
           "shop_status": "Probable"
         }
-      ]
+      ],
+      "book_id": "work-shop-97c40ba995a41ab8"
     },
     {
       "id": "shop-d2b4a29fe87bd5e3",
@@ -5146,7 +5409,8 @@
           "bookshop": "Livraria Trama",
           "shop_status": "Probable"
         }
-      ]
+      ],
+      "book_id": "work-shop-d2b4a29fe87bd5e3"
     },
     {
       "id": "shop-a81d9c3f8cd87d44",
@@ -5165,7 +5429,8 @@
           "bookshop": "Livraria Trama",
           "shop_status": "Probable"
         }
-      ]
+      ],
+      "book_id": "work-shop-a81d9c3f8cd87d44"
     },
     {
       "id": "shop-ed774af372222e7a",
@@ -5192,7 +5457,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ed774af372222e7a"
     },
     {
       "id": "shop-6ed711ffb678cf56",
@@ -5216,7 +5482,8 @@
           "bookshop": "Livraria Trama",
           "shop_status": "Probable"
         }
-      ]
+      ],
+      "book_id": "work-shop-6ed711ffb678cf56"
     },
     {
       "id": "shop-5e72b3b9977052d4",
@@ -5235,7 +5502,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-5e72b3b9977052d4"
     },
     {
       "id": "shop-a400539aeb99c900",
@@ -5254,7 +5522,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a400539aeb99c900"
     },
     {
       "id": "shop-ffe7aa3e374de1da",
@@ -5273,7 +5542,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ffe7aa3e374de1da"
     },
     {
       "id": "shop-ec20757e2b9b0e94",
@@ -5292,7 +5562,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ec20757e2b9b0e94"
     },
     {
       "id": "shop-e94513a0f1196ae3",
@@ -5311,7 +5582,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e94513a0f1196ae3"
     },
     {
       "id": "shop-9a11252a2f636e1a",
@@ -5330,7 +5602,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-9a11252a2f636e1a"
     },
     {
       "id": "shop-ceba1501a8269563",
@@ -5358,7 +5631,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ceba1501a8269563"
     },
     {
       "id": "shop-6c5853d2e6fa7648",
@@ -5377,7 +5651,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-6c5853d2e6fa7648"
     },
     {
       "id": "shop-5d74f6dc7192b5ce",
@@ -5396,7 +5671,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-5d74f6dc7192b5ce"
     },
     {
       "id": "shop-526a5ab32df00401",
@@ -5415,7 +5691,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-526a5ab32df00401"
     },
     {
       "id": "shop-bfb75089d6ded54c",
@@ -5434,7 +5711,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-bfb75089d6ded54c"
     },
     {
       "id": "shop-02a71f12c43dafb3",
@@ -5469,7 +5747,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-02a71f12c43dafb3"
     },
     {
       "id": "shop-7c156b2905d7125f",
@@ -5488,7 +5767,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-7c156b2905d7125f"
     },
     {
       "id": "shop-10f5dd962b0add26",
@@ -5507,7 +5787,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-10f5dd962b0add26"
     },
     {
       "id": "shop-3ac14b5586222045",
@@ -5526,7 +5807,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-3ac14b5586222045"
     },
     {
       "id": "shop-548760c06e48b344",
@@ -5545,7 +5827,9 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "294",
+      "library_id": "294"
     },
     {
       "id": "shop-79906ebff3c121d7",
@@ -5564,7 +5848,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-79906ebff3c121d7"
     },
     {
       "id": "shop-05ec7233463ad272",
@@ -5591,7 +5876,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-05ec7233463ad272"
     },
     {
       "id": "shop-4ce9f8c503bc7d47",
@@ -5610,7 +5896,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-4ce9f8c503bc7d47"
     },
     {
       "id": "shop-d4b4382ee72b457d",
@@ -5629,7 +5916,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-d4b4382ee72b457d"
     },
     {
       "id": "shop-6738df4ea26b03ef",
@@ -5648,7 +5936,8 @@
           "bookshop": "Feltrinelli — Via Orlando",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-6738df4ea26b03ef"
     },
     {
       "id": "shop-a989a07641226011",
@@ -5667,7 +5956,9 @@
           "bookshop": "Feltrinelli — Via Orlando",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "684",
+      "library_id": "684"
     },
     {
       "id": "shop-11b0c81be59281e2",
@@ -5686,7 +5977,8 @@
           "bookshop": "Feltrinelli — Via Orlando",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-11b0c81be59281e2"
     },
     {
       "id": "shop-5059af8af2518f3c",
@@ -5705,7 +5997,8 @@
           "bookshop": "Feltrinelli — Via Orlando",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-5059af8af2518f3c"
     },
     {
       "id": "shop-8924e54de1867ad9",
@@ -5724,7 +6017,8 @@
           "bookshop": "Feltrinelli — Via Orlando",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-8924e54de1867ad9"
     },
     {
       "id": "shop-f719f3ad82fddae2",
@@ -5743,7 +6037,8 @@
           "bookshop": "Feltrinelli — Via Orlando",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-f719f3ad82fddae2"
     },
     {
       "id": "shop-c2ba23a2350e5cd3",
@@ -5762,7 +6057,8 @@
           "bookshop": "Feltrinelli — Via Orlando",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-c2ba23a2350e5cd3"
     },
     {
       "id": "shop-0dc667446e571a91",
@@ -5781,7 +6077,8 @@
           "bookshop": "Books & Magazines — Schiphol",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-0dc667446e571a91"
     },
     {
       "id": "shop-c865f3e9e7bb3a71",
@@ -5800,7 +6097,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-c865f3e9e7bb3a71"
     },
     {
       "id": "shop-df12deeb21938327",
@@ -5819,7 +6117,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-df12deeb21938327"
     },
     {
       "id": "shop-9c8314dd3dafbaaf",
@@ -5843,7 +6142,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-9c8314dd3dafbaaf"
     },
     {
       "id": "shop-67d78b62b1f8be6f",
@@ -5867,7 +6167,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-67d78b62b1f8be6f"
     },
     {
       "id": "shop-e04e4a79aacb0309",
@@ -5886,7 +6187,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e04e4a79aacb0309"
     },
     {
       "id": "shop-ce8e1e598eceae53",
@@ -5905,7 +6207,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ce8e1e598eceae53"
     },
     {
       "id": "shop-16359b1a6d548888",
@@ -5924,7 +6227,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-16359b1a6d548888"
     },
     {
       "id": "shop-985358774a9a0a6a",
@@ -5943,7 +6247,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-985358774a9a0a6a"
     },
     {
       "id": "shop-035b3e7d1e66b2f0",
@@ -5962,7 +6267,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-035b3e7d1e66b2f0"
     },
     {
       "id": "shop-2274c64f5c4a2837",
@@ -5981,7 +6287,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-2274c64f5c4a2837"
     },
     {
       "id": "shop-b95726bb8eb97d8c",
@@ -6000,7 +6307,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b95726bb8eb97d8c"
     },
     {
       "id": "shop-f7826f0e1049b345",
@@ -6019,7 +6327,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-f7826f0e1049b345"
     },
     {
       "id": "shop-8fbb64f4da682b4c",
@@ -6038,7 +6347,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-8fbb64f4da682b4c"
     },
     {
       "id": "shop-ed97ec4a424555c4",
@@ -6057,7 +6367,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ed97ec4a424555c4"
     },
     {
       "id": "shop-300325613062f03b",
@@ -6076,7 +6387,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-300325613062f03b"
     },
     {
       "id": "shop-2bbbefdd49a3c92f",
@@ -6095,7 +6407,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-2bbbefdd49a3c92f"
     },
     {
       "id": "shop-0949249bec1b3e33",
@@ -6114,7 +6427,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-0949249bec1b3e33"
     },
     {
       "id": "shop-1f5f473067b37732",
@@ -6133,7 +6447,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-1f5f473067b37732"
     },
     {
       "id": "shop-13983d1f57ba9040",
@@ -6161,7 +6476,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-13983d1f57ba9040"
     },
     {
       "id": "shop-747d717f1791222a",
@@ -6180,7 +6496,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-747d717f1791222a"
     },
     {
       "id": "shop-2b936248aab7aa04",
@@ -6199,7 +6516,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-2b936248aab7aa04"
     },
     {
       "id": "shop-a74cc2ab4d200155",
@@ -6226,7 +6544,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a74cc2ab4d200155"
     },
     {
       "id": "shop-fcb1f68a79e399a6",
@@ -6245,7 +6564,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-fcb1f68a79e399a6"
     },
     {
       "id": "shop-1b45ed5a6c37ee48",
@@ -6264,7 +6584,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-1b45ed5a6c37ee48"
     },
     {
       "id": "shop-934a29b48e1c3994",
@@ -6283,7 +6604,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-934a29b48e1c3994"
     },
     {
       "id": "shop-e35f16e1d1e20731",
@@ -6302,7 +6624,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e35f16e1d1e20731"
     },
     {
       "id": "shop-015268c2fa6d3107",
@@ -6321,7 +6644,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-015268c2fa6d3107"
     },
     {
       "id": "shop-8ead6fa6eda88b58",
@@ -6340,7 +6664,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-8ead6fa6eda88b58"
     },
     {
       "id": "shop-88c29a6b1f5a1533",
@@ -6359,7 +6684,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-88c29a6b1f5a1533"
     },
     {
       "id": "shop-bbd2ff8da397f22a",
@@ -6378,7 +6704,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-bbd2ff8da397f22a"
     },
     {
       "id": "shop-733b135b96d814d0",
@@ -6410,7 +6737,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-733b135b96d814d0"
     },
     {
       "id": "shop-7608e17b58dddbd8",
@@ -6429,7 +6757,9 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "799",
+      "library_id": "799"
     },
     {
       "id": "shop-8e18be56da393ada",
@@ -6448,7 +6778,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-8e18be56da393ada"
     },
     {
       "id": "shop-8cc0767be8c56bc3",
@@ -6467,7 +6798,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-8cc0767be8c56bc3"
     },
     {
       "id": "shop-2ab1626e2d42c181",
@@ -6491,7 +6823,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-2ab1626e2d42c181"
     },
     {
       "id": "shop-ddbb63c7a9805cb3",
@@ -6510,7 +6843,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ddbb63c7a9805cb3"
     },
     {
       "id": "shop-f52d00704abc5bf7",
@@ -6529,7 +6863,9 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "246",
+      "library_id": "246"
     },
     {
       "id": "shop-03d930963e3a80dd",
@@ -6556,7 +6892,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-03d930963e3a80dd"
     },
     {
       "id": "shop-9b999933779be67c",
@@ -6575,7 +6912,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-9b999933779be67c"
     },
     {
       "id": "shop-31b09f2ea7ee15f5",
@@ -6594,7 +6932,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-31b09f2ea7ee15f5"
     },
     {
       "id": "shop-da75af1662a43c8c",
@@ -6629,7 +6968,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-da75af1662a43c8c"
     },
     {
       "id": "shop-ea268b0232eb6121",
@@ -6653,7 +6993,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ea268b0232eb6121"
     },
     {
       "id": "shop-b0e584c51c66285c",
@@ -6672,7 +7013,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b0e584c51c66285c"
     },
     {
       "id": "shop-e26ddfc7cad82bcd",
@@ -6691,7 +7033,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e26ddfc7cad82bcd"
     },
     {
       "id": "shop-9feb0cfb2bb917c8",
@@ -6710,7 +7053,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-9feb0cfb2bb917c8"
     },
     {
       "id": "shop-2788ec21347d9e0b",
@@ -6729,7 +7073,9 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "773",
+      "library_id": "773"
     },
     {
       "id": "shop-d7ac2aa2db40cb1a",
@@ -6748,7 +7094,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-d7ac2aa2db40cb1a"
     },
     {
       "id": "shop-96c40283f85ba41c",
@@ -6772,7 +7119,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-96c40283f85ba41c"
     },
     {
       "id": "shop-ad2bd6db4a7f647d",
@@ -6791,7 +7139,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ad2bd6db4a7f647d"
     },
     {
       "id": "shop-e96eca205217af97",
@@ -6810,7 +7159,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e96eca205217af97"
     },
     {
       "id": "shop-2ab4634041065684",
@@ -6829,7 +7179,8 @@
           "bookshop": "Broese",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-2ab4634041065684"
     },
     {
       "id": "shop-947c91c1db7cb2f5",
@@ -6848,7 +7199,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-947c91c1db7cb2f5"
     },
     {
       "id": "shop-23225edcaac7cc5a",
@@ -6867,7 +7219,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-23225edcaac7cc5a"
     },
     {
       "id": "shop-08a23b2f60ff11b1",
@@ -6886,7 +7239,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-08a23b2f60ff11b1"
     },
     {
       "id": "shop-e3d5aa5477253912",
@@ -6905,7 +7259,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e3d5aa5477253912"
     },
     {
       "id": "shop-d580d4470799dae0",
@@ -6924,7 +7279,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-d580d4470799dae0"
     },
     {
       "id": "shop-18929c35e3403447",
@@ -6956,7 +7312,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-18929c35e3403447"
     },
     {
       "id": "shop-96686a607a8665a8",
@@ -6975,7 +7332,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-96686a607a8665a8"
     },
     {
       "id": "shop-a0e3206a6ded483b",
@@ -6994,7 +7352,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a0e3206a6ded483b"
     },
     {
       "id": "shop-1e35f925c37e97c7",
@@ -7029,7 +7388,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-1e35f925c37e97c7"
     },
     {
       "id": "shop-a722faf2a4095d80",
@@ -7048,7 +7408,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a722faf2a4095d80"
     },
     {
       "id": "shop-5ad526b1c24e4a71",
@@ -7067,7 +7428,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-5ad526b1c24e4a71"
     },
     {
       "id": "shop-40a87cf3e35c4995",
@@ -7102,7 +7464,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-40a87cf3e35c4995"
     },
     {
       "id": "shop-a00a37cbd9e310bb",
@@ -7129,7 +7492,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a00a37cbd9e310bb"
     },
     {
       "id": "shop-8abde4a50ab8ac86",
@@ -7157,7 +7521,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-8abde4a50ab8ac86"
     },
     {
       "id": "shop-1290e7c7048e9cae",
@@ -7181,7 +7546,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-1290e7c7048e9cae"
     },
     {
       "id": "shop-555999b5ddff42f7",
@@ -7208,7 +7574,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-555999b5ddff42f7"
     },
     {
       "id": "shop-5c7cbb82e925e22b",
@@ -7227,7 +7594,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-5c7cbb82e925e22b"
     },
     {
       "id": "shop-aa6285cff2967772",
@@ -7246,7 +7614,8 @@
           "bookshop": "Alegro Sintra bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-aa6285cff2967772"
     },
     {
       "id": "shop-3d7adb495a474bd0",
@@ -7265,7 +7634,8 @@
           "bookshop": "Alegro Sintra bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-3d7adb495a474bd0"
     },
     {
       "id": "shop-a9b159a3aca207c2",
@@ -7284,7 +7654,8 @@
           "bookshop": "Rua da Esperança bookshop — unidentified",
           "shop_status": "Unresolved shop"
         }
-      ]
+      ],
+      "book_id": "work-shop-a9b159a3aca207c2"
     },
     {
       "id": "shop-a20c148966d24395",
@@ -7303,7 +7674,8 @@
           "bookshop": "Salted Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a20c148966d24395"
     },
     {
       "id": "shop-433a9c22f30ac884",
@@ -7322,7 +7694,8 @@
           "bookshop": "Salted Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-433a9c22f30ac884"
     },
     {
       "id": "shop-d94ccb1681146c48",
@@ -7341,7 +7714,8 @@
           "bookshop": "Salted Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-d94ccb1681146c48"
     },
     {
       "id": "shop-db1b36706dda8a3a",
@@ -7365,7 +7739,8 @@
           "bookshop": "Livraria Sá da Costa",
           "shop_status": "Probable"
         }
-      ]
+      ],
+      "book_id": "work-shop-db1b36706dda8a3a"
     },
     {
       "id": "shop-2d986070c98ffbc2",
@@ -7384,7 +7759,8 @@
           "bookshop": "FNAC Chiado",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-2d986070c98ffbc2"
     },
     {
       "id": "shop-5ce36f13a043a096",
@@ -7411,7 +7787,8 @@
           "bookshop": "Feltrinelli — Via Orlando",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-5ce36f13a043a096"
     },
     {
       "id": "shop-524961b75f12e1c9",
@@ -7430,7 +7807,8 @@
           "bookshop": "FNAC Chiado",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-524961b75f12e1c9"
     },
     {
       "id": "shop-885fc6386e4c03a1",
@@ -7457,7 +7835,8 @@
           "bookshop": "Salted Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-885fc6386e4c03a1"
     },
     {
       "id": "shop-ed9c365d53f92cd4",
@@ -7476,7 +7855,8 @@
           "bookshop": "FNAC Chiado",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ed9c365d53f92cd4"
     },
     {
       "id": "shop-86da58b97c326c6b",
@@ -7495,7 +7875,8 @@
           "bookshop": "FNAC Chiado",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-86da58b97c326c6b"
     },
     {
       "id": "shop-a3a80b45cb3e9357",
@@ -7519,7 +7900,8 @@
           "bookshop": "FNAC Chiado",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a3a80b45cb3e9357"
     },
     {
       "id": "shop-8562de9cb30e55f3",
@@ -7538,7 +7920,8 @@
           "bookshop": "FNAC Chiado",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-8562de9cb30e55f3"
     },
     {
       "id": "shop-52a46b20858e614b",
@@ -7557,7 +7940,8 @@
           "bookshop": "FNAC Chiado",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-52a46b20858e614b"
     },
     {
       "id": "shop-08f064d6ddc02ca3",
@@ -7589,7 +7973,8 @@
           "bookshop": "Ler Devagar — LX Factory",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-08f064d6ddc02ca3"
     },
     {
       "id": "shop-2707bee7a4fe6f58",
@@ -7616,7 +8001,8 @@
           "bookshop": "Ler Devagar — LX Factory",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-2707bee7a4fe6f58"
     },
     {
       "id": "shop-b43e433288b03b08",
@@ -7635,7 +8021,8 @@
           "bookshop": "Ler Devagar — LX Factory",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b43e433288b03b08"
     },
     {
       "id": "shop-bf2f074600844954",
@@ -7654,7 +8041,8 @@
           "bookshop": "Ler Devagar — LX Factory",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-bf2f074600844954"
     },
     {
       "id": "shop-f05cd8acac832ae1",
@@ -7681,7 +8069,8 @@
           "bookshop": "Alegro Sintra bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-f05cd8acac832ae1"
     },
     {
       "id": "shop-de92bd99082cb493",
@@ -7700,7 +8089,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-de92bd99082cb493"
     },
     {
       "id": "shop-3be2014496f1d3f9",
@@ -7719,7 +8109,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-3be2014496f1d3f9"
     },
     {
       "id": "shop-9a72806e0416dfeb",
@@ -7738,7 +8129,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-9a72806e0416dfeb"
     },
     {
       "id": "shop-11215b57aeeee6bd",
@@ -7770,7 +8162,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-11215b57aeeee6bd"
     },
     {
       "id": "shop-3158fff0ba44a3aa",
@@ -7794,7 +8187,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-3158fff0ba44a3aa"
     },
     {
       "id": "shop-6122f03b95ca28ba",
@@ -7813,7 +8207,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-6122f03b95ca28ba"
     },
     {
       "id": "shop-60ce531a010f77f4",
@@ -7832,7 +8227,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-60ce531a010f77f4"
     },
     {
       "id": "shop-1685e80922da6ee3",
@@ -7851,7 +8247,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-1685e80922da6ee3"
     },
     {
       "id": "shop-defadbc69b19d38a",
@@ -7870,7 +8267,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-defadbc69b19d38a"
     },
     {
       "id": "shop-59ecf2a401616fc3",
@@ -7889,7 +8287,9 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "343",
+      "library_id": "343"
     },
     {
       "id": "shop-a28a6b5feeaaa2ac",
@@ -7908,7 +8308,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a28a6b5feeaaa2ac"
     },
     {
       "id": "shop-ffa6a3cd06a8c965",
@@ -7927,7 +8328,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ffa6a3cd06a8c965"
     },
     {
       "id": "shop-0838fc93b3da7ed5",
@@ -7946,7 +8348,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-0838fc93b3da7ed5"
     },
     {
       "id": "shop-b18910763657da0c",
@@ -7965,7 +8368,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b18910763657da0c"
     },
     {
       "id": "shop-7798234aa8cafb63",
@@ -7984,7 +8388,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-7798234aa8cafb63"
     },
     {
       "id": "shop-4105e87a2d2fd7ae",
@@ -8016,7 +8421,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-4105e87a2d2fd7ae"
     },
     {
       "id": "shop-a278d917fcc99668",
@@ -8035,7 +8441,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a278d917fcc99668"
     },
     {
       "id": "shop-b72879a64b03b7fb",
@@ -8054,7 +8461,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b72879a64b03b7fb"
     },
     {
       "id": "shop-df41c16a1f6353ed",
@@ -8073,7 +8481,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-df41c16a1f6353ed"
     },
     {
       "id": "shop-2f7312f4202b10a1",
@@ -8092,7 +8501,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-2f7312f4202b10a1"
     },
     {
       "id": "shop-0981bfee33aa2528",
@@ -8120,7 +8530,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-0981bfee33aa2528"
     },
     {
       "id": "shop-4c40df19a7aab6a3",
@@ -8147,7 +8558,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-4c40df19a7aab6a3"
     },
     {
       "id": "shop-a4c0a6fcc8b8d157",
@@ -8166,7 +8578,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a4c0a6fcc8b8d157"
     },
     {
       "id": "shop-e0e2689df0369aa1",
@@ -8185,7 +8598,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e0e2689df0369aa1"
     },
     {
       "id": "shop-b9bbf77a38cccb7d",
@@ -8209,7 +8623,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b9bbf77a38cccb7d"
     },
     {
       "id": "shop-de976efffbb3311a",
@@ -8228,7 +8643,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-de976efffbb3311a"
     },
     {
       "id": "shop-e06e17ca62c3c2ec",
@@ -8247,7 +8663,9 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "972",
+      "library_id": "972"
     },
     {
       "id": "shop-8f53c6bc4fc37241",
@@ -8266,7 +8684,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-8f53c6bc4fc37241"
     },
     {
       "id": "shop-0227c09e10fc8762",
@@ -8301,7 +8720,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-0227c09e10fc8762"
     },
     {
       "id": "shop-596c944776d2909d",
@@ -8320,7 +8740,9 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "1031",
+      "library_id": "1031"
     },
     {
       "id": "shop-3da3e46ebc702804",
@@ -8339,7 +8761,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-3da3e46ebc702804"
     },
     {
       "id": "shop-22c950ddbe2bb0b5",
@@ -8358,7 +8781,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-22c950ddbe2bb0b5"
     },
     {
       "id": "shop-31af25912f21c98b",
@@ -8377,7 +8801,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-31af25912f21c98b"
     },
     {
       "id": "shop-a52359036d9fc9ad",
@@ -8396,7 +8821,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a52359036d9fc9ad"
     },
     {
       "id": "shop-80c5a0791a6db960",
@@ -8415,7 +8841,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-80c5a0791a6db960"
     },
     {
       "id": "shop-135345594a7bb607",
@@ -8434,7 +8861,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-135345594a7bb607"
     },
     {
       "id": "shop-8ac8c8ed0b0765b4",
@@ -8453,7 +8881,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-8ac8c8ed0b0765b4"
     },
     {
       "id": "shop-6ac497b29753fdf1",
@@ -8472,7 +8901,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-6ac497b29753fdf1"
     },
     {
       "id": "shop-76141ad295e0a28d",
@@ -8491,7 +8921,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-76141ad295e0a28d"
     },
     {
       "id": "shop-bf34b7428f4bc4c7",
@@ -8510,7 +8941,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-bf34b7428f4bc4c7"
     },
     {
       "id": "shop-d89c1e71b006134f",
@@ -8529,7 +8961,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-d89c1e71b006134f"
     },
     {
       "id": "shop-8e0d07c32602bb3c",
@@ -8548,7 +8981,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-8e0d07c32602bb3c"
     },
     {
       "id": "shop-4b2cb7787101be5e",
@@ -8567,7 +9001,9 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "147",
+      "library_id": "147"
     },
     {
       "id": "shop-af631144963808ac",
@@ -8586,7 +9022,9 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "862",
+      "library_id": "862"
     },
     {
       "id": "shop-7108d78f520187f9",
@@ -8629,7 +9067,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-7108d78f520187f9"
     },
     {
       "id": "shop-1fa2176b592585a1",
@@ -8648,7 +9087,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-1fa2176b592585a1"
     },
     {
       "id": "shop-363920808dcca390",
@@ -8667,7 +9107,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-363920808dcca390"
     },
     {
       "id": "shop-25fb963a344d4504",
@@ -8695,7 +9136,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-25fb963a344d4504"
     },
     {
       "id": "shop-67b4234d97ce7b29",
@@ -8714,7 +9156,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-67b4234d97ce7b29"
     },
     {
       "id": "shop-d075db52d73c32f0",
@@ -8741,7 +9184,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-d075db52d73c32f0"
     },
     {
       "id": "shop-a0a8cab4c640d7c6",
@@ -8768,7 +9212,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a0a8cab4c640d7c6"
     },
     {
       "id": "shop-ef456e06399c2389",
@@ -8795,7 +9240,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ef456e06399c2389"
     },
     {
       "id": "shop-44c9c377387a2f6e",
@@ -8814,7 +9260,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-44c9c377387a2f6e"
     },
     {
       "id": "shop-748cbcb772a71f05",
@@ -8841,7 +9288,9 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "155",
+      "library_id": "155"
     },
     {
       "id": "shop-ca7887c16092e1c0",
@@ -8860,7 +9309,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ca7887c16092e1c0"
     },
     {
       "id": "shop-b3727bfce895fb0c",
@@ -8879,7 +9329,8 @@
           "bookshop": "Salted Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b3727bfce895fb0c"
     },
     {
       "id": "shop-c362dc17c5bb81c0",
@@ -8906,7 +9357,8 @@
           "bookshop": "Salted Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-c362dc17c5bb81c0"
     },
     {
       "id": "shop-547ab5296b6709c3",
@@ -8925,7 +9377,8 @@
           "bookshop": "Salted Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-547ab5296b6709c3"
     },
     {
       "id": "shop-caf6730ac4be9879",
@@ -8944,7 +9397,8 @@
           "bookshop": "Salted Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-caf6730ac4be9879"
     },
     {
       "id": "shop-c1fb96c4d8a45036",
@@ -8963,7 +9417,8 @@
           "bookshop": "Strada Outlet bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-c1fb96c4d8a45036"
     },
     {
       "id": "shop-eb912a1248a6033d",
@@ -8987,7 +9442,8 @@
           "bookshop": "Strada Outlet bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-eb912a1248a6033d"
     },
     {
       "id": "shop-5640145a4ed2fc98",
@@ -9006,7 +9462,8 @@
           "bookshop": "Strada Outlet bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-5640145a4ed2fc98"
     },
     {
       "id": "shop-97d0997c6bf013e3",
@@ -9030,7 +9487,8 @@
           "bookshop": "Strada Outlet bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-97d0997c6bf013e3"
     },
     {
       "id": "shop-e3447de96993788d",
@@ -9073,7 +9531,8 @@
           "bookshop": "Vasco da Gama bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-e3447de96993788d"
     },
     {
       "id": "shop-a272f127967b2641",
@@ -9092,7 +9551,8 @@
           "bookshop": "Fórum Coimbra bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-a272f127967b2641"
     },
     {
       "id": "shop-f89e60852cee12aa",
@@ -9116,7 +9576,8 @@
           "bookshop": "Fórum Coimbra bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-f89e60852cee12aa"
     },
     {
       "id": "shop-0972de77ebb25bc7",
@@ -9140,7 +9601,8 @@
           "bookshop": "Fórum Coimbra bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-0972de77ebb25bc7"
     },
     {
       "id": "shop-132ecec8a945c47a",
@@ -9159,7 +9621,8 @@
           "bookshop": "Almedina — Estádio Cidade de Coimbra",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-132ecec8a945c47a"
     },
     {
       "id": "shop-215aac37b700514e",
@@ -9178,7 +9641,8 @@
           "bookshop": "Almedina — Estádio Cidade de Coimbra",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-215aac37b700514e"
     },
     {
       "id": "shop-32cdcc1b61877efb",
@@ -9206,7 +9670,8 @@
           "bookshop": "Almedina — Estádio Cidade de Coimbra",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-32cdcc1b61877efb"
     },
     {
       "id": "shop-5deca9f842482f9b",
@@ -9234,7 +9699,8 @@
           "bookshop": "Almedina — Estádio Cidade de Coimbra",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-5deca9f842482f9b"
     },
     {
       "id": "shop-73f8dc0901f9fe47",
@@ -9253,7 +9719,8 @@
           "bookshop": "Almedina — Estádio Cidade de Coimbra",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-73f8dc0901f9fe47"
     },
     {
       "id": "shop-63aa169ba5a4d840",
@@ -9272,7 +9739,8 @@
           "bookshop": "Ler Devagar — LX Factory",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-63aa169ba5a4d840"
     },
     {
       "id": "shop-6ec8ee0c8074de91",
@@ -9291,7 +9759,8 @@
           "bookshop": "Ler Devagar — LX Factory",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-6ec8ee0c8074de91"
     },
     {
       "id": "shop-ee6a00d80061f050",
@@ -9310,7 +9779,8 @@
           "bookshop": "Ler Devagar — LX Factory",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ee6a00d80061f050"
     },
     {
       "id": "shop-67b981b9986f8eb4",
@@ -9334,7 +9804,8 @@
           "bookshop": "Ler Devagar — LX Factory",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-67b981b9986f8eb4"
     },
     {
       "id": "shop-070cb1922cf49a32",
@@ -9353,7 +9824,8 @@
           "bookshop": "Ler Devagar — LX Factory",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-070cb1922cf49a32"
     },
     {
       "id": "shop-f7451869a147d0ac",
@@ -9372,7 +9844,8 @@
           "bookshop": "Salted Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-f7451869a147d0ac"
     },
     {
       "id": "shop-4fcc67de5bab8b2c",
@@ -9391,7 +9864,8 @@
           "bookshop": "Salted Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-4fcc67de5bab8b2c"
     },
     {
       "id": "shop-95dc6cf4fa93f4e3",
@@ -9410,7 +9884,9 @@
           "bookshop": "Salted Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "509",
+      "library_id": "509"
     },
     {
       "id": "shop-583b47e59bba2088",
@@ -9434,7 +9910,8 @@
           "bookshop": "Salted Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-583b47e59bba2088"
     },
     {
       "id": "shop-9c2d63fdbb078f61",
@@ -9453,7 +9930,8 @@
           "bookshop": "Salted Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-9c2d63fdbb078f61"
     },
     {
       "id": "shop-639fdfa7af07775d",
@@ -9472,7 +9950,8 @@
           "bookshop": "Salted Books",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-639fdfa7af07775d"
     },
     {
       "id": "shop-b7532d628c2fe7a4",
@@ -9512,7 +9991,8 @@
           "bookshop": "Fórum Algarve bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-b7532d628c2fe7a4"
     },
     {
       "id": "shop-1890666d9f365950",
@@ -9531,7 +10011,8 @@
           "bookshop": "BookPeople",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-1890666d9f365950"
     },
     {
       "id": "shop-c755ce7a4ee894cb",
@@ -9550,7 +10031,8 @@
           "bookshop": "BookPeople",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-c755ce7a4ee894cb"
     },
     {
       "id": "shop-e990ddfe3ac4a086",
@@ -9569,7 +10051,8 @@
           "bookshop": "BookPeople",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e990ddfe3ac4a086"
     },
     {
       "id": "shop-711b2e0f8876731e",
@@ -9588,7 +10071,8 @@
           "bookshop": "BookPeople",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-711b2e0f8876731e"
     },
     {
       "id": "shop-75ace4e0d65d3d42",
@@ -9607,7 +10091,8 @@
           "bookshop": "BookPeople",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-75ace4e0d65d3d42"
     },
     {
       "id": "shop-390e7e4e526d8fdd",
@@ -9631,7 +10116,8 @@
           "bookshop": "BookPeople",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-390e7e4e526d8fdd"
     },
     {
       "id": "shop-95a761d2345be4af",
@@ -9650,7 +10136,8 @@
           "bookshop": "BookPeople",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-95a761d2345be4af"
     },
     {
       "id": "shop-a7f7e4475c99df70",
@@ -9669,7 +10156,8 @@
           "bookshop": "BookPeople",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a7f7e4475c99df70"
     },
     {
       "id": "shop-afe541d7eaaab040",
@@ -9688,7 +10176,8 @@
           "bookshop": "BookPeople",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-afe541d7eaaab040"
     },
     {
       "id": "shop-9ce0a8ab7de10fd0",
@@ -9712,7 +10201,8 @@
           "bookshop": "BookPeople",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-9ce0a8ab7de10fd0"
     },
     {
       "id": "shop-89d61d004093a22a",
@@ -9740,7 +10230,8 @@
           "bookshop": "BookPeople",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-89d61d004093a22a"
     },
     {
       "id": "shop-dec0fa2dfc1b286c",
@@ -9759,7 +10250,9 @@
           "bookshop": "BookPeople",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "134",
+      "library_id": "134"
     },
     {
       "id": "shop-286c928ccd5aa666",
@@ -9778,7 +10271,8 @@
           "bookshop": "BookPeople",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-286c928ccd5aa666"
     },
     {
       "id": "shop-e340b20ec67f1436",
@@ -9797,7 +10291,8 @@
           "bookshop": "BookPeople",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e340b20ec67f1436"
     },
     {
       "id": "shop-6649def454d02863",
@@ -9816,7 +10311,8 @@
           "bookshop": "BookPeople",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-6649def454d02863"
     },
     {
       "id": "shop-a8378250425314ab",
@@ -9835,7 +10331,8 @@
           "bookshop": "BookPeople",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a8378250425314ab"
     },
     {
       "id": "shop-98fd46d476ca1ca5",
@@ -9854,7 +10351,8 @@
           "bookshop": "BookPeople",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-98fd46d476ca1ca5"
     },
     {
       "id": "shop-a092680b9a63c4bf",
@@ -9873,7 +10371,8 @@
           "bookshop": "BookPeople",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a092680b9a63c4bf"
     },
     {
       "id": "shop-20812d348545bbdd",
@@ -9892,7 +10391,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-20812d348545bbdd"
     },
     {
       "id": "shop-104de885d883b248",
@@ -9911,7 +10411,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-104de885d883b248"
     },
     {
       "id": "shop-49ac16e89ab17a26",
@@ -9930,7 +10431,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-49ac16e89ab17a26"
     },
     {
       "id": "shop-70e1c7811d0e1187",
@@ -9949,7 +10451,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-70e1c7811d0e1187"
     },
     {
       "id": "shop-4472932717c97743",
@@ -9968,7 +10471,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-4472932717c97743"
     },
     {
       "id": "shop-0ea347913fd97734",
@@ -9987,7 +10491,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-0ea347913fd97734"
     },
     {
       "id": "shop-87cc82169a407b7f",
@@ -10006,7 +10511,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-87cc82169a407b7f"
     },
     {
       "id": "shop-237ab59cb83b4438",
@@ -10025,7 +10531,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-237ab59cb83b4438"
     },
     {
       "id": "shop-97ab9be793e35c37",
@@ -10044,7 +10551,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-97ab9be793e35c37"
     },
     {
       "id": "shop-be1d2bbb7f4bdc4f",
@@ -10063,7 +10571,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-be1d2bbb7f4bdc4f"
     },
     {
       "id": "shop-ab9d099e95038005",
@@ -10082,7 +10591,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ab9d099e95038005"
     },
     {
       "id": "shop-6b867b59972c58cc",
@@ -10109,7 +10619,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-6b867b59972c58cc"
     },
     {
       "id": "shop-0e0c22eb23fcb2f7",
@@ -10128,7 +10639,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-0e0c22eb23fcb2f7"
     },
     {
       "id": "shop-3c1075772c594336",
@@ -10147,7 +10659,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-3c1075772c594336"
     },
     {
       "id": "shop-b99fec3652a6e21d",
@@ -10166,7 +10679,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b99fec3652a6e21d"
     },
     {
       "id": "shop-5ce3f1ff1231f59a",
@@ -10185,7 +10699,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-5ce3f1ff1231f59a"
     },
     {
       "id": "shop-de55729b6473ca5e",
@@ -10204,7 +10719,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-de55729b6473ca5e"
     },
     {
       "id": "shop-5168fa4cb727b1a8",
@@ -10223,7 +10739,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-5168fa4cb727b1a8"
     },
     {
       "id": "shop-c73bc8c879f155b3",
@@ -10242,7 +10759,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-c73bc8c879f155b3"
     },
     {
       "id": "shop-cc5fb1ba4dbe3234",
@@ -10261,7 +10779,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-cc5fb1ba4dbe3234"
     },
     {
       "id": "shop-e7bb84ef51daa60d",
@@ -10280,7 +10799,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e7bb84ef51daa60d"
     },
     {
       "id": "shop-f76439631a2c0a94",
@@ -10299,7 +10819,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-f76439631a2c0a94"
     },
     {
       "id": "shop-083c4e145f57c931",
@@ -10318,7 +10839,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-083c4e145f57c931"
     },
     {
       "id": "shop-e9bfb6111f0ad664",
@@ -10342,7 +10864,8 @@
           "bookshop": "Alegro Sintra bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-e9bfb6111f0ad664"
     },
     {
       "id": "shop-3b45ba200268574b",
@@ -10361,7 +10884,8 @@
           "bookshop": "Alegro Sintra bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-3b45ba200268574b"
     },
     {
       "id": "shop-36cbe2149d9e51ba",
@@ -10385,7 +10909,8 @@
           "bookshop": "Alegro Sintra bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-36cbe2149d9e51ba"
     },
     {
       "id": "shop-99f1ac2338897406",
@@ -10404,7 +10929,8 @@
           "bookshop": "Alegro Sintra bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-99f1ac2338897406"
     },
     {
       "id": "shop-66a404267bd731c4",
@@ -10423,7 +10949,8 @@
           "bookshop": "Alegro Sintra bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-66a404267bd731c4"
     },
     {
       "id": "shop-9c1b6efdf7a100e4",
@@ -10450,7 +10977,8 @@
           "bookshop": "FNAC Colombo",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-9c1b6efdf7a100e4"
     },
     {
       "id": "shop-aeb6f2d43a733539",
@@ -10474,7 +11002,8 @@
           "bookshop": "Alegro Sintra bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-aeb6f2d43a733539"
     },
     {
       "id": "shop-cc7f5b2078ed6991",
@@ -10493,7 +11022,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-cc7f5b2078ed6991"
     },
     {
       "id": "shop-48e87525f63b1c88",
@@ -10521,7 +11051,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-48e87525f63b1c88"
     },
     {
       "id": "shop-479d252a5cc93d76",
@@ -10540,7 +11071,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-479d252a5cc93d76"
     },
     {
       "id": "shop-0f7262b281724f6c",
@@ -10559,7 +11091,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-0f7262b281724f6c"
     },
     {
       "id": "shop-222875ef5f3bfe7d",
@@ -10578,7 +11111,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-222875ef5f3bfe7d"
     },
     {
       "id": "shop-8445c8ef6ea5e676",
@@ -10597,7 +11131,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-8445c8ef6ea5e676"
     },
     {
       "id": "shop-c4f34c22d9eb5f93",
@@ -10616,7 +11151,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-c4f34c22d9eb5f93"
     },
     {
       "id": "shop-1e5e89ff05fada73",
@@ -10635,7 +11171,9 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "339",
+      "library_id": "339"
     },
     {
       "id": "shop-3d212cb54c0dc5b9",
@@ -10667,7 +11205,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-3d212cb54c0dc5b9"
     },
     {
       "id": "shop-36ce43a328b30b84",
@@ -10686,7 +11225,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-36ce43a328b30b84"
     },
     {
       "id": "shop-e9e15fa1b8c0caec",
@@ -10705,7 +11245,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e9e15fa1b8c0caec"
     },
     {
       "id": "shop-c895dcc3858797b3",
@@ -10724,7 +11265,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-c895dcc3858797b3"
     },
     {
       "id": "shop-187277d1daa35647",
@@ -10751,7 +11293,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-187277d1daa35647"
     },
     {
       "id": "shop-56693f5044a9e9c2",
@@ -10786,7 +11329,9 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "784",
+      "library_id": "784"
     },
     {
       "id": "shop-42ad0985dc9aecab",
@@ -10805,7 +11350,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-42ad0985dc9aecab"
     },
     {
       "id": "shop-b0600f1c74e17258",
@@ -10824,7 +11370,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b0600f1c74e17258"
     },
     {
       "id": "shop-00f0da7dbf121868",
@@ -10851,7 +11398,8 @@
           "bookshop": "Feltrinelli — Largo di Torre Argentina",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-00f0da7dbf121868"
     },
     {
       "id": "shop-995d2a308433c21b",
@@ -10870,7 +11418,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-995d2a308433c21b"
     },
     {
       "id": "shop-79f1b7c7feb212a5",
@@ -10897,7 +11446,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-79f1b7c7feb212a5"
     },
     {
       "id": "shop-0cb6c10f2892cf9d",
@@ -10924,7 +11474,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-0cb6c10f2892cf9d"
     },
     {
       "id": "shop-9ac999ab5b625977",
@@ -10943,7 +11494,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-9ac999ab5b625977"
     },
     {
       "id": "shop-c8fdd15b06b3b733",
@@ -10962,7 +11514,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-c8fdd15b06b3b733"
     },
     {
       "id": "shop-6e3c5e5c3701a5c8",
@@ -10981,7 +11534,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-6e3c5e5c3701a5c8"
     },
     {
       "id": "shop-9bc1a535d733e6f1",
@@ -11008,7 +11562,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-9bc1a535d733e6f1"
     },
     {
       "id": "shop-a52f6d2349857352",
@@ -11027,7 +11582,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a52f6d2349857352"
     },
     {
       "id": "shop-a80aaf3daaa6828b",
@@ -11046,7 +11602,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a80aaf3daaa6828b"
     },
     {
       "id": "shop-2048c1e01f60a69a",
@@ -11065,7 +11622,9 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "117",
+      "library_id": "117"
     },
     {
       "id": "shop-4d67be55520869ed",
@@ -11093,7 +11652,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-4d67be55520869ed"
     },
     {
       "id": "shop-5058c06bcc34d96c",
@@ -11112,7 +11672,8 @@
           "bookshop": "Unidentified bookshop — no GPS",
           "shop_status": "Unknown — no GPS"
         }
-      ]
+      ],
+      "book_id": "work-shop-5058c06bcc34d96c"
     },
     {
       "id": "shop-2e24a4001b87a6e3",
@@ -11131,7 +11692,8 @@
           "bookshop": "Unidentified bookshop — no GPS",
           "shop_status": "Unknown — no GPS"
         }
-      ]
+      ],
+      "book_id": "work-shop-2e24a4001b87a6e3"
     },
     {
       "id": "shop-9c3def24b08b595c",
@@ -11163,7 +11725,8 @@
           "bookshop": "Unidentified bookshop — no GPS",
           "shop_status": "Unknown — no GPS"
         }
-      ]
+      ],
+      "book_id": "work-shop-9c3def24b08b595c"
     },
     {
       "id": "shop-481af647f563dfe1",
@@ -11182,7 +11745,8 @@
           "bookshop": "Unidentified bookshop — no GPS",
           "shop_status": "Unknown — no GPS"
         }
-      ]
+      ],
+      "book_id": "work-shop-481af647f563dfe1"
     },
     {
       "id": "shop-d3be399335ca3b31",
@@ -11201,7 +11765,8 @@
           "bookshop": "Unidentified bookshop — no GPS",
           "shop_status": "Unknown — no GPS"
         }
-      ]
+      ],
+      "book_id": "work-shop-d3be399335ca3b31"
     },
     {
       "id": "shop-5285ea85e7696696",
@@ -11225,7 +11790,8 @@
           "bookshop": "Unidentified bookshop — no GPS",
           "shop_status": "Unknown — no GPS"
         }
-      ]
+      ],
+      "book_id": "work-shop-5285ea85e7696696"
     },
     {
       "id": "shop-0dbb7cf2be950e50",
@@ -11244,7 +11810,8 @@
           "bookshop": "Feltrinelli — Largo di Torre Argentina",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-0dbb7cf2be950e50"
     },
     {
       "id": "shop-d2db9c5711dac2f2",
@@ -11263,7 +11830,8 @@
           "bookshop": "Feltrinelli — Largo di Torre Argentina",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-d2db9c5711dac2f2"
     },
     {
       "id": "shop-9d18183eb683157f",
@@ -11295,7 +11863,8 @@
           "bookshop": "Feltrinelli — Largo di Torre Argentina",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-9d18183eb683157f"
     },
     {
       "id": "shop-bfe300cc9f6e9910",
@@ -11319,7 +11888,8 @@
           "bookshop": "Feltrinelli — Largo di Torre Argentina",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-bfe300cc9f6e9910"
     },
     {
       "id": "shop-fe3b628369f7e6c6",
@@ -11338,7 +11908,8 @@
           "bookshop": "Feltrinelli — Largo di Torre Argentina",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-fe3b628369f7e6c6"
     },
     {
       "id": "shop-0fa91b09cc10c488",
@@ -11357,7 +11928,8 @@
           "bookshop": "Feltrinelli — Largo di Torre Argentina",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-0fa91b09cc10c488"
     },
     {
       "id": "shop-117bab119b075549",
@@ -11376,7 +11948,8 @@
           "bookshop": "Feltrinelli — Largo di Torre Argentina",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-117bab119b075549"
     },
     {
       "id": "shop-a2f521d8282345ee",
@@ -11395,7 +11968,8 @@
           "bookshop": "Feltrinelli — Largo di Torre Argentina",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a2f521d8282345ee"
     },
     {
       "id": "shop-859e68ff9c86cd63",
@@ -11414,7 +11988,8 @@
           "bookshop": "Feltrinelli — Largo di Torre Argentina",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-859e68ff9c86cd63"
     },
     {
       "id": "shop-286201077687a228",
@@ -11433,7 +12008,8 @@
           "bookshop": "Feltrinelli — Largo di Torre Argentina",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-286201077687a228"
     },
     {
       "id": "shop-6205501f24cb8133",
@@ -11452,7 +12028,8 @@
           "bookshop": "Feltrinelli — Largo di Torre Argentina",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-6205501f24cb8133"
     },
     {
       "id": "shop-58e3c60f47216517",
@@ -11476,7 +12053,8 @@
           "bookshop": "Feltrinelli — Largo di Torre Argentina",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-58e3c60f47216517"
     },
     {
       "id": "shop-cc37f8e62e5bc3ea",
@@ -11495,7 +12073,8 @@
           "bookshop": "Feltrinelli — Largo di Torre Argentina",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-cc37f8e62e5bc3ea"
     },
     {
       "id": "shop-3bc02ee9c30f76b7",
@@ -11514,7 +12093,8 @@
           "bookshop": "Feltrinelli — Largo di Torre Argentina",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-3bc02ee9c30f76b7"
     },
     {
       "id": "shop-fafe0e00ae077dc7",
@@ -11533,7 +12113,8 @@
           "bookshop": "Feltrinelli — Largo di Torre Argentina",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-fafe0e00ae077dc7"
     },
     {
       "id": "shop-f40c296f5f0887da",
@@ -11552,7 +12133,8 @@
           "bookshop": "Feltrinelli — Largo di Torre Argentina",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-f40c296f5f0887da"
     },
     {
       "id": "shop-34cbeee66768e62a",
@@ -11571,7 +12153,8 @@
           "bookshop": "Feltrinelli — Largo di Torre Argentina",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-34cbeee66768e62a"
     },
     {
       "id": "shop-e3bff751fdd08ef6",
@@ -11590,7 +12173,8 @@
           "bookshop": "Feltrinelli — Largo di Torre Argentina",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e3bff751fdd08ef6"
     },
     {
       "id": "shop-bcce9ca0e54cc6eb",
@@ -11609,7 +12193,8 @@
           "bookshop": "Feltrinelli — Largo di Torre Argentina",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-bcce9ca0e54cc6eb"
     },
     {
       "id": "shop-f8413ec59c2673ea",
@@ -11628,7 +12213,8 @@
           "bookshop": "Feltrinelli — Via Orlando",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-f8413ec59c2673ea"
     },
     {
       "id": "shop-f6efa27c3103fb1d",
@@ -11647,7 +12233,8 @@
           "bookshop": "Feltrinelli — Via Orlando",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-f6efa27c3103fb1d"
     },
     {
       "id": "shop-2b8d33082fa9b250",
@@ -11666,7 +12253,8 @@
           "bookshop": "Feltrinelli — Via Orlando",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-2b8d33082fa9b250"
     },
     {
       "id": "shop-dcb397fb97af85cd",
@@ -11690,7 +12278,8 @@
           "bookshop": "Feltrinelli — Via Orlando",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-dcb397fb97af85cd"
     },
     {
       "id": "shop-e335c369683b5ab2",
@@ -11709,7 +12298,8 @@
           "bookshop": "Feltrinelli — Via Orlando",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e335c369683b5ab2"
     },
     {
       "id": "shop-23f35d25e9f26ee0",
@@ -11728,7 +12318,8 @@
           "bookshop": "Feltrinelli — Via Orlando",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-23f35d25e9f26ee0"
     },
     {
       "id": "shop-b4d854f0fde25afe",
@@ -11747,7 +12338,8 @@
           "bookshop": "Feltrinelli — Via Orlando",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b4d854f0fde25afe"
     },
     {
       "id": "shop-d5368728f92d66b6",
@@ -11766,7 +12358,8 @@
           "bookshop": "Feltrinelli — Via Orlando",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-d5368728f92d66b6"
     },
     {
       "id": "shop-f2969ef7935c57f3",
@@ -11793,7 +12386,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-f2969ef7935c57f3"
     },
     {
       "id": "shop-9de984c4cebdf2f8",
@@ -11812,7 +12406,8 @@
           "bookshop": "Feltrinelli — Via Orlando",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-9de984c4cebdf2f8"
     },
     {
       "id": "shop-852dd3fbd3d33b3a",
@@ -11831,7 +12426,8 @@
           "bookshop": "Feltrinelli — Via Orlando",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-852dd3fbd3d33b3a"
     },
     {
       "id": "shop-840a07ff366b6635",
@@ -11850,7 +12446,8 @@
           "bookshop": "Feltrinelli — Via Orlando",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-840a07ff366b6635"
     },
     {
       "id": "shop-5d35607b0c82e91b",
@@ -11869,7 +12466,8 @@
           "bookshop": "Feltrinelli — Via Orlando",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-5d35607b0c82e91b"
     },
     {
       "id": "shop-d2610a3d800e139d",
@@ -11888,7 +12486,8 @@
           "bookshop": "Feltrinelli — Via Orlando",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-d2610a3d800e139d"
     },
     {
       "id": "shop-7e6bedfb270ca6e1",
@@ -11907,7 +12506,8 @@
           "bookshop": "Feltrinelli — Via Orlando",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-7e6bedfb270ca6e1"
     },
     {
       "id": "shop-e8f29cb29f2aae67",
@@ -11926,7 +12526,8 @@
           "bookshop": "Feltrinelli — Via Orlando",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e8f29cb29f2aae67"
     },
     {
       "id": "shop-5dd7a2b54dfed349",
@@ -11945,7 +12546,8 @@
           "bookshop": "Unidentified bookshop — no GPS",
           "shop_status": "Unknown — no GPS"
         }
-      ]
+      ],
+      "book_id": "work-shop-5dd7a2b54dfed349"
     },
     {
       "id": "shop-849a24d7a54099ed",
@@ -11989,7 +12591,8 @@
           "bookshop": "Unidentified bookshop — no GPS",
           "shop_status": "Unknown — no GPS"
         }
-      ]
+      ],
+      "book_id": "work-shop-849a24d7a54099ed"
     },
     {
       "id": "shop-6290cd5dd09159f8",
@@ -12008,7 +12611,8 @@
           "bookshop": "Fórum Algarve bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-6290cd5dd09159f8"
     },
     {
       "id": "shop-66609b554e883f70",
@@ -12027,7 +12631,8 @@
           "bookshop": "Fórum Algarve bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-66609b554e883f70"
     },
     {
       "id": "shop-9f904e8bdb71f3d3",
@@ -12046,7 +12651,8 @@
           "bookshop": "Unidentified mall bookshop — no GPS",
           "shop_status": "Unknown — no GPS"
         }
-      ]
+      ],
+      "book_id": "work-shop-9f904e8bdb71f3d3"
     },
     {
       "id": "shop-11ad928f8af6e80f",
@@ -12065,7 +12671,8 @@
           "bookshop": "Unidentified mall bookshop — no GPS",
           "shop_status": "Unknown — no GPS"
         }
-      ]
+      ],
+      "book_id": "work-shop-11ad928f8af6e80f"
     },
     {
       "id": "shop-9018cf81545cc87f",
@@ -12084,7 +12691,8 @@
           "bookshop": "The Owl Story",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-9018cf81545cc87f"
     },
     {
       "id": "shop-c35ec1430f13ff59",
@@ -12103,7 +12711,8 @@
           "bookshop": "The Owl Story",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-c35ec1430f13ff59"
     },
     {
       "id": "shop-0c9a548990574dd4",
@@ -12122,7 +12731,8 @@
           "bookshop": "The Owl Story",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-0c9a548990574dd4"
     },
     {
       "id": "shop-b49fbd2db5272556",
@@ -12141,7 +12751,8 @@
           "bookshop": "The Owl Story",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b49fbd2db5272556"
     },
     {
       "id": "shop-3a9eae6716e866f8",
@@ -12165,7 +12776,8 @@
           "bookshop": "The Owl Story",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-3a9eae6716e866f8"
     },
     {
       "id": "shop-c00a2ebfd6a63e19",
@@ -12184,7 +12796,8 @@
           "bookshop": "The Owl Story",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-c00a2ebfd6a63e19"
     },
     {
       "id": "shop-08b96acc8ba43a76",
@@ -12203,7 +12816,8 @@
           "bookshop": "The Owl Story",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-08b96acc8ba43a76"
     },
     {
       "id": "shop-7c35edebd99eab7b",
@@ -12222,7 +12836,8 @@
           "bookshop": "The Owl Story",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-7c35edebd99eab7b"
     },
     {
       "id": "shop-d8dce2ef9e27e76e",
@@ -12241,7 +12856,8 @@
           "bookshop": "The Owl Story",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-d8dce2ef9e27e76e"
     },
     {
       "id": "shop-a92563655a7b3a3c",
@@ -12260,7 +12876,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a92563655a7b3a3c"
     },
     {
       "id": "shop-c14ab568448e2226",
@@ -12279,7 +12896,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-c14ab568448e2226"
     },
     {
       "id": "shop-28c18a10d46c8a6f",
@@ -12298,7 +12916,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-28c18a10d46c8a6f"
     },
     {
       "id": "shop-a57656e12f96b75e",
@@ -12317,7 +12936,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a57656e12f96b75e"
     },
     {
       "id": "shop-0aeb4d5a1cc52947",
@@ -12345,7 +12965,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-0aeb4d5a1cc52947"
     },
     {
       "id": "shop-462f1e8278380b79",
@@ -12364,7 +12985,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-462f1e8278380b79"
     },
     {
       "id": "shop-3147c64ac62e4e65",
@@ -12383,7 +13005,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-3147c64ac62e4e65"
     },
     {
       "id": "shop-e02ae824bf640011",
@@ -12402,7 +13025,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e02ae824bf640011"
     },
     {
       "id": "shop-5c93b13e50931232",
@@ -12429,7 +13053,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-5c93b13e50931232"
     },
     {
       "id": "shop-90520c33745695c3",
@@ -12457,7 +13082,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-90520c33745695c3"
     },
     {
       "id": "shop-7073123082f1c956",
@@ -12476,7 +13102,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-7073123082f1c956"
     },
     {
       "id": "shop-8f738c9137ca3990",
@@ -12495,7 +13122,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-8f738c9137ca3990"
     },
     {
       "id": "shop-2ba8d9212458a559",
@@ -12514,7 +13142,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-2ba8d9212458a559"
     },
     {
       "id": "shop-f0fa4bba70efd78b",
@@ -12533,7 +13162,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-f0fa4bba70efd78b"
     },
     {
       "id": "shop-ca57880c5b69e230",
@@ -12552,7 +13182,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ca57880c5b69e230"
     },
     {
       "id": "shop-b9d5bde3d20ed20a",
@@ -12580,7 +13211,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b9d5bde3d20ed20a"
     },
     {
       "id": "shop-636baf094d99e9fb",
@@ -12599,7 +13231,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-636baf094d99e9fb"
     },
     {
       "id": "shop-c4258cdfa596cb46",
@@ -12627,7 +13260,8 @@
           "bookshop": "Kew Gardens — Victoria Plaza Shop",
           "shop_status": "Probable"
         }
-      ]
+      ],
+      "book_id": "work-shop-c4258cdfa596cb46"
     },
     {
       "id": "shop-dc2c27dd3f2717a1",
@@ -12646,7 +13280,8 @@
           "bookshop": "Kew Gardens — Victoria Plaza Shop",
           "shop_status": "Probable"
         }
-      ]
+      ],
+      "book_id": "work-shop-dc2c27dd3f2717a1"
     },
     {
       "id": "shop-01c10b5b6cb0d122",
@@ -12670,7 +13305,8 @@
           "bookshop": "Kew Gardens — Victoria Plaza Shop",
           "shop_status": "Probable"
         }
-      ]
+      ],
+      "book_id": "work-shop-01c10b5b6cb0d122"
     },
     {
       "id": "shop-1c9a6d982e7efb48",
@@ -12689,7 +13325,8 @@
           "bookshop": "Kew Gardens — Victoria Plaza Shop",
           "shop_status": "Probable"
         }
-      ]
+      ],
+      "book_id": "work-shop-1c9a6d982e7efb48"
     },
     {
       "id": "shop-e1c2b33185353837",
@@ -12717,7 +13354,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e1c2b33185353837"
     },
     {
       "id": "shop-22faf0d34c820792",
@@ -12736,7 +13374,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-22faf0d34c820792"
     },
     {
       "id": "shop-71716bbb32f01d13",
@@ -12755,7 +13394,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-71716bbb32f01d13"
     },
     {
       "id": "shop-6d9c9427f6f89edf",
@@ -12783,7 +13423,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-6d9c9427f6f89edf"
     },
     {
       "id": "shop-89d67b04aea1144d",
@@ -12802,7 +13443,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-89d67b04aea1144d"
     },
     {
       "id": "shop-3619ebcac4cfb9f5",
@@ -12821,7 +13463,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-3619ebcac4cfb9f5"
     },
     {
       "id": "shop-8df86295a3b75932",
@@ -12840,7 +13483,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-8df86295a3b75932"
     },
     {
       "id": "shop-16983e41614206ff",
@@ -12859,7 +13503,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-16983e41614206ff"
     },
     {
       "id": "shop-922e749b4dcef5bd",
@@ -12878,7 +13523,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-922e749b4dcef5bd"
     },
     {
       "id": "shop-9e1cba1e99adfb32",
@@ -12897,7 +13543,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-9e1cba1e99adfb32"
     },
     {
       "id": "shop-3cb99079c6aa9439",
@@ -12921,7 +13568,8 @@
           "bookshop": "Foyles — Charing Cross Road",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-3cb99079c6aa9439"
     },
     {
       "id": "shop-c38834fe861a1723",
@@ -12940,7 +13588,9 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "494",
+      "library_id": "494"
     },
     {
       "id": "shop-fa8566b81cdce049",
@@ -12992,7 +13642,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-fa8566b81cdce049"
     },
     {
       "id": "shop-2e969a76e82391c8",
@@ -13011,7 +13662,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-2e969a76e82391c8"
     },
     {
       "id": "shop-0dbb36d70c7c7178",
@@ -13030,7 +13682,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-0dbb36d70c7c7178"
     },
     {
       "id": "shop-359d0e4e487894d4",
@@ -13054,7 +13707,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-359d0e4e487894d4"
     },
     {
       "id": "shop-29ad9c1cb57ba2b3",
@@ -13073,7 +13727,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-29ad9c1cb57ba2b3"
     },
     {
       "id": "shop-c5bcab45f4b62d08",
@@ -13092,7 +13747,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-c5bcab45f4b62d08"
     },
     {
       "id": "shop-96fdc07c880ad18d",
@@ -13111,7 +13767,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-96fdc07c880ad18d"
     },
     {
       "id": "shop-ad01b5e583ed065a",
@@ -13130,7 +13787,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ad01b5e583ed065a"
     },
     {
       "id": "shop-ed4d35f3b8faeec8",
@@ -13149,7 +13807,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ed4d35f3b8faeec8"
     },
     {
       "id": "shop-6399729a5aa2e6fb",
@@ -13168,7 +13827,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-6399729a5aa2e6fb"
     },
     {
       "id": "shop-7fa63248b48c9799",
@@ -13192,7 +13852,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-7fa63248b48c9799"
     },
     {
       "id": "shop-937bd41a8b0e4964",
@@ -13216,7 +13877,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-937bd41a8b0e4964"
     },
     {
       "id": "shop-116dad01785f5ec5",
@@ -13235,7 +13897,8 @@
           "bookshop": "Colombo bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-116dad01785f5ec5"
     },
     {
       "id": "shop-9e701c8116a08c46",
@@ -13254,7 +13917,8 @@
           "bookshop": "Colombo bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-9e701c8116a08c46"
     },
     {
       "id": "shop-18f016f950c24efc",
@@ -13273,7 +13937,8 @@
           "bookshop": "Colombo bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-18f016f950c24efc"
     },
     {
       "id": "shop-7559ffcc9df48b28",
@@ -13292,7 +13957,8 @@
           "bookshop": "Colombo bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-7559ffcc9df48b28"
     },
     {
       "id": "shop-cabfd12dbf872fb5",
@@ -13311,7 +13977,9 @@
           "bookshop": "Colombo bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "447",
+      "library_id": "447"
     },
     {
       "id": "shop-537d285cc4903ddb",
@@ -13330,7 +13998,8 @@
           "bookshop": "Colombo bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-537d285cc4903ddb"
     },
     {
       "id": "shop-a69ab113c741fb4a",
@@ -13349,7 +14018,8 @@
           "bookshop": "Colombo bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-a69ab113c741fb4a"
     },
     {
       "id": "shop-0e24593ad7473ae0",
@@ -13373,7 +14043,8 @@
           "bookshop": "Colombo bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-0e24593ad7473ae0"
     },
     {
       "id": "shop-b45ac1799b03d9d7",
@@ -13392,7 +14063,8 @@
           "bookshop": "Colombo bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-b45ac1799b03d9d7"
     },
     {
       "id": "shop-e3938df331918928",
@@ -13416,7 +14088,8 @@
           "bookshop": "Belém art/museum bookshop — unidentified",
           "shop_status": "Unresolved shop"
         }
-      ]
+      ],
+      "book_id": "work-shop-e3938df331918928"
     },
     {
       "id": "shop-47ff654c1c4881f0",
@@ -13440,7 +14113,8 @@
           "bookshop": "Belém art/museum bookshop — unidentified",
           "shop_status": "Unresolved shop"
         }
-      ]
+      ],
+      "book_id": "work-shop-47ff654c1c4881f0"
     },
     {
       "id": "shop-7da092c46737e1b9",
@@ -13459,7 +14133,8 @@
           "bookshop": "FNAC Colombo",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-7da092c46737e1b9"
     },
     {
       "id": "shop-79e51b6ae0c1b2c4",
@@ -13478,7 +14153,8 @@
           "bookshop": "FNAC Colombo",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-79e51b6ae0c1b2c4"
     },
     {
       "id": "shop-686359245a1c89d2",
@@ -13502,7 +14178,8 @@
           "bookshop": "FNAC Colombo",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-686359245a1c89d2"
     },
     {
       "id": "shop-87cfeb0cd5ffdd22",
@@ -13526,7 +14203,8 @@
           "bookshop": "FNAC Colombo",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-87cfeb0cd5ffdd22"
     },
     {
       "id": "shop-59e25de74ecf93b7",
@@ -13562,7 +14240,8 @@
           "bookshop": "FNAC Colombo",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-59e25de74ecf93b7"
     },
     {
       "id": "shop-e4c4a71b2202886d",
@@ -13581,7 +14260,8 @@
           "bookshop": "FNAC Colombo",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e4c4a71b2202886d"
     },
     {
       "id": "shop-155cbd47a86a61ba",
@@ -13600,7 +14280,8 @@
           "bookshop": "FNAC Colombo",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-155cbd47a86a61ba"
     },
     {
       "id": "shop-41b373ae51026ac4",
@@ -13619,7 +14300,8 @@
           "bookshop": "FNAC Colombo",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-41b373ae51026ac4"
     },
     {
       "id": "shop-2b8a3f1602c963c4",
@@ -13643,7 +14325,8 @@
           "bookshop": "FNAC Colombo",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-2b8a3f1602c963c4"
     },
     {
       "id": "shop-a3a845b596bc8e9d",
@@ -13662,7 +14345,8 @@
           "bookshop": "FNAC Colombo",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a3a845b596bc8e9d"
     },
     {
       "id": "shop-b9b4273acf4896e5",
@@ -13681,7 +14365,8 @@
           "bookshop": "FNAC Colombo",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b9b4273acf4896e5"
     },
     {
       "id": "shop-439b5183bec73367",
@@ -13700,7 +14385,8 @@
           "bookshop": "FNAC Colombo",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-439b5183bec73367"
     },
     {
       "id": "shop-9714b3b2b5a079ac",
@@ -13719,7 +14405,8 @@
           "bookshop": "FNAC Colombo",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-9714b3b2b5a079ac"
     },
     {
       "id": "shop-22ae69ac14e341e3",
@@ -13743,7 +14430,8 @@
           "bookshop": "FNAC Colombo",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-22ae69ac14e341e3"
     },
     {
       "id": "shop-84cd97f8b1c7987f",
@@ -13767,7 +14455,8 @@
           "bookshop": "FNAC Colombo",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-84cd97f8b1c7987f"
     },
     {
       "id": "shop-250ceeea7bcd3812",
@@ -13791,7 +14480,8 @@
           "bookshop": "FNAC Colombo",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-250ceeea7bcd3812"
     },
     {
       "id": "shop-233c8c9fd3bd80b7",
@@ -13810,7 +14500,8 @@
           "bookshop": "FNAC Colombo",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-233c8c9fd3bd80b7"
     },
     {
       "id": "shop-b4d6bf6dff013c8f",
@@ -13829,7 +14520,8 @@
           "bookshop": "FNAC Colombo",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b4d6bf6dff013c8f"
     },
     {
       "id": "shop-8532410e1fb1ca1a",
@@ -13848,7 +14540,8 @@
           "bookshop": "FNAC Colombo",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-8532410e1fb1ca1a"
     },
     {
       "id": "shop-e312080da7df8d04",
@@ -13867,7 +14560,8 @@
           "bookshop": "FNAC Colombo",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e312080da7df8d04"
     },
     {
       "id": "shop-a451b597267c1a99",
@@ -13886,7 +14580,8 @@
           "bookshop": "FNAC Colombo",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a451b597267c1a99"
     },
     {
       "id": "shop-c0d8ecc5d55d673f",
@@ -13913,7 +14608,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-c0d8ecc5d55d673f"
     },
     {
       "id": "shop-ac32c72c5d63c586",
@@ -13937,7 +14633,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ac32c72c5d63c586"
     },
     {
       "id": "shop-a19e2c3fa7db20d7",
@@ -13969,7 +14666,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a19e2c3fa7db20d7"
     },
     {
       "id": "shop-91d81c9d6081222a",
@@ -13993,7 +14691,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-91d81c9d6081222a"
     },
     {
       "id": "shop-733e929ac1c9c6e5",
@@ -14012,7 +14711,9 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "576",
+      "library_id": "576"
     },
     {
       "id": "shop-6c03f985694cd411",
@@ -14031,7 +14732,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-6c03f985694cd411"
     },
     {
       "id": "shop-0f23d6d54f9f4bd5",
@@ -14050,7 +14752,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-0f23d6d54f9f4bd5"
     },
     {
       "id": "shop-9f858739d0721d59",
@@ -14069,7 +14772,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-9f858739d0721d59"
     },
     {
       "id": "shop-32b209d06adef31b",
@@ -14088,7 +14792,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-32b209d06adef31b"
     },
     {
       "id": "shop-3f2b3665f139ad4f",
@@ -14107,7 +14812,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-3f2b3665f139ad4f"
     },
     {
       "id": "shop-8ab580599ffea0e7",
@@ -14126,7 +14832,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-8ab580599ffea0e7"
     },
     {
       "id": "shop-ff744651dfc7e004",
@@ -14145,7 +14852,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ff744651dfc7e004"
     },
     {
       "id": "shop-ffe7bee18b15b4ac",
@@ -14164,7 +14872,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ffe7bee18b15b4ac"
     },
     {
       "id": "shop-b69ce44e42d82140",
@@ -14183,7 +14892,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b69ce44e42d82140"
     },
     {
       "id": "shop-a521ba809e9292b2",
@@ -14202,7 +14912,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a521ba809e9292b2"
     },
     {
       "id": "shop-5522557aef6eae7f",
@@ -14221,7 +14932,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-5522557aef6eae7f"
     },
     {
       "id": "shop-a912ceeaae910722",
@@ -14240,7 +14952,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a912ceeaae910722"
     },
     {
       "id": "shop-ce30a318df6766cd",
@@ -14259,7 +14972,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ce30a318df6766cd"
     },
     {
       "id": "shop-00bc40e4420a3413",
@@ -14278,7 +14992,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-00bc40e4420a3413"
     },
     {
       "id": "shop-358757cf3bed832d",
@@ -14297,7 +15012,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-358757cf3bed832d"
     },
     {
       "id": "shop-23e6bb48c3ba4517",
@@ -14316,7 +15032,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-23e6bb48c3ba4517"
     },
     {
       "id": "shop-f9cb66245a5c5f7e",
@@ -14335,7 +15052,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-f9cb66245a5c5f7e"
     },
     {
       "id": "shop-f857374970dc6d50",
@@ -14354,7 +15072,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-f857374970dc6d50"
     },
     {
       "id": "shop-60f357545b39f644",
@@ -14373,7 +15092,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-60f357545b39f644"
     },
     {
       "id": "shop-2691210b7e758ad3",
@@ -14392,7 +15112,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-2691210b7e758ad3"
     },
     {
       "id": "shop-15380d2e4bdaaebf",
@@ -14411,7 +15132,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-15380d2e4bdaaebf"
     },
     {
       "id": "shop-4a87c2930ba4cafd",
@@ -14435,7 +15157,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-4a87c2930ba4cafd"
     },
     {
       "id": "shop-b9d807ef7200be6c",
@@ -14454,7 +15177,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b9d807ef7200be6c"
     },
     {
       "id": "shop-5c7ce0f08e5eb9f1",
@@ -14473,7 +15197,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-5c7ce0f08e5eb9f1"
     },
     {
       "id": "shop-12719e116a408ddd",
@@ -14505,7 +15230,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-12719e116a408ddd"
     },
     {
       "id": "shop-27936241b6e3a4a1",
@@ -14524,7 +15250,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-27936241b6e3a4a1"
     },
     {
       "id": "shop-449f022bc365fa87",
@@ -14543,7 +15270,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-449f022bc365fa87"
     },
     {
       "id": "shop-d8daaabcfcdf3ab1",
@@ -14562,7 +15290,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-d8daaabcfcdf3ab1"
     },
     {
       "id": "shop-28fc318496c007ed",
@@ -14581,7 +15310,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-28fc318496c007ed"
     },
     {
       "id": "shop-20b0fb5f777f2b38",
@@ -14600,7 +15330,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-20b0fb5f777f2b38"
     },
     {
       "id": "shop-a8ab89930a07f490",
@@ -14619,7 +15350,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-a8ab89930a07f490"
     },
     {
       "id": "shop-98dbb3cd4636fd19",
@@ -14638,7 +15370,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-98dbb3cd4636fd19"
     },
     {
       "id": "shop-8657d50b542f2753",
@@ -14657,7 +15390,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-8657d50b542f2753"
     },
     {
       "id": "shop-0ebd10c46c8b2112",
@@ -14681,7 +15415,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-0ebd10c46c8b2112"
     },
     {
       "id": "shop-addfcb66dba99a6c",
@@ -14700,7 +15435,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-addfcb66dba99a6c"
     },
     {
       "id": "shop-3edb072b35055e7f",
@@ -14719,7 +15455,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-3edb072b35055e7f"
     },
     {
       "id": "shop-31c3633fbbeabfb3",
@@ -14738,7 +15475,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-31c3633fbbeabfb3"
     },
     {
       "id": "shop-b696dc5a9c3be917",
@@ -14757,7 +15495,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b696dc5a9c3be917"
     },
     {
       "id": "shop-2e86ce70f8c4fce5",
@@ -14776,7 +15515,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-2e86ce70f8c4fce5"
     },
     {
       "id": "shop-d4682251ab2fe0ff",
@@ -14795,7 +15535,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-d4682251ab2fe0ff"
     },
     {
       "id": "shop-66c7634a49a23767",
@@ -14814,7 +15555,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-66c7634a49a23767"
     },
     {
       "id": "shop-834dc509d2d23dac",
@@ -14833,7 +15575,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-834dc509d2d23dac"
     },
     {
       "id": "shop-63a9a7c71f75b3df",
@@ -14852,7 +15595,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-63a9a7c71f75b3df"
     },
     {
       "id": "shop-e1a8812fe0e6abe6",
@@ -14871,7 +15615,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e1a8812fe0e6abe6"
     },
     {
       "id": "shop-45d23c6105869f83",
@@ -14890,7 +15635,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-45d23c6105869f83"
     },
     {
       "id": "shop-d32f6dfb6a1e9eda",
@@ -14909,7 +15655,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-d32f6dfb6a1e9eda"
     },
     {
       "id": "shop-d4711c52ad46925b",
@@ -14928,7 +15675,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-d4711c52ad46925b"
     },
     {
       "id": "shop-c6e7093f2a430b82",
@@ -14947,7 +15695,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-c6e7093f2a430b82"
     },
     {
       "id": "shop-9e5c057377822d64",
@@ -14983,7 +15732,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-9e5c057377822d64"
     },
     {
       "id": "shop-fde6ad765d79af35",
@@ -15002,7 +15752,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-fde6ad765d79af35"
     },
     {
       "id": "shop-b82e801adc5f29e0",
@@ -15021,7 +15772,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b82e801adc5f29e0"
     },
     {
       "id": "shop-c292481939d774b9",
@@ -15040,7 +15792,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-c292481939d774b9"
     },
     {
       "id": "shop-8d2439f561fdcc60",
@@ -15059,7 +15812,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-8d2439f561fdcc60"
     },
     {
       "id": "shop-c706a1b5ee43249c",
@@ -15078,7 +15832,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-c706a1b5ee43249c"
     },
     {
       "id": "shop-92fa5c42a6d2fda1",
@@ -15097,7 +15852,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-92fa5c42a6d2fda1"
     },
     {
       "id": "shop-b0779d7f310bd051",
@@ -15116,7 +15872,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b0779d7f310bd051"
     },
     {
       "id": "shop-d504e34de1718b32",
@@ -15135,7 +15892,9 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "239",
+      "library_id": "239"
     },
     {
       "id": "shop-0f482a29dd70b8f1",
@@ -15154,7 +15913,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-0f482a29dd70b8f1"
     },
     {
       "id": "shop-7b6ad9f722fdf5df",
@@ -15173,7 +15933,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-7b6ad9f722fdf5df"
     },
     {
       "id": "shop-e513d14829dee1ce",
@@ -15192,7 +15953,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-e513d14829dee1ce"
     },
     {
       "id": "shop-790cf16a9ba5c701",
@@ -15211,7 +15973,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-790cf16a9ba5c701"
     },
     {
       "id": "shop-15b755cb1626cd30",
@@ -15230,7 +15993,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-15b755cb1626cd30"
     },
     {
       "id": "shop-3835fe62dcfb7739",
@@ -15249,7 +16013,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-3835fe62dcfb7739"
     },
     {
       "id": "shop-0bc7704f12d533f7",
@@ -15268,7 +16033,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-0bc7704f12d533f7"
     },
     {
       "id": "shop-b3156135f016d297",
@@ -15287,7 +16053,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b3156135f016d297"
     },
     {
       "id": "shop-6fd41987b257d375",
@@ -15311,7 +16078,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-6fd41987b257d375"
     },
     {
       "id": "shop-ad79cf64e2341bde",
@@ -15335,7 +16103,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ad79cf64e2341bde"
     },
     {
       "id": "shop-edd80e806b7cd2c6",
@@ -15359,7 +16128,8 @@
           "bookshop": "Mladinska knjiga — Konzorcij",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-edd80e806b7cd2c6"
     },
     {
       "id": "shop-4347101944045df7",
@@ -15378,7 +16148,8 @@
           "bookshop": "Vasco da Gama bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-4347101944045df7"
     },
     {
       "id": "shop-47c196b678190a0a",
@@ -15397,7 +16168,8 @@
           "bookshop": "Vasco da Gama bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-47c196b678190a0a"
     },
     {
       "id": "shop-db5d0c5470559488",
@@ -15416,7 +16188,8 @@
           "bookshop": "Vasco da Gama bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-db5d0c5470559488"
     },
     {
       "id": "shop-95895c8acd54d731",
@@ -15435,7 +16208,8 @@
           "bookshop": "Vasco da Gama bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-95895c8acd54d731"
     },
     {
       "id": "shop-c24c8074f743aabe",
@@ -15454,7 +16228,8 @@
           "bookshop": "Vasco da Gama bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-c24c8074f743aabe"
     },
     {
       "id": "shop-619a10096ff1978d",
@@ -15473,7 +16248,8 @@
           "bookshop": "Vasco da Gama bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-619a10096ff1978d"
     },
     {
       "id": "shop-50d84dd192f968c6",
@@ -15492,7 +16268,8 @@
           "bookshop": "Vasco da Gama bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-50d84dd192f968c6"
     },
     {
       "id": "shop-97f5a68f2b061fae",
@@ -15516,7 +16293,8 @@
           "bookshop": "Vasco da Gama bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-97f5a68f2b061fae"
     },
     {
       "id": "shop-ec349d943b372d8b",
@@ -15540,7 +16318,8 @@
           "bookshop": "FNAC Colombo",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-ec349d943b372d8b"
     },
     {
       "id": "shop-b15fbd9d7103f894",
@@ -15559,7 +16338,8 @@
           "bookshop": "Mladinska knjiga — Dom knjige",
           "shop_status": "Strong match"
         }
-      ]
+      ],
+      "book_id": "work-shop-b15fbd9d7103f894"
     },
     {
       "id": "shop-4499f8599e2f717c",
@@ -15595,7 +16375,8 @@
           "bookshop": "Strada Outlet bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-4499f8599e2f717c"
     },
     {
       "id": "shop-76460697a140d460",
@@ -15614,7 +16395,8 @@
           "bookshop": "Strada Outlet bookshop — branch unresolved",
           "shop_status": "Unresolved branch"
         }
-      ]
+      ],
+      "book_id": "work-shop-76460697a140d460"
     }
   ]
 }
