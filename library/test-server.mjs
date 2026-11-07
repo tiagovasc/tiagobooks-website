@@ -27,3 +27,10 @@ test('password enables editing with an HttpOnly session',async()=>{
   const page=await fetch(base+'/',{headers:{Cookie:cookie.split(';')[0]}});assert.match(await page.text(),/window.CLOUD_CAN_EDIT=true/);
  }finally{delete process.env.LIBRARY_PASSWORD;delete process.env.SESSION_SECRET;await new Promise(resolve=>server.close(resolve));}
 });
+
+ test('favorite accepts optional booleans and rejects malformed flags',()=>{
+ const book={id:'favorite',title:'A book',rating:4};
+ for(const favorite of [true,false])assert.equal(validBooks([{...book,favorite}]),true);
+ assert.equal(validBooks([book]),true);
+ for(const favorite of ['true',1,0,null,{},[]])assert.equal(validBooks([{...book,favorite}]),false);
+ });

@@ -155,3 +155,16 @@ test('storage outages give a clear 503 and the server keeps running',async()=>{
   }finally{storageDown=false;}
   assert.equal((await fetch(base+'/health')).status,200);
 });
+
+test('favorite saves persist, publish, clear, and preserve all other fields',async()=>{
+ storageDown=false;const cookie=await login(),before=structuredClone(row.books),revision=row.revision;
+ const changed=structuredClone(before);changed[0].favorite=true;
+ assert.equal((await save(changed,revision,cookie)).status,200);
+ const owner=await (await fetch(base+'/books.json',{headers:{Cookie:cookie}})).json();
+ assert.deepEqual(owner,changed);
+ const pub=await (await fetch(base+'/books.json')).json();assert.equal(pub[0].favorite,true);
+ assert.equal((await save(before,row.revision,cookie)).status,200);
+ assert.deepEqual(row.books,before);
+ assert.equal((await (await fetch(base+'/books.json')).json())[0].favorite,undefined);
+ assert.equal((await save(changed,row.revision,null)).status,401);
+});

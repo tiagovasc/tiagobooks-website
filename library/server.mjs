@@ -72,7 +72,7 @@ async function db(method,query,body){
 }
 function send(res,status,data,headers={}){res.writeHead(status,{'Content-Type':'application/json','Cache-Control':'no-store',...SECURITY,...headers});res.end(JSON.stringify(data));}
 export function validBooks(books){
-  return Array.isArray(books)&&books.length<=10000&&new Set(books.map(b=>b?.id)).size===books.length&&books.every(b=>b&&typeof b.id==='string'&&typeof b.title==='string'&&Number.isInteger(b.rating)&&b.rating>=0&&b.rating<=5&&(b.merged_record_ids==null||Array.isArray(b.merged_record_ids)));
+  return Array.isArray(books)&&books.length<=10000&&new Set(books.map(b=>b?.id)).size===books.length&&books.every(b=>b&&typeof b.id==='string'&&typeof b.title==='string'&&Number.isInteger(b.rating)&&b.rating>=0&&b.rating<=5&&(b.favorite===undefined||typeof b.favorite==='boolean')&&(b.merged_record_ids==null||Array.isArray(b.merged_record_ids)));
 }
 // A save must never silently wipe or gut the library (for example after an accidental import of the wrong file).
 export function plausibleSave(previousCount,nextCount){

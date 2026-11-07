@@ -28,6 +28,8 @@ Run `library/supabase.sql` in **your own** Supabase project, then initialize the
 
 The live site's database is separate from this repository. A fresh deployment does not include or grant access to it. `LOCAL_LIBRARY_FILE` is for local development and is rejected in production.
 
+Favorites use an optional boolean `favorite` on each book in the existing `books` JSONB array. Missing means false, so existing catalogues need no SQL migration or bulk rewrite. Signed-in owners toggle hearts through the normal revision-checked save; visitors see the selected covers and Favorites section without edit controls. JSON/CSV exports retain the field. Ratings, reading status and tags are independent.
+
 ## Build and deploy
 
 Connect your repository and intended branch to the host, configure the variables, and deploy the Dockerfile. Supply `SITE_URL`, `CMS_REPOSITORY` and `CMS_BRANCH` to the build as well as runtime. Point the domain at your host and enable HTTPS. `/healthz` checks the built blog, search index and library storage.
