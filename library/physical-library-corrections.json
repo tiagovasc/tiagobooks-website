@@ -1,6 +1,6 @@
 {
   "version": "physical-library-20261107-v1",
-  "activate": false,
+  "activate": true,
   "updates": [
     {
       "id": "656",
@@ -60,7 +60,6 @@
       "tags": [
         "owned_unread"
       ],
-      "format": "Paperback",
       "notes": "Physical copy confirmed from owner-provided shelf photo 3 on 7 November 2026. Reading completion and acquisition date not supplied. Author and precise edition unresolved; do not infer from another book titled Kruh.",
       "sources": [
         "Owner physical shelf photo"
