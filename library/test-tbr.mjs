@@ -134,9 +134,10 @@ test('All chronology mixes sources, reverses exactly and preserves every members
  for(const book of recent){assert.ok(book.discovery_dates[book.chronology_source]);for(const [source,entry] of Object.entries(book.discovery_dates)){assert.equal(entry.estimated,source!=='bookshops');assert.match(entry.date,source==='bookshops'?/^\d{4}-\d{2}$/:/^\d{4}-\d{2}-\d{2}$/);}}
 });
 
-test('Estimated dates are labelled and actual photo days remain undisclosed',()=>{
+test('Frontend dates show only month/year while backend estimates retain their date and basis',()=>{
  const book={chronology_source:'instagram',discovery_dates:{instagram:{date:'2026-11-06',estimated:true},bookshops:{date:'2026-10',estimated:false}}};
- assert.match(discoveryDateHTML(book),/Est\. 6 Nov 2026/);assert.match(discoveryDateHTML(book),/Estimated saved date/);
+ assert.equal(discoveryDateHTML(book),'<span class="tbr-date"><time datetime="2026-11">Nov 2026</time></span>');
+ assert.equal(book.discovery_dates.instagram.date,'2026-11-06');assert.equal(book.discovery_dates.instagram.estimated,true);
  assert.match(discoveryDateHTML(book,'bookshops'),/Oct 2026/);assert.ok(!discoveryDateHTML(book,'bookshops').includes('2026-10-'));
  assert.equal(discoveryDateHTML({},'online'),'');
  assert.throws(()=>assertPublicTripDates({books:[{sightings:[{photographed_at:'2026-10',photo_order:1.5}]}]}),/rank/);
