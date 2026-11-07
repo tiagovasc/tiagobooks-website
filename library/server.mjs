@@ -11,6 +11,7 @@ import {mergeEditedSnapshot,EditConflict} from './library-edit-merge.mjs';
 import {applyFavoriteUnion} from './favorite-union-recovery.mjs';
 import {applyMissingCovers} from './missing-cover-recovery.mjs';
 import {applyBookIdentification} from './book-identification-recovery.mjs';
+import {applyPhysicalLibraryCorrections} from './physical-library-corrections.mjs';
 import {applyOperations,validateOperations,stampLegacyChanges,SYNC_PROTOCOL} from './sync-operations.mjs';
 import {readFile,stat} from 'node:fs/promises';
 import path from 'node:path';
@@ -43,6 +44,8 @@ export async function activateBookReconciliation(){
   reconciliationStatus.book_identification=await applyBookIdentification({db,backup:createReconciliationBackup(base,key),plan:identificationPlan});
   const coursePlan=JSON.parse(await readFile(path.join(root,'course-cover-recovery.json'),'utf8'));
   reconciliationStatus.course_cover_recovery=await applyMissingCovers({db,backup:createReconciliationBackup(base,key),plan:coursePlan});
+  const physicalPlan=JSON.parse(await readFile(path.join(root,'physical-library-corrections.json'),'utf8'));
+  reconciliationStatus.physical_library=await applyPhysicalLibraryCorrections({db,backup:createReconciliationBackup(base,key),plan:physicalPlan});
   snapshot=null;
   return reconciliationStatus;
 }

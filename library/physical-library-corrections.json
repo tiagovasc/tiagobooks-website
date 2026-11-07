@@ -1,0 +1,172 @@
+{
+  "version": "physical-library-20261107-v1",
+  "activate": false,
+  "updates": [
+    {
+      "id": "656",
+      "title": "The Burnout Society",
+      "author": "Byung-Chul Han",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "227",
+      "title": "Experiments in Mystical Atheism",
+      "author": "Brook Ziporyn",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "976",
+      "title": "What's the difference?",
+      "author": "",
+      "fields": {
+        "author": "Adam Ferner",
+        "cover": "covers/physical20261107_ferner_78953320d814.jpg",
+        "cover_status": "ok"
+      }
+    },
+    {
+      "id": "work-online-5f9204ba1b36e5171611",
+      "title": "Net of Being",
+      "author": "Alex Grey",
+      "fields": {
+        "owned": true,
+        "library_member": true
+      }
+    },
+    {
+      "id": "work-online-52ed84e9c508e2276da8",
+      "title": "The Human Edge: Analogy and the Roots of Creative Intelligence",
+      "author": "Keith J. Holyoak",
+      "fields": {
+        "owned": true,
+        "library_member": true
+      }
+    }
+  ],
+  "additions": [
+    {
+      "id": "physical-20261107-kruh",
+      "title": "Kruh",
+      "author": "",
+      "owned": true,
+      "library_member": true,
+      "read_status": "unread",
+      "rating": 0,
+      "favorite": false,
+      "tags": [
+        "owned_unread"
+      ],
+      "format": "Paperback",
+      "notes": "Physical copy confirmed from owner-provided shelf photo 3 on 7 November 2026. Reading completion and acquisition date not supplied. Author and precise edition unresolved; do not infer from another book titled Kruh.",
+      "sources": [
+        "Owner physical shelf photo"
+      ],
+      "acquisition_source": "Physical-library photo audit, 7 November 2026"
+    },
+    {
+      "id": "physical-20261107-hero",
+      "title": "The Rebirth of the Hero: Mythology as a Guide to Spiritual Transformation",
+      "author": "Keiron Le Grice",
+      "owned": true,
+      "library_member": true,
+      "read_status": "unread",
+      "rating": 0,
+      "favorite": false,
+      "tags": [
+        "owned_unread"
+      ],
+      "format": "Paperback",
+      "notes": "Physical copy confirmed from owner-provided shelf photo 3 on 7 November 2026. Reading completion and acquisition date not supplied.",
+      "sources": [
+        "Owner physical shelf photo"
+      ],
+      "acquisition_source": "Physical-library photo audit, 7 November 2026",
+      "publisher": "Aeon Books",
+      "isbn13": "9781913274085",
+      "publication_year": 2019,
+      "pages": 304,
+      "cover": "covers/physical20261107_hero_48c7f5cbd01a.jpg",
+      "cover_status": "ok"
+    },
+    {
+      "id": "physical-20261107-communism",
+      "title": "The Idea of Communism",
+      "author": "Costas Douzinas; Slavoj Žižek (editors)",
+      "owned": true,
+      "library_member": true,
+      "read_status": "unread",
+      "rating": 0,
+      "favorite": false,
+      "tags": [
+        "owned_unread"
+      ],
+      "format": "Paperback",
+      "notes": "Physical copy confirmed from owner-provided shelf photo 4 on 7 November 2026. Reading completion and acquisition date not supplied.",
+      "sources": [
+        "Owner physical shelf photo"
+      ],
+      "acquisition_source": "Physical-library photo audit, 7 November 2026",
+      "publisher": "Verso",
+      "isbn13": "9781844674596",
+      "publication_year": 2010,
+      "pages": 240,
+      "cover": "covers/physical20261107_communism_e3a6a8ee2e10.jpg",
+      "cover_status": "ok"
+    },
+    {
+      "id": "physical-20261107-rumi",
+      "title": "Rumi Illustrated",
+      "author": "Jalal al-Din Muhammad Rumi",
+      "owned": true,
+      "library_member": true,
+      "read_status": "unread",
+      "rating": 0,
+      "favorite": false,
+      "tags": [
+        "owned_unread"
+      ],
+      "format": "Hardcover",
+      "notes": "Physical copy confirmed from owner-provided shelf photo 4 on 7 November 2026. Reading completion and acquisition date not supplied.",
+      "sources": [
+        "Owner physical shelf photo"
+      ],
+      "acquisition_source": "Physical-library photo audit, 7 November 2026",
+      "publisher": "Amber Books",
+      "isbn13": "9781838863074",
+      "pages": 160,
+      "cover": "covers/physical20261107_rumi_front_9ea457817323.jpg",
+      "cover_status": "ok"
+    },
+    {
+      "id": "physical-20261107-outsider",
+      "title": "The Outsider: Manga Edition",
+      "author": "Albert Camus",
+      "owned": true,
+      "library_member": true,
+      "read_status": "unread",
+      "rating": 0,
+      "favorite": false,
+      "tags": [
+        "owned_unread"
+      ],
+      "format": "Paperback",
+      "notes": "Physical copy confirmed from owner-provided shelf photo 4 on 7 November 2026. Reading completion and acquisition date not supplied.",
+      "sources": [
+        "Owner physical shelf photo"
+      ],
+      "acquisition_source": "Physical-library photo audit, 7 November 2026",
+      "publisher": "Penguin Classics",
+      "isbn13": "9780241703731",
+      "publication_year": 2024,
+      "pages": 320,
+      "cover": "covers/physical20261107_outsider_a50fdb8b689d.jpg",
+      "cover_status": "ok",
+      "additional_authors": "Ryota Kurumado (illustrator); Ros Schwartz (translator)",
+      "related_book_id": "860"
+    }
+  ]
+}
