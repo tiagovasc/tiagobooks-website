@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {filterBooks,groupBooks,SOURCES,sourceBooks,filterCatalogue,collectionGroups,sourceLabel,SOURCE_VIEWS,catalogueCounts,tripMonthLabel} from './tbr.js';
+import {filterBooks,groupBooks,SOURCES,sourceBooks,filterCatalogue,collectionGroups,sourceLabel,SOURCE_VIEWS,catalogueCounts,tripMonthLabel,discoveryDateHTML} from './tbr.js';
 import {publicTripCatalogue,assertPublicTripDates} from './trip-privacy.mjs';
 const data=JSON.parse(fs.readFileSync(new URL('./tbr-bookshops.json',import.meta.url),'utf8'));
 
@@ -95,4 +95,49 @@ test('month-only sorting keeps each visit together across pagination',()=>{
    assert.ok(sort==='oldest'?previous<=current:previous>=current);
   }
  }
+});
+
+test('Exact photo ranks override month and visit-ID ties, including filtered sightings',()=>{
+ const sight=(visit,rank,city)=>({visit_id:visit,photo_order:rank,city,bookshop:'Shop',photographed_at:'2026-10'});
+ const a={id:'a',title:'Earlier',sightings:[sight('A',10,'London')]};
+ const b={id:'b',title:'Later',sightings:[sight('Z',1,'Porto'),sight('B',20,'London')]};
+ const before=JSON.stringify([a,b]);
+ assert.deepEqual(filterBooks([a,b]).map(b=>b.id),['b','a']);
+ assert.deepEqual(filterBooks([a,b],{sort:'oldest'}).map(b=>b.id),['a','b']);
+ assert.deepEqual(filterBooks([a,b],{city:'London'}).map(b=>b.id),['a','b']);
+ assert.equal(JSON.stringify([a,b]),before);
+});
+
+test('Discovery dates preserve source order, fixed endpoints and even spacing',()=>{
+ const all=JSON.parse(fs.readFileSync(new URL('./tbr-catalogue.json',import.meta.url),'utf8'));
+ for(const [source,start] of [['instagram','2021-11-06'],['online','2017-01-01']]){
+  const list=filterCatalogue(all.books,{source});
+  assert.equal(list[0].discovery_dates[source].date,'2026-11-06');
+  assert.equal(list.at(-1).discovery_dates[source].date,start);
+  const end=Date.parse('2026-11-06'),span=end-Date.parse(start);
+  for(const [i,book] of list.entries()){
+   const expected=new Date(end-Math.round(i*(span/86400000)/(list.length-1))*86400000).toISOString().slice(0,10);
+   assert.equal(book.discovery_dates[source].date,expected);assert.equal(book.discovery_dates[source].estimated,true);
+   if(i)assert.ok(list[i-1][source+'_order']<book[source+'_order']);
+  }
+  assert.deepEqual(filterCatalogue(all.books,{source,sort:'oldest'}).map(b=>b.id),list.map(b=>b.id).reverse());
+ }
+});
+
+test('All chronology mixes sources, reverses exactly and preserves every membership',()=>{
+ const all=JSON.parse(fs.readFileSync(new URL('./tbr-catalogue.json',import.meta.url),'utf8'));
+ const recent=filterCatalogue(all.books),oldest=filterCatalogue(all.books,{sort:'oldest'});
+ assert.equal(recent.length,5227);assert.deepEqual(recent.map(b=>b.chronology_order),Array.from({length:5227},(_,i)=>i));
+ assert.deepEqual(oldest.map(b=>b.id),recent.map(b=>b.id).reverse());
+ assert.equal(new Set(recent.map(b=>b.id)).size,5227);
+ assert.equal(new Set(recent.slice(0,100).map(b=>b.chronology_source)).size,3);
+ for(const book of recent){assert.ok(book.discovery_dates[book.chronology_source]);for(const [source,entry] of Object.entries(book.discovery_dates)){assert.equal(entry.estimated,source!=='bookshops');assert.match(entry.date,source==='bookshops'?/^\d{4}-\d{2}$/:/^\d{4}-\d{2}-\d{2}$/);}}
+});
+
+test('Estimated dates are labelled and actual photo days remain undisclosed',()=>{
+ const book={chronology_source:'instagram',discovery_dates:{instagram:{date:'2026-11-06',estimated:true},bookshops:{date:'2026-10',estimated:false}}};
+ assert.match(discoveryDateHTML(book),/Est\. 6 Nov 2026/);assert.match(discoveryDateHTML(book),/Estimated saved date/);
+ assert.match(discoveryDateHTML(book,'bookshops'),/Oct 2026/);assert.ok(!discoveryDateHTML(book,'bookshops').includes('2026-10-'));
+ assert.equal(discoveryDateHTML({},'online'),'');
+ assert.throws(()=>assertPublicTripDates({books:[{sightings:[{photographed_at:'2026-10',photo_order:1.5}]}]}),/rank/);
 });

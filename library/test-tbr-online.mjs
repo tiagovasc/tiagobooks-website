@@ -22,7 +22,7 @@ test('shared works count once globally and belong to both source views',()=>{
   assert.deepEqual(sourceBooks([{id:'legacy',sightings}], 'bookshops').map(b=>b.id),['legacy']);
 });
 
-test('Online default order retains capture ordering without fabricated dates or places',()=>{
+test('Online fallback order retains approved ordering without inventing missing places',()=>{
   const before=JSON.stringify(books);
   assert.deepEqual(filterCatalogue(books,{source:'online'}).map(b=>b.id),['online','unknown','shared']);
   assert.deepEqual(filterCatalogue(books,{source:'online',sort:'oldest'}).map(b=>b.id),['shared','unknown','online']);
@@ -32,7 +32,7 @@ test('Online default order retains capture ordering without fabricated dates or 
   const groups=collectionGroups(filterCatalogue(books,{source:'online'}),'online');
   assert.equal(groups.length,1);
   assert.equal(groups[0].place,undefined);
-  assert.deepEqual(sortOptions('online').slice(0,2),[['recent','Default order'],['oldest','Reverse order']]);
+  assert.deepEqual(sortOptions('online').slice(0,2),[['recent','Newest saved'],['oldest','Oldest saved']]);
 });
 
 test('Online search finds every source member, including shared works, without requiring sightings',()=>{

@@ -61,7 +61,7 @@ test('unified TBR retains every bookshop field and counts shared books once',()=
 });
 
 test('Online records expose only public book metadata and existing local covers',()=>{
-  const allowed=new Set(['id','title','author','cover','description','identity_status','sightings','sources','creators','online_order','instagram_order','book_id','library_id','source_metadata_original','series','volume']);
+  const allowed=new Set(['id','title','author','cover','description','identity_status','sightings','sources','creators','online_order','instagram_order','book_id','library_id','source_metadata_original','series','volume','discovery_dates','chronology_source','chronology_order']);
   for(const book of catalogue.books){
     if(!book.sources.includes('online'))continue;
     assert.ok(book.title&&Number.isFinite(book.online_order));
@@ -94,7 +94,7 @@ test('search finds Online-only and shared books once with the appropriate destin
 test('Instagram records expose only public fields and search every source member once',()=>{
   const instagram=sourceBooks(catalogue.books,'instagram');
   assert.ok(instagram.length>0);
-  const allowed=new Set(['id','title','author','cover','description','identity_status','sightings','sources','creators','instagram_order','book_id','library_id']);
+  const allowed=new Set(['id','title','author','cover','description','identity_status','sightings','sources','creators','instagram_order','book_id','library_id','discovery_dates','chronology_source','chronology_order']);
   for(const book of instagram){
     assert.ok(book.title&&Number.isFinite(book.instagram_order));
     if(book.sources.length===1){
