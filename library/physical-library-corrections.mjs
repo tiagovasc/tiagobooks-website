@@ -56,3 +56,23 @@ export async function applyPhysicalLibraryCorrections({db,backup,plan}){
  }
  throw Error('Concurrent edits prevented safe physical corrections');
 }
+
+// An owner can withdraw a proposed addition while a release is already rolling out.
+export async function withdrawPhysicalAdditions({db,backup,plan}){
+ if(!plan.activate||!plan.withdrawn_ids?.length)return {state:'not_needed'};
+ const version=plan.version+'-withdrawal';
+ const prior=await backup.optionalReceipt(version);if(prior?.state==='applied')return prior;
+ for(let attempt=0;attempt<8;attempt++){
+  const [row]=await db('GET','?id=eq.library&select=*');
+  const targets=row.books.filter(b=>plan.withdrawn_ids.includes(b.id));
+  if(!targets.length)return {state:'not_present'};
+  if(targets.some(b=>b._sync_versions?._created!==plan.version||Object.keys(b._sync_versions).some(k=>k!=='_created')||b.favorite||b.rating||b.read_status!=='unread'))throw Error('Withdrawn addition has later owner edits; review before removal');
+  const preserved=await backup.preserve(row,version);if(!preserved.backup_verified)throw Error('Withdrawal backup not verified');
+  const books=row.books.filter(b=>!plan.withdrawn_ids.includes(b.id));
+  const result=await db('PATCH',`?id=eq.library&revision=eq.${row.revision}`,{books,revision:row.revision+1,updated_at:new Date().toISOString()});
+  if(!result.length)continue;
+  if(!equal(result[0].books,books))throw Error('Withdrawal readback differs');
+  const receipt={...preserved,state:'applied',removed_ids:targets.map(b=>b.id),before_revision:row.revision,after_revision:row.revision+1,all_other_records_preserved:true};await backup.receipt(version,receipt);return receipt;
+ }
+ throw Error('Concurrent edits prevented withdrawal');
+}

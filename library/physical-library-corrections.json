@@ -49,24 +49,6 @@
   ],
   "additions": [
     {
-      "id": "physical-20261107-kruh",
-      "title": "Kruh",
-      "author": "",
-      "owned": true,
-      "library_member": true,
-      "read_status": "unread",
-      "rating": 0,
-      "favorite": false,
-      "tags": [
-        "owned_unread"
-      ],
-      "notes": "Physical copy confirmed from owner-provided shelf photo 3 on 7 November 2026. Reading completion and acquisition date not supplied. Author and precise edition unresolved; do not infer from another book titled Kruh.",
-      "sources": [
-        "Owner physical shelf photo"
-      ],
-      "acquisition_source": "Physical-library photo audit, 7 November 2026"
-    },
-    {
       "id": "physical-20261107-hero",
       "title": "The Rebirth of the Hero: Mythology as a Guide to Spiritual Transformation",
       "author": "Keiron Le Grice",
@@ -167,5 +149,8 @@
       "additional_authors": "Ryota Kurumado (illustrator); Ros Schwartz (translator)",
       "related_book_id": "860"
     }
+  ],
+  "withdrawn_ids": [
+    "physical-20261107-kruh"
   ]
 }
