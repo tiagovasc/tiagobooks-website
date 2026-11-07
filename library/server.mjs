@@ -1,6 +1,7 @@
 import http from 'node:http';
 import {localDB} from '../local-storage.mjs';
 import {createTbrFavoritesStore} from './tbr-favorites-store.mjs';
+import {ownedTbrIds} from './tbr-ownership.mjs';
 import {readBody,sameOrigin} from './http-utils.mjs';
 import {personalizeSiteHeader} from '../src/lib/site-shell.mjs';
 import {tripMonth,publicTripCatalogue} from './trip-privacy.mjs';
@@ -192,6 +193,12 @@ export const server=http.createServer(async(req,res)=>{
     if(url.pathname==='/login'&&req.method==='GET'){return htmlReply(200,'');}
     if(url.pathname==='/logout'){res.writeHead(303,{Location:safeNext(next), 'Set-Cookie':'library_session=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0','Cache-Control':'no-store',...SECURITY});return res.end();}
     if(url.pathname==='/save'&&!authenticated(req))return send(res,401,{error:'Enter the library password to enable edits'});
+    if(url.pathname==='/api/tbr-owned'&&req.method==='GET'){
+      const snap=await librarySnapshot();if(!snap)return send(res,503,{error:'Library is not initialized'});
+      const catalogue=JSON.parse(await readFile(path.join(root,'tbr-catalogue.json'),'utf8'));
+      const books=JSON.parse(snap.variant.raw.toString());
+      return send(res,200,{ids:ownedTbrIds(books,catalogue.books)});
+    }
     if(url.pathname==='/api/tbr-favorites'){
       if(req.method==='GET')return send(res,200,{ids:await tbrFavorites.list()});
       if(req.method!=='POST')return send(res,405,{error:'Method not allowed'});

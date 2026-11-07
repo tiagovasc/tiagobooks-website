@@ -32,6 +32,8 @@ Owned-library favorites use an optional boolean `favorite` on each book in the e
 
 Favorites is a filter within each reading section and every TBR source, rather than a separate section. TBR selections use independent per-book JSON objects in the private Supabase Storage bucket `tiagovf-book-favorites`, created on the first owner selection through the website's existing server-only service credential. The public `/api/tbr-favorites` read returns selected IDs; writes require the signed-in owner, same origin and a valid current catalogue ID. Catalogue/source records are never rewritten. Local development uses a companion `.tbr-favorites.json` file beside the local library, with atomic writes. Back up the bucket separately from the library row; keep it when rolling back UI code.
 
+TBR ownership badges are read-only indicators derived from the current library through `/api/tbr-owned`. Only records with `owned: true` contribute: explicit `tbr_ids` links or complete normalized title/author matches (including stored subtitles). Matching ignores case, punctuation, accents and author-name token order; it uses no fuzzy titles or reading-status inference. Uncertain matches remain unlabelled. No catalogue or database rewrite is required.
+
 ## Build and deploy
 
 Connect your repository and intended branch to the host, configure the variables, and deploy the Dockerfile. Supply `SITE_URL`, `CMS_REPOSITORY` and `CMS_BRANCH` to the build as well as runtime. Point the domain at your host and enable HTTPS. `/healthz` checks the built blog, search index and library storage.

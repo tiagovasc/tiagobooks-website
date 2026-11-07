@@ -50,6 +50,7 @@ export const server=http.createServer(async(req,res)=>{
     if(p==='/api/session')return reply(res,200,JSON.stringify({canEdit:authenticated(req)}),{'Content-Type':'application/json','Cache-Control':'no-store'});
     if(p.startsWith('/api/editor'))return await editor(req,res);
     if(p==='/api/tbr-favorites')return library.emit('request',req,res);
+    if(p==='/api/tbr-owned')return library.emit('request',req,res);
     if(p==='/healthz'){await stat(path.join(dist,'blog.html'));await stat(path.join(dist,'pagefind/pagefind.js'));req.url='/health';return library.emit('request',req,res)}
     if(p==='/'&&url.searchParams.get('collection')==='tbr')return reply(res,302,'Open the library',{Location:'/library'+url.search,'Cache-Control':'no-store'});
     if(p==='/library'){req.url='/'+url.search;return library.emit('request',req,res)}
