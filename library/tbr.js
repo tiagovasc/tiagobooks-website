@@ -256,7 +256,7 @@ function init(){
       if(result.id!==id||result.favorite!==selected)throw Error('Favorite was not confirmed. Please try again.');
       $('tbrFavoriteMessage').textContent='Favorite saved.';
     }catch(error){
-      previous.forEach((was,key)=>{was?favoriteIds.add(key):favoriteIds.delete(key);});
+      if(!error.favoriteRetained)previous.forEach((was,key)=>{was?favoriteIds.add(key):favoriteIds.delete(key);});
       if(window.FAVORITES_ONLY)render();
       $('tbrFavoriteMessage').textContent=error.message;
     }finally{

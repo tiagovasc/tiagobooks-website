@@ -221,24 +221,25 @@ export const server=http.createServer(async(req,res)=>{
       if(!sameOrigin(req))return send(res,403,{error:'Origin rejected'});
       const raw=await readBody(req,1024);if(raw===null)return send(res,413,{error:'Request too large'});
       let value;try{value=JSON.parse(raw);}catch{return send(res,400,{error:'Invalid JSON'});}
-      if(!value||typeof value.id!=='string'||!/^[A-Za-z0-9_-]{1,160}$/.test(value.id)||typeof value.favorite!=='boolean')return send(res,400,{error:'Invalid favorite'});
+      const target=value?.id||value?.book_id;
+      if(!value||typeof target!=='string'||!/^[A-Za-z0-9_-]{1,160}$/.test(target)||typeof value.favorite!=='boolean')return send(res,400,{error:'Invalid favorite'});
       const catalogue=JSON.parse(await readFile(path.join(root,'tbr-catalogue.json'),'utf8'));
       const membership=catalogue.books.find(b=>b.id===value.id);
-      if(!membership)return send(res,404,{error:'Book not found'});
+      if(value.id&&!membership)return send(res,404,{error:'Book not found'});
       for(let attempt=0;attempt<5;attempt++){
         const [row]=await db('GET','?id=eq.library&select=books,revision');
-        const book=row?.books.find(b=>b.id===membership.book_id);
-        if(!book?.book_identity_version)break;
+        const book=row?.books.find(b=>b.id===(membership?.book_id||value.book_id));
+        if(!membership&&(!book||!isLibraryMember(book)))return send(res,404,{error:'Book not found'});
+        if(membership&&!book?.book_identity_version)break;
         const expected=req.headers['x-library-revision'];
-        if(expected&&String(row.revision)!==String(expected))return send(res,409,{error:'Another session changed the library. Reload before saving.'});
         book.favorite=value.favorite;
         const updated=await db('PATCH',`?id=eq.library&revision=eq.${row.revision}`,{books:row.books,revision:row.revision+1,updated_at:new Date().toISOString()});
-        if(!updated.length){if(expected)return send(res,409,{error:'Another session changed the library. Reload before saving.'});continue;}
+        if(!updated.length)continue;
         snapshot=null;
-        return send(res,200,{id:value.id,favorite:value.favorite,book_id:membership.book_id},{'X-Library-Revision':String(row.revision+1)});
+        return send(res,200,{id:value.id||value.book_id,favorite:value.favorite,book_id:book.id,base_revision:row.revision,revision:row.revision+1},!expected||String(expected)===String(row.revision)?{'X-Library-Revision':String(row.revision+1)}:{});
       }
       const [current]=await db('GET','?id=eq.library&select=books,revision');
-      if(current?.books.some(b=>b.id===membership.book_id&&b.book_identity_version))return send(res,409,{error:'Another session changed the library. Reload before saving.'});
+      if(!membership||current?.books.some(b=>b.id===membership.book_id&&b.book_identity_version))return send(res,503,{error:'Favorite is busy. Please retry.'});
       await tbrFavorites.set(value.id,value.favorite);
       return send(res,200,{id:value.id,favorite:value.favorite},{'X-Library-Revision':String(current?.revision||'')});
     }
@@ -270,6 +271,10 @@ export const server=http.createServer(async(req,res)=>{
       if(!keepsDescriptions(previousDescribed,nextDescribed))return send(res,400,{error:'Refusing to save: this would remove most book descriptions. Reload the page and check the change.'});
       if(!plausibleSave(previous,books.length))return send(res,400,{error:'Refusing to save: this would remove most of the library. Reload the page and check the change.'});
       let combined;try{combined=mergeLibrarySave(current.books,books);}catch{return send(res,400,{error:'Invalid canonical library membership'});}
+      if(req.headers['x-library-favorites-separate']==='1'){
+        const stored=new Map(current.books.map(b=>[b.id,b]));
+        combined=combined.map(b=>{const old=stored.get(b.id);if(!old)return b;const next={...b};if(old.favorite===undefined)delete next.favorite;else next.favorite=old.favorite;return next;});
+      }
       const rows=await db('PATCH',`?id=eq.library&revision=eq.${revision}`,{books:combined,revision:revision+1,updated_at:new Date().toISOString()});
       if(!rows.length)return send(res,409,{error:'Another session changed the library. Export your changes, then reload.'});
       snapshot={revision:revision+1,count:books.length,described:nextDescribed,variant:null};

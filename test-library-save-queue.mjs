@@ -8,7 +8,8 @@ const turn=()=>new Promise(resolve=>setImmediate(resolve));
 
 function harness(){
   const requests=[],messages=[],events={};let snapshot='first edit';
-  const context={Promise,window:{CLOUD_LIBRARY:true,addEventListener:(name,fn)=>events[name]=fn},
+  const saved=new Map();
+  const context={Promise,localStorage:{getItem:key=>saved.get(key)||null,setItem:(key,value)=>saved.set(key,value)},window:{CLOUD_LIBRARY:true,addEventListener:(name,fn)=>events[name]=fn},
     document:{body:{classList:{contains:()=>false}},addEventListener:(name,fn)=>events[name]=fn},
     SERVER_MODE:true,serverSaveState:'idle',saveFailed:false,saveTimer:null,
     publicView:()=>false,renderFileStatus(){},serialize:()=>snapshot,toast:message=>messages.push(message),
@@ -24,8 +25,8 @@ function harness(){
   vm.runInContext(source.slice(keyboardStart,source.indexOf('  window.addEventListener("scroll"',keyboardStart)),context);
   context.saveNow=()=>context.saveToServer();
   return {context,requests,messages,events,setSnapshot:value=>snapshot=value,
-    respond(index,status=200,revision='138'){
-      requests[index].resolve({ok:status===200,status,headers:{get:()=>revision},json:async()=>({})});
+    respond(index,status=200,revision='138',body={}){
+      requests[index].resolve({ok:status===200,status,headers:{get:()=>revision},json:async()=>body});
     },warns(){let warned=false;events.beforeunload({preventDefault(){warned=true;}});return warned;}};
 }
 
@@ -50,6 +51,24 @@ test('TBR favorites share the library revision queue and update the underlying b
   h.respond(0);await turn();assert.equal(h.requests.length,2);
   assert.equal(h.requests[1].url,'/api/tbr-favorites');assert.equal(h.requests[1].options.headers['X-Library-Revision'],'138');
   h.respond(1,200,'139');await favorite;await h.context.serverSaveQueue;assert.equal(h.context.serverRevision,'139');
+});
+
+test('a version conflict cannot disable subsequent favorite saves or adopt stale metadata',async()=>{
+ const h=harness(),book={id:'one',favorite:false};Object.assign(h.context,{libraryReady:Promise.resolve(true),findBook:()=>book,refreshFavoriteControls(){},announceCanonicalFavorite(){}});
+ h.context.serverRevision=null;
+ const operation=h.context.window.saveMembershipFavorite('tbr-one',true,'one');await turn();
+ assert.equal(h.requests.length,1);h.respond(0,200,'200',{id:'tbr-one',book_id:'one',favorite:true,base_revision:199,revision:200});await operation;
+ assert.equal(h.context.serverRevision,null,'stale full-library snapshot must not inherit the new revision');
+ assert.equal(book.favorite,true);assert.equal(Object.keys(h.context.favoriteRecovery()).length,0);
+});
+
+test('failed favorites keep their desired state and recovery copy while later favorites still save',async()=>{
+ const h=harness(),books={a:{id:'a',favorite:false},b:{id:'b',favorite:false}};Object.assign(h.context,{libraryReady:Promise.resolve(true),findBook:id=>books[id],refreshFavoriteControls(){},announceCanonicalFavorite(){}});
+ const first=h.context.window.saveMembershipFavorite(null,true,'a').catch(e=>e);
+ const next=h.context.window.saveMembershipFavorite(null,true,'b');await turn();h.requests[0].reject(Error('offline'));await turn();
+ assert.equal(h.requests.length,2);h.respond(1,200,'138',{book_id:'b',favorite:true,base_revision:137,revision:138});await next;
+ assert.equal((await first).favoriteRetained,true);assert.equal(books.a.favorite,true);
+ assert.deepEqual(Object.keys(h.context.favoriteRecovery()),['a']);assert.equal(h.context.favoriteRecovery().a.favorite,true);
 });
 
 test('a later full snapshot can recover an earlier network failure',async()=>{

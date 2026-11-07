@@ -7,7 +7,7 @@ import fs from 'node:fs';
 const seed=Array.from({length:40},(_,i)=>({id:String(i+1),title:'Book '+(i+1),rating:i%6}));
 Object.assign(seed[0],{acquisition_basis:'purchase_receipt',acquired_date:'2001-08-19',acquisition_events:[{date:'2001-08-19',shop:'Example shop'}],notes:'Purchased on 19 August',acquisition_source:'Receipt 19 August'});
 let row={id:'library',books:seed,revision:7};
-let storageDown=false, reads=0;
+let storageDown=false, reads=0,conflictFavoriteOnce=false;
 const storage=http.createServer(async(req,res)=>{
   const url=new URL(req.url,'http://x');
   if(storageDown){res.statusCode=500;return res.end('{}');}
@@ -21,6 +21,7 @@ const storage=http.createServer(async(req,res)=>{
   }
   let body='';for await(const c of req)body+=c;
   if(req.method==='PATCH'){
+    if(conflictFavoriteOnce){conflictFavoriteOnce=false;row.revision++;row.books[1].notes='Concurrent edit retained';return res.end('[]');}
     if(url.searchParams.get('revision')!=='eq.'+row.revision)return res.end('[]');
     row={...row,...JSON.parse(body)};return res.end(JSON.stringify([row]));
   }
@@ -179,4 +180,17 @@ test('Library reads hide discovery-only books and saves retain their complete da
   visible[0].rating=2;assert.equal((await save(visible,row.revision,cookie)).status,200);
   assert.deepEqual(row.books.find(b=>b.id==='hidden'),hidden);
  }finally{row=before;resetCaches();}
+});
+
+test('favorite field saves tolerate stale tabs, retry conflicts and protect later full saves',async()=>{
+ const before=structuredClone(row),cookie=await login();
+ try{
+  conflictFavoriteOnce=true;
+  const response=await fetch(base+'/api/tbr-favorites',{method:'POST',headers:{Cookie:cookie,'Content-Type':'application/json','X-Library-Revision':'1'},body:JSON.stringify({book_id:row.books[0].id,favorite:true})});
+  assert.equal(response.status,200);assert.equal(response.headers.get('X-Library-Revision'),null);
+  const result=await response.json();assert.equal(result.favorite,true);assert.equal(row.books[0].favorite,true);assert.equal(row.books[1].notes,'Concurrent edit retained');
+  const stale=structuredClone(row.books);stale[0].favorite=false;stale[0].title='Intentional title edit';
+  const saved=await fetch(base+'/save',{method:'POST',headers:{Cookie:cookie,'Content-Type':'application/json','X-Library-Revision':String(row.revision),'X-Library-Favorites-Separate':'1'},body:JSON.stringify(stale)});
+  assert.equal(saved.status,200);assert.equal(row.books[0].favorite,true);assert.equal(row.books[0].title,'Intentional title edit');
+ }finally{row=before;conflictFavoriteOnce=false;resetCaches();}
 });

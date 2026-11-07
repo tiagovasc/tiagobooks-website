@@ -786,13 +786,16 @@ var SEED = [];
   var resolveLibraryReady;
   var libraryReady=new Promise(function(resolve){resolveLibraryReady=resolve;});
   var serverRevision=null, serverSaveQueue=Promise.resolve(), pendingServerSaves=0;
+  var favoriteRecoveryKey='tiagovf-favorite-recovery-v1';
+  function favoriteRecovery(){try{return JSON.parse(localStorage.getItem(favoriteRecoveryKey)||'{}');}catch(e){return {};}}
+  function rememberFavorite(key,value){var saved=favoriteRecovery();if(value)saved[key]=value;else delete saved[key];localStorage.setItem(favoriteRecoveryKey,JSON.stringify(saved));}
   function saveToServer(){
     pendingServerSaves++;
     serverSaveState="saving"; renderFileStatus();
     var snapshot=serialize();
     serverSaveQueue=serverSaveQueue.catch(function(){}).then(function(){
       if(window.CLOUD_LIBRARY&&!serverRevision)throw new Error('Reload the library before saving.');
-      var headers={"Content-Type":"application/json"};if(serverRevision)headers['X-Library-Revision']=serverRevision;
+      var headers={"Content-Type":"application/json","X-Library-Favorites-Separate":"1"};if(serverRevision)headers['X-Library-Revision']=serverRevision;
       return fetch("/save",{method:"POST",headers:headers,body:snapshot});
     }).then(function(r){ if(!r.ok){return r.json().catch(function(){return {};}).then(function(d){if(r.status===409){serverRevision=null;throw new Error('Another session changed the library. Export your changes, then reload.');}if(r.status===401)throw new Error('Your admin session ended. Sign in again, then repeat the change.');throw new Error(r.status===400&&d&&d.error?d.error:'Could not save. Your changes remain in this browser.');});} serverRevision=r.headers.get('X-Library-Revision')||serverRevision;saveFailed=false; })
       .catch(function(error){saveFailed=true;toast(error.message,7000);})
@@ -805,21 +808,28 @@ var SEED = [];
     return libraryReady.then(function(ok){
       if(!ok||publicView())throw new Error('Sign in and reload before saving.');
       if(saveTimer){clearTimeout(saveTimer);saveTimer=null;saveNow();}
-      var model=findBook(bookId),previous=model&&model.favorite;
+      var recoveryId=bookId||membershipId,token=String(Date.now())+'-'+Math.random(),payload=membershipId?{id:membershipId,favorite:selected}:{book_id:bookId,favorite:selected};
+      rememberFavorite(recoveryId,{membershipId:membershipId,bookId:bookId,favorite:selected,token:token});
+      var model=findBook(bookId);
       if(model){model.favorite=selected;refreshFavoriteControls(model);announceCanonicalFavorite(model);}
       pendingServerSaves++;serverSaveState='saving';renderFileStatus();
       var operation=serverSaveQueue.catch(function(){}).then(function(){
-        if(window.CLOUD_LIBRARY&&!serverRevision)throw new Error('Reload the library before saving.');
         var headers={'Content-Type':'application/json'};if(serverRevision)headers['X-Library-Revision']=serverRevision;
-        return fetch('/api/tbr-favorites',{method:'POST',keepalive:true,headers:headers,body:JSON.stringify({id:membershipId,favorite:selected})});
+        return fetch('/api/tbr-favorites',{method:'POST',keepalive:true,headers:headers,body:JSON.stringify(payload)});
       }).then(function(response){
-        if(!response.ok){if(response.status===409)serverRevision=null;throw new Error(response.status===409?'Another session changed the library. Reload before saving.':'Could not save favorite. Please try again.');}
-        serverRevision=response.headers.get('X-Library-Revision')||serverRevision;saveFailed=false;return response.json();
+        if(!response.ok)throw new Error(response.status===401?'Sign in again to finish saving favorites.':'Favorite kept on this device. It will retry when you reconnect or reload.');
+        return response.json().then(function(result){
+          if(result.base_revision===undefined||String(result.base_revision)===String(serverRevision))serverRevision=result.revision?String(result.revision):response.headers.get('X-Library-Revision')||serverRevision;
+          var saved=favoriteRecovery();if(saved[recoveryId]?.token===token){rememberFavorite(recoveryId,null);announceCanonicalFavorite({id:result.book_id||bookId,favorite:selected});}
+          saveFailed=Object.keys(favoriteRecovery()).length>0;return result;
+        });
       });
       serverSaveQueue=operation.catch(function(error){saveFailed=true;toast(error.message,7000);}).finally(function(){pendingServerSaves--;serverSaveState=pendingServerSaves?'saving':saveFailed?'error':'saved';renderFileStatus();});
-      return operation.catch(function(error){if(model){model.favorite=previous;refreshFavoriteControls(model);announceCanonicalFavorite(model);}throw error;});
+      return operation.catch(function(error){error.favoriteRetained=true;throw error;});
     });
   };
+  function retryPendingFavorites(){if(publicView())return;var saved=favoriteRecovery();Object.keys(saved).forEach(function(key){var item=saved[key];window.saveMembershipFavorite(item.membershipId,item.favorite,item.bookId).catch(function(){});});}
+  window.addEventListener('online',retryPendingFavorites);
   function writeToFile(announce){
     if(!fileHandle) return;
     fileHandle.createWritable().then(function(w){return w.write(serialize()).then(function(){return w.close();});})
@@ -1095,7 +1105,7 @@ var SEED = [];
   }
   function toggleFavorite(b){
     if(publicView()||!b)return;
-    b.favorite=!b.favorite;scheduleSave();refreshCounts();announceCanonicalFavorite(b);
+    b.favorite=!b.favorite;if(typeof SERVER_MODE!=='undefined'&&SERVER_MODE&&typeof window!=='undefined'&&window.saveMembershipFavorite)window.saveMembershipFavorite(null,b.favorite,b.id).catch(function(){});else scheduleSave();refreshCounts();announceCanonicalFavorite(b);
     if(ui.favorites){renderView(true);return;}
     refreshFavoriteControls(b);
   }
@@ -1813,7 +1823,7 @@ var SEED = [];
     fetch(LITE?"books.json?view=public":"books.json",{cache:"no-cache"}).then(function(r){ if(!r.ok) throw new Error("HTTP "+r.status); serverRevision=r.headers.get("X-Library-Revision"); return r.json(); })
       .then(function(d){ var books=Array.isArray(d)?d:(d&&d.books); if(Array.isArray(books)){ state.books=books.map(normalize); if(d&&typeof d.title==="string") state.title=d.title; } else if(window.CLOUD_LIBRARY){ throw new Error("Unexpected library format"); } else { seedFromBuiltin(); } return true; })
       .catch(function(){ if(window.CLOUD_LIBRARY) return false; if(!loadLocal()) seedFromBuiltin(); return true; })
-      .then(function(ok){ loadingLibrary=false;if(ok){ loadFailed=false; bootRender(); openLinkedBook();resolveLibraryReady(true); } else {showLoadError();resolveLibraryReady(false);} });
+      .then(function(ok){ loadingLibrary=false;if(ok){ loadFailed=false; bootRender(); openLinkedBook();resolveLibraryReady(true);retryPendingFavorites(); } else {showLoadError();resolveLibraryReady(false);} });
   }
   function openLinkedBook(){ var id=hashBookId(); if(id!==null&&findBook(id)) openDrawer(id,false,"initial"); }
   // Do not lose edits: flush a pending save when the page is hidden, and warn before leaving with an unsaved or failed save.
