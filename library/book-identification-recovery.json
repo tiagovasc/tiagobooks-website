@@ -1,0 +1,67 @@
+{
+  "version": "book-identification-20261107-v1",
+  "activate": false,
+  "books": [
+    {
+      "id": "137",
+      "title": "Byung-Chul Han        Byung-Chul Han",
+      "author": "",
+      "fields": {
+        "library_member": false,
+        "catalogue_hold": {
+          "date": "2026-11-07",
+          "reason": "Owner requested hide unresolved lost book; may be secondary literature on Byung-Chul Han. Preserve until identified."
+        }
+      }
+    },
+    {
+      "id": "235",
+      "title": "Fernado Pessoa book",
+      "author": "",
+      "fields": {
+        "library_member": false,
+        "resolved_book_id": "327",
+        "catalogue_hold": {
+          "date": "2026-11-07",
+          "reason": "Owner identifies vague purchase-log entry as existing I Have More Souls Than One, Fernando Pessoa, Penguin. Original purchase-log provenance retained here; existing 327 remains visible."
+        }
+      }
+    },
+    {
+      "id": "468",
+      "title": "Oxford Handbook Series: Handbook of Ethics",
+      "author": "",
+      "fields": {
+        "library_member": false,
+        "catalogue_hold": {
+          "date": "2026-11-07",
+          "reason": "Owner confirms not their book. Other Oxford handbooks retained. Original entry retained for audit."
+        }
+      }
+    },
+    {
+      "id": "1047",
+      "title": "Spiritual Ecology",
+      "author": "",
+      "fields": {
+        "library_member": false,
+        "owned": false,
+        "catalogue_hold": {
+          "date": "2026-11-07",
+          "reason": "Owner corrects prior ownership claim: does not own this book. Hide erroneous entry; preserve all prior notes and source history."
+        }
+      }
+    },
+    {
+      "id": "46",
+      "title": "Advancing Social Psychology (Book 2)",
+      "author": "Eleni Andreouli",
+      "fields": {
+        "cover": "covers/tbr_metadata_d035b38c1257a0640772846d.jpg",
+        "cover_status": "ok",
+        "cover_source_url": "https://picclick.co.uk/DD317-Advancing-Social-Psychology-Text-Books-x-2-900035689588.html",
+        "cover_image_kind": "front_cover"
+      }
+    }
+  ]
+}

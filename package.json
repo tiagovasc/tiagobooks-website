@@ -17,7 +17,7 @@
     "lint:content": "node scripts/lint-content.mjs",
     "optimize:images": "node scripts/optimize-images.mjs",
     "start": "node server.mjs",
-    "test": "node --test --test-concurrency=1 library/test-server.mjs library/test-server-prod.mjs library/test-tbr.mjs library/test-tbr-online.mjs test-tbr-catalogue.mjs test-integration.mjs test-hardening.mjs test-artwork.mjs test-production-editor.mjs test-library-save-queue.mjs test-search-resilience.mjs test-security-boundaries.mjs test-frontmatter-lines.mjs test-editor-recovery.mjs test-date-rail.mjs test-favorites.mjs test-tbr-favorites.mjs test-tbr-ownership.mjs test-canonical-books.mjs test-library-edit-merge.mjs test-library-sync.mjs test-missing-cover-recovery.mjs",
+    "test": "node --test --test-concurrency=1 library/test-server.mjs library/test-server-prod.mjs library/test-tbr.mjs library/test-tbr-online.mjs test-tbr-catalogue.mjs test-integration.mjs test-hardening.mjs test-artwork.mjs test-production-editor.mjs test-library-save-queue.mjs test-search-resilience.mjs test-security-boundaries.mjs test-frontmatter-lines.mjs test-editor-recovery.mjs test-date-rail.mjs test-favorites.mjs test-tbr-favorites.mjs test-tbr-ownership.mjs test-canonical-books.mjs test-library-edit-merge.mjs test-library-sync.mjs test-missing-cover-recovery.mjs test-book-identification.mjs",
     "check:public": "node scripts/check-public.mjs"
   },
   "dependencies": {
