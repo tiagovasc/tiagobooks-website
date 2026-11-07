@@ -8,6 +8,7 @@ import {personalizeSiteHeader} from '../src/lib/site-shell.mjs';
 import {tripMonth,publicTripCatalogue} from './trip-privacy.mjs';
 import {applyConfirmedCorrections} from './confirmed-book-corrections.mjs';
 import {mergeEditedSnapshot,EditConflict} from './library-edit-merge.mjs';
+import {applyFavoriteUnion} from './favorite-union-recovery.mjs';
 import {readFile,stat} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -31,6 +32,8 @@ export async function activateBookReconciliation(){
   reconciliationStatus.confirmed_corrections=await applyConfirmedCorrections({db,backup:createReconciliationBackup(base,key)});
   const audiobookPlan=JSON.parse(await readFile(path.join(root,'read-audiobook-ownership.json'),'utf8'));
   reconciliationStatus.audiobook_ownership=await applyConfirmedCorrections({db,backup:createReconciliationBackup(base,key),corrections:audiobookPlan.books,version:audiobookPlan.version});
+  const favoritePlan=JSON.parse(await readFile(path.join(root,'favorite-union-recovery.json'),'utf8'));
+  reconciliationStatus.favorite_union_recovery=await applyFavoriteUnion({db,backup:createReconciliationBackup(base,key),plan:favoritePlan});
   snapshot=null;
   return reconciliationStatus;
 }

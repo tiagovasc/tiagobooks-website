@@ -1,0 +1,1110 @@
+{
+  "version": "favorite-union-20261107-v1",
+  "basis": "Owner confirms additive recovery of all known favorite selections across export, preserved versions and live production. Never clear a favorite or replace book data.",
+  "books": [
+    {
+      "id": "1030",
+      "title": "Islamic Mystical Poetry: Sufi Verse from the Early Mystics to Rumi",
+      "author": "Mahmood Jamal (Editor and Translator)",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "1038",
+      "title": "A Radical God: Theopoetics, Phenomenology, and the Future of Religion",
+      "author": "John D. Caputo",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "1082",
+      "title": "Theology and Philosophy in Eastern Orthodoxy: Essays on Orthodox Christianity and Contemporary Thought",
+      "author": "Christoph Schneider (editor)",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "1085",
+      "title": "The Christian Platonism of Simone Weil",
+      "author": "E. Jane Doering; Eric O. Springsted (editors)",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "148",
+      "title": "Christian Theology: An Introduction",
+      "author": "Alister E. McGrath",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "152",
+      "title": "Classical Philosophy: A History of Philosophy Without Any Gaps",
+      "author": "Peter Adamson",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "165",
+      "title": "Confessions of a Philosopher: A Personal Journey Through Western Philosophy from Plato to Popper",
+      "author": "Bryan Magee",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "266",
+      "title": "God's Philosophers: How the Medieval World Laid the Foundations of Modern Science",
+      "author": "James Hannam",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "287",
+      "title": "Heidegger and Theology (Philosophy and Theology)",
+      "author": "Judith Wolfe",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "30",
+      "title": "A Web of Our Own Making",
+      "author": "Antón Barba-Kay",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "316",
+      "title": "Human Personality by Simone Weil",
+      "author": "Simone Weil",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "330",
+      "title": "If Anyone Builds It, Everyone Dies: The Threat to Humanity of Superintelligent AI",
+      "author": "Eliezer Yudkowsky, Nate Soares",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "333",
+      "title": "Images and Symbols",
+      "author": "Mircea Eliade",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "335",
+      "title": "In Defence of the Human Being : Foundational Questions of an Embodied Anthropology",
+      "author": "Thomas Fuchs",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "339",
+      "title": "In Search of the Soul: A Philosophical Essay",
+      "author": "John Cottingham",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "343",
+      "title": "Intimations of Christianity Among the Ancient Greeks",
+      "author": "Simone Weil",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "376",
+      "title": "Love in the Void: Where God Finds Us",
+      "author": "Simone Weil",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "394",
+      "title": "Martin Heidegger: Basic Writings",
+      "author": "Martin Heidegger",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "403",
+      "title": "Mere Christianity",
+      "author": "C. S. Lewis",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "406",
+      "title": "Metaphysics as a Guide to Morals",
+      "author": "Iris Murdoch",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "420",
+      "title": "More Than Allegory",
+      "author": "Bernardo Kastrup",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "454",
+      "title": "On Mysticism: The Experience of Ecstasy",
+      "author": "Simon Critchley",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "48",
+      "title": "AI Narratives",
+      "author": "Stephen Cave",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "505",
+      "title": "Philosophy of Mysticism: Raids on the Ineffable",
+      "author": "Richard H Jones",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "508",
+      "title": "Philosophy of the Buddha: An Introduction",
+      "author": "Christopher W. Gowans",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "515",
+      "title": "Platonic Mysticism: Contemplative Science, Philosophy, Literature, and Art",
+      "author": "Arthur Versluis",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "552",
+      "title": "Reality Switch Technologies: Psychedelics as Tools for the Discovery and Exploration of New Worlds",
+      "author": "Andrew R Gallimore",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "567",
+      "title": "Rilke's Book of Hours: Love Poems to God",
+      "author": "Rainer Maria Rilke",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "644",
+      "title": "The Blind Spot",
+      "author": "Adam Frank",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "661",
+      "title": "The Cambridge Handbook of Western Mysticism and Esotericism",
+      "author": "Glenn Magee",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "663",
+      "title": "The Case for God",
+      "author": "Karen Armstrong",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "690",
+      "title": "The Discarded Image: An Introduction to Medieval and Renaissance Literature",
+      "author": "C.S. Lewis",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "709",
+      "title": "The Ethics of Attention: Engaging the Real with Iris Murdoch and Simone Weil",
+      "author": "Silvia Caprioglio Panizza",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "713",
+      "title": "The Experience of God : Being, Consciousness, Bliss",
+      "author": "David Bentley Hart",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "718",
+      "title": "The Foundations of Buddhism",
+      "author": "Rupert Gethin",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "732",
+      "title": "The Idea of the World: A multi-disciplinary argument for the mental nature of reality",
+      "author": "Bernardo Kastrup",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "758",
+      "title": "The Meaning of Icons",
+      "author": "Leonid Uspensky, Vladimir Lossky",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "823",
+      "title": "The Religion of the Apostles: Orthodox Christianity in the First Century",
+      "author": "Stephen De Young",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "832",
+      "title": "The Sacred and the Profane: The Nature of Religion",
+      "author": "Mircea Eliade",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "833",
+      "title": "The Sacred in Music",
+      "author": "Albert L. Blackwell",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "85",
+      "title": "Becoming Animal: An Earthly Cosmology",
+      "author": "David Abram",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "852",
+      "title": "The Soul of the World",
+      "author": "Roger Scruton",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "862",
+      "title": "The Subversive Simone Weil: A Life in Five Ideas",
+      "author": "Robert Zaretsky",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "864",
+      "title": "The Symposium (Penguin Classics)",
+      "author": "Plato",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "866",
+      "title": "The Territories of Science and Religion",
+      "author": "Peter Harrison",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "883",
+      "title": "The Veil of Isis: An Essay on the History of the Idea of Nature",
+      "author": "Pierre Hadot",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "896",
+      "title": "Theophany: The Neoplatonic Philosophy on Dionysius the Areopagite",
+      "author": "Eric D. Perl",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "90",
+      "title": "Being and Time: A Revised Edition of the Stambaugh Translation",
+      "author": "Martin Heidegger",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "903",
+      "title": "Thinking the Impossible: French Philosophy Since 1960 (The Oxford History of Philosophy)",
+      "author": "Gary Gutting",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "912",
+      "title": "Tolkien On Fairy-stories",
+      "author": "J.R.R. Tolkien",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "930",
+      "title": "Understanding World Religions: An Interdisciplinary Approach",
+      "author": "Irving Hexham",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "96",
+      "title": "Being-in-the-World: A Commentary on Heidegger's Being in Time, Division I",
+      "author": "Hubert L. Dreyfus",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "972",
+      "title": "What is Metaphysics?",
+      "author": "John Heil",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "995",
+      "title": "Wittgenstein and the Cognitive Science of Religion: Interpreting Human Nature and the Mind",
+      "author": "Robert Vinten",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-instagram-11f16837b11bfd959385",
+      "title": "The Origins of Monsters: Image and Cognition in the First Age of Mechanical Reproduction",
+      "author": "David Wengrow",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-instagram-502d56c54ca83ff9ed40",
+      "title": "Perspectivism in Archaeology: Insights into Indigenous Theories of Reality",
+      "author": "Andrés Laguens",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-instagram-c41a7c0b64cc593cbd6b",
+      "title": "Goodthink: The New Science of Collective Intelligence",
+      "author": "Damon Centola",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-online-05719338c73db37598fd",
+      "title": "Maximus the Confessor As a European Philosopher (Veritas)",
+      "author": "Edited by Sotiris Mitralexis",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-online-25521fb3f40e276f3294",
+      "title": "Theology in the Flesh: How Embodiment and Culture Shape the Way We Think About Truth, Morality, and God",
+      "author": "John Sanders",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-online-278c1437f055e5733e30",
+      "title": "Iris Murdoch and the Transcendent (Elements In the History of Philosophy and Theology in the West)",
+      "author": "Charles Taliaferro; Jil Evans",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-online-27f3fffe618b3275387e",
+      "title": "The Doors of the Sea: Where Was God in the Tsunami?",
+      "author": "David Bentley Hart",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-online-2affe3549c47ea547bca",
+      "title": "Philosophy and Its Others: Ways of Being and Mind (SUNY Series in Systematic Philosophy)",
+      "author": "William Desmond",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-online-3ae67ca14cfc005a2cf8",
+      "title": "From Groups to Gods: Neuroscience and Evolution of the Collective Mind",
+      "author": "Patrick McNamara Ph.D.",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-online-3b995f442e6dcc594fa3",
+      "title": "A Drive to Survive: The Free Energy Principle and the Meaning of Life",
+      "author": "Kathryn Nave",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-online-47b2cd40ca3a6509db78",
+      "title": "Enactive Cognition at the Edge of Sense-Making: Making Sense of Non-Sense (New Directions in Philosophy and Cognitive Science)",
+      "author": "Edited by M. Cappucio; T. Froese",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-online-4e5ad50723b7577c412d",
+      "title": "MAXIMUS THE CONFESSOR CTC P: Jesus Christ and the Transfiguration of the World (Christian Theology in Context)",
+      "author": "Paul M. BLOWERS",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-online-53e838b7b077893a5246",
+      "title": "God After Metaphysics: A Theological Aesthetic (Indiana Series in the Philosophy of Religion)",
+      "author": "John Panteleimon Manoussakis",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-online-56a9913f4edd2e78c8fc",
+      "title": "Context Changes Everything: How Constraints Create Coherence",
+      "author": "Alicia Juarrero",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-online-57f811647dffcd1627b4",
+      "title": "The Golden Thread: A History of the Western Tradition, Volume I: The Ancient World and Christendom (The Golden Thread, 1)",
+      "author": "James Hankins; Allen C. Guelzo",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-online-62a521ce74ef1d4d779c",
+      "title": "The Evolution of Meaning, Volume 1: Cosmos to Culture",
+      "author": "Brendan Graham Dempsey",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-online-71057d3f30c2dec26ca8",
+      "title": "Dynamics in Action: Intentional Behavior as a Complex System (Bradford Books)",
+      "author": "Alicia Juarrero",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-online-7a9b110cfd2d5651bca9",
+      "title": "Heidegger and Cognitive Science (New Directions in Philosophy and Cognitive Science)",
+      "author": "Edited by J. Kiverstein; M. Wheeler",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-online-81114f9aca93a48ba55a",
+      "title": "Heidegger's Later Philosophy",
+      "author": "Young",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-online-8c946605fd61de3a09fa",
+      "title": "The Sacrament of Paying Attention: Meditations on Living (English Edition)",
+      "author": "Cameron Bellm",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-online-94ad68260c053725441e",
+      "title": "Artificial Intimacy: Who We Become When we Talk to Machines, \"groundbreaking research and beautiful writing,\" Jonathan Haidt, author of The Anxious Generation",
+      "author": "Sherry Turkle",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-online-9883d3f9abaab76ad407",
+      "title": "The Origins of the Christian Mystical Tradition: From Plato to Denys",
+      "author": "Andrew LOUTH",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-online-a47adb2cfbb120ba636e",
+      "title": "Transformation and the History of Philosophy (Rewriting the History of Philosophy)",
+      "author": "Edited by G. Anthony Bruno; Justin Vlasits",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-online-ac41068484c8313e1d0f",
+      "title": "Heidegger and Christianity",
+      "author": "John Macquarrie",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-online-af95d6e452df9113fa0a",
+      "title": "The Other Platonist Beginning: Heidegger and Neoplatonism",
+      "author": "Emile Alexandrov",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-online-e09350c2fcb20951c59b",
+      "title": "4E Cognitive Science and Wittgenstein (New Directions in Philosophy and Cognitive Science)",
+      "author": "Victor Loughlin",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-online-f8327c734cc7eee51903",
+      "title": "The Psychedelics Manual: Metaphysics and the Search for Real Life",
+      "author": "Dr Peter Sjöstedt-Hughes",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-online-fe2a30e4172ef60b5074",
+      "title": "Religion, Metaphysics, and the Postmodern: William Desmond and John D. Caputo",
+      "author": "Christopher Ben Simpson",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-05aebcd248fd1e55",
+      "title": "Iris Murdoch and the Others: A Writer in Dialogue with Theology",
+      "author": "Paul S. Fiddes",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-08d43b6423952ba2",
+      "title": "Unknown Language",
+      "author": "Hildegard of Bingen & Huw Lemmey",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-0fde716a1993f514",
+      "title": "From Plato to Platonism",
+      "author": "Lloyd P. Gerson",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-190415767f98def0",
+      "title": "The Secret Sacred: Mystery Cults in Ancient Greece and Rome",
+      "author": "Damien Stone",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-1abc3c85581d2147",
+      "title": "Till We Have Faces",
+      "author": "C.S. Lewis",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-1bc49fc7f9db1932",
+      "title": "Māori Philosophy: Indigenous Thinking from Aotearoa",
+      "author": "Georgina Tuari Stewart",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-2581dde3b5b9544d",
+      "title": "Selected Writings",
+      "author": "Meister Eckhart",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-25e880334cf8cf58",
+      "title": "Religion and the Hermeneutics of Contemplation",
+      "author": "D. Z. Phillips",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-296748832483e2da",
+      "title": "Philosophy, the Good, the True and the Beautiful",
+      "author": "Anthony O'Hear (ed.)",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-2bc3959477936721",
+      "title": "Revelations of Divine Love",
+      "author": "Julian of Norwich",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-2d6eb108bcfd0566",
+      "title": "What Happened in the 20th Century?",
+      "author": "Peter Sloterdijk",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-3bb6815fd21f6bc6",
+      "title": "An Event, Perhaps: A Biography of Jacques Derrida",
+      "author": "Peter Salmon",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-3ef3f04cc1c0ce41",
+      "title": "Buddhism: A Journey Through Art",
+      "author": "R.M. Woodward",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-4559d7b5d3709b53",
+      "title": "Plotinus, Self and the World",
+      "author": "Raoul Mortley",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-4dc7b91f2bbc18c1",
+      "title": "Enactivist Interventions: Rethinking the Mind",
+      "author": "Shaun Gallagher",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-50726cf41c18c79d",
+      "title": "The Face: A Cultural History",
+      "author": "Fay Bound-Alberti",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-5997477addc17213",
+      "title": "The Kyoto School: An Introduction",
+      "author": "Robert E. Carter",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-636f4eb202d98518",
+      "title": "The Essential Writings of Christian Mysticism",
+      "author": "Bernard McGinn (ed.)",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-67d0c3be8d4a7a42",
+      "title": "Alive in God: A Christian Imagination",
+      "author": "Timothy Radcliffe",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-6dc8fd4cb8eced0a",
+      "title": "Mystics: Presence and Aporia",
+      "author": "Michael Kessler (ed.); Christian Sheppard (ed.)",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-70a0dc1970512f70",
+      "title": "The Norton Introduction to Philosophy",
+      "author": "Gideon Rosen, Alex Byrne, Joshua Cohen, Elizabeth Harman, Seana Shiffrin",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-7283e9474136da4a",
+      "title": "Dune and Philosophy",
+      "author": "Kevin S. Decker (ed.)",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-73a38b48c5af2f03",
+      "title": "The Penguin Book of French Short Stories: From Colette to Marie NDiaye",
+      "author": "Patrick McGuinness (ed.)",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-7461139ff785e7a0",
+      "title": "Traditionalism: The Radical Project for Restoring Sacred Order",
+      "author": "Mark Sedgwick",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-7b12368993e41fe2",
+      "title": "The Sacred in Life and Art",
+      "author": "Philip Sherrard",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-7d42acf58ac3b745",
+      "title": "God Is No Thing: Coherent Christianity",
+      "author": "Rupert Shortt",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-86857a26ed993444",
+      "title": "Technics and Time, 1: The Fault of Epimetheus",
+      "author": "Bernard Stiegler",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-871f8bb6074b86ae",
+      "title": "Byzantium: The Surprising Life of a Medieval Empire",
+      "author": "Judith Herrin",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-87f66ef48374d290",
+      "title": "Understanding Religion Through Artificial Intelligence: Bonding and Belief",
+      "author": "Justin E. Lane",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-93cb7a88dd0a62e4",
+      "title": "In Love with Wisdom: Ancient Greek and Early Buddhist Philosophies",
+      "author": "Alexandra Pappas and Bhikkhu Anālayo",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-9861fc23057339b3",
+      "title": "Truth: The Search for Wisdom in the Postmodern Age",
+      "author": "John D. Caputo",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-9a134204df2ec495",
+      "title": "Shamans: The Visual Culture of Animism, Healing & Journeys to Other Planes",
+      "author": "Max Carocci",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-a47c7ddc1e6aaa1f",
+      "title": "Think Like an Anthropologist",
+      "author": "Matthew Engelke",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-aa27ed980ac472e2",
+      "title": "The Penguin Book of Japanese Verse: From the Earliest Times to the Present",
+      "author": "Geoffrey Bownas (translator); Anthony Thwaite (translator)",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-ab33eef46245081e",
+      "title": "Ecologies of Ecstasy: Mysticism, Philosophy, and Vegetal Life",
+      "author": "Simone Kotva",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-adc7a794c76d06fd",
+      "title": "The Nerd Reich: Silicon Valley Fascism and the War on Democracy",
+      "author": "Gil Durán",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-af8cea4ce403f47e",
+      "title": "Zen and Ghibli: Life Lessons for Lasting Happiness from the Legendary Studio",
+      "author": "Toshio Suzuki",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-b964f6a5f4e91686",
+      "title": "TechGnosis: Myth, Magic & Mysticism in the Age of Information",
+      "author": "Erik Davis",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-b991a258bba3e007",
+      "title": "The Shattering of Loneliness: On Christian Remembrance",
+      "author": "Erik Varden",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-bc71bd8b0ef670a5",
+      "title": "Theurgy and the Soul: The Neoplatonism of Iamblichus",
+      "author": "Gregory Shaw",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-c68830a4eadddf92",
+      "title": "Dark Night",
+      "author": "John of the Cross",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-cb6a0864b82b3a2e",
+      "title": "What Is Ancient Philosophy?",
+      "author": "Pierre Hadot",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-cf4819ed07ba1cb8",
+      "title": "A Secular Age",
+      "author": "Charles Taylor",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-d361422e06cf3fa4",
+      "title": "Theology as Repetition: John Macquarrie in Conversation",
+      "author": "Stephen Foster",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-d5cb97b2e5145528",
+      "title": "Phenomenology of Tea: A Dialogue on Japanese Aesthetics",
+      "author": "Adam Loughnane",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-e260c52af4569797",
+      "title": "Art + Faith: A Theology of Making",
+      "author": "Makoto Fujimura",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-e2f10aa388034d1e",
+      "title": "Hermeneutics: Facts and Interpretation in the Age of Information",
+      "author": "John D. Caputo",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-e420d530a58c9441",
+      "title": "The Hidden Language of Symbols",
+      "author": "Matthew Wilson",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-e4b294f96bf9f89b",
+      "title": "The Oxford Handbook of the Study of Religion",
+      "author": "Edited by Michael Stausberg; Steven Engler",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-e768f9b1e95f79fd",
+      "title": "The Consolation of Philosophy",
+      "author": "Boethius",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-e7a289ce32cb5a89",
+      "title": "The Reinvention of Humanity: How a Circle of Renegade Anthropologists Remade Race, Sex and Gender",
+      "author": "Charles King",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-e887d0280768f457",
+      "title": "The Enneads",
+      "author": "Plotinus",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-e94695f2b4b10bec",
+      "title": "Selected Writings",
+      "author": "Hildegard of Bingen",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-f0e51fbeae97e9a3",
+      "title": "Plotinus or The Simplicity of Vision",
+      "author": "Pierre Hadot",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-fc3eb4317d8e6c64",
+      "title": "The Phenomenology of Questioning: Husserl, Heidegger, Patočka",
+      "author": "Joel Hubick",
+      "fields": {
+        "favorite": true
+      }
+    },
+    {
+      "id": "work-shop-fd8621ef6bc5f5e8",
+      "title": "The Ancients and the Postmoderns: On the Historicity of Forms",
+      "author": "Fredric Jameson",
+      "fields": {
+        "favorite": true
+      }
+    }
+  ]
+}

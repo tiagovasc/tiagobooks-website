@@ -3,7 +3,24 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {reconcileRecords,mergeLibrarySave,projectTbrCatalogue,canonicalFavoriteIds,runBookReconciliation} from './library/canonical-books.mjs';
 import {correctedBooks,applyConfirmedCorrections} from './library/confirmed-book-corrections.mjs';
+import {unionFavorites,applyFavoriteUnion} from './library/favorite-union-recovery.mjs';
 const original=[{id:'1',title:'Book',author:'Writer',rating:5,description:'Keep this',favorite:true},{id:'set',title:'Set',rating:5,notes:'Original notes',owned:true}];
+test('Favorite recovery only adds true flags and changes no other field or existing selection',()=>{
+ const before=[{id:'a',title:'A',author:'Writer',favorite:true,owned:true,tags:['unfinished']},{id:'b',title:'B',author:'Writer',rating:5,read_status:'read',notes:'Retain'}];
+ const result=unionFavorites(before,[{id:'b',title:'B',author:'Writer'}]);assert.equal(result.added,1);assert.deepEqual(result.books,[before[0],{...before[1],favorite:true}]);assert.equal(unionFavorites(result.books,[{id:'b',title:'B',author:'Writer'}]).added,0);
+});
+test('Favorite recovery is one-time and does not reverse later intentional unhearting',async()=>{
+ let writes=0;const receipt=await applyFavoriteUnion({plan:{version:'test'},backup:{optionalReceipt:async()=>({state:'applied'})},db:async method=>{if(method==='PATCH')writes++;return [{revision:2,books:[{id:'a',favorite:false}]}];}});assert.equal(writes,0);assert.equal(receipt.already_applied,true);
+});
+
+test('Favorite recovery refuses unverified backups and retries concurrent edits without losing them',async()=>{
+ let row={revision:1,books:[{id:'a',title:'A',author:'Writer',favorite:true},{id:'b',title:'B',author:'Writer'}]},writes=0;
+ const plan={version:'union-test',books:[{id:'b',title:'B',author:'Writer'}]},backup={optionalReceipt:async()=>null,preserve:async()=>{throw Error('Backup failed');}};
+ await assert.rejects(applyFavoriteUnion({plan,backup,db:async()=>[row]}),/Backup failed/);
+ backup.preserve=async()=>({backup_verified:true});backup.receipt=async()=>{};
+ await applyFavoriteUnion({plan,backup,db:async(method,query,body)=>{if(method==='GET')return [structuredClone(row)];if(!writes++){row.revision++;row.books[0].notes='Concurrent edit';return [];}row={...row,...body};return [{...row,books:row.books.map(b=>Object.fromEntries(Object.entries(b).reverse()))}];}});
+ assert.equal(row.books[0].notes,'Concurrent edit');assert.ok(row.books.every(b=>b.favorite===true));
+});
 const correctionsFixture=()=>[{id:'762',title:'The Murder of Professor Schlick: The Rise and Fall of the Vienna Circle',author:'David Edmonds',read_status:'read',date_read:'2026-05-27',rating:4,owned:false,format:'',favorite:true},{id:'work-online-7f514a374bea6a8171ec',title:'The History of Western Philosophy in 100 Haiku',author:'Haris Vlavianos',library_member:false,rating:0,favorite:true,tbr_ids:['online-7f514a374bea6a8171ec']},{id:'other',title:'Untouched',rating:5,owned:false}];
 test('Confirmed ownership corrections reuse the same books and retain reading/favorite/history data',()=>{
  const before=correctionsFixture(),result=correctedBooks(before);assert.equal(result.books.length,before.length);

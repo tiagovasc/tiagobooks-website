@@ -120,7 +120,11 @@ export function createReconciliationBackup(url,key,request=fetch){
       return {backup_object:object,backup_sha256:sha256,backup_verified:true};
     },
     async receipt(version,value){await put(`${version}/receipt.json`,JSON.stringify(value));},
-    async readReceipt(version){return JSON.parse(await get(`${version}/receipt.json`));}
+    async readReceipt(version){return JSON.parse(await get(`${version}/receipt.json`));},
+    async optionalReceipt(version){
+      const r=await request(`${url}/storage/v1/object/authenticated/${bucket}/${version}/receipt.json`,{headers,signal:AbortSignal.timeout(30000)});
+      if(r.ok)return r.json();const data=await r.json().catch(()=>({}));if(r.status===404||Number(data.statusCode)===404)return null;throw Error('Recovery receipt unavailable');
+    }
   };
 }
 
