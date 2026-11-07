@@ -41,6 +41,8 @@ export async function activateBookReconciliation(){
   reconciliationStatus.missing_cover_recovery=await applyMissingCovers({db,backup:createReconciliationBackup(base,key),plan:coverPlan});
   const identificationPlan=JSON.parse(await readFile(path.join(root,'book-identification-recovery.json'),'utf8'));
   reconciliationStatus.book_identification=await applyBookIdentification({db,backup:createReconciliationBackup(base,key),plan:identificationPlan});
+  const coursePlan=JSON.parse(await readFile(path.join(root,'course-cover-recovery.json'),'utf8'));
+  reconciliationStatus.course_cover_recovery=await applyMissingCovers({db,backup:createReconciliationBackup(base,key),plan:coursePlan});
   snapshot=null;
   return reconciliationStatus;
 }

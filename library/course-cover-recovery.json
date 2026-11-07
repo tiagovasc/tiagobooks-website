@@ -1,0 +1,39 @@
+{
+  "version": "course-covers-20261107-v1",
+  "activate": false,
+  "books": [
+    {
+      "id": "36",
+      "title": "A333 Philosophy: War",
+      "author": "Jon Pike",
+      "fields": {
+        "cover": "covers/tbr_metadata_a7ff7c6f3542408467405d13.jpg",
+        "cover_status": "ok",
+        "cover_source_url": "https://www.bobshop.co.za/key-questions-in-philosophy-set-of-5-books-the-open-university-softcover-1st-ed-2014/p/693313430",
+        "cover_image_kind": "front_cover"
+      }
+    },
+    {
+      "id": "34",
+      "title": "A333 Philosophy: The Value of Life",
+      "author": "Christopher Belshaw",
+      "fields": {
+        "cover": "covers/tbr_metadata_32ce2cc91ef25f363a2d1f4c.jpg",
+        "cover_status": "ok",
+        "cover_source_url": "https://www.bobshop.co.za/key-questions-in-philosophy-set-of-5-books-the-open-university-softcover-1st-ed-2014/p/693313430",
+        "cover_image_kind": "front_cover"
+      }
+    },
+    {
+      "id": "32",
+      "title": "A333 Philosophy: Knowledge and Reason",
+      "author": "Carolyn Price",
+      "fields": {
+        "cover": "covers/tbr_metadata_9b477e0c7fa170fbed8f04e6.jpg",
+        "cover_status": "ok",
+        "cover_source_url": "https://www.bobshop.co.za/key-questions-in-philosophy-set-of-5-books-the-open-university-softcover-1st-ed-2014/p/693313430",
+        "cover_image_kind": "front_cover"
+      }
+    }
+  ]
+}
