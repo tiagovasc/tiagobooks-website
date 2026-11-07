@@ -1,0 +1,193 @@
+{
+  "version": "missing-covers-20261107-v1",
+  "activate": false,
+  "books": [
+    {
+      "id": "787",
+      "title": "The Philosophers' Magazine  (Issue 97, 2nd Quarter 2022)",
+      "author": "Timothy Williamson, Brian Treanor",
+      "fields": {
+        "cover": "covers/tbr_metadata_3f6db14608466655b2e3b729.jpg",
+        "cover_status": "ok",
+        "cover_source_url": "https://reader.exacteditions.com/issues/101781/spread/1",
+        "cover_image_kind": "front_cover"
+      }
+    },
+    {
+      "id": "788",
+      "title": "The Philosophers' Magazine  (Issue 98, 4th Quarter 2022)",
+      "author": "Jonathan Wolff",
+      "fields": {
+        "cover": "covers/tbr_metadata_c055c0db54a023c8050a1944.jpg",
+        "cover_status": "ok",
+        "cover_source_url": "https://reader.exacteditions.com/issues/106136/spread/1",
+        "cover_image_kind": "front_cover"
+      }
+    },
+    {
+      "id": "791",
+      "title": "The Philosophers' Magazine: Issue 99 - 1st Quarter 2023",
+      "author": "The Philosophers' Magazine",
+      "fields": {
+        "cover": "covers/tbr_metadata_758493e059e2903046246be1.jpg",
+        "cover_status": "ok",
+        "cover_source_url": "https://reader.exacteditions.com/issues/110655/spread/1",
+        "cover_image_kind": "front_cover"
+      }
+    },
+    {
+      "id": "1035",
+      "title": "The Quotable Jung",
+      "author": "Judith R. Harris (Editor)",
+      "fields": {
+        "cover": "covers/tbr_metadata_22ec59c57d78301a0975c4d1.jpg",
+        "cover_status": "ok",
+        "cover_source_url": "https://cdn.waterstones.com/bookjackets/large/9780/6912/9780691270951.jpg",
+        "cover_image_kind": "front_cover"
+      }
+    },
+    {
+      "id": "1036",
+      "title": "Painted Mysteries",
+      "author": "Caroline Chapman",
+      "fields": {
+        "cover": "covers/tbr_metadata_1f322dc95f7169b92db0e5cb.jpg",
+        "cover_status": "ok",
+        "cover_source_url": "https://cdn.waterstones.com/bookjackets/large/9781/9174/9781917458290.jpg",
+        "cover_image_kind": "front_cover"
+      }
+    },
+    {
+      "id": "1037",
+      "title": "Remembering the Human Microcosm in the Age of Mechanized Intelligence",
+      "author": "Matthew David Segall",
+      "fields": {
+        "cover": "covers/tbr_metadata_f20c6472b84875dbb76e6eea.jpg",
+        "cover_status": "ok",
+        "cover_source_url": "https://cdn.waterstones.com/bookjackets/large/9798/1818/9798181811805.jpg",
+        "cover_image_kind": "front_cover"
+      }
+    },
+    {
+      "id": "1040",
+      "title": "Eastern Philosophy and Classical Theism (Elements in Global Philosophy of Religion)",
+      "author": "Tyler Dalton McNabb, Erik Baldwin",
+      "fields": {
+        "cover": "covers/tbr_metadata_c682fc7dfa3223e1a4dc39de.jpg",
+        "cover_status": "ok",
+        "cover_source_url": "https://cdn.waterstones.com/bookjackets/large/9781/0096/9781009660488.jpg",
+        "cover_image_kind": "front_cover"
+      }
+    },
+    {
+      "id": "1079",
+      "title": "What Is Good? The Search for the Best Way to Live",
+      "author": "A. C. Grayling",
+      "fields": {
+        "cover": "covers/tbr_metadata_f945286dd598f934f1d4151d.jpg",
+        "cover_status": "ok",
+        "cover_source_url": "https://images-na.ssl-images-amazon.com/images/P/0297841327.01.LZZZZZZZ.jpg",
+        "cover_image_kind": "front_cover"
+      }
+    },
+    {
+      "id": "1083",
+      "title": "The Cambridge Introduction to Jacques Derrida",
+      "author": "Leslie Hill",
+      "fields": {
+        "cover": "covers/tbr_metadata_ee1b6bde047800ce66e2defb.jpg",
+        "cover_status": "ok",
+        "cover_source_url": "https://images-na.ssl-images-amazon.com/images/P/0521682819.01.LZZZZZZZ.jpg",
+        "cover_image_kind": "front_cover"
+      }
+    },
+    {
+      "id": "1085",
+      "title": "The Christian Platonism of Simone Weil",
+      "author": "E. Jane Doering; Eric O. Springsted (editors)",
+      "fields": {
+        "cover": "covers/tbr_metadata_e64830ceb1af50acf4f7fc1b.jpg",
+        "cover_status": "ok",
+        "cover_source_url": "https://cdn.waterstones.com/bookjackets/large/9780/2680/9780268025649.jpg",
+        "cover_image_kind": "front_cover"
+      }
+    },
+    {
+      "id": "1087",
+      "title": "A History of Western Philosophy",
+      "author": "Bertrand Russell",
+      "fields": {
+        "cover": "covers/tbr_metadata_13a6ba3be3cee3ae8a8f8111.jpg",
+        "cover_status": "ok",
+        "cover_source_url": "https://images-na.ssl-images-amazon.com/images/P/1416599150.01.LZZZZZZZ.jpg",
+        "cover_image_kind": "front_cover"
+      }
+    },
+    {
+      "id": "work-online-b7af0de2b3373cf5fc2f",
+      "title": "Emotional Intelligence: Improve Your Social Skills & Relationships, Achieve Self Awareness & Self Management, Boost Your EQ and Control Your Emotions (EQ-i 2.0)",
+      "author": "David Smith",
+      "fields": {
+        "cover": "covers/tbr_metadata_db65f751d9b2e0e8b7d89422.jpg",
+        "cover_status": "ok",
+        "cover_source_url": "https://cdn.waterstones.com/bookjackets/large/9781/8016/9781801686594.jpg",
+        "cover_image_kind": "front_cover"
+      }
+    },
+    {
+      "id": "work-instagram-c22d6855f9f4f16ead1b",
+      "title": "A History of Philosophy Without Any Gaps (series)",
+      "author": "Peter Adamson (series creator)",
+      "fields": {
+        "cover": "covers/tbr_metadata_54b073d45bd73499cbfbf071.jpg",
+        "cover_status": "ok",
+        "cover_source_url": "https://cdn.waterstones.com/bookjackets/large/9780/1987/9780198767039.jpg",
+        "cover_image_kind": "representative_series_front"
+      }
+    },
+    {
+      "id": "work-instagram-1cbc498602a6b0e531a0",
+      "title": "Circumfession",
+      "author": "Jacques Derrida; Geoffrey Bennington (trans.)",
+      "fields": {
+        "cover": "covers/tbr_metadata_99591a84952b1913aff92056.jpg",
+        "cover_status": "ok",
+        "cover_source_url": "https://cdn.waterstones.com/bookjackets/large/9780/2260/9780226042626.jpg",
+        "cover_image_kind": "containing_work_front"
+      }
+    },
+    {
+      "id": "work-instagram-5ac099dc43358d438192",
+      "title": "Berserk",
+      "author": "Kentaro Miura",
+      "fields": {
+        "cover": "covers/tbr_metadata_867499fb3dca59dca717ea00.jpg",
+        "cover_status": "ok",
+        "cover_source_url": "https://images4.penguinrandomhouse.com/cover/9781506711980",
+        "cover_image_kind": "representative_series_front"
+      }
+    },
+    {
+      "id": "work-instagram-5d653a97551c5f82be53",
+      "title": "Vinland Saga",
+      "author": "Makoto Yukimura",
+      "fields": {
+        "cover": "covers/tbr_metadata_dc298f9af9ab3c9ee5641a6c.jpg",
+        "cover_status": "ok",
+        "cover_source_url": "https://images1.penguinrandomhouse.com/cover/9781612624204",
+        "cover_image_kind": "representative_series_front"
+      }
+    },
+    {
+      "id": "work-instagram-8fd266892c85490eb9ff",
+      "title": "You Don’t Know JS",
+      "author": "Kyle Simpson",
+      "fields": {
+        "cover": "covers/tbr_metadata_9578a936769b6ea5ee511fd8.jpg",
+        "cover_status": "ok",
+        "cover_source_url": "https://raw.githubusercontent.com/getify/You-Dont-Know-JS/2nd-ed/get-started/images/cover.png",
+        "cover_image_kind": "representative_series_front"
+      }
+    }
+  ]
+}

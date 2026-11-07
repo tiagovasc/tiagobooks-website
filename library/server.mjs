@@ -9,6 +9,7 @@ import {tripMonth,publicTripCatalogue} from './trip-privacy.mjs';
 import {applyConfirmedCorrections} from './confirmed-book-corrections.mjs';
 import {mergeEditedSnapshot,EditConflict} from './library-edit-merge.mjs';
 import {applyFavoriteUnion} from './favorite-union-recovery.mjs';
+import {applyMissingCovers} from './missing-cover-recovery.mjs';
 import {applyOperations,validateOperations,stampLegacyChanges,SYNC_PROTOCOL} from './sync-operations.mjs';
 import {readFile,stat} from 'node:fs/promises';
 import path from 'node:path';
@@ -35,6 +36,8 @@ export async function activateBookReconciliation(){
   reconciliationStatus.audiobook_ownership=await applyConfirmedCorrections({db,backup:createReconciliationBackup(base,key),corrections:audiobookPlan.books,version:audiobookPlan.version});
   const favoritePlan=JSON.parse(await readFile(path.join(root,'favorite-union-recovery.json'),'utf8'));
   reconciliationStatus.favorite_union_recovery=await applyFavoriteUnion({db,backup:createReconciliationBackup(base,key),plan:favoritePlan});
+  const coverPlan=JSON.parse(await readFile(path.join(root,'missing-cover-recovery.json'),'utf8'));
+  reconciliationStatus.missing_cover_recovery=await applyMissingCovers({db,backup:createReconciliationBackup(base,key),plan:coverPlan});
   snapshot=null;
   return reconciliationStatus;
 }
