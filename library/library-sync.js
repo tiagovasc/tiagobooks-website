@@ -48,10 +48,10 @@ export function createSync(hooks,options={}){
  function report(){hooks.status?.(status());}
  function current(){return project(books,pending());}
  function show(local=false,favoriteOnly=false){
-  if(needsPull||hooks.editing?.())return;
+  if(needsPull||storageError||hooks.editing?.())return;
   rendered=current();hooks.apply?.(clone(rendered),revision,{local,favoriteOnly});report();
  }
- function write(record){try{store.put(record);storageError='';}catch(error){storageError=error.message;report();hooks.error?.(error);throw error;}}
+ function write(record){try{store.put(record);}catch(error){storageError=error.message;report();hooks.error?.(error);throw error;}}
  function recordFor(book,field,wanted,present=true,extra={}){
   return {op:{id:crypto.randomUUID(),book_id:book.id,field,before:value(book,field)??null,before_present:value(book,field)!==undefined,before_version:version(book,field),present,value:wanted??null,...extra},client,title:book.title||'Book',order:++order,state:'pending'};
  }
@@ -73,6 +73,7 @@ export function createSync(hooks,options={}){
     if(rec.op.present)before[field]=clone(rec.op.value);else delete before[field];before._sync_versions={...before._sync_versions,[field]:rec.op.id};
    }
   }
+  storageError='';report();
  }
  function favorite(id,selected){
   const before=rendered.find(b=>b.id===id)||current().find(b=>b.id===id);
@@ -208,7 +209,7 @@ export async function mountSync(hooks){
   bar.dataset.state=state.storageError||state.conflicts.length?'attention':state.pending?'pending':'synced';
   if(!state.auth){const a=document.createElement('a');a.href='/login?next=%2Flibrary';a.target='_blank';a.rel='noopener';a.textContent='Sign in';actions.append(a);}
   if(state.conflicts.length)button('Review',review);
-  if(state.pending)button('Retry',()=>engine.flush());
+  if(state.pending||state.storageError)button('Retry',()=>{try{hooks.stage();engine.flush();}catch{}});
   if(state.newBuild)button('Update available · reload',()=>{hooks.stage();if(!engine.status().storageError)location.reload();});
   if(state.pending||state.storageError)button('Download recovery copy',async()=>{try{hooks.stage();}catch{}const blob=new Blob([JSON.stringify({books:hooks.snapshot?.()||engine.current(),canonical_books:engine.current(),changes:await engine.history()},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='library-recovery.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);});
   hooks.status?.(state);
