@@ -7,6 +7,7 @@ import {readBody,sameOrigin} from './http-utils.mjs';
 import {personalizeSiteHeader} from '../src/lib/site-shell.mjs';
 import {tripMonth,publicTripCatalogue} from './trip-privacy.mjs';
 import {applyConfirmedCorrections} from './confirmed-book-corrections.mjs';
+import {mergeEditedSnapshot,EditConflict} from './library-edit-merge.mjs';
 import {readFile,stat} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -266,6 +267,19 @@ export const server=http.createServer(async(req,res)=>{
       if(!sameOrigin(req))return send(res,403,{error:'Origin rejected'});
       const body=await readBody(req,12*1024*1024);if(body===null)return send(res,413,{error:'Library too large'});
       let books;try{books=JSON.parse(body);}catch{return send(res,400,{error:'Invalid JSON'});}
+      if(books&&!Array.isArray(books)&&Array.isArray(books.base_books)){
+        const desired=books.books,baseline=books.base_books;
+        if(!validBooks(desired)||!validBooks(baseline))return send(res,400,{error:'Invalid library edit'});
+        for(let attempt=0;attempt<5;attempt++){
+          const [current]=await db('GET','?id=eq.library&select=books,revision');if(!current)return send(res,503,{error:'Library unavailable. Your edits remain in this tab.'});
+          let combined;try{combined=mergeEditedSnapshot(current.books,baseline,desired);}catch(error){return send(res,error instanceof EditConflict?409:400,{error:error.message});}
+          const members=current.books.filter(isLibraryMember),next=combined.filter(isLibraryMember);
+          if(!validBooks(next)||!plausibleSave(members.length,next.length)||!keepsDescriptions(members.filter(described).length,next.filter(described).length))return send(res,400,{error:'Refusing to remove most library records or descriptions. Your edits remain in this tab.'});
+          const rows=await db('PATCH',`?id=eq.library&revision=eq.${current.revision}`,{books:combined,revision:current.revision+1,updated_at:new Date().toISOString()});
+          if(!rows.length)continue;snapshot=null;return send(res,200,{ok:true,merged:true},{'X-Library-Revision':String(current.revision+1)});
+        }
+        return send(res,503,{error:'The library is busy. Your edits remain in this tab; try Save again.'});
+      }
       if(!validBooks(books))return send(res,400,{error:'Invalid library or rating'});
       const revision=Number(req.headers['x-library-revision']);if(!Number.isSafeInteger(revision)||revision<1)return send(res,409,{error:'Reload the library before saving'});
       const [current]=await db('GET',`?id=eq.library&revision=eq.${revision}&select=books`);

@@ -194,3 +194,16 @@ test('favorite field saves tolerate stale tabs, retry conflicts and protect late
   assert.equal(saved.status,200);assert.equal(row.books[0].favorite,true);assert.equal(row.books[0].title,'Intentional title edit');
  }finally{row=before;conflictFavoriteOnce=false;resetCaches();}
 });
+
+test('Stale full-library edits merge ratings without reverting ownership, new records or favorites',async()=>{
+ const before=structuredClone(row),cookie=await login();
+ try{
+  const baseline=structuredClone(row.books),desired=structuredClone(baseline);desired[0].rating=(desired[0].rating+1)%6;
+  row.books[0].owned=true;row.books[0].favorite=true;row.books.push({id:'haiku-new',title:'New Haiku entry',rating:0,owned:true});row.revision++;resetCaches();
+  const response=await fetch(base+'/save',{method:'POST',headers:{Cookie:cookie,'Content-Type':'application/json','X-Library-Revision':'1'},body:JSON.stringify({books:desired,base_books:baseline})});
+  assert.equal(response.status,200);assert.equal(row.books[0].rating,desired[0].rating);assert.equal(row.books[0].owned,true);assert.equal(row.books[0].favorite,true);assert.ok(row.books.some(b=>b.id==='haiku-new'));
+  row.books[0].rating=(desired[0].rating+1)%6;
+  const conflicted=await fetch(base+'/save',{method:'POST',headers:{Cookie:cookie,'Content-Type':'application/json'},body:JSON.stringify({books:desired,base_books:baseline})});
+  assert.equal(conflicted.status,409);assert.match((await conflicted.json()).error,/rating changed elsewhere/);
+ }finally{row=before;resetCaches();}
+});

@@ -42,6 +42,17 @@ test('queued library saves stay pending until the latest snapshot is acknowledge
   assert.equal(h.context.serverRevision,'139');assert.equal(h.context.serverSaveState,'saved');assert.equal(h.warns(),false);
 });
 
+test('Queued metadata saves use the last acknowledged baseline, including recovery after failure',async()=>{
+ const h=harness(),first=[{id:'one',title:'Original',rating:0}],one=[{...first[0],rating:1}],two=[{...first[0],rating:2}];
+ h.context.metadataBaseSnapshot=JSON.stringify(first);h.context.serverRevision=null;
+ h.setSnapshot(JSON.stringify(one));h.context.saveToServer();h.setSnapshot(JSON.stringify(two));h.context.saveToServer();await turn();
+ assert.deepEqual(JSON.parse(h.requests[0].options.body),{books:one,base_books:first});h.respond(0,200,'200');await turn();
+ assert.deepEqual(JSON.parse(h.requests[1].options.body),{books:two,base_books:one});h.respond(1,503);await h.context.serverSaveQueue;
+ assert.equal(h.context.metadataBaseSnapshot,JSON.stringify(one));assert.equal(h.context.metadataSaveFailed,true);
+ h.events.online();await turn();assert.deepEqual(JSON.parse(h.requests[2].options.body),{books:two,base_books:one});h.respond(2,200,'201');await h.context.serverSaveQueue;
+ assert.equal(h.context.metadataSaveFailed,false);assert.equal(h.context.metadataBaseSnapshot,JSON.stringify(two));
+});
+
 test('TBR favorites share the library revision queue and update the underlying book',async()=>{
   const h=harness(),book={id:'one',favorite:false};
   Object.assign(h.context,{libraryReady:Promise.resolve(true),findBook:()=>book,refreshFavoriteControls(){},announceCanonicalFavorite(){}});
