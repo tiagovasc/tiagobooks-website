@@ -1,6 +1,6 @@
 {
   "version": "canonical-books-20261107-v1",
-  "activate": false,
+  "activate": true,
   "library_memberships": 1007,
   "tbr_memberships": 5227,
   "expected_library": {
@@ -929,7 +929,8 @@
         "subtitle": "The History of Continental Philosophy, Volume 1",
         "author": "Thomas Nenon",
         "volume": 1,
-        "notes": "Individual volume of owned set 729. Original set notes and rating retained with the collection record."
+        "notes": "Individual volume of owned set 729. Original set notes and rating retained with the collection record.",
+        "notes_url": "https://docs.google.com/document/d/18eAA6iajY-hUFGNYOkGIBeUcstoG2juTf701PjRNlsw/edit?usp=drive_link"
       },
       {
         "id": "729-v2",
