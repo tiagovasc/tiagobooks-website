@@ -36,7 +36,7 @@ TBR ownership badges are read-only indicators derived from the current library t
 
 ## Library synchronization
 
-`LIBRARY_SYNC.md` is the current hosted editing contract. Protocol-1 per-field operations, durable local drafts, internal field versions, safe retries, conflict review and revision/build polling supersede the earlier separate hosted save queues. Deploy compatible readers/writers together; no startup database rewrite is introduced. Keep pending browser outboxes compatible when rolling back. Maintenance writers must preserve `_sync_versions` and stamp fields they change (or use the sync API); never replace the database from an old full export. The unapproved title preview is separate from this release.
+[LIBRARY_SYNC.md](LIBRARY_SYNC.md) is the hosted editing contract. Protocol-1 per-field operations, durable local drafts, internal field versions, safe retries, conflict review and revision/build polling supersede the earlier separate hosted save queues. Deploy compatible readers/writers together; no startup database rewrite is introduced. Keep pending browser outboxes compatible when rolling back. Maintenance writers must preserve `_sync_versions` and stamp fields they change (or use the sync API); never replace the database from an old full export.
 
 ## Build and deploy
 

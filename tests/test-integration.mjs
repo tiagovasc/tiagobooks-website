@@ -1,3 +1,4 @@
+import {fileURLToPath} from 'node:url';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile,writeFile,mkdtemp,readdir,mkdir} from 'node:fs/promises';
@@ -6,23 +7,23 @@ import os from 'node:os';
 import http from 'node:http';
 import {randomBytes} from 'node:crypto';
 import {parseFragment,serialize} from 'parse5';
-import {searchCatalogue} from './src/lib/catalogue-search.mjs';
-import {editorHandler} from './editor-api.mjs';
+import {searchCatalogue} from '../src/lib/catalogue-search.mjs';
+import {editorHandler} from '../editor-api.mjs';
 import {load as yaml} from 'js-yaml';
-import {BLOG_VISIBILITY,isBlogPostVisible,blogMenuSections} from './src/lib/post-presentation.mjs';
-import {isExternalArticleUrl,postHref} from './src/lib/linked-post.mjs';
-import {validatePublicEntry} from './production-editor-api.mjs';
+import {BLOG_VISIBILITY,isBlogPostVisible,blogMenuSections} from '../src/lib/post-presentation.mjs';
+import {isExternalArticleUrl,postHref} from '../src/lib/linked-post.mjs';
+import {validatePublicEntry} from '../production-editor-api.mjs';
 const listedSourcePosts=(await Promise.all((await readdir('src/content/posts')).filter(f=>f.endsWith('.md')).map(async f=>{
  const text=await readFile('src/content/posts/'+f,'utf8');return {id:f.slice(0,-3),data:yaml(text.match(/^---\r?\n([\s\S]*?)\r?\n---/)[1])};
 }))).filter(p=>!p.data.draft&&!p.data.unlisted&&!p.data.protected);
 const blogSourcePosts=listedSourcePosts.filter(p=>isBlogPostVisible(p));
-const root=path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Z]:)/,'$1'));
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const fixture=await mkdtemp(path.join(os.tmpdir(),'tiago-unified-test-'));
 const source=Array.from({length:40},(_,i)=>({id:String(i+1),title:'Fixture book '+i,author:'Fixture author',rating:i%6}));
 const stateFile=path.join(fixture,'library.json');
 await writeFile(stateFile,JSON.stringify({id:'library',revision:1,books:source}));
 process.env.LOCAL_LIBRARY_FILE=stateFile;process.env.LIBRARY_PASSWORD=randomBytes(24).toString('hex');process.env.SESSION_SECRET=randomBytes(32).toString('hex');
-const {server}=await import('./server.mjs');
+const {server}=await import('../server.mjs');
 await new Promise(r=>server.listen(0,'127.0.0.1',r));const base='http://127.0.0.1:'+server.address().port;
 let cookie;
 test.after(async()=>{server.closeAllConnections();await new Promise(r=>server.close(r))});
@@ -127,7 +128,7 @@ test('real catalogue queries find title/author/notes and TBR place without mutat
   assert.ok(searchCatalogue(tbr,'Watkins').length>0);assert.equal(searchCatalogue(source,'no-match-7df51b8c').length,0);assert.equal(searchCatalogue(source,'').length,0);assert.equal(JSON.stringify(source),before);
 });
 test('the real Pagefind WASM index searches all 146 writing entries',async()=>{
-  const {createInstance}=await import('./dist/pagefind/pagefind.js');
+  const {createInstance}=await import('../dist/pagefind/pagefind.js');
   const index=createInstance({basePath:base+'/pagefind/',baseUrl:base+'/',language:'en',noWorker:true});
   try{
     const results=await index.search('beauty');assert.ok(results.results.length>0);

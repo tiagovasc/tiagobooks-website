@@ -8,6 +8,7 @@ const files=[...new Set(execFileSync('git',['ls-files','--cached','--others','--
 const errors=[];
 for(const file of files){
   if(/^(?:private|data|deploy|\.local|node_modules|dist|\.astro)\//.test(file)||(/(?:^|\/)\.env(?:\.|$)/.test(file)&&file!=='.env.example')||/\.(?:bundle|dpapi|pem|key)$/.test(file))errors.push(`${file}: private/generated file`);
+  if(/\.(?:pfx|p12|sqlite|sqlite3|bak|orig|rej|tmp|swp)$/.test(file)||file==='books.json'||/^library\/.*\.revision-\d+\.json$/.test(file)||/^library\/tbr-.*-prior-.*\.json$/.test(file))errors.push(`${file}: private/generated file`);
   let data;try{data=readFileSync(file)}catch(error){if(error.code==='ENOENT')continue;throw error}
   if(data.includes(0))continue;
   const text=data.toString('utf8');

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
 
-const source=readFileSync(new URL('./library/index.html',import.meta.url),'utf8').replace(/\r\n/g,'\n');
+const source=readFileSync(new URL('../library/index.html',import.meta.url),'utf8').replace(/\r\n/g,'\n');
 const turn=()=>new Promise(resolve=>setImmediate(resolve));
 
 function harness(){

@@ -1,24 +1,22 @@
-# Tiago Books
+# Tiago Faleiro
 
-The source for [tiagobooks.com](https://tiagobooks.com): Tiago Faleiro's personal library, blog, essays, podcast and other pages, with one shared interface.
+The source for [tiagovf.com](https://tiagovf.com): a personal website about philosophy, books and the questions that connect them.
 
-Browse the library in cover, list or table view; filter reading status and TBR collections; explore the blog by tag and date; or search across books and writing. The site includes full-content Atom feeds, stable links, light and dark themes, and authenticated editing.
+[Blog](https://tiagovf.com/) · [Library](https://tiagovf.com/library) · [Podcasts](https://tiagovf.com/pages/podcast-overview) · [About](https://tiagovf.com/pages/about)
 
-The blog has a discreet desktop archive centered in the left content gutter and a native month picker on mobile. Category filters update the archive; month links jump directly to the first matching article. Desktop cards group the publication date and reading estimate beside the category. Mobile puts the date under the thumbnail and keeps the reading estimate beside the category, including articles with embedded video.
+## What’s inside
 
-TBR includes Book shops, Online and Instagram discoveries. Shared books retain their bookshop version and visit history, appear in each relevant source view and count once in the combined catalogue and search. Online and Instagram cards use general source labels without invented locations or dates. `library/tbr-catalogue.json` is the derived public catalogue; `tbr-bookshops.json` preserves the original bookshop data. Private collection provenance is excluded from this repository.
+- Essays, book reviews, talks, interviews and podcast episodes.
+- A personal library with reading histories, favorites and owned-book labels.
+- TBR collections spanning bookshops, online finds and Instagram.
+- Search across books and writing, publication archives, feeds, and light/dark themes.
+- Authenticated editing with durable local drafts and conflict-aware synchronization.
 
-The homepage is the Blog; the library lives at `/library`. The shared menu follows Blog, Books, Talks, Podcasts, Interviews, Library and About. Existing `/blog` links still work, and older homepage book and TBR links lead to the library.
+Built with **Astro**, **Node.js**, **Pagefind** and **Supabase**. Visitors browse the public catalogue; editing requires the owner's account. Production secrets and the live library database are stored outside this repository.
 
-The shared header floats above the page, with underlined active navigation and contextual filters below. Narrow layouts retain a compact overflow menu and theme/admin controls.
+## Get started
 
-Blog listing preferences are controlled by `BLOG_VISIBILITY` in `src/lib/post-presentation.mjs`. Podcast cards and their Blog filter are hidden by default; setting `showPodcastPosts` to `true` restores both after rebuilding. Published articles, podcast-page links, search and feeds remain available.
-
-Posts can optionally link to an article hosted elsewhere, using the same card design and existing CMS collection. See WRITING.md for `externalUrl` and the permalink/feed behavior.
-
-## Run locally
-
-Use Node.js **22.19 or later** and npm.
+Use Node.js **22.19 or later**.
 
 ```sh
 npm ci
@@ -26,26 +24,22 @@ npm run build
 npm run dev
 ```
 
-Open **http://localhost:8740**. The first launch creates an empty local catalogue in ignored `.local/`. Published blog content and TBR data are included; the live library database and credentials are not. A local clone never connects to the live database by default.
-
-To edit locally, copy `.env.example` to `.env`, set your own `LIBRARY_PASSWORD`, and restart. Sign in at `/login`, then use the library controls or `/editor`. Local edits change your Markdown files; review them before committing. Rebuild with `npm run build` after source changes. `npm run dev` serves the built site rather than a hot-reloading development server.
+Open **http://localhost:8740**. A fresh clone uses an empty local library and does not connect to the production database. Published writing and TBR data are included. For local editing, copy `.env.example` to `.env`, choose your own library password and restart.
 
 ## Project map
 
-| Path | Purpose |
+| Folder | Contents |
 | --- | --- |
-| `src/content/posts`, `src/content/pages` | Published Markdown |
-| `src/data/site.json` | Site identity and navigation |
-| `src/layouts`, `src/pages`, `src/lib`, `src/components` | Astro pages, episode lists and shared rendering |
-| `library/` | Library interface, API, public covers and TBR catalogue |
-| `public/` | Shared styles, scripts, uploads, platform icons and vendored Sveltia CMS |
-| `server.mjs`, `editor-api.mjs` | Node server and local editing |
-| `production-editor-api.mjs`, `github-publisher.mjs` | Site-password editing and repository-scoped publishing |
-| `scripts/` | Build, content and link checks |
+| [`docs/`](docs/README_Docs.md) | Setup, deployment, writing, synchronization and contributor guides |
+| `src/` | Published Markdown, Astro pages, layouts and shared components |
+| `library/` | Library interface, API, public catalogue and book covers |
+| `public/` | Shared styles, browser scripts, artwork and static assets |
+| `scripts/` | Build, validation and maintenance tools |
+| `tests/` | Website and library regression tests |
 
-Astro generates the blog; Pagefind indexes writing; the Node server combines it with the library API and catalogue search. Production library storage uses Supabase. The Docker image runs Node without installing build dependencies at startup.
+Root-level JavaScript files are the Node application entry points and publishing/storage modules. Blog posts and pages stay under `src/content/` so their publishing paths remain stable.
 
-## Check changes
+## Check a change
 
 ```sh
 npm run check:public
@@ -54,13 +48,12 @@ npm test
 npm run check:build
 ```
 
-Tests use synthetic library records and temporary local Git repositories. They exercise content routes, search, feeds, redirects, authentication, saving, editor round trips, concurrent publishing and server protections. GitHub Actions runs these checks for pushes and pull requests.
+Tests use synthetic records and temporary repositories. GitHub Actions runs these checks for pushes and pull requests. Keep this guide and the relevant documentation current when changing setup, structure or behavior.
 
-## Hosting and editing
+## Documentation
 
-- [Deployment guide](DEPLOYMENT.md): Docker, configuration and storage.
-- [Writing guide](WRITING.md): Markdown, media and the CMS.
-- [Link guide](LINKS.md): redirects, domain changes and validation.
-- [Contributing](CONTRIBUTING.md), [security](SECURITY.md) and [content rights](RIGHTS.md).
+[Deploying](docs/DEPLOYMENT.md) · [Writing](docs/WRITING.md) · [Library synchronization](docs/LIBRARY_SYNC.md) · [Testing](docs/TESTING.md) · [Contributing](docs/CONTRIBUTING.md) · [Security](docs/SECURITY.md) · [Rights](docs/RIGHTS.md)
 
-**Public source means public content.** Do not commit private drafts, passwords, backups or personal catalogue exports. Draft, unlisted and password-protected flags affect website rendering; they cannot hide Markdown in a public repository. Private writing belongs outside this checkout until it is ready for publication.
+Public source means public content: keep drafts, credentials, local databases, exports and recovery copies outside the repository. Website visibility settings cannot make a committed file private.
+
+The repository is available for inspection; writing, artwork and third-party materials retain their respective rights. See the [rights guide](docs/RIGHTS.md) before reusing them.

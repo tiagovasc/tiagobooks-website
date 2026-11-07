@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
 
-const source=readFileSync(process.env.DATE_RAIL_SOURCE_FILE||new URL('./public/date-rail.js',import.meta.url),'utf8');
+const source=readFileSync(process.env.DATE_RAIL_SOURCE_FILE||new URL('../public/date-rail.js',import.meta.url),'utf8');
 const compiled=source.replace('export function createDateRail','function createDateRail')+'\nglobalThis.createDateRail=createDateRail;';
 const months=['2026-12','2026-11','2026-10','2026-09','2025-12','2024-12','2024-11','2024-10','2023-12','2022-12','2021-12'];
 const dataset=new Map(months.map((key,index)=>[key,index+1]));

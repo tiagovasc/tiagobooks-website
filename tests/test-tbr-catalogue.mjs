@@ -1,8 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {searchCatalogue,tbrHref,tbrLabel} from './src/lib/catalogue-search.mjs';
-import {catalogueCounts,sourceBooks,filterCatalogue} from './library/tbr.js';
+import {searchCatalogue,tbrHref,tbrLabel} from '../src/lib/catalogue-search.mjs';
+import {catalogueCounts,sourceBooks,filterCatalogue} from '../library/tbr.js';
 const catalogue=JSON.parse(fs.readFileSync('library/tbr-catalogue.json','utf8'));
 const original=JSON.parse(fs.readFileSync('library/tbr-bookshops.json','utf8'));
 
@@ -120,7 +120,7 @@ test('Instagram records expose only public fields and search every source member
 });
 
 test('unified catalogue HTTP route supports compression and cache validation but no writes',async()=>{
-  const {server}=await import('./library/server.mjs');
+  const {server}=await import('../library/server.mjs');
   await new Promise(r=>server.listen(0,'127.0.0.1',r));
   const base='http://127.0.0.1:'+server.address().port;
   try{

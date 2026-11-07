@@ -22,8 +22,8 @@ await new Promise(resolve=>storage.listen(0,'127.0.0.1',resolve));
 const environment={NODE_ENV:'test',LOCAL_LIBRARY_FILE:undefined,SUPABASE_URL:`http://127.0.0.1:${storage.address().port}`,SUPABASE_SECRET_KEY:'boundary-fixture-storage-key',LIBRARY_PASSWORD:'boundary-fixture-password',SESSION_SECRET:'boundary-fixture-session-secret'};
 const previousEnvironment=Object.fromEntries(Object.keys(environment).map(name=>[name,process.env[name]]));
 for(const [name,value] of Object.entries(environment))if(value===undefined)delete process.env[name];else process.env[name]=value;
-const {authenticated,validBooks}=await import('./library/server.mjs');
-const {server}=await import('./server.mjs');
+const {authenticated,validBooks}=await import('../library/server.mjs');
+const {server}=await import('../server.mjs');
 await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
 const base=`http://127.0.0.1:${server.address().port}`;
 test.after(async()=>{
@@ -54,7 +54,7 @@ test('saves reject malformed merge aliases before they can break library loading
 });
 
 test('save validation preserves nullable legacy aliases and unfamiliar metadata',async()=>{
-  const source=await readFile(new URL('./library/index.html',import.meta.url),'utf8');
+  const source=await readFile(new URL('../library/index.html',import.meta.url),'utf8');
   const reindex=source.match(/  function reindex\(\)\{[^\n]+\}/)?.[0];
   assert.ok(reindex,'Exercise the real page indexing function');
   for(const merged_record_ids of [undefined,null,[],['old-id',123]]){

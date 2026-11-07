@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {applyOperations,stampLegacyChanges} from './library/sync-operations.mjs';
-import {ChangeStore,createSync,project} from './library/library-sync.js';
+import {applyOperations,stampLegacyChanges} from '../library/sync-operations.mjs';
+import {ChangeStore,createSync,project} from '../library/library-sync.js';
 
 const seed=()=>[{id:'one',title:'One',favorite:false,owned:true,rating:3,notes:'original',tbr_ids:['shop-one'],applied_corrections:['receipt']},{id:'hidden',title:'TBR book',library_member:false,favorite:false,owned:false,rating:0}];
 const operation=(id,field,before,value,token=null,book_id='one')=>({id,book_id,field,before,before_version:token,present:true,value});

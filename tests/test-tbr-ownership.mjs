@@ -3,8 +3,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import {ownedTbrIds} from './library/tbr-ownership.mjs';
-import {tbrOwnedHTML} from './library/tbr.js';
+import {ownedTbrIds} from '../library/tbr-ownership.mjs';
+import {tbrOwnedHTML} from '../library/tbr.js';
 
 test('only owned records contribute; explicit TBR links survive corrected metadata',()=>{
   const catalogue=[{id:'linked',title:'Corrected title',author:'A'},{id:'not-owned',title:'Read Book',author:'B'}];
@@ -27,7 +27,7 @@ test('ownership endpoint exposes only current matched IDs and reflects authentic
   const book={id:'one',title:'Owned Book',author:'Author',rating:4,owned:true,tbr_ids:[catalogue.books[0].id]};
   fs.writeFileSync(file,JSON.stringify({id:'library',revision:1,books:[book]}));
   process.env.LOCAL_LIBRARY_FILE=file;process.env.LIBRARY_PASSWORD='isolated-test-password';process.env.SESSION_SECRET='isolated-test-session-secret';
-  const {server}=await import('./server.mjs');await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
+  const {server}=await import('../server.mjs');await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
   const base=`http://127.0.0.1:${server.address().port}`;
   try{
     const before=fs.readFileSync(file,'utf8');const response=await fetch(base+'/api/tbr-owned');assert.equal(response.status,200);assert.deepEqual(await response.json(),{ids:[catalogue.books[0].id]});assert.equal(fs.readFileSync(file,'utf8'),before);

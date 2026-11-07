@@ -1,5 +1,5 @@
 # Public content editor. Everything saved to GitHub is public, including drafts.
-# Configure repository and branch through the host environment; see DEPLOYMENT.md.
+# Configure repository and branch through the host environment; see docs/DEPLOYMENT.md.
 backend:
   name: github
   repo: integration-repository-not-configured/site

@@ -10,9 +10,9 @@ import os from 'node:os';
 import http from 'node:http';
 import {randomBytes} from 'node:crypto';
 import {parseFragment,serialize} from 'parse5';
-import { postSubtitle, displayTitle, visibleTags, BLOG_VISIBILITY } from './src/lib/post-presentation.mjs';
-import { parseInterviews } from './src/lib/interviews.mjs';
-import { parseTalks, parseBooks } from './src/lib/page-sections.mjs';
+import { postSubtitle, displayTitle, visibleTags, BLOG_VISIBILITY } from '../src/lib/post-presentation.mjs';
+import { parseInterviews } from '../src/lib/interviews.mjs';
+import { parseTalks, parseBooks } from '../src/lib/page-sections.mjs';
 const fixture=await mkdtemp(path.join(os.tmpdir(),'tiago-hardening-test-'));
 test('subtitles use authored opening lines without confusing section headings or provenance',()=>{
   const post=body=>({data:{title:'Example'},body});
@@ -29,9 +29,9 @@ const stateFile=path.join(fixture,'library.json');
 const books=Array.from({length:40},(_,i)=>({id:String(i+1),title:'Fixture book '+i,author:'Fixture author',rating:0,description:'Quote: “I’ll go on.” — '+'x'.repeat(i)}));
 await writeFile(stateFile,JSON.stringify({id:'library',revision:1,books}));
 process.env.LOCAL_LIBRARY_FILE=stateFile;process.env.LIBRARY_PASSWORD=randomBytes(24).toString('hex');process.env.SESSION_SECRET=randomBytes(32).toString('hex');
-const {server}=await import('./server.mjs');
-const {safeNext}=await import('./library/server.mjs');
-const {readBody}=await import('./library/http-utils.mjs');
+const {server}=await import('../server.mjs');
+const {safeNext}=await import('../library/server.mjs');
+const {readBody}=await import('../library/http-utils.mjs');
 await new Promise(r=>server.listen(0,'127.0.0.1',r));const base='http://127.0.0.1:'+server.address().port;
 test.after(async()=>{server.closeAllConnections();await new Promise(r=>server.close(r))});
 async function login(next){
@@ -133,7 +133,7 @@ test('behind Railway, failed logins are counted per visitor, not for everyone be
     assert.equal((await attempt('198.51.100.4',process.env.LIBRARY_PASSWORD)).status,303,'the owner can still sign in');
     assert.equal((await attempt('not-an-ip<script>')).status,401);
   }finally{if(before===undefined)delete process.env.NODE_ENV;else process.env.NODE_ENV=before}
-  const local=(await import('./library/server.mjs')).clientAddress({headers:{'x-real-ip':'203.0.113.9'},socket:{remoteAddress:'127.0.0.1'}});
+  const local=(await import('../library/server.mjs')).clientAddress({headers:{'x-real-ip':'203.0.113.9'},socket:{remoteAddress:'127.0.0.1'}});
   assert.equal(local,'127.0.0.1','outside production the header is ignored');
 });
 

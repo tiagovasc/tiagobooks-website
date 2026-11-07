@@ -1,9 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {reconcileRecords,mergeLibrarySave,projectTbrCatalogue,canonicalFavoriteIds,runBookReconciliation} from './library/canonical-books.mjs';
-import {correctedBooks,applyConfirmedCorrections} from './library/confirmed-book-corrections.mjs';
-import {unionFavorites,applyFavoriteUnion} from './library/favorite-union-recovery.mjs';
+import {reconcileRecords,mergeLibrarySave,projectTbrCatalogue,canonicalFavoriteIds,runBookReconciliation} from '../library/canonical-books.mjs';
+import {correctedBooks,applyConfirmedCorrections} from '../library/confirmed-book-corrections.mjs';
+import {unionFavorites,applyFavoriteUnion} from '../library/favorite-union-recovery.mjs';
 const original=[{id:'1',title:'Book',author:'Writer',rating:5,description:'Keep this',favorite:true},{id:'set',title:'Set',rating:5,notes:'Original notes',owned:true}];
 test('Favorite recovery only adds true flags and changes no other field or existing selection',()=>{
  const before=[{id:'a',title:'A',author:'Writer',favorite:true,owned:true,tags:['unfinished']},{id:'b',title:'B',author:'Writer',rating:5,read_status:'read',notes:'Retain'}];
@@ -49,7 +49,7 @@ test('Read-but-unfinished audiobook ownership changes no reading history, tags o
 });
 
 test('Ownership confirmation plan contains the exact 87 audited books and no status edits',async()=>{
- const plan=JSON.parse(await readFile(new URL('./library/read-audiobook-ownership.json',import.meta.url),'utf8'));
+ const plan=JSON.parse(await readFile(new URL('../library/read-audiobook-ownership.json',import.meta.url),'utf8'));
  assert.equal(plan.books.length,87);assert.equal(new Set(plan.books.map(b=>b.id)).size,87);
  for(const book of plan.books)assert.deepEqual(book.fields,{owned:true});
 });
@@ -83,7 +83,7 @@ test('Migration retries a concurrent edit from fresh state',async()=>{
  assert.deepEqual(backups,[1,2]);assert.equal(result.state,'applied');assert.equal(row.books[0].notes,'Concurrent edit');
 });
 test('Production plan has exactly eight distinct owned volumes and one read volume',async()=>{
- const p=JSON.parse(await readFile(new URL('./library/book-reconciliation.json',import.meta.url),'utf8'));
+ const p=JSON.parse(await readFile(new URL('../library/book-reconciliation.json',import.meta.url),'utf8'));
  assert.equal(p.series_expansion.volumes.length,8);assert.equal(p.series_expansion.read_volume,1);
  assert.equal(new Set(p.series_expansion.volumes.map(b=>b.id)).size,8);
  assert.equal(p.library_memberships,1007);

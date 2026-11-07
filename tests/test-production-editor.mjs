@@ -5,8 +5,8 @@ import {mkdtemp,mkdir,writeFile,readFile,readdir} from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import http from 'node:http';
-import {createPublisher} from './github-publisher.mjs';
-import {productionEditorHandler,validatePublicEntry} from './production-editor-api.mjs';
+import {createPublisher} from '../github-publisher.mjs';
+import {productionEditorHandler,validatePublicEntry} from '../production-editor-api.mjs';
 
 const text='---\ntitle: A public essay\ndate: 2026-11-05\ntags: [General]\n---\n\nCafé — 日本語.\n';
 const fixture=await mkdtemp(path.join(os.tmpdir(),'tiago-publishing-test-'));

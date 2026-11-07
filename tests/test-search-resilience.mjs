@@ -5,9 +5,9 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import vm from 'node:vm';
 import ts from 'typescript';
-import {searchCatalogue,tbrHref,tbrLabel} from './src/lib/catalogue-search.mjs';
+import {searchCatalogue,tbrHref,tbrLabel} from '../src/lib/catalogue-search.mjs';
 
-const source=await readFile(process.env.SEARCH_SOURCE_FILE||new URL('./src/pages/search.astro',import.meta.url),'utf8');
+const source=await readFile(process.env.SEARCH_SOURCE_FILE||new URL('../src/pages/search.astro',import.meta.url),'utf8');
 const script=source.match(/<script>([\s\S]*?)<\/script>/)[1]
   .replace(/import \{searchCatalogue,tbrHref,tbrLabel\} from [^;]+;/,'');
 const compiled=ts.transpile(script,{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext});

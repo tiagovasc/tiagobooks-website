@@ -3,8 +3,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import {createTbrFavoritesStore} from './library/tbr-favorites-store.mjs';
-import {filterCatalogue,tbrFavoriteHTML} from './library/tbr.js';
+import {createTbrFavoritesStore} from '../library/tbr-favorites-store.mjs';
+import {filterCatalogue,tbrFavoriteHTML} from '../library/tbr.js';
 
 const fixture=fs.mkdtempSync(path.join(os.tmpdir(),'tbr-favorites-'));
 const file=path.join(fixture,'library.json');
@@ -12,7 +12,7 @@ const original=JSON.stringify({id:'library',revision:1,books:[{id:'1',title:'Own
 fs.writeFileSync(file,original);
 process.env.LOCAL_LIBRARY_FILE=file;
 process.env.LIBRARY_PASSWORD='isolated-test-password';process.env.SESSION_SECRET='isolated-test-session-secret';
-const {server}=await import('./server.mjs');
+const {server}=await import('../server.mjs');
 await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
 const base=`http://127.0.0.1:${server.address().port}`;
 test.after(()=>{server.close();server.closeAllConnections?.();});

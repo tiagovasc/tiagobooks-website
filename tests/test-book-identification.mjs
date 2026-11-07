@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {identifyBooks,applyBookIdentification} from './library/book-identification-recovery.mjs';
+import {identifyBooks,applyBookIdentification} from '../library/book-identification-recovery.mjs';
 const plan={activate:true,version:'identification-test',books:[{id:'lost',title:'Lost',author:'',fields:{library_member:false,catalogue_hold:{reason:'Unknown book'}}},{id:'no',title:'Not owned',author:'',fields:{library_member:false,owned:false}}]};
 const seed=()=>[{id:'lost',title:'Lost',author:'',favorite:true,owned:true,notes:'Preserve',_sync_versions:{favorite:'heart'}},{id:'no',title:'Not owned',author:'',owned:true},{id:'other',title:'Other',library_member:false,tbr_ids:['one']}];
 test('hide records without deleting data, stamp membership, reject identity changes',()=>{

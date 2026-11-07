@@ -4,7 +4,7 @@ import {readFile,readdir} from 'node:fs/promises';
 import {load} from 'js-yaml';
 import {parse} from 'parse5';
 import sharp from 'sharp';
-import {isBlogPostVisible} from './src/lib/post-presentation.mjs';
+import {isBlogPostVisible} from '../src/lib/post-presentation.mjs';
 const walk=node=>[node,...(node.childNodes||[]).flatMap(walk)];
 const attr=(node,name)=>node.attrs?.find(a=>a.name===name)?.value;
 const text=node=>node.nodeName==='#text'?node.value:(node.childNodes||[]).map(text).join('');

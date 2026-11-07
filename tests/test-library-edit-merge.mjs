@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {mergeEditedSnapshot,EditConflict} from './library/library-edit-merge.mjs';
+import {mergeEditedSnapshot,EditConflict} from '../library/library-edit-merge.mjs';
 const seed=()=>[{id:'read',title:'Read audiobook',author:'Writer',rating:4,owned:false,read_status:'read',tags:['unfinished'],date_read:'2020-01-01',favorite:false},{id:'other',title:'Other book',rating:0}];
 test('A stale rating edit preserves new ownership, a new Haiku entry and current favorites',()=>{
  const base=seed(),desired=structuredClone(base);desired[0].rating=5;

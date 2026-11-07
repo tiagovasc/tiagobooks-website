@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {fillMissingCovers,applyMissingCovers} from './library/missing-cover-recovery.mjs';
+import {fillMissingCovers,applyMissingCovers} from '../library/missing-cover-recovery.mjs';
 const version='missing-cover-test-v1';
 const target={id:'one',title:'Book',author:'Author',fields:{cover:'covers/tbr_metadata_0123456789abcdef01234567.jpg',cover_status:'ok',cover_source_url:'https://publisher.example/book',cover_image_kind:'front_cover'}};
 const seed=()=>[{id:'one',title:'Book',author:'Author',cover:'',favorite:true,owned:true,rating:5,notes:'Private notes',read_status:'read',tbr_ids:['shop','online'],_sync_versions:{favorite:'newest-heart',notes:'notes-version'}},{id:'two',title:'Untouched',author:'Other',cover:'covers/existing.jpg',library_member:false,discovery_records:[{id:'source'}]}];

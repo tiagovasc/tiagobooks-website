@@ -3,9 +3,9 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
 import {load as yamlLoad} from 'js-yaml';
-import {isExternalArticleUrl} from './src/lib/linked-post.mjs';
+import {isExternalArticleUrl} from '../src/lib/linked-post.mjs';
 
-const source=readFileSync(new URL('./astro.config.mjs',import.meta.url),'utf8');
+const source=readFileSync(new URL('../astro.config.mjs',import.meta.url),'utf8');
 function configFixture(ending){
   const files={
     'secret.md':`---\ntitle: Private\nprotected: true\n---\nBody`,
