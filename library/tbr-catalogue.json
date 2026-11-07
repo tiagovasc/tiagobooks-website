@@ -1,9 +1,9 @@
 {
   "schema_version": 2,
   "counts": {
-    "total": 5227,
+    "total": 5226,
     "bookshops": 745,
-    "online": 3232,
+    "online": 3231,
     "instagram": 1706
   },
   "books": [
@@ -86759,28 +86759,6 @@
       "chronology_order": 4795
     },
     {
-      "id": "online-1e5821182867bc18de5f",
-      "title": "History of Religion: Complete Guide to World Religions and Religion in America, including the History of Christianity, Islam, Judaism, Atheism, Mythology, Buddhism, Hinduism, and more",
-      "author": "",
-      "cover": "",
-      "description": "",
-      "identity_status": "needs_review",
-      "sightings": [],
-      "sources": [
-        "online"
-      ],
-      "online_order": 3108,
-      "book_id": "work-online-1e5821182867bc18de5f",
-      "discovery_dates": {
-        "online": {
-          "date": "2018-06-04",
-          "estimated": true
-        }
-      },
-      "chronology_source": "online",
-      "chronology_order": 4796
-    },
-    {
       "id": "online-a712b745ba3416f2c49d",
       "title": "An Introduction to Buddhism, Second Edition: Teachings, History and Practices (Introduction to Religion)",
       "author": "Peter Harvey",
@@ -131105,6 +131083,15 @@
     "instagram_oldest_estimate": "2021-11-06",
     "online_oldest_estimate": "2017-01-01",
     "estimate_method": "Even spacing by existing source order; fixed dates, not publication dates.",
-    "all_sources_rule": "Most recent discovery across each entry’s sources; exact photo chronology represented by ranks only."
+    "all_sources_rule": "Most recent discovery across each entry’s sources; exact photo chronology represented by ranks only.",
+    "retired_discoveries": [
+      {
+        "id": "online-1e5821182867bc18de5f",
+        "chronology_order": 4796,
+        "source_positions": {
+          "online": 2765
+        }
+      }
+    ]
   }
 }

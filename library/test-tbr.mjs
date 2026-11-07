@@ -115,8 +115,11 @@ test('Discovery dates preserve source order, fixed endpoints and even spacing',(
   assert.equal(list[0].discovery_dates[source].date,'2026-11-06');
   assert.equal(list.at(-1).discovery_dates[source].date,start);
   const end=Date.parse('2026-11-06'),span=end-Date.parse(start);
+  // Removing a saved book must not shift the historical dates of survivors.
+  const retired=(all.chronology.retired_discoveries||[]).map(b=>b.source_positions[source]).filter(Number.isInteger).sort((a,b)=>a-b);
   for(const [i,book] of list.entries()){
-   const expected=new Date(end-Math.round(i*(span/86400000)/(list.length-1))*86400000).toISOString().slice(0,10);
+   let originalPosition=i;for(const position of retired)if(position<=originalPosition)originalPosition++;
+   const expected=new Date(end-Math.round(originalPosition*(span/86400000)/(list.length+retired.length-1))*86400000).toISOString().slice(0,10);
    assert.equal(book.discovery_dates[source].date,expected);assert.equal(book.discovery_dates[source].estimated,true);
    if(i)assert.ok(list[i-1][source+'_order']<book[source+'_order']);
   }
@@ -127,9 +130,10 @@ test('Discovery dates preserve source order, fixed endpoints and even spacing',(
 test('All chronology mixes sources, reverses exactly and preserves every membership',()=>{
  const all=JSON.parse(fs.readFileSync(new URL('./tbr-catalogue.json',import.meta.url),'utf8'));
  const recent=filterCatalogue(all.books),oldest=filterCatalogue(all.books,{sort:'oldest'});
- assert.equal(recent.length,5227);assert.deepEqual(recent.map(b=>b.chronology_order),Array.from({length:5227},(_,i)=>i));
+ const retired=new Set((all.chronology.retired_discoveries||[]).map(b=>b.chronology_order));
+ assert.equal(recent.length,all.counts.total);assert.deepEqual(recent.map(b=>b.chronology_order),Array.from({length:recent.length+retired.size},(_,i)=>i).filter(i=>!retired.has(i)));
  assert.deepEqual(oldest.map(b=>b.id),recent.map(b=>b.id).reverse());
- assert.equal(new Set(recent.map(b=>b.id)).size,5227);
+ assert.equal(new Set(recent.map(b=>b.id)).size,all.counts.total);
  assert.equal(new Set(recent.slice(0,100).map(b=>b.chronology_source)).size,3);
  for(const book of recent){assert.ok(book.discovery_dates[book.chronology_source]);for(const [source,entry] of Object.entries(book.discovery_dates)){assert.equal(entry.estimated,source!=='bookshops');assert.match(entry.date,source==='bookshops'?/^\d{4}-\d{2}$/:/^\d{4}-\d{2}-\d{2}$/);}}
 });
