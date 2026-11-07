@@ -1,6 +1,6 @@
 import {isLibraryMember,mergeLibrarySave} from './canonical-books.mjs';
 import {isDeepStrictEqual as equal} from 'node:util';
-const protectedFields=new Set(['id','favorite','library_member','applied_corrections','book_identity_version','tbr_ids','tbr_sources','discovery_records','series_original_record','record_type','component_book_ids']);
+const protectedFields=new Set(['_sync_versions','id','favorite','library_member','applied_corrections','book_identity_version','tbr_ids','tbr_sources','discovery_records','series_original_record','record_type','component_book_ids']);
 export class EditConflict extends Error{}
 export function mergeEditedSnapshot(current,base,desired){
  const baseMap=new Map(base.map(b=>[b.id,b])),nextMap=new Map(desired.map(b=>[b.id,b])),currentMap=new Map(current.map(b=>[b.id,b]));

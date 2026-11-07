@@ -107,8 +107,20 @@ function init(){
   async function load(){
     if(books||loading)return;
     error=false;
-    loading=Promise.all([fetch('/api/tbr-owned').then(r=>{if(!r.ok)throw Error('ownership');return r.json();}).then(data=>{if(!Array.isArray(data.ids))throw Error('ownership');ownedIds=new Set(data.ids);}),fetch('/api/tbr-favorites').then(r=>{if(!r.ok)throw Error('favorites');return r.json();}).then(data=>{if(!Array.isArray(data.ids))throw Error('favorites');favoriteIds=new Set(data.ids);}),fetch('/tbr-catalogue.json').then(r=>{if(!r.ok)throw Error('load');return r.json();}).then(data=>{if(!Array.isArray(data.books)||data.books.some(b=>!b.id||!b.title||!Array.isArray(b.sightings)||!Array.isArray(b.sources)))throw Error('schema');books=data.books;const total=catalogueCounts(books).total;status.dataset.tbrCount=total;const tbrButton=status.querySelector('[data-collection="tbr"]');if(tbrButton)tbrButton.innerHTML='TBR <span class="n">'+number(total)+'</span>';})]).catch(()=>{books=null;error=true;}).finally(()=>{loading=null;if(active)render();});
+    loading=Promise.all([fetch('/api/tbr-owned').then(r=>{if(!r.ok)throw Error('ownership');return r.json();}).then(data=>{if(!Array.isArray(data.ids))throw Error('ownership');ownedIds=new Set(data.ids);}),fetch('/api/tbr-favorites').then(r=>{if(!r.ok)throw Error('favorites');return r.json();}).then(data=>{if(!Array.isArray(data.ids))throw Error('favorites');favoriteIds=new Set(data.ids);}),fetch('/tbr-catalogue.json').then(r=>{if(!r.ok)throw Error('load');return r.json();}).then(data=>{if(!Array.isArray(data.books)||data.books.some(b=>!b.id||!b.title||!Array.isArray(b.sightings)||!Array.isArray(b.sources)))throw Error('schema');books=data.books;const total=catalogueCounts(books).total;status.dataset.tbrCount=total;const tbrButton=status.querySelector('[data-collection="tbr"]');if(tbrButton)tbrButton.innerHTML='TBR <span class="n">'+number(total)+'</span>';})]).catch(()=>{books=null;error=true;}).finally(()=>{loading=null;overlayLocalChanges();if(active)render();});
   }
+  function overlayLocalChanges(){
+    if(!books||!window.LibrarySync)return;
+    const canonical=new Map(window.LibrarySync.current().map(b=>[b.id,b]));
+    for(const b of books){const c=canonical.get(b.book_id);if(!c)continue;c.favorite?favoriteIds.add(b.id):favoriteIds.delete(b.id);c.owned?ownedIds.add(b.id):ownedIds.delete(b.id);for(const key of ['title','author','cover','favorite','owned','read_status','rating'])if(c[key]!==undefined)b[key]=c[key];}
+  }
+  window.addEventListener('library-data-updated',async event=>{
+    if(loading)await loading;
+    if(!books)return;const y=window.scrollY;
+    if(event.detail?.local){overlayLocalChanges();if(active)render();window.scrollTo(0,y);return;}
+    // Keep the selected source, filters, expanded batch and scroll position.
+    books=null;await load();window.scrollTo(0,y);
+  });
   function cover(b){return b.cover?`<span class="tbr-cover"><img src="${escape(b.cover)}" alt="" width="320" height="480" loading="lazy" decoding="async">${tbrOwnedHTML(ownedIds.has(b.id))}</span>`:`<span class="tbr-cover"><span class="tbr-placeholder">${escape(b.title)}<br><small>Cover unavailable</small></span>${tbrOwnedHTML(ownedIds.has(b.id))}</span>`;}
   function place(b){if(source!=='bookshops')return `<span class="tbr-place">${escape(source==='all'?sourceLabel(b):SOURCES[source])}${discoveryDateHTML(b,source)}</span>`;const s=b.sightings[0];return `<span class="tbr-place" title="${escape(placeLabel(s))}"><span class="tbr-city">${escape(s.city)}</span><span class="tbr-shop">${escape(s.bookshop)}</span><span class="tbr-date"><time datetime="${escape(s.photographed_at.slice(0,7))}">${date(s.photographed_at)}</time>${b.sightings.length>1?` · ${b.sightings.length} photos`:''}</span></span>`;}
   function card(b){return `<div role="button" tabindex="0" class="tbr-book ${favoriteIds.has(b.id)?'is-favorite':''}" data-tbr-id="${escape(b.id)}" data-tbr-month="${discoveryMonth(b,source)}" aria-label="${escape(b.title+' by '+(b.author||'uncredited')+'. '+(source==='bookshops'?placeLabel(b.sightings[0]):source==='all'?sourceLabel(b):SOURCES[source]))}">${cover(b)}${favorite(b)}<span class="tbr-copy"><h3>${escape(b.title)}</h3><span class="tbr-author">${escape(b.author||'Author not identified')}</span></span>${place(b)}</div>`;}
@@ -254,7 +266,7 @@ function init(){
         result=await response.json();
       }
       if(result.id!==id||result.favorite!==selected)throw Error('Favorite was not confirmed. Please try again.');
-      $('tbrFavoriteMessage').textContent='Favorite saved.';
+      $('tbrFavoriteMessage').textContent=result.queued?'Favorite kept on this device · syncing.':'Favorite saved.';
     }catch(error){
       if(!error.favoriteRetained)previous.forEach((was,key)=>{was?favoriteIds.add(key):favoriteIds.delete(key);});
       if(window.FAVORITES_ONLY)render();

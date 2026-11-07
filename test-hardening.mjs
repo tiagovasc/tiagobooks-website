@@ -61,7 +61,7 @@ test('a library save split inside a character is stored without replacement char
   const saved=await splitPost('/save',{Cookie:cookie,'Content-Type':'application/json','X-Library-Revision':'1'},buffer,at);
   assert.equal(saved.status,200,saved.body);
   const stored=await(await fetch(base+'/books.json',{headers:{Cookie:cookie}})).json();
-  assert.deepEqual(stored,next);assert.doesNotMatch(JSON.stringify(stored),/�/);
+  assert.deepEqual(stored.map(({_sync_versions,...book})=>book),next);assert.ok(stored.every(b=>b._sync_versions.description));assert.doesNotMatch(JSON.stringify(stored),/�/);
 });
 
 test('malformed origins and paths get client errors, not a storage outage message',async()=>{

@@ -162,10 +162,11 @@ test('favorite saves persist, publish, clear, and preserve all other fields',asy
  const changed=structuredClone(before);changed[0].favorite=true;
  assert.equal((await save(changed,revision,cookie)).status,200);
  const owner=await (await fetch(base+'/books.json',{headers:{Cookie:cookie}})).json();
- assert.deepEqual(owner,changed);
+ const withoutVersions=books=>books.map(({_sync_versions,...book})=>book);
+ assert.deepEqual(withoutVersions(owner),withoutVersions(changed));assert.ok(owner[0]._sync_versions.favorite);
  const pub=await (await fetch(base+'/books.json')).json();assert.equal(pub[0].favorite,true);
  assert.equal((await save(before,row.revision,cookie)).status,200);
- assert.deepEqual(row.books,before);
+ assert.deepEqual(withoutVersions(row.books),withoutVersions(before));assert.notEqual(row.books[0]._sync_versions.favorite,owner[0]._sync_versions.favorite);
  assert.equal((await (await fetch(base+'/books.json')).json())[0].favorite,undefined);
  assert.equal((await save(changed,row.revision,null)).status,401);
 });
@@ -206,4 +207,22 @@ test('Stale full-library edits merge ratings without reverting ownership, new re
   const conflicted=await fetch(base+'/save',{method:'POST',headers:{Cookie:cookie,'Content-Type':'application/json'},body:JSON.stringify({books:desired,base_books:baseline})});
   assert.equal(conflicted.status,409);assert.match((await conflicted.json()).error,/rating changed elsewhere/);
  }finally{row=before;resetCaches();}
+});
+
+test('sync protocol is authenticated, same-origin, revision-safe and hides private field versions',async()=>{
+ const before=structuredClone(row),cookie=await login();
+ try{
+  assert.equal((await fetch(base+'/api/library-sync')).status,401);
+  const state=await (await fetch(base+'/api/library-state')).json();assert.equal(state.protocol,1);assert.match(state.build,/^[a-f0-9]{20}$/);assert.equal(state.can_edit,false);
+  const target=row.books[0],op={id:'http-favorite-0001',book_id:target.id,field:'favorite',before:!!target.favorite,before_version:target._sync_versions?.favorite||null,present:true,value:!target.favorite};
+  const post=(operations,origin=base)=>fetch(base+'/api/library-sync',{method:'POST',headers:{Cookie:cookie,Origin:origin,'Content-Type':'application/json'},body:JSON.stringify({protocol:1,operations})});
+  assert.equal((await post([op],'https://other.example')).status,403);
+  conflictFavoriteOnce=true;const response=await post([op]);assert.equal(response.status,200);assert.equal((await response.json()).results[0].status,'accepted');
+  const revision=row.revision;assert.equal(row.books[0].favorite,op.value);assert.equal(row.books[1].notes,'Concurrent edit retained');
+  assert.equal((await post([op])).status,200);assert.equal(row.revision,revision,'replaying a receipt does not create another write');
+  const pub=await (await fetch(base+'/books.json')).json();assert.equal(pub[0]._sync_versions,undefined);
+  const owner=await (await fetch(base+'/api/library-sync',{headers:{Cookie:cookie}})).json();assert.equal(owner.books[0]._sync_versions.favorite,op.id);
+  const stale={...op,id:'http-favorite-0002',value:!op.value};const conflict=await (await post([stale])).json();assert.equal(conflict.results[0].status,'conflict');assert.equal(row.books[0].favorite,op.value);
+  assert.equal((await post([{...op,id:'bad-field-00001',field:'tbr_ids'}])).status,400);
+ }finally{row=before;conflictFavoriteOnce=false;resetCaches();}
 });

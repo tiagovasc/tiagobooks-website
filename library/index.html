@@ -777,8 +777,9 @@ var SEED = [];
 
   // ---------- persistence ----------
   function serialize(){return JSON.stringify(state.books.map(function(b){var baseline=originalBooks.get(b);if(!baseline)return b;var raw=JSON.parse(JSON.stringify(baseline.raw));Object.keys(b).forEach(function(k){if(JSON.stringify(b[k])!==JSON.stringify(baseline.normalized[k]))raw[k]=b[k];});return raw;}),null,2);}            // canonical = bare array
-  function scheduleSave(){ if(saveTimer)clearTimeout(saveTimer); saveTimer=setTimeout(function(){saveTimer=null;saveNow();},400); }
+  function scheduleSave(){ if(window.LibrarySync){stageSyncedBooks();return;}if(saveTimer)clearTimeout(saveTimer); saveTimer=setTimeout(function(){saveTimer=null;saveNow();},400); }
   function saveNow(){
+    if(window.LibrarySync){stageSyncedBooks();window.LibrarySync.flush();return;}
     try{ localStorage.setItem(STORAGE_KEY, JSON.stringify({title:state.title,books:state.books})); }catch(e){}
     if(SERVER_MODE){ saveToServer(); return; }
     if(fileHandle&&filePermission) writeToFile(false);
@@ -791,6 +792,7 @@ var SEED = [];
   function favoriteRecovery(){try{return JSON.parse(localStorage.getItem(favoriteRecoveryKey)||'{}');}catch(e){return {};}}
   function rememberFavorite(key,value){var saved=favoriteRecovery();if(value)saved[key]=value;else delete saved[key];localStorage.setItem(favoriteRecoveryKey,JSON.stringify(saved));}
   function saveToServer(){
+    if(window.LibrarySync){stageSyncedBooks();return window.LibrarySync.flush();}
     pendingServerSaves++;
     serverSaveState="saving"; renderFileStatus();
     var snapshot=serialize(),mergedSave=false;
@@ -809,6 +811,7 @@ var SEED = [];
   window.saveMembershipFavorite=function(membershipId,selected,bookId){
     return libraryReady.then(function(ok){
       if(!ok||publicView())throw new Error('Sign in and reload before saving.');
+      if(window.LibrarySync){var answer=window.LibrarySync.favorite(bookId,selected);var syncedBook=findBook(bookId);if(syncedBook){syncedBook.favorite=selected;refreshFavoriteControls(syncedBook);announceCanonicalFavorite(syncedBook);}return Object.assign(answer,{id:membershipId||bookId});}
       if(saveTimer){clearTimeout(saveTimer);saveTimer=null;saveNow();}
       var recoveryId=bookId||membershipId,token=String(Date.now())+'-'+Math.random(),payload=membershipId?{id:membershipId,favorite:selected}:{book_id:bookId,favorite:selected};
       rememberFavorite(recoveryId,{membershipId:membershipId,bookId:bookId,favorite:selected,token:token});
@@ -830,7 +833,7 @@ var SEED = [];
       return operation.catch(function(error){error.favoriteRetained=true;throw error;});
     });
   };
-  function retryPendingFavorites(){if(publicView())return;var saved=favoriteRecovery();Object.keys(saved).forEach(function(key){var item=saved[key];window.saveMembershipFavorite(item.membershipId,item.favorite,item.bookId).catch(function(){});});}
+  function retryPendingFavorites(){if(publicView()||window.LibrarySync)return;var saved=favoriteRecovery();Object.keys(saved).forEach(function(key){var item=saved[key];window.saveMembershipFavorite(item.membershipId,item.favorite,item.bookId).catch(function(){});});}
   window.addEventListener('online',function(){retryPendingFavorites();if(metadataSaveFailed&&!publicView())saveToServer();});
   function writeToFile(announce){
     if(!fileHandle) return;
@@ -1382,6 +1385,7 @@ var SEED = [];
     }
     $("dot").className="save-dot"+(cls?" "+cls:""); $("dot2").className="dot"+(cls?" "+cls:"");
     $("fileStatusText").textContent=txt; $("fileHint").textContent=hint;
+    if(window.LibrarySync&&window.librarySyncStatus){var sync=window.librarySyncStatus;$("fileStatusText").textContent=sync.storageError?'Could not keep changes on this device':sync.conflicts.length?'Changes need review':!sync.auth?'Sign in to sync':sync.pending?'Changes kept on this device — syncing':'All changes synced';$("fileHint").textContent='Changes are kept on this device until confirmed online. New data updates automatically; site updates ask before reloading.';}
   }
   function renderAll(){ $("libTitle").textContent=state.title; renderView(false); renderFileStatus(); }
 
@@ -1558,13 +1562,13 @@ var SEED = [];
 
   // ---------- model ops ----------
   function addBook(){
-    var b=normalize({read_status:"unread",owned:true});
+    var b=normalize({id:uid(),title:"",rating:0,read_status:"unread",owned:true});
     state.books.unshift(b); byId[b.id]=b;
     $("search").value=""; ui.status="all"; ui.own="all"; ui.subject="all"; ui.enrich="all";
     buildFilters(); renderView(false); saveNow();
     openDrawer(b.id,true);
   }
-  function deleteBook(id){ state.books=state.books.filter(function(b){return b.id!==id;}); reindex(); buildFilters(); renderView(true); saveNow(); }
+  function deleteBook(id){ if(window.LibrarySync)window.LibrarySync.remove(id);state.books=state.books.filter(function(b){return b.id!==id;}); reindex(); buildFilters(); renderView(true); saveNow(); }
 
   // ---------- events: content ----------
   content.addEventListener("load",onImgLoad,true);
@@ -1726,7 +1730,7 @@ var SEED = [];
   var libTitle=$("libTitle");
   // Keep library naming available in its own tools, below the invariant site header.
   if(!window.CLOUD_LIBRARY||window.CLOUD_CAN_EDIT){var titleSetting=document.createElement('div');titleSetting.className='library-title-setting';var titleLabel=document.createElement('span');titleLabel.textContent='Library name';titleSetting.append(titleLabel,libTitle);$('menuPop').prepend(titleSetting);}
-  libTitle.addEventListener("input",function(){ state.title=libTitle.textContent.trim()||"Tiago's Library"; scheduleSave(); });
+  libTitle.addEventListener("input",function(){ state.title=libTitle.textContent.trim()||"Tiago's Library";try{localStorage.setItem('tiagovf-library-title',state.title);}catch(e){}scheduleSave(); });
   libTitle.addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.preventDefault(); libTitle.blur(); } });
   libTitle.addEventListener("paste",function(e){ e.preventDefault(); document.execCommand("insertText",false,(e.clipboardData||window.clipboardData).getData("text/plain").replace(/\s+/g," ")); });
   document.addEventListener("keydown",function(e){
@@ -1825,16 +1829,38 @@ var SEED = [];
     fetch(LITE?"books.json?view=public":"books.json",{cache:"no-cache"}).then(function(r){ if(!r.ok) throw new Error("HTTP "+r.status); serverRevision=r.headers.get("X-Library-Revision"); return r.json(); })
       .then(function(d){ var books=Array.isArray(d)?d:(d&&d.books); if(Array.isArray(books)){ metadataBaseSnapshot=JSON.stringify(books);state.books=books.map(normalize); if(d&&typeof d.title==="string") state.title=d.title; } else if(window.CLOUD_LIBRARY){ throw new Error("Unexpected library format"); } else { seedFromBuiltin(); } return true; })
       .catch(function(){ if(window.CLOUD_LIBRARY) return false; if(!loadLocal()) seedFromBuiltin(); return true; })
-      .then(function(ok){ loadingLibrary=false;if(ok){ loadFailed=false; bootRender(); openLinkedBook();resolveLibraryReady(true);retryPendingFavorites(); } else {showLoadError();resolveLibraryReady(false);} });
+      .then(async function(ok){if(ok&&window.CLOUD_LIBRARY&&window.CLOUD_CAN_EDIT&&!LITE){try{await startLibrarySync();}catch(error){lastSaveError=error.message;toast(error.message,10000);ok=false;}}else if(ok&&window.CLOUD_LIBRARY){import('/library-sync.js?v='+encodeURIComponent(window.LIBRARY_BUILD_ID||'1')).then(function(module){module.watchPublicUpdates(function(books,revision){var y=window.scrollY;state.books=books.map(normalize);serverRevision=revision;reindex();buildFilters();renderView(false);requestAnimationFrame(function(){window.scrollTo(0,y);});},serverRevision);}).catch(function(){});} loadingLibrary=false;if(ok){ loadFailed=false; bootRender(); openLinkedBook();resolveLibraryReady(true);retryPendingFavorites(); } else {showLoadError();resolveLibraryReady(false);} });
+  }
+  function stageSyncedBooks(){try{window.LibrarySync.stage(JSON.parse(serialize()));}catch(error){saveFailed=true;serverSaveState='error';lastSaveError=error.message;toast(error.message,10000);throw error;}}
+  async function startLibrarySync(){
+    if(window.LibrarySync)return;
+    var module=await import('/library-sync.js?v='+encodeURIComponent(window.LIBRARY_BUILD_ID||'1')),lastApplied='',lastRevision=null;
+    window.LibrarySync=await module.mountSync({
+      stage:stageSyncedBooks,
+      snapshot:function(){return JSON.parse(serialize());},
+      editing:function(){var el=document.activeElement;return !!(drawer.open||(el&&el.matches('input,textarea,[contenteditable="true"]')));},
+      apply:function(all,revision,context){
+        var members=all.filter(function(b){return b.library_member!==false;}),raw=JSON.stringify(members);if(raw===lastApplied)return;
+        var withoutVersions=function(list){return JSON.stringify(list.map(function(book){var copy=Object.assign({},book);delete copy._sync_versions;return copy;}));},sameVisible=withoutVersions(JSON.parse(serialize()))===withoutVersions(members);
+        var y=window.scrollY;lastApplied=raw;metadataBaseSnapshot=raw;serverRevision=String(revision);state.books=members.map(normalize);reindex();buildFilters();
+        if(!loadingLibrary&&!sameVisible){renderView(false);requestAnimationFrame(function(){window.scrollTo(0,y);});}
+        if(lastRevision!==null&&lastRevision!==revision&&!context?.favoriteOnly)window.dispatchEvent(new CustomEvent('library-data-updated',{detail:{revision:revision,local:!!context?.local}}));lastRevision=revision;
+        window.librarySyncBooks=all;
+      },
+      favorite:function(id,selected){window.dispatchEvent(new CustomEvent('canonical-favorite-change',{detail:{id:id,book_id:id,favorite:selected}}));},
+      resolved:function(id,field,value){var b=findBook(id);if(!b)return;b[field]=value;if(dBook&&dBook.id===id){var input=dBody.querySelector('[data-f="'+field+'"]');if(input)input.value=value==null?'':value;}if(field==='favorite'){refreshFavoriteControls(b);announceCanonicalFavorite(b);}refreshBookEls(b);},
+      status:function(sync){window.librarySyncStatus=sync;saveFailed=!!sync.storageError;serverSaveState=sync.storageError?'error':sync.pending?'saving':'saved';renderFileStatus();},
+      error:function(error){lastSaveError=error.message;}
+    });
   }
   function openLinkedBook(){ var id=hashBookId(); if(id!==null&&findBook(id)) openDrawer(id,false,"initial"); }
   // Do not lose edits: flush a pending save when the page is hidden, and warn before leaving with an unsaved or failed save.
   document.addEventListener("visibilitychange",function(){ if(document.visibilityState==="hidden"&&saveTimer&&!publicView()){ clearTimeout(saveTimer); saveTimer=null; saveNow(); } });
-  window.addEventListener("beforeunload",function(e){ if(SERVER_MODE&&!publicView()&&(saveTimer||serverSaveState==="saving"||serverSaveState==="error")){ e.preventDefault(); e.returnValue=""; } });
+  window.addEventListener("beforeunload",function(e){ if(SERVER_MODE&&!publicView()&&(window.LibrarySync?!!window.librarySyncStatus?.storageError:(saveTimer||serverSaveState==="saving"||serverSaveState==="error"))){ e.preventDefault(); e.returnValue=""; } });
   applyTheme(); syncViewSwitch(); measureNotch();
   if(SERVER_MODE){
     // The library name is a browser-only label (books.json is a bare array), so reuse the saved one.
-    try{ var savedLocal=JSON.parse(localStorage.getItem(STORAGE_KEY)||"null"); if(savedLocal&&typeof savedLocal.title==="string") state.title=savedLocal.title; }catch(e){}
+    try{ var savedLocal=JSON.parse(localStorage.getItem(STORAGE_KEY)||"null"); if(savedLocal&&typeof savedLocal.title==="string") state.title=savedLocal.title;var savedTitle=localStorage.getItem('tiagovf-library-title');if(savedTitle)state.title=savedTitle; }catch(e){}
     // Source of truth is the on-disk books.json served by the launcher.
     loadLibrary();
   } else {

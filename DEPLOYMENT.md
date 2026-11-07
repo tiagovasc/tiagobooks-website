@@ -34,6 +34,10 @@ Favorites is a filter within each reading section and every TBR source, rather t
 
 TBR ownership badges are read-only indicators derived from the current library through `/api/tbr-owned`. Only records with `owned: true` contribute: explicit `tbr_ids` links or complete normalized title/author matches (including stored subtitles). Matching ignores case, punctuation, accents and author-name token order; it uses no fuzzy titles or reading-status inference. Uncertain matches remain unlabelled. No catalogue or database rewrite is required.
 
+## Library synchronization
+
+`LIBRARY_SYNC.md` is the current hosted editing contract. Protocol-1 per-field operations, durable local drafts, internal field versions, safe retries, conflict review and revision/build polling supersede the earlier separate hosted save queues. Deploy compatible readers/writers together; no startup database rewrite is introduced. Keep pending browser outboxes compatible when rolling back. Maintenance writers must preserve `_sync_versions` and stamp fields they change (or use the sync API); never replace the database from an old full export. The unapproved title preview is separate from this release.
+
 ## Build and deploy
 
 Connect your repository and intended branch to the host, configure the variables, and deploy the Dockerfile. Supply `SITE_URL`, `CMS_REPOSITORY` and `CMS_BRANCH` to the build as well as runtime. Point the domain at your host and enable HTTPS. `/healthz` checks the built blog, search index and library storage.

@@ -9,6 +9,7 @@ import {tripMonth,publicTripCatalogue} from './trip-privacy.mjs';
 import {applyConfirmedCorrections} from './confirmed-book-corrections.mjs';
 import {mergeEditedSnapshot,EditConflict} from './library-edit-merge.mjs';
 import {applyFavoriteUnion} from './favorite-union-recovery.mjs';
+import {applyOperations,validateOperations,stampLegacyChanges,SYNC_PROTOCOL} from './sync-operations.mjs';
 import {readFile,stat} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -103,7 +104,7 @@ export function plausibleSave(previousCount,nextCount){
 
 // Visitors get the library without descriptions (fetched one book at a time when a book is opened) and without
 // merge bookkeeping that no screen shows. The signed-in editor always loads the complete records it saves back.
-const PUBLIC_OMIT=['description','merged_records','merge_conflicts','acquisition_events','discovery_records','book_identity_version','series_original_record'];
+const PUBLIC_OMIT=['_sync_versions','description','merged_records','merge_conflicts','acquisition_events','discovery_records','book_identity_version','series_original_record'];
 const described=b=>typeof b?.description==='string'&&b.description.trim()!=='';
 export function publicBooks(books){return books.map(b=>{
   const o={};for(const k of Object.keys(b))if(!PUBLIC_OMIT.includes(k))o[k]=b[k];
@@ -142,6 +143,14 @@ function sendVariant(req,res,variant,{type,etag,cache,extra={}}){
 
 // ---------- page: the hosted page loads its books from /books.json, so the embedded offline copy is not sent ----------
 let page=null;
+let buildIdentity;
+async function libraryBuild(){
+ if(!buildIdentity)buildIdentity=Promise.all([
+  ...['index.html','tbr.js','tbr.css','library-sync.js','sync-operations.mjs','server.mjs','../server.mjs'].map(f=>readFile(path.join(root,f))),
+  ...['unified.js','unified.css'].map(f=>readFile(path.join(root,'../dist',f)).catch(()=>readFile(path.join(root,'../public',f))))
+ ]).then(parts=>createHash('sha256').update(Buffer.concat(parts)).update(process.env.RAILWAY_GIT_COMMIT_SHA||'').digest('hex').slice(0,20));
+ return buildIdentity;
+}
 async function pageVariants(){
   // The integrated site serves the build's dist/index.html (shared header and canonical URL filled in); the source copy is the fallback.
   const choices=[];for(const file of [process.env.LIBRARY_PAGE_FILE,path.join(root,'index.html')]){if(!file)continue;const st=await stat(file).catch(()=>null);if(st?.isFile())choices.push({file,st});}
@@ -154,7 +163,7 @@ async function pageVariants(){
   const at=html.indexOf('var SEED = ');
   if(at>0){const end=html.indexOf('\n',at);html=html.slice(0,at)+'var SEED = [];'+(end<0?'':html.slice(end));}
   const build=async editable=>{
-    const text=html.replace('<head>',`<head><script>window.CLOUD_LIBRARY=true;window.CLOUD_CAN_EDIT=${editable};if(!window.CLOUD_CAN_EDIT)document.documentElement.classList.add('public-library');</script>`);
+    const text=html.replace('<head>',`<head><script>window.LIBRARY_BUILD_ID=${JSON.stringify(await libraryBuild())};window.CLOUD_LIBRARY=true;window.CLOUD_CAN_EDIT=${editable};if(!window.CLOUD_CAN_EDIT)document.documentElement.classList.add('public-library');</script>`);
     const buf=Buffer.from(personalizeSiteHeader(text,editable));
     return {...await compressed(buf,9),etag:`"${createHash('sha1').update(buf).digest('hex').slice(0,20)}"`};
   };
@@ -173,6 +182,7 @@ async function librarySnapshot(){
   const members=row.books.filter(isLibraryMember);
   const descriptions=new Map(members.filter(described).map(b=>[String(b.id),b.description]));
   snapshot={revision:row.revision,count:members.length,described:descriptions.size,descriptions,allBooks:row.books,
+    syncVariant:await compressed(Buffer.from(JSON.stringify({books:row.books,revision:row.revision,protocol:SYNC_PROTOCOL})),6),
     variant:await compressed(Buffer.from(JSON.stringify(members)),6),
     publicVariant:await compressed(Buffer.from(JSON.stringify(publicBooks(members))),6),
     descriptionsVariant:await compressed(Buffer.from(JSON.stringify(Object.fromEntries(descriptions))),6)};
@@ -181,7 +191,7 @@ async function librarySnapshot(){
 export function resetCaches(){page=null;snapshot=null;attempts.clear();allFailures.count=0;}
 
 const STATIC_TYPES={'.svg':'image/svg+xml','.ico':'image/x-icon','.png':'image/png','.webp':'image/webp','.jpg':'image/jpeg','.jpeg':'image/jpeg'};
-const TBR_FILES={'tbr.js':'text/javascript; charset=utf-8','tbr.css':'text/css; charset=utf-8','tbr-bookshops.json':'application/json; charset=utf-8','tbr-catalogue.json':'application/json; charset=utf-8'};
+const TBR_FILES={'library-sync.js':'text/javascript; charset=utf-8','tbr.js':'text/javascript; charset=utf-8','tbr.css':'text/css; charset=utf-8','tbr-bookshops.json':'application/json; charset=utf-8','tbr-catalogue.json':'application/json; charset=utf-8'};
 const tbrVariants=new Map();
 const ROOT_FILES=['favicon.svg','favicon.ico','apple-touch-icon.png'];
 const COVER=/^covers\/(?:web\/)?[a-zA-Z0-9_.-]+\.(jpg|png|webp|jpeg)$/;
@@ -212,6 +222,31 @@ export const server=http.createServer(async(req,res)=>{
     if(url.pathname==='/logout'){res.writeHead(303,{Location:safeNext(next), 'Set-Cookie':'library_session=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0','Cache-Control':'no-store',...SECURITY});return res.end();}
     if(url.pathname==='/save'&&!authenticated(req))return send(res,401,{error:'Enter the library password to enable edits'});
     if(url.pathname==='/api/book-reconciliation'&&req.method==='GET')return send(res,200,reconciliationStatus);
+    if(url.pathname==='/api/library-state'&&req.method==='GET'){
+      const [row]=await db('GET','?id=eq.library&select=revision');
+      return send(res,200,{revision:row?.revision,build:await libraryBuild(),protocol:SYNC_PROTOCOL,can_edit:authenticated(req)});
+    }
+    if(url.pathname==='/api/library-sync'){
+      if(!authenticated(req))return send(res,401,{error:'Sign in to sync your changes'});
+      if(req.method==='GET'){
+        const snap=await librarySnapshot();if(!snap)return send(res,503,{error:'Library unavailable'});
+        return sendVariant(req,res,snap.syncVariant,{type:'application/json',etag:`"sync-${snap.revision}"`,cache:'private, no-store',extra:{Vary:'Accept-Encoding, Cookie'}});
+      }
+      if(req.method!=='POST')return send(res,405,{error:'Method not allowed'});
+      if(!sameOrigin(req))return send(res,403,{error:'Origin rejected'});
+      const raw=await readBody(req,2*1024*1024);if(raw===null)return send(res,413,{error:'Change batch too large'});
+      let payload;try{payload=JSON.parse(raw);if(payload.protocol!==SYNC_PROTOCOL)throw Error('Please update the page to sync');validateOperations(payload.operations);}catch(error){return send(res,400,{error:error.message});}
+      for(let attempt=0;attempt<8;attempt++){
+        const [row]=await db('GET','?id=eq.library&select=books,revision');if(!row)return send(res,503,{error:'Library unavailable'});
+        const result=applyOperations(row.books,payload.operations);
+        if(result.changed){
+          const updated=await db('PATCH',`?id=eq.library&revision=eq.${row.revision}`,{books:result.books,revision:row.revision+1,updated_at:new Date().toISOString()});
+          if(!updated.length)continue;snapshot=null;
+        }
+        return send(res,200,{results:result.results,revision:row.revision+(result.changed?1:0),base_revision:row.revision});
+      }
+      return send(res,503,{error:'Library is busy. Your changes will retry.'});
+    }
     if(url.pathname==='/api/tbr-owned'&&req.method==='GET'){
       const snap=await librarySnapshot();if(!snap)return send(res,503,{error:'Library is not initialized'});
       const catalogue=JSON.parse(await readFile(path.join(root,'tbr-catalogue.json'),'utf8'));
@@ -240,7 +275,7 @@ export const server=http.createServer(async(req,res)=>{
         if(!membership&&(!book||!isLibraryMember(book)))return send(res,404,{error:'Book not found'});
         if(membership&&!book?.book_identity_version)break;
         const expected=req.headers['x-library-revision'];
-        book.favorite=value.favorite;
+        book.favorite=value.favorite;book._sync_versions={...book._sync_versions,favorite:'legacy-'+createHash('sha256').update(String(Date.now())+Math.random()).digest('hex').slice(0,24)};
         const updated=await db('PATCH',`?id=eq.library&revision=eq.${row.revision}`,{books:row.books,revision:row.revision+1,updated_at:new Date().toISOString()});
         if(!updated.length)continue;
         snapshot=null;
@@ -278,6 +313,7 @@ export const server=http.createServer(async(req,res)=>{
           let combined;try{combined=mergeEditedSnapshot(current.books,baseline,desired);}catch(error){return send(res,error instanceof EditConflict?409:400,{error:error.message});}
           const members=current.books.filter(isLibraryMember),next=combined.filter(isLibraryMember);
           if(!validBooks(next)||!plausibleSave(members.length,next.length)||!keepsDescriptions(members.filter(described).length,next.filter(described).length))return send(res,400,{error:'Refusing to remove most library records or descriptions. Your edits remain in this tab.'});
+          combined=stampLegacyChanges(current.books,combined,'legacy-'+Date.now()+'-'+Math.random());
           const rows=await db('PATCH',`?id=eq.library&revision=eq.${current.revision}`,{books:combined,revision:current.revision+1,updated_at:new Date().toISOString()});
           if(!rows.length)continue;snapshot=null;return send(res,200,{ok:true,merged:true},{'X-Library-Revision':String(current.revision+1)});
         }
@@ -296,6 +332,7 @@ export const server=http.createServer(async(req,res)=>{
         const stored=new Map(current.books.map(b=>[b.id,b]));
         combined=combined.map(b=>{const old=stored.get(b.id);if(!old)return b;const next={...b};if(old.favorite===undefined)delete next.favorite;else next.favorite=old.favorite;return next;});
       }
+      combined=stampLegacyChanges(current.books,combined,'legacy-'+Date.now()+'-'+Math.random());
       const rows=await db('PATCH',`?id=eq.library&revision=eq.${revision}`,{books:combined,revision:revision+1,updated_at:new Date().toISOString()});
       if(!rows.length)return send(res,409,{error:'Another session changed the library. Export your changes, then reload.'});
       snapshot={revision:revision+1,count:books.length,described:nextDescribed,variant:null};
