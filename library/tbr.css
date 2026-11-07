@@ -1,7 +1,9 @@
 /* TBR metadata stays separate; favorites are independent owner preferences. */
 .tbr-book{position:relative}
-.tbr-book>.favorite{position:absolute;top:7px;right:7px;z-index:1}
-.tbr-book.is-favorite .tbr-cover{outline:2px solid #d4ac55;outline-offset:-2px}
+.tbr-book>.favorite{position:absolute;top:7px;right:7px;z-index:3}
+.tbr-cover{position:relative}
+.tbr-book.is-favorite .tbr-cover::after{content:"";position:absolute;inset:0;border:2px solid #d4ac55;border-radius:inherit;pointer-events:none;z-index:2}
+.tbr-book.is-favorite:hover .tbr-cover{transform:none}
 .tbr-list .tbr-book{padding-right:52px!important}
 .tbr-list .tbr-book>.favorite{top:18px;right:0}
 #tbrDetail>img.is-favorite{outline:2px solid #d4ac55;outline-offset:-2px}

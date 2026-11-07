@@ -193,18 +193,35 @@ function init(){
   },true);
   window.addEventListener('favorite-filter-change',()=>{limit=48;if(active)render();});
   $('tbrDialog').addEventListener('close',()=>{openId=null;});
+  function syncFavorite(id){
+    const selected=favoriteIds.has(id),pending=pendingFavorites.has(id);
+    document.querySelectorAll('[data-tbr-favorite="'+CSS.escape(id)+'"]').forEach(button=>{
+      const label=selected?'Remove from favorites':'Add to favorites';
+      button.classList.toggle('is-favorite',selected);button.setAttribute('aria-pressed',String(selected));button.title=label;
+      button.setAttribute('aria-label',label+': '+books.find(b=>b.id===id).title);button.disabled=pending;
+      if(pending)button.setAttribute('aria-busy','true');else button.removeAttribute('aria-busy');
+      button.closest('.tbr-book')?.classList.toggle('is-favorite',selected);
+    });
+    if(openId===id)$('tbrDetail').querySelector('img')?.classList.toggle('is-favorite',selected);
+  }
   async function setFavorite(id){
     if(!window.CLOUD_CAN_EDIT||pendingFavorites.has(id)||!books?.some(b=>b.id===id))return;
-    const selected=!favoriteIds.has(id);pendingFavorites.add(id);$('tbrFavoriteMessage').textContent='Saving favorite…';render();if(openId===id)openBook(id);
+    const previous=favoriteIds.has(id),selected=!previous;
+    selected?favoriteIds.add(id):favoriteIds.delete(id);
+    pendingFavorites.add(id);$('tbrFavoriteMessage').textContent='Saving favorite…';
+    if(window.FAVORITES_ONLY)render();
+    syncFavorite(id);
     try{
       const response=await fetch('/api/tbr-favorites',{method:'POST',keepalive:true,headers:{'Content-Type':'application/json'},body:JSON.stringify({id,favorite:selected})});
       if(!response.ok)throw Error(response.status===401?'Sign in again to save favorites.':'Could not save favorite. Please try again.');
       const result=await response.json();if(result.id!==id||result.favorite!==selected)throw Error('Favorite was not confirmed. Please try again.');
-      selected?favoriteIds.add(id):favoriteIds.delete(id);$('tbrFavoriteMessage').textContent='Favorite saved.';
-    }catch(error){$('tbrFavoriteMessage').textContent=error.message;}
-    finally{
-      pendingFavorites.delete(id);render();
-      if(openId===id)openBook(id);
+      $('tbrFavoriteMessage').textContent='Favorite saved.';
+    }catch(error){
+      previous?favoriteIds.add(id):favoriteIds.delete(id);
+      if(window.FAVORITES_ONLY)render();
+      $('tbrFavoriteMessage').textContent=error.message;
+    }finally{
+      pendingFavorites.delete(id);syncFavorite(id);
       if(active){
         const control=(openId===id?$('tbrDetail'):$('tbrContent')).querySelector('[data-tbr-favorite="'+CSS.escape(id)+'"]');
         (control||$('favoriteFilter')).focus({preventScroll:true});
