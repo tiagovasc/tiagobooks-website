@@ -1,0 +1,702 @@
+{
+  "version": "owned-read-audiobooks-20261107-v1",
+  "basis": "User confirms ownership of all 87 read audiobooks, including read-but-unfinished. Preserve reading status and unfinished flags.",
+  "books": [
+    {
+      "id": "1",
+      "title": "\"Surely You're Joking, Mr. Feynman!\": Adventures of a Curious Character",
+      "author": "Richard P. Feynman",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "22",
+      "title": "A Passion for Nature: The Life of John Muir",
+      "author": "Donald Worster",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "29",
+      "title": "A Thousand Brains: A New Theory of Intelligence",
+      "author": "Jeff Hawkins",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "53",
+      "title": "Algorithms to Live By: The Computer Science of Human Decisions",
+      "author": "Brian  Christian",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "60",
+      "title": "And Every Morning the Way Home Gets Longer and Longer",
+      "author": "Fredrik Backman",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "65",
+      "title": "Antifragile: Things That Gain from Disorder",
+      "author": "Nassim Nicholas Taleb",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "80",
+      "title": "Bad Science",
+      "author": "Ben Goldacre",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "81",
+      "title": "Barking Up the Wrong Tree: The Surprising Science Behind Why Everything You Know About Success Is (Mostly) Wrong",
+      "author": "Eric Barker",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "86",
+      "title": "Becoming Human: A Theory of Ontogeny",
+      "author": "Michael Tomasello",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "94",
+      "title": "Being Wrong: Adventures in the Margin of Error",
+      "author": "Kathryn Schulz",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "118",
+      "title": "Blueprint: How DNA Makes Us Who We Are",
+      "author": "Robert Plomin",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "119",
+      "title": "Blueprint: The Evolutionary Origins of a Good Society",
+      "author": "Nicholas A. Christakis",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "122",
+      "title": "Brain on Fire: My Month of Madness",
+      "author": "Susannah Cahalan",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "145",
+      "title": "Chaos",
+      "author": "James Gleick",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "150",
+      "title": "Civilized to Death: The Price of Progress",
+      "author": "Christopher  Ryan",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "156",
+      "title": "Cognitive Gadgets: The Cultural Evolution of Thinking",
+      "author": "Cecilia Heyes",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "172",
+      "title": "Conscience: The Origins of Moral Intuition",
+      "author": "Patricia S. Churchland",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "186",
+      "title": "Deep Work: Rules for Focused Success in a Distracted World",
+      "author": "Cal Newport",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "187",
+      "title": "Delicious: The Evolution of Flavor and How It Made Us Human",
+      "author": "Rob Dunn",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "192",
+      "title": "Discrimination and Disparities",
+      "author": "Thomas Sowell",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "203",
+      "title": "Embrace the Suck: The Navy SEAL Way to an Extraordinary Life",
+      "author": "Brent Gleeson",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "205",
+      "title": "Endurance: Shackleton's Incredible Voyage",
+      "author": "Alfred Lansing",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "206",
+      "title": "Endure: Mind, Body, and the Curiously Elastic Limits of Human Performance",
+      "author": "Alex  Hutchinson",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "209",
+      "title": "Escape into Meaning: Essays on Superman, Public Benches, and Other Obsessions",
+      "author": "Evan Puschak",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "218",
+      "title": "Everybody Lies: Big Data, New Data, and What the Internet Can Tell Us About Who We Really Are",
+      "author": "Seth Stephens-Davidowitz",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "228",
+      "title": "Explaining Humans: What Science Can Teach Us about Life, Love and Relationships",
+      "author": "Camilla Pang",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "229",
+      "title": "Extreme Ownership: How U.S. Navy SEALs Lead and Win",
+      "author": "Jocko Willink",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "251",
+      "title": "From Here to Eternity: Traveling the World to Find the Good Death",
+      "author": "Caitlin Doughty",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "254",
+      "title": "Fundamentals: Ten Keys to Reality",
+      "author": "Frank Wilczek",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "255",
+      "title": "Galileo's Error: Foundations for a New Science of Consciousness",
+      "author": "Philip Goff",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "258",
+      "title": "Genome: The Autobiography of a Species in 23 Chapters",
+      "author": "Matt Ridley",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "271",
+      "title": "Good Chemistry: The Science of Connection, from Soul to Psychedelics",
+      "author": "Julie Holland",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "303",
+      "title": "How Emotions Are Made: The Secret Life of the Brain",
+      "author": "Lisa Feldman Barrett",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "304",
+      "title": "How Much Land Does a Man Need?",
+      "author": "Leo Tolstoy",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "307",
+      "title": "How to Feel: The Science and Meaning of Touch",
+      "author": "Sushma Subramanian",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "310",
+      "title": "How to Listen to and Understand Great Music",
+      "author": "Robert Greenberg",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "328",
+      "title": "I Will Teach You to Be Rich: No Guilt. No Excuses. No BS. Just a 6-Week Program That Works",
+      "author": "Ramit Sethi",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "340",
+      "title": "In the Heart of the Sea: The Tragedy of the Whaleship Essex",
+      "author": "Nathaniel Philbrick",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "341",
+      "title": "Innate: How the Wiring of Our Brains Shapes Who We Are",
+      "author": "Kevin J. Mitchell",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "355",
+      "title": "Journey to the Edge of Reason: The Life of Kurt Gödel",
+      "author": "Stephen Budiansky",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "368",
+      "title": "Leonardo da Vinci",
+      "author": "Walter Isaacson",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "371",
+      "title": "Life 3.0: Being Human in the Age of Artificial Intelligence",
+      "author": "Max Tegmark",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "372",
+      "title": "Life Is Hard: How Philosophy Can Help Us Find Our Way",
+      "author": "Kieran Setiya",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "391",
+      "title": "Man's Search for Meaning",
+      "author": "Viktor E. Frankl",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "396",
+      "title": "Mating in Captivity: Reconciling the Erotic and the Domestic",
+      "author": "Esther Perel",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "405",
+      "title": "Metaphysical Animals: How Four Women Brought Philosophy Back to Life",
+      "author": "Clare Mac Cumhaill",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "409",
+      "title": "Mind Fixers: Psychiatry's Troubled Search for the Biology of Mental Illness",
+      "author": "Anne Harrington",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "410",
+      "title": "Mind in Motion: How Action Shapes Thought",
+      "author": "Barbara Tversky",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "425",
+      "title": "Musicophilia: Tales of Music and the Brain",
+      "author": "Oliver Sacks",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "461",
+      "title": "Ordinary Men: Reserve Police Battalion 101 and the Final Solution in Poland",
+      "author": "Christopher R. Browning",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "487",
+      "title": "Philosopher of the Heart: The Restless Life of Søren Kierkegaard",
+      "author": "Clare Carlisle",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "563",
+      "title": "Rescuing Socrates: How the Great Books Changed My Life and Why They Matter for a New Generation",
+      "author": "Roosevelt Montás",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "586",
+      "title": "Seven Years in Tibet",
+      "author": "Heinrich Harrer",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "597",
+      "title": "Social: Why Our Brains Are Wired to Connect",
+      "author": "Matthew D. Lieberman",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "602",
+      "title": "Soul Story: Evolution and The Purpose of Life",
+      "author": "Tim Freke",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "609",
+      "title": "Strange Tools: Art and Human Nature",
+      "author": "Alva Noë",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "613",
+      "title": "Stuff Matters: Exploring the Marvelous Materials That Shape Our Man-Made World",
+      "author": "Mark Miodownik",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "641",
+      "title": "The Big Picture: On the Origins of Life, Meaning, and the Universe Itself",
+      "author": "Sean Carroll",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "642",
+      "title": "The Biology of Desire: Why Addiction Is Not a Disease",
+      "author": "Marc  Lewis",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "646",
+      "title": "The Body: A Guide for Occupants",
+      "author": "Bill Bryson",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "649",
+      "title": "The Book of Humans: A Brief History of Culture, Sex, War and the Evolution of Us",
+      "author": "Adam Rutherford",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "664",
+      "title": "The Character Gap: How Good Are We? (Philosophy in Action)",
+      "author": "Christian B. Miller",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "672",
+      "title": "The Coddling of the American Mind: How Good Intentions and Bad Ideas Are Setting up a Generation for Failure",
+      "author": "Jonathan Haidt",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "673",
+      "title": "The Common Path to Uncommon Success: A Roadmap to Financial Freedom and Fulfillment",
+      "author": "John Lee Dumas",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "678",
+      "title": "The Courage to Be",
+      "author": "Paul Tillich",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "704",
+      "title": "The Emperor of All Maladies: A Biography of Cancer",
+      "author": "Siddhartha Mukherjee",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "738",
+      "title": "The Knowledge Machine: How Irrationality Created Modern Science",
+      "author": "Michael Strevens",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "743",
+      "title": "The Light Ages: The Surprising Story of Medieval Science",
+      "author": "Seb Falk",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "751",
+      "title": "The Man from the Future",
+      "author": "Ananyo Bhattacharya",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "762",
+      "title": "The Murder of Professor Schlick: The Rise and Fall of the Vienna Circle",
+      "author": "David Edmonds",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "773",
+      "title": "The Origins of Political Order: From Prehuman Times to the French Revolution",
+      "author": "Francis Fukuyama",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "829",
+      "title": "The River of Doubt: Theodore Roosevelt's Darkest Journey",
+      "author": "Candice Millard",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "845",
+      "title": "The Selfish Gene",
+      "author": "Richard Dawkins",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "857",
+      "title": "The Story of the Human Body: Evolution, Health, and Disease",
+      "author": "Daniel E. Lieberman",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "858",
+      "title": "The Storytelling Animal: How Stories Make Us Human",
+      "author": "Jonathan Gottschall",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "872",
+      "title": "The Tyranny of Merit: What's Become of the Common Good?",
+      "author": "Michael J. Sandel",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "890",
+      "title": "The Willpower Instinct: How Self-Control Works, Why It Matters, and What You Can Do to Get More of It",
+      "author": "Kelly McGonigal",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "899",
+      "title": "Things My Son Needs to Know About the World",
+      "author": "Fredrik Backman",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "915",
+      "title": "Touching the Void: The True Story of One Man's Miraculous Survival",
+      "author": "Joe Simpson",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "919",
+      "title": "Transcend: The New Science of Self-Actualization",
+      "author": "Scott Barry Kaufman",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "923",
+      "title": "Trust Me, I'm Lying: Confessions of a Media Manipulator",
+      "author": "Ryan Holiday",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "925",
+      "title": "Unbroken: A World War II Story of Survival, Resilience and Redemption",
+      "author": "Laura Hillenbrand",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "969",
+      "title": "What Is Life?: Five Great Ideas in Biology",
+      "author": "Paul Nurse",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "978",
+      "title": "When Breath Becomes Air",
+      "author": "Paul Kalanithi",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "979",
+      "title": "When the Air Hits Your Brain: Tales from Neurosurgery",
+      "author": "Frank T. Vertosick Jr.",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "984",
+      "title": "Who We Are and How We Got Here: Ancient DNA and the New Science of the Human Past",
+      "author": "David  Reich",
+      "fields": {
+        "owned": true
+      }
+    },
+    {
+      "id": "991",
+      "title": "Why We're Polarized",
+      "author": "Ezra Klein",
+      "fields": {
+        "owned": true
+      }
+    }
+  ]
+}

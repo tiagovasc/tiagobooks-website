@@ -28,6 +28,8 @@ export async function activateBookReconciliation(){
   const catalogue=JSON.parse(await readFile(path.join(root,'tbr-catalogue.json'),'utf8'));
   reconciliationStatus=await runBookReconciliation({db,catalogue,plan,legacyFavorites:()=>tbrFavorites.list(),backup:createReconciliationBackup(base,key)});
   reconciliationStatus.confirmed_corrections=await applyConfirmedCorrections({db,backup:createReconciliationBackup(base,key)});
+  const audiobookPlan=JSON.parse(await readFile(path.join(root,'read-audiobook-ownership.json'),'utf8'));
+  reconciliationStatus.audiobook_ownership=await applyConfirmedCorrections({db,backup:createReconciliationBackup(base,key),corrections:audiobookPlan.books,version:audiobookPlan.version});
   snapshot=null;
   return reconciliationStatus;
 }

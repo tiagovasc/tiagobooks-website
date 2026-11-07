@@ -21,6 +21,21 @@ test('Ownership correction retries concurrent favorite changes from fresh state'
  const result=await applyConfirmedCorrections({backup:{preserve:async r=>{backups.push(r.revision);return {backup_verified:true};},receipt:async()=>{}},db:async(method,query,body)=>{if(method==='GET')return [structuredClone(row)];if(!attempts++){row.revision++;row.books[2].favorite=true;return [];}row={...row,...body};return [row];}});
  assert.deepEqual(backups,[1,2]);assert.equal(result.state,'applied');assert.equal(row.books[2].favorite,true);
 });
+
+test('Read-but-unfinished audiobook ownership changes no reading history, tags or favorites',()=>{
+ const before=[{id:'a',title:'Audio',author:'Writer',owned:false,read_status:'read',unfinished:true,tags:['Not completed','unfinished'],date_read:'2020-01-01',rating:3,favorite:true},{id:'b',title:'Already owned',author:'Writer',owned:true,read_status:'read'}];
+ const changes=before.map(b=>({id:b.id,title:b.title,author:b.author,fields:{owned:true}}));
+ const result=correctedBooks(before,changes,'audio-test');assert.ok(result.books.every(b=>b.owned));
+ for(let i=0;i<before.length;i++)for(const [key,value] of Object.entries(before[i]))if(key!=='owned')assert.deepEqual(result.books[i][key],value);
+ assert.equal(correctedBooks(result.books,changes,'audio-test').changed,false);
+ result.books[0].title='Later intentional title edit';assert.equal(correctedBooks(result.books,changes,'audio-test').changed,false);
+});
+
+test('Ownership confirmation plan contains the exact 87 audited books and no status edits',async()=>{
+ const plan=JSON.parse(await readFile(new URL('./library/read-audiobook-ownership.json',import.meta.url),'utf8'));
+ assert.equal(plan.books.length,87);assert.equal(new Set(plan.books.map(b=>b.id)).size,87);
+ for(const book of plan.books)assert.deepEqual(book.fields,{owned:true});
+});
 const catalogue={books:[{id:'t1',book_id:'1',title:'Book edition',author:'Writer',sources:['online'],sightings:[1]},{id:'t2',book_id:'1',title:'Book',author:'Writer',sources:['bookshops'],sightings:[2]},{id:'t3',book_id:'v2',title:'Volume 2',author:'Editor',sources:['online']},{id:'t4',book_id:'new',title:'Other',author:'Other',sources:['online']}]};
 const plan={version:'test',activate:true,library_memberships:3,expected_library:{'1':{title:'Book',author:'Writer'}},series_expansion:{parent_id:'set',expected_title:'Set',volumes:[{id:'v1',title:'Volume 1',author:'Editor',volume:1},{id:'v2',title:'Volume 2',author:'Editor',volume:2}]}};
 test('One underlying book retains every source membership; series preserves full original',()=>{
