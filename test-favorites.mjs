@@ -27,9 +27,9 @@ test('visitors see favorite badges, never mutation controls, and cannot toggle',
  assert.match(c.favoriteHTML(b,true),/role="img"/);assert.doesNotMatch(c.favoriteHTML(b,true),/<button|data-act/);
  assert.equal(c.favoriteHTML({...b,favorite:false},true),'');c.toggleFavorite(b);assert.equal(b.favorite,true);assert.equal(c.saves,0);
 });
-test('Favorites works independently of reading status and updates after removal',()=>{
- const c=harness();c.state.books=[{id:'1',read_status:'read',favorite:true},{id:'2',read_status:'unread',favorite:true},{id:'3',read_status:'read',favorite:false}];c.ui.status='favorites';
- assert.deepEqual(Array.from(c.getView(),b=>b.id),['1','2']);assert.equal(c.facets.favorites,2);assert.equal(c.facets.all,3);
+test('Favorites filters the current reading status and updates after removal',()=>{
+ const c=harness();c.state.books=[{id:'1',read_status:'read',favorite:true},{id:'2',read_status:'unread',favorite:true},{id:'3',read_status:'read',favorite:false}];c.ui.favorites=true;
+ assert.deepEqual(Array.from(c.getView(),b=>b.id),['1','2']);assert.equal(c.facets.favorites,2);assert.equal(c.facets.all,2);c.ui.status='read';assert.deepEqual(Array.from(c.getView(),b=>b.id),['1']);c.ui.status='unread';assert.deepEqual(Array.from(c.getView(),b=>b.id),['2']);c.ui.status='all';
  c.toggleFavorite(c.state.books[0]);assert.equal(c.renders,1);assert.deepEqual(Array.from(c.getView(),b=>b.id),['2']);
 });
 test('keyboard handler leaves native heart-button activation to the button',()=>{

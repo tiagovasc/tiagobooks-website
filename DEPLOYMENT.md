@@ -28,7 +28,9 @@ Run `library/supabase.sql` in **your own** Supabase project, then initialize the
 
 The live site's database is separate from this repository. A fresh deployment does not include or grant access to it. `LOCAL_LIBRARY_FILE` is for local development and is rejected in production.
 
-Favorites use an optional boolean `favorite` on each book in the existing `books` JSONB array. Missing means false, so existing catalogues need no SQL migration or bulk rewrite. Signed-in owners toggle hearts through the normal revision-checked save; visitors see the selected covers and Favorites section without edit controls. JSON/CSV exports retain the field. Ratings, reading status and tags are independent.
+Owned-library favorites use an optional boolean `favorite` on each book in the existing `books` JSONB array. Missing means false, so existing catalogues need no SQL migration or bulk rewrite. Signed-in owners toggle hearts through the normal revision-checked save; visitors see the selected covers without edit controls. JSON/CSV exports retain the field. Ratings, reading status and tags are independent.
+
+Favorites is a filter within each reading section and every TBR source, rather than a separate section. TBR selections use independent per-book JSON objects in the private Supabase Storage bucket `tiagovf-book-favorites`, created on the first owner selection through the website's existing server-only service credential. The public `/api/tbr-favorites` read returns selected IDs; writes require the signed-in owner, same origin and a valid current catalogue ID. Catalogue/source records are never rewritten. Local development uses a companion `.tbr-favorites.json` file beside the local library, with atomic writes. Back up the bucket separately from the library row; keep it when rolling back UI code.
 
 ## Build and deploy
 

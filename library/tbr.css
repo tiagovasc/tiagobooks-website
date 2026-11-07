@@ -1,4 +1,13 @@
-/* TBR is a separate, public discovery catalogue; it never edits the library. */
+/* TBR metadata stays separate; favorites are independent owner preferences. */
+.tbr-book{position:relative}
+.tbr-book>.favorite{position:absolute;top:7px;right:7px;z-index:1}
+.tbr-book.is-favorite .tbr-cover{outline:2px solid #d4ac55;outline-offset:-2px}
+.tbr-list .tbr-book{padding-right:52px!important}
+.tbr-list .tbr-book>.favorite{top:18px;right:0}
+#tbrDetail>img.is-favorite{outline:2px solid #d4ac55;outline-offset:-2px}
+#tbrDetail>.favorite{float:right;margin:0 0 12px 12px}
+#tbrFavoriteMessage:empty{display:none}
+#tbrFavoriteMessage{font-size:13px;color:var(--muted)}
 .statusbar{display:flex;align-items:center;gap:10px;overflow:visible;min-width:0}
 .collection-switch{flex:none}
 #statusSeg{overflow-x:auto;scrollbar-width:none;min-width:0}
@@ -62,7 +71,7 @@ body.tbr-mode #tbrMain{display:block;margin-left:var(--books-left,24px);width:va
 .tbr-detail ul{padding-left:20px;color:var(--muted);font-size:13px;line-height:1.6}
 .tbr-detail li{margin-bottom:10px}
 .tbr-note{clear:both;font-size:12px!important;color:var(--muted)}
-@media(hover:hover) and (pointer:fine){.tbr-book:hover .tbr-cover{transform:translateY(-3px);box-shadow:0 0 22px 2px #91ac9826}.tbr-table button:hover{color:var(--t-read)}}
+@media(hover:hover) and (pointer:fine){.tbr-book:hover .tbr-cover{transform:translateY(-3px);box-shadow:0 0 22px 2px #91ac9826}.tbr-table button:not(.favorite):hover{color:var(--t-read)}}
 @media(min-width:761px){.tbr-mode .statusbar{flex:1 1 auto}.tbr-mode .n-row2 .spacer,#tbrSortMobile{display:none}}
 @media(max-width:760px){
  .statusbar{width:100%;max-width:100%;flex:1 1 100%;gap:8px}

@@ -1,5 +1,6 @@
 import http from 'node:http';
 import {localDB} from '../local-storage.mjs';
+import {createTbrFavoritesStore} from './tbr-favorites-store.mjs';
 import {readBody,sameOrigin} from './http-utils.mjs';
 import {personalizeSiteHeader} from '../src/lib/site-shell.mjs';
 import {tripMonth,publicTripCatalogue} from './trip-privacy.mjs';
@@ -17,6 +18,7 @@ const base=process.env.SUPABASE_URL, key=process.env.SUPABASE_SECRET_KEY;
 if(local && process.env.NODE_ENV==='production')throw Error('Local catalogue is not a production backend');
 const port=Number(process.env.PORT||8732);
 const table='book_library_state';
+const tbrFavorites=createTbrFavoritesStore({url:base,key,localFile:local?local+'.tbr-favorites.json':null});
 const attempts=new Map(),allFailures={count:0,until:0};
 // Railway's edge always sets X-Real-IP and overwrites any copy a visitor sends (Railway staff, Central Station,
 // checked 4 Nov 2026). Behind it every request arrives from the proxy, so production counts failed logins per visitor.
@@ -190,6 +192,19 @@ export const server=http.createServer(async(req,res)=>{
     if(url.pathname==='/login'&&req.method==='GET'){return htmlReply(200,'');}
     if(url.pathname==='/logout'){res.writeHead(303,{Location:safeNext(next), 'Set-Cookie':'library_session=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0','Cache-Control':'no-store',...SECURITY});return res.end();}
     if(url.pathname==='/save'&&!authenticated(req))return send(res,401,{error:'Enter the library password to enable edits'});
+    if(url.pathname==='/api/tbr-favorites'){
+      if(req.method==='GET')return send(res,200,{ids:await tbrFavorites.list()});
+      if(req.method!=='POST')return send(res,405,{error:'Method not allowed'});
+      if(!authenticated(req))return send(res,401,{error:'Sign in to favorite books'});
+      if(!sameOrigin(req))return send(res,403,{error:'Origin rejected'});
+      const raw=await readBody(req,1024);if(raw===null)return send(res,413,{error:'Request too large'});
+      let value;try{value=JSON.parse(raw);}catch{return send(res,400,{error:'Invalid JSON'});}
+      if(!value||typeof value.id!=='string'||!/^[A-Za-z0-9_-]{1,160}$/.test(value.id)||typeof value.favorite!=='boolean')return send(res,400,{error:'Invalid favorite'});
+      const catalogue=JSON.parse(await readFile(path.join(root,'tbr-catalogue.json'),'utf8'));
+      if(!catalogue.books.some(b=>b.id===value.id))return send(res,404,{error:'Book not found'});
+      await tbrFavorites.set(value.id,value.favorite);
+      return send(res,200,{id:value.id,favorite:value.favorite});
+    }
     if(url.pathname==='/health'){if(!local&&(!base||!key))return send(res,503,{ok:false});const rows=await db('GET','?id=eq.library&select=revision');return send(res,rows.length?200:503,{ok:!!rows.length});}
     if(url.pathname==='/books.json'&&req.method==='GET'){
       const snap=await librarySnapshot();if(!snap)return send(res,503,{error:'Library is not initialized'});

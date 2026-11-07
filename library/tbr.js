@@ -1,4 +1,4 @@
-// Separate discovery data: no library IDs, ownership flags, ratings or save requests.
+// Discovery metadata stays separate; owner favorites persist independently of source memberships.
 export const SOURCES = {bookshops:'Book shops',instagram:'Instagram',online:'Online'};
 export const SOURCE_VIEWS = {all:'All',...SOURCES};
 export function sourceLabel(book){return (book.sources||((book.sightings||[]).length?['bookshops']:[])).map(s=>SOURCES[s]).filter(Boolean).join(' · ');}
@@ -30,8 +30,8 @@ export function sourceBooks(books,source) {
 export function catalogueCounts(books) {
   return {total:new Set(books.map(b=>b.id)).size,...Object.fromEntries(Object.keys(SOURCES).map(source=>[source,new Set(sourceBooks(books,source).map(b=>b.id)).size]))};
 }
-export function filterCatalogue(books,{source='all',query='',city='',shop='',sort='recent'}={}) {
-  const collection=sourceBooks(books,source);
+export function filterCatalogue(books,{source='all',query='',city='',shop='',sort='recent',favoritesOnly=false,favoriteIds=new Set()}={}) {
+  const collection=sourceBooks(books,source).filter(b=>!favoritesOnly||favoriteIds.has(b.id));
   const order=new Map(collection.map((b,i)=>[b.id,i]));
   if(source==='bookshops')return filterBooks(collection,{query,city,shop,sort});
   const words=query.toLocaleLowerCase().trim().split(/\s+/).filter(Boolean);
@@ -53,6 +53,13 @@ export const tripMonthLabel=s=>new Intl.DateTimeFormat('en-GB',{month:'short',ye
 const date=tripMonthLabel;
 // Metadata dates describe local photo dates, never date read or acquired.
 export function placeLabel(s){return [s.city,s.bookshop].filter(Boolean).join(' · ');}
+export function tbrFavoriteHTML(book,active,canEdit,pending=false){
+  if(!canEdit&&!active)return '';
+  const label=canEdit?(active?'Remove from favorites':'Add to favorites'):'Tiago’s favorite';
+  const attrs=`class="favorite${active?' is-favorite':''}" title="${escape(label)}" aria-label="${escape(label+': '+book.title)}"`;
+  const icon='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>';
+  return canEdit?`<button type="button" ${attrs} data-tbr-favorite="${escape(book.id)}" aria-pressed="${active}" ${pending?'disabled aria-busy="true"':''}>${icon}</button>`:`<span ${attrs} role="img">${icon}</span>`;
+}
 if(typeof document!=='undefined')init();
 function init(){
   const $=id=>document.getElementById(id), body=document.body, search=$('search');
@@ -60,8 +67,10 @@ function init(){
   $('notchMore').querySelector('.n-more-inner').insertAdjacentHTML('beforeend','<div id="tbrSources"><nav class="seg" id="tbrSourceTabs" aria-label="TBR source">'+['all','instagram','bookshops','online'].map(k=>`<button type="button" data-source="${k}" aria-pressed="${k==='all'}">${SOURCE_VIEWS[k]}</button>`).join('')+'</nav><select id="tbrSourceMobile" aria-label="TBR source">'+['all','instagram','bookshops','online'].map(k=>`<option value="${k}" ${k==='all'?'selected':''}>${SOURCE_VIEWS[k]}</option>`).join('')+'</select></div>');
   $('sort').closest('label').id='sortLabel';
   $('sortLabel').insertAdjacentHTML('afterend','<label id="tbrSortLabel" class="pill-select icon-select" title="Sort"><svg class="i" aria-hidden="true"><use href="#i-sort"/></svg><span class="lbl">Sort</span><select id="tbrSort" aria-label="Sort TBR books"><option value="recent">Newest photos</option><option value="oldest">Oldest photos</option><option value="title">Title</option><option value="author">Author</option></select></label>');
-  $('main').insertAdjacentHTML('afterend','<main class="wrap" id="tbrMain" hidden><div id="tbrIntro"></div><div id="tbrFilters" class="tbr-toolbar"></div><div id="tbrContent" aria-live="polite"></div></main><dialog id="tbrDialog" aria-labelledby="tbrDetailTitle"><div class="tbr-dialog-head"><span>TBR · Book shops</span><button type="button" class="tbr-close" aria-label="Close book details">×</button></div><div class="tbr-detail" id="tbrDetail"></div></dialog>');
-  let moreObserver=null;
+  $('main').insertAdjacentHTML('afterend','<main class="wrap" id="tbrMain" hidden><div id="tbrIntro"></div><p id="tbrFavoriteMessage" role="status"></p><div id="tbrFilters" class="tbr-toolbar"></div><div id="tbrContent" aria-live="polite"></div></main><dialog id="tbrDialog" aria-labelledby="tbrDetailTitle"><div class="tbr-dialog-head"><span>TBR · Book shops</span><button type="button" class="tbr-close" aria-label="Close book details">×</button></div><div class="tbr-detail" id="tbrDetail"></div></dialog>');
+  let moreObserver=null,openId=null;
+  let favoriteIds=new Set();const pendingFavorites=new Set();
+  const favorite=b=>tbrFavoriteHTML(b,favoriteIds.has(b.id),!!window.CLOUD_CAN_EDIT,pendingFavorites.has(b.id));
   let active=false,source='all',books=null,loading=null,error=false,limit=48,view='covers',sort='recent',city='',shop='',libSearch='',libView='covers',tbrSearch='';
   function pressViews(v){$('viewSwitch').querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===v)));}
   function views(v){view=v;pressViews(v);}
@@ -82,12 +91,12 @@ function init(){
   async function load(){
     if(books||loading)return;
     error=false;
-    loading=fetch('/tbr-catalogue.json').then(r=>{if(!r.ok)throw Error('load');return r.json();}).then(data=>{if(!Array.isArray(data.books)||data.books.some(b=>!b.id||!b.title||!Array.isArray(b.sightings)||!Array.isArray(b.sources)))throw Error('schema');books=data.books;const total=catalogueCounts(books).total;status.dataset.tbrCount=total;const tbrButton=status.querySelector('[data-collection="tbr"]');if(tbrButton)tbrButton.innerHTML='TBR <span class="n">'+number(total)+'</span>';}).catch(()=>{error=true;}).finally(()=>{loading=null;if(active)render();});
+    loading=Promise.all([fetch('/api/tbr-favorites').then(r=>{if(!r.ok)throw Error('favorites');return r.json();}).then(data=>{if(!Array.isArray(data.ids))throw Error('favorites');favoriteIds=new Set(data.ids);}),fetch('/tbr-catalogue.json').then(r=>{if(!r.ok)throw Error('load');return r.json();}).then(data=>{if(!Array.isArray(data.books)||data.books.some(b=>!b.id||!b.title||!Array.isArray(b.sightings)||!Array.isArray(b.sources)))throw Error('schema');books=data.books;const total=catalogueCounts(books).total;status.dataset.tbrCount=total;const tbrButton=status.querySelector('[data-collection="tbr"]');if(tbrButton)tbrButton.innerHTML='TBR <span class="n">'+number(total)+'</span>';})]).catch(()=>{books=null;error=true;}).finally(()=>{loading=null;if(active)render();});
   }
   function cover(b){return b.cover?`<span class="tbr-cover"><img src="${escape(b.cover)}" alt="" width="320" height="480" loading="lazy" decoding="async"></span>`:`<span class="tbr-cover"><span class="tbr-placeholder">${escape(b.title)}<br><small>Cover unavailable</small></span></span>`;}
   function place(b){if(source!=='bookshops')return `<span class="tbr-place">${escape(source==='all'?sourceLabel(b):SOURCES[source])}</span>`;const s=b.sightings[0];return `<span class="tbr-place" title="${escape(placeLabel(s))}"><span class="tbr-city">${escape(s.city)}</span><span class="tbr-shop">${escape(s.bookshop)}</span><span class="tbr-date"><time datetime="${escape(s.photographed_at.slice(0,7))}">${date(s.photographed_at)}</time>${b.sightings.length>1?` · ${b.sightings.length} photos`:''}</span></span>`;}
-  function card(b){return `<button type="button" class="tbr-book" data-tbr-id="${escape(b.id)}" aria-label="${escape(b.title+' by '+(b.author||'uncredited')+'. '+(source==='bookshops'?placeLabel(b.sightings[0]):source==='all'?sourceLabel(b):SOURCES[source]))}">${cover(b)}<span class="tbr-copy"><h3>${escape(b.title)}</h3><span class="tbr-author">${escape(b.author||'Author not identified')}</span></span>${place(b)}</button>`;}
-  function filtered(){return filterCatalogue(books||[],{source,query:search.value,city,shop,sort});}
+  function card(b){return `<div role="button" tabindex="0" class="tbr-book ${favoriteIds.has(b.id)?'is-favorite':''}" data-tbr-id="${escape(b.id)}" aria-label="${escape(b.title+' by '+(b.author||'uncredited')+'. '+(source==='bookshops'?placeLabel(b.sightings[0]):source==='all'?sourceLabel(b):SOURCES[source]))}">${cover(b)}${favorite(b)}<span class="tbr-copy"><h3>${escape(b.title)}</h3><span class="tbr-author">${escape(b.author||'Author not identified')}</span></span>${place(b)}</div>`;}
+  function filtered(){return filterCatalogue(books||[],{source,query:search.value,city,shop,sort,favoritesOnly:!!window.FAVORITES_ONLY,favoriteIds});}
   function sorting(){return sortOptions(source).map(([value,label])=>`<option value="${value}">${label}</option>`).join('');}
   function render(){
     moreObserver?.disconnect();
@@ -108,7 +117,7 @@ function init(){
       $('tbrSortMobile').value=sort;
     }
     if(!books){$('tbrContent').innerHTML=error?'<div class="empty-state"><h2>Couldn’t load these books</h2><p>Please try again.</p><button class="tbr-retry" type="button">Retry</button></div>':`<div class="empty-state" role="status">Loading ${source==='all'?'all TBR books':source==='bookshops'?'bookshop discoveries':SOURCES[source]+' books'}…</div>`;return;}
-    if(!list.length){$('tbrContent').innerHTML=`<div class="empty-state"><h2>No books match</h2><p>${source==='bookshops'?'Try another title, city or bookshop.':'Try another title or author.'}</p><button type="button" data-tbr-clear>Clear search and filters</button></div>`;return;}
+    if(!list.length){$('tbrContent').innerHTML=`<div class="empty-state"><h2>${window.FAVORITES_ONLY?'No favorites match in this section':'No books match'}</h2><p>${window.FAVORITES_ONLY?'Turn off Favorites to see all books, or try another search.':source==='bookshops'?'Try another title, city or bookshop.':'Try another title or author.'}</p><button type="button" data-tbr-clear>Clear search and filters</button></div>`;return;}
     drawBatch(list,0);
   }
   function drawBatch(list,start){
@@ -117,8 +126,8 @@ function init(){
     content.querySelector('.tbr-more')?.remove();
     if(!start)content.innerHTML='';
     if(view==='table'){
-      if(!start)content.innerHTML=`<div class="tbr-table-scroll" tabindex="0" role="region" aria-label="TBR books table"><table class="tbr-table"><thead><tr><th scope="col">Book</th><th scope="col">Author</th>${source==='bookshops'?'<th scope="col">City</th><th scope="col">Bookshop</th><th scope="col">Month</th>':'<th scope="col">Source</th>'}</tr></thead><tbody></tbody></table></div>`;
-      content.querySelector('tbody').insertAdjacentHTML('beforeend',shown.map(b=>{const s=b.sightings[0];return `<tr><td><button type="button" data-tbr-id="${escape(b.id)}">${escape(b.title)}</button></td><td>${escape(b.author||'Author not identified')}</td>${source==='bookshops'?`<td>${escape(s.city)}</td><td>${escape(s.bookshop)}</td><td><time datetime="${escape(s.photographed_at.slice(0,7))}">${date(s.photographed_at)}</time></td>`:`<td>${escape(source==='all'?sourceLabel(b):SOURCES[source])}</td>`}</tr>`;}).join(''));
+      if(!start)content.innerHTML=`<div class="tbr-table-scroll" tabindex="0" role="region" aria-label="TBR books table"><table class="tbr-table"><thead><tr><th scope="col">Book</th><th scope="col">Author</th><th scope="col">Favorite</th>${source==='bookshops'?'<th scope="col">City</th><th scope="col">Bookshop</th><th scope="col">Month</th>':'<th scope="col">Source</th>'}</tr></thead><tbody></tbody></table></div>`;
+      content.querySelector('tbody').insertAdjacentHTML('beforeend',shown.map(b=>{const s=b.sightings[0];return `<tr><td><button type="button" data-tbr-id="${escape(b.id)}">${escape(b.title)}</button></td><td>${escape(b.author||'Author not identified')}</td><td>${favorite(b)}</td>${source==='bookshops'?`<td>${escape(s.city)}</td><td>${escape(s.bookshop)}</td><td><time datetime="${escape(s.photographed_at.slice(0,7))}">${date(s.photographed_at)}</time></td>`:`<td>${escape(source==='all'?sourceLabel(b):SOURCES[source])}</td>`}</tr>`;}).join(''));
     }else{
       for(const g of collectionGroups(shown,source,sort)){
         let section=content.lastElementChild;
@@ -150,17 +159,18 @@ function init(){
     const b=books?.find(x=>x.id===id);if(!b)return;
     $('tbrDialog').querySelector('.tbr-dialog-head span').textContent='TBR · '+(source==='all'?sourceLabel(b):SOURCES[source]);
     const sightings=b.sightings.length?`<h3>Spotted in book shops</h3><ul>${b.sightings.map(s=>`<li><strong>${escape(s.bookshop)}</strong><br>${escape(s.city)}${s.country?', '+escape(s.country):''} · ${date(s.photographed_at)}${/unresolved|probable|possible|uncertain|unknown/i.test(s.shop_status)?`<br>Shop identification: ${escape(s.shop_status)}`:''}</li>`).join('')}</ul>`:'';
-    $('tbrDetail').innerHTML=`${b.cover?`<img src="${escape(b.cover)}" alt="Cover of ${escape(b.title)}">`:''}<h2 id="tbrDetailTitle">${escape(b.title)}</h2><p>${escape(b.author||'Author not identified')}</p>${b.identity_status==='needs_review'?'<p class="tbr-note">The exact book is still being identified.</p>':''}${b.description?`<p>${escape(b.description)}</p>`:''}${source==='all'?`<p class="tbr-note">Saved from: ${escape(sourceLabel(b))}.</p>`:source!=='bookshops'?`<p class="tbr-note">${source==='instagram'?'Discovered on Instagram':'Found online'} and saved to explore.</p>`:''}${sightings}<p class="tbr-note">Saved as a reading interest. This doesn’t indicate ownership or a completed read.${b.sightings.length?' Cover and description may represent a different edition from the photographed copy.':''}</p>`;
-    $('tbrDialog').showModal();
+    $('tbrDetail').innerHTML=`${favorite(b)}${b.cover?`<img class="${favoriteIds.has(b.id)?'is-favorite':''}" src="${escape(b.cover)}" alt="Cover of ${escape(b.title)}">`:''}<h2 id="tbrDetailTitle">${escape(b.title)}</h2><p>${escape(b.author||'Author not identified')}</p>${b.identity_status==='needs_review'?'<p class="tbr-note">The exact book is still being identified.</p>':''}${b.description?`<p>${escape(b.description)}</p>`:''}${source==='all'?`<p class="tbr-note">Saved from: ${escape(sourceLabel(b))}.</p>`:source!=='bookshops'?`<p class="tbr-note">${source==='instagram'?'Discovered on Instagram':'Found online'} and saved to explore.</p>`:''}${sightings}<p class="tbr-note">Saved as a reading interest. This doesn’t indicate ownership or a completed read.${b.sightings.length?' Cover and description may represent a different edition from the photographed copy.':''}</p>`;
+    openId=id;$('tbrDialog').showModal();
   }
   status.addEventListener('click',e=>{if(active&&e.target.closest('[data-status]'))enter(false,source);},true);
   document.addEventListener('click',e=>{
+    const heart=e.target.closest('[data-tbr-favorite]');if(heart){e.preventDefault();setFavorite(heart.dataset.tbrFavorite);return;}
     const collection=e.target.closest('[data-collection]');if(collection){enter(collection.dataset.collection==='tbr',source);return;}
     const tab=e.target.closest('[data-source]');if(tab){sources(tab.dataset.source);address();render();load();return;}
     if(!active)return;
     const b=e.target.closest('[data-tbr-id]');if(b){openBook(b.dataset.tbrId);return;}
     if(e.target.closest('[data-tbr-more]')){const old=limit;appendMore();$('tbrContent').querySelectorAll('[data-tbr-id]')[old]?.focus({preventScroll:true});}
-    if(e.target.closest('[data-tbr-clear]')){city='';shop='';search.value='';sort='recent';limit=48;$('searchClear').hidden=true;render();}
+    if(e.target.closest('[data-tbr-clear]')){window.setFavoritesFilter(false);city='';shop='';search.value='';sort='recent';limit=48;$('searchClear').hidden=true;render();}
     if(e.target.closest('.tbr-retry')){error=false;render();load();}
   });
   document.addEventListener('change',e=>{
@@ -176,10 +186,32 @@ function init(){
     if(!active)return;
     const typing=e.target.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName);
     if(e.ctrlKey||e.metaKey||e.altKey)return;
+    if(e.target.matches('.tbr-book')&&['Enter',' '].includes(e.key)){e.preventDefault();openBook(e.target.dataset.tbrId);return;}
     if(!typing&&['1','2','3'].includes(e.key)&&!$('tbrDialog').open){e.preventDefault();views(['covers','list','table'][Number(e.key)-1]);render();}
     if(!typing&&e.key==='/'&&!$('tbrDialog').open){e.preventDefault();search.focus();search.select();}
     if(e.key==='Escape'&&e.target===search){search.value='';$('searchClear').hidden=true;render();}
   },true);
+  window.addEventListener('favorite-filter-change',()=>{limit=48;if(active)render();});
+  $('tbrDialog').addEventListener('close',()=>{openId=null;});
+  async function setFavorite(id){
+    if(!window.CLOUD_CAN_EDIT||pendingFavorites.has(id)||!books?.some(b=>b.id===id))return;
+    const selected=!favoriteIds.has(id);pendingFavorites.add(id);$('tbrFavoriteMessage').textContent='Saving favorite…';render();if(openId===id)openBook(id);
+    try{
+      const response=await fetch('/api/tbr-favorites',{method:'POST',keepalive:true,headers:{'Content-Type':'application/json'},body:JSON.stringify({id,favorite:selected})});
+      if(!response.ok)throw Error(response.status===401?'Sign in again to save favorites.':'Could not save favorite. Please try again.');
+      const result=await response.json();if(result.id!==id||result.favorite!==selected)throw Error('Favorite was not confirmed. Please try again.');
+      selected?favoriteIds.add(id):favoriteIds.delete(id);$('tbrFavoriteMessage').textContent='Favorite saved.';
+    }catch(error){$('tbrFavoriteMessage').textContent=error.message;}
+    finally{
+      pendingFavorites.delete(id);render();
+      if(openId===id)openBook(id);
+      if(active){
+        const control=(openId===id?$('tbrDetail'):$('tbrContent')).querySelector('[data-tbr-favorite="'+CSS.escape(id)+'"]');
+        (control||$('favoriteFilter')).focus({preventScroll:true});
+      }
+    }
+  }
+  window.addEventListener('beforeunload',event=>{if(pendingFavorites.size){event.preventDefault();event.returnValue='';}});
   $('tbrDialog').querySelector('.tbr-close').addEventListener('click',()=>$('tbrDialog').close());
   $('tbrDialog').addEventListener('click',e=>{if(e.target===$('tbrDialog')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.target.close();}});
   function fromURL(){const u=new URL(location.href);tbrSearch=u.searchParams.get('q')||'';enter(u.searchParams.get('collection')==='tbr',Object.hasOwn(SOURCE_VIEWS,u.searchParams.get('source'))?u.searchParams.get('source'):'all',false);if(active&&u.searchParams.has('q')){search.value=tbrSearch;render();}}
