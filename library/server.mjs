@@ -6,6 +6,7 @@ import {isLibraryMember,mergeLibrarySave,projectTbrCatalogue,canonicalFavoriteId
 import {readBody,sameOrigin} from './http-utils.mjs';
 import {personalizeSiteHeader} from '../src/lib/site-shell.mjs';
 import {tripMonth,publicTripCatalogue} from './trip-privacy.mjs';
+import {applyConfirmedCorrections} from './confirmed-book-corrections.mjs';
 import {readFile,stat} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -26,6 +27,7 @@ export async function activateBookReconciliation(){
   const plan=JSON.parse(await readFile(path.join(root,'book-reconciliation.json'),'utf8'));
   const catalogue=JSON.parse(await readFile(path.join(root,'tbr-catalogue.json'),'utf8'));
   reconciliationStatus=await runBookReconciliation({db,catalogue,plan,legacyFavorites:()=>tbrFavorites.list(),backup:createReconciliationBackup(base,key)});
+  reconciliationStatus.confirmed_corrections=await applyConfirmedCorrections({db,backup:createReconciliationBackup(base,key)});
   snapshot=null;
   return reconciliationStatus;
 }

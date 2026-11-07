@@ -73,7 +73,7 @@ export function mergeLibrarySave(previous,incoming){
   const main=incoming.map(b=>{
     const old=existing.get(String(b.id));if(!old)return b;
     const next={...b};
-    for(const field of ['tbr_ids','tbr_sources'])if(old[field])next[field]=unique([...old[field],...(b[field]||[])]);
+    for(const field of ['tbr_ids','tbr_sources','applied_corrections'])if(old[field])next[field]=unique([...old[field],...(b[field]||[])]);
     if(old.discovery_records)next.discovery_records=unionRecords(old.discovery_records,b.discovery_records);
     if(old.book_identity_version)next.book_identity_version=old.book_identity_version;
     return next;
