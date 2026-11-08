@@ -11,7 +11,7 @@ const books=await parseBooks(Astro.props.body);
         <span class="bk-soon-tag">Cover coming soon</span><span class="bk-soon-author">Tiago Faleiro</span>
       </div>}
     <div class="bk-body">
-      <p class="bk-meta"><span class:list={['bk-badge',{'bk-badge-free':!book.forthcoming}]}>{book.forthcoming?'Forthcoming':'Free to read'}</span>{book.year}{book.publisher&&` · ${book.publisher}`}</p>
+      <p class="bk-meta">{book.year}{book.forthcoming&&' (forthcoming)'}{book.publisher&&` · ${book.publisher}`}</p>
       <h2>{book.title}</h2><p class="bk-sub">{book.subtitle}</p>
       <div class="bk-text" set:html={book.description}/>
       {book.actions.length>0&&<div class="bk-actions">{book.actions.map(action=><a class:list={['bk-btn',{'bk-btn-main':action.label==='Blog'}]} href={action.href}>{action.label==='Blog'?'Read on the blog':action.label}{action.label==='Blog'&&<span aria-hidden="true">→</span>}</a>)}</div>}
