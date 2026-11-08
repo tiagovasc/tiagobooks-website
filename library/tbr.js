@@ -82,19 +82,19 @@ function init(){
   $('sort').closest('label').id='sortLabel';
   $('sortLabel').insertAdjacentHTML('afterend','<label id="tbrSortLabel" class="pill-select icon-select" title="Sort"><svg class="i" aria-hidden="true"><use href="#i-sort"/></svg><span class="lbl">Sort</span><select id="tbrSort" aria-label="Sort TBR books"><option value="recent">Newest photos</option><option value="oldest">Oldest photos</option><option value="title">Title</option><option value="author">Author</option></select></label>');
   $('main').insertAdjacentHTML('afterend','<main class="wrap" id="tbrMain" hidden><div id="tbrIntro"></div><p id="tbrFavoriteMessage" role="status"></p><div id="tbrFilters" class="tbr-toolbar"></div><div id="tbrContent" aria-live="polite"></div></main><dialog id="tbrDialog" aria-labelledby="tbrDetailTitle"><div class="tbr-dialog-head"><span>TBR · Book shops</span><button type="button" class="tbr-close" aria-label="Close book details">×</button></div><div class="tbr-detail" id="tbrDetail"></div></dialog>');
-  let moreObserver=null,openId=null;
+  let moreObserver=null,openId=null,pagingList=[];
   let ownedIds=new Set();
   let favoriteIds=new Set();const pendingFavorites=new Set();
   const favorite=b=>tbrFavoriteHTML(b,favoriteIds.has(b.id),!!window.CLOUD_CAN_EDIT,pendingFavorites.has(b.id));
-  let active=false,source='all',books=null,loading=null,error=false,limit=48,view='covers',sort='recent',city='',shop='',libSearch='',libView='covers',tbrSearch='';
+  let active=false,source='all',books=null,loading=null,error=false,limit=0,view='covers',sort='recent',city='',shop='',libSearch='',libView='covers',tbrSearch='';
   function pressViews(v){$('viewSwitch').querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===v)));}
-  function views(v){view=v;pressViews(v);}
-  function sources(k){source=Object.hasOwn(SOURCE_VIEWS,k)?k:'all';city='';shop='';limit=48;$('tbrSourceMobile').value=source;$('tbrSourceTabs').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.source===source)));if(active)search.placeholder=source==='bookshops'||source==='all'?'Search TBR books, authors, cities or shops':'Search TBR books and authors';}
+  function views(v){if(view!==v)limit=0;view=v;pressViews(v);}
+  function sources(k){source=Object.hasOwn(SOURCE_VIEWS,k)?k:'all';city='';shop='';limit=0;$('tbrSourceMobile').value=source;$('tbrSourceTabs').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.source===source)));if(active)search.placeholder=source==='bookshops'||source==='all'?'Search TBR books, authors, cities or shops':'Search TBR books and authors';}
   function address(){const u=new URL(location.href);if(active){u.searchParams.set('collection','tbr');u.searchParams.set('source',source);}else{u.searchParams.delete('collection');u.searchParams.delete('source');}history.pushState(null,'',u);}
   function enter(on,k='all',push=true){
     if(on&&!active){libSearch=search.value;libView=$('viewSwitch').querySelector('[aria-pressed="true"]')?.dataset.view||'covers';search.value=tbrSearch;}
     if(!on&&active){tbrSearch=search.value;search.value=libSearch;pressViews(libView);}
-    active=on;body.classList.toggle('tbr-mode',on);$('tbrMain').hidden=!on;$('main').inert=on;
+    pager.reset();active=on;body.classList.toggle('tbr-mode',on);$('tbrMain').hidden=!on;$('main').inert=on;
     if(!on)window.setDiscoveryTimeline?.(null);
     bar.querySelectorAll('[data-collection]').forEach(b=>b.setAttribute('aria-pressed',String((b.dataset.collection==='tbr')===on)));
     if(on)status.querySelectorAll('[data-status]').forEach(b=>b.setAttribute('aria-pressed','false'));
@@ -129,14 +129,14 @@ function init(){
   function syncTimeline(list){
     window.setDiscoveryTimeline?.({active:true,chronological:['recent','oldest'].includes(sort),entries:list.map(b=>({id:b.id,month:discoveryMonth(b,source)})),jump(month){
       const current=filtered(),index=current.findIndex(b=>discoveryMonth(b,source)===month);if(index<0)return;
-      limit=Math.max(limit,Math.ceil((index+1)/48)*48);render();
+      limit=Math.max(limit,index+1);render(true);
       $('tbrContent').querySelector('[data-tbr-month="'+month+'"]')?.scrollIntoView({block:'start',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
     }});
   }
-  function render(){
-    moreObserver?.disconnect();
+  function render(jump=false){
+    pager.reset();moreObserver?.disconnect();
     if(!active)return;
-    const list=filtered(),collection=books?sourceBooks(books,source):[];
+    const list=filtered(),collection=books?sourceBooks(books,source):[];pagingList=list;
     syncTimeline(list);
     $('tbrIntro').innerHTML=`<div class="tbr-intro"><div><p class="tbr-eyebrow">To be read</p><h2>${SOURCE_VIEWS[source]}</h2><p>${source==='all'?'Interesting books I’ve saved over the years.':source==='bookshops'?'Books that caught my eye on bookshop visits, starting with the most recent photos.':source==='online'?'Books I found online and saved to explore.':'Books discovered on Instagram and saved to explore.'}</p></div>${books?`<span class="tbr-count">${number(list.length)} ${list.length===1?'book':'books'}${list.length!==collection.length?' of '+number(collection.length):''}</span>`:''}</div>`;
     $('tbrSort').innerHTML=sorting();$('tbrSort').value=sort;$('tbrSortLabel').classList.toggle('is-active',sort!=='recent');
@@ -154,7 +154,10 @@ function init(){
     }
     if(!books){$('tbrContent').innerHTML=error?'<div class="empty-state"><h2>Couldn’t load these books</h2><p>Please try again.</p><button class="tbr-retry" type="button">Retry</button></div>':`<div class="empty-state" role="status">Loading ${source==='all'?'all TBR books':source==='bookshops'?'bookshop discoveries':SOURCES[source]+' books'}…</div>`;return;}
     if(!list.length){$('tbrContent').innerHTML=`<div class="empty-state"><h2>${window.FAVORITES_ONLY?'No favorites match in this section':'No books match'}</h2><p>${window.FAVORITES_ONLY?'Turn off Favorites to see all books, or try another search.':source==='bookshops'?'Try another title, city or bookshop.':'Try another title or author.'}</p><button type="button" data-tbr-clear>Clear search and filters</button></div>`;return;}
+    const fresh=!limit;
+    if(fresh)limit=batchSize(list,0);
     drawBatch(list,0);
+    if(!jump)pager.start(fresh);
   }
   function drawBatch(list,start){
     moreObserver?.disconnect();
@@ -180,16 +183,20 @@ function init(){
     window.trackDiscoveryTimeline?.();
     if(more&&window.IntersectionObserver){
       if(!moreObserver)moreObserver=new IntersectionObserver(entries=>{
-        if(active&&entries.some(e=>e.isIntersecting&&e.target.isConnected))appendMore();
+        if(active&&entries.some(e=>e.isIntersecting&&e.target.isConnected))pager.check();
       },{rootMargin:'0px 0px 1000px 0px'});
       moreObserver.observe(more);
     }
   }
+  function batchSize(list,start){return window.bookRowBatch(list,start,view==='covers'?window.bookColumns($('tbrContent'),'tbr-grid'):1,view!=='table'&&source==='bookshops'&&['recent','oldest'].includes(sort)?b=>b.sightings[0].visit_id:null);}
+  const pager=window.createBookPager({active:()=>active,more:()=>!!books&&limit<pagingList.length,images:()=>Array.from($('tbrContent').querySelectorAll('.tbr-cover>img[loading="lazy"]')),append:appendMore,near:()=>{const more=$('tbrContent').querySelector('[data-tbr-more]');return !!more&&more.getBoundingClientRect().top<innerHeight+Math.min(1000,innerHeight);}});
+  window.addEventListener('scroll',()=>pager.check(),{passive:true});
+  window.addEventListener('resize',()=>pager.check());
   function appendMore(){
     if(!active||!books)return;
-    const list=filtered(),start=limit;
+    const list=pagingList,start=limit;
     if(start>=list.length)return;
-    limit+=48;drawBatch(list,start);
+    limit+=batchSize(list,start);drawBatch(list,start);
   }
 
   function openBook(id){
@@ -208,18 +215,18 @@ function init(){
     const tab=e.target.closest('[data-source]');if(tab){sources(tab.dataset.source);address();render();load();return;}
     if(!active)return;
     const b=e.target.closest('[data-tbr-id]');if(b){openBook(b.dataset.tbrId);return;}
-    if(e.target.closest('[data-tbr-more]')){const old=limit;appendMore();$('tbrContent').querySelectorAll('[data-tbr-id]')[old]?.focus({preventScroll:true});}
-    if(e.target.closest('[data-tbr-clear]')){window.setFavoritesFilter(false);city='';shop='';search.value='';sort='recent';limit=48;$('searchClear').hidden=true;render();}
+    if(e.target.closest('[data-tbr-more]')){const old=limit;pager.append();$('tbrContent').querySelectorAll('[data-tbr-id]')[old]?.focus({preventScroll:true});}
+    if(e.target.closest('[data-tbr-clear]')){window.setFavoritesFilter(false);city='';shop='';search.value='';sort='recent';limit=0;$('searchClear').hidden=true;render();}
     if(e.target.closest('.tbr-retry')){error=false;render();load();}
   });
   document.addEventListener('change',e=>{
     if(e.target.id==='tbrSourceMobile'){sources(e.target.value);address();render();load();}
-    if(e.target.id==='tbrCity'){city=e.target.value;shop='';limit=48;render();}
-    if(e.target.id==='tbrShop'){shop=e.target.value;limit=48;render();}
-    if(['tbrSort','tbrSortMobile'].includes(e.target.id)){sort=e.target.value;limit=48;render();}
+    if(e.target.id==='tbrCity'){city=e.target.value;shop='';limit=0;render();}
+    if(e.target.id==='tbrShop'){shop=e.target.value;limit=0;render();}
+    if(['tbrSort','tbrSortMobile'].includes(e.target.id)){sort=e.target.value;limit=0;render();}
   });
-  search.addEventListener('input',e=>{if(!active)return;e.stopImmediatePropagation();limit=48;$('searchClear').hidden=!search.value;render();},true);
-  $('searchClear').addEventListener('click',e=>{if(!active)return;e.stopImmediatePropagation();search.value='';$('searchClear').hidden=true;limit=48;render();search.focus();},true);
+  search.addEventListener('input',e=>{if(!active)return;e.stopImmediatePropagation();limit=0;$('searchClear').hidden=!search.value;render();},true);
+  $('searchClear').addEventListener('click',e=>{if(!active)return;e.stopImmediatePropagation();search.value='';$('searchClear').hidden=true;limit=0;render();search.focus();},true);
   $('viewSwitch').addEventListener('click',e=>{if(!active)return;const b=e.target.closest('[data-view]');if(b){e.stopImmediatePropagation();views(b.dataset.view);render();}},true);
   document.addEventListener('keydown',e=>{
     if(!active)return;
@@ -235,7 +242,7 @@ function init(){
     related.forEach(b=>{event.detail.favorite?favoriteIds.add(b.id):favoriteIds.delete(b.id);});
     if(active&&window.FAVORITES_ONLY)render();else related.forEach(b=>syncFavorite(b.id));
   });
-  window.addEventListener('favorite-filter-change',()=>{limit=48;if(active)render();});
+  window.addEventListener('favorite-filter-change',()=>{limit=0;if(active)render();});
   $('tbrDialog').addEventListener('close',()=>{openId=null;});
   function syncFavorite(id){
     const selected=favoriteIds.has(id),pending=pendingFavorites.has(id);

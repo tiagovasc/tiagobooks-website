@@ -1189,7 +1189,42 @@ var SEED = [];
 
   // ---------- incremental rendering (all three layouts) ----------
   var content=$("content"), sentinel=$("sentinel");
-  var PAGE={covers:60,list:50,table:50};
+  // Shared staged cover loader. Reset invalidates callbacks from previous filters/views.
+  function bookColumns(root,className){
+    var probe=document.createElement('div');probe.className=className;
+    probe.style.cssText='visibility:hidden;height:0;overflow:hidden;width:'+root.getBoundingClientRect().width+'px';root.appendChild(probe);
+    var tracks=getComputedStyle(probe).gridTemplateColumns;
+    probe.remove();return Math.max(1,tracks&&tracks!=='none'?tracks.trim().split(/\s+/).filter(function(track){return parseFloat(track)>0;}).length:1);
+  }
+  function bookRowBatch(list,start,columns,group){
+    var rows=0,col=0,last=null,i=start;
+    for(;i<list.length;i++){
+      var key=group?group(list[i]):'';
+      if(i===start||key!==last||col===columns){if(rows===4)break;rows++;col=0;}
+      col++;last=key;
+    }
+    return i-start;
+  }
+  function createBookPager(options){
+    var generation=0,busy=false,cancel=function(){};
+    function ready(warm){
+      var token=generation,images=options.images().filter(function(img){return !img.complete;});
+      busy=true;
+      var left=images.length,timer,handlers=[];
+      function clean(){clearTimeout(timer);handlers.forEach(function(pair){pair[0].removeEventListener('load',pair[1]);pair[0].removeEventListener('error',pair[1]);});}
+      function done(){if(token!==generation)return;clean();generation++;busy=false;cancel=function(){};if(!options.active())return;if(warm)append();else check();}
+      cancel=clean;
+      if(!left){Promise.resolve().then(done);return;}
+      timer=setTimeout(done,1500);
+      images.forEach(function(img){var settled=false;function finish(){if(settled)return;settled=true;if(!--left)done();}handlers.push([img,finish]);img.addEventListener('load',finish);img.addEventListener('error',finish);img.loading='eager';if(img.complete)finish();});
+    }
+    function append(){if(busy||!options.active()||!options.more())return;options.append();ready(false);}
+    function check(){if(!busy&&options.active()&&options.more()&&options.near())append();}
+    return {reset:function(){generation++;cancel();cancel=function(){};busy=false;},start:function(warm){if(warm)ready(true);else check();},check:check,append:append};
+  }
+  window.bookColumns=bookColumns;window.bookRowBatch=bookRowBatch;window.createBookPager=createBookPager;
+  function pageSize(){return bookRowBatch(view.list,view.rendered,ui.view==='covers'?bookColumns(content,'grid'):1,ui.view==='table'?null:groupOf);}
+  var pager=createBookPager({active:function(){return !document.body.classList.contains('tbr-mode');},more:function(){return view.rendered<view.list.length;},images:function(){return Array.from(content.querySelectorAll('img.cv-img[loading="lazy"]'));},append:function(){appendBatch(pageSize());},near:function(){return sentinel.getBoundingClientRect().top<innerHeight+Math.min(1000,innerHeight);}});
   var view={list:[],rendered:0,key:null,box:null,counts:{}};
   var loadFailed=false, loadingLibrary=SERVER_MODE;
   function syncSearchClear(){ var has=!!$("search").value; $("searchClear").hidden=!has; $("search").closest(".search").classList.toggle("has-text",has); }
@@ -1198,7 +1233,8 @@ var SEED = [];
     if(loadFailed){ showLoadError(); return; }
     syncSearchClear(); content.removeAttribute("aria-busy");
     if(LITE&&ui.view==="table"&&selectedColumns().some(function(c){return c[0]==="description";})) loadAllDescriptions();
-    var y=window.scrollY, want=PAGE[ui.view];
+    pager.reset();
+    var y=window.scrollY, want=0;
     if(keep&&view.rendered>want) want=view.rendered;
     if(timelineObserver){timelineObserver.disconnect();nearbyCards.clear();}
     view.list=getView(); view.rendered=0; view.key=null; view.box=null; view.counts={};
@@ -1212,9 +1248,9 @@ var SEED = [];
     content.hidden=none; $("empty").hidden=!none;
     if(none) renderEmpty();
     renderStatusSeg(); renderResults();
-    appendBatch(want); buildTimeline();
+    buildTimeline(); appendBatch(want||pageSize());
     window.scrollTo(0,keep?y:0);
-    fill();
+    pager.start(!keep);
   }
   function startGroup(k){
     var lab=groupLabel(k), n=view.counts[k]||0, sec=document.createElement("section");
@@ -1251,9 +1287,9 @@ var SEED = [];
   function fill(){
     if(document.body.classList.contains("tbr-mode"))return;
     if(fillFrame)return;
-    fillFrame=requestAnimationFrame(function(){fillFrame=0;if(view.rendered<view.list.length&&sentinel.getBoundingClientRect().top<innerHeight+1600){appendBatch(PAGE[ui.view]);fill();}});
+    fillFrame=requestAnimationFrame(function(){fillFrame=0;if(view.rendered<view.list.length&&sentinel.getBoundingClientRect().top<innerHeight+Math.min(1000,innerHeight)){pager.check();}});
   }
-  function ensureRendered(idx){ while(view.rendered<=idx && view.rendered<view.list.length){ appendBatch(PAGE[ui.view]); } }
+  function ensureRendered(idx){ pager.reset();while(view.rendered<=idx && view.rendered<view.list.length){ appendBatch(pageSize()); } }
   function refreshBookEls(b){
     var sd=shortDates();
     Array.prototype.forEach.call(content.querySelectorAll('[data-id="'+cssq(b.id)+'"]'),function(el){
@@ -1747,7 +1783,7 @@ var SEED = [];
   window.addEventListener("scroll",onScroll,{passive:true});
   window.addEventListener("resize",function(){ measureNotch(); fill(); });
   if(window.ResizeObserver){ var ro=new ResizeObserver(measureNotch); ro.observe(notch.querySelector(".n-main")); ro.observe(notch.querySelector(".n-row2")); ro.observe(document.getElementById("siteShell")); ro.observe(notch); }
-  if(window.IntersectionObserver){ new IntersectionObserver(function(en){ if(en[0].isIntersecting) fill(); },{rootMargin:"0px 0px 1600px 0px"}).observe(sentinel); }
+  if(window.IntersectionObserver){ new IntersectionObserver(function(en){ if(en[0].isIntersecting) fill(); },{rootMargin:"0px 0px 1000px 0px"}).observe(sentinel); }
 
 
   // Month navigation is derived from the filtered/sorted list, including unloaded batches.

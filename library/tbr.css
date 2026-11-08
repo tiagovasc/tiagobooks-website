@@ -46,7 +46,7 @@ body.tbr-mode #tbrMain{display:block;margin-left:var(--books-left,24px);width:va
 .tbr-city,.tbr-shop{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tbr-city{color:var(--ink)}
 .tbr-date{display:block;margin-top:8px;font-size:11px;color:var(--faint);font-variant-numeric:tabular-nums}
-.tbr-section{margin-bottom:42px;content-visibility:auto;contain-intrinsic-size:auto 500px}
+.tbr-section{margin-bottom:42px}
 .tbr-heading{display:flex;gap:16px;align-items:center;margin-bottom:24px}
 .tbr-heading h3{font:500 14px/1.4 var(--sans);margin:0;color:var(--ink)}
 .tbr-heading span{font-size:12px;color:var(--muted)}
