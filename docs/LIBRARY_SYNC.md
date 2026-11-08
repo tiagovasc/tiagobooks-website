@@ -43,3 +43,6 @@ Initial classification requested by the owner: Experiments in Mystical Atheism, 
 ## Shared TBR toolbar
 
 8 November 2026: TBR retains the same layout, filter, sort, favorites, Add book and admin-menu slots as other Library sections. Add book and admin tools remain authenticated-only. The TBR filter panel operates on TBR ownership; existing city/bookshop filters remain available under Book shops. Its filter state is independent of the Library filters and intersects source, search and favorites. Sort options still reflect the selected collection. Sync status remains admin-only. This presentation fix does not mutate book data.
+
+
+**Paused wording update, 8 November 2026:** the owner chose **For later** (stored `pause_plan: return`) and **Shelved** (stored `pause_plan: unfinished`). These replace the earlier Return to / Unfinished presentation labels in filters, group headings and editor choices. Stored values and book classifications are unchanged. The separate unfinished-reading marker on Read books retains its existing wording and meaning.

@@ -1055,8 +1055,8 @@ var SEED = [];
   }
   var NONE_LABEL={dateread:"No reading date",dateread_asc:"No reading date",author:"No author",year:"No publication year",year_asc:"No publication year",rating:"Unrated",subject:"No subject"};
   function groupLabel(k){
-    if(k==='~pause_return')return {text:'Return to'};
-    if(k==='~pause_unfinished')return {text:'Unfinished'};
+    if(k==='~pause_return')return {text:'For later'};
+    if(k==='~pause_unfinished')return {text:'Shelved'};
     if(k==='~pause_other')return {text:'Paused'};
     if(k==="~purchases")return {text:"Purchased books"};
     if(k==="~earlier")return {text:publicView()?"Earlier books":"Earlier books · ordered by Goodreads date added"};
@@ -1327,12 +1327,12 @@ var SEED = [];
     renderPausedFilters();
     document.querySelector('.library-intro').textContent={all:'Books I own.',read:'Books I’ve read.',reading:'Books I’m reading right now.',next:'Books I plan to read next.',unread:'Books I own but haven’t read.',paused:'Books I started reading but have paused for now.'}[ui.status]||'Books I own.';
   }
-  var PAUSE_LABELS={'return':'Return to','unfinished':'Unfinished'};
+  var PAUSE_LABELS={'return':'For later','unfinished':'Shelved'};
   function renderPausedFilters(){
     var row=$('pausedFilters');if(!row){row=document.createElement('div');row.id='pausedFilters';row.className='paused-filters';row.setAttribute('role','group');row.setAttribute('aria-label','Paused books');$('notchMore').querySelector('.n-more-inner').appendChild(row);row.addEventListener('click',function(e){var b=e.target.closest('[data-pause-filter]');if(!b)return;ui.pauseFilter=b.dataset.pauseFilter;renderView(false);window.dispatchEvent(new Event('resize'));});}
     row.hidden=ui.status!=='paused'||document.body.classList.contains('tbr-mode');if(row.hidden)return;
     var counts={all:0,'return':0,'unfinished':0},terms=searchTerms();state.books.forEach(function(b){if(b.read_status!=='paused'||!passes(b,terms)||ui.favorites&&!b.favorite)return;counts.all++;if(PAUSE_LABELS[b.pause_plan])counts[b.pause_plan]++;});
-    row.innerHTML=[['all','All'],['return','Return to'],['unfinished','Unfinished']].map(function(pair){return '<button type="button" data-pause-filter="'+pair[0]+'" aria-pressed="'+(ui.pauseFilter===pair[0])+'">'+pair[1]+' <span class="n">'+fmtN(counts[pair[0]])+'</span></button>';}).join('');
+    row.innerHTML=[['all','All'],['return','For later'],['unfinished','Shelved']].map(function(pair){return '<button type="button" data-pause-filter="'+pair[0]+'" aria-pressed="'+(ui.pauseFilter===pair[0])+'">'+pair[1]+' <span class="n">'+fmtN(counts[pair[0]])+'</span></button>';}).join('');
   }
   function refreshCounts(){ computeFacets(); renderStatusSeg(); buildOwnFilter(); }
   function activeFilters(){ return (ui.own!=="all"?1:0)+(ui.subject!=="all"?1:0)+(ui.enrich!=="all"?1:0)+(ui.favorites?1:0); }
