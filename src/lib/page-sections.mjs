@@ -19,8 +19,9 @@ export async function parseTalks(body){
     const video=text.match(/https:\/\/(?:www\.)?(?:youtube(?:-nocookie)?\.com\/(?:embed\/|watch\?v=)|youtu\.be\/)([\w-]{11})/);
     const transcript=text.match(/\[Transcript\]\((\/posts\/[^)]+)\)/)?.[1];
     if(!video||!transcript)throw Error('Talk needs a video and transcript: '+heading);
-    const description=paragraphs(text).filter(p=>!/^https?:/.test(p.trim())&&!/^\**Links:/.test(p.trim())).join('\n\n');
-    return {...headingParts(heading),id:video[1],transcript,href:`https://www.youtube.com/watch?v=${video[1]}`,image:`/uploads/video-${video[1]}.webp`,description:await html(description)};
+    const event=text.match(/^Event — (.+)$/m)?.[1]?.trim()||'';
+    const description=paragraphs(text).filter(p=>!/^https?:/.test(p.trim())&&!/^\**Links:/.test(p.trim())&&!/^Event — /.test(p.trim())).join('\n\n');
+    return {...headingParts(heading),event,id:video[1],transcript,href:`https://www.youtube.com/watch?v=${video[1]}`,image:`/uploads/video-${video[1]}.webp`,description:await html(description)};
   }));
 }
 

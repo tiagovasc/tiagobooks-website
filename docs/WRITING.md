@@ -75,7 +75,7 @@ Post pages show the publication date and estimated reading time under the title.
 
 Books and Talks render their existing Markdown as structured rows. Books uses `## Title: Subtitle (Year)`, description paragraphs and its existing Blog/PDF/EPUB/Paperback links. A forthcoming publisher line supplies the status; an unavailable cover gets a typographic placeholder. The unpublished table-of-contents link stays out of the rendered listing.
 
-Talks uses `## Title: Subtitle (Year)`, the YouTube URL, description paragraphs and a `[Transcript](/posts/...)` link. Its original video thumbnail belongs at `public/uploads/video-VIDEO_ID.webp`. Clicking a preview loads the YouTube player; Read more opens the transcript. No player loads until requested. Podcast platform buttons are ordered YouTube, Spotify, Apple, with episode URLs stored in each post's metadata.
+Talks uses `## Title: Subtitle (Year)`, an `Event — Conference or venue` metadata paragraph, the YouTube URL, content paragraphs and a `[Transcript](/posts/...)` link. The event appears beside the year and stays out of the content preview. Talks and Interviews reuse the podcast row proportions with direct YouTube privacy-enhanced iframe players, native playback controls and lazy loading. There is no thumbnail replacement step. Talk previews show five lines and Read more opens the transcript. Interview descriptions are complete concise summaries of up to50words, without clamping, ellipses, colons or semicolons. Preserve the author's wording and topics when editing them. Existing source thumbnails remain available. Podcast platform buttons are ordered YouTube, Spotify, Apple, with episode URLs stored in each post's metadata.
 
 ## Book chapter thumbnails
 

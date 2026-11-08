@@ -249,24 +249,29 @@ test('Interviews uses the episode layout with complete descriptions and one YouT
   for(let i=0;i<entries.length;i++){
     const item=expected[i],entry=entries[i];
     assert.equal((entry.match(/<a /g)||[]).length,1,'only the Watch action');
-    assert.ok(entry.includes(`href="${item.href}"`));assert.match(entry,/>Watch<\/a>/);
-    assert.match(entry,new RegExp(`data-video-id="${item.id}"`));
-    assert.doesNotMatch(entry,/\/posts\/|Read more|spotify|apple-podcasts|<iframe/);
+    assert.ok(entry.includes(`href="${item.href}"`));assert.match(entry,/>Watch on YouTube<span/);
+    assert.ok(entry.includes(`https://www.youtube-nocookie.com/embed/${item.id}?rel=0`));
+    assert.equal((entry.match(/<iframe /g)||[]).length,1);
+    assert.doesNotMatch(entry,/\/posts\/|Read more|spotify|apple-podcasts|data-video-id/);
     const visible=text(parseFragment(entry));
-    assert.ok(visible.includes(item.title));for(const p of item.paragraphs)assert.ok(visible.includes(p),'complete description');
+    assert.ok(visible.includes(item.title));for(const p of item.paragraphs){assert.ok(visible.includes(p),'complete description');assert.ok(p.split(/\s+/).length<=50);assert.ok(p.endsWith('.'));}
+    assert.doesNotMatch(visible,/[:;]|\.\.\.|…/);
     const image=await fetch(base+item.image);assert.equal(image.status,200);assert.match(image.headers.get('content-type'),/image\/webp/);
   }
   assert.throws(()=>parseInterviews('## Missing video\n\nDescription.\n'),/missing a YouTube/);
 });
 
-test('Talks retains its text and transcript links with local click-to-play previews',async()=>{
+test('Talks directly embeds every video and separates event metadata from content previews',async()=>{
   const source=await readFile('src/content/pages/talks.md','utf8');
   const talks=await parseTalks(source);assert.equal(talks.length,4);
   const html=await(await fetch(base+'/pages/talks')).text();
   assert.equal((html.match(/<article class="ep">/g)||[]).length,4);
-  assert.doesNotMatch(html,/<iframe/,'players load only on demand');
+  assert.equal((html.match(/<iframe /g)||[]).length,4,'direct embedded players');
+  assert.doesNotMatch(html,/data-video-id/);
   for(const t of talks){
-    assert.ok(html.includes(`data-video-id="${t.id}"`));
+    assert.ok(html.includes(`https://www.youtube-nocookie.com/embed/${t.id}?rel=0`));
+    assert.ok(t.event&&html.includes(t.event));assert.ok(!t.description.includes(t.event));
+    assert.doesNotMatch(t.description,/Given at|Delivered at|[:;]/);
     assert.ok(html.includes(`href="${t.transcript}"`));assert.ok(html.includes(`href="${t.href}"`));
     assert.equal((await fetch(base+t.transcript)).status,200);
     assert.equal((await fetch(base+t.image)).status,200);

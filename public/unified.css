@@ -347,6 +347,11 @@ dialog.drawer,dialog.drawer::backdrop{right:calc(100% - 100vw)}
 .ep-video:has(button:focus-visible){outline:2px solid var(--ink);outline-offset:3px}
 .ep-video>button:focus-visible{outline:none}
 .ep-desc p{margin:0 0 14px}
+.media-meta{color:var(--muted);font:500 13px/1.45 var(--font)}
+.media-meta time{display:inline;font:inherit}
+.talk-list .ep-desc{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;overflow:hidden}
+.talk-list .ep-desc p{margin:0}
+.interview-list .ep-desc{display:block;overflow:visible;-webkit-line-clamp:unset}
 
 .writing-site:has(.bk-list) main{max-width:1060px}
 .bk-list{margin-top:30px;border-top:1px solid var(--line);font-family:var(--font)}

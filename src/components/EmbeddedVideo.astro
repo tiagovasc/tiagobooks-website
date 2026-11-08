@@ -1,0 +1,8 @@
+---
+interface Props { id: string; title: string }
+const {id,title}=Astro.props;
+if(!/^[-\w]{11}$/.test(id))throw Error('Invalid embedded video');
+---
+<div class="ep-video">
+  <iframe src={`https://www.youtube-nocookie.com/embed/${id}?rel=0`} title={title} loading="lazy" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+</div>
