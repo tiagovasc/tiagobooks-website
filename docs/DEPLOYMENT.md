@@ -40,6 +40,8 @@ TBR ownership badges are read-only indicators derived from the current library t
 
 ## Build and deploy
 
+Website accents use Anagoge gold `#F5B810`, including favorite hearts/frames and ownership markers. Light-theme text uses darker amber `#8A6000` for contrast. Library and TBR share the editorial year/month rail and mobile month picker. Cover cards reserve four title lines to keep metadata aligned, retain subtitles, and expose full titles on hover. TBR list titles wrap fully. These are presentation changes, independent of catalogue data and synchronization.
+
 Connect your repository and intended branch to the host, configure the variables, and deploy the Dockerfile. Supply `SITE_URL`, `CMS_REPOSITORY` and `CMS_BRANCH` to the build as well as runtime. Point the domain at your host and enable HTTPS. `/healthz` checks the built blog, search index and library storage.
 
 The published Tiago Books site tracks `codex/unified-site`. Forks should set their own repository, branch, branding and domain before enabling CMS writes.

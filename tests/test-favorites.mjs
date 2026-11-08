@@ -22,6 +22,15 @@ test('legacy books serialize exactly; toggling changes only favorite and persist
 test('owner buttons expose pressed state and frame only selected covers',()=>{
  const c=harness();for(const favorite of [false,true]){const b=c.normalize({id:'1',title:'Book',rating:4,favorite});const html=c.tileHTML(b,false);assert.match(html,new RegExp('aria-pressed="'+favorite+'"'));assert.equal(html.includes('class="tile is-favorite"'),favorite);assert.match(html,/favorite-overlay/);}
 });
+
+test('cover cards keep the full subtitle and escaped hover title while retaining favorites',()=>{
+ const c=harness();c.splitTitle=s=>s.split(': ');
+ const title='A Long Book: The "Complete" Subtitle',b=c.normalize({id:'title-check',title,rating:4,favorite:true});
+ const html=c.tileHTML(b,false),escaped=title.replace(/"/g,'&quot;');
+ assert.ok(html.includes('title="'+escaped+'"'));
+ assert.ok(html.includes('>'+escaped+'</span>'),'the subtitle remains in the visible title');
+ assert.match(html,/class="tile is-favorite"/);
+});
 test('visitors see favorite badges, never mutation controls, and cannot toggle',()=>{
  const c=harness(true),b=c.normalize({id:'1',title:'Book',rating:4,favorite:true});
  assert.match(c.favoriteHTML(b,true),/role="img"/);assert.doesNotMatch(c.favoriteHTML(b,true),/<button|data-act/);

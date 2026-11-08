@@ -1,5 +1,5 @@
 /* TBR metadata stays separate; favorites are independent owner preferences. */
-.tbr-owned{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;box-sizing:border-box;padding:5px;border-radius:4px;background:rgba(25,25,25,.93);color:#a5bdab;flex-shrink:0;vertical-align:middle}
+.tbr-owned{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;box-sizing:border-box;padding:5px;border-radius:4px;background:rgba(25,25,25,.93);color:var(--brand);flex-shrink:0;vertical-align:middle}
 .tbr-owned svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .tbr-cover>.tbr-owned{position:absolute;top:7px;left:7px;z-index:3}
 .tbr-list .tbr-cover>.tbr-owned{top:3px;left:3px;width:20px;height:20px;padding:3px}
@@ -8,11 +8,11 @@
 .tbr-book{position:relative}
 .tbr-book>.favorite{position:absolute;top:7px;right:7px;z-index:3}
 .tbr-cover{position:relative}
-.tbr-book.is-favorite .tbr-cover::after{content:"";position:absolute;inset:0;border:2px solid #d4ac55;border-radius:inherit;pointer-events:none;z-index:2}
+.tbr-book.is-favorite .tbr-cover::after{content:"";position:absolute;inset:0;border:2px solid var(--brand);border-radius:inherit;pointer-events:none;z-index:2}
 .tbr-book.is-favorite:hover .tbr-cover{transform:none}
 .tbr-list .tbr-book{padding-right:52px!important}
 .tbr-list .tbr-book>.favorite{top:18px;right:0}
-#tbrDetail>img.is-favorite{outline:2px solid #d4ac55;outline-offset:-2px}
+#tbrDetail>img.is-favorite{outline:2px solid var(--brand);outline-offset:-2px}
 #tbrDetail>.favorite{float:right;margin:0 0 12px 12px}
 #tbrFavoriteMessage:empty{display:none}
 #tbrFavoriteMessage{font-size:13px;color:var(--muted)}
@@ -39,7 +39,7 @@ body.tbr-mode #tbrMain{display:block;margin-left:var(--books-left,24px);width:va
 .tbr-cover{display:grid;place-items:center;width:100%;aspect-ratio:2/3;overflow:hidden;border-radius:4px;background:var(--sunk);transition:transform .24s,box-shadow .24s}
 .tbr-cover img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
 .tbr-placeholder{font:500 15px/1.4 var(--display);padding:18px;text-align:center;color:var(--muted)}
-.tbr-book h3{font:600 14px/1.35 var(--sans);margin:14px 0 4px;height:2.7em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
+.tbr-book h3{font:600 14px/1.35 var(--sans);margin:14px 0 4px;height:5.4em;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
 .tbr-copy{display:block;min-width:0;width:100%}
 .tbr-author{display:block;width:100%;min-width:0;height:1.4em;margin:0 0 10px;font-size:13px;line-height:1.4;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tbr-place{font-size:12px;line-height:1.45;color:var(--muted);display:block;min-width:0;max-width:100%}
@@ -58,7 +58,7 @@ body.tbr-mode #tbrMain{display:block;margin-left:var(--books-left,24px);width:va
 .tbr-list .tbr-cover{width:58px;grid-column:1;grid-row:1}
 .tbr-list .tbr-copy{grid-column:2;grid-row:1}
 .tbr-list .tbr-place{grid-column:3;grid-row:1}
-.tbr-list .tbr-copy h3{height:auto;margin:0 0 6px}
+.tbr-list .tbr-copy h3{height:auto;margin:0 0 6px;display:block;overflow:visible;-webkit-line-clamp:unset}
 .tbr-list .tbr-author{margin-bottom:0}
 .tbr-list .tbr-date{margin-top:6px}
 .tbr-table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
@@ -80,7 +80,7 @@ body.tbr-mode #tbrMain{display:block;margin-left:var(--books-left,24px);width:va
 .tbr-detail ul{padding-left:20px;color:var(--muted);font-size:13px;line-height:1.6}
 .tbr-detail li{margin-bottom:10px}
 .tbr-note{clear:both;font-size:12px!important;color:var(--muted)}
-@media(hover:hover) and (pointer:fine){.tbr-book:hover .tbr-cover{transform:translateY(-3px);box-shadow:0 0 22px 2px #91ac9826}.tbr-table button:not(.favorite):hover{color:var(--t-read)}}
+@media(hover:hover) and (pointer:fine){.tbr-book:hover .tbr-cover{transform:translateY(-3px);box-shadow:0 0 22px 2px color-mix(in srgb,var(--brand) 15%,transparent)}.tbr-table button:not(.favorite):hover{color:var(--t-read)}}
 @media(min-width:761px){.tbr-mode .statusbar{flex:1 1 auto}.tbr-mode .n-row2 .spacer,#tbrSortMobile{display:none}}
 @media(max-width:760px){
  .statusbar{width:100%;max-width:100%;flex:1 1 100%;gap:8px}

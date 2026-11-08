@@ -1,7 +1,7 @@
 /* Tiago Books design tokens; shared across library and writing. */
-:root{color-scheme:light;--page:#EDEDEA;--surface:#fff;--ink:#1C1C1E;--muted:#66666B;--line:rgba(28,28,30,.12);--sage:#91AC98;--accent:#405F49;--bg:var(--page);--fg:var(--ink);--link:var(--accent);--rule:var(--line);--code-bg:#E3E3DF;--font:"Segoe UI Variable Text","Segoe UI",system-ui,sans-serif}
-:root[data-theme=dark]{color-scheme:dark;--page:#000;--surface:#1C1C1E;--ink:#F5F5F7;--muted:#A1A1A6;--line:rgba(255,255,255,.17);--accent:#A9C4B0;--code-bg:#242426}
-@media(prefers-color-scheme:dark){:root:not([data-theme=light]){color-scheme:dark;--page:#000;--surface:#1C1C1E;--ink:#F5F5F7;--muted:#A1A1A6;--line:rgba(255,255,255,.17);--accent:#A9C4B0;--code-bg:#242426}}
+:root{color-scheme:light;--page:#EDEDEA;--surface:#fff;--ink:#1C1C1E;--muted:#66666B;--line:rgba(28,28,30,.12);--brand:#F5B810;--brand-ink:#1D1D1B;--sage:var(--brand);--accent:#8A6000;--bg:var(--page);--fg:var(--ink);--link:var(--accent);--rule:var(--line);--code-bg:#E3E3DF;--font:"Segoe UI Variable Text","Segoe UI",system-ui,sans-serif}
+:root[data-theme=dark]{color-scheme:dark;--page:#000;--surface:#1C1C1E;--ink:#F5F5F7;--muted:#A1A1A6;--line:rgba(255,255,255,.17);--accent:var(--brand);--code-bg:#242426}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){color-scheme:dark;--page:#000;--surface:#1C1C1E;--ink:#F5F5F7;--muted:#A1A1A6;--line:rgba(255,255,255,.17);--accent:var(--brand);--code-bg:#242426}}
 .unified-nav{display:flex;align-items:center;gap:5px;overflow-x:auto;scrollbar-width:thin;padding:10px 0;font:500 13px/1.3 var(--font);white-space:nowrap;max-width:100%}
 .unified-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:7px 12px;border-radius:999px;color:var(--muted);text-decoration:none}
 .unified-nav a:hover,.unified-nav a[aria-current=page]{color:var(--ink);background:var(--code-bg)}
@@ -179,7 +179,7 @@ body:has(.library-tools,.section-tools) .site-shell{border-radius:0;box-shadow:0
 .post-cards .blog-month-heading{margin:30px 0 0}
 .post-cards .blog-month-heading:first-child{margin-top:0}
 .post-card{display:grid;grid-template-columns:184px minmax(0,1fr);gap:26px;align-items:start;margin:0;padding:24px 0;border-bottom:1px solid var(--line)}
-.pc-thumb{position:relative;display:grid;place-items:center;aspect-ratio:16/10;border-radius:8px;overflow:hidden;background:#91AC98;background-image:linear-gradient(135deg,#ffffff2e,#0000001a)}
+.pc-thumb{position:relative;display:grid;place-items:center;aspect-ratio:16/10;border-radius:8px;overflow:hidden;background:var(--brand);background-image:linear-gradient(135deg,#ffffff2e,#0000001a)}
 .pc-visual{min-width:0}.pc-mobile-date{display:none}
 .pc-thumb[data-tone="1"]{background-color:#C6B86C}.pc-thumb[data-tone="2"]{background-color:#98ACC9}.pc-thumb[data-tone="3"]{background-color:#A49FC5}.pc-thumb[data-tone="4"]{background-color:#C6A4A7}
 .pc-thumb.pc-artwork{background:var(--surface)}
@@ -484,3 +484,17 @@ dialog.drawer,dialog.drawer::backdrop{right:calc(100% - 100vw)}
   .notch.library-tools,.section-tools{top:calc(var(--shell-h) + 8px);width:calc(100% - 20px);padding:0 2px 8px;border-radius:0}
   .section-tools .tag-chips{gap:4px}
 }
+
+/* Anagoge gold: one primary accent, with readable text on light surfaces. */
+@media(min-width:761px){body:has(.library-tools) .date-rail.editorial-rail{top:calc((100dvh + var(--notch-h,180px))/2);max-height:calc(100dvh - var(--notch-h,180px) - 40px)}}
+:root{--t-read:var(--brand);--focus:var(--accent)}
+:root[data-theme=dark]{--accent:var(--brand)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--accent:var(--brand)}}
+.t-read .i-xs,.own.on{color:var(--accent)}
+.favorite.is-favorite,.tbr-owned{color:var(--brand)}
+.switch input:checked+.track{background:var(--brand)}
+.switch input:checked+.track:before{background:var(--brand-ink)}
+.is-favorite .cv::after,.is-favorite .l-cv::after,.is-favorite .tcover::after,.tbr-book.is-favorite .tbr-cover::after{border-color:var(--brand)}
+#favoriteFilter.is-active{color:var(--accent);box-shadow:inset 0 0 0 1px var(--brand);background:color-mix(in srgb,var(--brand) 10%,var(--surface))}
+.tile:hover .cv,.lrow:hover .l-cv,tr[data-id]:hover .tcover{box-shadow:0 0 22px 2px color-mix(in srgb,var(--brand) 15%,transparent)}
+.date-rail.editorial-rail .date-track button.active,.date-rail.editorial-rail .date-track button.current-year{color:var(--accent)}
