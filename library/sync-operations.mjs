@@ -5,6 +5,7 @@ import {isDeepStrictEqual as equal} from 'node:util';
 export const SYNC_PROTOCOL=1;
 export const editableFields=new Set(['title','author','publication_year','publisher','isbn','isbn13','description','cover','cover_url','status','owned','favorite','format','rating','date_read','date_started','date_finished','subject','notes','tags','url','language','pages','acquired_date','acquisition_source','library_member']);
 for(const field of ['read_status','additional_authors','notes_url','review_url','goodreads_shelf','sources','subtitle','cover_status','google_books_id','enriched','enrich_status','enrich_confidence'])editableFields.add(field);
+editableFields.add('pause_plan');
 export function valueAt(book,field){return field==='favorite'?!!book.favorite:field==='library_member'?book.library_member!==false:book[field];}
 export function versionAt(book,field){return book._sync_versions?.[field]||null;}
 export function validateOperations(ops){
@@ -17,6 +18,7 @@ export function validateOperations(ops){
   if(!editableFields.has(op.field)||typeof op.present!=='boolean'||!Object.hasOwn(op,'before')||!(op.before_version===null||typeof op.before_version==='string'))throw Error('Invalid book field');
   if(op.field==='favorite'&&(!op.present||typeof op.value!=='boolean'))throw Error('Invalid favorite');
   if(op.field==='library_member'&&(!op.present||typeof op.value!=='boolean'))throw Error('Invalid membership');
+  if(op.field==='pause_plan'&&(!op.present||!['return','unfinished'].includes(op.value)))throw Error('Invalid paused plan');
   if(op.field==='rating'&&(!Number.isInteger(op.value)||op.value<0||op.value>5))throw Error('Invalid rating');
  }
 }

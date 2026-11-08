@@ -756,6 +756,7 @@ var SEED = [];
       title:b.title||"", author:b.author||"", additional_authors:b.additional_authors||"",
       isbn13:b.isbn13||"",
       read_status:STATUSES.indexOf(b.read_status)>=0?b.read_status:(STATUSES.indexOf(b.status)>=0?b.status:"unread"),
+      pause_plan:['return','unfinished'].indexOf(b.pause_plan)>=0?b.pause_plan:'',
       owned:!!b.owned, favorite:b.favorite===true,
       rating:Math.max(0,Math.min(5,parseInt(b.rating,10)||0)),
       subject:b.subject||"", format:b.format||"", pages:(b.pages==null?null:num(b.pages)),
@@ -921,7 +922,7 @@ var SEED = [];
   var UI_KEY="tiago-books-ui-v1";
   var VIEWS=["covers","list","table"];
   var SORTS=["dateread","dateread_asc","acquired","acquired_asc","title","author","year","year_asc","rating","subject"];
-  var ui={view:"covers",sort:"dateread",theme:"auto",status:"all",favorites:false,own:"all",subject:"all",enrich:"all"};
+  var ui={view:"covers",sort:"dateread",theme:"auto",status:"all",pauseFilter:"all",favorites:false,own:"all",subject:"all",enrich:"all"};
   try{ var savedUI=JSON.parse(localStorage.getItem(UI_KEY)||"null");
     if(savedUI&&typeof savedUI==="object"){
       if(VIEWS.indexOf(savedUI.view)>=0) ui.view=savedUI.view;
@@ -1007,6 +1008,7 @@ var SEED = [];
       if(!passes(b,t)||ui.favorites&&!b.favorite) return;
       f.all++; if(b.favorite)f.favorites++; f[b.read_status]=(f[b.read_status]||0)+1;
       if(ui.status!=="all" && b.read_status!==ui.status) return;
+      if(ui.status==='paused'&&ui.pauseFilter!=='all'&&b.pause_plan!==ui.pauseFilter)return;
       list.push(b);
     });
     facets=f; sortList(list); return list;
@@ -1028,7 +1030,8 @@ var SEED = [];
     list.forEach(function(b){ tk.set(b,titleKey(b)); });
     var byTitle=function(a,b){ return cmp(tk.get(a),tk.get(b)); };
     var undatedLast=function(x,y){ return (!x)!==(!y)?(x?-1:1):0; };
-    if(s==="acquired"||s==="acquired_asc") list.sort(function(a,b){var x=Number(a.acquisition_order),y=Number(b.acquisition_order),ax=a.acquisition_order!=null&&isFinite(x),ay=b.acquisition_order!=null&&isFinite(y);return ax!==ay?(ax?-1:1):((ax?(s==="acquired"?x-y:y-x):0)||byTitle(a,b));});
+    if(ui.status==='paused'&&(s==='dateread'||s==='dateread_asc')){var ranks={'return':0,'unfinished':1};list.sort(function(a,b){return ((ranks[a.pause_plan]??2)-(ranks[b.pause_plan]??2))||byTitle(a,b);});}
+    else if(s==="acquired"||s==="acquired_asc") list.sort(function(a,b){var x=Number(a.acquisition_order),y=Number(b.acquisition_order),ax=a.acquisition_order!=null&&isFinite(x),ay=b.acquisition_order!=null&&isFinite(y);return ax!==ay?(ax?-1:1):((ax?(s==="acquired"?x-y:y-x):0)||byTitle(a,b));});
     else if(s==="dateread") list.sort(function(a,b){ return (queueRank(a)-queueRank(b))||cmp(b.date_read||"",a.date_read||"")||byTitle(a,b); });
     else if(s==="dateread_asc") list.sort(function(a,b){ var x=a.date_read||"", y=b.date_read||""; return undatedLast(x,y)||cmp(x,y)||byTitle(a,b); });
     else if(s==="title") list.sort(byTitle);
@@ -1039,6 +1042,7 @@ var SEED = [];
   }
   function groupOf(b){
     var s=ui.sort;
+    if(ui.status==='paused'&&(s==='dateread'||s==='dateread_asc'))return '~pause_'+(b.pause_plan||'other');
     if(s==="acquired"||s==="acquired_asc")return ["purchase_log","user_recent","purchase_receipt","user_trip"].indexOf(b.acquisition_basis)!==-1?"~purchases":b.acquisition_basis==="goodreads_added"?"~earlier":"~acquisition_unknown";
     if(s==="dateread"){ var q=queueRank(b); return q===0?"~reading":(q===1?"~next":(b.date_read?String(b.date_read).slice(0,7):"~none")); }
     if(s==="dateread_asc") return b.date_read?String(b.date_read).slice(0,7):"~none";
@@ -1051,6 +1055,9 @@ var SEED = [];
   }
   var NONE_LABEL={dateread:"No reading date",dateread_asc:"No reading date",author:"No author",year:"No publication year",year_asc:"No publication year",rating:"Unrated",subject:"No subject"};
   function groupLabel(k){
+    if(k==='~pause_return')return {text:'Return to'};
+    if(k==='~pause_unfinished')return {text:'Unfinished'};
+    if(k==='~pause_other')return {text:'Paused'};
     if(k==="~purchases")return {text:"Purchased books"};
     if(k==="~earlier")return {text:publicView()?"Earlier books":"Earlier books · ordered by Goodreads date added"};
     if(k==="~acquisition_unknown")return {text:publicView()?"More unread books":"Acquisition order unknown"};
@@ -1252,7 +1259,7 @@ var SEED = [];
     var none=view.list.length===0;
     content.hidden=none; $("empty").hidden=!none;
     if(none) renderEmpty();
-    renderStatusSeg(); renderResults();
+    renderStatusSeg(); renderResults();measureNotch();
     buildTimeline(); appendBatch(want||pageSize());
     window.scrollTo(0,keep?y:0);
     pager.start(!keep);
@@ -1317,7 +1324,15 @@ var SEED = [];
       h+='<button type="button" data-status="'+p[0]+'" aria-pressed="'+on+'"'+(loadingLibrary||n||on?'':' class="zero"')+'>'+p[1]+(loadingLibrary&&!warmPresentation?'':' <span class="n">'+fmtN(n)+'</span>')+'</button>';
     });
     $("statusSeg").innerHTML=h;
+    renderPausedFilters();
     document.querySelector('.library-intro').textContent={all:'Books I own.',read:'Books I’ve read.',reading:'Books I’m reading right now.',next:'Books I plan to read next.',unread:'Books I own but haven’t read.',paused:'Books I started reading but have paused for now.'}[ui.status]||'Books I own.';
+  }
+  var PAUSE_LABELS={'return':'Return to','unfinished':'Unfinished'};
+  function renderPausedFilters(){
+    var row=$('pausedFilters');if(!row){row=document.createElement('div');row.id='pausedFilters';row.className='paused-filters';row.setAttribute('role','group');row.setAttribute('aria-label','Paused books');$('notchMore').querySelector('.n-more-inner').appendChild(row);row.addEventListener('click',function(e){var b=e.target.closest('[data-pause-filter]');if(!b)return;ui.pauseFilter=b.dataset.pauseFilter;renderView(false);window.dispatchEvent(new Event('resize'));});}
+    row.hidden=ui.status!=='paused'||document.body.classList.contains('tbr-mode');if(row.hidden)return;
+    var counts={all:0,'return':0,'unfinished':0},terms=searchTerms();state.books.forEach(function(b){if(b.read_status!=='paused'||!passes(b,terms)||ui.favorites&&!b.favorite)return;counts.all++;if(PAUSE_LABELS[b.pause_plan])counts[b.pause_plan]++;});
+    row.innerHTML=[['all','All'],['return','Return to'],['unfinished','Unfinished']].map(function(pair){return '<button type="button" data-pause-filter="'+pair[0]+'" aria-pressed="'+(ui.pauseFilter===pair[0])+'">'+pair[1]+' <span class="n">'+fmtN(counts[pair[0]])+'</span></button>';}).join('');
   }
   function refreshCounts(){ computeFacets(); renderStatusSeg(); buildOwnFilter(); }
   function activeFilters(){ return (ui.own!=="all"?1:0)+(ui.subject!=="all"?1:0)+(ui.enrich!=="all"?1:0)+(ui.favorites?1:0); }
@@ -1388,7 +1403,7 @@ var SEED = [];
     if(!publicView())return;
     root.querySelectorAll('[contenteditable="true"]').forEach(function(el){el.contentEditable='false';});
     root.querySelectorAll('input[data-f],textarea[data-f]').forEach(function(el){el.readOnly=true;});
-    root.querySelectorAll('.stars button,.own,.delbtn,select.status,#dOwned,[data-set-status]').forEach(function(el){el.disabled=true;});
+    root.querySelectorAll('.stars button,.own,.delbtn,select.status,#dOwned,[data-set-status],[data-pause-plan]').forEach(function(el){el.disabled=true;});
     root.querySelectorAll('.stars[aria-label^="Your rating"]').forEach(function(el){el.setAttribute('aria-label',el.getAttribute('aria-label').replace('Your rating','Tiago’s rating'));});
   }
   function applyTheme(){
@@ -1503,6 +1518,7 @@ var SEED = [];
       '<input class="in in-author" data-f="author" value="'+esc(b.author)+'" placeholder="Author" aria-label="Author" spellcheck="false">'+
       (b.additional_authors?'<p class="d-also">With '+esc(b.additional_authors)+'</p>':'')+
       '<div class="dseg" id="dStatus" role="group" aria-label="Reading status">'+STATUSES.map(function(s){ return '<button type="button" data-set-status="'+s+'" aria-pressed="'+(b.read_status===s)+'">'+LABEL[s]+'</button>'; }).join("")+'</div>'+
+      (b.read_status==='paused'?'<div class="dseg pause-plan" role="group" aria-label="Paused plan">'+Object.keys(PAUSE_LABELS).map(function(plan){return '<button type="button" data-pause-plan="'+plan+'" aria-pressed="'+(b.pause_plan===plan)+'">'+PAUSE_LABELS[plan]+'</button>';}).join('')+'</div>':'')+
       (isUnfinished(b)?'<p class="d-sub">Unfinished</p>':'')+
       '<div class="d-quick">'+favoriteHTML(b,false)+'<div class="stars" id="dStars" role="group" aria-label="Rating">'+starsHTML(b.rating)+'</div>'+
         '<label class="switch"><input type="checkbox" id="dOwned"'+(b.owned?' checked':'')+'><span class="track" aria-hidden="true"></span>Bought</label></div>'+
@@ -1630,7 +1646,7 @@ var SEED = [];
   content.addEventListener("change",function(e){
     if(!e.target.classList.contains("status")) return;
     var tr=e.target.closest("tr"); var b=tr&&findBook(tr.getAttribute("data-id")); if(!b) return;
-    b.read_status=e.target.value; tr.setAttribute("data-status",b.read_status); refreshCounts(); saveNow();
+    b.read_status=e.target.value;if(b.read_status==='paused'&&!b.pause_plan)b.pause_plan='return'; tr.setAttribute("data-status",b.read_status); refreshCounts(); saveNow();
   });
   content.addEventListener("keydown",function(e){
     if(e.target.matches('.tile,.lrow')&&(e.key==='Enter'||e.key===' ')){e.preventDefault();openDrawer(e.target.dataset.id);}
@@ -1699,13 +1715,14 @@ var SEED = [];
       }
       return;
     }
+    var pause=e.target.closest('[data-pause-plan]');if(pause){b.pause_plan=pause.dataset.pausePlan;saveNow();dViewDirty=true;renderDrawer();refreshBookEls(b);return;}
     var st=e.target.closest("[data-set-status]");
     if(st){
       var s=st.getAttribute("data-set-status"); if(s===b.read_status) return;
-      b.read_status=s; saveNow(); dViewDirty=true;
+      b.read_status=s;if(s==='paused'&&!b.pause_plan)b.pause_plan='return'; saveNow(); dViewDirty=true;
       drawer.style.setProperty("--tone","var(--t-"+s+")");
       Array.prototype.forEach.call($("dStatus").children,function(x){ x.setAttribute("aria-pressed",String(x===st)); });
-      refreshBookEls(b); refreshCounts(); return;
+      refreshBookEls(b); refreshCounts();renderDrawer(); return;
     }
     var star=e.target.closest(".stars button");
     if(star){ var n=parseInt(star.getAttribute("data-n"),10); b.rating=(b.rating===n)?0:n; $("dStars").innerHTML=starsHTML(b.rating); saveNow(); dViewDirty=true; refreshBookEls(b); return; }
@@ -1819,7 +1836,7 @@ var SEED = [];
     var ownedWarm=!discoveryTimeline&&loadingLibrary&&warmPresentation;
     var aggregate=warmCounts||(discoveryTimeline&&discoveryTimeline.counts)||(ownedWarm&&ownedWarm.counts);
     dateRail.inert=!!warmCounts||!!ownedWarm||!!(discoveryTimeline&&discoveryTimeline.preview);
-    var enabled=aggregate?Object.keys(aggregate).some(function(k){return /^\d{4}-\d{2}$/.test(k);}):discoveryTimeline?discoveryTimeline.chronological&&discoveryTimeline.entries.some(function(b){return !!b.month;}):shortDates()&&view.list.some(function(b){return !!b.date_read;});dateRail.hidden=!enabled;document.body.classList.toggle('has-timeline',enabled);if(!enabled)return;
+    var enabled=aggregate?Object.keys(aggregate).some(function(k){return /^\d{4}-\d{2}$/.test(k);}):discoveryTimeline?discoveryTimeline.chronological&&discoveryTimeline.entries.some(function(b){return !!b.month;}):ui.status!=='paused'&&shortDates()&&view.list.some(function(b){return !!b.date_read;});dateRail.hidden=!enabled;document.body.classList.toggle('has-timeline',enabled);if(!enabled)return;
     dateRail.setAttribute('aria-label',discoveryTimeline?'Discovery date navigation':'Reading date navigation');
     timelineCounts={};dateKeys=[];
     if(aggregate){Object.keys(aggregate).forEach(function(k){timelineCounts[k]=aggregate[k];if(/^\d{4}-\d{2}$/.test(k))dateKeys.push(k);});}

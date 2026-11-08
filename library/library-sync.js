@@ -2,7 +2,7 @@
 // Acknowledged records remain as local recovery history; only small field edits,
 // never a stale full-library snapshot, are replayed.
 const PREFIX='tiagovf-sync-v1:',PROTOCOL=1;
-const FIELDS=['title','author','additional_authors','isbn13','read_status','owned','favorite','rating','subject','format','pages','publication_year','date_read','tags','notes','notes_url','review_url','goodreads_shelf','sources','subtitle','publisher','description','cover','cover_status','google_books_id','enriched','enrich_status','enrich_confidence','acquired_date','acquisition_source'];
+const FIELDS=['title','author','additional_authors','isbn13','read_status','pause_plan','owned','favorite','rating','subject','format','pages','publication_year','date_read','tags','notes','notes_url','review_url','goodreads_shelf','sources','subtitle','publisher','description','cover','cover_status','google_books_id','enriched','enrich_status','enrich_confidence','acquired_date','acquisition_source'];
 const clone=v=>JSON.parse(JSON.stringify(v));
 const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
 const value=(b,f)=>f==='favorite'?!!b.favorite:f==='library_member'?b.library_member!==false:b[f];

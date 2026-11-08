@@ -6,6 +6,13 @@
 html.layout-pending :is(body>main,body>.wrap,body>.notch,body>.section-tools,body>.date-rail){visibility:hidden}
 html.layout-pending.layout-waiting body::after{content:'Loading…';position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font:14px/1.4 var(--font);color:var(--muted)}
 .library-sync-slot{display:flow-root;min-height:35px;font:12px/1.3 var(--font)}
+.paused-filters{display:flex;gap:8px;flex-wrap:wrap;padding-top:8px}
+.paused-filters[hidden],body.tbr-mode #pausedFilters{display:none!important}
+.paused-filters button{position:relative;border:0;background:transparent;color:var(--muted);font:inherit;padding:8px 10px;cursor:pointer;white-space:nowrap}
+.paused-filters button[aria-pressed=true]{color:var(--ink)}
+.paused-filters button[aria-pressed=true]::after{content:'';position:absolute;left:10px;right:10px;bottom:2px;height:2px;background:var(--accent)}
+.paused-filters .n{margin-left:4px;font-size:11px;color:var(--muted)}
+.pause-plan{margin-top:8px}
 .unified-nav{display:flex;align-items:center;gap:5px;overflow-x:auto;scrollbar-width:thin;padding:10px 0;font:500 13px/1.3 var(--font);white-space:nowrap;max-width:100%}
 .unified-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:7px 12px;border-radius:999px;color:var(--muted);text-decoration:none}
 .unified-nav a:hover,.unified-nav a[aria-current=page]{color:var(--ink);background:var(--code-bg)}
