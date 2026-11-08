@@ -24,6 +24,18 @@ Run `npm test`, build/public checks and actual-page browser recovery tests befor
 
 Browser drafts remain local until confirmed online. Clearing site data removes local drafts/history.
 
+## Failure isolation and recovery
+
+Rejected individual fields receive ordinary protocol-1 conflict receipts, so a malformed draft cannot block unrelated favorites in an already-open page. The rejected value and reason stay in the outbox for review/recovery. Invalid batch identities or duplicate operation IDs still reject the whole request. New clients split definite validation/size failures when talking to an older server; transient network/server failures retain and retry the original operation IDs.
+
+Queued operations follow their field predecessors even when tabs were opened at different times or the clock changes. Attempted payloads remain immutable. A same-value acknowledgement can resolve a dependent operation within a batch only if its original field version still matches; another session's intervening version still requires review. Complete, unique receipts are required before any corresponding drafts are marked confirmed.
+
+Confirmed own fields remain visible if fetching another session's newer snapshot fails. The status distinguishes saved changes awaiting refresh from unsent changes; subsequent saves cannot silently clear that refresh requirement. Failed requests expose their HTTP status and a short server explanation on the status row's tooltip, and recovery downloads include current sync diagnostics. A healthy heartbeat cannot hide a failed save.
+
+Optional paused plans may be cleared or left empty without assigning a classification. Normalizing existing records for display does not create absent fields in save payloads.
+
+The mobile section tabs occupy a full-width horizontal row with a scroll arrow and thin scrollbar; layout/filter/sort/add/admin tools sit on a separate row. The Favorites filter uses an accessible heart icon (36px desktop, 44px mobile). These controls do not change sync or book data.
+
 ## First-page presentation previews
 
 **Schema2 / coherent layout update, 8 November 2026:** preview data also carries full status counts, complete per-source month counts and public bookshop filter options. These are presentation-only aggregates; they do not enter canonical state or editing baselines. Preview calendars remain inert until authoritative data arrives. Version1 caches are ignored. The toolbar, headings, first rows and dates are revealed together after deferred controls and header measurements settle. The owner's initial “Checking changes…” row and mounted sync status share the same reserved space, without changing the save/outbox protocol.

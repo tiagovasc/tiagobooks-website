@@ -7,9 +7,21 @@ const clone=v=>JSON.parse(JSON.stringify(v));
 const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
 const value=(b,f)=>f==='favorite'?!!b.favorite:f==='library_member'?b.library_member!==false:b[f];
 const version=(b,f)=>b?._sync_versions?.[f]||null;
+function ordered(records){
+ // A tab can stay open for days, or its clock can move backwards. The field
+ // predecessor, not the tab's creation timestamp, determines causal order.
+ const sorted=[...records].sort((a,b)=>a.order-b.order||a.op.id.localeCompare(b.op.id)),by=new Map(sorted.map(r=>[r.op.id,r])),seen=new Set(),visiting=new Set(),out=[];
+ function visit(record){
+  if(seen.has(record.op.id))return;if(visiting.has(record.op.id))throw Error('A saved change has a circular dependency. Download a recovery copy.');
+  visiting.add(record.op.id);const parent=by.get(record.op.before_version);
+  if(parent&&parent.op.book_id===record.op.book_id&&(parent.op.field===record.op.field||parent.op.kind==='add'))visit(parent);
+  visiting.delete(record.op.id);seen.add(record.op.id);out.push(record);
+ }
+ sorted.forEach(visit);return out;
+}
 export class ChangeStore{
  constructor(storage=localStorage){this.storage=storage;}
- all(){const out=[];for(let i=0;i<this.storage.length;i++){const key=this.storage.key(i);if(key?.startsWith(PREFIX)){const record=JSON.parse(this.storage.getItem(key));if(record?.op)out.push(record);}}return out.sort((a,b)=>a.order-b.order||a.op.id.localeCompare(b.op.id));}
+ all(){const out=[];for(let i=0;i<this.storage.length;i++){const key=this.storage.key(i);if(key?.startsWith(PREFIX)){const record=JSON.parse(this.storage.getItem(key));if(record?.op)out.push(record);}}return ordered(out);}
  pending(){return this.all().filter(r=>r.state!=='done');}
  put(record){const key=PREFIX+record.op.id,raw=JSON.stringify(record);this.storage.setItem(key,raw);if(this.storage.getItem(key)!==raw)throw Error('This browser could not keep your change safely. Export your books before leaving.');}
  async database(){
@@ -34,17 +46,17 @@ export class ChangeStore{
 }
 export function project(books,records){
  const by=new Map(books.map(b=>[b.id,clone(b)]));
- for(const {op} of records){if(op.kind==='add'){if(!by.has(op.book_id))by.set(op.book_id,{...clone(op.book),_sync_versions:{_created:op.id}});continue;}const b=by.get(op.book_id);if(!b)continue;if(op.present)b[op.field]=clone(op.value);else delete b[op.field];b._sync_versions={...b._sync_versions,[op.field]:op.id};}
+ for(const {op} of ordered(records)){if(op.kind==='add'){if(!by.has(op.book_id))by.set(op.book_id,{...clone(op.book),_sync_versions:{_created:op.id}});continue;}const b=by.get(op.book_id);if(!b)continue;if(op.present)b[op.field]=clone(op.value);else delete b[op.field];b._sync_versions={...b._sync_versions,[op.field]:op.id};}
  return [...by.values()];
 }
 export function createSync(hooks,options={}){
  const store=options.store||new ChangeStore(),request=options.request||fetch.bind(window);
  const client=crypto.randomUUID();
- let books=[],rendered=[],revision=0,needsPull=false,busy=false,checking=false,online=true,auth=true,storageError='',newBuild='',stopped=false,order=Date.now()*1000,retryTimer=null,failures=0;
+ let books=[],rendered=[],revision=0,needsPull=false,busy=false,checking=false,online=true,auth=true,storageError='',newBuild='',stopped=false,order=Date.now()*1000,retryTimer=null,failures=0,lastError=null;
  let channel;try{channel=new BroadcastChannel('tiagovf-library-sync-v1');}catch{}
  const pending=()=>store.pending();
  const notify=()=>{try{channel?.postMessage('changed');}catch{}};
- const status=()=>({pending:pending().length,conflicts:pending().filter(r=>r.state==='conflict'),busy,online,auth,storageError,newBuild});
+ const status=()=>({pending:pending().length,conflicts:pending().filter(r=>r.state==='conflict'),busy,online,auth,storageError,newBuild,lastError,refreshPending:needsPull});
  function report(){hooks.status?.(status());}
  function current(){return project(books,pending());}
  function show(local=false,favoriteOnly=false){
@@ -56,6 +68,7 @@ export function createSync(hooks,options={}){
   return {op:{id:crypto.randomUUID(),book_id:book.id,field,before:value(book,field)??null,before_present:value(book,field)!==undefined,before_version:version(book,field),present,value:wanted??null,...extra},client,title:book.title||'Book',order:++order,state:'pending'};
  }
  function enqueue(record){
+  order=Math.max(order,Date.now()*1000,...pending().map(r=>Number(r.order)||0))+1;record={...record,order};
   const previous=pending().findLast(r=>r.state==='pending'&&!r.attempted&&r.client===client&&r.op.book_id===record.op.book_id&&r.op.field===record.op.field&&r.op.id===record.op.before_version);
   // Until transport starts, one compact draft holds the latest keystrokes. Once
   // attempted, its ID/content are immutable so response-loss retries stay safe.
@@ -85,63 +98,91 @@ export function createSync(hooks,options={}){
  function schedule(ms=15000){if(stopped)return;clearTimeout(retryTimer);retryTimer=setTimeout(()=>{flush().catch(()=>{});},ms);}
  async function json(url,init={}){
   const response=await request(url,{cache:'no-store',...init,signal:AbortSignal.timeout(20000)});
-  if(!response.ok){const error=new Error(response.status===401?'Sign in again to sync. Your changes are kept on this device.':'Could not reach the library. Your changes are kept on this device.');error.status=response.status;throw error;}
+  if(!response.ok){
+   let detail;try{detail=(await response.json()).error;}catch{}
+   const message=response.status===401?'Sign in again to sync. Your changes are kept on this device.':typeof detail==='string'?detail.slice(0,240):`Library request failed (HTTP ${response.status}). Your changes are kept on this device.`;
+   const error=new Error(message);error.status=response.status;throw error;
+  }
   return response.json();
  }
  async function pull(){
   const data=await json('/api/library-sync');if(data.protocol!==PROTOCOL)throw Error('Update the page to continue syncing.');
   if(Number(data.revision)>=revision){books=data.books;revision=Number(data.revision);needsPull=false;show();}return data;
  }
- async function sendPending(){
-  const records=pending().filter(r=>r.state==='pending').slice(0,200);if(!records.length)return;
+ async function sendPending(selected){
+  const records=selected||pending().filter(r=>r.state==='pending').slice(0,200);if(!records.length)return;
+  const cacheWasComplete=!needsPull;
   records.forEach(r=>write({...r,attempted:true}));
-  const data=await json('/api/library-sync',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({protocol:PROTOCOL,operations:records.map(r=>r.op)})});
+  let data;
+  try{data=await json('/api/library-sync',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({protocol:PROTOCOL,operations:records.map(r=>r.op)})});}
+  catch(error){
+   // Older deployments reject a whole batch for one invalid field. Split only
+   // definite validation/size failures; never retry a timeout with a new ID.
+   if([400,413,422].includes(error.status)){
+    if(records.length>1){const middle=Math.ceil(records.length/2);await sendPending(records.slice(0,middle));await sendPending(records.slice(middle));return;}
+    const old=records[0],book=books.find(b=>b.id===old.op.book_id);
+    write({...old,attempted:true,state:'conflict',conflict:{id:old.op.id,status:'conflict',invalid:true,error:error.message,http_status:error.status,book_id:old.op.book_id,field:old.op.field||'new book',current:book?value(book,old.op.field)??null:null,version:version(book,old.op.field)}});
+    notify();return;
+   }
+   throw error;
+  }
+  const receiptIds=new Set(data.results?.map(r=>r.id));
+  if(!Array.isArray(data.results)||data.results.length!==records.length||receiptIds.size!==records.length||records.some(r=>!receiptIds.has(r.op.id))||data.results.some(r=>!['accepted','conflict'].includes(r.status))||!Number.isSafeInteger(data.revision))throw Error('The library returned an incomplete save receipt. Your changes will retry safely.');
   // Persist receipts before updating the UI. A crash at any point can retry the
   // identical operation ID, which the server recognizes without replaying it.
   needsPull=true;
   for(const result of data.results){
    const old=records.find(r=>r.op.id===result.id);if(!old)throw Error('Unrecognized save receipt');
    if(result.status==='accepted'){
-    write({...old,state:'done',receipt:result,confirmed_at:new Date().toISOString()});
+    write({...old,attempted:true,state:'done',receipt:result,confirmed_at:new Date().toISOString()});
     // A same-value acknowledgement may refer to a different existing token.
     if(result.version!==undefined){
      // Only rebase a same-value acknowledgement if the field still has the
      // original baseline token. A newer equal value is not permission to replay
      // descendants of a stale edit over another session's intervening change.
-     if(!result.equivalent||result.version===old.op.before_version)for(const next of pending())if(next.op.before_version===result.id)write({...next,op:{...next.op,before_version:result.version}});
+     if(!result.equivalent||result.version===old.op.before_version)for(const next of pending())if(!next.attempted&&next.op.before_version===result.id)write({...next,op:{...next.op,before_version:result.version}});
      for(const b of rendered)if(b._sync_versions?.[old.op.field]===result.id)b._sync_versions[old.op.field]=result.version;
     }
     let ancestor=old.op.before_version;
     while(ancestor){const previous=store.all().find(r=>r.op.id===ancestor&&r.op.book_id===old.op.book_id&&r.op.field===old.op.field);if(!previous)break;if(previous.state!=='done')write({...previous,state:'done',resolution:'superseded-by-confirmed-change',superseded_by:old.op.id});ancestor=previous.op.before_version;}
-   }else write({...old,state:'conflict',conflict:result});
+   }else write({...old,attempted:true,state:'conflict',conflict:result});
   }
-  if(Number(data.base_revision)===revision){
+  if(Number(data.base_revision)===revision&&cacheWasComplete){
    const accepted=new Set(data.results.filter(r=>r.status==='accepted').map(r=>r.id));books=project(books,records.filter(r=>accepted.has(r.op.id)));
    for(const result of data.results){const op=records.find(r=>r.op.id===result.id)?.op,b=books.find(b=>b.id===op?.book_id);if(b&&result.status==='accepted'&&result.version!==undefined)b._sync_versions={...b._sync_versions,[op.field]:result.version};}
    revision=Number(data.revision);needsPull=false;show(true,records.every(r=>r.op.field==='favorite'));
-  }else if(Number(data.revision)<=revision){needsPull=false;show();}
-  else{revision=Number(data.revision);await pull();}
+  }else if(Number(data.revision)<=revision&&cacheWasComplete){needsPull=false;show();}
+  else{
+   // Keep confirmed own fields visible even if fetching the intervening foreign
+   // revision fails. Do not erase an acknowledged heart from current()/TBR.
+   if(Number(data.revision)>=revision){
+    const accepted=new Set(data.results.filter(r=>r.status==='accepted').map(r=>r.id));books=project(books,records.filter(r=>accepted.has(r.op.id)));
+    for(const result of data.results){const op=records.find(r=>r.op.id===result.id)?.op,b=books.find(b=>b.id===op?.book_id);if(b&&result.status==='accepted'&&result.version!==undefined)b._sync_versions={...b._sync_versions,[op.field]:result.version};}
+    revision=Number(data.revision);
+   }
+   await pull();
+  }
   notify();await store.archiveCompleted().catch(()=>{});
  }
  async function flush(){
   if(busy||stopped)return;busy=true;report();
   try{
-   const work=async()=>{await sendPending();};
+   const work=async()=>{await sendPending();if(needsPull)await pull();};
    if(globalThis.navigator?.locks)await navigator.locks.request('tiagovf-library-sync-send',work);else await work();
-   online=true;auth=true;failures=0;
-  }catch(error){online=error.status===401;auth=error.status!==401;failures++;hooks.error?.(error);}
+   online=true;auth=true;failures=0;lastError=null;
+  }catch(error){online=error.status===401;auth=error.status!==401;failures++;lastError={status:error.status||null,message:error.message,at:new Date().toISOString()};hooks.error?.(error);}
   finally{busy=false;report();schedule(pending().some(r=>r.state==='pending')?Math.min(30000,1000*2**Math.min(failures,5)):15000);}
  }
  async function check(){
   if(checking||stopped||document.visibilityState==='hidden')return;checking=true;
   try{
-   const state=await json('/api/library-state');online=true;
+   const state=await json('/api/library-state');if(!lastError)online=true;
    if(state.build!==window.LIBRARY_BUILD_ID)newBuild=state.build;
    auth=state.can_edit;
    if(auth&&(needsPull||Number(state.revision)!==revision))await pull();
    if(auth&&pending().some(r=>r.state==='pending'))await flush();
    show();report();
-  }catch(error){online=false;report();}finally{checking=false;}
+  }catch(error){online=false;lastError={status:error.status||null,message:error.message,at:new Date().toISOString()};hooks.error?.(error);report();}finally{checking=false;}
  }
  async function resolve(bookId,field,keepMine){
   await pull();const related=pending().filter(r=>r.op.book_id===bookId&&r.op.field===field);
@@ -198,20 +239,22 @@ export async function mountSync(hooks){
   const grouped=new Map();for(const r of engine.status().conflicts)grouped.set(r.op.book_id+':'+r.op.field,r);
   for(const r of grouped.values()){
    const block=document.createElement('section'),title=document.createElement('h3'),mine=document.createElement('p'),saved=document.createElement('p');
-   title.textContent=r.title+' · '+r.op.field.replaceAll('_',' ');mine.textContent='Your change: '+JSON.stringify(r.op.value);saved.textContent='Saved value: '+JSON.stringify(r.conflict?.current);block.append(title,mine,saved);
+   title.textContent=r.title+' · '+(r.op.field||'new book').replaceAll('_',' ');mine.textContent='Your change: '+JSON.stringify(r.op.value);saved.textContent='Saved value: '+JSON.stringify(r.conflict?.current);block.append(title,mine,saved);
+   if(r.conflict?.error){const explanation=document.createElement('p');explanation.textContent=r.conflict.error+'. The original draft is retained in your recovery copy.';block.append(explanation);}
    for(const [label,keep] of [['Keep my change',true],['Use saved value',false]]){const b=document.createElement('button');b.textContent=label;b.onclick=async()=>{b.disabled=true;try{await engine.resolve(r.op.book_id,r.op.field,keep);review();}catch(error){hooks.error?.(error);b.disabled=false;}};block.append(b);}dialog.append(block);
   }
   const close=document.createElement('button');close.textContent='Close';close.onclick=()=>dialog.close();dialog.append(close);if(!dialog.open)dialog.showModal();
  }
  function render(state){
   actions.replaceChildren();bar.hidden=false;
-  text.textContent=state.storageError||(!state.auth?'Sign in to sync · changes kept on this device':state.conflicts.length?'Changes need review':state.pending?(state.online?'Syncing '+state.pending+' change'+(state.pending===1?'':'s')+'…':'Changes kept on this device · retrying'):'All changes synced');
+  text.textContent=state.storageError||(!state.auth?'Sign in to sync · changes kept on this device':state.conflicts.length?'Changes need review':state.pending?(state.online?'Syncing '+state.pending+' change'+(state.pending===1?'':'s')+'…':state.lastError?.status?'Changes kept on this device · retrying (HTTP '+state.lastError.status+')':'Changes kept on this device · retrying'):state.refreshPending?'Changes saved · refreshing library…':'All changes synced');
+  bar.title=state.lastError?.message||'';
   bar.dataset.state=state.storageError||state.conflicts.length?'attention':state.pending?'pending':'synced';
   if(!state.auth){const a=document.createElement('a');a.href='/login?next=%2Flibrary';a.target='_blank';a.rel='noopener';a.textContent='Sign in';actions.append(a);}
   if(state.conflicts.length)button('Review',review);
   if(state.pending||state.storageError)button('Retry',()=>{try{hooks.stage();engine.flush();}catch{}});
   if(state.newBuild)button('Update available · reload',()=>{hooks.stage();if(!engine.status().storageError)location.reload();});
-  if(state.pending||state.storageError)button('Download recovery copy',async()=>{try{hooks.stage();}catch{}const blob=new Blob([JSON.stringify({books:hooks.snapshot?.()||engine.current(),canonical_books:engine.current(),changes:await engine.history()},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='library-recovery.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);});
+  if(state.pending||state.storageError)button('Download recovery copy',async()=>{try{hooks.stage();}catch{}const blob=new Blob([JSON.stringify({books:hooks.snapshot?.()||engine.current(),canonical_books:engine.current(),changes:await engine.history(),sync_status:engine.status()},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='library-recovery.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);});
   hooks.status?.(state);
   editorNotice(state);
  }

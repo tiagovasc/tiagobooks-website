@@ -8,26 +8,30 @@ for(const field of ['read_status','additional_authors','notes_url','review_url',
 editableFields.add('pause_plan');
 export function valueAt(book,field){return field==='favorite'?!!book.favorite:field==='library_member'?book.library_member!==false:book[field];}
 export function versionAt(book,field){return book._sync_versions?.[field]||null;}
-export function validateOperations(ops){
+export function validateOperations(ops,{fields=true}={}){
  if(!Array.isArray(ops)||!ops.length||ops.length>200)throw Error('Invalid change batch');
  const ids=new Set();
  for(const op of ops){
   if(!op||typeof op.id!=='string'||!/^[\w-]{8,120}$/.test(op.id)||ids.has(op.id)||typeof op.book_id!=='string'||op.book_id.length>160)throw Error('Invalid change');
   ids.add(op.id);
+  if(!fields)continue;
   if(op.kind==='add'){if(!op.book||op.book.id!==op.book_id||typeof op.book.title!=='string'||!Number.isInteger(op.book.rating)||op.book.rating<0||op.book.rating>5||op.book.library_member===false)throw Error('Invalid new book');continue;}
   if(!editableFields.has(op.field)||typeof op.present!=='boolean'||!Object.hasOwn(op,'before')||!(op.before_version===null||typeof op.before_version==='string'))throw Error('Invalid book field');
   if(op.field==='favorite'&&(!op.present||typeof op.value!=='boolean'))throw Error('Invalid favorite');
   if(op.field==='library_member'&&(!op.present||typeof op.value!=='boolean'))throw Error('Invalid membership');
-  if(op.field==='pause_plan'&&(!op.present||!['return','unfinished'].includes(op.value)))throw Error('Invalid paused plan');
+  if(op.field==='pause_plan'&&op.present&&!['return','unfinished',''].includes(op.value))throw Error('Invalid paused plan');
   if(op.field==='rating'&&(!Number.isInteger(op.value)||op.value<0||op.value>5))throw Error('Invalid rating');
  }
 }
-export function applyOperations(input,operations){
- validateOperations(operations);
- const books=structuredClone(input),by=new Map(books.map(b=>[b.id,b])),results=[];
+export function applyOperations(input,operations,{isolateInvalid=false}={}){
+ validateOperations(operations,{fields:!isolateInvalid});
+ const books=structuredClone(input),by=new Map(books.map(b=>[b.id,b])),results=[],equivalentVersions=new Map();
  let changed=false;
  for(const op of operations){
   let book=by.get(op.book_id);
+  if(isolateInvalid){try{validateOperations([op]);}catch(error){
+   results.push({id:op.id,status:'conflict',invalid:true,error:error.message,book_id:op.book_id,field:op.field||'new book',current:book?valueAt(book,op.field)??null:null,current_present:!!book&&valueAt(book,op.field)!==undefined,version:book?versionAt(book,op.field):null});continue;
+  }}
   if(op.kind==='add'){
    if(!book){book={...structuredClone(op.book),_sync_versions:{_created:op.id}};books.push(book);by.set(book.id,book);changed=true;results.push({id:op.id,status:'accepted'});}
    else results.push({id:op.id,status:book._sync_versions?._created===op.id?'accepted':'conflict',book_id:op.book_id,field:'new book',current:book.title,version:book._sync_versions?._created||null});
@@ -39,9 +43,11 @@ export function applyOperations(input,operations){
   // An unknown baseline is used only for recovered legacy drafts: require review
   // unless their requested value is already saved.
   if(equal(current,wanted)){
+   if(version===op.before_version)equivalentVersions.set(op.id,{version,book_id:op.book_id,field:op.field});
    results.push({id:op.id,status:'accepted',version,equivalent:true});continue;
   }
-  if(op.review||!equal(current,op.before_present===false?undefined:op.before)||version!==op.before_version){
+  const equivalent=equivalentVersions.get(op.before_version),beforeVersion=equivalent?.book_id===op.book_id&&equivalent?.field===op.field?equivalent.version:op.before_version;
+  if(op.review||!equal(current,op.before_present===false?undefined:op.before)||version!==beforeVersion){
    results.push({id:op.id,status:'conflict',book_id:op.book_id,field:op.field,current:current??null,current_present:current!==undefined,version});continue;
   }
   if(op.present)book[op.field]=structuredClone(op.value);else delete book[op.field];

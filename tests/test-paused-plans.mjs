@@ -17,3 +17,20 @@ test('Paused groups distinguish intentions without changing other sections',()=>
   assert.equal(context.groupOf({pause_plan:'return'}),'~pause_return');assert.equal(context.groupOf({pause_plan:'unfinished'}),'~pause_unfinished');assert.equal(context.groupOf({}),'~pause_other');
   context.ui.status='read';assert.equal(context.groupOf({date_read:'2026-11-08',pause_plan:'return'}),'2026-11');
 });
+
+test('normalization and serialization do not invent empty plan edits on existing books',()=>{
+ const html=readFileSync(new URL('../library/index.html',import.meta.url),'utf8');
+ const source=html.slice(html.indexOf('  function uid(){'),html.indexOf('  function scheduleSave(){'));
+ const context={has:Object.prototype.hasOwnProperty,STATUSES:['read','reading','unread','paused'],state:{books:[]}};vm.createContext(context);vm.runInContext(source,context);
+ const original={id:'unchanged',title:'Existing book',rating:3,read_status:'read'};
+ context.state.books=[context.normalize(original)];assert.deepEqual(JSON.parse(context.serialize()),[original]);
+ context.state.books[0].favorite=true;assert.deepEqual(JSON.parse(context.serialize()),[{...original,favorite:true}]);
+});
+
+test('clearing an optional paused plan preserves unrelated fields',()=>{
+ const input=[{id:'a',title:'Book',pause_plan:'return',favorite:true}];
+ for(const [present,value] of [[true,''],[false,null]]){
+  const result=applyOperations(input,[{id:'clear-pause-plan',book_id:'a',field:'pause_plan',before:'return',before_version:null,present,value}]);
+  assert.equal(result.results[0].status,'accepted');assert.equal(result.books[0].favorite,true);assert.equal(result.books[0].pause_plan,present?'':undefined);
+ }
+});

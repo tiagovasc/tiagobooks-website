@@ -232,6 +232,6 @@ test('sync protocol is authenticated, same-origin, revision-safe and hides priva
   const pub=await (await fetch(base+'/books.json')).json();assert.equal(pub[0]._sync_versions,undefined);
   const owner=await (await fetch(base+'/api/library-sync',{headers:{Cookie:cookie}})).json();assert.equal(owner.books[0]._sync_versions.favorite,op.id);
   const stale={...op,id:'http-favorite-0002',value:!op.value};const conflict=await (await post([stale])).json();assert.equal(conflict.results[0].status,'conflict');assert.equal(row.books[0].favorite,op.value);
-  assert.equal((await post([{...op,id:'bad-field-00001',field:'tbr_ids'}])).status,400);
+  const invalid=await post([{...op,id:'bad-field-00001',field:'tbr_ids'}]);assert.equal(invalid.status,200);assert.equal((await invalid.json()).results[0].invalid,true);
  }finally{row=before;conflictFavoriteOnce=false;resetCaches();}
 });

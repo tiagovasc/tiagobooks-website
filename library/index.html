@@ -616,7 +616,7 @@ span.favorite{cursor:default}
   <div class="n-more" id="notchMore">
     <div class="n-more-inner">
       <div class="n-row2">
-        <div class="statusbar"><div class="seg" id="statusSeg" data-tbr-count="5226" role="group" aria-label="Reading status"></div></div>
+        <div class="statusbar"><div class="seg" id="statusSeg" data-tbr-count="5226" role="group" aria-label="Reading status"></div><button type="button" id="statusNext" aria-label="Show more library sections" aria-controls="statusSeg" title="More sections"><svg class="i" viewBox="0 0 20 20" aria-hidden="true"><path d="m7 4 6 6-6 6"/></svg></button></div>
         <span class="spacer"></span>
         <div class="view-cycle" id="viewSwitch" role="group" aria-label="Layout">
           <button type="button" data-view="covers" aria-pressed="true" title="Covers view. Click for list" aria-label="Covers view. Click to switch to list"><svg class="i" aria-hidden="true"><use href="#i-covers"/></svg></button>
@@ -638,7 +638,7 @@ span.favorite{cursor:default}
             <option value="subject">Subject</option>
           </select>
         </label>
-        <button class="nbtn" id="favoriteFilter" type="button" aria-pressed="false" title="Show favorites in this section">♥ Favorites</button>
+        <button class="nbtn icon-btn" id="favoriteFilter" type="button" aria-pressed="false" aria-label="Favorites in this section" title="Show favorites in this section"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" d="M12 21s-9-5.7-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.3-9 12-9 12Z"/></svg></button>
         <button class="nbtn primary" id="add" type="button" aria-label="Add book"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg><span class="lbl">Add book</span></button>
         <button class="round" id="menuBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="menuPop" aria-label="Library menu and saving"><svg class="i" aria-hidden="true"><use href="#i-more"/></svg><span class="save-dot" id="dot"></span></button>
       </div>
@@ -1324,6 +1324,7 @@ var SEED = [];
       h+='<button type="button" data-status="'+p[0]+'" aria-pressed="'+on+'"'+(loadingLibrary||n||on?'':' class="zero"')+'>'+p[1]+(loadingLibrary&&!warmPresentation?'':' <span class="n">'+fmtN(n)+'</span>')+'</button>';
     });
     $("statusSeg").innerHTML=h;
+    requestAnimationFrame(updateStatusScroll);
     renderPausedFilters();
     document.querySelector('.library-intro').textContent={all:'Books I own.',read:'Books I’ve read.',reading:'Books I’m reading right now.',next:'Books I plan to read next.',unread:'Books I own but haven’t read.',paused:'Books I started reading but have paused for now.'}[ui.status]||'Books I own.';
   }
@@ -1746,6 +1747,10 @@ var SEED = [];
   // One icon cycles covers -> list -> table: a click on the visible (current) view is re-dispatched to the next view's button, so the library and TBR handlers run unchanged.
   notch.addEventListener("click",function(e){ var b=e.target.closest("#viewSwitch button[data-view]"); if(!b||b.getAttribute("aria-pressed")!=="true") return; var next=$("viewSwitch").querySelector('[data-view="'+VIEWS[(VIEWS.indexOf(b.dataset.view)+1)%VIEWS.length]+'"]'); e.stopPropagation(); e.preventDefault(); next.click(); },true);
   $("viewSwitch").addEventListener("click",function(e){ var b=e.target.closest("button[data-view]"); if(b) setView(b.getAttribute("data-view")); });
+  function updateStatusScroll(){var tabs=$('statusSeg'),next=$('statusNext');next.disabled=tabs.scrollWidth-tabs.clientWidth-tabs.scrollLeft<2;}
+  $('statusNext').addEventListener('click',function(){$('statusSeg').scrollBy({left:Math.max(160,$('statusSeg').clientWidth*.75),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});});
+  $('statusSeg').addEventListener('scroll',updateStatusScroll,{passive:true});
+  window.addEventListener('resize',updateStatusScroll);
   $("statusSeg").addEventListener("click",function(e){ var b=e.target.closest("button[data-status]"); if(!b) return; var previous=ui.status;ui.status=b.getAttribute("data-status");if(ui.status==="unread"&&previous!=="unread")ui.sort="acquired";else if(previous==="unread"&&acquisitionSort())ui.sort="dateread";$("sort").value=ui.sort;saveUI();renderView(false); });
   $("sort").addEventListener("change",function(){ ui.sort=this.value; saveUI(); renderView(false); });
   $("ownFilter").addEventListener("change",function(){ ui.own=this.value; renderView(false); });

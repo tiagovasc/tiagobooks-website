@@ -249,10 +249,10 @@ export const server=http.createServer(async(req,res)=>{
       if(req.method!=='POST')return send(res,405,{error:'Method not allowed'});
       if(!sameOrigin(req))return send(res,403,{error:'Origin rejected'});
       const raw=await readBody(req,2*1024*1024);if(raw===null)return send(res,413,{error:'Change batch too large'});
-      let payload;try{payload=JSON.parse(raw);if(payload.protocol!==SYNC_PROTOCOL)throw Error('Please update the page to sync');validateOperations(payload.operations);}catch(error){return send(res,400,{error:error.message});}
+      let payload;try{payload=JSON.parse(raw);if(payload.protocol!==SYNC_PROTOCOL)throw Error('Please update the page to sync');validateOperations(payload.operations,{fields:false});}catch(error){return send(res,400,{error:error.message});}
       for(let attempt=0;attempt<8;attempt++){
         const [row]=await db('GET','?id=eq.library&select=books,revision');if(!row)return send(res,503,{error:'Library unavailable'});
-        const result=applyOperations(row.books,payload.operations);
+        const result=applyOperations(row.books,payload.operations,{isolateInvalid:true});
         if(result.changed){
           const updated=await db('PATCH',`?id=eq.library&revision=eq.${row.revision}`,{books:result.books,revision:row.revision+1,updated_at:new Date().toISOString()});
           if(!updated.length)continue;snapshot=null;
