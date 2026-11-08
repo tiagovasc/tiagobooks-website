@@ -1,4 +1,5 @@
 import http from 'node:http';
+import {makeLibraryPreview} from './library-preview.mjs';
 import {localDB} from '../local-storage.mjs';
 import {createTbrFavoritesStore} from './tbr-favorites-store.mjs';
 import {ownedTbrIds} from './tbr-ownership.mjs';
@@ -200,11 +201,12 @@ async function librarySnapshot(){
     descriptionsVariant:await compressed(Buffer.from(JSON.stringify(Object.fromEntries(descriptions))),6)};
   return snapshot;
 }
-export function resetCaches(){page=null;snapshot=null;attempts.clear();allFailures.count=0;}
+export function resetCaches(){page=null;snapshot=null;previewVariant=null;attempts.clear();allFailures.count=0;}
 
 const STATIC_TYPES={'.svg':'image/svg+xml','.ico':'image/x-icon','.png':'image/png','.webp':'image/webp','.jpg':'image/jpeg','.jpeg':'image/jpeg'};
 const TBR_FILES={'library-sync.js':'text/javascript; charset=utf-8','tbr.js':'text/javascript; charset=utf-8','tbr.css':'text/css; charset=utf-8','tbr-bookshops.json':'application/json; charset=utf-8','tbr-catalogue.json':'application/json; charset=utf-8'};
 const tbrVariants=new Map();
+let previewVariant=null;
 const ROOT_FILES=['favicon.svg','favicon.ico','apple-touch-icon.png'];
 const COVER=/^covers\/(?:web\/)?[a-zA-Z0-9_.-]+\.(jpg|png|webp|jpeg)$/;
 
@@ -299,6 +301,16 @@ export const server=http.createServer(async(req,res)=>{
       return send(res,200,{id:value.id,favorite:value.favorite},{'X-Library-Revision':String(current?.revision||'')});
     }
     if(url.pathname==='/health'){if(!local&&(!base||!key))return send(res,503,{ok:false});const rows=await db('GET','?id=eq.library&select=revision');return send(res,rows.length?200:503,{ok:!!rows.length});}
+    if(url.pathname==='/api/library-preview'&&req.method==='GET'){
+      const snap=await librarySnapshot();if(!snap)return send(res,503,{error:'Library is not initialized'});
+      const file=path.join(root,'tbr-catalogue.json'),st=await stat(file),etag=`"preview-v1-${snap.revision}-${st.mtimeMs}"`;
+      if(!previewVariant||previewVariant.etag!==etag){
+        const catalogue=publicTripCatalogue(projectTbrCatalogue(JSON.parse(await readFile(file,'utf8')),snap.allBooks));
+        const data=makeLibraryPreview(snap.allBooks.filter(isLibraryMember),catalogue,snap.revision);
+        previewVariant={etag,variant:await compressed(Buffer.from(JSON.stringify(data)),5)};
+      }
+      return sendVariant(req,res,previewVariant.variant,{type:'application/json',etag,cache:'private, no-cache'});
+    }
     if(url.pathname==='/books.json'&&req.method==='GET'){
       const snap=await librarySnapshot();if(!snap)return send(res,503,{error:'Library is not initialized'});
       if(!authenticated(req)||url.searchParams.get('view')==='public')return sendVariant(req,res,snap.publicVariant,{type:'application/json',etag:`"r${snap.revision}-month-public"`,cache:'private, no-cache',extra:{'X-Library-Revision':String(snap.revision),Vary:'Accept-Encoding, Cookie'}});

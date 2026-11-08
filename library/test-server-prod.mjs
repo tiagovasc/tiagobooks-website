@@ -43,6 +43,15 @@ async function login(){
 }
 const save=(books,revision,cookie)=>fetch(base+'/save',{method:'POST',headers:{Cookie:cookie,'X-Library-Revision':String(revision),'Content-Type':'application/json'},body:JSON.stringify(books)});
 
+test('public first-page preview is compact, private-field-free and revision validated',async()=>{
+  const response=await fetch(base+'/api/library-preview');assert.equal(response.status,200);
+  const preview=await response.json();assert.equal(preview.schema,1);assert.equal(preview.revision,String(row.revision));assert.equal(preview.owned.total,row.books.length);
+  assert(preview.owned.books.length<=64);assert(Object.values(preview.tbr).every(books=>books.length<=48));
+  for(const book of preview.owned.books){assert.equal(book.notes,undefined);assert.equal(book.acquisition_source,undefined);assert.equal(book._sync_versions,undefined);}
+  for(const books of Object.values(preview.tbr))for(const book of books)for(const sighting of book.sightings)assert.match(sighting.photographed_at,/^\d{4}-\d{2}$/);
+  assert.equal((await fetch(base+'/api/library-preview',{headers:{'If-None-Match':response.headers.get('etag')}})).status,304);
+});
+
 test('plausibleSave refuses empty or gutted libraries but allows normal edits',()=>{
   assert.equal(plausibleSave(100,0),false);
   assert.equal(plausibleSave(100,49),false);

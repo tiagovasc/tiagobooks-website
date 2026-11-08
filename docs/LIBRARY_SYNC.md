@@ -23,3 +23,9 @@ If two sessions change the same field differently, Review shows both values. Cho
 Run `npm test`, build/public checks and actual-page browser recovery tests before changing these guarantees. Rollback must retain protocol/outbox compatibility. Never restore an old complete database to roll back application code.
 
 Browser drafts remain local until confirmed online. Clearing site data removes local drafts/history.
+
+## First-page presentation previews
+
+Public pages warm a small `/api/library-preview` response and the first four responsive rows of Owned/TBR All covers after the current page loads and the browser is idle. The preview lives in sessionStorage for at most90seconds and is revalidated once per minute while the source page remains visible, keeping it ready during long article visits. It contains allowlisted public presentation fields only, at most64Owned records and48per TBR source, rather than the complete catalogue. Data Saver/2G skip warming. This is a temporary display optimization, never an offline catalogue or an editing baseline.
+
+On Library/TBR entry, a valid matching default-cover preview can appear immediately in an inert container while the existing authoritative requests run. Filters, non-default sorting and other layouts use normal loading. Preview records never enter `state.books`, the sync outbox, metadata baselines or save payloads. Saves are gated during initial loading/preview. Successful authoritative rendering removes the inert preview; failure shows the load error. Full TBR metadata then warms in the background for fast subsection changes. Favorites, ownership and all edits still use the existing server-backed synchronization protocol. No service worker, speculation/prerender requirement or persistent full-catalogue cache is added.

@@ -83,6 +83,7 @@ const activeTag = path.startsWith('/tag/') ? decodeURIComponent(path.slice(5)) :
     </main>
     {site.footerHtml && <div class="site-footer-html" set:html={site.footerHtml} />}
     <script is:inline src="/js/enhancements.js" defer></script>
+    <script is:inline src="/js/library-warm.js" defer></script>
   <script is:inline src="/unified.js" defer></script>
   </body>
 </html>

@@ -52,7 +52,7 @@ export const server=http.createServer(async(req,res)=>{
     if(p==='/api/tbr-favorites')return library.emit('request',req,res);
     if(p==='/api/tbr-owned')return library.emit('request',req,res);
     if(p==='/api/book-reconciliation')return library.emit('request',req,res);
-    if(p==='/api/library-state'||p==='/api/library-sync')return library.emit('request',req,res);
+    if(p==='/api/library-state'||p==='/api/library-sync'||p==='/api/library-preview')return library.emit('request',req,res);
     if(p==='/healthz'){await stat(path.join(dist,'blog.html'));await stat(path.join(dist,'pagefind/pagefind.js'));req.url='/health';return library.emit('request',req,res)}
     if(p==='/'&&url.searchParams.get('collection')==='tbr')return reply(res,302,'Open the library',{Location:'/library'+url.search,'Cache-Control':'no-store'});
     if(p==='/library'){req.url='/'+url.search;return library.emit('request',req,res)}

@@ -85,7 +85,7 @@ function init(){
   let moreObserver=null,openId=null,pagingList=[];
   let ownedIds=new Set();
   let favoriteIds=new Set();const pendingFavorites=new Set();
-  const favorite=b=>tbrFavoriteHTML(b,favoriteIds.has(b.id),!!window.CLOUD_CAN_EDIT,pendingFavorites.has(b.id));
+  const favorite=b=>tbrFavoriteHTML(b,books?favoriteIds.has(b.id):b.favorite===true,!!window.CLOUD_CAN_EDIT,pendingFavorites.has(b.id));
   let active=false,source='all',books=null,loading=null,error=false,limit=0,view='covers',sort='recent',city='',shop='',libSearch='',libView='covers',tbrSearch='';
   function pressViews(v){$('viewSwitch').querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===v)));}
   function views(v){if(view!==v)limit=0;view=v;pressViews(v);}
@@ -109,6 +109,21 @@ function init(){
     error=false;
     loading=Promise.all([fetch('/api/tbr-owned').then(r=>{if(!r.ok)throw Error('ownership');return r.json();}).then(data=>{if(!Array.isArray(data.ids))throw Error('ownership');ownedIds=new Set(data.ids);}),fetch('/api/tbr-favorites').then(r=>{if(!r.ok)throw Error('favorites');return r.json();}).then(data=>{if(!Array.isArray(data.ids))throw Error('favorites');favoriteIds=new Set(data.ids);}),fetch('/tbr-catalogue.json').then(r=>{if(!r.ok)throw Error('load');return r.json();}).then(data=>{if(!Array.isArray(data.books)||data.books.some(b=>!b.id||!b.title||!Array.isArray(b.sightings)||!Array.isArray(b.sources)))throw Error('schema');books=data.books;const total=catalogueCounts(books).total;status.dataset.tbrCount=total;const tbrButton=status.querySelector('[data-collection="tbr"]');if(tbrButton)tbrButton.innerHTML='TBR <span class="n">'+number(total)+'</span>';})]).catch(()=>{books=null;error=true;}).finally(()=>{loading=null;overlayLocalChanges();if(active)render();});
   }
+  const warmImages=[];
+  function warmTbr(){
+    const connection=navigator.connection;
+    if(connection?.saveData||/^(slow-)?2g$/.test(connection?.effectiveType||''))return;
+    load().then(()=>{
+      if(!books||active||warmImages.length)return;
+      const root=$('content'),columns=window.bookColumns(root,'grid');
+      for(const book of filterCatalogue(books,{source:'all'}).slice(0,columns*4)){
+        if(!book.cover)continue;
+        const url=new URL(book.cover,location.href);if(url.origin!==location.origin)continue;
+        const image=new Image();image.fetchPriority='low';image.decoding='async';image.src=url.href;warmImages.push(image);
+      }
+    });
+  }
+  window.addEventListener('library-first-covers-ready',warmTbr,{once:true});
   function overlayLocalChanges(){
     if(!books||!window.LibrarySync)return;
     const canonical=new Map(window.LibrarySync.current().map(b=>[b.id,b]));
@@ -121,7 +136,7 @@ function init(){
     // Keep the selected source, filters, expanded batch and scroll position.
     books=null;await load();window.scrollTo(0,y);
   });
-  function cover(b){return b.cover?`<span class="tbr-cover"><img src="${escape(b.cover)}" alt="" width="320" height="480" loading="lazy" decoding="async">${tbrOwnedHTML(ownedIds.has(b.id))}</span>`:`<span class="tbr-cover"><span class="tbr-placeholder">${escape(b.title)}<br><small>Cover unavailable</small></span>${tbrOwnedHTML(ownedIds.has(b.id))}</span>`;}
+  function cover(b){return b.cover?`<span class="tbr-cover"><img src="${escape(b.cover)}" alt="" width="320" height="480" loading="lazy" decoding="async">${tbrOwnedHTML(ownedIds.has(b.id)||!books&&b.owned===true)}</span>`:`<span class="tbr-cover"><span class="tbr-placeholder">${escape(b.title)}<br><small>Cover unavailable</small></span>${tbrOwnedHTML(ownedIds.has(b.id)||!books&&b.owned===true)}</span>`;}
   function place(b){if(source!=='bookshops')return `<span class="tbr-place">${escape(source==='all'?sourceLabel(b):SOURCES[source])}${discoveryDateHTML(b,source)}</span>`;const s=b.sightings[0];return `<span class="tbr-place" title="${escape(placeLabel(s))}"><span class="tbr-city">${escape(s.city)}</span><span class="tbr-shop">${escape(s.bookshop)}</span><span class="tbr-date"><time datetime="${escape(s.photographed_at.slice(0,7))}">${date(s.photographed_at)}</time>${b.sightings.length>1?` · ${b.sightings.length} photos`:''}</span></span>`;}
   function card(b){return `<div role="button" tabindex="0" class="tbr-book ${favoriteIds.has(b.id)?'is-favorite':''}" data-tbr-id="${escape(b.id)}" data-tbr-month="${discoveryMonth(b,source)}" title="${escape(b.title)}" aria-label="${escape(b.title+' by '+(b.author||'uncredited')+'. '+(source==='bookshops'?placeLabel(b.sightings[0]):source==='all'?sourceLabel(b):SOURCES[source]))}">${cover(b)}${favorite(b)}<span class="tbr-copy"><h3 title="${escape(b.title)}">${escape(b.title)}</h3><span class="tbr-author">${escape(b.author||'Author not identified')}</span></span>${place(b)}</div>`;}
   function filtered(){return filterCatalogue(books||[],{source,query:search.value,city,shop,sort,favoritesOnly:!!window.FAVORITES_ONLY,favoriteIds});}
@@ -136,6 +151,7 @@ function init(){
   function render(jump=false){
     pager.reset();moreObserver?.disconnect();
     if(!active)return;
+    $('tbrContent').inert=false;$('tbrContent').removeAttribute('data-warm-preview');
     const list=filtered(),collection=books?sourceBooks(books,source):[];pagingList=list;
     syncTimeline(list);
     $('tbrIntro').innerHTML=`<div class="tbr-intro"><div><p class="tbr-eyebrow">To be read</p><h2>${SOURCE_VIEWS[source]}</h2><p>${source==='all'?'Interesting books I’ve saved over the years.':source==='bookshops'?'Books that caught my eye on bookshop visits, starting with the most recent photos.':source==='online'?'Books I found online and saved to explore.':'Books discovered on Instagram and saved to explore.'}</p></div>${books?`<span class="tbr-count">${number(list.length)} ${list.length===1?'book':'books'}${list.length!==collection.length?' of '+number(collection.length):''}</span>`:''}</div>`;
@@ -152,12 +168,21 @@ function init(){
       filter.innerHTML=`<select id="tbrSortMobile" aria-label="Sort TBR books">${sorting()}</select>${search.value||sort!=='recent'?'<button type="button" data-tbr-clear>Reset browsing</button>':''}`;
       $('tbrSortMobile').value=sort;
     }
-    if(!books){$('tbrContent').innerHTML=error?'<div class="empty-state"><h2>Couldn’t load these books</h2><p>Please try again.</p><button class="tbr-retry" type="button">Retry</button></div>':`<div class="empty-state" role="status">Loading ${source==='all'?'all TBR books':source==='bookshops'?'bookshop discoveries':SOURCES[source]+' books'}…</div>`;return;}
+    if(!books){if(!error&&showWarmTbr())return;$('tbrContent').innerHTML=error?'<div class="empty-state"><h2>Couldn’t load these books</h2><p>Please try again.</p><button class="tbr-retry" type="button">Retry</button></div>':`<div class="empty-state" role="status">Loading ${source==='all'?'all TBR books':source==='bookshops'?'bookshop discoveries':SOURCES[source]+' books'}…</div>`;return;}
     if(!list.length){$('tbrContent').innerHTML=`<div class="empty-state"><h2>${window.FAVORITES_ONLY?'No favorites match in this section':'No books match'}</h2><p>${window.FAVORITES_ONLY?'Turn off Favorites to see all books, or try another search.':source==='bookshops'?'Try another title, city or bookshop.':'Try another title or author.'}</p><button type="button" data-tbr-clear>Clear search and filters</button></div>`;return;}
     const fresh=!limit;
     if(fresh)limit=batchSize(list,0);
     drawBatch(list,0);
     if(!jump)pager.start(fresh);
+  }
+  function showWarmTbr(){
+    const data=window.LibraryWarm?.read();
+    if(!data||view!=='covers'||sort!=='recent'||search.value||city||shop||window.FAVORITES_ONLY)return false;
+    const content=$('tbrContent'),group=source==='bookshops'?b=>b.sightings[0]?.visit_id:undefined;
+    const shown=window.LibraryWarm.rows(data.tbr[source],window.bookColumns(content,'tbr-grid'),group);
+    content.innerHTML=collectionGroups(shown,source,sort).map(g=>`<section class="tbr-section">${g.place?`<div class="tbr-heading"><h3>${escape(g.place.bookshop)}<br><span>${escape(g.place.city)} · ${date(g.place.photographed_at)}</span></h3></div>`:''}<div class="tbr-grid">${g.books.map(card).join('')}</div></section>`).join('');
+    content.inert=true;content.dataset.warmPreview='true';
+    content.querySelectorAll('.tbr-cover>img').forEach(img=>{img.loading='eager';});return true;
   }
   function drawBatch(list,start){
     moreObserver?.disconnect();
@@ -166,7 +191,7 @@ function init(){
     if(!start)content.innerHTML='';
     if(view==='table'){
       if(!start)content.innerHTML=`<div class="tbr-table-scroll" tabindex="0" role="region" aria-label="TBR books table"><table class="tbr-table"><thead><tr><th scope="col">Book</th><th scope="col">Author</th><th scope="col">Favorite</th>${source==='bookshops'?'<th scope="col">City</th><th scope="col">Bookshop</th><th scope="col">Month</th>':'<th scope="col">Source</th><th scope="col">Date</th>'}</tr></thead><tbody></tbody></table></div>`;
-      content.querySelector('tbody').insertAdjacentHTML('beforeend',shown.map(b=>{const s=b.sightings[0];return `<tr data-tbr-month="${discoveryMonth(b,source)}"><td>${tbrOwnedHTML(ownedIds.has(b.id))}<button type="button" data-tbr-id="${escape(b.id)}">${escape(b.title)}</button></td><td>${escape(b.author||'Author not identified')}</td><td>${favorite(b)}</td>${source==='bookshops'?`<td>${escape(s.city)}</td><td>${escape(s.bookshop)}</td><td><time datetime="${escape(s.photographed_at.slice(0,7))}">${date(s.photographed_at)}</time></td>`:`<td>${escape(source==='all'?sourceLabel(b):SOURCES[source])}</td><td>${discoveryDateHTML(b,source)}</td>`}</tr>`;}).join(''));
+      content.querySelector('tbody').insertAdjacentHTML('beforeend',shown.map(b=>{const s=b.sightings[0];return `<tr data-tbr-month="${discoveryMonth(b,source)}"><td>${tbrOwnedHTML(ownedIds.has(b.id)||!books&&b.owned===true)}<button type="button" data-tbr-id="${escape(b.id)}">${escape(b.title)}</button></td><td>${escape(b.author||'Author not identified')}</td><td>${favorite(b)}</td>${source==='bookshops'?`<td>${escape(s.city)}</td><td>${escape(s.bookshop)}</td><td><time datetime="${escape(s.photographed_at.slice(0,7))}">${date(s.photographed_at)}</time></td>`:`<td>${escape(source==='all'?sourceLabel(b):SOURCES[source])}</td><td>${discoveryDateHTML(b,source)}</td>`}</tr>`;}).join(''));
     }else{
       for(const g of collectionGroups(shown,source,sort)){
         let section=content.lastElementChild;
@@ -204,7 +229,7 @@ function init(){
     if(b.canonical_ready&&b.library_id&&window.openCanonicalBook){window.openCanonicalBook(b.library_id);return;}
     $('tbrDialog').querySelector('.tbr-dialog-head span').textContent='TBR · '+(source==='all'?sourceLabel(b):SOURCES[source]);
     const sightings=b.sightings.length?`<h3>Spotted in book shops</h3><ul>${b.sightings.map(s=>`<li><strong>${escape(s.bookshop)}</strong><br>${escape(s.city)}${s.country?', '+escape(s.country):''} · ${date(s.photographed_at)}${/unresolved|probable|possible|uncertain|unknown/i.test(s.shop_status)?`<br>Shop identification: ${escape(s.shop_status)}`:''}</li>`).join('')}</ul>`:'';
-    $('tbrDetail').innerHTML=`${favorite(b)}${tbrOwnedHTML(ownedIds.has(b.id))}${b.cover?`<img class="${favoriteIds.has(b.id)?'is-favorite':''}" src="${escape(b.cover)}" alt="Cover of ${escape(b.title)}">`:''}<h2 id="tbrDetailTitle">${escape(b.title)}</h2><p>${escape(b.author||'Author not identified')}</p>${b.identity_status==='needs_review'?'<p class="tbr-note">The exact book is still being identified.</p>':''}${b.description?`<p>${escape(b.description)}</p>`:''}${source==='all'?`<p class="tbr-note">Saved from: ${escape(sourceLabel(b))}.</p>`:source!=='bookshops'?`<p class="tbr-note">${source==='instagram'?'Discovered on Instagram':'Found online'} and saved to explore.</p>`:''}${sightings}<p class="tbr-note">Saved as a reading interest. This doesn’t indicate ownership or a completed read.${b.sightings.length?' Cover and description may represent a different edition from the photographed copy.':''}</p>`;
+    $('tbrDetail').innerHTML=`${favorite(b)}${tbrOwnedHTML(ownedIds.has(b.id)||!books&&b.owned===true)}${b.cover?`<img class="${favoriteIds.has(b.id)?'is-favorite':''}" src="${escape(b.cover)}" alt="Cover of ${escape(b.title)}">`:''}<h2 id="tbrDetailTitle">${escape(b.title)}</h2><p>${escape(b.author||'Author not identified')}</p>${b.identity_status==='needs_review'?'<p class="tbr-note">The exact book is still being identified.</p>':''}${b.description?`<p>${escape(b.description)}</p>`:''}${source==='all'?`<p class="tbr-note">Saved from: ${escape(sourceLabel(b))}.</p>`:source!=='bookshops'?`<p class="tbr-note">${source==='instagram'?'Discovered on Instagram':'Found online'} and saved to explore.</p>`:''}${sightings}<p class="tbr-note">Saved as a reading interest. This doesn’t indicate ownership or a completed read.${b.sightings.length?' Cover and description may represent a different edition from the photographed copy.':''}</p>`;
     $('tbrDetail').insertAdjacentHTML('beforeend',Object.keys(b.discovery_dates||{}).map(key=>`<p class="tbr-note">${escape(SOURCES[key]||key)}: ${discoveryDateHTML(b,key)}</p>`).join(''));
     openId=id;$('tbrDialog').showModal();
   }
@@ -289,6 +314,6 @@ function init(){
   window.addEventListener('beforeunload',event=>{if(pendingFavorites.size){event.preventDefault();event.returnValue='';}});
   $('tbrDialog').querySelector('.tbr-close').addEventListener('click',()=>$('tbrDialog').close());
   $('tbrDialog').addEventListener('click',e=>{if(e.target===$('tbrDialog')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.target.close();}});
-  function fromURL(){const u=new URL(location.href);tbrSearch=u.searchParams.get('q')||'';enter(u.searchParams.get('collection')==='tbr',Object.hasOwn(SOURCE_VIEWS,u.searchParams.get('source'))?u.searchParams.get('source'):'all',false);if(active&&u.searchParams.has('q')){search.value=tbrSearch;render();}}
-  window.addEventListener('popstate',fromURL);fromURL();
+  function fromURL(){const u=new URL(location.href),early=!!window.TBR_EARLY_REQUEST;window.TBR_EARLY_REQUEST=false;tbrSearch=u.searchParams.get('q')||'';enter(early||u.searchParams.get('collection')==='tbr',Object.hasOwn(SOURCE_VIEWS,u.searchParams.get('source'))?u.searchParams.get('source'):'all',early);if(active&&u.searchParams.has('q')){search.value=tbrSearch;render();}}
+  window.TBR_READY=true;window.addEventListener('popstate',fromURL);fromURL();
 }

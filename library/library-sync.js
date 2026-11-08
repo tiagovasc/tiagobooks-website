@@ -231,5 +231,6 @@ export function watchPublicUpdates(apply,initialRevision){
    if(String(state.revision)!==revision){const r=await fetch('/books.json?view=public',{cache:'no-store'});if(!r.ok)return;const books=await r.json();revision=r.headers.get('X-Library-Revision');apply(books,revision);window.dispatchEvent(new CustomEvent('library-data-updated',{detail:{revision}}));}
   }catch{}finally{checking=false;}
  }
- setInterval(check,15000);window.addEventListener('focus',check);document.addEventListener('visibilitychange',check);
+  setInterval(check,15000);window.addEventListener('focus',check);document.addEventListener('visibilitychange',check);
+  check(); // Revalidate a prepared page immediately when its public watcher mounts.
 }

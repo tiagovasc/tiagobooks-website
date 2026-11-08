@@ -574,6 +574,7 @@ span.favorite{cursor:default}
 </style>
 <link rel="stylesheet" href="/tbr.css">
 <script type="module" src="/tbr.js"></script>
+<script src="/js/library-warm.js"></script>
 <link rel="stylesheet" href="/unified.css"><link rel="alternate" type="application/atom+xml" title="Tiago Faleiro" href="/posts_feed"><link rel="canonical" href="https://tiagobooks.com/"></head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -779,6 +780,7 @@ var SEED = [];
   function serialize(){return JSON.stringify(state.books.map(function(b){var baseline=originalBooks.get(b);if(!baseline)return b;var raw=JSON.parse(JSON.stringify(baseline.raw));Object.keys(b).forEach(function(k){if(JSON.stringify(b[k])!==JSON.stringify(baseline.normalized[k]))raw[k]=b[k];});return raw;}),null,2);}            // canonical = bare array
   function scheduleSave(){ if(window.LibrarySync){stageSyncedBooks();return;}if(saveTimer)clearTimeout(saveTimer); saveTimer=setTimeout(function(){saveTimer=null;saveNow();},400); }
   function saveNow(){
+    if(loadingLibrary||content&&content.hasAttribute('data-warm-preview'))return;
     if(window.LibrarySync){stageSyncedBooks();window.LibrarySync.flush();return;}
     try{ localStorage.setItem(STORAGE_KEY, JSON.stringify({title:state.title,books:state.books})); }catch(e){}
     if(SERVER_MODE){ saveToServer(); return; }
@@ -1189,6 +1191,8 @@ var SEED = [];
 
   // ---------- incremental rendering (all three layouts) ----------
   var content=$("content"), sentinel=$("sentinel");
+  // A warmed cover frame may be visible before the deferred TBR module is ready.
+  document.addEventListener('click',function(e){if(!window.TBR_READY&&e.target.closest&&e.target.closest('[data-collection="tbr"]'))window.TBR_EARLY_REQUEST=true;},true);
   // Shared staged cover loader. Reset invalidates callbacks from previous filters/views.
   function bookColumns(root,className){
     var probe=document.createElement('div');probe.className=className;
@@ -1212,7 +1216,7 @@ var SEED = [];
       busy=true;
       var left=images.length,timer,handlers=[];
       function clean(){clearTimeout(timer);handlers.forEach(function(pair){pair[0].removeEventListener('load',pair[1]);pair[0].removeEventListener('error',pair[1]);});}
-      function done(){if(token!==generation)return;clean();generation++;busy=false;cancel=function(){};if(!options.active())return;if(warm)append();else check();}
+      function done(){if(token!==generation)return;clean();generation++;busy=false;cancel=function(){};if(options.settled)options.settled();if(!options.active())return;if(warm)append();else check();}
       cancel=clean;
       if(!left){Promise.resolve().then(done);return;}
       timer=setTimeout(done,1500);
@@ -1224,14 +1228,14 @@ var SEED = [];
   }
   window.bookColumns=bookColumns;window.bookRowBatch=bookRowBatch;window.createBookPager=createBookPager;
   function pageSize(){return bookRowBatch(view.list,view.rendered,ui.view==='covers'?bookColumns(content,'grid'):1,ui.view==='table'?null:groupOf);}
-  var pager=createBookPager({active:function(){return !document.body.classList.contains('tbr-mode');},more:function(){return view.rendered<view.list.length;},images:function(){return Array.from(content.querySelectorAll('img.cv-img[loading="lazy"]'));},append:function(){appendBatch(pageSize());},near:function(){return sentinel.getBoundingClientRect().top<innerHeight+Math.min(1000,innerHeight);}});
+  var pager=createBookPager({active:function(){return !document.body.classList.contains('tbr-mode');},more:function(){return view.rendered<view.list.length;},images:function(){return Array.from(content.querySelectorAll('img.cv-img[loading="lazy"]'));},settled:function(){window.dispatchEvent(new Event('library-first-covers-ready'));},append:function(){appendBatch(pageSize());},near:function(){return sentinel.getBoundingClientRect().top<innerHeight+Math.min(1000,innerHeight);}});
   var view={list:[],rendered:0,key:null,box:null,counts:{}};
   var loadFailed=false, loadingLibrary=SERVER_MODE;
   function syncSearchClear(){ var has=!!$("search").value; $("searchClear").hidden=!has; $("search").closest(".search").classList.toggle("has-text",has); }
   function renderView(keep){
     if(loadingLibrary){syncSearchClear();renderStatusSeg();return;}
     if(loadFailed){ showLoadError(); return; }
-    syncSearchClear(); content.removeAttribute("aria-busy");
+    syncSearchClear(); content.removeAttribute("aria-busy");content.inert=false;content.removeAttribute('data-warm-preview');
     if(LITE&&ui.view==="table"&&selectedColumns().some(function(c){return c[0]==="description";})) loadAllDescriptions();
     pager.reset();
     var y=window.scrollY, want=0;
@@ -1856,6 +1860,7 @@ var SEED = [];
   var toTop=$("toTop");
   toTop.addEventListener("click",function(){ window.scrollTo({top:0,behavior:(REDUCED&&REDUCED.matches)?"auto":"smooth"}); });
   function showLoadError(){
+    content.inert=false;content.removeAttribute('data-warm-preview');
     loadingLibrary=false;loadFailed=true; content.hidden=false; $("empty").hidden=true; $("loadmore").hidden=true; content.removeAttribute("aria-busy");
     content.innerHTML='<div class="empty-state"><h2>The library did not load</h2><p>Check your connection, then try again.</p><button type="button" id="retryLoad">Try again</button></div>';
     $("retryLoad").addEventListener("click",function(){ loadFailed=false; content.setAttribute("aria-busy","true"); content.innerHTML='<div class="boot-grid" role="status" aria-label="Loading the library">'+new Array(13).join('<span class="boot-card"></span>')+'</div>'; loadLibrary(); });
@@ -1866,10 +1871,23 @@ var SEED = [];
     libraryReady=new Promise(function(resolve){resolveLibraryReady=resolve;});
     loadingLibrary=true;loadFailed=false;content.hidden=false;$("empty").hidden=true;$("loadmore").hidden=true;content.setAttribute("aria-busy","true");
     content.innerHTML='<div class="boot-grid" role="status" aria-label="Loading the library">'+new Array(13).join('<span class="boot-card"></span>')+'</div>';renderStatusSeg();
+    showWarmLibrary();
     fetch(LITE?"books.json?view=public":"books.json",{cache:"no-cache"}).then(function(r){ if(!r.ok) throw new Error("HTTP "+r.status); serverRevision=r.headers.get("X-Library-Revision"); return r.json(); })
       .then(function(d){ var books=Array.isArray(d)?d:(d&&d.books); if(Array.isArray(books)){ metadataBaseSnapshot=JSON.stringify(books);state.books=books.map(normalize); if(d&&typeof d.title==="string") state.title=d.title; } else if(window.CLOUD_LIBRARY){ throw new Error("Unexpected library format"); } else { seedFromBuiltin(); } return true; })
       .catch(function(){ if(window.CLOUD_LIBRARY) return false; if(!loadLocal()) seedFromBuiltin(); return true; })
       .then(async function(ok){if(ok&&window.CLOUD_LIBRARY&&window.CLOUD_CAN_EDIT&&!LITE){try{await startLibrarySync();}catch(error){lastSaveError=error.message;toast(error.message,10000);ok=false;}}else if(ok&&window.CLOUD_LIBRARY){import('/library-sync.js?v='+encodeURIComponent(window.LIBRARY_BUILD_ID||'1')).then(function(module){module.watchPublicUpdates(function(books,revision){var y=window.scrollY;state.books=books.map(normalize);serverRevision=revision;reindex();buildFilters();renderView(false);requestAnimationFrame(function(){window.scrollTo(0,y);});},serverRevision);}).catch(function(){});} loadingLibrary=false;if(ok){ loadFailed=false; bootRender(); openLinkedBook();resolveLibraryReady(true);retryPendingFavorites(); } else {showLoadError();resolveLibraryReady(false);} });
+  }
+  function showWarmLibrary(){
+    var data=window.LibraryWarm&&window.LibraryWarm.read();
+    if(!data||ui.view!=='covers'||ui.status!=='all'||ui.sort!=='dateread'||ui.favorites||searchTerms().length)return;
+    var books=data.owned.books.map(normalize);sortList(books);
+    books=window.LibraryWarm.rows(books,bookColumns(content,'grid'),groupOf);
+    var html='',key=null,sd=shortDates();
+    books.forEach(function(book){var k=groupOf(book);if(k!==key){if(key!==null)html+='</div></section>';key=k;var label=groupLabel(k);html+='<section class="group"><div class="gh"><span class="gtext">'+esc(label.text||label.sr)+'</span><h2 class="sr">'+esc(label.text||label.sr)+'</h2><span class="leader"></span><span class="gcount">'+countBooks(data.owned.counts[k]||0)+'</span></div><div class="grid">';}html+=tileHTML(book,sd);});
+    if(key!==null)html+='</div></section>';
+    // Presentation has its own inert DOM. Authoritative state and editing baselines stay untouched.
+    content.innerHTML=html;content.inert=true;content.dataset.warmPreview='true';markLoaded(content);
+    content.querySelectorAll('img.cv-img').forEach(function(img){img.loading='eager';});
   }
   function stageSyncedBooks(){try{window.LibrarySync.stage(JSON.parse(serialize()));}catch(error){saveFailed=true;serverSaveState='error';lastSaveError=error.message;toast(error.message,10000);throw error;}}
   async function startLibrarySync(){
