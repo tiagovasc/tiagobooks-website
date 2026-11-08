@@ -2,6 +2,7 @@ import {readFileSync,writeFileSync,mkdirSync,copyFileSync} from 'node:fs';
 import {resolve} from 'node:path';
 import site from '../src/lib/site-config.mjs';
 import {renderSiteHeader} from '../src/lib/site-shell.mjs';
+import {layoutGuardMarkup} from '../src/lib/layout-ready.mjs';
 import {assertPublicTripDates} from '../library/trip-privacy.mjs';
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 // The tracked library/index.html only receives the shared header, which depends on src/data/site.json alone.
@@ -16,7 +17,7 @@ if(!process.argv.includes('--finish')){
   const html=source.replace(/<!-- site-shell:start -->[\s\S]*?<!-- site-shell:end -->/,'<!-- site-shell:start -->'+renderSiteHeader(site,'/library')+'<!-- site-shell:end -->').replace(/data-tbr-count="\d*"/,`data-tbr-count="${tbrCount}"`);
   if(html!==source)writeFileSync('library/index.html',html);
 }else{
-  let html=readFileSync('library/index.html','utf8').replace('<body>','<body data-pagefind-ignore>');
+  let html=readFileSync('library/index.html','utf8').replace('<body>','<body data-pagefind-ignore>').replace('<head>','<head>'+layoutGuardMarkup());
   html=html.replace(/<link rel="canonical"[^>]*>/g,'').replace('</head>',`<link rel="canonical" href="${escape(site.url)}/library"></head>`);
   html=html.replace(/<meta property="og:url" content="[^"]*">/,`<meta property="og:url" content="${escape(site.url)}/library">`);
   writeFileSync('dist/library.html',html);

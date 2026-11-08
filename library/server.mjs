@@ -303,7 +303,7 @@ export const server=http.createServer(async(req,res)=>{
     if(url.pathname==='/health'){if(!local&&(!base||!key))return send(res,503,{ok:false});const rows=await db('GET','?id=eq.library&select=revision');return send(res,rows.length?200:503,{ok:!!rows.length});}
     if(url.pathname==='/api/library-preview'&&req.method==='GET'){
       const snap=await librarySnapshot();if(!snap)return send(res,503,{error:'Library is not initialized'});
-      const file=path.join(root,'tbr-catalogue.json'),st=await stat(file),etag=`"preview-v1-${snap.revision}-${st.mtimeMs}"`;
+      const file=path.join(root,'tbr-catalogue.json'),st=await stat(file),etag=`"preview-v2-${snap.revision}-${st.mtimeMs}"`;
       if(!previewVariant||previewVariant.etag!==etag){
         const catalogue=publicTripCatalogue(projectTbrCatalogue(JSON.parse(await readFile(file,'utf8')),snap.allBooks));
         const data=makeLibraryPreview(snap.allBooks.filter(isLibraryMember),catalogue,snap.revision);

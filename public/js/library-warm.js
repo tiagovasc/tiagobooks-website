@@ -1,8 +1,8 @@
 // Short-lived, public first-page presentation only. Never restore it into editor state.
 (() => {
-  const KEY='tiagovf-library-preview-v1',TTL=90000,images=[];
+  const KEY='tiagovf-library-preview-v2',TTL=90000,images=[];
   let pending=null,hinted=false;
-  function valid(data){const book=b=>b&&typeof b.id==='string'&&typeof b.title==='string'&&(!b.cover||typeof b.cover==='string');return data?.schema===1&&data.owned?.counts&&Number.isInteger(data.owned.total)&&Array.isArray(data.owned.books)&&data.owned.books.length<=64&&data.owned.books.every(book)&&['all','instagram','bookshops','online'].every(s=>Array.isArray(data.tbr?.[s])&&data.tbr[s].length<=48&&data.tbr[s].every(b=>book(b)&&Array.isArray(b.sightings)&&Array.isArray(b.sources)));}
+  function valid(data){const book=b=>b&&typeof b.id==='string'&&typeof b.title==='string'&&(!b.cover||typeof b.cover==='string');return data?.schema===2&&data.owned?.counts&&data.owned.facets&&Array.isArray(data.places)&&Number.isInteger(data.owned.total)&&Array.isArray(data.owned.books)&&data.owned.books.length<=64&&data.owned.books.every(book)&&['all','instagram','bookshops','online'].every(s=>data.dates?.[s]&&Array.isArray(data.tbr?.[s])&&data.tbr[s].length<=48&&data.tbr[s].every(b=>book(b)&&Array.isArray(b.sightings)&&Array.isArray(b.sources)));}
   function read(){try{const saved=JSON.parse(sessionStorage.getItem(KEY)||'null');return saved&&Date.now()-saved.at<TTL&&Date.now()>=saved.at&&valid(saved.data)?saved.data:null;}catch{return null;}}
   function group(b){return b.date_read?b.date_read.slice(0,7):b.read_status==='reading'?'~reading':b.read_status==='next'?'~next':'~none';}
   function rows(books,columns,groupOf=()=>'',start=0){let count=0,column=0,last=null,index=start;for(;index<books.length;index++){const key=groupOf(books[index]);if(index===start||key!==last||column===columns){if(count===4)break;count++;column=0;}column++;last=key;}return books.slice(start,index);}

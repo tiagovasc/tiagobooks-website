@@ -184,7 +184,7 @@ export function createSync(hooks,options={}){
 export async function mountSync(hooks){
  const bar=document.createElement('div');bar.id='librarySyncStatus';bar.className='library-sync-status';bar.setAttribute('role','status');
  const text=document.createElement('span'),actions=document.createElement('span');bar.append(text,actions);
- const anchor=document.getElementById('notch');if(anchor)anchor.append(bar);else document.querySelector('main')?.prepend(bar);
+ const slot=document.getElementById('librarySyncSlot'),anchor=document.getElementById('notch');if(slot)slot.replaceChildren(bar);else if(anchor)anchor.append(bar);else document.querySelector('main')?.prepend(bar);
  const dialog=document.createElement('dialog');dialog.className='library-sync-dialog';dialog.setAttribute('aria-label','Review unsynced changes');document.body.append(dialog);
  const button=(label,fn)=>{const b=document.createElement('button');b.type='button';b.textContent=label;b.onclick=fn;actions.append(b);};
  let engine;

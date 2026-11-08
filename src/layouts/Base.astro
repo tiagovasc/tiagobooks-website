@@ -4,6 +4,7 @@ import '../styles/site.css';
 import '../../public/unified.css';
 import site from '../lib/site-config.mjs';
 import { renderSiteHeader } from '../lib/site-shell.mjs';
+import { layoutGuardMarkup } from '../lib/layout-ready.mjs';
 import { getTagMap } from '../lib/content';
 import { blogMenuSections, isBlogPostVisible } from '../lib/post-presentation.mjs';
 import { normalizeSiteLink, absoluteSiteLink } from '../lib/link-policy.mjs';
@@ -38,6 +39,7 @@ const activeTag = path.startsWith('/tag/') ? decodeURIComponent(path.slice(5)) :
 <!doctype html>
 <html lang={site.language.split('-')[0]} data-newtab={site.newTabForExternalLinks ? '' : undefined}>
   <head>
+    <Fragment set:html={layoutGuardMarkup()} />
     <script is:inline>if(location.pathname==='/'&&/^#book\//.test(location.hash))location.replace('/library'+location.search+location.hash);</script>
     <script is:inline>try{let t=JSON.parse(localStorage.getItem("tiago-books-ui-v1")||"{}").theme;if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch{}</script>
     <link rel="stylesheet" href="/unified.css" />

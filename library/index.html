@@ -1230,12 +1230,13 @@ var SEED = [];
   function pageSize(){return bookRowBatch(view.list,view.rendered,ui.view==='covers'?bookColumns(content,'grid'):1,ui.view==='table'?null:groupOf);}
   var pager=createBookPager({active:function(){return !document.body.classList.contains('tbr-mode');},more:function(){return view.rendered<view.list.length;},images:function(){return Array.from(content.querySelectorAll('img.cv-img[loading="lazy"]'));},settled:function(){window.dispatchEvent(new Event('library-first-covers-ready'));},append:function(){appendBatch(pageSize());},near:function(){return sentinel.getBoundingClientRect().top<innerHeight+Math.min(1000,innerHeight);}});
   var view={list:[],rendered:0,key:null,box:null,counts:{}};
+  var warmPresentation=null;
   var loadFailed=false, loadingLibrary=SERVER_MODE;
   function syncSearchClear(){ var has=!!$("search").value; $("searchClear").hidden=!has; $("search").closest(".search").classList.toggle("has-text",has); }
   function renderView(keep){
     if(loadingLibrary){syncSearchClear();renderStatusSeg();return;}
     if(loadFailed){ showLoadError(); return; }
-    syncSearchClear(); content.removeAttribute("aria-busy");content.inert=false;content.removeAttribute('data-warm-preview');
+    warmPresentation=null;syncSearchClear(); content.removeAttribute("aria-busy");content.inert=false;content.removeAttribute('data-warm-preview');
     if(LITE&&ui.view==="table"&&selectedColumns().some(function(c){return c[0]==="description";})) loadAllDescriptions();
     pager.reset();
     var y=window.scrollY, want=0;
@@ -1255,6 +1256,7 @@ var SEED = [];
     buildTimeline(); appendBatch(want||pageSize());
     window.scrollTo(0,keep?y:0);
     pager.start(!keep);
+    if(window.SiteLayout)window.SiteLayout.ready();
   }
   function startGroup(k){
     var lab=groupLabel(k), n=view.counts[k]||0, sec=document.createElement("section");
@@ -1307,11 +1309,12 @@ var SEED = [];
   // ---------- notch: status counts, filters, results ----------
   function renderStatusSeg(){
     var h="";
+    var displayFacets=loadingLibrary&&warmPresentation?warmPresentation.facets:facets;
     var inTbr=document.body.classList.contains('tbr-mode');
     [['all','Owned']].concat(STATUSES.map(function(s){return [s,LABEL[s]];}),[['tbr','TBR']]).forEach(function(p){
       if(p[0]==='tbr'){var total=$('statusSeg').dataset.tbrCount;h+='<button type="button" data-collection="tbr" aria-pressed="'+inTbr+'">TBR'+(total?' <span class="n">'+fmtN(Number(total))+'</span>':'')+'</button>';return;}
-      var n=facets[p[0]]||0, on=!inTbr&&ui.status===p[0];
-      h+='<button type="button" data-status="'+p[0]+'" aria-pressed="'+on+'"'+(loadingLibrary||n||on?'':' class="zero"')+'>'+p[1]+(loadingLibrary?'':' <span class="n">'+fmtN(n)+'</span>')+'</button>';
+      var n=displayFacets[p[0]]||0, on=!inTbr&&ui.status===p[0];
+      h+='<button type="button" data-status="'+p[0]+'" aria-pressed="'+on+'"'+(loadingLibrary||n||on?'':' class="zero"')+'>'+p[1]+(loadingLibrary&&!warmPresentation?'':' <span class="n">'+fmtN(n)+'</span>')+'</button>';
     });
     $("statusSeg").innerHTML=h;
     document.querySelector('.library-intro').textContent={all:'Books I own.',read:'Books I’ve read.',reading:'Books I’m reading right now.',next:'Books I plan to read next.',unread:'Books I own but haven’t read.',paused:'Books I started reading but have paused for now.'}[ui.status]||'Books I own.';
@@ -1812,10 +1815,15 @@ var SEED = [];
   function positionTimeline(){var root=discoveryTimeline?$('tbrContent'):content,left=root?root.getBoundingClientRect().left:0;dateRail.style.setProperty('--archive-center',Math.max(84,(left||220)/2)+'px');}
   window.addEventListener('resize',positionTimeline);
   function monthName(k){return /^\d{4}-\d{2}$/.test(k)?new Date(Number(k.slice(0,4)),Number(k.slice(5,7))-1,1).toLocaleString('en',{month:'long'}):k;}
-  function buildTimeline(){
-    var enabled=discoveryTimeline?discoveryTimeline.chronological&&discoveryTimeline.entries.some(function(b){return !!b.month;}):shortDates()&&view.list.some(function(b){return !!b.date_read;});dateRail.hidden=!enabled;document.body.classList.toggle('has-timeline',enabled);if(!enabled)return;
+  function buildTimeline(warmCounts){
+    var ownedWarm=!discoveryTimeline&&loadingLibrary&&warmPresentation;
+    var aggregate=warmCounts||(discoveryTimeline&&discoveryTimeline.counts)||(ownedWarm&&ownedWarm.counts);
+    dateRail.inert=!!warmCounts||!!ownedWarm||!!(discoveryTimeline&&discoveryTimeline.preview);
+    var enabled=aggregate?Object.keys(aggregate).some(function(k){return /^\d{4}-\d{2}$/.test(k);}):discoveryTimeline?discoveryTimeline.chronological&&discoveryTimeline.entries.some(function(b){return !!b.month;}):shortDates()&&view.list.some(function(b){return !!b.date_read;});dateRail.hidden=!enabled;document.body.classList.toggle('has-timeline',enabled);if(!enabled)return;
     dateRail.setAttribute('aria-label',discoveryTimeline?'Discovery date navigation':'Reading date navigation');
-    timelineCounts={};dateKeys=[];(discoveryTimeline?discoveryTimeline.entries:view.list).forEach(function(b){var k=discoveryTimeline?b.month:groupOf(b);if(!k)return;timelineCounts[k]=(timelineCounts[k]||0)+1;if(/^\d{4}/.test(k)&&dateKeys.indexOf(k)<0)dateKeys.push(k);});
+    timelineCounts={};dateKeys=[];
+    if(aggregate){Object.keys(aggregate).forEach(function(k){timelineCounts[k]=aggregate[k];if(/^\d{4}-\d{2}$/.test(k))dateKeys.push(k);});}
+    else (discoveryTimeline?discoveryTimeline.entries:view.list).forEach(function(b){var k=discoveryTimeline?b.month:groupOf(b);if(!k)return;timelineCounts[k]=(timelineCounts[k]||0)+1;if(/^\d{4}/.test(k)&&dateKeys.indexOf(k)<0)dateKeys.push(k);});
     var last='', html='';dateKeys.forEach(function(k){var y=k.slice(0,4);if(y!==last){html+='<button data-date="'+k+'" title="Jump to '+y+'">'+y+'</button>';last=y;}html+='<button class="month-tick" data-date="'+k+'" title="'+monthName(k)+' '+y+'" aria-label="Jump to '+monthName(k)+' '+y+'">'+monthName(k).slice(0,3)+'</button>';});
     var monthLabel=discoveryTimeline?'discovery':'reading',years={};dateKeys.forEach(function(k){var y=k.slice(0,4);years[y]=(years[y]||0)+1;});
     dateRail.style.setProperty('--archive-year-count',Object.keys(years).length);dateRail.style.setProperty('--archive-month-count',Math.max.apply(null,Object.values(years)));positionTimeline();
@@ -1863,12 +1871,14 @@ var SEED = [];
     content.inert=false;content.removeAttribute('data-warm-preview');
     loadingLibrary=false;loadFailed=true; content.hidden=false; $("empty").hidden=true; $("loadmore").hidden=true; content.removeAttribute("aria-busy");
     content.innerHTML='<div class="empty-state"><h2>The library did not load</h2><p>Check your connection, then try again.</p><button type="button" id="retryLoad">Try again</button></div>';
+    if(window.SiteLayout)window.SiteLayout.ready();
     $("retryLoad").addEventListener("click",function(){ loadFailed=false; content.setAttribute("aria-busy","true"); content.innerHTML='<div class="boot-grid" role="status" aria-label="Loading the library">'+new Array(13).join('<span class="boot-card"></span>')+'</div>'; loadLibrary(); });
   }
   // Source of truth is the stored library served as books.json (revalidated, so an unchanged library costs a 304).
   // The hosted page never falls back to an old embedded copy: it says the load failed instead.
   function loadLibrary(){
     libraryReady=new Promise(function(resolve){resolveLibraryReady=resolve;});
+    if(window.CLOUD_CAN_EDIT&&!$('librarySyncSlot')){var syncSlot=document.createElement('div');syncSlot.id='librarySyncSlot';syncSlot.className='library-sync-slot';syncSlot.innerHTML='<div class="library-sync-status" role="status"><span>Checking changes…</span><span></span></div>';notch.appendChild(syncSlot);}
     loadingLibrary=true;loadFailed=false;content.hidden=false;$("empty").hidden=true;$("loadmore").hidden=true;content.setAttribute("aria-busy","true");
     content.innerHTML='<div class="boot-grid" role="status" aria-label="Loading the library">'+new Array(13).join('<span class="boot-card"></span>')+'</div>';renderStatusSeg();
     showWarmLibrary();
@@ -1880,6 +1890,7 @@ var SEED = [];
   function showWarmLibrary(){
     var data=window.LibraryWarm&&window.LibraryWarm.read();
     if(!data||ui.view!=='covers'||ui.status!=='all'||ui.sort!=='dateread'||ui.favorites||searchTerms().length)return;
+    warmPresentation=data.owned;renderStatusSeg();
     var books=data.owned.books.map(normalize);sortList(books);
     books=window.LibraryWarm.rows(books,bookColumns(content,'grid'),groupOf);
     var html='',key=null,sd=shortDates();
@@ -1888,6 +1899,8 @@ var SEED = [];
     // Presentation has its own inert DOM. Authoritative state and editing baselines stay untouched.
     content.innerHTML=html;content.inert=true;content.dataset.warmPreview='true';markLoaded(content);
     content.querySelectorAll('img.cv-img').forEach(function(img){img.loading='eager';});
+    buildTimeline(data.owned.counts);measureNotch();positionTimeline();
+    if(window.SiteLayout)window.SiteLayout.ready();
   }
   function stageSyncedBooks(){try{window.LibrarySync.stage(JSON.parse(serialize()));}catch(error){saveFailed=true;serverSaveState='error';lastSaveError=error.message;toast(error.message,10000);throw error;}}
   async function startLibrarySync(){

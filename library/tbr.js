@@ -152,19 +152,21 @@ function init(){
     pager.reset();moreObserver?.disconnect();
     if(!active)return;
     $('tbrContent').inert=false;$('tbrContent').removeAttribute('data-warm-preview');
-    const list=filtered(),collection=books?sourceBooks(books,source):[];pagingList=list;
+    const warm=!books&&window.LibraryWarm?.read(),list=filtered(),collection=books?sourceBooks(books,source):(warm?.tbr[source]||[]);pagingList=list;
     syncTimeline(list);
-    $('tbrIntro').innerHTML=`<div class="tbr-intro"><div><p class="tbr-eyebrow">To be read</p><h2>${SOURCE_VIEWS[source]}</h2><p>${source==='all'?'Interesting books I’ve saved over the years.':source==='bookshops'?'Books that caught my eye on bookshop visits, starting with the most recent photos.':source==='online'?'Books I found online and saved to explore.':'Books discovered on Instagram and saved to explore.'}</p></div>${books?`<span class="tbr-count">${number(list.length)} ${list.length===1?'book':'books'}${list.length!==collection.length?' of '+number(collection.length):''}</span>`:''}</div>`;
+    const total=books?list.length:warm?.totals[source];
+    $('tbrIntro').innerHTML=`<div class="tbr-intro"><div><p class="tbr-eyebrow">To be read</p><h2>${SOURCE_VIEWS[source]}</h2><p>${source==='all'?'Interesting books I’ve saved over the years.':source==='bookshops'?'Books that caught my eye on bookshop visits, starting with the most recent photos.':source==='online'?'Books I found online and saved to explore.':'Books discovered on Instagram and saved to explore.'}</p></div>${total!==undefined?`<span class="tbr-count">${number(total)} ${total===1?'book':'books'}${books&&list.length!==collection.length?' of '+number(collection.length):''}</span>`:''}</div>`;
     $('tbrSort').innerHTML=sorting();$('tbrSort').value=sort;$('tbrSortLabel').classList.toggle('is-active',sort!=='recent');
     const filter=$('tbrFilters');filter.innerHTML='';
-    if(books&&source==='bookshops'){
-      const cities=[...new Set(collection.flatMap(b=>b.sightings.map(s=>s.city)))].sort();
-      const shops=[...new Set(collection.flatMap(b=>b.sightings.filter(s=>!city||s.city===city).map(s=>s.bookshop)))].sort();
+    if((books||warm)&&source==='bookshops'){
+      const places=books?collection.flatMap(b=>b.sightings):warm.places;
+      const cities=[...new Set(places.map(s=>s.city))].sort();
+      const shops=[...new Set(places.filter(s=>!city||s.city===city).map(s=>s.bookshop))].sort();
       const options=(xs,v)=>xs.map(x=>`<option ${x===v?'selected':''} value="${escape(x)}">${escape(x)}</option>`).join('');
       filter.innerHTML=`<select id="tbrCity" class="${city?'is-active':''}" aria-label="Filter by city"><option value="">All cities</option>${options(cities,city)}</select><select id="tbrShop" class="${shop?'is-active':''}" aria-label="Filter by bookshop"><option value="">All bookshops</option>${options(shops,shop)}</select><select id="tbrSortMobile" aria-label="Sort TBR books"><option value="recent">Newest photos</option><option value="oldest">Oldest photos</option><option value="title">Title</option><option value="author">Author</option></select>${city||shop||search.value||sort!=='recent'?'<button type="button" data-tbr-clear>Reset browsing</button>':''}`;
       $('tbrSortMobile').value=sort;
     }
-    if(books&&source!=='bookshops'){
+    if((books||warm)&&source!=='bookshops'){
       filter.innerHTML=`<select id="tbrSortMobile" aria-label="Sort TBR books">${sorting()}</select>${search.value||sort!=='recent'?'<button type="button" data-tbr-clear>Reset browsing</button>':''}`;
       $('tbrSortMobile').value=sort;
     }
@@ -182,7 +184,9 @@ function init(){
     const shown=window.LibraryWarm.rows(data.tbr[source],window.bookColumns(content,'tbr-grid'),group);
     content.innerHTML=collectionGroups(shown,source,sort).map(g=>`<section class="tbr-section">${g.place?`<div class="tbr-heading"><h3>${escape(g.place.bookshop)}<br><span>${escape(g.place.city)} · ${date(g.place.photographed_at)}</span></h3></div>`:''}<div class="tbr-grid">${g.books.map(card).join('')}</div></section>`).join('');
     content.inert=true;content.dataset.warmPreview='true';
-    content.querySelectorAll('.tbr-cover>img').forEach(img=>{img.loading='eager';});return true;
+    content.querySelectorAll('.tbr-cover>img').forEach(img=>{img.loading='eager';});
+    window.setDiscoveryTimeline?.({active:true,chronological:true,preview:true,counts:data.dates[source],entries:[],jump(){}});
+    window.dispatchEvent(new Event('resize'));window.SiteLayout?.ready();return true;
   }
   function drawBatch(list,start){
     moreObserver?.disconnect();
