@@ -38,3 +38,8 @@ On Library/TBR entry, a valid matching default-cover preview can appear immediat
 8 November 2026: Paused remains one reading status, with a separate canonical `pause_plan` field. Values `return` and `unfinished` display as **Return to** and **Unfinished**. An absent plan remains Paused without an inferred classification. The Paused-only filter intersects existing search, favorites and other filters. Default date sorting groups Return to first, then Unfinished; other explicit sorts retain their meaning. The editor exposes both choices while paused, and newly paused books default to Return to. The plan uses the existing per-field versioned sync/outbox protocol, never a whole-catalogue save. Changing status retains the plan for a future pause.
 
 Initial classification requested by the owner: Experiments in Mystical Atheism, The Philosophers' Library, Religion and Nothingness, and the three currently-reading Dante volumes are Return to. Immune and Of Cabbages and Kimchi are Unfinished. Existing book identities, ownership, favorites, history and TBR memberships are preserved. Christopher Butler's existing Postmodernism: A Very Short Introduction is completed on 2026-11-08.
+
+
+## Shared TBR toolbar
+
+8 November 2026: TBR retains the same layout, filter, sort, favorites, Add book and admin-menu slots as other Library sections. Add book and admin tools remain authenticated-only. The TBR filter panel operates on TBR ownership; existing city/bookshop filters remain available under Book shops. Its filter state is independent of the Library filters and intersects source, search and favorites. Sort options still reflect the selected collection. Sync status remains admin-only. This presentation fix does not mutate book data.

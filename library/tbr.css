@@ -21,7 +21,8 @@
 #statusSeg{overflow-x:auto;scrollbar-width:none;min-width:0}
 #tbrSources{min-width:0}
 #tbrSourceMobile{display:none}
-.tbr-mode #main,.tbr-mode #filtersBtn,.tbr-mode #columnsBtn,.tbr-mode #add,.tbr-mode #menuBtn,.tbr-mode #menuPop,.tbr-mode #filtersPop,.tbr-mode #columnsPop,.tbr-mode #sortLabel{display:none!important}
+.tbr-mode #main,.tbr-mode #columnsBtn,.tbr-mode #columnsPop,.tbr-mode #sortLabel{display:none!important}
+.tbr-mode #filtersPop > :not(h2):not(#tbrFilterPanel),body:not(.tbr-mode) #tbrFilterPanel{display:none!important}
 .tbr-book[data-tbr-month],.tbr-table tr[data-tbr-month]{scroll-margin-top:calc(var(--notch-h) + 32px)}
 body:not(.tbr-mode) #tbrSources,body:not(.tbr-mode) #tbrSortLabel,body:not(.tbr-mode) #tbrMain{display:none!important}
 body.tbr-mode #tbrMain{display:block;margin-left:var(--books-left,24px);width:var(--books-width,calc(100% - 48px));padding-bottom:80px}

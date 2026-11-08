@@ -79,6 +79,7 @@ function init(){
   const $=id=>document.getElementById(id), body=document.body, search=$('search');
   const status=$('statusSeg'),bar=status.parentElement;
   $('notchMore').querySelector('.n-more-inner').insertAdjacentHTML('beforeend','<div id="tbrSources"><nav class="seg" id="tbrSourceTabs" aria-label="TBR source">'+['all','instagram','bookshops','online'].map(k=>`<button type="button" data-source="${k}" aria-pressed="${k==='all'}">${SOURCE_VIEWS[k]}</button>`).join('')+'</nav><select id="tbrSourceMobile" aria-label="TBR source">'+['all','instagram','bookshops','online'].map(k=>`<option value="${k}" ${k==='all'?'selected':''}>${SOURCE_VIEWS[k]}</option>`).join('')+'</select></div>');
+  $('filtersPop').insertAdjacentHTML('beforeend','<div id="tbrFilterPanel"><label class="field"><span>Ownership</span><select id="tbrOwnership" aria-label="Filter TBR by ownership"><option value="all">All books</option><option value="owned">Owned</option><option value="not-owned">Not owned</option></select></label><div class="pop-actions"><button class="linkbtn" type="button" data-tbr-clear>Clear filters</button></div></div>');
   $('sort').closest('label').id='sortLabel';
   $('sortLabel').insertAdjacentHTML('afterend','<label id="tbrSortLabel" class="pill-select icon-select" title="Sort"><svg class="i" aria-hidden="true"><use href="#i-sort"/></svg><span class="lbl">Sort</span><select id="tbrSort" aria-label="Sort TBR books"><option value="recent">Newest photos</option><option value="oldest">Oldest photos</option><option value="title">Title</option><option value="author">Author</option></select></label>');
   $('main').insertAdjacentHTML('afterend','<main class="wrap" id="tbrMain" hidden><div id="tbrIntro"></div><p id="tbrFavoriteMessage" role="status"></p><div id="tbrFilters" class="tbr-toolbar"></div><div id="tbrContent" aria-live="polite"></div></main><dialog id="tbrDialog" aria-labelledby="tbrDetailTitle"><div class="tbr-dialog-head"><span>TBR · Book shops</span><button type="button" class="tbr-close" aria-label="Close book details">×</button></div><div class="tbr-detail" id="tbrDetail"></div></dialog>');
@@ -86,7 +87,7 @@ function init(){
   let ownedIds=new Set();
   let favoriteIds=new Set();const pendingFavorites=new Set();
   const favorite=b=>tbrFavoriteHTML(b,books?favoriteIds.has(b.id):b.favorite===true,!!window.CLOUD_CAN_EDIT,pendingFavorites.has(b.id));
-  let active=false,source='all',books=null,loading=null,error=false,limit=0,view='covers',sort='recent',city='',shop='',libSearch='',libView='covers',tbrSearch='';
+  let active=false,source='all',books=null,loading=null,error=false,limit=0,view='covers',sort='recent',city='',shop='',ownership='all',libSearch='',libView='covers',tbrSearch='';
   function pressViews(v){$('viewSwitch').querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===v)));}
   function views(v){if(view!==v)limit=0;view=v;pressViews(v);}
   function sources(k){source=Object.hasOwn(SOURCE_VIEWS,k)?k:'all';city='';shop='';limit=0;$('tbrSourceMobile').value=source;$('tbrSourceTabs').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.source===source)));if(active)search.placeholder=source==='bookshops'||source==='all'?'Search TBR books, authors, cities or shops':'Search TBR books and authors';}
@@ -139,7 +140,7 @@ function init(){
   function cover(b){return b.cover?`<span class="tbr-cover"><img src="${escape(b.cover)}" alt="" width="320" height="480" loading="lazy" decoding="async">${tbrOwnedHTML(ownedIds.has(b.id)||!books&&b.owned===true)}</span>`:`<span class="tbr-cover"><span class="tbr-placeholder">${escape(b.title)}<br><small>Cover unavailable</small></span>${tbrOwnedHTML(ownedIds.has(b.id)||!books&&b.owned===true)}</span>`;}
   function place(b){if(source!=='bookshops')return `<span class="tbr-place">${escape(source==='all'?sourceLabel(b):SOURCES[source])}${discoveryDateHTML(b,source)}</span>`;const s=b.sightings[0];return `<span class="tbr-place" title="${escape(placeLabel(s))}"><span class="tbr-city">${escape(s.city)}</span><span class="tbr-shop">${escape(s.bookshop)}</span><span class="tbr-date"><time datetime="${escape(s.photographed_at.slice(0,7))}">${date(s.photographed_at)}</time>${b.sightings.length>1?` · ${b.sightings.length} photos`:''}</span></span>`;}
   function card(b){return `<div role="button" tabindex="0" class="tbr-book ${favoriteIds.has(b.id)?'is-favorite':''}" data-tbr-id="${escape(b.id)}" data-tbr-month="${discoveryMonth(b,source)}" title="${escape(b.title)}" aria-label="${escape(b.title+' by '+(b.author||'uncredited')+'. '+(source==='bookshops'?placeLabel(b.sightings[0]):source==='all'?sourceLabel(b):SOURCES[source]))}">${cover(b)}${favorite(b)}<span class="tbr-copy"><h3 title="${escape(b.title)}">${escape(b.title)}</h3><span class="tbr-author">${escape(b.author||'Author not identified')}</span></span>${place(b)}</div>`;}
-  function filtered(){return filterCatalogue(books||[],{source,query:search.value,city,shop,sort,favoritesOnly:!!window.FAVORITES_ONLY,favoriteIds});}
+  function filtered(){return filterCatalogue((books||[]).filter(b=>ownership==='all'||(ownership==='owned')===ownedIds.has(b.id)),{source,query:search.value,city,shop,sort,favoritesOnly:!!window.FAVORITES_ONLY,favoriteIds});}
   function sorting(){return sortOptions(source).map(([value,label])=>`<option value="${value}">${label}</option>`).join('');}
   function syncTimeline(list){
     window.setDiscoveryTimeline?.({active:true,chronological:['recent','oldest'].includes(sort),entries:list.map(b=>({id:b.id,month:discoveryMonth(b,source)})),jump(month){
@@ -157,6 +158,9 @@ function init(){
     const total=books?list.length:warm?.totals[source];
     $('tbrIntro').innerHTML=`<div class="tbr-intro"><div><p class="tbr-eyebrow">To be read</p><h2>${SOURCE_VIEWS[source]}</h2><p>${source==='all'?'Interesting books I’ve saved over the years.':source==='bookshops'?'Books that caught my eye on bookshop visits, starting with the most recent photos.':source==='online'?'Books I found online and saved to explore.':'Books discovered on Instagram and saved to explore.'}</p></div>${total!==undefined?`<span class="tbr-count">${number(total)} ${total===1?'book':'books'}${books&&list.length!==collection.length?' of '+number(collection.length):''}</span>`:''}</div>`;
     $('tbrSort').innerHTML=sorting();$('tbrSort').value=sort;$('tbrSortLabel').classList.toggle('is-active',sort!=='recent');
+    $('tbrOwnership').value=ownership;
+    const activeFilters=Number(ownership!=='all')+Number(!!city)+Number(!!shop);
+    $('filtersBtn').classList.toggle('is-active',!!activeFilters);$('filtersBtn').setAttribute('aria-label',activeFilters?'Filters, '+activeFilters+' active':'Filters');$('filterCount').textContent=activeFilters;$('filterCount').hidden=!activeFilters;
     const filter=$('tbrFilters');filter.innerHTML='';
     if((books||warm)&&source==='bookshops'){
       const places=books?collection.flatMap(b=>b.sightings):warm.places;
@@ -179,7 +183,7 @@ function init(){
   }
   function showWarmTbr(){
     const data=window.LibraryWarm?.read();
-    if(!data||view!=='covers'||sort!=='recent'||search.value||city||shop||window.FAVORITES_ONLY)return false;
+    if(!data||view!=='covers'||sort!=='recent'||search.value||city||shop||ownership!=='all'||window.FAVORITES_ONLY)return false;
     const content=$('tbrContent'),group=source==='bookshops'?b=>b.sightings[0]?.visit_id:undefined;
     const shown=window.LibraryWarm.rows(data.tbr[source],window.bookColumns(content,'tbr-grid'),group);
     content.innerHTML=collectionGroups(shown,source,sort).map(g=>`<section class="tbr-section">${g.place?`<div class="tbr-heading"><h3>${escape(g.place.bookshop)}<br><span>${escape(g.place.city)} · ${date(g.place.photographed_at)}</span></h3></div>`:''}<div class="tbr-grid">${g.books.map(card).join('')}</div></section>`).join('');
@@ -245,12 +249,13 @@ function init(){
     if(!active)return;
     const b=e.target.closest('[data-tbr-id]');if(b){openBook(b.dataset.tbrId);return;}
     if(e.target.closest('[data-tbr-more]')){const old=limit;pager.append();$('tbrContent').querySelectorAll('[data-tbr-id]')[old]?.focus({preventScroll:true});}
-    if(e.target.closest('[data-tbr-clear]')){window.setFavoritesFilter(false);city='';shop='';search.value='';sort='recent';limit=0;$('searchClear').hidden=true;render();}
+    if(e.target.closest('[data-tbr-clear]')){window.setFavoritesFilter(false);city='';shop='';ownership='all';search.value='';sort='recent';limit=0;$('searchClear').hidden=true;render();}
     if(e.target.closest('.tbr-retry')){error=false;render();load();}
   });
   document.addEventListener('change',e=>{
     if(e.target.id==='tbrSourceMobile'){sources(e.target.value);address();render();load();}
     if(e.target.id==='tbrCity'){city=e.target.value;shop='';limit=0;render();}
+    if(e.target.id==='tbrOwnership'){ownership=e.target.value;limit=0;render();}
     if(e.target.id==='tbrShop'){shop=e.target.value;limit=0;render();}
     if(['tbrSort','tbrSortMobile'].includes(e.target.id)){sort=e.target.value;limit=0;render();}
   });
