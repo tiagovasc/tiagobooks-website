@@ -10,8 +10,11 @@ export function createDateRail(rows,headings){
     // Only reveal the clipped edge; never snap a newly active month to the top.
     if(active){const top=active.offsetTop,bottom=top+active.offsetHeight;if(top<track.scrollTop)track.scrollTop=top;else if(bottom>track.scrollTop+track.clientHeight)track.scrollTop=bottom-track.clientHeight}
   }
-  function update(){queued=false;const resized=resizePending;resizePending=false;if(rail.hidden)return;let chosen=null,best=Infinity;
-    for(const row of rows){if(row.hidden)continue;const rect=row.getBoundingClientRect();if(rect.bottom<0||rect.top>innerHeight)continue;const distance=Math.abs((rect.top+rect.bottom)/2-innerHeight/2);if(distance<best){best=distance;chosen=row.dataset.month}}
+  // The reading line sits near the top at the start of the page and near the bottom at its end, so the first and
+  // last entries can become current; in between it is the viewport centre.
+  function readingLine(){const top=Math.max(0,window.scrollY||0),page=document.documentElement,room=page?Math.max(0,page.scrollHeight-innerHeight-top):Infinity;let line=innerHeight/2;if(top<line)line=Math.min(line,96+top);else if(room<line)line=Math.max(line,innerHeight-96-room);return line}
+  function update(){queued=false;const resized=resizePending;resizePending=false;if(rail.hidden)return;let chosen=null,best=Infinity;const line=readingLine();
+    for(const row of rows){if(row.hidden)continue;const rect=row.getBoundingClientRect();if(rect.bottom<0||rect.top>innerHeight)continue;const distance=Math.abs((rect.top+rect.bottom)/2-line);if(distance<best){best=distance;chosen=row.dataset.month}}
     chosen=chosen||current||keys[0];if(!chosen)return;if(chosen===current){if(resized)revealActiveMonth(rail.querySelector('.date-track'));return}
     const track=rail.querySelector('.date-track'),buttons=[...rail.querySelectorAll('[data-date]')],year=chosen.slice(0,4);
     const yearButton=buttons.find(b=>!b.classList.contains('month-tick')&&b.dataset.date.slice(0,4)===year);
@@ -35,6 +38,6 @@ export function createDateRail(rows,headings){
     // Reserve the largest expanded year once per filter, not once per scroll.
     rail.style.setProperty('--archive-year-count',monthsPerYear.size);
     rail.style.setProperty('--archive-month-count',Math.max(...monthsPerYear.values()));
-    rail.innerHTML=`<div class="date-context"><div class="archive-label">Archive</div><div data-rail-year></div><div class="date-month"></div><div class="date-count"></div></div><nav class="date-track" aria-label="Jump to a publication month">${buttons}</nav><select class="mobile-month" aria-label="Jump to publication month">${keys.map(k=>`<option value="${k}">${monthName(k)} ${k.slice(0,4)}</option>`).join('')}</select>`;position();update();
+    rail.innerHTML=`<div class="date-context"><div data-rail-year></div><div class="date-month"></div><div class="date-count"></div></div><nav class="date-track" aria-label="Jump to a publication month">${buttons}</nav><select class="mobile-month" aria-label="Jump to publication month">${keys.map(k=>`<option value="${k}">${monthName(k)} ${k.slice(0,4)}</option>`).join('')}</select>`;position();update();
   }};
 }

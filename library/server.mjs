@@ -5,6 +5,7 @@ import {createTbrFavoritesStore} from './tbr-favorites-store.mjs';
 import {ownedTbrIds} from './tbr-ownership.mjs';
 import {isLibraryMember,mergeLibrarySave,projectTbrCatalogue,canonicalFavoriteIds,createReconciliationBackup,runBookReconciliation} from './canonical-books.mjs';
 import {readBody,sameOrigin} from './http-utils.mjs';
+import {versionedCache} from './asset-version.mjs';
 import {personalizeSiteHeader} from '../src/lib/site-shell.mjs';
 import {tripMonth,publicTripCatalogue} from './trip-privacy.mjs';
 import {applyConfirmedCorrections} from './confirmed-book-corrections.mjs';
@@ -87,14 +88,15 @@ export function safeNext(value){const v=String(value||'');return v.length<1000&&
 function loginPage(message='',next='/'){
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><meta name="robots" content="noindex"><meta name="description" content="Sign in to manage Tiago Faleiro’s library and writing."><title>Tiago Faleiro</title><link rel="icon" href="/favicon.svg?v=quill-20261106" type="image/svg+xml"><style>
 :root{color-scheme:light dark;--bg:#EDEDEA;--field:#FFFFFF;--ink:#1C1C1E;--muted:#5A5A5F;--line:rgba(28,28,30,.18);--btn:#1C1C1E;--btn-ink:#FFFFFF;--err:#B4343A}
-@media (prefers-color-scheme:dark){:root{--bg:#000;--field:#1C1C1E;--ink:#F5F5F7;--muted:#A1A1A6;--line:rgba(255,255,255,.17);--btn:#F5F5F7;--btn-ink:#111;--err:#F0A49F}}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#000;--field:#1C1C1E;--ink:#F5F5F7;--muted:#A1A1A6;--line:rgba(255,255,255,.17);--btn:#F5F5F7;--btn-ink:#111;--err:#F0A49F}}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark;--bg:#000;--field:#1C1C1E;--ink:#F5F5F7;--muted:#A1A1A6;--line:rgba(255,255,255,.17);--btn:#F5F5F7;--btn-ink:#111;--err:#F0A49F}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif;display:grid;place-items:center;min-height:100vh;min-height:100dvh}
 form{width:min(340px,calc(100vw - 32px))}h1{font-size:24px;margin:0 0 4px}p{color:var(--muted);margin:0 0 14px}
 input,button{box-sizing:border-box;width:100%;min-height:48px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--field);color:var(--ink);font:inherit;margin:6px 0}
 input:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-button{background:var(--btn);color:var(--btn-ink);border-color:transparent;cursor:pointer;font-weight:600}button:active{opacity:.85}
+button{background:var(--btn);color:var(--btn-ink);border-color:transparent;cursor:pointer;font-weight:600}button:active{opacity:.85}button:disabled{opacity:.6;cursor:progress}
 .err{color:var(--err);font-weight:600;margin:0 0 10px}a{color:var(--muted);display:inline-block;margin-top:14px;padding:6px 0}
-</style></head><body><main><form method="post" action="/login"><h1>Tiago Faleiro</h1><p>Enter the admin password to edit.</p>${message?`<p class="err" role="alert">${escapeHtml(message)}</p>`:''}<input type="hidden" name="next" value="${escapeHtml(next)}"><input type="password" name="password" autocomplete="current-password" autofocus required aria-label="Admin password"><button>Sign in</button><a href="${escapeHtml(next)}">${next==='/'?'Back to the library':'Go back'}</a></form></main></body></html>`;
+</style><script>try{var t=JSON.parse(localStorage.getItem("tiago-books-ui-v1")||"{}").theme;if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}addEventListener("pageshow",function(){var b=document.querySelector("form button");if(b){b.disabled=false;b.textContent="Sign in"}})</script></head><body><main><form method="post" action="/login" onsubmit="var b=this.querySelector('button');if(b.disabled)return false;b.disabled=true;b.textContent='Signing in…'"><h1>Tiago Faleiro</h1><p>Enter the admin password to edit.</p>${message?`<p class="err" role="alert">${escapeHtml(message)}</p>`:''}<input type="hidden" name="next" value="${escapeHtml(next)}"><input type="password" name="password" autocomplete="current-password" autofocus required aria-label="Admin password"><button>Sign in</button><a href="${escapeHtml(next)}">${next==='/'?'Back to the site':'Go back'}</a></form></main></body></html>`;
 }
 
 // ---------- storage ----------
@@ -375,8 +377,9 @@ export const server=http.createServer(async(req,res)=>{
       const snap=canonical&&(local||(base&&key))?await librarySnapshot():null;
       const etag=`W/"${st.size.toString(16)}-${Math.floor(st.mtimeMs).toString(16)}-month${snap?'-r'+snap.revision:''}"`;
       let cached=tbrVariants.get(filename);
-      if(!cached||cached.etag!==etag){let raw=await readFile(file);if(filename.endsWith('.json')){let data=JSON.parse(raw);if(snap)data=projectTbrCatalogue(data,snap.allBooks);raw=Buffer.from(JSON.stringify(publicTripCatalogue(data)));}cached={etag,variant:await compressed(raw,5)};tbrVariants.set(filename,cached);}
-      return sendVariant(req,res,cached.variant,{type:TBR_FILES[filename],etag,cache:'no-cache'});
+      if(!cached||cached.etag!==etag){let raw=await readFile(file);if(filename.endsWith('.json')){let data=JSON.parse(raw);if(snap)data=projectTbrCatalogue(data,snap.allBooks);raw=Buffer.from(JSON.stringify(publicTripCatalogue(data)));}cached={etag,raw,variant:await compressed(raw,5)};tbrVariants.set(filename,cached);}
+      // The page links tbr.css/tbr.js with a content version; only an exact match may be cached long-term.
+      return sendVariant(req,res,cached.variant,{type:TBR_FILES[filename],etag,cache:(!canonical&&versionedCache(url,cached.raw))||'no-cache'});
     }
     if(!(ROOT_FILES.includes(filename)||COVER.test(filename)))return send(res,404,{error:'Not found'});
     const file=path.join(root,filename), st=await stat(file).catch(()=>null);

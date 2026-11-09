@@ -4,10 +4,10 @@ import vm from 'node:vm';
 import {readFileSync} from 'node:fs';
 import {makeLibraryPreview} from '../library/library-preview.mjs';
 const warm=readFileSync(new URL('../public/js/library-warm.js',import.meta.url),'utf8');
-function fixture({saveData=false,visibility='visible',path='/',saved=null}={}){
+function fixture({saveData=false,effectiveType,visibility='visible',path='/',saved=null}={}){
   const appended=[],idle=[],events={},windowEvents={},intervals=[];
   const values=new Map(saved?[['tiagovf-library-preview-v2',JSON.stringify(saved)]]:[]),images=[];let requests=0;
-  const context={Date,innerWidth:1280,URL,Image:class{constructor(){images.push(this);}},Promise,AbortSignal,sessionStorage:{getItem:key=>values.get(key),setItem:(key,value)=>values.set(key,value)},fetch:async()=>{requests++;return {ok:true,json:async()=>sample()};},location:{pathname:path,origin:'https://example.com'},navigator:{connection:{saveData}},setInterval:fn=>intervals.push(fn),setTimeout:fn=>idle.push(fn),requestIdleCallback:fn=>idle.push(fn),
+  const context={Date,innerWidth:1280,URL,Image:class{constructor(){images.push(this);}},Promise,AbortSignal,sessionStorage:{getItem:key=>values.get(key),setItem:(key,value)=>values.set(key,value)},fetch:async()=>{requests++;return {ok:true,json:async()=>sample()};},location:{pathname:path,origin:'https://example.com'},navigator:{connection:{saveData,effectiveType}},setInterval:fn=>intervals.push(fn),setTimeout:fn=>idle.push(fn),requestIdleCallback:fn=>idle.push(fn),
     window:{addEventListener:(key,fn)=>windowEvents[key]=fn},
     document:{readyState:'complete',visibilityState:visibility,head:{append:el=>appended.push(el)},createElement:tag=>({tag}),addEventListener:(key,fn)=>events[key]=fn}};
   context.window.requestIdleCallback=context.requestIdleCallback;
@@ -19,8 +19,8 @@ test('home preparation waits for idle, fetches one bounded preview and reuses it
   const f=fixture();assert.equal(f.requests,0);await f.runIdle();assert.equal(f.requests,1);
   await f.context.window.LibraryWarm.prepare();assert.equal(f.requests,1);assert.equal(f.context.window.LibraryWarm.read().revision,'7');
 });
-test('data saver and existing Library/editor pages do not warm in background',async()=>{
-  for(const settings of [{saveData:true},{path:'/library'},{path:'/editor'},{path:'/admin'}]){const f=fixture(settings);await f.runIdle();assert.equal(f.requests,0);}
+test('data saver, slow connections and existing Library/editor pages do not warm in background',async()=>{
+  for(const settings of [{saveData:true},{effectiveType:'3g'},{effectiveType:'2g'},{path:'/library'},{path:'/editor'},{path:'/admin'}]){const f=fixture(settings);await f.runIdle();assert.equal(f.requests,0);}
 });
 test('expired or malformed previews are ignored, not restored',()=>{
   for(const saved of [{at:Date.now()-100000,data:sample()},{at:Date.now(),data:{...sample(),schema:1}},{at:Date.now(),data:{schema:0}}])assert.equal(fixture({path:'/library',saved}).context.window.LibraryWarm.read(),null);

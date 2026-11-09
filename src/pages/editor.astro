@@ -3,7 +3,8 @@ import Base from '../layouts/Base.astro';
 ---
 <Base title="Edit writing" noindex>
   <h1 class="entry-title">Edit writing</h1>
-  <p id="editor-help">Edit your posts and pages with your site login. <a href="/login?next=%2Feditor" target="_blank" rel="noopener">Sign in</a> · <a href="/admin/" target="_blank" rel="noopener">Advanced GitHub editor</a></p>
+  <p id="editor-help">Edit your posts and pages with your site login. <a href="/admin/" target="_blank" rel="noopener">Advanced GitHub editor</a></p>
+  <p id="signin-again" role="alert" hidden>Your sign-in has ended. <a href="/login?next=%2Feditor" target="_blank" rel="noopener">Sign in again</a> in a new tab; your text here stays as it is.</p>
   <p id="publish-help" hidden>Publish only text ready to be public. Published revisions remain in the website’s public history. Keep private drafts elsewhere.</p>
   <form class="local-editor" id="editor">
     <label>Entry <select id="entry" aria-label="Entry"><option value="">Choose a post or page</option></select></label>
@@ -16,7 +17,7 @@ import Base from '../layouts/Base.astro';
   <script>
     const $=(id:string)=>document.getElementById(id) as any;let revision='',current='',lineEnding='\n',remote=false,dirty=false,busy=false,loaded=false;
     const status=(s:string)=>$('status').textContent=s;
-    async function api(path:string,options:any={}){const r=await fetch('/api/editor'+path,options);const d=await r.json();if(!r.ok)throw Error(d.error||'Request failed');return d}
+    async function api(path:string,options:any={}){const r=await fetch('/api/editor'+path,options);const signin=$('signin-again');if(signin)signin.hidden=r.status!==401;const d=await r.json();if(!r.ok)throw Error(d.error||'Request failed');return d}
     function controls(value:boolean){busy=value;for(const id of ['entry','new-entry','kind','slug','build'])$(id).disabled=value||!loaded;$('markdown').disabled=value||!current;$('save').disabled=value||!current;$('retry-load').disabled=value;}
     function addOption(file:string){if(!Array.from($('entry').options).some((o:any)=>o.value===file)){const o=document.createElement('option');o.value=file;o.textContent=file;$('entry').append(o)}}
     async function list(){controls(true);$('retry-load').hidden=true;status('Loading entries…');try{const d=await api('');remote=d.mode==='github';for(const file of d.files)addOption(file);loaded=true;$('save').textContent=remote?'Publish changes':'Save locally';$('build').hidden=remote;$('publish-help').hidden=!remote;status(remote?'Choose a post or page to edit.':'Choose an entry. Changes are saved in your local copy.')}catch(e:any){status(e.message);$('retry-load').hidden=loaded;}finally{controls(false)}}

@@ -8,6 +8,7 @@ import {server as library,authenticated,activateBookReconciliation} from './libr
 import {editorHandler} from './editor-api.mjs';
 import {productionEditorHandler} from './production-editor-api.mjs';
 import {personalizeSiteHeader} from './src/lib/site-shell.mjs';
+import {versionedCache} from './library/asset-version.mjs';
 const root=path.dirname(fileURLToPath(import.meta.url)),dist=path.join(root,'dist');
 process.env.LIBRARY_PAGE_FILE??=path.join(dist,'library.html');
 const privateRoot=process.env.INTEGRATION_PRIVATE_DIR||path.resolve(root,'../private');
@@ -86,7 +87,7 @@ export const server=http.createServer(async(req,res)=>{
       entry=entry.owner??=(raw=>({raw,etag:'"'+createHash('sha256').update(raw).digest('hex').slice(0,24)+'"'}))(Buffer.from(personalizeSiteHeader(entry.raw.toString(),true)));
     }
     const tag=entry?entry.etag:'W/"'+st.size.toString(16)+'-'+Math.floor(st.mtimeMs).toString(16)+'"';
-    const h={...headers,'Content-Type':type,'Cache-Control':status===404?'no-cache':cacheControl(p),ETag:tag,'Content-Security-Policy':isAdmin?editorCsp:csp,Vary:'Accept-Encoding'};
+    const h={...headers,'Content-Type':type,'Cache-Control':status===404?'no-cache':(entry&&!personalized&&versionedCache(url,entry.raw))||cacheControl(p),ETag:tag,'Content-Security-Policy':isAdmin?editorCsp:csp,Vary:'Accept-Encoding'};
     if(personalized){h['Cache-Control']='private, no-cache';h.Vary='Accept-Encoding, Cookie';}
     if(isAdmin||p==='/editor')h['X-Robots-Tag']='noindex, nofollow';
     if(p==='/editor')h['Cache-Control']='private, no-store';

@@ -113,7 +113,7 @@ function init(){
   const warmImages=[];
   function warmTbr(){
     const connection=navigator.connection;
-    if(connection?.saveData||/^(slow-)?2g$/.test(connection?.effectiveType||''))return;
+    if(connection?.saveData||/^(slow-2g|2g|3g)$/.test(connection?.effectiveType||''))return;
     load().then(()=>{
       if(!books||active||warmImages.length)return;
       const root=$('content'),columns=window.bookColumns(root,'grid');

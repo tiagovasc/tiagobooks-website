@@ -11,7 +11,7 @@
   function warm(data){covers(rows(data.owned.books,columns(),group),true);covers(rows(data.tbr.all,columns(true)));}
   function prepare(refresh=false){
     const connection=navigator.connection;
-    if(connection?.saveData||/^(slow-)?2g$/.test(connection?.effectiveType||'')||document.visibilityState==='hidden')return Promise.resolve(null);
+    if(connection?.saveData||/^(slow-2g|2g|3g)$/.test(connection?.effectiveType||'')||document.visibilityState==='hidden')return Promise.resolve(null);
     if(!hinted){hinted=true;for(const [href,as] of [['/library','document'],['/tbr.css','style'],['/tbr.js','script']]){const hint=document.createElement('link');hint.rel='prefetch';hint.href=href;hint.as=as;document.head.append(hint);}}
     const saved=read();if(saved&&refresh!==true){warm(saved);return Promise.resolve(saved);}
     if(!pending)pending=fetch('/api/library-preview',{cache:'no-cache',priority:'low',signal:AbortSignal.timeout(12000)}).then(r=>{if(!r.ok)throw Error('preview');return r.json();}).then(data=>{if(!valid(data))throw Error('preview schema');try{sessionStorage.setItem(KEY,JSON.stringify({at:Date.now(),data}));}catch{}warm(data);return data;}).catch(()=>null).finally(()=>{pending=null;});

@@ -523,3 +523,20 @@ dialog.drawer,dialog.drawer::backdrop{right:calc(100% - 100vw)}
  .library-tools #viewSwitch{margin-left:auto}
  .library-tools #favoriteFilter{width:44px;height:44px}
 }
+
+/* One left edge for every page (Tiago, 9 Nov 2026): content starts where the Blog and Library start,
+   beside the date-rail gutter, so moving through the menu never shifts the page sideways. Reading pages
+   keep their comfortable line length; media lists stack where two columns would be cramped. */
+@media(min-width:761px){
+  .writing-site main{max-width:none;margin-left:max(222px,calc((100vw - 1180px)/2));margin-right:max(32px,calc((100vw - 1180px)/2 + 18px));padding-left:0;padding-right:0}
+  .writing-site:not(:has(.ep-list,.bk-list,#blog-result-count)) main{max-width:734px}
+}
+@media(min-width:761px) and (max-width:1100px){
+  .ep{grid-template-columns:1fr;gap:18px}.ep>.ep-thumb,.ep>.ep-video{max-width:560px}
+  .bk{grid-template-columns:200px minmax(0,1fr);gap:32px}
+}
+/* Phone month picker: hidden at the top of a page, where the first month is in plain view, so it never
+   sits over text on arrival; it appears once reading has begun and on every scroll back up. */
+@media(max-width:760px){
+  .near-top .date-rail:not(:focus-within){opacity:0;pointer-events:none}
+}

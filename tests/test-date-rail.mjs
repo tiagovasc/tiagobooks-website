@@ -29,7 +29,7 @@ function matches(element,selector){
   return true;
 }
 
-function fixture({trackHeight=140,reducedMotion=false}={}){
+function fixture({trackHeight=140,reducedMotion=false,scrollHeight}={}){
   const windowListeners={},raf=[],jumps=[];let rail,reads=0;
   const content={getBoundingClientRect:()=>({left:240})};
   function target(key,heading=false){
@@ -77,14 +77,16 @@ function fixture({trackHeight=140,reducedMotion=false}={}){
     return element;
   }
   const document={activeElement:null,body:{append(element){rail=element;}},
-    createElement:()=>makeRail(),querySelector:()=>content};
+    createElement:()=>makeRail(),querySelector:()=>content,
+    documentElement:scrollHeight===undefined?undefined:{scrollHeight}};
+  const win={scrollY:0,addEventListener(type,listener){(windowListeners[type]??=[]).push(listener);}};
   const context=vm.createContext({document,innerHeight:800,
-    window:{addEventListener(type,listener){(windowListeners[type]??=[]).push(listener);}},
+    window:win,
     requestAnimationFrame(callback){raf.push(callback);return raf.length;},
     matchMedia:()=>({matches:reducedMotion})});
   vm.runInContext(compiled,context);
   const app=context.createDateRail(rows,headings);
-  const f={app,rows,headings,jumps,document,raf,
+  const f={app,rows,headings,jumps,document,raf,win,
     get rail(){return rail;},get track(){return rail.track;},get reads(){return reads;},resetReads(){reads=0;},
     monthButton:key=>rail.buttons.find(button=>button.dataset.date===key&&button.classList.contains('month-tick')),
     yearButton:year=>rail.buttons.find(button=>button.dataset.date.startsWith(year)&&!button.classList.contains('month-tick')),
@@ -177,4 +179,13 @@ test('archive clicks and the native picker target visible entries and honor redu
   assert.deepEqual(reduced.jumps,[{key:'2025-12',heading:false,block:'start',behavior:'auto'}]);
   reduced.rail.listeners.click({target:reduced.yearButton('2024')});
   assert.deepEqual(reduced.jumps[1],{key:'2024-12',heading:true,block:'start',behavior:'auto'});
+});
+
+test('the first and last entries become current at the top and bottom of the page',()=>{
+  const f=fixture({scrollHeight:3000});
+  // Three entries in view: the centre one is nearest the viewport middle, but the page is at its top.
+  const place=(top)=>{f.rows.forEach(row=>row.rect={top:-200,bottom:-100});[['2026-12',150],['2026-11',360],['2026-10',600]].forEach(([key,y])=>{f.rows.find(r=>r.dataset.month===key).rect={top:y-top,bottom:y-top+140};});};
+  f.win.scrollY=0;place(0);f.emit('scroll');f.flush();assert.equal(f.rail.select.value,'2026-12');
+  f.win.scrollY=600;place(0);f.emit('scroll');f.flush();assert.equal(f.rail.select.value,'2026-11');
+  f.win.scrollY=2200;place(0);f.emit('scroll');f.flush();assert.equal(f.rail.select.value,'2026-10');
 });
