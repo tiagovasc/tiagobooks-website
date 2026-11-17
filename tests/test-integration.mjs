@@ -127,13 +127,19 @@ test('real catalogue queries find title/author/notes and TBR place without mutat
   const tbr=JSON.parse(await readFile('library/tbr-bookshops.json','utf8')).books;
   assert.ok(searchCatalogue(tbr,'Watkins').length>0);assert.equal(searchCatalogue(source,'no-match-7df51b8c').length,0);assert.equal(searchCatalogue(source,'').length,0);assert.equal(JSON.stringify(source),before);
 });
-test('the real Pagefind WASM index searches all 146 writing entries',async()=>{
+test('the real Pagefind WASM index searches every rendered writing entry',async()=>{
   const {createInstance}=await import('../dist/pagefind/pagefind.js');
   const index=createInstance({basePath:base+'/pagefind/',baseUrl:base+'/',language:'en',noWorker:true});
   try{
     const results=await index.search('beauty');assert.ok(results.results.length>0);
     const entry=await results.results[0].data();assert.ok(entry.meta.title);assert.match(entry.url,/\/(posts|pages)\//);assert.equal((await fetch(new URL(entry.url,base))).status,200);
-    const all=await index.search(null);assert.equal(all.results.length,147);
+    const pages=await Promise.all(['posts','pages'].map(async section=>{
+      const dir=path.join('dist',section);
+      const files=(await readdir(dir)).filter(file=>file.endsWith('.html'));
+      return Promise.all(files.map(file=>readFile(path.join(dir,file),'utf8')));
+    }));
+    const all=await index.search(null);
+    assert.equal(all.results.length,pages.flat().filter(html=>html.includes('data-pagefind-body')).length);
     const empty=await index.search('"qzxvjkqzxvjkqzxvjk"');assert.equal(empty.results.length,0);
   }finally{await index.destroy()}
 });

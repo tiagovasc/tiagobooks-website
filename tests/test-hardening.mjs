@@ -10,6 +10,7 @@ import os from 'node:os';
 import http from 'node:http';
 import {randomBytes} from 'node:crypto';
 import {parseFragment,serialize} from 'parse5';
+import {load as yaml} from 'js-yaml';
 import { postSubtitle, displayTitle, visibleTags, BLOG_VISIBILITY } from '../src/lib/post-presentation.mjs';
 import { parseInterviews } from '../src/lib/interviews.mjs';
 import { parseTalks, parseBooks } from '../src/lib/page-sections.mjs';
@@ -210,8 +211,15 @@ test('the Podcast page lists every episode with post, Spotify, Apple Podcasts an
     assert.doesNotMatch(e,/i\.ytimg\.com|onerror=/,'current episodes need no external thumbnail fallback');
     assert.match(e,/href="https:\/\/www\.youtube\.com\/watch\?v=[\w-]{11}"/,'every episode has its own YouTube link');
     assert.match(e,new RegExp(`class="ep-read" href="${post}"`));assert.match(e,new RegExp(`<h2><a href="${post}">`));
-    assert.match(e,/href="https:\/\/open\.spotify\.com\/episode\/\w{22}"[^>]*><img src="\/icons\/spotify\.png"/);
-    assert.match(e,/href="https:\/\/podcasts\.apple\.com\/[^"\s]+\?i=\d+"[^>]*><img src="\/icons\/apple-podcasts\.png"/);
+    const source=await read(`src/content${post}.md`,'utf8');
+    const metadata=yaml(source.split('---')[1]);
+    for(const [icon,url] of [
+      ['spotify',metadata.spotify||'https://open.spotify.com/show/4ifa95kknLrUQblYTUMQ7T'],
+      ['apple-podcasts',metadata.apple||'https://podcasts.apple.com/us/podcast/anagoge-podcast/id1512482918'],
+    ]){
+      assert.ok(e.includes(`href="${url.replaceAll('&','&amp;')}"`), `${post}: ${icon} destination`);
+      assert.ok(e.includes(`src="/icons/${icon}.png"`), `${post}: ${icon} icon`);
+    }
     const order=['youtube','spotify','apple-podcasts'].map(i=>e.indexOf('/icons/'+i+'.png'));
     assert.deepEqual([...order].sort((a,b)=>a-b),order,'YouTube first');
     assert.match(e,/href="https:\/\/www\.youtube\.com\/[^"]+"[^>]*><img src="\/icons\/youtube\.png"/);
