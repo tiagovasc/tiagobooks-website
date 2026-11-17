@@ -705,6 +705,11 @@ body.tbr-mode .library-tools #statusSeg{display:flex!important}
 
 
 /* Final phone panel/list checks. */
+/* Equal tap boxes and icon centres: keep the four phone controls right-aligned. */
+@media(max-width:760px){
+ .library-tools #viewSwitch,.library-tools #filtersBtn,.library-tools .pill-select.icon-select,.library-tools #favoriteFilter{width:44px;min-width:44px;height:44px;min-height:44px;flex:0 0 44px;padding:0;align-items:center;justify-content:center}
+ .library-tools #viewSwitch{margin-left:auto}
+}
 #tbrFilters{flex-wrap:wrap;margin:12px 0}#tbrFilters select{max-width:100%}#tbrSortMobile{display:none!important}
 .list-stars{color:var(--accent);font-size:11px;white-space:nowrap}
 @media(max-width:760px){.public-library .lrow .l-rating{display:none!important}.lrow .l-meta{flex-wrap:wrap;gap:4px 8px}.lrow .l-cv{align-self:start}.cradle{background:var(--surface)!important;min-height:0!important;padding:18px!important}.cradle .d-cover{max-height:190px!important;width:auto!important;max-width:130px!important}}
