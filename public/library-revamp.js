@@ -55,16 +55,13 @@ window.LibraryRevamp = (() => {
     $('filterCount').textContent=fc;$('filterCount').hidden=!fc;
     $('filtersBtn').setAttribute('aria-label','View and filter'+(fc?', '+fc+' active':''));
     $('favoriteFilter').setAttribute('aria-pressed',String(!!s.favorites));
-    $('viewLabel').textContent=({covers:'Covers',list:'List',table:'Table'})[s.view]||'Covers';
-    const picker=$('browseCollection').closest('label'),host=matchMedia('(max-width:760px)').matches?$(tbr()?'tbrMain':'main'):$('notchMore').querySelector('.n-row2');
-    if(host&&picker.parentElement!==host)host.prepend(picker);
     if($('browseSheet').open)$('filtersPop').hidden=false;
     const current=document.activeElement?.id;
     if(!$('browseOptions').contains(document.activeElement)){
       $('browseOptions').innerHTML=field('browseView','View',[['covers','Covers'],['list','List'],['table','Table']],s.view)+field('browseSize','Cover size',[['compact','Compact'],['large','Large']],s.size||'compact')+field('browseSort','Sort',tbr()?[['recent','Newest discoveries'],['oldest','Oldest discoveries'],['title','Title'],['author','Author']]:Array.from($('sort').options).map(o=>[o.value,o.text]),s.sort)+field('browseShow','Show',[['all','All books'],['favorites','Favourites'],['5','Five stars']],s.favorites?'favorites':s.rating==='5'?'5':'all')+field('browseFormat','Format',facets(books,'format'),s.format)+field('browseTopic','Topic',facets(books,'topic'),s.topic);
     }
     $('browseApply').textContent='Show '+count.toLocaleString('en-GB')+' books';
-    $('browseColumns').hidden=s.view!=='table'||tbr();
+    $('browseColumns').hidden=s.view!=='table'||tbr()||matchMedia('(max-width:760px)').matches;
     if(tbr()){
       let chips=$('tbrBrowseChips');if(!chips){chips=document.createElement('div');chips.id='tbrBrowseChips';chips.className='browse-chips';$('tbrIntro').after(chips);chips.onclick=e=>{const b=e.target.closest('[data-browse-clear]');if(b)change({[b.dataset.browseClear]:'all'})};}
       chips.innerHTML=extra.concat(s.source!=='all'?['source']:[],s.own!=='all'?['own']:[]).map(k=>`<button type="button" data-browse-clear="${k}">${escape(k==='rating'?'Five stars':s[k])} ×</button>`).join('');chips.hidden=!chips.innerHTML;
@@ -73,8 +70,6 @@ window.LibraryRevamp = (() => {
       const read=books.filter(b=>b.read_status==='read'),year=String(new Date().getFullYear());
       $('librarySummary').innerHTML=`<a href="/library?status=read">${read.length.toLocaleString('en-GB')} read</a><span>·</span><a href="/library?status=read&year=${year}">${read.filter(b=>String(b.date_read||'').startsWith(year)).length} in ${year}</a><span>·</span><a href="/library?fav=1">${books.filter(b=>b.favorite).length} favourites</a>${s.view==='table'?'<button type="button" id="summaryColumns">Columns</button>':''}`;
       if($('summaryColumns'))$('summaryColumns').onclick=()=>{open();$('browseColumns').open=true;$('columnsPop').hidden=false;};
-      const years={};for(const b of read){const y=String(b.date_read||'').slice(0,4);if(/^\d{4}$/.test(y))years[y]=(years[y]||0)+1;}
-      const max=Math.max(1,...Object.values(years));$('readingYears').innerHTML=Object.entries(years).sort((a,b)=>a[0].localeCompare(b[0])).map(([y,n])=>`<a href="/library?status=read&year=${y}" title="${n} books read in ${y}" aria-label="${n} books read in ${y}"${s.year===y?' aria-current="true"':''}><span style="height:${Math.max(3,n/max*30)}px"></span><small>${y.slice(2)}</small></a>`).join('');
       const chips=extra.concat(s.year?['year']:[]).map(k=>`<button type="button" data-browse-clear="${k}">${escape(k==='rating'?'Five stars':s[k])} ×</button>`).join('');
       $('browseChips').innerHTML=chips; $('browseChips').hidden=!chips;
     }
@@ -91,16 +86,10 @@ window.LibraryRevamp = (() => {
   }
   function mount(bridge){
     api=bridge;Object.assign(api.ui,{topic:'all',format:'all',rating:'all',size:'compact',year:''});read();
-    const row=$('notchMore').querySelector('.n-row2');
-    row.insertAdjacentHTML('afterbegin','<label class="collection-picker"><span class="sr">Collection</span><select id="browseCollection" aria-label="Collection"><option value="library">My library</option><option value="toread">To read</option></select></label>');
-    $('viewSwitch').insertAdjacentHTML('afterend','<button type="button" id="viewLabel" class="browse-desktop" aria-haspopup="dialog">Covers</button>');
-    $('filtersBtn').insertAdjacentHTML('afterbegin','<span class="filter-word">View and filter</span>');
-    $('favoriteFilter').insertAdjacentHTML('beforeend','<span>Favourites</span>');
-    $('main').insertAdjacentHTML('afterbegin','<p id="librarySummary" class="library-summary"></p><nav id="readingYears" aria-label="Books read by year"></nav><div id="browseChips" class="browse-chips" hidden></div>');
+    $('main').insertAdjacentHTML('afterbegin','<p id="librarySummary" class="library-summary"></p><div id="browseChips" class="browse-chips" hidden></div>');
     document.body.insertAdjacentHTML('beforeend','<dialog id="browseSheet" aria-labelledby="browseTitle"><div class="browse-heading"><h2 id="browseTitle">View and filter</h2><button type="button" id="browseClose" aria-label="Close view and filter">×</button></div><div id="browseOptions"></div><details id="browseAdvanced"><summary>More filters</summary></details><details id="browseColumns"><summary>Table columns</summary></details><div class="browse-actions"><button type="button" id="browseClear">Clear filters</button><button type="button" id="browseApply">Show books</button></div></dialog>');
     $('browseAdvanced').append($('filtersPop'));$('browseColumns').append($('columnsPop'));$('columnsPop').hidden=false;
     $('filtersBtn').addEventListener('click',e=>{e.stopImmediatePropagation();open()},true);
-    $('viewLabel').addEventListener('click',open);
     $('browseClose').onclick=()=>close();$('browseApply').onclick=()=>close();$('browseClear').onclick=reset;
     $('browseSheet').addEventListener('cancel',e=>{e.preventDefault();close()});
     $('browseSheet').addEventListener('click',e=>{if(e.target!==$('browseSheet'))return;const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)close()});
@@ -110,7 +99,6 @@ window.LibraryRevamp = (() => {
       if(e.target.id==='browseShow')change({favorites:e.target.value==='favorites',rating:e.target.value==='5'?'5':'all'});
     });
     $('browseChips').onclick=e=>{const b=e.target.closest('[data-browse-clear]');if(b)change({[b.dataset.browseClear]:b.dataset.browseClear==='year'?'':'all'})};
-    $('browseCollection').onchange=e=>window.TBRBrowse?.enter(e.target.value==='toread');
     addEventListener('popstate',()=>{if(pendingAddress){history.replaceState(null,'',pendingAddress);pendingAddress=null;return;}if($('browseSheet').open)close(false);restoring=true;read();api.buildFilters();api.render();restoring=false;refresh()});
     addEventListener('library-browse-render',refresh);
     addEventListener('resize',refresh);

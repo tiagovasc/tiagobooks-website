@@ -85,6 +85,8 @@ function init(){
   $('sortLabel').insertAdjacentHTML('afterend','<label id="tbrSortLabel" class="pill-select icon-select" title="Sort"><svg class="i" aria-hidden="true"><use href="#i-sort"/></svg><span class="lbl">Sort</span><select id="tbrSort" aria-label="Sort TBR books"><option value="recent">Newest photos</option><option value="oldest">Oldest photos</option><option value="title">Title</option><option value="author">Author</option></select></label>');
   $('main').insertAdjacentHTML('afterend','<main class="wrap" id="tbrMain" hidden><div id="tbrIntro"></div><p id="tbrFavoriteMessage" role="status"></p><div id="tbrFilters" class="tbr-toolbar"></div><div id="tbrContent" aria-live="polite"></div></main><dialog id="tbrDialog" aria-labelledby="tbrDetailTitle"><div class="tbr-dialog-head"><span>TBR · Book shops</span><button type="button" class="tbr-close" aria-label="Close book details">×</button></div><div class="tbr-detail" id="tbrDetail"></div></dialog>');
   $('tbrDialog').querySelector('.tbr-dialog-head').insertAdjacentHTML('afterbegin','<button type="button" id="tbrPrev" aria-label="Previous book">←</button><button type="button" id="tbrNext" aria-label="Next book">→</button>');
+  // Keep TBR in the shared reading-status navigation; its own facets belong with its content.
+  $('tbrIntro').after($('tbrBrowseTabs'));
   $('tbrPrev').onclick=()=>stepTbr(-1);$('tbrNext').onclick=()=>stepTbr(1);
   function stepTbr(delta,id){const list=filtered(),at=list.findIndex(b=>id?(b.library_id===id||b.book_id===id):b.id===openId);if(at>=0&&list[at+delta])openBook(list[at+delta].id);}
   let moreObserver=null,openId=null,pagingList=[];

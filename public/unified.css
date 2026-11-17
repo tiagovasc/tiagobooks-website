@@ -662,6 +662,47 @@ body.tbr-mode #tbrMain{padding-bottom:24px}.tbr-intro{margin-bottom:18px!importa
 #tbrDialog .tbr-dialog-head>button{min-width:40px;min-height:44px;color:var(--ink);background:transparent;border:0;font-size:22px}#tbrDialog .tbr-dialog-head>button:disabled{opacity:.35}
 @media(max-width:760px){#tbrDialog .tbr-detail{display:block;padding:22px}#tbrDialog .tbr-panel-cover{width:120px;margin:0 auto 24px}.tbr-panel-body>h2{font-size:23px}}
 
+/* Tiago's numbered-image review, 17 November 2026. */
+.library-tools #viewSwitch{display:flex!important}
+.library-tools #statusSeg [data-collection]{display:inline-flex}
+body.tbr-mode .library-tools #statusSeg{display:flex!important}
+.library-tools #filtersBtn,.library-tools #favoriteFilter{width:40px;min-height:44px;padding:8px;justify-content:center}
+.library-tools #filtersBtn .i{display:block}
+.library-tools .pill-select.icon-select{width:40px;min-height:44px}
+.library-tools .pill-select.icon-select .lbl{display:none}
+.library-tools .pill-select.icon-select>.i{display:block}
+#tbrBrowseTabs{margin:0 0 18px}
+#summaryColumns{display:none}
+@media(min-width:761px){body .grid,body .tbr-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+#tbrDialog{inset:0;margin:auto;width:min(620px,calc(100vw - 36px));height:fit-content;max-height:calc(100dvh - 48px);border-radius:22px;box-shadow:0 24px 80px #0005}
+#tbrDialog::backdrop{background:#0007;backdrop-filter:blur(5px)}
+@media(max-width:760px){
+ .site-shell,body:has(.library-tools,.section-tools) .site-shell{padding-inline:20px}
+ .site-shell .shell-top{gap:18px}
+ .site-shell .unified-nav{justify-content:center}
+ .site-shell .shell-actions{gap:4px}
+ .library-tools .n-row2{flex-wrap:wrap;gap:4px}
+ .library-tools .statusbar{flex:1 1 100%;width:100%;order:-1}
+ .library-tools #statusNext,body.tbr-mode .library-tools #statusNext{display:grid!important}
+ .library-tools #viewSwitch{margin-left:auto}
+ .library-tools #favoriteFilter,.library-tools .pill-select:not([hidden]){display:inline-flex!important}
+ .library-tools #filtersBtn{width:40px;padding:8px}
+ #bookTable thead th{padding:12px 6px;white-space:normal;overflow:visible;text-overflow:clip;font-size:11px;line-height:1.35}
+ #bookHeaders th:last-child{position:static;box-shadow:none}
+ .phone-row td{padding:12px 6px!important;overflow-wrap:normal;vertical-align:middle}
+ .phone-row .phone-title{display:block;-webkit-line-clamp:unset;overflow:visible;overflow-wrap:break-word;line-height:1.4}
+ .phone-row .details-btn{min-width:44px;min-height:44px;padding:6px;font-size:12px}
+ #tbrDialog .tbr-detail{display:grid;grid-template-columns:90px minmax(0,1fr);gap:18px;padding:20px}
+ #tbrDialog .tbr-panel-cover{width:auto;margin:0}
+ #tbrDialog .tbr-panel-body>h2{font-size:21px}
+}
+@media(max-width:360px){
+ .site-shell,body:has(.library-tools,.section-tools) .site-shell{padding-inline:16px}
+ .site-shell .shell-top{gap:10px}
+ .site-shell .shell-action{width:32px;min-width:32px;padding:6px}
+ .site-shell .shell-actions{gap:0}
+}
+
 
 /* Final phone panel/list checks. */
 #tbrFilters{flex-wrap:wrap;margin:12px 0}#tbrFilters select{max-width:100%}#tbrSortMobile{display:none!important}
