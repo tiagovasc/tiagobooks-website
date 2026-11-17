@@ -5,6 +5,13 @@ import {readFileSync} from 'node:fs';
 const source=readFileSync(new URL('../public/library-revamp.js',import.meta.url),'utf8');
 const context={window:{}};vm.runInNewContext(source,context);
 const {topics,matches}=context.window.LibraryRevamp;
+test('filter badges stay numeric across Library and To read optional fields',()=>{
+ const count=context.window.LibraryRevamp.activeFilterCount;
+ assert.equal(count({}),0);
+ assert.equal(count({topic:'all',format:'all',rating:'all',own:'all',source:'all',favorites:true}),1);
+ assert.equal(count({source:'online',own:'owned',topic:'philosophy',favorites:true}),4);
+ assert.equal(count({subject:'all',enrich:'all',year:'2020'}),1);
+});
 test('browse topics normalize display-only values and exclude reading and acquisition bookkeeping',()=>{
  const book={tags:['Philosophy','Manga','manga','Unfinished','Not completed','owned_unread','audiobooks','London trip']};
  const before=JSON.stringify(book);

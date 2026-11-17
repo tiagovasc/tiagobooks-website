@@ -10,6 +10,7 @@ import {assetVersion} from '../library/asset-version.mjs';
 const ASSETS=[
   ['/tbr.css','library/tbr.css'],
   ['/tbr.js','library/tbr.js'],
+  ['/library-revamp.js','dist/library-revamp.js'],
   ['/date-rail.js','dist/date-rail.js'],
   ['/blog-filter.js','dist/blog-filter.js'],
   ['/unified.css','dist/unified.css'],

@@ -4,6 +4,7 @@ window.LibraryRevamp = (() => {
   const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const topic=t=>String(t).trim().toLocaleLowerCase();
   const topics=b=>(b.tags||[]).map(topic).filter(t=>t&&!/^(unfinished|not completed|owned.unread|audiobooks?|read|reading|unread|owned|to.read|next|paused)$/.test(t)&&!/(trip|bookshop|goodreads|instagram|edinburgh|london|purchase)/.test(t));
+  const activeFilterCount=s=>['topic','format','rating','own','source','subject','enrich'].filter(k=>s[k]&&s[k]!=='all').length+['favorites','year','city','shop'].filter(k=>!!s[k]).length;
   const keys=['status','view','sort','fav','topic','format','rating','size','own','subject','enrich','pause','q','year'];
   let api,restoring=true,started=false,sheetPushed=false,returnFocus=null,reviews={},pendingAddress=null;
   const defaults={status:'all',view:'covers',sort:'dateread',favorites:false,topic:'all',format:'all',rating:'all',size:'compact',own:'all',subject:'all',enrich:'all',pauseFilter:'all',year:''};
@@ -50,7 +51,7 @@ window.LibraryRevamp = (() => {
     document.documentElement.dataset.coverSize=s.size||api.ui.size||'compact';
     const count=tbr()?window.TBRBrowse?.count()||0:api.count();
     const extra=['topic','format','rating'].filter(k=>s[k]&&s[k]!=='all');
-    const fc=extra.length+Number(!!s.favorites)+Number(s.own&&s.own!=='all')+Number(s.source&&s.source!=='all')+Number(!!s.year)+Number(s.subject&&s.subject!=='all')+Number(s.enrich&&s.enrich!=='all')+Number(!!s.city)+Number(!!s.shop);
+    const fc=activeFilterCount(s);
     $('filterCount').textContent=fc;$('filterCount').hidden=!fc;
     $('filtersBtn').setAttribute('aria-label','View and filter'+(fc?', '+fc+' active':''));
     $('favoriteFilter').setAttribute('aria-pressed',String(!!s.favorites));
@@ -117,5 +118,5 @@ window.LibraryRevamp = (() => {
     fetch('/review-links.json').then(r=>r.ok?r.json():{}).then(map=>{reviews=map;api.refreshDrawer?.()}).catch(()=>{});
     restoring=false;started=true;refresh();
   }
-  return {mount,refresh,matches,topics,reset,review:book=>{const r=reviews[book.id];return r&&topic(r.title)===topic(book.title)?r.url:'';},escape,write};
+  return {mount,refresh,matches,topics,activeFilterCount,reset,review:book=>{const r=reviews[book.id];return r&&topic(r.title)===topic(book.title)?r.url:'';},escape,write};
 })();
