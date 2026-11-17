@@ -2,7 +2,7 @@
 
 The source for [tiagovf.com](https://tiagovf.com): a personal website about philosophy, books and the questions that connect them.
 
-[Blog](https://tiagovf.com/) · [Library](https://tiagovf.com/library) · [Podcasts](https://tiagovf.com/pages/podcast-overview) · [About](https://tiagovf.com/pages/about)
+[Blog](https://tiagovf.com/) · [Library](https://tiagovf.com/library) · [Anagoge Podcast](https://tiagovf.com/pages/podcast-overview) · [About](https://tiagovf.com/pages/about)
 
 ## What’s inside
 

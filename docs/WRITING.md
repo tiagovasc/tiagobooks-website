@@ -55,6 +55,12 @@ thumbnailCrop:
 
 ## Podcast page
 
+The public menu and page title are **Anagoge Podcast**; the stable address remains `/pages/podcast-overview`. Earlier references below to the Podcasts page mean this same destination.
+
+### Preserve shared links when renaming
+
+Changing a menu label or title should normally leave the URL unchanged. When a URL must change, retain every previous path in `public/_redirects` with a permanent 301 redirect directly to the current path; update older aliases to avoid redirect chains. Update internal links and verify the old addresses and final destination after deployment. Keep redirects indefinitely while old links may still be used. For renamed section headings, retain the old fragment anchor too: fragments are handled by the browser and cannot be repaired by a server redirect alone.
+
 ### Titles, subtitles and Blog sections
 
 Blog navigation uses All posts, General, Book Reviews and In Search of the Infinite. Podcast articles are currently hidden from the Blog listing and its category menu; they remain published and linked from the Podcasts page. Set `BLOG_VISIBILITY.showPodcastPosts` to `true` in `src/lib/post-presentation.mjs` and rebuild to restore both. Continue tagging episode articles Podcast; the presentation preference does not change content metadata, search or feeds. Older Podcast category links lead to the Podcasts page during this trial. Other topic tags remain in source metadata and retain their links, but are not displayed as chips.

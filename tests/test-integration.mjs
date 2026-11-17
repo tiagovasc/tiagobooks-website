@@ -72,7 +72,7 @@ test('Podcast visibility is a reversible Blog-only choice; episode links and art
  for(const post of podcastPosts){
   const href='/posts/'+post.id;
   if(!BLOG_VISIBILITY.showPodcastPosts)assert.ok(!blog.includes('href="'+href+'"'),href+' hidden from Blog');
-  assert.ok(index.includes('href="'+href+'"'),href+' retained on Podcasts');
+  assert.ok(index.includes('href="'+href+'"'),href+' retained on Anagoge Podcast');
   assert.equal((await fetch(base+href)).status,200,href);
  }
  if(!BLOG_VISIBILITY.showPodcastPosts){assert.doesNotMatch(blog,/data-blog-tag="Podcast"/);assert.match(blog,/data-hidden-podcast-url="\/pages\/podcast-overview"/);}

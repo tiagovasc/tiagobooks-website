@@ -300,7 +300,7 @@ test('Books renders the selected cover layout with working original download and
 });
 
 test('active navigation is present in the delivered HTML before any client scripts run',async()=>{
-  const routes={'/':'Blog','/library':'Library','/blog':'Blog','/pages/books':'Books','/pages/talks':'Talks','/pages/podcast-overview':'Podcasts','/pages/interviews':'Interviews','/pages/about':'About','/posts/podcast-object-oriented-ontology-and-the-nature-of-reality-with-graham-harman':'Blog'};
+  const routes={'/':'Blog','/library':'Library','/blog':'Blog','/pages/books':'Books','/pages/talks':'Talks','/pages/podcast-overview':'Anagoge Podcast','/pages/interviews':'Interviews','/pages/about':'About','/posts/podcast-object-oriented-ontology-and-the-nature-of-reality-with-graham-harman':'Blog'};
   for(const [route,label] of Object.entries(routes)){
     const html=await(await fetch(base+route)).text();
     const nav=html.match(/<nav class="unified-nav"[\s\S]*?<\/nav>/)[0];
