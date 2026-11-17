@@ -18,12 +18,16 @@ const {server}=await import('../library/server.mjs');
 await new Promise(r=>server.listen(0,'127.0.0.1',r));const base='http://127.0.0.1:'+server.address().port;
 test.after(()=>new Promise(r=>server.close(r)));
 
-test('the phone menu names the current section, and says Menu on pages outside it',()=>{
+test('the phone menu is icon-only with an accessible name on every section',()=>{
   const site=JSON.parse('{"author":"Tiago Faleiro","nav":[{"label":"Blog","href":"/blog"},{"label":"Library","href":"/library"}]}');
   const label=html=>html.match(/class="nav-more-toggle[^"]*"[^>]*>([^<]*)</)[1];
-  assert.equal(label(renderSiteHeader(site,'/posts/example')),'Blog');
-  assert.equal(label(renderSiteHeader(site,'/library')),'Library');
-  for(const page of ['/search','/404','/editor'])assert.equal(label(renderSiteHeader(site,page)),'Menu',page);
+  for(const page of ['/posts/example','/library','/search','/404','/editor']){
+    const html=renderSiteHeader(site,page);
+    assert.equal(label(html),'',page);
+    assert.match(html,/aria-label="Open website menu" aria-haspopup="dialog"/);
+    assert.match(html,/<path d="M3 5h14M3 10h14M3 15h14"/);
+  }
+  assert.match(renderSiteHeader(site,'/library'),/href="\/library" aria-current="page"/);
 });
 
 test('sign-in follows the saved appearance, returns to the site and guards against double submission',async()=>{
@@ -98,7 +102,7 @@ import vm from 'node:vm';
 
 test('a pressed menu item shows as selected at once and reverts if the press is abandoned',()=>{
   const f=menuFixture(),books=f.links[1];
-  f.down(books);assert.deepEqual(f.current(),['Books']);assert.equal(f.label.textContent,'Books');
+  f.down(books);assert.deepEqual(f.current(),['Books']);assert.equal(f.label.textContent,'About','press feedback must not overwrite the trigger SVG child');
   f.window('pointerup');assert.deepEqual(f.current(),['About'],'released elsewhere');assert.equal(f.label.textContent,'About');
   f.down(books);f.click(books);f.window('pointerup');assert.deepEqual(f.current(),['Books'],'a real click keeps the choice');
   f.window('pageshow',{persisted:true});assert.deepEqual(f.current(),['About'],'Back restores the page being shown');

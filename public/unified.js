@@ -22,15 +22,33 @@ function sideRow(row){
 }
 for(const row of document.querySelectorAll('.unified-nav,.tag-chips,#statusSeg'))sideRow(row);
 
-// One mobile page disclosure; desktop keeps the same links visible inline.
+// The approved phone menu uses a native modal: one set of links and live utility controls.
+// Moving, rather than cloning, keeps appearance/owner listeners and IDs intact.
 const more=document.querySelector('.nav-more'),moreButton=more?.querySelector('button');
-function closeMore(){moreButton?.setAttribute('aria-expanded','false')}
-moreButton?.addEventListener('click',()=>moreButton.setAttribute('aria-expanded',String(moreButton.getAttribute('aria-expanded')!=='true')));
-document.addEventListener('click',e=>{if(more&&!more.contains(e.target))closeMore()});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&moreButton?.getAttribute('aria-expanded')==='true'){closeMore();moreButton.focus()}});
-more?.addEventListener('focusout',e=>{if(!more.contains(e.relatedTarget))closeMore()});
-more?.querySelectorAll('.nav-extra a').forEach(a=>a.addEventListener('click',closeMore));
-window.matchMedia('(max-width:760px)').addEventListener('change',closeMore);
+const phoneMenu=matchMedia('(max-width:760px)'),menuLinks=more?.querySelector('.nav-extra'),menuActions=document.querySelector('#siteShell .shell-actions'),actionsHome=menuActions?.parentElement;
+let menuDialog;
+function closeMore(){if(menuDialog?.open)menuDialog.close();moreButton?.setAttribute('aria-expanded','false')}
+if(moreButton&&menuLinks&&menuActions){
+  menuDialog=document.createElement('dialog');menuDialog.id='mobileSiteMenu';menuDialog.setAttribute('aria-labelledby','mobileSiteMenuTitle');
+  menuDialog.innerHTML='<div class="mobile-menu-heading"><h2 id="mobileSiteMenuTitle">Explore the website</h2><button type="button" class="mobile-menu-close" aria-label="Close website menu" autofocus>×</button></div><div class="mobile-menu-utilities"></div><nav class="mobile-menu-links" aria-label="Website sections"></nav>';
+  more.append(menuDialog);moreButton.setAttribute('aria-controls',menuDialog.id);document.body.classList.add('mobile-nav-ready');
+  for(const action of menuActions.children){const text=document.createElement('span');text.className='mobile-action-label';text.textContent=action.id==='appearanceBtn'?'Appearance':action.id==='editAccess'?'Edit writing':'Search';text.setAttribute('aria-hidden','true');action.append(text)}
+  moreButton.addEventListener('click',()=>{
+    if(!phoneMenu.matches)return;
+    if(menuDialog.open){closeMore();return}
+    menuDialog.querySelector('.mobile-menu-links').append(menuLinks);menuDialog.querySelector('.mobile-menu-utilities').append(menuActions);
+    moreButton.setAttribute('aria-expanded','true');document.body.classList.add('mobile-menu-open');menuDialog.showModal();
+  });
+  menuDialog.querySelector('.mobile-menu-close').addEventListener('click',closeMore);
+  menuDialog.addEventListener('keydown',e=>{
+    if(e.key!=='Tab')return;
+    const controls=[...menuDialog.querySelectorAll('a[href],button:not([disabled]),[tabindex="0"]')].filter(el=>el.getClientRects().length&&!el.hidden),first=controls[0],last=controls.at(-1);
+    if((e.shiftKey&&document.activeElement===first)||(!e.shiftKey&&document.activeElement===last)){e.preventDefault();(e.shiftKey?last:first)?.focus()}
+  });
+  menuDialog.addEventListener('close',()=>{more.insertBefore(menuLinks,menuDialog);actionsHome.append(menuActions);document.body.classList.remove('mobile-menu-open');moreButton.setAttribute('aria-expanded','false');if(phoneMenu.matches)moreButton.focus({preventScroll:true})});
+  menuDialog.addEventListener('click',e=>{if(e.target.closest('a[href]'))closeMore();else if(e.target===menuDialog){const r=menuDialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeMore()}});
+}
+phoneMenu.addEventListener('change',closeMore);
 window.addEventListener('pageshow',closeMore);
 
 // Keep the month picker available on scroll-up, without covering text on scroll-down.
@@ -54,11 +72,11 @@ document.querySelectorAll('.ep-thumb img,.ep-video img').forEach(img=>{if(img.co
 (()=>{
   const nav=document.querySelector('#siteShell .unified-nav');if(!nav)return;
   const links=[...nav.querySelectorAll('.nav-extra a[href^="/"]')],toggle=nav.querySelector('.nav-more-toggle');
-  const label=toggle?.firstChild,saved={current:links.filter(a=>a.hasAttribute('aria-current')),label:label?.textContent,on:toggle?.classList.contains('is-current')};
+  const saved={current:links.filter(a=>a.hasAttribute('aria-current')),on:toggle?.classList.contains('is-current')};
   const here=a=>new URL(a.href).pathname===location.pathname;
   let pressed=null,leaving=false;
-  function show(a){for(const l of links)if(l===a)l.setAttribute('aria-current','page');else l.removeAttribute('aria-current');if(label)label.textContent=a.textContent;toggle?.classList.add('is-current')}
-  function restore(){pressed=null;leaving=false;for(const l of links)if(saved.current.includes(l))l.setAttribute('aria-current','page');else l.removeAttribute('aria-current');if(label)label.textContent=saved.label;toggle?.classList.toggle('is-current',!!saved.on)}
+  function show(a){for(const l of links)if(l===a)l.setAttribute('aria-current','page');else l.removeAttribute('aria-current');toggle?.classList.add('is-current')}
+  function restore(){pressed=null;leaving=false;for(const l of links)if(saved.current.includes(l))l.setAttribute('aria-current','page');else l.removeAttribute('aria-current');toggle?.classList.toggle('is-current',!!saved.on)}
   const plain=e=>!(e.ctrlKey||e.metaKey||e.shiftKey||e.altKey);
   nav.addEventListener('pointerdown',e=>{const a=e.target.closest('a[href]');if(e.button!==0||!plain(e)||!links.includes(a))return;pressed=a;show(a)});
   nav.addEventListener('click',e=>{const a=e.target.closest('a[href]');if(!links.includes(a))return;if(e.defaultPrevented||!plain(e)||e.button!==0){restore();return}leaving=true;show(a)});
