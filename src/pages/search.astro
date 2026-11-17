@@ -1,5 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
+import {getListedPosts,longDate} from '../lib/content';
+import {isBlogPostVisible,displayTitle} from '../lib/post-presentation.mjs';
+const recentPosts=(await getListedPosts()).filter(p=>isBlogPostVisible(p)).sort((a,b)=>b.data.date.valueOf()-a.data.date.valueOf());
 // 4 Nov 2026 redesign: one search box for blog, library and TBR, grouped results.
 // The previous page is preserved in ../private/simplify-header-20261104/before/src/pages/search.astro.
 ---
@@ -18,6 +21,10 @@ import Base from '../layouts/Base.astro';
   </nav>
   <p class="ss-status" id="ss-status" role="status"></p>
   <button type="button" class="ss-more" id="ss-retry" hidden>Retry search</button>
+  <section id="searchStart" class="search-start" data-post-total={recentPosts.length}>
+    <h2>Recent posts</h2><div class="recent-posts">{recentPosts.slice(0,3).map(p=><a href={p.data.externalUrl||`/posts/${p.id}`}><span>{displayTitle(p.data.title)}</span><small>{longDate(p.data.date)}</small></a>)}</div>
+    <section id="readingStart" hidden><h2>Reading now</h2><div id="readingNow" class="reading-now"></div></section>
+  </section>
   <div id="ss-results"></div>
   <script>
     import {searchCatalogue,tbrHref,tbrLabel} from '../lib/catalogue-search.mjs';
@@ -40,8 +47,8 @@ import Base from '../layouts/Base.astro';
     async function run(){const q=$('ss-q').value.trim(),t=++token;const u=new URL(location.href);if(q)u.searchParams.set('q',q);else u.searchParams.delete('q');if(scope!=='all')u.searchParams.set('scope',scope);else u.searchParams.delete('scope');history.replaceState(null,'',u);
       renderToken++;$('ss-retry').hidden=true;$('ss-results').innerHTML='';
       if(q!==lastQuery){for(const k of Object.keys(limit))delete limit[k];lastQuery=q}
-      $('search-suggestions').hidden=Boolean(q);
-      if(!q){last={blog:null,library:[],tbr:[]};for(const el of document.querySelectorAll('[data-count]'))el.textContent='';$('ss-status').textContent='';$('ss-results').setAttribute('aria-busy','false');return}
+      $('search-suggestions').hidden=Boolean(q);$('searchStart').hidden=Boolean(q);if(!q)showStart();
+      if(!q){last={blog:null,library:[],tbr:[]};/* Start counts remain available while the query is empty. */$('ss-status').textContent='';$('ss-results').setAttribute('aria-busy','false');return}
       $('ss-status').textContent='Searching…';$('ss-results').setAttribute('aria-busy','true');
       try{const [blog,lib,tbr]=await Promise.all([blogResults(q).catch(()=>null),catalogue('library').then(b=>searchCatalogue(b,q)).catch(()=>null),catalogue('tbr').then(b=>searchCatalogue(b,q)).catch(()=>null)]);
         if(t!==token)return;last={blog,library:lib,tbr};await render()}catch(e){if(t===token){$('ss-status').textContent='Search is unavailable right now.';$('ss-retry').hidden=false;$('ss-results').setAttribute('aria-busy','false')}}}
@@ -68,6 +75,15 @@ import Base from '../layouts/Base.astro';
     $('ss-q').addEventListener('input',()=>{clearTimeout(timer);token++;renderToken++;$('ss-results').innerHTML='';$('ss-retry').hidden=true;$('ss-status').textContent=$('ss-q').value.trim()?'Searching…':'';timer=setTimeout(run,140)});
     const start=new URL(location.href);$('ss-q').value=start.searchParams.get('q')||'';const s=start.searchParams.get('scope');if(s&&LABEL[s])scope=s;
     for(const b of document.querySelectorAll<HTMLElement>('[data-scope]'))b.setAttribute('aria-pressed',String(b.dataset.scope===scope));
-    loadPagefind().catch(()=>{});if($('ss-q').value)run();
+    let startPreview:any=null;
+    async function showStart(){
+      try{if(!startPreview){const r=await fetch('/api/library-preview');if(!r.ok)return;startPreview=await r.json();}if($('ss-q').value.trim())return;
+        const counts:any={blog:Number($('searchStart').dataset.postTotal),library:startPreview.owned.total,tbr:startPreview.totals.all};counts.all=counts.blog+counts.library+counts.tbr;
+        for(const el of document.querySelectorAll<HTMLElement>('[data-count]'))el.textContent=String(counts[el.dataset.count!]||0);
+        const reading=startPreview.owned.books.filter((b:any)=>b.read_status==='reading');$('readingStart').hidden=!reading.length;
+        $('readingNow').innerHTML=reading.map((b:any)=>`<a href="/library#book/${encodeURIComponent(b.id)}">${b.cover?`<img src="/${esc(thumb(b.cover))}" alt="" loading="lazy"/>`:''}<span>${esc(b.title)}</span><small>${esc(b.author)}</small></a>`).join('');
+      }catch{/* Recent posts remain available when the catalogue is offline. */}
+    }
+    loadPagefind().catch(()=>{});if($('ss-q').value)run();else showStart();
   </script>
 </Base>

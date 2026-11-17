@@ -1,6 +1,6 @@
 const key='tiago-books-ui-v1';
 function appearance(){let ui={};try{ui=JSON.parse(localStorage.getItem(key)||'{}')}catch{}return ui}
-function apply(){const mode=appearance().theme;if(['light','dark'].includes(mode))document.documentElement.dataset.theme=mode;else document.documentElement.removeAttribute('data-theme');if(!window.CLOUD_LIBRARY){const dark=mode==='dark'||(!['light','dark'].includes(mode)&&matchMedia('(prefers-color-scheme:dark)').matches);const b=document.getElementById('appearanceBtn');if(b){b.setAttribute('aria-label','Switch to '+(dark?'light':'dark')+' mode');b.title=b.getAttribute('aria-label')}}}
+function apply(){const mode=appearance().theme;if(['light','dark'].includes(mode))document.documentElement.dataset.theme=mode;else document.documentElement.removeAttribute('data-theme');for(const m of document.querySelectorAll('meta[name="theme-color"]')){if(!m.dataset.auto)m.dataset.auto=m.content;m.content=mode==='dark'?'#000000':mode==='light'?'#EDEDEA':m.dataset.auto}if(!window.CLOUD_LIBRARY){const dark=mode==='dark'||(!['light','dark'].includes(mode)&&matchMedia('(prefers-color-scheme:dark)').matches);const b=document.getElementById('appearanceBtn');if(b){b.setAttribute('aria-label','Switch to '+(dark?'light':'dark')+' mode');b.title=b.getAttribute('aria-label')}}}
 apply();
 if(!window.CLOUD_LIBRARY)document.getElementById('appearanceBtn')?.addEventListener('click',()=>{const ui=appearance();const dark=ui.theme==='dark'||(!['dark','light'].includes(ui.theme)&&matchMedia('(prefers-color-scheme:dark)').matches);ui.theme=dark?'light':'dark';try{localStorage.setItem(key,JSON.stringify(ui))}catch{}apply()});
 window.addEventListener('storage',apply);
@@ -79,3 +79,35 @@ document.querySelectorAll('.ep-thumb img,.ep-video img').forEach(img=>{if(img.co
   let opened=false;const open=()=>{if(opened)return;opened=true;const c=navigator.connection;if(c?.saveData||/^(slow-2g|2g)$/.test(c?.effectiveType||''))return;rules({prefetch:[{source:'list',urls,eagerness:'immediate'}]})};
   nav.addEventListener('pointerenter',open);nav.addEventListener('focusin',open);toggle?.addEventListener('pointerdown',open);toggle?.addEventListener('click',open);
 })();
+/* Shared progressive enhancements. Content remains usable without these controls. */
+window.enhanceDateRail=function(rail){
+  if(!rail||rail.hidden||rail.querySelector('.date-open'))return;
+  const open=document.createElement('button');open.className='date-open';open.type='button';open.setAttribute('aria-label','Choose a month or year');
+  const top=document.createElement('button');top.className='date-up';top.type='button';top.textContent='↑';top.setAttribute('aria-label','Back to top');
+  top.onclick=()=>scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'});
+  rail.append(open,top);
+  const label=()=>{const sel=rail.querySelector('select');open.textContent=sel?.selectedOptions[0]?.textContent||'Choose date'};label();if(rail._dateLabel)removeEventListener('scroll',rail._dateLabel);rail._dateLabel=label;addEventListener('scroll',label,{passive:true});
+  open.onclick=()=>{
+    let dialog=document.getElementById('dateSheet');if(!dialog){dialog=document.createElement('dialog');dialog.id='dateSheet';dialog.setAttribute('aria-labelledby','dateSheetTitle');document.body.append(dialog);}
+    const counts=JSON.parse(rail.dataset.monthCounts||'{}'),years={};for(const [k,n] of Object.entries(counts))if(/^\d{4}-\d{2}$/.test(k))(years[k.slice(0,4)]??=[]).push([k,n]);
+    const totals=Object.values(years).map(months=>months.reduce((n,p)=>n+Number(p[1]),0)),max=Math.max(1,...totals);
+    dialog.innerHTML='<div class="browse-heading"><h2 id="dateSheetTitle">Browse by date</h2><button type="button" aria-label="Close date picker">×</button></div>'+Object.entries(years).sort((a,b)=>b[0].localeCompare(a[0])).map(([year,months])=>{const n=months.reduce((sum,p)=>sum+Number(p[1]),0);return `<section class="date-year"><button type="button" data-jump="${months[0][0]}"><b>${year}</b><span class="year-bar" style="width:${n/max*45}%"></span><span>${n}</span></button><div>${months.map(([k,n])=>`<button type="button" data-jump="${k}">${new Date(k+'-01T12:00:00').toLocaleString('en',{month:'short'})} <small>${n}</small></button>`).join('')}</div></section>`}).join('');
+    const close=()=>{dialog.close();open.focus({preventScroll:true})};dialog.querySelector('.browse-heading button').onclick=close;
+    dialog.onclick=e=>{const b=e.target.closest('[data-jump]');if(b){const selector=rail.querySelector('select');if(selector){selector.value=b.dataset.jump;selector.dispatchEvent(new Event('change',{bubbles:true}));}close();}else if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)close()}};
+    dialog.showModal();
+  };
+};
+document.querySelectorAll('.date-rail').forEach(window.enhanceDateRail);
+new MutationObserver(records=>{for(const record of records)for(const node of record.addedNodes)if(node.nodeType===1&&node.matches?.('.date-rail'))window.enhanceDateRail(node)}).observe(document.body,{childList:true});
+
+// Explicit affordance for clipped Blog chips, retaining the existing choices.
+const chips=document.querySelector('.section-tools .tag-chips');
+if(chips){const next=document.createElement('button');next.type='button';next.className='chips-next';next.textContent='›';next.setAttribute('aria-label','Show more Blog filters');next.onclick=()=>chips.scrollBy({left:180,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'});chips.parentElement.append(next);const update=()=>next.hidden=chips.scrollWidth-chips.clientWidth-chips.scrollLeft<3;chips.addEventListener('scroll',update,{passive:true});addEventListener('resize',update);update();}
+
+// Long articles get a contents list made only from their authored headings.
+const article=document.querySelector('article[data-entry-kind=post]');
+if(article){
+  document.body.classList.add('reading-article');
+  const headings=[...article.querySelectorAll('.e-content h2')];
+  if(headings.length>=2){const aside=document.createElement('aside');aside.className='article-contents';aside.setAttribute('aria-label','On this page');const title=document.createElement('p');title.textContent='On this page';aside.append(title);headings.forEach((h,i)=>{h.id||='section-'+(i+1);const a=document.createElement('a');a.href='#'+h.id;a.textContent=h.textContent;aside.append(a)});article.append(aside);if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>{for(const entry of entries)if(entry.isIntersecting){aside.querySelectorAll('a').forEach(a=>a.toggleAttribute('aria-current',a.hash==='#'+entry.target.id));}},{rootMargin:'-10% 0px -65% 0px'});headings.forEach(h=>observer.observe(h));}}
+}

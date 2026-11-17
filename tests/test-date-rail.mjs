@@ -40,7 +40,7 @@ function fixture({trackHeight=140,reducedMotion=false,scrollHeight}={}){
   const rows=months.map(key=>target(key)),headings=months.map(key=>target(key,true));
   function makeRail(){
     const properties=new Map();
-    const element={hidden:true,attributes:{},listeners:{},
+    const element={hidden:true,dataset:{},attributes:{},listeners:{},
       style:{setProperty:(key,value)=>properties.set(key,String(value)),getPropertyValue:key=>properties.get(key)||''},
       setAttribute(name,value){this.attributes[name]=value;},
       addEventListener(type,listener){this.listeners[type]=listener;},

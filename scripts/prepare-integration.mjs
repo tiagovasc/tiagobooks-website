@@ -1,7 +1,7 @@
 import {readFileSync,writeFileSync,mkdirSync,copyFileSync} from 'node:fs';
 import {resolve} from 'node:path';
 import site from '../src/lib/site-config.mjs';
-import {renderSiteHeader} from '../src/lib/site-shell.mjs';
+import {renderSiteHeader,renderSiteFooter} from '../src/lib/site-shell.mjs';
 import {layoutGuardMarkup} from '../src/lib/layout-ready.mjs';
 import {assertPublicTripDates} from '../library/trip-privacy.mjs';
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -14,7 +14,7 @@ if(!process.argv.includes('--finish')){
   const source=readFileSync('library/index.html','utf8');
   if(!/^var SEED = \[\];\r?$/m.test(source))throw Error('Personal library must not be embedded');
   const tbrCount=JSON.parse(readFileSync('library/tbr-catalogue.json','utf8')).books.length;
-  const html=source.replace(/<!-- site-shell:start -->[\s\S]*?<!-- site-shell:end -->/,'<!-- site-shell:start -->'+renderSiteHeader(site,'/library')+'<!-- site-shell:end -->').replace(/data-tbr-count="\d*"/,`data-tbr-count="${tbrCount}"`);
+  const html=source.replace(/<!-- site-shell:start -->[\s\S]*?<!-- site-shell:end -->/,'<!-- site-shell:start -->'+renderSiteHeader(site,'/library')+'<!-- site-shell:end -->').replace(/<!-- site-footer:start -->[\s\S]*?<!-- site-footer:end -->/,'<!-- site-footer:start -->'+renderSiteFooter()+'<!-- site-footer:end -->').replace(/data-tbr-count="\d*"/,`data-tbr-count="${tbrCount}"`);
   if(html!==source)writeFileSync('library/index.html',html);
 }else{
   let html=readFileSync('library/index.html','utf8').replace('<body>','<body data-pagefind-ignore>').replace('<head>','<head>'+layoutGuardMarkup());

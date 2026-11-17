@@ -87,7 +87,7 @@ function menuFixture({owner=false,path='/pages/about'}={}){
   const document={querySelector:s=>s==='#siteShell .unified-nav'?nav:null,getElementById:id=>id==='editAccess'?{hidden:!owner}:null,
     createElement:()=>({}),head:{append:s=>head.push(JSON.parse(s.textContent))}};
   const source=readFileSync(new URL('../public/unified.js',import.meta.url),'utf8');
-  const menu=source.slice(source.indexOf('// Main menu speed'));
+  const menu=source.slice(source.indexOf('// Main menu speed'),source.indexOf('/* Shared progressive enhancements.'));
   vm.runInNewContext(menu,{document,URL,JSON,location:{pathname:path},navigator:{},setTimeout:fn=>fn(),
     HTMLScriptElement:{supports:t=>t==='speculationrules'},addEventListener:(t,fn)=>{(windowListeners[t]??=[]).push(fn)}});
   const fire=(target,type,e={})=>target.on[type]({button:0,target:{closest:()=>e.link},...e});

@@ -3,7 +3,7 @@ import 'katex/dist/katex.min.css';
 import '../styles/site.css';
 import '../../public/unified.css';
 import site from '../lib/site-config.mjs';
-import { renderSiteHeader } from '../lib/site-shell.mjs';
+import { renderSiteHeader, renderSiteFooter } from '../lib/site-shell.mjs';
 import { layoutGuardMarkup } from '../lib/layout-ready.mjs';
 import { getTagMap } from '../lib/content';
 import { blogMenuSections, isBlogPostVisible } from '../lib/post-presentation.mjs';
@@ -83,6 +83,7 @@ const activeTag = path.startsWith('/tag/') ? decodeURIComponent(path.slice(5)) :
     <main id="main" tabindex="-1" data-pagefind-body={pagefindBody ? '' : undefined}>
       <slot />
     </main>
+    <Fragment set:html={renderSiteFooter()} />
     {site.footerHtml && <div class="site-footer-html" set:html={site.footerHtml} />}
     <script is:inline src="/js/enhancements.js" defer></script>
     <script is:inline src="/js/library-warm.js" defer></script>

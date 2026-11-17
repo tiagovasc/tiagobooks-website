@@ -55,7 +55,7 @@ test('warming uses the actual browsing renditions and only four rows per collect
   const data=sample();data.owned.books=Array.from({length:40},(_,i)=>({id:String(i),title:'Book '+i,cover:'covers/cover_'+i+'.png',read_status:'reading'}));
   data.tbr.all=Array.from({length:40},(_,i)=>({id:'t'+i,title:'TBR '+i,cover:'covers/web/tbr_'+i+'.jpg',sources:['online'],sightings:[]}));
   const f=fixture({saved:{at:Date.now(),data}});await f.runIdle();
-  assert.equal(f.images.length,40);assert.equal(f.images[0].src,'https://example.com/covers/web/cover_0.jpg');assert.equal(f.images[20].src,'https://example.com/covers/web/tbr_0.jpg');assert(f.images.every(i=>i.fetchPriority==='low'));
+  assert.equal(f.images.length,48);assert.equal(f.images[0].src,'https://example.com/covers/web/cover_0.jpg');assert.equal(f.images[24].src,'https://example.com/covers/web/tbr_0.jpg');assert(f.images.every(i=>i.fetchPriority==='low'));
 });
 test('save attempts during preview cannot stage or flush any changes',()=>{
   const html=readFileSync(new URL('../library/index.html',import.meta.url),'utf8'),source=html.slice(html.indexOf('  function saveNow(){'),html.indexOf('  var resolveLibraryReady;'));
@@ -66,8 +66,8 @@ test('save attempts during preview cannot stage or flush any changes',()=>{
   preview=false;context.saveNow();assert.equal(staged,1);assert.equal(flushed,1);
 });
 test('a TBR click before its module starts is honored exactly once',()=>{
-  const source=readFileSync(new URL('../library/tbr.js',import.meta.url),'utf8').split('\n').find(line=>line.startsWith('  function fromURL(){'));
-  const calls=[],context={URL,location:{href:'https://example.com/library'},window:{TBR_EARLY_REQUEST:true},SOURCE_VIEWS:{all:'All'},enter(...args){calls.push(args);},active:false};
-  vm.createContext(context);vm.runInContext(source,context);context.fromURL();assert.equal(calls[0][0],true);assert.equal(calls[0][2],true);assert.equal(context.window.TBR_EARLY_REQUEST,false);
+  const source=readFileSync(new URL('../library/tbr.js',import.meta.url),'utf8').split('  function fromURL(){')[1].split('  window.TBRBrowse=')[0];
+  const calls=[],context={URL,location:{href:'https://example.com/library'},window:{TBR_EARLY_REQUEST:true},SOURCE_VIEWS:{all:'All'},address(){},search:{value:''},sources(){},render(){},enter(...args){calls.push(args);},active:false};
+  vm.createContext(context);vm.runInContext('function fromURL(){'+source,context);context.fromURL();assert.equal(calls[0][0],true);assert.equal(calls[0][2],false);assert.equal(context.window.TBR_EARLY_REQUEST,false);
   context.fromURL();assert.equal(calls[1][0],false);assert.equal(calls[1][2],false);
 });

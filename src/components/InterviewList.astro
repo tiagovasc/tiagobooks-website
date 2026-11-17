@@ -1,13 +1,13 @@
 ---
 import { parseInterviews } from '../lib/interviews.mjs';
-import EmbeddedVideo from './EmbeddedVideo.astro';
+import VideoPreview from './VideoPreview.astro';
 interface Props { body: string }
 const interviews = parseInterviews(Astro.props.body);
 ---
 <section class="ep-list interview-list" aria-label="Interviews">
   {interviews.map((item) => (
     <article class="ep">
-      <EmbeddedVideo id={item.id} title={item.title}/>
+      <VideoPreview id={item.id} title={item.title} image={item.image}/>
       <div class="ep-body">
         {item.year && <time datetime={item.year}>{item.year}</time>}
         <h2>{item.title}</h2>

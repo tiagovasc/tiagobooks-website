@@ -7,7 +7,7 @@ import vm from 'node:vm';
 
 // The real HTTP handlers use a private, in-memory storage fixture on an ephemeral
 // loopback port. No production configuration or catalogue is read or changed.
-let row={id:'library',revision:1,books:[{id:'current-id',title:'Fixture book',rating:0,merged_record_ids:['old-id',123],author:null,future_metadata:{nested:['keep',1]}}]};
+let row={id:'library',revision:1,books:[{id:'current-id',title:'Fixture book',rating:0,notes:'Private working notes',notes_url:'https://docs.google.com/private-fixture',merged_record_ids:['old-id',123],author:null,future_metadata:{nested:['keep',1]}}]};
 const originalRow=JSON.stringify(row);let writes=0;
 const storage=http.createServer(async(req,res)=>{
   res.setHeader('Content-Type','application/json');
@@ -75,6 +75,13 @@ test('HTTP rejects malformed cookies and alias saves without altering stored dat
   const before=await fetch(base+'/books.json',{headers:{Cookie:cookie}});
   assert.equal(before.status,200);assert.equal(before.headers.get('x-library-revision'),'1');
   const books=await before.json();assert.equal(JSON.stringify(books),JSON.stringify(row.books));
+  for(const headers of [{},{Cookie:cookie}]){
+    const visible=await (await fetch(base+'/books.json?view=public',{headers})).json();
+    for(const book of visible)for(const key of ['notes','notes_url'])assert.equal(Object.hasOwn(book,key),false);
+  }
+  const anonymous=await (await fetch(base+'/books.json')).json();
+  for(const book of anonymous)for(const key of ['notes','notes_url'])assert.equal(Object.hasOwn(book,key),false);
+  assert.equal(books[0].notes,row.books[0].notes);assert.equal(books[0].notes_url,row.books[0].notes_url);
   for(const merged_record_ids of ['old-id',{},42,true]){
     const invalid=books.map(book=>({...book,merged_record_ids}));
     const rejected=await fetch(base+'/save',{method:'POST',headers:{Cookie:cookie,Origin:base,'Content-Type':'application/json','X-Library-Revision':'1'},body:JSON.stringify(invalid)});

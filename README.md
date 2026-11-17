@@ -57,3 +57,7 @@ Tests use synthetic records and temporary repositories. GitHub Actions runs thes
 Public source means public content: keep drafts, credentials, local databases, exports and recovery copies outside the repository. Website visibility settings cannot make a committed file private.
 
 The repository is available for inspection; writing, artwork and third-party materials retain their respective rights. See the [rights guide](docs/RIGHTS.md) before reusing them.
+
+## Library presentation update — 16 November 2026
+
+The shared header/footer and companion screens use the existing appearance tokens. [Browse presentation](public/library-revamp.js) owns URL preferences, the native filter sheet and display-only topic facets; canonical records and the save queue remain separate. [Review links](public/review-links.json) is a manually verified title/ID map, not a catalogue mutation. Anonymous/public responses omit notes and notes URLs, while authenticated editing retains them. [Browse regression tests](tests/test-library-revamp.mjs) cover facet normalization, combined filters and load failure/retry; the existing security, synchronization and recovery tests remain part of the full test command. Talks/Interviews load their players only after a visitor presses Play.

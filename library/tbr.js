@@ -78,11 +78,15 @@ if(typeof document!=='undefined')init();
 function init(){
   const $=id=>document.getElementById(id), body=document.body, search=$('search');
   const status=$('statusSeg'),bar=status.parentElement;
+  bar.insertAdjacentHTML('beforeend','<div id="tbrBrowseTabs" role="group" aria-label="To read collection"><button type="button" data-tbr-tab="all">All</button><button type="button" data-tbr-tab="favorites">Favourites</button><button type="button" data-tbr-tab="owned">Already owned</button></div>');
   $('notchMore').querySelector('.n-more-inner').insertAdjacentHTML('beforeend','<div id="tbrSources"><nav class="seg" id="tbrSourceTabs" aria-label="TBR source">'+['all','instagram','bookshops','online'].map(k=>`<button type="button" data-source="${k}" aria-pressed="${k==='all'}">${SOURCE_VIEWS[k]}</button>`).join('')+'</nav><select id="tbrSourceMobile" aria-label="TBR source">'+['all','instagram','bookshops','online'].map(k=>`<option value="${k}" ${k==='all'?'selected':''}>${SOURCE_VIEWS[k]}</option>`).join('')+'</select></div>');
   $('filtersPop').insertAdjacentHTML('beforeend','<div id="tbrFilterPanel"><label class="field"><span>Ownership</span><select id="tbrOwnership" aria-label="Filter TBR by ownership"><option value="all">All books</option><option value="owned">Owned</option><option value="not-owned">Not owned</option></select></label><div class="pop-actions"><button class="linkbtn" type="button" data-tbr-clear>Clear filters</button></div></div>');
   $('sort').closest('label').id='sortLabel';
   $('sortLabel').insertAdjacentHTML('afterend','<label id="tbrSortLabel" class="pill-select icon-select" title="Sort"><svg class="i" aria-hidden="true"><use href="#i-sort"/></svg><span class="lbl">Sort</span><select id="tbrSort" aria-label="Sort TBR books"><option value="recent">Newest photos</option><option value="oldest">Oldest photos</option><option value="title">Title</option><option value="author">Author</option></select></label>');
   $('main').insertAdjacentHTML('afterend','<main class="wrap" id="tbrMain" hidden><div id="tbrIntro"></div><p id="tbrFavoriteMessage" role="status"></p><div id="tbrFilters" class="tbr-toolbar"></div><div id="tbrContent" aria-live="polite"></div></main><dialog id="tbrDialog" aria-labelledby="tbrDetailTitle"><div class="tbr-dialog-head"><span>TBR · Book shops</span><button type="button" class="tbr-close" aria-label="Close book details">×</button></div><div class="tbr-detail" id="tbrDetail"></div></dialog>');
+  $('tbrDialog').querySelector('.tbr-dialog-head').insertAdjacentHTML('afterbegin','<button type="button" id="tbrPrev" aria-label="Previous book">←</button><button type="button" id="tbrNext" aria-label="Next book">→</button>');
+  $('tbrPrev').onclick=()=>stepTbr(-1);$('tbrNext').onclick=()=>stepTbr(1);
+  function stepTbr(delta,id){const list=filtered(),at=list.findIndex(b=>id?(b.library_id===id||b.book_id===id):b.id===openId);if(at>=0&&list[at+delta])openBook(list[at+delta].id);}
   let moreObserver=null,openId=null,pagingList=[];
   let ownedIds=new Set();
   let favoriteIds=new Set();const pendingFavorites=new Set();
@@ -91,7 +95,14 @@ function init(){
   function pressViews(v){$('viewSwitch').querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===v)));}
   function views(v){if(view!==v)limit=0;view=v;pressViews(v);}
   function sources(k){source=Object.hasOwn(SOURCE_VIEWS,k)?k:'all';city='';shop='';limit=0;$('tbrSourceMobile').value=source;$('tbrSourceTabs').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.source===source)));if(active)search.placeholder=source==='bookshops'||source==='all'?'Search TBR books, authors, cities or shops':'Search TBR books and authors';}
-  function address(){const u=new URL(location.href);if(active){u.searchParams.set('collection','tbr');u.searchParams.set('source',source);}else{u.searchParams.delete('collection');u.searchParams.delete('source');}history.pushState(null,'',u);}
+  let restoringAddress=false,topic='all',format='all',rating='all',size='compact';
+  function address(){
+    if(restoringAddress)return;
+    const u=new URL(location.href);
+    for(const key of ['collection','status','source','view','sort','fav','topic','format','rating','size','own','city','shop','q','year','subject','enrich','pause'])u.searchParams.delete(key);
+    if(active){for(const [k,v] of Object.entries({collection:'toread',source,view,sort,fav:window.FAVORITES_ONLY?'1':'',topic,format,rating,size,own:ownership,city,shop,q:search.value}))if(v&&v!=='all')u.searchParams.set(k,v);}
+    if(u.href!==location.href)history[$('browseSheet')?.open?'replaceState':'pushState'](history.state,'',u);
+  }
   function enter(on,k='all',push=true){
     if(on&&!active){libSearch=search.value;libView=$('viewSwitch').querySelector('[aria-pressed="true"]')?.dataset.view||'covers';search.value=tbrSearch;}
     if(!on&&active){tbrSearch=search.value;search.value=libSearch;pressViews(libView);}
@@ -103,10 +114,12 @@ function init(){
     ['menuBtn','filtersBtn','columnsBtn'].forEach(id=>$(id).setAttribute('aria-expanded','false'));
     search.placeholder=on?'Search TBR books, authors, cities or shops':'Search title, author, subject, notes';$('searchClear').hidden=!search.value;
     if(on){sources(k);views(view);render();load();}else{search.dispatchEvent(new Event('input',{bubbles:true}));}
+    if($('browseCollection'))$('browseCollection').value=on?'toread':'library';
     if(push){address();window.scrollTo({top:0,behavior:'instant'});}window.dispatchEvent(new Event('resize'));
   }
   async function load(){
-    if(books||loading)return;
+    if(books)return;
+    if(loading)return loading;
     error=false;
     loading=Promise.all([fetch('/api/tbr-owned').then(r=>{if(!r.ok)throw Error('ownership');return r.json();}).then(data=>{if(!Array.isArray(data.ids))throw Error('ownership');ownedIds=new Set(data.ids);}),fetch('/api/tbr-favorites').then(r=>{if(!r.ok)throw Error('favorites');return r.json();}).then(data=>{if(!Array.isArray(data.ids))throw Error('favorites');favoriteIds=new Set(data.ids);}),fetch('/tbr-catalogue.json').then(r=>{if(!r.ok)throw Error('load');return r.json();}).then(data=>{if(!Array.isArray(data.books)||data.books.some(b=>!b.id||!b.title||!Array.isArray(b.sightings)||!Array.isArray(b.sources)))throw Error('schema');books=data.books;const total=catalogueCounts(books).total;status.dataset.tbrCount=total;const tbrButton=status.querySelector('[data-collection="tbr"]');if(tbrButton)tbrButton.innerHTML='TBR <span class="n">'+number(total)+'</span>';})]).catch(()=>{books=null;error=true;}).finally(()=>{loading=null;overlayLocalChanges();if(active)render();});
   }
@@ -140,7 +153,7 @@ function init(){
   function cover(b){return b.cover?`<span class="tbr-cover"><img src="${escape(b.cover)}" alt="" width="320" height="480" loading="lazy" decoding="async">${tbrOwnedHTML(ownedIds.has(b.id)||!books&&b.owned===true)}</span>`:`<span class="tbr-cover"><span class="tbr-placeholder">${escape(b.title)}<br><small>Cover unavailable</small></span>${tbrOwnedHTML(ownedIds.has(b.id)||!books&&b.owned===true)}</span>`;}
   function place(b){if(source!=='bookshops')return `<span class="tbr-place">${escape(source==='all'?sourceLabel(b):SOURCES[source])}${discoveryDateHTML(b,source)}</span>`;const s=b.sightings[0];return `<span class="tbr-place" title="${escape(placeLabel(s))}"><span class="tbr-city">${escape(s.city)}</span><span class="tbr-shop">${escape(s.bookshop)}</span><span class="tbr-date"><time datetime="${escape(s.photographed_at.slice(0,7))}">${date(s.photographed_at)}</time>${b.sightings.length>1?` · ${b.sightings.length} photos`:''}</span></span>`;}
   function card(b){return `<div role="button" tabindex="0" class="tbr-book ${favoriteIds.has(b.id)?'is-favorite':''}" data-tbr-id="${escape(b.id)}" data-tbr-month="${discoveryMonth(b,source)}" title="${escape(b.title)}" aria-label="${escape(b.title+' by '+(b.author||'uncredited')+'. '+(source==='bookshops'?placeLabel(b.sightings[0]):source==='all'?sourceLabel(b):SOURCES[source]))}">${cover(b)}${favorite(b)}<span class="tbr-copy"><h3 title="${escape(b.title)}">${escape(b.title)}</h3><span class="tbr-author">${escape(b.author||'Author not identified')}</span></span>${place(b)}</div>`;}
-  function filtered(){return filterCatalogue((books||[]).filter(b=>ownership==='all'||(ownership==='owned')===ownedIds.has(b.id)),{source,query:search.value,city,shop,sort,favoritesOnly:!!window.FAVORITES_ONLY,favoriteIds});}
+  function filtered(){return filterCatalogue((books||[]).filter(b=>(!window.LibraryRevamp||window.LibraryRevamp.matches(b,{topic,format,rating}))&& (ownership==='all'||(ownership==='owned')===ownedIds.has(b.id))),{source,query:search.value,city,shop,sort,favoritesOnly:!!window.FAVORITES_ONLY,favoriteIds});}
   function sorting(){return sortOptions(source).map(([value,label])=>`<option value="${value}">${label}</option>`).join('');}
   function syncTimeline(list){
     window.setDiscoveryTimeline?.({active:true,chronological:['recent','oldest'].includes(sort),entries:list.map(b=>({id:b.id,month:discoveryMonth(b,source)})),jump(month){
@@ -152,6 +165,7 @@ function init(){
   function render(jump=false){
     pager.reset();moreObserver?.disconnect();
     if(!active)return;
+    address();
     $('tbrContent').inert=false;$('tbrContent').removeAttribute('data-warm-preview');
     const warm=!books&&window.LibraryWarm?.read(),list=filtered(),collection=books?sourceBooks(books,source):(warm?.tbr[source]||[]);pagingList=list;
     syncTimeline(list);
@@ -159,6 +173,7 @@ function init(){
     $('tbrIntro').innerHTML=`<div class="tbr-intro"><div><p class="tbr-eyebrow">To be read</p><h2>${SOURCE_VIEWS[source]}</h2><p>${source==='all'?'Interesting books I’ve saved over the years.':source==='bookshops'?'Books that caught my eye on bookshop visits, starting with the most recent photos.':source==='online'?'Books I found online and saved to explore.':'Books discovered on Instagram and saved to explore.'}</p></div>${total!==undefined?`<span class="tbr-count">${number(total)} ${total===1?'book':'books'}${books&&list.length!==collection.length?' of '+number(collection.length):''}</span>`:''}</div>`;
     $('tbrSort').innerHTML=sorting();$('tbrSort').value=sort;$('tbrSortLabel').classList.toggle('is-active',sort!=='recent');
     $('tbrOwnership').value=ownership;
+    $('tbrBrowseTabs').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.tbrTab===(window.FAVORITES_ONLY?'favorites':ownership==='owned'?'owned':'all'))));
     const activeFilters=Number(ownership!=='all')+Number(!!city)+Number(!!shop);
     $('filtersBtn').classList.toggle('is-active',!!activeFilters);$('filtersBtn').setAttribute('aria-label',activeFilters?'Filters, '+activeFilters+' active':'Filters');$('filterCount').textContent=activeFilters;$('filterCount').hidden=!activeFilters;
     const filter=$('tbrFilters');filter.innerHTML='';
@@ -174,6 +189,8 @@ function init(){
       filter.innerHTML=`<select id="tbrSortMobile" aria-label="Sort TBR books">${sorting()}</select>${search.value||sort!=='recent'?'<button type="button" data-tbr-clear>Reset browsing</button>':''}`;
       $('tbrSortMobile').value=sort;
     }
+    $('tbrFilterPanel').append(filter);
+    window.dispatchEvent(new Event('library-browse-render'));
     if(!books){if(!error&&showWarmTbr())return;$('tbrContent').innerHTML=error?'<div class="empty-state"><h2>Couldn’t load these books</h2><p>Please try again.</p><button class="tbr-retry" type="button">Retry</button></div>':`<div class="empty-state" role="status">Loading ${source==='all'?'all TBR books':source==='bookshops'?'bookshop discoveries':SOURCES[source]+' books'}…</div>`;return;}
     if(!list.length){$('tbrContent').innerHTML=`<div class="empty-state"><h2>${window.FAVORITES_ONLY?'No favorites match in this section':'No books match'}</h2><p>${window.FAVORITES_ONLY?'Turn off Favorites to see all books, or try another search.':source==='bookshops'?'Try another title, city or bookshop.':'Try another title or author.'}</p><button type="button" data-tbr-clear>Clear search and filters</button></div>`;return;}
     const fresh=!limit;
@@ -183,6 +200,7 @@ function init(){
   }
   function showWarmTbr(){
     const data=window.LibraryWarm?.read();
+    if(topic!=='all'||format!=='all'||rating!=='all')return false;
     if(!data||view!=='covers'||sort!=='recent'||search.value||city||shop||ownership!=='all'||window.FAVORITES_ONLY)return false;
     const content=$('tbrContent'),group=source==='bookshops'?b=>b.sightings[0]?.visit_id:undefined;
     const shown=window.LibraryWarm.rows(data.tbr[source],window.bookColumns(content,'tbr-grid'),group);
@@ -232,24 +250,30 @@ function init(){
     limit+=batchSize(list,start);drawBatch(list,start);
   }
 
-  function openBook(id){
+  function openBook(id,fromHistory=false){
     const b=books?.find(x=>x.id===id);if(!b)return;
     if(b.canonical_ready&&b.library_id&&window.openCanonicalBook){window.openCanonicalBook(b.library_id);return;}
+    openId=id;
     $('tbrDialog').querySelector('.tbr-dialog-head span').textContent='TBR · '+(source==='all'?sourceLabel(b):SOURCES[source]);
     const sightings=b.sightings.length?`<h3>Spotted in book shops</h3><ul>${b.sightings.map(s=>`<li><strong>${escape(s.bookshop)}</strong><br>${escape(s.city)}${s.country?', '+escape(s.country):''} · ${date(s.photographed_at)}${/unresolved|probable|possible|uncertain|unknown/i.test(s.shop_status)?`<br>Shop identification: ${escape(s.shop_status)}`:''}</li>`).join('')}</ul>`:'';
     $('tbrDetail').innerHTML=`${favorite(b)}${tbrOwnedHTML(ownedIds.has(b.id)||!books&&b.owned===true)}${b.cover?`<img class="${favoriteIds.has(b.id)?'is-favorite':''}" src="${escape(b.cover)}" alt="Cover of ${escape(b.title)}">`:''}<h2 id="tbrDetailTitle">${escape(b.title)}</h2><p>${escape(b.author||'Author not identified')}</p>${b.identity_status==='needs_review'?'<p class="tbr-note">The exact book is still being identified.</p>':''}${b.description?`<p>${escape(b.description)}</p>`:''}${source==='all'?`<p class="tbr-note">Saved from: ${escape(sourceLabel(b))}.</p>`:source!=='bookshops'?`<p class="tbr-note">${source==='instagram'?'Discovered on Instagram':'Found online'} and saved to explore.</p>`:''}${sightings}<p class="tbr-note">Saved as a reading interest. This doesn’t indicate ownership or a completed read.${b.sightings.length?' Cover and description may represent a different edition from the photographed copy.':''}</p>`;
     $('tbrDetail').insertAdjacentHTML('beforeend',Object.keys(b.discovery_dates||{}).map(key=>`<p class="tbr-note">${escape(SOURCES[key]||key)}: ${discoveryDateHTML(b,key)}</p>`).join(''));
-    openId=id;$('tbrDialog').showModal();
+    const month=discoveryMonth(b,source),owned=ownedIds.has(b.id),parts=b.title.split(': ');
+    $('tbrDetail').innerHTML=`<div class="tbr-panel-cover">${b.cover?`<img src="${escape(b.cover)}" alt="Cover of ${escape(b.title)}">`:''}</div><div class="tbr-panel-body">${favorite(b)}<h2 id="tbrDetailTitle">${escape(parts[0])}</h2>${parts.length>1?`<p class="d-sub">${escape(parts.slice(1).join(': '))}</p>`:''}<p class="in-author">${escape(b.author||'Author not identified')}</p><p class="visitor-status">${month?'Saved '+escape(tripMonthLabel(month)):'Saved to read'}</p><dl class="facts"><dt>Source</dt><dd>${escape(sourceLabel(b))}</dd><dt>Ownership</dt><dd>${owned?(b.library_id?`<a href="/library#book/${encodeURIComponent(b.library_id)}">Already owned →</a>`:'Already owned'):'Not in my owned library'}</dd>${b.format?`<dt>Format</dt><dd>${escape(b.format)}</dd>`:''}</dl>${b.description?`<section class="d-sec"><h3>About this book</h3><p>${escape(b.description)}</p></section>`:''}${window.CLOUD_CAN_EDIT?sightings:''}</div>`;
+    const nav=filtered(),at=nav.findIndex(x=>x.id===id);$('tbrPrev').disabled=at<=0;$('tbrNext').disabled=at<0||at>=nav.length-1;
+    if(!$('tbrDialog').open)$('tbrDialog').showModal();
+    if(!fromHistory)history.pushState({tbrBook:id},'',location.pathname+location.search+'#tbr/'+encodeURIComponent(id));
   }
   status.addEventListener('click',e=>{if(active&&e.target.closest('[data-status]'))enter(false,source);},true);
   document.addEventListener('click',e=>{
+    const tabChoice=e.target.closest('[data-tbr-tab]');if(tabChoice){ownership=tabChoice.dataset.tbrTab==='owned'?'owned':'all';window.setFavoritesFilter(tabChoice.dataset.tbrTab==='favorites');render();return;}
     const heart=e.target.closest('[data-tbr-favorite]');if(heart){e.preventDefault();setFavorite(heart.dataset.tbrFavorite);return;}
     const collection=e.target.closest('[data-collection]');if(collection){enter(collection.dataset.collection==='tbr',source);return;}
     const tab=e.target.closest('[data-source]');if(tab){sources(tab.dataset.source);address();render();load();return;}
     if(!active)return;
     const b=e.target.closest('[data-tbr-id]');if(b){openBook(b.dataset.tbrId);return;}
     if(e.target.closest('[data-tbr-more]')){const old=limit;pager.append();$('tbrContent').querySelectorAll('[data-tbr-id]')[old]?.focus({preventScroll:true});}
-    if(e.target.closest('[data-tbr-clear]')){window.setFavoritesFilter(false);city='';shop='';ownership='all';search.value='';sort='recent';limit=0;$('searchClear').hidden=true;render();}
+    if(e.target.closest('[data-tbr-clear]')){topic='all';format='all';rating='all';sources('all');window.setFavoritesFilter(false);city='';shop='';ownership='all';search.value='';sort='recent';limit=0;$('searchClear').hidden=true;render();}
     if(e.target.closest('.tbr-retry')){error=false;render();load();}
   });
   document.addEventListener('change',e=>{
@@ -321,8 +345,28 @@ function init(){
     }
   }
   window.addEventListener('beforeunload',event=>{if(pendingFavorites.size){event.preventDefault();event.returnValue='';}});
-  $('tbrDialog').querySelector('.tbr-close').addEventListener('click',()=>$('tbrDialog').close());
+  $('tbrDialog').querySelector('.tbr-close').addEventListener('click',()=>{if(location.hash.startsWith('#tbr/'))history.back();else $('tbrDialog').close();});
+  $('tbrDialog').addEventListener('cancel',e=>{if(location.hash.startsWith('#tbr/')){e.preventDefault();history.back();}});
   $('tbrDialog').addEventListener('click',e=>{if(e.target===$('tbrDialog')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.target.close();}});
-  function fromURL(){const u=new URL(location.href),early=!!window.TBR_EARLY_REQUEST;window.TBR_EARLY_REQUEST=false;tbrSearch=u.searchParams.get('q')||'';enter(early||u.searchParams.get('collection')==='tbr',Object.hasOwn(SOURCE_VIEWS,u.searchParams.get('source'))?u.searchParams.get('source'):'all',early);if(active&&u.searchParams.has('q')){search.value=tbrSearch;render();}}
+  function fromURL(){
+    restoringAddress=true;
+    const u=new URL(location.href),p=u.searchParams,early=!!window.TBR_EARLY_REQUEST;window.TBR_EARLY_REQUEST=false;
+    tbrSearch=p.get('q')||'';view=['covers','list','table'].includes(p.get('view'))?p.get('view'):'covers';sort=['recent','oldest','title','author'].includes(p.get('sort'))?p.get('sort'):'recent';
+    topic=p.get('topic')||'all';format=p.get('format')||'all';rating=p.get('rating')==='5'?'5':'all';size=p.get('size')==='large'?'large':'compact';ownership=['owned','not-owned'].includes(p.get('own'))?p.get('own'):'all';
+    window.FAVORITES_ONLY=p.get('fav')==='1';
+    enter(early||['tbr','toread'].includes(p.get('collection')),Object.hasOwn(SOURCE_VIEWS,p.get('source'))?p.get('source'):'all',false);
+    city=p.get('city')||'';shop=p.get('shop')||'';
+    if(active){search.value=tbrSearch;render();const id=location.hash.startsWith('#tbr/')?decodeURIComponent(location.hash.slice(5)):null;if(id){load().then(()=>openBook(id,true));}else if($('tbrDialog').open)$('tbrDialog').close();}
+    restoringAddress=false;if(early)address();
+  }
+  window.TBRBrowse={
+    step:stepTbr,neighbors:id=>{const list=filtered(),at=list.findIndex(b=>b.library_id===id||b.book_id===id);return {prev:at>0,next:at>=0&&at<list.length-1};},enter:on=>enter(on),books:()=>books||[],count:()=>filtered().length,
+    state:()=>({view,sort,source,topic,format,rating,size,own:ownership,city,shop,favorites:!!window.FAVORITES_ONLY}),
+    clear:()=>{topic=format=rating=ownership='all';city=shop='';search.value='';sources('all');window.setFavoritesFilter(false);render();},
+    set:patch=>{if(patch.view)views(patch.view);if(patch.sort)sort=patch.sort;if(patch.topic)topic=patch.topic;if(patch.format)format=patch.format;if(patch.rating)rating=patch.rating;if(patch.size)size=patch.size;if(patch.source)sources(patch.source);if(patch.own)ownership=patch.own;if(patch.favorites!==undefined)window.setFavoritesFilter(patch.favorites);limit=0;render();}
+  };
+  $('tbrFilterPanel').insertAdjacentHTML('afterbegin','<label class="field"><span>Source</span><select id="browseSource">'+Object.entries(SOURCE_VIEWS).map(([v,l])=>`<option value="${v}">${l}</option>`).join('')+'</select></label>');
+  $('browseSource').addEventListener('change',e=>{sources(e.target.value);render();});
+  window.addEventListener('library-browse-render',()=>{$('browseSource').value=source;});
   window.TBR_READY=true;window.addEventListener('popstate',fromURL);fromURL();
 }

@@ -14,7 +14,7 @@ const books=await parseBooks(Astro.props.body);
       <p class="bk-meta">{book.year}{book.forthcoming&&' (forthcoming)'}{book.publisher&&` · ${book.publisher}`}</p>
       <h2>{book.title}</h2><p class="bk-sub">{book.subtitle}</p>
       <div class="bk-text" set:html={book.description}/>
-      {book.actions.length>0&&<div class="bk-actions">{book.actions.map(action=><a class:list={['bk-btn',{'bk-btn-main':action.label==='Blog'}]} href={action.href}>{action.label==='Blog'?'Read on the blog':action.label}{action.label==='Blog'&&<span aria-hidden="true">→</span>}</a>)}</div>}
+      {book.actions.length>0&&<div class="bk-actions">{book.actions.map(action=><a class:list={['bk-btn',{'bk-btn-main':action.label==='Blog'}]} href={action.href}>{action.label==='Blog'?'Read free':action.label==='Paperback'?'Buy paperback':action.label}{action.label==='Blog'&&<span aria-hidden="true">→</span>}</a>)}</div>}
     </div>
   </article>)}
 </div>

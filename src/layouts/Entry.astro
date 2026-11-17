@@ -4,7 +4,7 @@ import { render } from 'astro:content';
 import { encryptHtml, markdownToHtml, sitePassword } from '../lib/protect';
 import { longDate, tagSlug, getListedPosts } from '../lib/content';
 import Base from './Base.astro';
-import { displayTitle, visibleTags, readingMinutes } from '../lib/post-presentation.mjs';
+import { displayTitle, visibleTags, readingMinutes, postSummary, isBlogPostVisible } from '../lib/post-presentation.mjs';
 import site from '../lib/site-config.mjs';
 
 interface Props { entry: any; kind: 'post' | 'page'; replaceBody?: boolean }
@@ -38,6 +38,10 @@ if (kind === 'post' && d.tags.includes(BOOK_TAG) && !/\*\*(Previous|Next):/.test
   const at = chapters.findIndex((p) => p.id === entry.id);
   if (at >= 0) { prevChapter = chapters[at - 1] ?? null; nextChapter = chapters[at + 1] ?? null; }
 }
+const neighboringPosts = kind === 'post' && !d.tags.includes(BOOK_TAG) ? (await getListedPosts()).filter(p=>isBlogPostVisible(p)&&!p.data.externalUrl).sort((a,b)=>b.data.date.valueOf()-a.data.date.valueOf()) : [];
+const postIndex = neighboringPosts.findIndex(p=>p.id===entry.id);
+const newerPost = postIndex>0 ? neighboringPosts[postIndex-1] : null;
+const olderPost = postIndex>=0 ? neighboringPosts[postIndex+1] : null;
 const chapterLabel = (p: any) => p.data.title.trim().replace(new RegExp('^' + BOOK_TAG + '\\s*[-:\u2013\u2014]\\s*'), '');
 
 const jsonLd = kind === 'post' && !d.protected ? {
@@ -53,7 +57,7 @@ const jsonLd = kind === 'post' && !d.protected ? {
 ---
 <Base
   title={title}
-  description={d.description || d.subtitle}
+  description={d.description || d.subtitle || (kind === 'post' ? postSummary(entry) : '') || undefined}
   path={path}
   image={image}
   noindex={noindex}
@@ -63,10 +67,11 @@ const jsonLd = kind === 'post' && !d.protected ? {
   jsonLd={jsonLd}
   pagefindBody={!noindex}
 >
-  <article class="h-entry">
+  <article class="h-entry" data-entry-kind={kind} data-about={entry.id==='about' ? '' : undefined}>
+    {kind === 'post' && <div class="entry-meta-top" data-pagefind-ignore>{tags.map((t:string)=><a href={`/blog?tag=${encodeURIComponent(tagSlug(t))}`}>{t}</a>)}<time datetime={d.date.toISOString()}>{longDate(d.date)}</time>{!d.protected&&!d.externalUrl&&<span>{readingMinutes(entry.body)} min read</span>}</div>}
     <h1 class="entry-title p-name" data-pagefind-meta="title">{title}</h1>
     {d.subtitle && !d.protected && <p class="entry-subtitle">{d.subtitle}</p>}
-    {kind === 'post' && <p class="entry-meta" data-pagefind-ignore>
+    {kind === 'post' && <p class="entry-meta" hidden data-pagefind-ignore>
       <time class="dt-published" datetime={d.date.toISOString()}>{longDate(d.date)}</time>
       {!d.protected && !d.externalUrl && <span>{readingMinutes(entry.body)} min read</span>}
     </p>}
@@ -103,6 +108,8 @@ const jsonLd = kind === 'post' && !d.protected ? {
             {tags.map((t: string, i: number) => (<>{i > 0 && ', '}<a href={`/blog?tag=${encodeURIComponent(tagSlug(t))}`}>{t}</a></>))}
           </div>
         )}
+        <p class="entry-meta"><time datetime={d.date.toISOString()}>{longDate(d.date)}</time>{!d.protected&&!d.externalUrl&&<span>{readingMinutes(entry.body)} min read</span>}</p>
+        {(newerPost||olderPost)&&<nav class="post-neighbors" aria-label="More posts">{newerPost&&<a href={`/posts/${newerPost.id}`} rel="prev"><small>← Newer</small><span>{displayTitle(newerPost.data.title)}</span></a>}{olderPost&&<a href={`/posts/${olderPost.id}`} rel="next"><small>Older →</small><span>{displayTitle(olderPost.data.title)}</span></a>}</nav>}
         <div><a href="/blog"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8l-4 4 4 4M8 12h8"/></svg>Back to all posts</a></div>
       </div>
     )}

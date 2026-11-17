@@ -18,7 +18,7 @@ const flush=()=>new Promise(r=>setImmediate(r));
 function fixture(options={}){
   const element=()=>({value:'',textContent:'',innerHTML:'',hidden:false,dataset:{},attributes:{},listeners:{},
     addEventListener(type,fn){this.listeners[type]=fn},setAttribute(k,v){this.attributes[k]=v}});
-  const ids=Object.fromEntries(['ss-q','ss-status','ss-results','search-suggestions','ss-form','ss-retry'].map(k=>[k,element()]));
+  const ids=Object.fromEntries(['ss-q','ss-status','ss-results','search-suggestions','ss-form','ss-retry','searchStart','readingStart','readingNow'].map(k=>[k,element()]));
   ids['ss-retry'].hidden=true;
   const counters=['all','blog','library','tbr'].map(count=>({...element(),dataset:{count}}));
   const scopes=['all','blog','library','tbr'].map(scope=>({...element(),dataset:{scope}}));

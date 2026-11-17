@@ -38,6 +38,7 @@ export function createDateRail(rows,headings){
     // Reserve the largest expanded year once per filter, not once per scroll.
     rail.style.setProperty('--archive-year-count',monthsPerYear.size);
     rail.style.setProperty('--archive-month-count',Math.max(...monthsPerYear.values()));
-    rail.innerHTML=`<div class="date-context"><div data-rail-year></div><div class="date-month"></div><div class="date-count"></div></div><nav class="date-track" aria-label="Jump to a publication month">${buttons}</nav><select class="mobile-month" aria-label="Jump to publication month">${keys.map(k=>`<option value="${k}">${monthName(k)} ${k.slice(0,4)}</option>`).join('')}</select>`;position();update();
+    rail.dataset.monthCounts=JSON.stringify(Object.fromEntries(counts));
+    rail.innerHTML=`<div class="date-context"><div data-rail-year></div><div class="date-month"></div><div class="date-count"></div></div><nav class="date-track" aria-label="Jump to a publication month">${buttons}</nav><select class="mobile-month" aria-label="Jump to publication month">${keys.map(k=>`<option value="${k}">${monthName(k)} ${k.slice(0,4)}</option>`).join('')}</select>`;position();update();window.enhanceDateRail?.(rail);
   }};
 }

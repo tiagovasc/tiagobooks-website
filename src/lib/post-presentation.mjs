@@ -23,6 +23,21 @@ export function plainText(value) {
     .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1').replace(/[*_`]/g, ''))).replace(/\s+/g, ' ').trim();
 }
 
+// Link previews and search snippets: the post's own description or subtitle, else its opening
+// sentences (about 160 characters). Protected posts reveal nothing and keep the site description.
+export function postSummary(post) {
+  const data = post.data || {};
+  if (data.protected) return '';
+  const own = data.description || data.subtitle || postSubtitle(post);
+  if (own) return plainText(String(own));
+  const paragraph = (post.body || '').replace(/```[\s\S]*?```/g, ' ').replace(/\$\$[\s\S]*?\$\$/g, ' ')
+    .split(/\r?\n\s*\r?\n/).map(part => part.trim())
+    .filter(part => part && !/^(#{1,6}\s|>|!\[|<|https?:\/\/\S+$|[-*+]\s|\d+\.\s|\|)/.test(part))
+    .map(part => plainText(part)).find(part => part.length > 60) || '';
+  if (paragraph.length <= 160) return paragraph;
+  return paragraph.slice(0, 158).replace(/\s+\S*$/, '').replace(/[,;:\u2013\u2014-]+$/, '') + '\u2026';
+}
+
 // Imported subtitles live in the opening heading or emphasized line. Never mine
 // later section headings, provenance notes or podcast abstracts for a subtitle.
 export function postSubtitle(post) {

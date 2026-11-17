@@ -161,7 +161,8 @@ test('header actions arrive complete and identical across pages before JavaScrip
     publicHeader??=g;ownerHeader??=o;
     assert.equal(g,publicHeader,route+' public controls');assert.equal(o,ownerHeader,route+' owner controls');
     assert.match(g,/id="editAccess" hidden/);assert.doesNotMatch(o,/id="editAccess" hidden/);
-    assert.match(g,/id="adminAccess" href="\/login"/);assert.match(o,/id="adminAccess" href="\/logout"/);
+    assert.doesNotMatch(g,/id="adminAccess"/);assert.doesNotMatch(o,/id="adminAccess"/);
+    assert.match(guestHTML,/id="adminAccess" href="\/login"/);assert.match(ownerHTML,/id="adminAccess" href="\/logout"/);
     assert.match(o,/class="theme-sun"/);assert.match(o,/class="theme-moon"/);
     assert.match(owner.headers.get('cache-control'),/private/);assert.match(owner.headers.get('vary'),/Cookie/);
     assert.notEqual(guest.headers.get('etag'),owner.headers.get('etag'),route);
@@ -245,14 +246,14 @@ test('Interviews uses the episode layout with complete descriptions and one YouT
   const entries=[...html.matchAll(/<article class="ep">([\s\S]*?)<\/article>/g)].map(m=>m[1]);
   assert.equal(entries.length,expected.length);
   const {parseFragment}=await import('parse5');
-  const text=node=>node.nodeName==='#text'?node.value:(node.childNodes||[]).map(text).join('');
+  const text=node=>['script','style'].includes(node.nodeName)?'':node.nodeName==='#text'?node.value:(node.childNodes||[]).map(text).join('');
   for(let i=0;i<entries.length;i++){
     const item=expected[i],entry=entries[i];
     assert.equal((entry.match(/<a /g)||[]).length,1,'only the Watch action');
     assert.ok(entry.includes(`href="${item.href}"`));assert.match(entry,/>Watch on YouTube<span/);
-    assert.ok(entry.includes(`https://www.youtube-nocookie.com/embed/${item.id}?rel=0`));
-    assert.equal((entry.match(/<iframe /g)||[]).length,1);
-    assert.doesNotMatch(entry,/\/posts\/|Read more|spotify|apple-podcasts|data-video-id/);
+    assert.ok(entry.includes(`data-video-id="${item.id}"`));
+    assert.equal((entry.match(/<iframe /g)||[]).length,0);
+    assert.doesNotMatch(entry,/\/posts\/|Read more|spotify|apple-podcasts/);
     const visible=text(parseFragment(entry));
     assert.ok(visible.includes(item.title));for(const p of item.paragraphs){assert.ok(visible.includes(p),'complete description');assert.ok(p.split(/\s+/).length<=50);assert.ok(p.endsWith('.'));}
     assert.doesNotMatch(visible,/[:;]|\.\.\.|…/);
@@ -261,15 +262,15 @@ test('Interviews uses the episode layout with complete descriptions and one YouT
   assert.throws(()=>parseInterviews('## Missing video\n\nDescription.\n'),/missing a YouTube/);
 });
 
-test('Talks directly embeds every video and separates event metadata from content previews',async()=>{
+test('Talks defers every video until play and separates event metadata from content previews',async()=>{
   const source=await readFile('src/content/pages/talks.md','utf8');
   const talks=await parseTalks(source);assert.equal(talks.length,4);
   const html=await(await fetch(base+'/pages/talks')).text();
   assert.equal((html.match(/<article class="ep">/g)||[]).length,4);
-  assert.equal((html.match(/<iframe /g)||[]).length,4,'direct embedded players');
-  assert.doesNotMatch(html,/data-video-id/);
+  assert.equal((html.match(/<iframe /g)||[]).length,0,'players wait for a tap');
+  assert.equal((html.match(/data-video-id=/g)||[]).length,4);
   for(const t of talks){
-    assert.ok(html.includes(`https://www.youtube-nocookie.com/embed/${t.id}?rel=0`));
+    assert.ok(html.includes(`data-video-id="${t.id}"`));
     assert.ok(t.event&&html.includes(t.event));assert.ok(!t.description.includes(t.event));
     assert.doesNotMatch(t.description,/Given at|Delivered at|[:;]/);
     assert.ok(html.includes(`href="${t.transcript}"`));assert.ok(html.includes(`href="${t.href}"`));

@@ -1,12 +1,12 @@
 ---
 import {parseTalks} from '../lib/page-sections.mjs';
-import EmbeddedVideo from './EmbeddedVideo.astro';
+import VideoPreview from './VideoPreview.astro';
 interface Props { body: string }
 const talks=await parseTalks(Astro.props.body);
 ---
 <section class="ep-list talk-list" aria-label="Talks">
   {talks.map(item=><article class="ep">
-    <EmbeddedVideo id={item.id} title={item.title}/>
+    <VideoPreview id={item.id} title={item.title} image={item.image}/>
     <div class="ep-body">
       <div class="media-meta"><time datetime={item.year}>{item.year}</time>{item.event&&<span> · {item.event}</span>}</div>
       <h2><a href={item.transcript}>{item.title}</a></h2>
@@ -15,7 +15,7 @@ const talks=await parseTalks(Astro.props.body);
       <div class="ep-actions">
         <a class="ep-read" href={item.transcript}>Read more<span aria-hidden="true">→</span></a>
         <span class="ep-sep" aria-hidden="true"></span>
-        <a class="ep-icon" href={item.href} target="_blank" rel="noopener" aria-label={`Watch on YouTube — ${item.title}`} title="YouTube"><img src="/icons/youtube.png" alt="" width="30" height="30"/></a>
+        <a class="ep-read" href={item.href} target="_blank" rel="noopener" aria-label={`Watch on YouTube — ${item.title}`} title="YouTube">Watch on YouTube<span aria-hidden="true">→</span></a>
       </div>
     </div>
   </article>)}
