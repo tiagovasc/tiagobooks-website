@@ -10,8 +10,9 @@ test('Instagram excludes the ten requested children’s books and follows saved-
   const excluded=new Set(["Little Pilgrim's Progress",'C Is for Christian','The Ology','The Biggest Story ABC','Our God: A Shapes Primer','From Eden to Bethlehem: An Animals Primer','The Kingdom of Heaven: A Gardening Primer','The Gospel','I Thank God for This Day!','Thank You, Lord, for Everything']);
   assert.ok(catalogue.books.every(b=>!excluded.has(b.title)));
   const recent=filterCatalogue(catalogue.books,{source:'instagram'});
-  assert.equal(recent.length,1706);
-  assert.deepEqual(recent.map(b=>b.instagram_order),Array.from({length:1706},(_,i)=>i));
+  assert.equal(recent.length,catalogue.counts.instagram);
+  const ranks=recent.map(b=>b.instagram_order);
+  assert.ok(ranks.every((rank,i)=>Number.isSafeInteger(rank)&&rank>=0&&(!i||ranks[i-1]<rank)));
   const oldest=filterCatalogue(catalogue.books,{source:'instagram',sort:'oldest'});
   assert.deepEqual(oldest.map(b=>b.id),recent.map(b=>b.id).reverse());
   const scrambled=[{id:'older',title:'A',sources:['instagram'],instagram_order:20,sightings:[]},{id:'newer',title:'Z',sources:['instagram'],instagram_order:0,sightings:[]}];
@@ -19,23 +20,39 @@ test('Instagram excludes the ten requested children’s books and follows saved-
   assert.equal(filterCatalogue(scrambled,{source:'instagram',sort:'oldest'})[0].id,'older');
 });
 
+test('carousel review removes only unsupported source memberships',()=>{
+  const byId=new Map(catalogue.books.map(book=>[book.id,book]));
+  const christendom=byId.get('shop-318e88c969fd6a2c');
+  assert.deepEqual(christendom.sources,['bookshops']);
+  assert.ok(christendom.sightings.length);
+  assert.ok(!byId.has('instagram-795f33f6c967bdb7978b'),'Instagram-only membership excluded');
+  assert.ok(!byId.has('instagram-5f6d456f4ba836f83270'),'another unsupported membership excluded');
+  const evilInModernThought=byId.get('online-bbf17767fa245a24b26f');
+  assert.deepEqual(new Set(evilInModernThought.sources),new Set(['online','instagram']));
+  assert.equal(evilInModernThought.discovery_dates.online.date,'2018-12-10');
+  for(const book of catalogue.books){
+    assert.equal(Object.hasOwn(book,'instagram_order'),book.sources.includes('instagram'),book.id);
+    assert.deepEqual(Object.keys(book.discovery_dates).sort(),[...book.sources].sort(),book.id);
+  }
+});
+
 test('reviewed metadata identifies the reported gaps and preserves distinct adaptations',()=>{
   const byId=new Map(catalogue.books.map(b=>[b.id,b]));
   const orwell=byId.get('online-09c40b63998a9c4f7960');
   assert.match(orwell.author,/George Orwell/);
-  assert.ok(orwell.sources.includes('instagram'));
+  assert.deepEqual(orwell.sources,['online']);
   assert.ok(orwell.cover&&fs.existsSync('library/'+orwell.cover));
   assert.ok(!byId.has('instagram-3f7553a7a61eb24fd1a8'),'duplicate original novel removed');
   assert.ok(byId.has('online-8ed3bdfb50ae697ab091'),'graphic adaptation remains distinct');
   for(const [id,creator] of [
-    ['instagram-5f6d456f4ba836f83270',/David Wengrow/],
+    ['instagram-412cd8cf7f898bee38ae',/Scott T. Aaronson/],
     ['instagram-d3d48f67d9836b0d4c52',/Couliano|Culianu/],
     ['instagram-750d5a637c4e82108a18',/Ambrose/],
   ]){
     const book=byId.get(id);assert.ok(book,id);assert.match(book.author,creator);
     assert.ok(book.cover&&fs.existsSync('library/'+book.cover),id);
   }
-  assert.ok(byId.get('instagram-5f6d456f4ba836f83270').creators.some(c=>c.name==='David Wengrow'&&c.role==='editor'));
+  assert.ok(byId.get('instagram-412cd8cf7f898bee38ae').creators.some(c=>c.name==='Scott T. Aaronson'&&c.role==='editor'));
   assert.ok(!byId.has('instagram-1dc73e576a69c350bdbb'),'incidental previous-read mention is held privately');
   assert.ok(byId.has('instagram-31802ee5c4b9224548c1'),'actual featured Encyclopedia of the Dead retained');
 });

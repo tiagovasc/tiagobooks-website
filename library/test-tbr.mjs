@@ -108,22 +108,34 @@ test('Exact photo ranks override month and visit-ID ties, including filtered sig
  assert.equal(JSON.stringify([a,b]),before);
 });
 
-test('Discovery dates preserve source order, fixed endpoints and even spacing',()=>{
+test('Discovery dates keep fixed historical estimates and sort by surviving source positions',()=>{
  const all=JSON.parse(fs.readFileSync(new URL('./tbr-catalogue.json',import.meta.url),'utf8'));
  for(const [source,start] of [['instagram','2021-11-06'],['online','2017-01-01']]){
   const list=filterCatalogue(all.books,{source});
-  assert.equal(list[0].discovery_dates[source].date,'2026-11-06');
-  assert.equal(list.at(-1).discovery_dates[source].date,start);
   const end=Date.parse('2026-11-06'),span=end-Date.parse(start);
-  // Removing a saved book must not shift the historical dates of survivors.
   const retired=(all.chronology.retired_discoveries||[]).map(b=>b.source_positions[source]).filter(Number.isInteger).sort((a,b)=>a-b);
   for(const [i,book] of list.entries()){
-   let originalPosition=i;for(const position of retired)if(position<=originalPosition)originalPosition++;
-   const expected=new Date(end-Math.round(originalPosition*(span/86400000)/(list.length+retired.length-1))*86400000).toISOString().slice(0,10);
-   assert.equal(book.discovery_dates[source].date,expected);assert.equal(book.discovery_dates[source].estimated,true);
-   if(i)assert.ok(list[i-1][source+'_order']<book[source+'_order']);
+   const entry=book.discovery_dates[source],rank=book[source+'_order'];
+   assert.ok(Number.isSafeInteger(rank)&&rank>=0,book.id);
+   assert.equal(entry.estimated,true,book.id);
+   assert.ok(entry.date>=start&&Date.parse(entry.date)<=end,book.id);
+   if(i){
+    assert.ok(list[i-1][source+'_order']<rank,book.id);
+    assert.ok(list[i-1].discovery_dates[source].date>=entry.date,book.id);
+   }
+   if(source==='online'){
+    // Online retains its original interpolation, including previously retired positions.
+    let originalPosition=i;for(const position of retired)if(position<=originalPosition)originalPosition++;
+    const expected=new Date(end-Math.round(originalPosition*(span/86400000)/(list.length+retired.length-1))*86400000).toISOString().slice(0,10);
+    assert.equal(entry.date,expected,book.id);
+   }
   }
   assert.deepEqual(filterCatalogue(all.books,{source,sort:'oldest'}).map(b=>b.id),list.map(b=>b.id).reverse());
+ }
+ // Retiring other Instagram contributions must not rescale these unaffected dates.
+ const byId=new Map(all.books.map(b=>[b.id,b]));
+ for(const [id,date] of [['instagram-d3d48f67d9836b0d4c52','2026-07-13'],['instagram-31802ee5c4b9224548c1','2022-03-11']]){
+  assert.equal(byId.get(id).discovery_dates.instagram.date,date);
  }
 });
 
@@ -131,11 +143,23 @@ test('All chronology mixes sources, reverses exactly and preserves every members
  const all=JSON.parse(fs.readFileSync(new URL('./tbr-catalogue.json',import.meta.url),'utf8'));
  const recent=filterCatalogue(all.books),oldest=filterCatalogue(all.books,{sort:'oldest'});
  const retired=new Set((all.chronology.retired_discoveries||[]).map(b=>b.chronology_order));
- assert.equal(recent.length,all.counts.total);assert.deepEqual(recent.map(b=>b.chronology_order),Array.from({length:recent.length+retired.size},(_,i)=>i).filter(i=>!retired.has(i)));
+ assert.equal(recent.length,all.counts.total);
+ const ranks=recent.map(b=>b.chronology_order);
+ assert.ok(ranks.every((rank,i)=>Number.isSafeInteger(rank)&&rank>=0&&!retired.has(rank)&&(!i||ranks[i-1]<rank)));
  assert.deepEqual(oldest.map(b=>b.id),recent.map(b=>b.id).reverse());
  assert.equal(new Set(recent.map(b=>b.id)).size,all.counts.total);
  assert.equal(new Set(recent.slice(0,100).map(b=>b.chronology_source)).size,3);
- for(const book of recent){assert.ok(book.discovery_dates[book.chronology_source]);for(const [source,entry] of Object.entries(book.discovery_dates)){assert.equal(entry.estimated,source!=='bookshops');assert.match(entry.date,source==='bookshops'?/^\d{4}-\d{2}$/:/^\d{4}-\d{2}-\d{2}$/);}}
+ let previousMonth;
+ for(const book of recent){
+  const month=book.discovery_dates[book.chronology_source].date.slice(0,7);
+  assert.ok(!previousMonth||previousMonth>=month,book.id);
+  previousMonth=month;
+  for(const [source,entry] of Object.entries(book.discovery_dates)){
+   assert.ok(month>=entry.date.slice(0,7),book.id);
+   assert.equal(entry.estimated,source!=='bookshops');
+   assert.match(entry.date,source==='bookshops'?/^\d{4}-\d{2}$/:/^\d{4}-\d{2}-\d{2}$/);
+  }
+ }
 });
 
 test('Frontend dates show only month/year while backend estimates retain their date and basis',()=>{

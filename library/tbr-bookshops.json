@@ -134,10 +134,6 @@
           "date": "2026-10",
           "estimated": false
         },
-        "instagram": {
-          "date": "2025-06-20",
-          "estimated": true
-        },
         "online": {
           "date": "2026-04-26",
           "estimated": true
@@ -1167,10 +1163,6 @@
         "bookshops": {
           "date": "2026-10",
           "estimated": false
-        },
-        "instagram": {
-          "date": "2025-10-13",
-          "estimated": true
         }
       },
       "chronology_source": "bookshops",
@@ -1679,10 +1671,6 @@
         "bookshops": {
           "date": "2026-10",
           "estimated": false
-        },
-        "instagram": {
-          "date": "2026-01-04",
-          "estimated": true
         }
       },
       "chronology_source": "bookshops",
@@ -2472,10 +2460,6 @@
         "bookshops": {
           "date": "2026-10",
           "estimated": false
-        },
-        "instagram": {
-          "date": "2026-10-04",
-          "estimated": true
         }
       },
       "chronology_source": "bookshops",
@@ -4844,10 +4828,6 @@
         "bookshops": {
           "date": "2026-10",
           "estimated": false
-        },
-        "instagram": {
-          "date": "2026-01-21",
-          "estimated": true
         }
       },
       "chronology_source": "bookshops",
@@ -7090,7 +7070,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 427
+      "chronology_order": 422
     },
     {
       "id": "shop-a89851b9722ea572",
@@ -7128,7 +7108,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 428
+      "chronology_order": 423
     },
     {
       "id": "shop-66466b9b8234ed99",
@@ -7157,7 +7137,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 429
+      "chronology_order": 424
     },
     {
       "id": "shop-5b0fe161a6126649",
@@ -7186,7 +7166,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 430
+      "chronology_order": 425
     },
     {
       "id": "shop-acab4ee7511aaaf6",
@@ -7224,7 +7204,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 431
+      "chronology_order": 426
     },
     {
       "id": "shop-32df09cee7afb9ce",
@@ -7258,7 +7238,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 432
+      "chronology_order": 427
     },
     {
       "id": "shop-418e4f8e6dac53cd",
@@ -7296,7 +7276,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 433
+      "chronology_order": 428
     },
     {
       "id": "shop-1131dedb661b821b",
@@ -7325,7 +7305,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 434
+      "chronology_order": 429
     },
     {
       "id": "shop-a5bedc744f564ac2",
@@ -7354,7 +7334,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 435
+      "chronology_order": 430
     },
     {
       "id": "shop-56e1a043687cf28f",
@@ -7392,7 +7372,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 436
+      "chronology_order": 431
     },
     {
       "id": "shop-c8adca25412b9357",
@@ -7425,7 +7405,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 437
+      "chronology_order": 432
     },
     {
       "id": "shop-9ce94b2fe0f41289",
@@ -7454,7 +7434,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 438
+      "chronology_order": 433
     },
     {
       "id": "shop-ed70399d710f51fb",
@@ -7492,7 +7472,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 439
+      "chronology_order": 434
     },
     {
       "id": "shop-cd3433447ad232b7",
@@ -7530,7 +7510,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 440
+      "chronology_order": 435
     },
     {
       "id": "shop-70a8ece691443ffb",
@@ -7559,7 +7539,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 441
+      "chronology_order": 436
     },
     {
       "id": "shop-55e7e2a855caff8e",
@@ -7597,7 +7577,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 442
+      "chronology_order": 437
     },
     {
       "id": "shop-c8c8949a75ec6e21",
@@ -7635,7 +7615,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 443
+      "chronology_order": 438
     },
     {
       "id": "shop-9d508f931113bfa6",
@@ -7664,7 +7644,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 444
+      "chronology_order": 439
     },
     {
       "id": "shop-de8eb5f44d1e6b26",
@@ -7693,7 +7673,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 445
+      "chronology_order": 440
     },
     {
       "id": "shop-2d264d080e9b273d",
@@ -7735,7 +7715,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 446
+      "chronology_order": 441
     },
     {
       "id": "shop-f5a118111cbf0816",
@@ -7764,7 +7744,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 447
+      "chronology_order": 442
     },
     {
       "id": "shop-ce2cb5d78a79f559",
@@ -7793,7 +7773,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 448
+      "chronology_order": 443
     },
     {
       "id": "shop-c0cd5a5434ce621f",
@@ -7822,7 +7802,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 449
+      "chronology_order": 444
     },
     {
       "id": "shop-3b3f699c41d66557",
@@ -7851,7 +7831,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 450
+      "chronology_order": 445
     },
     {
       "id": "shop-97c40ba995a41ab8",
@@ -7880,7 +7860,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 567
+      "chronology_order": 559
     },
     {
       "id": "shop-d2b4a29fe87bd5e3",
@@ -7909,7 +7889,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 568
+      "chronology_order": 560
     },
     {
       "id": "shop-a81d9c3f8cd87d44",
@@ -7938,7 +7918,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 569
+      "chronology_order": 561
     },
     {
       "id": "shop-ed774af372222e7a",
@@ -7976,7 +7956,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 570
+      "chronology_order": 562
     },
     {
       "id": "shop-6ed711ffb678cf56",
@@ -8010,7 +7990,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 571
+      "chronology_order": 563
     },
     {
       "id": "shop-5e72b3b9977052d4",
@@ -8039,7 +8019,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 741
+      "chronology_order": 731
     },
     {
       "id": "shop-a400539aeb99c900",
@@ -8068,7 +8048,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 742
+      "chronology_order": 732
     },
     {
       "id": "shop-ffe7aa3e374de1da",
@@ -8097,7 +8077,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 743
+      "chronology_order": 733
     },
     {
       "id": "shop-ec20757e2b9b0e94",
@@ -8126,7 +8106,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 744
+      "chronology_order": 734
     },
     {
       "id": "shop-e94513a0f1196ae3",
@@ -8155,7 +8135,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 745
+      "chronology_order": 735
     },
     {
       "id": "shop-9a11252a2f636e1a",
@@ -8188,7 +8168,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 746
+      "chronology_order": 736
     },
     {
       "id": "shop-ceba1501a8269563",
@@ -8226,7 +8206,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 747
+      "chronology_order": 737
     },
     {
       "id": "shop-6c5853d2e6fa7648",
@@ -8255,7 +8235,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 748
+      "chronology_order": 738
     },
     {
       "id": "shop-5d74f6dc7192b5ce",
@@ -8284,7 +8264,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 749
+      "chronology_order": 739
     },
     {
       "id": "shop-526a5ab32df00401",
@@ -8313,7 +8293,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 750
+      "chronology_order": 740
     },
     {
       "id": "shop-bfb75089d6ded54c",
@@ -8342,7 +8322,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 751
+      "chronology_order": 741
     },
     {
       "id": "shop-02a71f12c43dafb3",
@@ -8389,7 +8369,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 752
+      "chronology_order": 742
     },
     {
       "id": "shop-7c156b2905d7125f",
@@ -8418,7 +8398,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 753
+      "chronology_order": 743
     },
     {
       "id": "shop-10f5dd962b0add26",
@@ -8447,7 +8427,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 754
+      "chronology_order": 744
     },
     {
       "id": "shop-3ac14b5586222045",
@@ -8476,7 +8456,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 755
+      "chronology_order": 745
     },
     {
       "id": "shop-548760c06e48b344",
@@ -8504,17 +8484,13 @@
           "date": "2026-01",
           "estimated": false
         },
-        "instagram": {
-          "date": "2024-07-04",
-          "estimated": true
-        },
         "online": {
           "date": "2019-06-05",
           "estimated": true
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 756
+      "chronology_order": 746
     },
     {
       "id": "shop-79906ebff3c121d7",
@@ -8543,7 +8519,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 757
+      "chronology_order": 747
     },
     {
       "id": "shop-05ec7233463ad272",
@@ -8581,7 +8557,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 758
+      "chronology_order": 748
     },
     {
       "id": "shop-4ce9f8c503bc7d47",
@@ -8610,7 +8586,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 759
+      "chronology_order": 749
     },
     {
       "id": "shop-d4b4382ee72b457d",
@@ -8639,7 +8615,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 760
+      "chronology_order": 750
     },
     {
       "id": "shop-6738df4ea26b03ef",
@@ -8668,7 +8644,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 771
+      "chronology_order": 761
     },
     {
       "id": "shop-a989a07641226011",
@@ -8698,7 +8674,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 772
+      "chronology_order": 762
     },
     {
       "id": "shop-11b0c81be59281e2",
@@ -8724,14 +8700,10 @@
         "bookshops": {
           "date": "2026-01",
           "estimated": false
-        },
-        "instagram": {
-          "date": "2026-06-12",
-          "estimated": true
         }
       },
-      "chronology_source": "instagram",
-      "chronology_order": 506
+      "chronology_source": "bookshops",
+      "chronology_order": 763
     },
     {
       "id": "shop-5059af8af2518f3c",
@@ -8760,7 +8732,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 773
+      "chronology_order": 764
     },
     {
       "id": "shop-8924e54de1867ad9",
@@ -8789,7 +8761,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 774
+      "chronology_order": 765
     },
     {
       "id": "shop-f719f3ad82fddae2",
@@ -8822,7 +8794,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 775
+      "chronology_order": 766
     },
     {
       "id": "shop-c2ba23a2350e5cd3",
@@ -8851,7 +8823,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 776
+      "chronology_order": 767
     },
     {
       "id": "shop-0dc667446e571a91",
@@ -8880,7 +8852,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 789
+      "chronology_order": 780
     },
     {
       "id": "shop-c865f3e9e7bb3a71",
@@ -8909,7 +8881,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 793
+      "chronology_order": 784
     },
     {
       "id": "shop-df12deeb21938327",
@@ -8938,7 +8910,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 794
+      "chronology_order": 785
     },
     {
       "id": "shop-9c8314dd3dafbaaf",
@@ -8972,7 +8944,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 795
+      "chronology_order": 786
     },
     {
       "id": "shop-67d78b62b1f8be6f",
@@ -9006,7 +8978,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 796
+      "chronology_order": 787
     },
     {
       "id": "shop-e04e4a79aacb0309",
@@ -9035,7 +9007,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 797
+      "chronology_order": 788
     },
     {
       "id": "shop-ce8e1e598eceae53",
@@ -9064,7 +9036,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 798
+      "chronology_order": 789
     },
     {
       "id": "shop-16359b1a6d548888",
@@ -9130,7 +9102,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 799
+      "chronology_order": 790
     },
     {
       "id": "shop-035b3e7d1e66b2f0",
@@ -9159,7 +9131,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 800
+      "chronology_order": 791
     },
     {
       "id": "shop-2274c64f5c4a2837",
@@ -9192,7 +9164,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 801
+      "chronology_order": 792
     },
     {
       "id": "shop-b95726bb8eb97d8c",
@@ -9221,7 +9193,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 802
+      "chronology_order": 793
     },
     {
       "id": "shop-f7826f0e1049b345",
@@ -9254,7 +9226,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 803
+      "chronology_order": 794
     },
     {
       "id": "shop-8fbb64f4da682b4c",
@@ -9283,7 +9255,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 804
+      "chronology_order": 795
     },
     {
       "id": "shop-ed97ec4a424555c4",
@@ -9312,7 +9284,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 805
+      "chronology_order": 796
     },
     {
       "id": "shop-300325613062f03b",
@@ -9341,7 +9313,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 806
+      "chronology_order": 797
     },
     {
       "id": "shop-2bbbefdd49a3c92f",
@@ -9370,7 +9342,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 807
+      "chronology_order": 798
     },
     {
       "id": "shop-0949249bec1b3e33",
@@ -9399,7 +9371,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 808
+      "chronology_order": 799
     },
     {
       "id": "shop-1f5f473067b37732",
@@ -9428,7 +9400,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 809
+      "chronology_order": 800
     },
     {
       "id": "shop-13983d1f57ba9040",
@@ -9470,7 +9442,7 @@
         }
       },
       "chronology_source": "instagram",
-      "chronology_order": 558
+      "chronology_order": 550
     },
     {
       "id": "shop-747d717f1791222a",
@@ -9499,7 +9471,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 810
+      "chronology_order": 801
     },
     {
       "id": "shop-2b936248aab7aa04",
@@ -9528,7 +9500,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 811
+      "chronology_order": 802
     },
     {
       "id": "shop-a74cc2ab4d200155",
@@ -9570,7 +9542,7 @@
         }
       },
       "chronology_source": "online",
-      "chronology_order": 638
+      "chronology_order": 629
     },
     {
       "id": "shop-fcb1f68a79e399a6",
@@ -9599,7 +9571,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 812
+      "chronology_order": 803
     },
     {
       "id": "shop-1b45ed5a6c37ee48",
@@ -9628,7 +9600,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 813
+      "chronology_order": 804
     },
     {
       "id": "shop-934a29b48e1c3994",
@@ -9657,7 +9629,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 814
+      "chronology_order": 805
     },
     {
       "id": "shop-e35f16e1d1e20731",
@@ -9686,7 +9658,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 815
+      "chronology_order": 806
     },
     {
       "id": "shop-015268c2fa6d3107",
@@ -9715,7 +9687,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 816
+      "chronology_order": 807
     },
     {
       "id": "shop-8ead6fa6eda88b58",
@@ -9748,7 +9720,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 817
+      "chronology_order": 808
     },
     {
       "id": "shop-88c29a6b1f5a1533",
@@ -9781,7 +9753,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 818
+      "chronology_order": 809
     },
     {
       "id": "shop-bbd2ff8da397f22a",
@@ -9818,7 +9790,7 @@
         }
       },
       "chronology_source": "online",
-      "chronology_order": 453
+      "chronology_order": 448
     },
     {
       "id": "shop-733b135b96d814d0",
@@ -9860,7 +9832,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 819
+      "chronology_order": 810
     },
     {
       "id": "shop-7608e17b58dddbd8",
@@ -9890,7 +9862,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 820
+      "chronology_order": 811
     },
     {
       "id": "shop-8e18be56da393ada",
@@ -9919,7 +9891,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 821
+      "chronology_order": 812
     },
     {
       "id": "shop-8cc0767be8c56bc3",
@@ -9952,7 +9924,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 822
+      "chronology_order": 813
     },
     {
       "id": "shop-2ab1626e2d42c181",
@@ -9986,7 +9958,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 823
+      "chronology_order": 814
     },
     {
       "id": "shop-ddbb63c7a9805cb3",
@@ -10015,7 +9987,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 824
+      "chronology_order": 815
     },
     {
       "id": "shop-f52d00704abc5bf7",
@@ -10045,7 +10017,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 825
+      "chronology_order": 816
     },
     {
       "id": "shop-03d930963e3a80dd",
@@ -10083,7 +10055,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 826
+      "chronology_order": 817
     },
     {
       "id": "shop-9b999933779be67c",
@@ -10120,7 +10092,7 @@
         }
       },
       "chronology_source": "instagram",
-      "chronology_order": 346
+      "chronology_order": 343
     },
     {
       "id": "shop-31b09f2ea7ee15f5",
@@ -10153,7 +10125,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 827
+      "chronology_order": 818
     },
     {
       "id": "shop-da75af1662a43c8c",
@@ -10200,7 +10172,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 828
+      "chronology_order": 819
     },
     {
       "id": "shop-ea268b0232eb6121",
@@ -10234,7 +10206,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 829
+      "chronology_order": 820
     },
     {
       "id": "shop-b0e584c51c66285c",
@@ -10267,7 +10239,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 830
+      "chronology_order": 821
     },
     {
       "id": "shop-e26ddfc7cad82bcd",
@@ -10296,7 +10268,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 831
+      "chronology_order": 822
     },
     {
       "id": "shop-9feb0cfb2bb917c8",
@@ -10329,7 +10301,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 832
+      "chronology_order": 823
     },
     {
       "id": "shop-2788ec21347d9e0b",
@@ -10363,7 +10335,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 833
+      "chronology_order": 824
     },
     {
       "id": "shop-d7ac2aa2db40cb1a",
@@ -10396,7 +10368,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 834
+      "chronology_order": 825
     },
     {
       "id": "shop-96c40283f85ba41c",
@@ -10430,7 +10402,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 835
+      "chronology_order": 826
     },
     {
       "id": "shop-ad2bd6db4a7f647d",
@@ -10463,7 +10435,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 836
+      "chronology_order": 827
     },
     {
       "id": "shop-e96eca205217af97",
@@ -10496,7 +10468,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 837
+      "chronology_order": 828
     },
     {
       "id": "shop-2ab4634041065684",
@@ -10525,7 +10497,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 838
+      "chronology_order": 829
     },
     {
       "id": "shop-947c91c1db7cb2f5",
@@ -10554,7 +10526,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1095
+      "chronology_order": 1087
     },
     {
       "id": "shop-23225edcaac7cc5a",
@@ -10583,7 +10555,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1096
+      "chronology_order": 1088
     },
     {
       "id": "shop-08a23b2f60ff11b1",
@@ -10616,7 +10588,7 @@
         }
       },
       "chronology_source": "online",
-      "chronology_order": 537
+      "chronology_order": 529
     },
     {
       "id": "shop-e3d5aa5477253912",
@@ -10645,7 +10617,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1097
+      "chronology_order": 1089
     },
     {
       "id": "shop-d580d4470799dae0",
@@ -10674,7 +10646,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1098
+      "chronology_order": 1090
     },
     {
       "id": "shop-18929c35e3403447",
@@ -10716,7 +10688,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1099
+      "chronology_order": 1091
     },
     {
       "id": "shop-96686a607a8665a8",
@@ -10745,7 +10717,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1100
+      "chronology_order": 1092
     },
     {
       "id": "shop-a0e3206a6ded483b",
@@ -10774,7 +10746,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1101
+      "chronology_order": 1093
     },
     {
       "id": "shop-1e35f925c37e97c7",
@@ -10821,7 +10793,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1102
+      "chronology_order": 1094
     },
     {
       "id": "shop-a722faf2a4095d80",
@@ -10850,7 +10822,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1103
+      "chronology_order": 1095
     },
     {
       "id": "shop-5ad526b1c24e4a71",
@@ -10883,7 +10855,7 @@
         }
       },
       "chronology_source": "instagram",
-      "chronology_order": 420
+      "chronology_order": 415
     },
     {
       "id": "shop-40a87cf3e35c4995",
@@ -10934,7 +10906,7 @@
         }
       },
       "chronology_source": "online",
-      "chronology_order": 992
+      "chronology_order": 980
     },
     {
       "id": "shop-a00a37cbd9e310bb",
@@ -10972,7 +10944,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1104
+      "chronology_order": 1096
     },
     {
       "id": "shop-8abde4a50ab8ac86",
@@ -11010,7 +10982,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1105
+      "chronology_order": 1097
     },
     {
       "id": "shop-1290e7c7048e9cae",
@@ -11044,7 +11016,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1106
+      "chronology_order": 1098
     },
     {
       "id": "shop-555999b5ddff42f7",
@@ -11082,7 +11054,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1107
+      "chronology_order": 1099
     },
     {
       "id": "shop-5c7cbb82e925e22b",
@@ -11115,7 +11087,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1108
+      "chronology_order": 1100
     },
     {
       "id": "shop-aa6285cff2967772",
@@ -11144,7 +11116,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1153
+      "chronology_order": 1137
     },
     {
       "id": "shop-3d7adb495a474bd0",
@@ -11173,7 +11145,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1154
+      "chronology_order": 1138
     },
     {
       "id": "shop-a9b159a3aca207c2",
@@ -11202,7 +11174,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1157
+      "chronology_order": 1140
     },
     {
       "id": "shop-a20c148966d24395",
@@ -11235,7 +11207,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1158
+      "chronology_order": 1141
     },
     {
       "id": "shop-433a9c22f30ac884",
@@ -11264,7 +11236,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1159
+      "chronology_order": 1142
     },
     {
       "id": "shop-d94ccb1681146c48",
@@ -11293,7 +11265,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1160
+      "chronology_order": 1143
     },
     {
       "id": "shop-db1b36706dda8a3a",
@@ -11327,7 +11299,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1165
+      "chronology_order": 1151
     },
     {
       "id": "shop-2d986070c98ffbc2",
@@ -11356,7 +11328,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1181
+      "chronology_order": 1169
     },
     {
       "id": "shop-5ce36f13a043a096",
@@ -11394,7 +11366,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1182
+      "chronology_order": 1170
     },
     {
       "id": "shop-524961b75f12e1c9",
@@ -11423,7 +11395,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1183
+      "chronology_order": 1171
     },
     {
       "id": "shop-885fc6386e4c03a1",
@@ -11461,7 +11433,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1184
+      "chronology_order": 1172
     },
     {
       "id": "shop-ed9c365d53f92cd4",
@@ -11490,7 +11462,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1185
+      "chronology_order": 1173
     },
     {
       "id": "shop-86da58b97c326c6b",
@@ -11519,7 +11491,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1186
+      "chronology_order": 1174
     },
     {
       "id": "shop-a3a80b45cb3e9357",
@@ -11553,7 +11525,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1187
+      "chronology_order": 1175
     },
     {
       "id": "shop-8562de9cb30e55f3",
@@ -11582,7 +11554,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1188
+      "chronology_order": 1176
     },
     {
       "id": "shop-52a46b20858e614b",
@@ -11611,7 +11583,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1189
+      "chronology_order": 1177
     },
     {
       "id": "shop-08f064d6ddc02ca3",
@@ -11654,7 +11626,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1190
+      "chronology_order": 1178
     },
     {
       "id": "shop-2707bee7a4fe6f58",
@@ -11692,7 +11664,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1191
+      "chronology_order": 1179
     },
     {
       "id": "shop-b43e433288b03b08",
@@ -11721,7 +11693,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1192
+      "chronology_order": 1180
     },
     {
       "id": "shop-bf2f074600844954",
@@ -11750,7 +11722,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1193
+      "chronology_order": 1181
     },
     {
       "id": "shop-f05cd8acac832ae1",
@@ -11788,7 +11760,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1198
+      "chronology_order": 1186
     },
     {
       "id": "shop-de92bd99082cb493",
@@ -11817,7 +11789,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1264
+      "chronology_order": 1248
     },
     {
       "id": "shop-3be2014496f1d3f9",
@@ -11846,7 +11818,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1265
+      "chronology_order": 1249
     },
     {
       "id": "shop-9a72806e0416dfeb",
@@ -11875,7 +11847,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1266
+      "chronology_order": 1250
     },
     {
       "id": "shop-11215b57aeeee6bd",
@@ -11918,7 +11890,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1267
+      "chronology_order": 1251
     },
     {
       "id": "shop-3158fff0ba44a3aa",
@@ -11952,7 +11924,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1414
+      "chronology_order": 1400
     },
     {
       "id": "shop-6122f03b95ca28ba",
@@ -11981,7 +11953,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1415
+      "chronology_order": 1401
     },
     {
       "id": "shop-60ce531a010f77f4",
@@ -12010,7 +11982,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1416
+      "chronology_order": 1402
     },
     {
       "id": "shop-1685e80922da6ee3",
@@ -12039,7 +12011,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1417
+      "chronology_order": 1403
     },
     {
       "id": "shop-defadbc69b19d38a",
@@ -12072,7 +12044,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1418
+      "chronology_order": 1404
     },
     {
       "id": "shop-59ecf2a401616fc3",
@@ -12102,7 +12074,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1419
+      "chronology_order": 1405
     },
     {
       "id": "shop-a28a6b5feeaaa2ac",
@@ -12131,7 +12103,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1420
+      "chronology_order": 1406
     },
     {
       "id": "shop-ffa6a3cd06a8c965",
@@ -12160,7 +12132,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1421
+      "chronology_order": 1407
     },
     {
       "id": "shop-0838fc93b3da7ed5",
@@ -12193,7 +12165,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1422
+      "chronology_order": 1408
     },
     {
       "id": "shop-b18910763657da0c",
@@ -12222,7 +12194,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1423
+      "chronology_order": 1409
     },
     {
       "id": "shop-7798234aa8cafb63",
@@ -12255,7 +12227,7 @@
         }
       },
       "chronology_source": "instagram",
-      "chronology_order": 867
+      "chronology_order": 854
     },
     {
       "id": "shop-4105e87a2d2fd7ae",
@@ -12301,7 +12273,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1424
+      "chronology_order": 1410
     },
     {
       "id": "shop-a278d917fcc99668",
@@ -12330,7 +12302,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1425
+      "chronology_order": 1411
     },
     {
       "id": "shop-b72879a64b03b7fb",
@@ -12363,7 +12335,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1426
+      "chronology_order": 1412
     },
     {
       "id": "shop-df41c16a1f6353ed",
@@ -12392,7 +12364,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1427
+      "chronology_order": 1413
     },
     {
       "id": "shop-2f7312f4202b10a1",
@@ -12421,7 +12393,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1592
+      "chronology_order": 1577
     },
     {
       "id": "shop-0981bfee33aa2528",
@@ -12459,7 +12431,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1593
+      "chronology_order": 1578
     },
     {
       "id": "shop-4c40df19a7aab6a3",
@@ -12497,7 +12469,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1594
+      "chronology_order": 1579
     },
     {
       "id": "shop-a4c0a6fcc8b8d157",
@@ -12526,7 +12498,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1595
+      "chronology_order": 1580
     },
     {
       "id": "shop-e0e2689df0369aa1",
@@ -12555,7 +12527,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1596
+      "chronology_order": 1581
     },
     {
       "id": "shop-b9bbf77a38cccb7d",
@@ -12589,7 +12561,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1597
+      "chronology_order": 1582
     },
     {
       "id": "shop-de976efffbb3311a",
@@ -12618,7 +12590,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1598
+      "chronology_order": 1583
     },
     {
       "id": "shop-e06e17ca62c3c2ec",
@@ -12648,7 +12620,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1599
+      "chronology_order": 1584
     },
     {
       "id": "shop-8f53c6bc4fc37241",
@@ -12677,7 +12649,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1600
+      "chronology_order": 1585
     },
     {
       "id": "shop-0227c09e10fc8762",
@@ -12728,7 +12700,7 @@
         }
       },
       "chronology_source": "instagram",
-      "chronology_order": 1335
+      "chronology_order": 1321
     },
     {
       "id": "shop-596c944776d2909d",
@@ -12758,7 +12730,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1601
+      "chronology_order": 1586
     },
     {
       "id": "shop-3da3e46ebc702804",
@@ -12787,7 +12759,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1602
+      "chronology_order": 1587
     },
     {
       "id": "shop-22c950ddbe2bb0b5",
@@ -12816,7 +12788,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1603
+      "chronology_order": 1588
     },
     {
       "id": "shop-31af25912f21c98b",
@@ -12845,7 +12817,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1604
+      "chronology_order": 1589
     },
     {
       "id": "shop-a52359036d9fc9ad",
@@ -12878,7 +12850,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1605
+      "chronology_order": 1590
     },
     {
       "id": "shop-80c5a0791a6db960",
@@ -12907,7 +12879,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1606
+      "chronology_order": 1591
     },
     {
       "id": "shop-135345594a7bb607",
@@ -12936,7 +12908,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1607
+      "chronology_order": 1592
     },
     {
       "id": "shop-8ac8c8ed0b0765b4",
@@ -12965,7 +12937,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1608
+      "chronology_order": 1593
     },
     {
       "id": "shop-6ac497b29753fdf1",
@@ -12994,7 +12966,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1609
+      "chronology_order": 1594
     },
     {
       "id": "shop-76141ad295e0a28d",
@@ -13023,7 +12995,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1610
+      "chronology_order": 1595
     },
     {
       "id": "shop-bf34b7428f4bc4c7",
@@ -13052,7 +13024,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1611
+      "chronology_order": 1596
     },
     {
       "id": "shop-d89c1e71b006134f",
@@ -13089,7 +13061,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1795
+      "chronology_order": 1781
     },
     {
       "id": "shop-8e0d07c32602bb3c",
@@ -13118,7 +13090,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1796
+      "chronology_order": 1782
     },
     {
       "id": "shop-4b2cb7787101be5e",
@@ -13148,7 +13120,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1797
+      "chronology_order": 1783
     },
     {
       "id": "shop-af631144963808ac",
@@ -13182,7 +13154,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1798
+      "chronology_order": 1784
     },
     {
       "id": "shop-7108d78f520187f9",
@@ -13238,7 +13210,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1799
+      "chronology_order": 1785
     },
     {
       "id": "shop-1fa2176b592585a1",
@@ -13267,7 +13239,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1800
+      "chronology_order": 1786
     },
     {
       "id": "shop-363920808dcca390",
@@ -13300,7 +13272,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1801
+      "chronology_order": 1787
     },
     {
       "id": "shop-25fb963a344d4504",
@@ -13338,7 +13310,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1802
+      "chronology_order": 1788
     },
     {
       "id": "shop-67b4234d97ce7b29",
@@ -13367,7 +13339,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1803
+      "chronology_order": 1789
     },
     {
       "id": "shop-d075db52d73c32f0",
@@ -13405,7 +13377,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1804
+      "chronology_order": 1790
     },
     {
       "id": "shop-a0a8cab4c640d7c6",
@@ -13443,7 +13415,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1805
+      "chronology_order": 1791
     },
     {
       "id": "shop-ef456e06399c2389",
@@ -13485,7 +13457,7 @@
         }
       },
       "chronology_source": "online",
-      "chronology_order": 459
+      "chronology_order": 454
     },
     {
       "id": "shop-44c9c377387a2f6e",
@@ -13514,7 +13486,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1806
+      "chronology_order": 1792
     },
     {
       "id": "shop-748cbcb772a71f05",
@@ -13551,17 +13523,13 @@
           "date": "2024-08",
           "estimated": false
         },
-        "instagram": {
-          "date": "2021-12-30",
-          "estimated": true
-        },
         "online": {
           "date": "2020-07-03",
           "estimated": true
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1807
+      "chronology_order": 1793
     },
     {
       "id": "shop-ca7887c16092e1c0",
@@ -13590,7 +13558,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1808
+      "chronology_order": 1794
     },
     {
       "id": "shop-b3727bfce895fb0c",
@@ -13619,7 +13587,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1838
+      "chronology_order": 1824
     },
     {
       "id": "shop-c362dc17c5bb81c0",
@@ -13657,7 +13625,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1839
+      "chronology_order": 1825
     },
     {
       "id": "shop-547ab5296b6709c3",
@@ -13686,7 +13654,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1840
+      "chronology_order": 1826
     },
     {
       "id": "shop-caf6730ac4be9879",
@@ -13719,7 +13687,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1841
+      "chronology_order": 1827
     },
     {
       "id": "shop-c1fb96c4d8a45036",
@@ -13748,7 +13716,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1842
+      "chronology_order": 1828
     },
     {
       "id": "shop-eb912a1248a6033d",
@@ -13782,7 +13750,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1843
+      "chronology_order": 1829
     },
     {
       "id": "shop-5640145a4ed2fc98",
@@ -13811,7 +13779,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1844
+      "chronology_order": 1830
     },
     {
       "id": "shop-97d0997c6bf013e3",
@@ -13845,7 +13813,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1845
+      "chronology_order": 1831
     },
     {
       "id": "shop-e3447de96993788d",
@@ -13901,7 +13869,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1846
+      "chronology_order": 1832
     },
     {
       "id": "shop-a272f127967b2641",
@@ -13930,7 +13898,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1867
+      "chronology_order": 1853
     },
     {
       "id": "shop-f89e60852cee12aa",
@@ -13964,7 +13932,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1868
+      "chronology_order": 1854
     },
     {
       "id": "shop-0972de77ebb25bc7",
@@ -13998,7 +13966,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1869
+      "chronology_order": 1855
     },
     {
       "id": "shop-132ecec8a945c47a",
@@ -14027,7 +13995,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1870
+      "chronology_order": 1856
     },
     {
       "id": "shop-215aac37b700514e",
@@ -14056,7 +14024,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1871
+      "chronology_order": 1857
     },
     {
       "id": "shop-32cdcc1b61877efb",
@@ -14094,7 +14062,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1872
+      "chronology_order": 1858
     },
     {
       "id": "shop-5deca9f842482f9b",
@@ -14132,7 +14100,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1873
+      "chronology_order": 1859
     },
     {
       "id": "shop-73f8dc0901f9fe47",
@@ -14161,7 +14129,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1874
+      "chronology_order": 1860
     },
     {
       "id": "shop-63aa169ba5a4d840",
@@ -14190,7 +14158,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1885
+      "chronology_order": 1869
     },
     {
       "id": "shop-6ec8ee0c8074de91",
@@ -14219,7 +14187,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1886
+      "chronology_order": 1870
     },
     {
       "id": "shop-ee6a00d80061f050",
@@ -14248,7 +14216,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1887
+      "chronology_order": 1871
     },
     {
       "id": "shop-67b981b9986f8eb4",
@@ -14282,7 +14250,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1888
+      "chronology_order": 1872
     },
     {
       "id": "shop-070cb1922cf49a32",
@@ -14311,7 +14279,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1889
+      "chronology_order": 1873
     },
     {
       "id": "shop-f7451869a147d0ac",
@@ -14340,7 +14308,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1895
+      "chronology_order": 1879
     },
     {
       "id": "shop-4fcc67de5bab8b2c",
@@ -14369,7 +14337,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1896
+      "chronology_order": 1880
     },
     {
       "id": "shop-95dc6cf4fa93f4e3",
@@ -14399,7 +14367,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1897
+      "chronology_order": 1882
     },
     {
       "id": "shop-583b47e59bba2088",
@@ -14433,7 +14401,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1898
+      "chronology_order": 1883
     },
     {
       "id": "shop-9c2d63fdbb078f61",
@@ -14462,7 +14430,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1899
+      "chronology_order": 1884
     },
     {
       "id": "shop-639fdfa7af07775d",
@@ -14495,7 +14463,7 @@
         }
       },
       "chronology_source": "instagram",
-      "chronology_order": 1433
+      "chronology_order": 1419
     },
     {
       "id": "shop-b7532d628c2fe7a4",
@@ -14547,7 +14515,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1900
+      "chronology_order": 1885
     },
     {
       "id": "shop-1890666d9f365950",
@@ -14580,7 +14548,7 @@
         }
       },
       "chronology_source": "online",
-      "chronology_order": 647
+      "chronology_order": 638
     },
     {
       "id": "shop-c755ce7a4ee894cb",
@@ -14613,7 +14581,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1965
+      "chronology_order": 1950
     },
     {
       "id": "shop-e990ddfe3ac4a086",
@@ -14642,7 +14610,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1966
+      "chronology_order": 1951
     },
     {
       "id": "shop-711b2e0f8876731e",
@@ -14671,7 +14639,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1967
+      "chronology_order": 1952
     },
     {
       "id": "shop-75ace4e0d65d3d42",
@@ -14700,7 +14668,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1968
+      "chronology_order": 1953
     },
     {
       "id": "shop-390e7e4e526d8fdd",
@@ -14734,7 +14702,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1969
+      "chronology_order": 1954
     },
     {
       "id": "shop-95a761d2345be4af",
@@ -14763,7 +14731,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1970
+      "chronology_order": 1955
     },
     {
       "id": "shop-a7f7e4475c99df70",
@@ -14800,7 +14768,7 @@
         }
       },
       "chronology_source": "online",
-      "chronology_order": 1147
+      "chronology_order": 1134
     },
     {
       "id": "shop-afe541d7eaaab040",
@@ -14833,7 +14801,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1971
+      "chronology_order": 1956
     },
     {
       "id": "shop-9ce0a8ab7de10fd0",
@@ -14867,7 +14835,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1972
+      "chronology_order": 1957
     },
     {
       "id": "shop-89d61d004093a22a",
@@ -14905,7 +14873,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1973
+      "chronology_order": 1958
     },
     {
       "id": "shop-dec0fa2dfc1b286c",
@@ -14939,7 +14907,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1974
+      "chronology_order": 1959
     },
     {
       "id": "shop-286c928ccd5aa666",
@@ -14968,7 +14936,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1975
+      "chronology_order": 1960
     },
     {
       "id": "shop-e340b20ec67f1436",
@@ -14997,7 +14965,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1976
+      "chronology_order": 1961
     },
     {
       "id": "shop-6649def454d02863",
@@ -15026,7 +14994,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1977
+      "chronology_order": 1964
     },
     {
       "id": "shop-a8378250425314ab",
@@ -15055,7 +15023,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1978
+      "chronology_order": 1965
     },
     {
       "id": "shop-98fd46d476ca1ca5",
@@ -15084,7 +15052,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1979
+      "chronology_order": 1966
     },
     {
       "id": "shop-a092680b9a63c4bf",
@@ -15117,7 +15085,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 1980
+      "chronology_order": 1967
     },
     {
       "id": "shop-20812d348545bbdd",
@@ -15150,7 +15118,7 @@
         }
       },
       "chronology_source": "online",
-      "chronology_order": 1250
+      "chronology_order": 1232
     },
     {
       "id": "shop-104de885d883b248",
@@ -15179,7 +15147,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2108
+      "chronology_order": 2096
     },
     {
       "id": "shop-49ac16e89ab17a26",
@@ -15208,7 +15176,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2109
+      "chronology_order": 2097
     },
     {
       "id": "shop-70e1c7811d0e1187",
@@ -15237,7 +15205,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2110
+      "chronology_order": 2098
     },
     {
       "id": "shop-4472932717c97743",
@@ -15266,7 +15234,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2111
+      "chronology_order": 2099
     },
     {
       "id": "shop-0ea347913fd97734",
@@ -15295,7 +15263,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2112
+      "chronology_order": 2100
     },
     {
       "id": "shop-87cc82169a407b7f",
@@ -15324,7 +15292,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2113
+      "chronology_order": 2101
     },
     {
       "id": "shop-237ab59cb83b4438",
@@ -15357,7 +15325,7 @@
         }
       },
       "chronology_source": "online",
-      "chronology_order": 2052
+      "chronology_order": 2039
     },
     {
       "id": "shop-97ab9be793e35c37",
@@ -15386,7 +15354,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2114
+      "chronology_order": 2102
     },
     {
       "id": "shop-be1d2bbb7f4bdc4f",
@@ -15415,7 +15383,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2115
+      "chronology_order": 2103
     },
     {
       "id": "shop-ab9d099e95038005",
@@ -15444,7 +15412,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2116
+      "chronology_order": 2104
     },
     {
       "id": "shop-6b867b59972c58cc",
@@ -15486,7 +15454,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2117
+      "chronology_order": 2105
     },
     {
       "id": "shop-0e0c22eb23fcb2f7",
@@ -15515,7 +15483,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2118
+      "chronology_order": 2106
     },
     {
       "id": "shop-3c1075772c594336",
@@ -15544,7 +15512,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2119
+      "chronology_order": 2107
     },
     {
       "id": "shop-b99fec3652a6e21d",
@@ -15573,7 +15541,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2120
+      "chronology_order": 2108
     },
     {
       "id": "shop-5ce3f1ff1231f59a",
@@ -15602,7 +15570,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2121
+      "chronology_order": 2109
     },
     {
       "id": "shop-de55729b6473ca5e",
@@ -15631,7 +15599,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2122
+      "chronology_order": 2110
     },
     {
       "id": "shop-5168fa4cb727b1a8",
@@ -15660,7 +15628,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2123
+      "chronology_order": 2111
     },
     {
       "id": "shop-c73bc8c879f155b3",
@@ -15689,7 +15657,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2124
+      "chronology_order": 2112
     },
     {
       "id": "shop-cc5fb1ba4dbe3234",
@@ -15718,7 +15686,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2125
+      "chronology_order": 2113
     },
     {
       "id": "shop-e7bb84ef51daa60d",
@@ -15747,7 +15715,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2126
+      "chronology_order": 2114
     },
     {
       "id": "shop-f76439631a2c0a94",
@@ -15776,7 +15744,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2127
+      "chronology_order": 2115
     },
     {
       "id": "shop-083c4e145f57c931",
@@ -15809,7 +15777,7 @@
         }
       },
       "chronology_source": "instagram",
-      "chronology_order": 1438
+      "chronology_order": 1424
     },
     {
       "id": "shop-e9bfb6111f0ad664",
@@ -15843,7 +15811,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2354
+      "chronology_order": 2333
     },
     {
       "id": "shop-3b45ba200268574b",
@@ -15872,7 +15840,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2355
+      "chronology_order": 2334
     },
     {
       "id": "shop-36cbe2149d9e51ba",
@@ -15906,7 +15874,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2356
+      "chronology_order": 2335
     },
     {
       "id": "shop-99f1ac2338897406",
@@ -15935,7 +15903,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2357
+      "chronology_order": 2336
     },
     {
       "id": "shop-66a404267bd731c4",
@@ -15964,7 +15932,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2358
+      "chronology_order": 2337
     },
     {
       "id": "shop-9c1b6efdf7a100e4",
@@ -16002,7 +15970,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2359
+      "chronology_order": 2338
     },
     {
       "id": "shop-aeb6f2d43a733539",
@@ -16036,7 +16004,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2360
+      "chronology_order": 2339
     },
     {
       "id": "shop-cc7f5b2078ed6991",
@@ -16065,7 +16033,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2390
+      "chronology_order": 2369
     },
     {
       "id": "shop-48e87525f63b1c88",
@@ -16103,7 +16071,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2391
+      "chronology_order": 2370
     },
     {
       "id": "shop-479d252a5cc93d76",
@@ -16136,7 +16104,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2392
+      "chronology_order": 2371
     },
     {
       "id": "shop-0f7262b281724f6c",
@@ -16169,7 +16137,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2393
+      "chronology_order": 2372
     },
     {
       "id": "shop-222875ef5f3bfe7d",
@@ -16198,7 +16166,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2394
+      "chronology_order": 2373
     },
     {
       "id": "shop-8445c8ef6ea5e676",
@@ -16227,7 +16195,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2395
+      "chronology_order": 2374
     },
     {
       "id": "shop-c4f34c22d9eb5f93",
@@ -16260,7 +16228,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2396
+      "chronology_order": 2375
     },
     {
       "id": "shop-1e5e89ff05fada73",
@@ -16290,7 +16258,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2397
+      "chronology_order": 2376
     },
     {
       "id": "shop-3d212cb54c0dc5b9",
@@ -16332,7 +16300,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2398
+      "chronology_order": 2377
     },
     {
       "id": "shop-36ce43a328b30b84",
@@ -16361,7 +16329,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2399
+      "chronology_order": 2378
     },
     {
       "id": "shop-e9e15fa1b8c0caec",
@@ -16390,7 +16358,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2400
+      "chronology_order": 2379
     },
     {
       "id": "shop-c895dcc3858797b3",
@@ -16419,7 +16387,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2401
+      "chronology_order": 2380
     },
     {
       "id": "shop-187277d1daa35647",
@@ -16457,7 +16425,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2402
+      "chronology_order": 2381
     },
     {
       "id": "shop-56693f5044a9e9c2",
@@ -16505,7 +16473,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2403
+      "chronology_order": 2382
     },
     {
       "id": "shop-42ad0985dc9aecab",
@@ -16538,7 +16506,7 @@
         }
       },
       "chronology_source": "instagram",
-      "chronology_order": 1998
+      "chronology_order": 1984
     },
     {
       "id": "shop-b0600f1c74e17258",
@@ -16567,7 +16535,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2404
+      "chronology_order": 2383
     },
     {
       "id": "shop-00f0da7dbf121868",
@@ -16609,7 +16577,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2405
+      "chronology_order": 2384
     },
     {
       "id": "shop-995d2a308433c21b",
@@ -16638,7 +16606,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2406
+      "chronology_order": 2385
     },
     {
       "id": "shop-79f1b7c7feb212a5",
@@ -16676,7 +16644,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2407
+      "chronology_order": 2386
     },
     {
       "id": "shop-0cb6c10f2892cf9d",
@@ -16714,7 +16682,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2408
+      "chronology_order": 2387
     },
     {
       "id": "shop-9ac999ab5b625977",
@@ -16747,7 +16715,7 @@
         }
       },
       "chronology_source": "instagram",
-      "chronology_order": 1929
+      "chronology_order": 1915
     },
     {
       "id": "shop-c8fdd15b06b3b733",
@@ -16776,7 +16744,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2409
+      "chronology_order": 2388
     },
     {
       "id": "shop-6e3c5e5c3701a5c8",
@@ -16813,7 +16781,7 @@
         }
       },
       "chronology_source": "instagram",
-      "chronology_order": 1585
+      "chronology_order": 1570
     },
     {
       "id": "shop-9bc1a535d733e6f1",
@@ -16851,7 +16819,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2410
+      "chronology_order": 2389
     },
     {
       "id": "shop-a52f6d2349857352",
@@ -16880,7 +16848,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2411
+      "chronology_order": 2390
     },
     {
       "id": "shop-a80aaf3daaa6828b",
@@ -16909,7 +16877,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2412
+      "chronology_order": 2391
     },
     {
       "id": "shop-2048c1e01f60a69a",
@@ -16939,7 +16907,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2413
+      "chronology_order": 2392
     },
     {
       "id": "shop-4d67be55520869ed",
@@ -16977,7 +16945,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2414
+      "chronology_order": 2393
     },
     {
       "id": "shop-5058c06bcc34d96c",
@@ -17006,7 +16974,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2546
+      "chronology_order": 2521
     },
     {
       "id": "shop-2e24a4001b87a6e3",
@@ -17035,7 +17003,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2549
+      "chronology_order": 2525
     },
     {
       "id": "shop-9c3def24b08b595c",
@@ -17077,7 +17045,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2550
+      "chronology_order": 2526
     },
     {
       "id": "shop-481af647f563dfe1",
@@ -17106,7 +17074,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2551
+      "chronology_order": 2527
     },
     {
       "id": "shop-d3be399335ca3b31",
@@ -17135,7 +17103,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2552
+      "chronology_order": 2528
     },
     {
       "id": "shop-5285ea85e7696696",
@@ -17169,7 +17137,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2553
+      "chronology_order": 2529
     },
     {
       "id": "shop-0dbb7cf2be950e50",
@@ -17198,7 +17166,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2557
+      "chronology_order": 2533
     },
     {
       "id": "shop-d2db9c5711dac2f2",
@@ -17227,7 +17195,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2558
+      "chronology_order": 2534
     },
     {
       "id": "shop-9d18183eb683157f",
@@ -17273,7 +17241,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2559
+      "chronology_order": 2535
     },
     {
       "id": "shop-bfe300cc9f6e9910",
@@ -17307,7 +17275,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2560
+      "chronology_order": 2536
     },
     {
       "id": "shop-fe3b628369f7e6c6",
@@ -17336,7 +17304,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2561
+      "chronology_order": 2537
     },
     {
       "id": "shop-0fa91b09cc10c488",
@@ -17365,7 +17333,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2562
+      "chronology_order": 2538
     },
     {
       "id": "shop-117bab119b075549",
@@ -17394,7 +17362,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2563
+      "chronology_order": 2539
     },
     {
       "id": "shop-a2f521d8282345ee",
@@ -17423,7 +17391,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2564
+      "chronology_order": 2540
     },
     {
       "id": "shop-859e68ff9c86cd63",
@@ -17456,7 +17424,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2565
+      "chronology_order": 2541
     },
     {
       "id": "shop-286201077687a228",
@@ -17485,7 +17453,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2566
+      "chronology_order": 2542
     },
     {
       "id": "shop-6205501f24cb8133",
@@ -17514,7 +17482,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2567
+      "chronology_order": 2543
     },
     {
       "id": "shop-58e3c60f47216517",
@@ -17548,7 +17516,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2568
+      "chronology_order": 2544
     },
     {
       "id": "shop-cc37f8e62e5bc3ea",
@@ -17581,7 +17549,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2569
+      "chronology_order": 2545
     },
     {
       "id": "shop-3bc02ee9c30f76b7",
@@ -17614,7 +17582,7 @@
         }
       },
       "chronology_source": "instagram",
-      "chronology_order": 632
+      "chronology_order": 623
     },
     {
       "id": "shop-fafe0e00ae077dc7",
@@ -17643,7 +17611,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2570
+      "chronology_order": 2546
     },
     {
       "id": "shop-f40c296f5f0887da",
@@ -17676,7 +17644,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2571
+      "chronology_order": 2547
     },
     {
       "id": "shop-34cbeee66768e62a",
@@ -17705,7 +17673,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2572
+      "chronology_order": 2548
     },
     {
       "id": "shop-e3bff751fdd08ef6",
@@ -17734,7 +17702,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2573
+      "chronology_order": 2549
     },
     {
       "id": "shop-bcce9ca0e54cc6eb",
@@ -17763,7 +17731,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2574
+      "chronology_order": 2550
     },
     {
       "id": "shop-f8413ec59c2673ea",
@@ -17792,7 +17760,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2577
+      "chronology_order": 2553
     },
     {
       "id": "shop-f6efa27c3103fb1d",
@@ -17821,7 +17789,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2578
+      "chronology_order": 2554
     },
     {
       "id": "shop-2b8d33082fa9b250",
@@ -17854,7 +17822,7 @@
         }
       },
       "chronology_source": "instagram",
-      "chronology_order": 1701
+      "chronology_order": 1688
     },
     {
       "id": "shop-dcb397fb97af85cd",
@@ -17888,7 +17856,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2579
+      "chronology_order": 2555
     },
     {
       "id": "shop-e335c369683b5ab2",
@@ -17917,7 +17885,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2580
+      "chronology_order": 2556
     },
     {
       "id": "shop-23f35d25e9f26ee0",
@@ -17946,7 +17914,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2581
+      "chronology_order": 2557
     },
     {
       "id": "shop-b4d854f0fde25afe",
@@ -17975,7 +17943,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2582
+      "chronology_order": 2558
     },
     {
       "id": "shop-d5368728f92d66b6",
@@ -18004,7 +17972,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2583
+      "chronology_order": 2559
     },
     {
       "id": "shop-f2969ef7935c57f3",
@@ -18046,7 +18014,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2584
+      "chronology_order": 2560
     },
     {
       "id": "shop-9de984c4cebdf2f8",
@@ -18083,7 +18051,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2585
+      "chronology_order": 2561
     },
     {
       "id": "shop-852dd3fbd3d33b3a",
@@ -18116,7 +18084,7 @@
         }
       },
       "chronology_source": "instagram",
-      "chronology_order": 1655
+      "chronology_order": 1641
     },
     {
       "id": "shop-840a07ff366b6635",
@@ -18145,7 +18113,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2586
+      "chronology_order": 2562
     },
     {
       "id": "shop-5d35607b0c82e91b",
@@ -18174,7 +18142,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2587
+      "chronology_order": 2563
     },
     {
       "id": "shop-d2610a3d800e139d",
@@ -18203,7 +18171,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2588
+      "chronology_order": 2564
     },
     {
       "id": "shop-7e6bedfb270ca6e1",
@@ -18236,7 +18204,7 @@
         }
       },
       "chronology_source": "instagram",
-      "chronology_order": 1722
+      "chronology_order": 1706
     },
     {
       "id": "shop-e8f29cb29f2aae67",
@@ -18265,7 +18233,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2589
+      "chronology_order": 2565
     },
     {
       "id": "shop-5dd7a2b54dfed349",
@@ -18294,7 +18262,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2594
+      "chronology_order": 2570
     },
     {
       "id": "shop-849a24d7a54099ed",
@@ -18348,7 +18316,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2595
+      "chronology_order": 2571
     },
     {
       "id": "shop-6290cd5dd09159f8",
@@ -18377,7 +18345,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2608
+      "chronology_order": 2582
     },
     {
       "id": "shop-66609b554e883f70",
@@ -18406,7 +18374,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2609
+      "chronology_order": 2583
     },
     {
       "id": "shop-9f904e8bdb71f3d3",
@@ -18435,7 +18403,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2612
+      "chronology_order": 2586
     },
     {
       "id": "shop-11ad928f8af6e80f",
@@ -18464,7 +18432,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2613
+      "chronology_order": 2587
     },
     {
       "id": "shop-9018cf81545cc87f",
@@ -18493,7 +18461,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2616
+      "chronology_order": 2590
     },
     {
       "id": "shop-c35ec1430f13ff59",
@@ -18522,7 +18490,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2617
+      "chronology_order": 2591
     },
     {
       "id": "shop-0c9a548990574dd4",
@@ -18551,7 +18519,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2618
+      "chronology_order": 2592
     },
     {
       "id": "shop-b49fbd2db5272556",
@@ -18580,7 +18548,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2619
+      "chronology_order": 2593
     },
     {
       "id": "shop-3a9eae6716e866f8",
@@ -18614,7 +18582,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2620
+      "chronology_order": 2594
     },
     {
       "id": "shop-c00a2ebfd6a63e19",
@@ -18643,7 +18611,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2621
+      "chronology_order": 2595
     },
     {
       "id": "shop-08b96acc8ba43a76",
@@ -18676,7 +18644,7 @@
         }
       },
       "chronology_source": "instagram",
-      "chronology_order": 1616
+      "chronology_order": 1602
     },
     {
       "id": "shop-7c35edebd99eab7b",
@@ -18705,7 +18673,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2622
+      "chronology_order": 2596
     },
     {
       "id": "shop-d8dce2ef9e27e76e",
@@ -18734,7 +18702,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 2623
+      "chronology_order": 2597
     },
     {
       "id": "shop-a92563655a7b3a3c",
@@ -18763,7 +18731,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3230
+      "chronology_order": 3198
     },
     {
       "id": "shop-c14ab568448e2226",
@@ -18792,7 +18760,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3231
+      "chronology_order": 3199
     },
     {
       "id": "shop-28c18a10d46c8a6f",
@@ -18821,7 +18789,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3232
+      "chronology_order": 3200
     },
     {
       "id": "shop-a57656e12f96b75e",
@@ -18850,7 +18818,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3233
+      "chronology_order": 3201
     },
     {
       "id": "shop-0aeb4d5a1cc52947",
@@ -18888,7 +18856,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3234
+      "chronology_order": 3202
     },
     {
       "id": "shop-462f1e8278380b79",
@@ -18917,7 +18885,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3235
+      "chronology_order": 3203
     },
     {
       "id": "shop-3147c64ac62e4e65",
@@ -18950,7 +18918,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3236
+      "chronology_order": 3204
     },
     {
       "id": "shop-e02ae824bf640011",
@@ -18979,7 +18947,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3237
+      "chronology_order": 3205
     },
     {
       "id": "shop-5c93b13e50931232",
@@ -19021,7 +18989,7 @@
         }
       },
       "chronology_source": "instagram",
-      "chronology_order": 1487
+      "chronology_order": 1469
     },
     {
       "id": "shop-90520c33745695c3",
@@ -19059,7 +19027,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3238
+      "chronology_order": 3206
     },
     {
       "id": "shop-7073123082f1c956",
@@ -19088,7 +19056,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3239
+      "chronology_order": 3207
     },
     {
       "id": "shop-8f738c9137ca3990",
@@ -19117,7 +19085,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3240
+      "chronology_order": 3208
     },
     {
       "id": "shop-2ba8d9212458a559",
@@ -19146,7 +19114,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3241
+      "chronology_order": 3209
     },
     {
       "id": "shop-f0fa4bba70efd78b",
@@ -19175,7 +19143,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3242
+      "chronology_order": 3210
     },
     {
       "id": "shop-ca57880c5b69e230",
@@ -19208,7 +19176,7 @@
         }
       },
       "chronology_source": "instagram",
-      "chronology_order": 2702
+      "chronology_order": 2678
     },
     {
       "id": "shop-b9d5bde3d20ed20a",
@@ -19246,7 +19214,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3243
+      "chronology_order": 3211
     },
     {
       "id": "shop-636baf094d99e9fb",
@@ -19275,7 +19243,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3244
+      "chronology_order": 3212
     },
     {
       "id": "shop-c4258cdfa596cb46",
@@ -19313,7 +19281,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3255
+      "chronology_order": 3223
     },
     {
       "id": "shop-dc2c27dd3f2717a1",
@@ -19346,7 +19314,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3256
+      "chronology_order": 3224
     },
     {
       "id": "shop-01c10b5b6cb0d122",
@@ -19380,7 +19348,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3257
+      "chronology_order": 3225
     },
     {
       "id": "shop-1c9a6d982e7efb48",
@@ -19409,7 +19377,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3258
+      "chronology_order": 3226
     },
     {
       "id": "shop-e1c2b33185353837",
@@ -19447,7 +19415,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3259
+      "chronology_order": 3227
     },
     {
       "id": "shop-22faf0d34c820792",
@@ -19476,7 +19444,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3260
+      "chronology_order": 3228
     },
     {
       "id": "shop-71716bbb32f01d13",
@@ -19505,7 +19473,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3261
+      "chronology_order": 3229
     },
     {
       "id": "shop-6d9c9427f6f89edf",
@@ -19543,7 +19511,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3262
+      "chronology_order": 3230
     },
     {
       "id": "shop-89d67b04aea1144d",
@@ -19576,7 +19544,7 @@
         }
       },
       "chronology_source": "instagram",
-      "chronology_order": 1469
+      "chronology_order": 1455
     },
     {
       "id": "shop-3619ebcac4cfb9f5",
@@ -19605,7 +19573,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3263
+      "chronology_order": 3231
     },
     {
       "id": "shop-8df86295a3b75932",
@@ -19638,7 +19606,7 @@
         }
       },
       "chronology_source": "online",
-      "chronology_order": 2651
+      "chronology_order": 2627
     },
     {
       "id": "shop-16983e41614206ff",
@@ -19675,7 +19643,7 @@
         }
       },
       "chronology_source": "instagram",
-      "chronology_order": 872
+      "chronology_order": 862
     },
     {
       "id": "shop-922e749b4dcef5bd",
@@ -19704,7 +19672,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3264
+      "chronology_order": 3232
     },
     {
       "id": "shop-9e1cba1e99adfb32",
@@ -19733,7 +19701,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3265
+      "chronology_order": 3233
     },
     {
       "id": "shop-3cb99079c6aa9439",
@@ -19767,7 +19735,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3266
+      "chronology_order": 3234
     },
     {
       "id": "shop-c38834fe861a1723",
@@ -19797,7 +19765,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3415
+      "chronology_order": 3380
     },
     {
       "id": "shop-fa8566b81cdce049",
@@ -19861,7 +19829,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3416
+      "chronology_order": 3381
     },
     {
       "id": "shop-2e969a76e82391c8",
@@ -19898,7 +19866,7 @@
         }
       },
       "chronology_source": "instagram",
-      "chronology_order": 550
+      "chronology_order": 542
     },
     {
       "id": "shop-0dbb36d70c7c7178",
@@ -19927,7 +19895,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3417
+      "chronology_order": 3382
     },
     {
       "id": "shop-359d0e4e487894d4",
@@ -19961,7 +19929,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3418
+      "chronology_order": 3383
     },
     {
       "id": "shop-29ad9c1cb57ba2b3",
@@ -19994,7 +19962,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3419
+      "chronology_order": 3384
     },
     {
       "id": "shop-c5bcab45f4b62d08",
@@ -20023,7 +19991,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3420
+      "chronology_order": 3385
     },
     {
       "id": "shop-96fdc07c880ad18d",
@@ -20052,7 +20020,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3421
+      "chronology_order": 3386
     },
     {
       "id": "shop-ad01b5e583ed065a",
@@ -20081,7 +20049,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3422
+      "chronology_order": 3387
     },
     {
       "id": "shop-ed4d35f3b8faeec8",
@@ -20110,7 +20078,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3423
+      "chronology_order": 3388
     },
     {
       "id": "shop-6399729a5aa2e6fb",
@@ -20139,7 +20107,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3424
+      "chronology_order": 3389
     },
     {
       "id": "shop-7fa63248b48c9799",
@@ -20173,7 +20141,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3425
+      "chronology_order": 3390
     },
     {
       "id": "shop-937bd41a8b0e4964",
@@ -20207,7 +20175,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3426
+      "chronology_order": 3391
     },
     {
       "id": "shop-116dad01785f5ec5",
@@ -20236,7 +20204,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3769
+      "chronology_order": 3742
     },
     {
       "id": "shop-9e701c8116a08c46",
@@ -20265,7 +20233,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3770
+      "chronology_order": 3743
     },
     {
       "id": "shop-18f016f950c24efc",
@@ -20294,7 +20262,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3771
+      "chronology_order": 3744
     },
     {
       "id": "shop-7559ffcc9df48b28",
@@ -20323,7 +20291,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3772
+      "chronology_order": 3745
     },
     {
       "id": "shop-cabfd12dbf872fb5",
@@ -20353,7 +20321,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3773
+      "chronology_order": 3746
     },
     {
       "id": "shop-537d285cc4903ddb",
@@ -20382,7 +20350,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3774
+      "chronology_order": 3747
     },
     {
       "id": "shop-a69ab113c741fb4a",
@@ -20411,7 +20379,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3775
+      "chronology_order": 3748
     },
     {
       "id": "shop-0e24593ad7473ae0",
@@ -20445,7 +20413,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3776
+      "chronology_order": 3749
     },
     {
       "id": "shop-b45ac1799b03d9d7",
@@ -20474,7 +20442,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3777
+      "chronology_order": 3750
     },
     {
       "id": "shop-e3938df331918928",
@@ -20508,7 +20476,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3778
+      "chronology_order": 3751
     },
     {
       "id": "shop-47ff654c1c4881f0",
@@ -20542,7 +20510,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3779
+      "chronology_order": 3752
     },
     {
       "id": "shop-7da092c46737e1b9",
@@ -20571,7 +20539,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3782
+      "chronology_order": 3755
     },
     {
       "id": "shop-79e51b6ae0c1b2c4",
@@ -20600,7 +20568,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3783
+      "chronology_order": 3756
     },
     {
       "id": "shop-686359245a1c89d2",
@@ -20634,7 +20602,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3784
+      "chronology_order": 3757
     },
     {
       "id": "shop-87cfeb0cd5ffdd22",
@@ -20668,7 +20636,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3785
+      "chronology_order": 3758
     },
     {
       "id": "shop-59e25de74ecf93b7",
@@ -20714,7 +20682,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3786
+      "chronology_order": 3759
     },
     {
       "id": "shop-e4c4a71b2202886d",
@@ -20743,7 +20711,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3787
+      "chronology_order": 3760
     },
     {
       "id": "shop-155cbd47a86a61ba",
@@ -20772,7 +20740,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3788
+      "chronology_order": 3761
     },
     {
       "id": "shop-41b373ae51026ac4",
@@ -20801,7 +20769,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3789
+      "chronology_order": 3762
     },
     {
       "id": "shop-2b8a3f1602c963c4",
@@ -20835,7 +20803,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3790
+      "chronology_order": 3763
     },
     {
       "id": "shop-a3a845b596bc8e9d",
@@ -20864,7 +20832,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3791
+      "chronology_order": 3764
     },
     {
       "id": "shop-b9b4273acf4896e5",
@@ -20893,7 +20861,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3792
+      "chronology_order": 3765
     },
     {
       "id": "shop-439b5183bec73367",
@@ -20922,7 +20890,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3793
+      "chronology_order": 3766
     },
     {
       "id": "shop-9714b3b2b5a079ac",
@@ -20951,7 +20919,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3794
+      "chronology_order": 3767
     },
     {
       "id": "shop-22ae69ac14e341e3",
@@ -20985,7 +20953,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3795
+      "chronology_order": 3768
     },
     {
       "id": "shop-84cd97f8b1c7987f",
@@ -21019,7 +20987,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3796
+      "chronology_order": 3769
     },
     {
       "id": "shop-250ceeea7bcd3812",
@@ -21053,7 +21021,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3797
+      "chronology_order": 3770
     },
     {
       "id": "shop-233c8c9fd3bd80b7",
@@ -21082,7 +21050,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3798
+      "chronology_order": 3771
     },
     {
       "id": "shop-b4d6bf6dff013c8f",
@@ -21111,7 +21079,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3799
+      "chronology_order": 3772
     },
     {
       "id": "shop-8532410e1fb1ca1a",
@@ -21140,7 +21108,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3800
+      "chronology_order": 3773
     },
     {
       "id": "shop-e312080da7df8d04",
@@ -21169,7 +21137,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3801
+      "chronology_order": 3774
     },
     {
       "id": "shop-a451b597267c1a99",
@@ -21198,7 +21166,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3802
+      "chronology_order": 3775
     },
     {
       "id": "shop-c0d8ecc5d55d673f",
@@ -21236,7 +21204,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3852
+      "chronology_order": 3826
     },
     {
       "id": "shop-ac32c72c5d63c586",
@@ -21270,7 +21238,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3853
+      "chronology_order": 3827
     },
     {
       "id": "shop-a19e2c3fa7db20d7",
@@ -21312,7 +21280,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3854
+      "chronology_order": 3828
     },
     {
       "id": "shop-91d81c9d6081222a",
@@ -21346,7 +21314,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3855
+      "chronology_order": 3829
     },
     {
       "id": "shop-733e929ac1c9c6e5",
@@ -21380,7 +21348,7 @@
         }
       },
       "chronology_source": "online",
-      "chronology_order": 2006
+      "chronology_order": 1993
     },
     {
       "id": "shop-6c03f985694cd411",
@@ -21409,7 +21377,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3856
+      "chronology_order": 3830
     },
     {
       "id": "shop-0f23d6d54f9f4bd5",
@@ -21438,7 +21406,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3857
+      "chronology_order": 3831
     },
     {
       "id": "shop-9f858739d0721d59",
@@ -21467,7 +21435,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3858
+      "chronology_order": 3832
     },
     {
       "id": "shop-32b209d06adef31b",
@@ -21496,7 +21464,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3859
+      "chronology_order": 3833
     },
     {
       "id": "shop-3f2b3665f139ad4f",
@@ -21525,7 +21493,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3860
+      "chronology_order": 3834
     },
     {
       "id": "shop-8ab580599ffea0e7",
@@ -21554,7 +21522,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3861
+      "chronology_order": 3835
     },
     {
       "id": "shop-ff744651dfc7e004",
@@ -21583,7 +21551,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3862
+      "chronology_order": 3836
     },
     {
       "id": "shop-ffe7bee18b15b4ac",
@@ -21612,7 +21580,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3863
+      "chronology_order": 3837
     },
     {
       "id": "shop-b69ce44e42d82140",
@@ -21645,7 +21613,7 @@
         }
       },
       "chronology_source": "instagram",
-      "chronology_order": 3480
+      "chronology_order": 3451
     },
     {
       "id": "shop-a521ba809e9292b2",
@@ -21674,7 +21642,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3864
+      "chronology_order": 3838
     },
     {
       "id": "shop-5522557aef6eae7f",
@@ -21703,7 +21671,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3865
+      "chronology_order": 3839
     },
     {
       "id": "shop-a912ceeaae910722",
@@ -21732,7 +21700,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3866
+      "chronology_order": 3840
     },
     {
       "id": "shop-ce30a318df6766cd",
@@ -21761,7 +21729,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3867
+      "chronology_order": 3841
     },
     {
       "id": "shop-00bc40e4420a3413",
@@ -21790,7 +21758,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3868
+      "chronology_order": 3842
     },
     {
       "id": "shop-358757cf3bed832d",
@@ -21819,7 +21787,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3869
+      "chronology_order": 3843
     },
     {
       "id": "shop-23e6bb48c3ba4517",
@@ -21848,7 +21816,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3870
+      "chronology_order": 3844
     },
     {
       "id": "shop-f9cb66245a5c5f7e",
@@ -21877,7 +21845,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3871
+      "chronology_order": 3845
     },
     {
       "id": "shop-f857374970dc6d50",
@@ -21906,7 +21874,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3872
+      "chronology_order": 3846
     },
     {
       "id": "shop-60f357545b39f644",
@@ -21935,7 +21903,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3873
+      "chronology_order": 3847
     },
     {
       "id": "shop-2691210b7e758ad3",
@@ -21964,7 +21932,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3874
+      "chronology_order": 3848
     },
     {
       "id": "shop-15380d2e4bdaaebf",
@@ -21993,7 +21961,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3875
+      "chronology_order": 3849
     },
     {
       "id": "shop-4a87c2930ba4cafd",
@@ -22027,7 +21995,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3876
+      "chronology_order": 3850
     },
     {
       "id": "shop-b9d807ef7200be6c",
@@ -22060,7 +22028,7 @@
         }
       },
       "chronology_source": "online",
-      "chronology_order": 3634
+      "chronology_order": 3602
     },
     {
       "id": "shop-5c7ce0f08e5eb9f1",
@@ -22089,7 +22057,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3877
+      "chronology_order": 3851
     },
     {
       "id": "shop-12719e116a408ddd",
@@ -22131,7 +22099,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3878
+      "chronology_order": 3852
     },
     {
       "id": "shop-27936241b6e3a4a1",
@@ -22160,7 +22128,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3879
+      "chronology_order": 3853
     },
     {
       "id": "shop-449f022bc365fa87",
@@ -22189,7 +22157,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3880
+      "chronology_order": 3854
     },
     {
       "id": "shop-d8daaabcfcdf3ab1",
@@ -22218,7 +22186,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3881
+      "chronology_order": 3855
     },
     {
       "id": "shop-28fc318496c007ed",
@@ -22247,7 +22215,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3882
+      "chronology_order": 3856
     },
     {
       "id": "shop-20b0fb5f777f2b38",
@@ -22276,7 +22244,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3883
+      "chronology_order": 3857
     },
     {
       "id": "shop-a8ab89930a07f490",
@@ -22305,7 +22273,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3884
+      "chronology_order": 3858
     },
     {
       "id": "shop-98dbb3cd4636fd19",
@@ -22334,7 +22302,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3885
+      "chronology_order": 3859
     },
     {
       "id": "shop-8657d50b542f2753",
@@ -22363,7 +22331,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3886
+      "chronology_order": 3860
     },
     {
       "id": "shop-0ebd10c46c8b2112",
@@ -22397,7 +22365,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3887
+      "chronology_order": 3861
     },
     {
       "id": "shop-addfcb66dba99a6c",
@@ -22430,7 +22398,7 @@
         }
       },
       "chronology_source": "instagram",
-      "chronology_order": 2794
+      "chronology_order": 2769
     },
     {
       "id": "shop-3edb072b35055e7f",
@@ -22459,7 +22427,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3888
+      "chronology_order": 3862
     },
     {
       "id": "shop-31c3633fbbeabfb3",
@@ -22488,7 +22456,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3889
+      "chronology_order": 3863
     },
     {
       "id": "shop-b696dc5a9c3be917",
@@ -22517,7 +22485,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3890
+      "chronology_order": 3864
     },
     {
       "id": "shop-2e86ce70f8c4fce5",
@@ -22546,7 +22514,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3891
+      "chronology_order": 3865
     },
     {
       "id": "shop-d4682251ab2fe0ff",
@@ -22575,7 +22543,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3892
+      "chronology_order": 3866
     },
     {
       "id": "shop-66c7634a49a23767",
@@ -22604,7 +22572,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3893
+      "chronology_order": 3867
     },
     {
       "id": "shop-834dc509d2d23dac",
@@ -22633,7 +22601,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3894
+      "chronology_order": 3868
     },
     {
       "id": "shop-63a9a7c71f75b3df",
@@ -22666,7 +22634,7 @@
         }
       },
       "chronology_source": "online",
-      "chronology_order": 3840
+      "chronology_order": 3814
     },
     {
       "id": "shop-e1a8812fe0e6abe6",
@@ -22695,7 +22663,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3895
+      "chronology_order": 3869
     },
     {
       "id": "shop-45d23c6105869f83",
@@ -22724,7 +22692,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3896
+      "chronology_order": 3870
     },
     {
       "id": "shop-d32f6dfb6a1e9eda",
@@ -22753,7 +22721,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3897
+      "chronology_order": 3871
     },
     {
       "id": "shop-d4711c52ad46925b",
@@ -22782,7 +22750,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3898
+      "chronology_order": 3872
     },
     {
       "id": "shop-c6e7093f2a430b82",
@@ -22811,7 +22779,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3899
+      "chronology_order": 3873
     },
     {
       "id": "shop-9e5c057377822d64",
@@ -22857,7 +22825,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3900
+      "chronology_order": 3874
     },
     {
       "id": "shop-fde6ad765d79af35",
@@ -22886,7 +22854,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3901
+      "chronology_order": 3875
     },
     {
       "id": "shop-b82e801adc5f29e0",
@@ -22915,7 +22883,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3902
+      "chronology_order": 3876
     },
     {
       "id": "shop-c292481939d774b9",
@@ -22944,7 +22912,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3903
+      "chronology_order": 3877
     },
     {
       "id": "shop-8d2439f561fdcc60",
@@ -22973,7 +22941,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3904
+      "chronology_order": 3878
     },
     {
       "id": "shop-c706a1b5ee43249c",
@@ -23006,7 +22974,7 @@
         }
       },
       "chronology_source": "online",
-      "chronology_order": 3592
+      "chronology_order": 3562
     },
     {
       "id": "shop-92fa5c42a6d2fda1",
@@ -23035,7 +23003,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3905
+      "chronology_order": 3879
     },
     {
       "id": "shop-b0779d7f310bd051",
@@ -23068,7 +23036,7 @@
         }
       },
       "chronology_source": "online",
-      "chronology_order": 2042
+      "chronology_order": 2029
     },
     {
       "id": "shop-d504e34de1718b32",
@@ -23098,7 +23066,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3906
+      "chronology_order": 3880
     },
     {
       "id": "shop-0f482a29dd70b8f1",
@@ -23127,7 +23095,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3907
+      "chronology_order": 3881
     },
     {
       "id": "shop-7b6ad9f722fdf5df",
@@ -23156,7 +23124,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3908
+      "chronology_order": 3882
     },
     {
       "id": "shop-e513d14829dee1ce",
@@ -23185,7 +23153,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3909
+      "chronology_order": 3883
     },
     {
       "id": "shop-790cf16a9ba5c701",
@@ -23214,7 +23182,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3910
+      "chronology_order": 3884
     },
     {
       "id": "shop-15b755cb1626cd30",
@@ -23243,7 +23211,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3911
+      "chronology_order": 3885
     },
     {
       "id": "shop-3835fe62dcfb7739",
@@ -23272,7 +23240,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3912
+      "chronology_order": 3886
     },
     {
       "id": "shop-0bc7704f12d533f7",
@@ -23301,7 +23269,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3913
+      "chronology_order": 3887
     },
     {
       "id": "shop-b3156135f016d297",
@@ -23330,7 +23298,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3914
+      "chronology_order": 3888
     },
     {
       "id": "shop-6fd41987b257d375",
@@ -23364,7 +23332,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3915
+      "chronology_order": 3889
     },
     {
       "id": "shop-ad79cf64e2341bde",
@@ -23398,7 +23366,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3916
+      "chronology_order": 3890
     },
     {
       "id": "shop-edd80e806b7cd2c6",
@@ -23432,7 +23400,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 3917
+      "chronology_order": 3891
     },
     {
       "id": "shop-4347101944045df7",
@@ -23461,7 +23429,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 4060
+      "chronology_order": 4035
     },
     {
       "id": "shop-47c196b678190a0a",
@@ -23494,7 +23462,7 @@
         }
       },
       "chronology_source": "online",
-      "chronology_order": 2683
+      "chronology_order": 2659
     },
     {
       "id": "shop-db5d0c5470559488",
@@ -23523,7 +23491,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 4061
+      "chronology_order": 4036
     },
     {
       "id": "shop-95895c8acd54d731",
@@ -23552,7 +23520,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 4062
+      "chronology_order": 4037
     },
     {
       "id": "shop-c24c8074f743aabe",
@@ -23581,7 +23549,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 4063
+      "chronology_order": 4038
     },
     {
       "id": "shop-619a10096ff1978d",
@@ -23610,7 +23578,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 4064
+      "chronology_order": 4039
     },
     {
       "id": "shop-50d84dd192f968c6",
@@ -23643,7 +23611,7 @@
         }
       },
       "chronology_source": "online",
-      "chronology_order": 2021
+      "chronology_order": 2006
     },
     {
       "id": "shop-97f5a68f2b061fae",
@@ -23677,7 +23645,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 4065
+      "chronology_order": 4040
     },
     {
       "id": "shop-ec349d943b372d8b",
@@ -23711,7 +23679,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 4083
+      "chronology_order": 4058
     },
     {
       "id": "shop-b15fbd9d7103f894",
@@ -23740,7 +23708,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 4136
+      "chronology_order": 4112
     },
     {
       "id": "shop-4499f8599e2f717c",
@@ -23786,7 +23754,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 4142
+      "chronology_order": 4118
     },
     {
       "id": "shop-76460697a140d460",
@@ -23815,7 +23783,7 @@
         }
       },
       "chronology_source": "bookshops",
-      "chronology_order": 4143
+      "chronology_order": 4119
     }
   ],
   "chronology": {
