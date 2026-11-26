@@ -1,6 +1,7 @@
 import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { defineConfig } from 'astro/config';
+import { unified as markdownUnified } from '@astrojs/markdown-remark';
 import sitemap from '@astrojs/sitemap';
 import remarkMath from 'remark-math';
 import rehypeSlug from 'rehype-slug';
@@ -63,6 +64,7 @@ function aliasRedirects() {
 // Mirrors Pika URL scheme: /posts/slug, /pages/slug, /tag/Name, /posts (list), /search
 export default defineConfig({
   site: site.url,
+  compressHTML: true,
   trailingSlash: 'never',
   build: { format: 'file' },
   integrations: [
@@ -75,8 +77,10 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    remarkPlugins: [[remarkMath, { singleDollarTextMath: false }]],
-    rehypePlugins: [[rehypeMedia, { revision: mediaRevision }], rehypeContent, rehypeKatex, rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'append', properties: { class: 'anchor', 'aria-label': 'Link to this section', 'data-pagefind-ignore': '' }, content: { type: 'text', value: ' #' } }]],
+    processor: markdownUnified({
+      remarkPlugins: [[remarkMath, { singleDollarTextMath: false }]],
+      rehypePlugins: [[rehypeMedia, { revision: mediaRevision }], rehypeContent, rehypeKatex, rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'append', properties: { class: 'anchor', 'aria-label': 'Link to this section', 'data-pagefind-ignore': '' }, content: { type: 'text', value: ' #' } }]],
+    }),
     shikiConfig: { theme: 'one-dark-pro' },
   },
 });

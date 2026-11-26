@@ -1,4 +1,4 @@
-FROM node:22-bookworm-slim AS build
+FROM node:22.23.4-bookworm-slim AS build
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
@@ -13,7 +13,7 @@ ARG CMS_REPOSITORY
 ARG CMS_BRANCH=main
 ENV SITE_URL=$SITE_URL CMS_REPOSITORY=$CMS_REPOSITORY CMS_BRANCH=$CMS_BRANCH
 RUN npm run build
-FROM node:22-bookworm-slim
+FROM node:22.23.4-bookworm-slim
 WORKDIR /app
 RUN apt-get update && apt-get install -y --no-install-recommends git openssh-client ca-certificates && rm -rf /var/lib/apt/lists/*
 ENV NODE_ENV=production PORT=8080 HOST=0.0.0.0

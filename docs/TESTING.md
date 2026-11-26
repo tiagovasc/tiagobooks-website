@@ -1,6 +1,6 @@
 # Testing
 
-Run all commands from the repository root with Node.js 22.19 or later:
+Run all commands from the repository root with Node.js 22.23.4 or later:
 
 ```sh
 npm run check:public
